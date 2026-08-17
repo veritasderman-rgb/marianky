@@ -253,6 +253,12 @@ export interface JmenovityHlas {
   jmeno: string;
   strana?: string;
   hlas: 'pro' | 'proti' | 'zdrzel' | 'nehlasoval' | 'nepritomen' | string;
+  /**
+   * Omluvená neúčast. Zdroj ji zapisuje jako `hlas: "nepritomen"` s tímhle
+   * příznakem — a jen u novějších zápisů. Chybějící příznak proto NEZNAMENÁ,
+   * že se člověk neomluvil.
+   */
+  omluven?: boolean;
 }
 
 export interface Hlas {

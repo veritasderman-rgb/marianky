@@ -2,13 +2,14 @@
 /**
  * Přehled vazeb mezi samosprávou a firmami.
  *
- * Smyslem je ukázat celý obrázek, ne jen to, co vypadá podezřele: u každé
- * firmy je napsané, jestli s městem obchoduje, nebo ne. „Neobchoduje" je
- * stejně důležitá informace jako „dostala 4,8 mil." — bez ní by přehled
- * vytvářel dojem, že každé angažmá znamená peníze z rozpočtu.
+ * Smyslem je ukázat celý obrázek, ne jen to, co vypadá podezřele:
+ *   – u každé firmy je napsané, jestli s městem obchoduje, nebo ne,
+ *   – městská organizace se pozná od cizí firmy (ředitel muzea „obchodující
+ *     s městem" je něco jiného než stavební firma),
+ *   – „nezjištěno" se nikde netváří jako „nic tam není".
  *
- * Stránka nic nehodnotí. Fakt a interpretace se v tomhle projektu nemíchají
- * a tady na tom záleží nejvíc.
+ * Stránka nic nehodnotí. Vysvětlení metody se přebírá ze zdrojového souboru,
+ * aby na webu stálo přesně to, podle čeho data vznikla.
  */
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
@@ -19,10 +20,14 @@ import {
   dodavateleZOsob,
   nactiDodavatelePolitiky,
   nactiOsobyFirmy,
+  popisOvereni,
+  popisVztahu,
   vsechenSponzoring,
   type DodavatelSVazbou,
+  type FirmaOsoby,
+  type OsobaFirmy,
 } from '../lib/vazby';
-import { cislo, datumKratke, kc, kcZkraceno, orderCs, sklonuj } from '../lib/format';
+import { cislo, kc, kcZkraceno, orderCs, sklonuj } from '../lib/format';
 
 const zOsob = nactiOsobyFirmy();
 const zDodavatelu = nactiDodavatelePolitiky();
@@ -32,112 +37,87 @@ const zProtistran = nactiProtistrany();
 const propojeni = zOsob.data;
 const zname = new Set((zProtistran.data.protistrany ?? []).map((p) => p.klic));
 const jmenaOsob = new Map((zLidi.data ?? []).map((o) => [o.id, o.jmeno]));
-// Jméno může být i v propojení — u lidí, kteří ještě nemají profil v osobnostech.
 for (const o of propojeni.osoby) {
   if (o.jmeno && !jmenaOsob.has(o.osoba_id)) jmenaOsob.set(o.osoba_id, o.jmeno);
 }
+const jmeno = (o: OsobaFirmy) => o.jmeno ?? jmenaOsob.get(o.osoba_id) ?? o.osoba_id;
 
-const osoby = [...propojeni.osoby].sort((a, b) =>
-  orderCs(a.jmeno ?? jmenaOsob.get(a.osoba_id) ?? a.osoba_id, b.jmeno ?? jmenaOsob.get(b.osoba_id) ?? b.osoba_id),
-);
+const osoby = [...propojeni.osoby].sort((a, b) => orderCs(jmeno(a), jmeno(b)));
+const sFirmami = osoby.filter((o) => o.firmy.length > 0);
+const bezZjisteni = osoby.filter((o) => !o.firmyZjisteny);
 
-/* ── Řádky „kdo sedí kde" ─────────────────────────────────────────────── */
+/* ── Řádky „kdo je kde uvedený" ───────────────────────────────────────── */
 
-interface RadekVazby {
-  osobaId: string;
-  jmeno: string;
-  strana: string | null;
-  firma: string;
-  ico: string | null;
-  role: string[];
-  obchoduje: boolean | null;
-  celkem: number | null;
-  smluv: number | null;
-  obdobi: string;
+interface Radek {
+  osoba: OsobaFirmy;
+  f: FirmaOsoby;
 }
-
-const radky: RadekVazby[] = [];
-for (const o of osoby) {
-  const jmeno = o.jmeno ?? jmenaOsob.get(o.osoba_id) ?? o.osoba_id;
-  for (const f of o.firmy) {
-    radky.push({
-      osobaId: o.osoba_id,
-      jmeno,
-      strana: o.strana,
-      firma: f.nazev,
-      ico: f.ico,
-      role: f.role,
-      obchoduje: f.obchoduje,
-      celkem: f.celkem_czk,
-      smluv: f.smluv,
-      obdobi: f.od || f.do ? `${f.od ?? '?'} – ${f.do ?? 'trvá'}` : (f.aktivni === false ? 'ukončeno' : ''),
-    });
-  }
-}
+const radky: Radek[] = [];
+for (const o of sFirmami) for (const f of o.firmy) radky.push({ osoba: o, f });
 
 /* Firmy se počítají podle IČO, ať se jedna firma s více zastupiteli
    nezapočítá vícekrát. Bez IČO se rozlišuje podle názvu. */
-const klicFirmy = (r: { ico: string | null; firma: string }) => r.ico ?? `n-${r.firma.toLowerCase()}`;
-const firmyCelkem = new Set(radky.map(klicFirmy));
-const firmyObchodujici = new Set(radky.filter((r) => r.obchoduje === true).map(klicFirmy));
-const firmyNeobchodujici = new Set(radky.filter((r) => r.obchoduje === false).map(klicFirmy));
+const klicFirmy = (f: FirmaOsoby) => f.ico ?? `n-${f.nazev.toLowerCase()}`;
+const firmy = new Map<string, FirmaOsoby>();
+for (const r of radky) if (!firmy.has(klicFirmy(r.f))) firmy.set(klicFirmy(r.f), r.f);
+const vsechnyFirmy = [...firmy.values()];
 
-/* Objem se sčítá po firmách, ne po řádcích — jinak by firma se dvěma
-   zastupiteli přispěla do součtu dvakrát. */
-const objemPodleFirmy = new Map<string, number>();
-for (const r of radky) {
-  if (r.celkem === null) continue;
-  const k = klicFirmy(r);
-  objemPodleFirmy.set(k, Math.max(objemPodleFirmy.get(k) ?? 0, r.celkem));
-}
-const objemCelkem = [...objemPodleFirmy.values()].reduce((s, v) => s + v, 0);
-const znameObjem = objemPodleFirmy.size > 0;
+const mestskych = vsechnyFirmy.filter((f) => f.vztah === 'mestsky-subjekt').length;
+const cizichObchodujicich = vsechnyFirmy.filter((f) => f.vztah === 'obchoduje-s-mestem').length;
+const bezVazby = vsechnyFirmy.filter((f) => f.vztah === 'bez-vazby-na-mesto').length;
+const neurcenych = vsechnyFirmy.length - mestskych - cizichObchodujicich - bezVazby;
+
+const objemCelkem = vsechnyFirmy.reduce((s, f) => s + (f.od_mesta_czk ?? 0), 0);
+const objemCizich = vsechnyFirmy
+  .filter((f) => f.vztah === 'obchoduje-s-mestem')
+  .reduce((s, f) => s + (f.od_mesta_czk ?? 0), 0);
 
 const maData = radky.length > 0;
 
 const dlazdice: Polozka[] = maData
   ? [
       {
-        popisek: 'Osob s uvedenou vazbou',
-        hodnota: cislo(osoby.filter((o) => o.firmy.length > 0).length),
-        doplnek: `z ${cislo(osoby.length)} ${sklonuj(osoby.length, 'osoby v souboru', 'osob v souboru', 'osob v souboru')}`,
+        popisek: 'Osob s dohledanou firmou',
+        hodnota: cislo(sFirmami.length),
+        doplnek: `z ${cislo(osoby.length)} sledovaných osob · u ${cislo(bezZjisteni.length)} se identita nedohledala`,
       },
       {
         popisek: 'Firem celkem',
-        hodnota: cislo(firmyCelkem.size),
-        doplnek: 'včetně těch, které s městem neobchodují',
+        hodnota: cislo(vsechnyFirmy.length),
+        doplnek: `${cislo(bezVazby)} z nich s městem neobchoduje`,
       },
       {
-        popisek: 'Firem obchodujících s městem',
-        hodnota: cislo(firmyObchodujici.size),
-        doplnek: `${cislo(firmyNeobchodujici.size)} s městem neobchoduje · u ${cislo(firmyCelkem.size - firmyObchodujici.size - firmyNeobchodujici.size)} to v datech není`,
+        popisek: 'Z toho městských organizací',
+        hodnota: cislo(mestskych),
+        doplnek: `${cislo(cizichObchodujicich)} je firma mimo město, která s městem obchoduje`,
       },
       {
-        popisek: 'Od města těmto firmám',
-        hodnota: znameObjem ? kcZkraceno(objemCelkem, true) : '—',
-        doplnek: znameObjem
-          ? 'součet za firmy, u kterých zdroj objem uvádí'
-          : 'objem plateb zdroj u firem neuvádí',
+        popisek: 'Od města firmám mimo město',
+        hodnota: kcZkraceno(objemCizich, true),
+        doplnek: `celkem včetně městských organizací ${kcZkraceno(objemCelkem, true)}`,
       },
     ]
   : [];
 
 /* ── Dodavatelé s vazbou ──────────────────────────────────────────────── */
 
-const zeSouboru = zDodavatelu.data.length > 0;
-const dodavatele: DodavatelSVazbou[] = zeSouboru ? zDodavatelu.data : dodavateleZOsob(propojeni);
-const dodavateleSerazeni = [...dodavatele].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0));
+const zeSouboru = zDodavatelu.data.dodavatele.length > 0;
+const dodavatele: DodavatelSVazbou[] = zeSouboru
+  ? zDodavatelu.data.dodavatele
+  : dodavateleZOsob(propojeni);
+const dodavateleSerazeni = [...dodavatele].sort((a, b) => (b.od_mesta_czk ?? 0) - (a.od_mesta_czk ?? 0));
 
 /* ── Sponzoring ───────────────────────────────────────────────────────── */
 
 const sponzoring = vsechenSponzoring(propojeni).sort(
   (a, b) => (b.rok ?? 0) - (a.rok ?? 0) || (b.castka_czk ?? 0) - (a.castka_czk ?? 0),
 );
+const sponzoringProverovan = propojeni.osoby.filter((o) => o.sponzoring !== null).length;
 
-function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }): string {
-  if (r.obchoduje === true) return r.celkem !== null ? `ano — ${kc(r.celkem)}` : 'ano';
-  if (r.obchoduje === false) return 's městem neobchoduje';
-  return 'v datech není uvedeno';
+function castkaFirmy(f: FirmaOsoby): string {
+  if (f.vztah === 'bez-vazby-na-mesto') return '—';
+  if (f.od_mesta_czk === null) return 'v datech není';
+  return kc(f.od_mesta_czk);
 }
 ---
 
@@ -145,7 +125,7 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
   titulek="Propojení"
   aktivni="propojeni"
   nadpis="Propojení samosprávy a firem"
-  uvod="Kdo ze zastupitelů a radních je uvedený v jakých firmách a které z těch firem dostávají od města peníze. Přehled uvádí i firmy, které s městem neobchodují — bez nich by vznikal dojem, že každé angažmá znamená peníze z rozpočtu. Stránka nic nehodnotí, jen ukazuje, co je ve zdrojích."
+  uvod="Kdo ze zastupitelů, radních a statutárů městských firem je uvedený v jakých firmách a které z těch firem dostávají od města peníze. Přehled uvádí i firmy bez jakéhokoliv vztahu k městu — bez nich by vznikal dojem, že každé angažmá znamená peníze z rozpočtu. Stránka nic nehodnotí, jen ukazuje, co je ve zdrojích."
 >
   <StavDat
     stav={zOsob.stav}
@@ -161,17 +141,17 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
         <Dlazdice polozky={dlazdice} />
 
         <p class="graf-poznamka">
-          Účast ve firmě je veřejný údaj z rejstříků. Sama o sobě neznamená nic víc, než že je
-          osoba ve firmě zapsaná. Jestli byla některá zakázka v pořádku, z tohohle přehledu
-          nevyplývá — a tenhle web to netvrdí.
+          Zápis ve firmě je veřejný údaj z rejstříku. Sám o sobě neznamená nic víc, než že je osoba
+          ve firmě zapsaná. Velká část těch firem jsou přímo organizace města — ředitel příspěvkové
+          organizace, která dostává příspěvek od zřizovatele, je běžný stav, ne nález.
         </p>
 
         <section class="karta">
           <h2 class="karta__nadpis">Kde je kdo uvedený</h2>
           <p class="karta__podnadpis">
-            {cislo(radky.length)} {sklonuj(radky.length, 'záznam', 'záznamy', 'záznamů')} o angažmá.
-            Řazeno podle jména. Sloupec „Obchoduje s městem" rozlišuje tři stavy: ano (s částkou),
-            neobchoduje, a „v datech není uvedeno" — to poslední není totéž co ne.
+            {cislo(radky.length)} {sklonuj(radky.length, 'záznam', 'záznamy', 'záznamů')} o angažmá,
+            řazeno podle jména. Sloupec „Vztah firmy k městu" rozlišuje městskou organizaci, cizí
+            firmu obchodující s městem a firmu bez vztahu k městu.
           </p>
           <div class="tabulka-obal">
             <table>
@@ -180,35 +160,88 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
                   <th scope="col">Osoba</th>
                   <th scope="col">Uskupení</th>
                   <th scope="col">Firma</th>
-                  <th scope="col">Role ve firmě</th>
-                  <th scope="col">Platnost</th>
-                  <th scope="col">Obchoduje s městem</th>
+                  <th scope="col">Vztah firmy k městu</th>
+                  <th scope="col">Období</th>
+                  <th scope="col" class="cislo">Od města</th>
                   <th scope="col" class="cislo">Smluv</th>
                 </tr>
               </thead>
               <tbody>
-                {radky.map((r) => (
+                {radky.map(({ osoba, f }) => (
                   <tr>
-                    <td><a href={`/lide/${r.osobaId}`}>{r.jmeno}</a></td>
-                    <td>{r.strana ?? '—'}</td>
                     <td>
-                      {r.ico && zname.has(r.ico) ? (
-                        <a href={`/penize/${r.ico}`}>{r.firma}</a>
-                      ) : (
-                        r.firma
+                      <a href={`/lide/${osoba.osoba_id}`}>{jmeno(osoba)}</a>
+                      {osoba.overeni.stav && osoba.overeni.stav !== 'potvrzeno' && (
+                        <>
+                          <br />
+                          <span class="stav-dat__zdroj">{popisOvereni(osoba.overeni.stav)}</span>
+                        </>
                       )}
-                      {r.ico && <><br /><span class="mono">{r.ico}</span></>}
                     </td>
-                    <td>{r.role.length > 0 ? r.role.join(', ') : 'v datech není'}</td>
-                    <td>{r.obdobi || '—'}</td>
-                    <td>{textObchodovani(r)}</td>
-                    <td class="cislo">{r.smluv === null ? '—' : cislo(r.smluv)}</td>
+                    <td>{osoba.strana ?? (osoba.role.length > 0 ? osoba.role.join(', ') : '—')}</td>
+                    <td>
+                      {f.ico && zname.has(f.ico) ? <a href={`/penize/${f.ico}`}>{f.nazev}</a> : f.nazev}
+                      {f.ico && (
+                        <>
+                          <br />
+                          <span class="mono">{f.ico}</span>
+                        </>
+                      )}
+                    </td>
+                    <td>{popisVztahu(f.vztah)}</td>
+                    <td class="cislo">
+                      {f.prvni_rok !== null || f.posledni_rok !== null
+                        ? `${f.prvni_rok ?? '?'}–${f.posledni_rok ?? '?'}`
+                        : '—'}
+                    </td>
+                    <td class="cislo">{castkaFirmy(f)}</td>
+                    <td class="cislo">{f.smluv === null ? '—' : cislo(f.smluv)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          <p class="graf-poznamka">
+            Období je rozsah let, ve kterých firma s městem uzavírala smlouvy — ne doba, po kterou
+            v ní osoba působí. Tu zdroj neuvádí.
+          </p>
         </section>
+
+        {bezZjisteni.length > 0 && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Osoby, u kterých se firmy nedohledaly</h2>
+            <p class="karta__podnadpis">
+              U těchhle lidí zdroj nevede seznam firem. Neznamená to, že žádné nemají — znamená to,
+              že se jejich identita v rejstříku nedala spolehlivě určit. Kdyby tu nebyli uvedení,
+              vypadal by přehled úplněji, než je.
+            </p>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Osoba</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Proč se firmy neuvádějí</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bezZjisteni.map((o) => (
+                    <tr>
+                      <td><a href={`/lide/${o.osoba_id}`}>{jmeno(o)}</a></td>
+                      <td>{o.role.length > 0 ? o.role.join(', ') : '—'}</td>
+                      <td>
+                        {popisOvereni(o.overeni.stav)}
+                        {o.overeni.kandidatu !== null && o.overeni.kandidatu > 1 && (
+                          <> · v rejstříku je {cislo(o.overeni.kandidatu)} osob téhož jména</>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
       </>
     )
   }
@@ -218,8 +251,8 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
     <p class="karta__podnadpis">
       {zeSouboru
         ? 'Zdroj: propojeni/dodavatele_politici.json.'
-        : 'Soubor propojeni/dodavatele_politici.json zatím není — seznam je poskládaný z propojeni/osoby_firmy.json podle příznaku obchodování s městem.'}
-      {' '}Podrobnější pohled s objemem po letech je na stránce <a href="/penize#dodavatele-vazby">Peníze</a>.
+        : 'Soubor propojeni/dodavatele_politici.json zatím není — seznam je poskládaný z propojeni/osoby_firmy.json.'}
+      {' '}Objem po letech je na stránce <a href="/penize#dodavatele-vazby">Peníze</a>.
     </p>
 
     <StavDat
@@ -237,7 +270,7 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
             <thead>
               <tr>
                 <th scope="col">Firma</th>
-                <th scope="col">IČO</th>
+                <th scope="col">Vlastnictví</th>
                 <th scope="col" class="cislo">Od města celkem</th>
                 <th scope="col" class="cislo">Smluv</th>
                 <th scope="col">Kdo je ve firmě uvedený</th>
@@ -248,9 +281,15 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
                 <tr>
                   <td>
                     {d.ico && zname.has(d.ico) ? <a href={`/penize/${d.ico}`}>{d.nazev}</a> : d.nazev}
+                    {d.ico && (
+                      <>
+                        <br />
+                        <span class="mono">{d.ico}</span>
+                      </>
+                    )}
                   </td>
-                  <td class="mono">{d.ico ?? 'bez IČO'}</td>
-                  <td class="cislo">{d.celkem_czk === null ? 'v datech není' : kc(d.celkem_czk)}</td>
+                  <td>{d.mestsky === true ? 'městská organizace nebo firma města' : d.mestsky === false ? 'mimo město' : 'v datech není'}</td>
+                  <td class="cislo">{d.od_mesta_czk === null ? 'v datech není' : kc(d.od_mesta_czk)}</td>
                   <td class="cislo">{d.smluv === null ? '—' : cislo(d.smluv)}</td>
                   <td>
                     {d.osoby.length === 0
@@ -280,7 +319,8 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
     <h2 class="karta__nadpis">Sponzoring politických stran</h2>
     <p class="karta__podnadpis">
       Dary a příspěvky tak, jak je uvádí zdroj. Sponzoring je zákonná a veřejně vykazovaná věc —
-      přehled ho uvádí jako fakt, ne jako výtku.
+      přehled ho uvádí jako fakt, ne jako výtku. Prověřeno bylo {cislo(sponzoringProverovan)}{' '}
+      {sklonuj(sponzoringProverovan, 'osoba', 'osoby', 'osob')}.
     </p>
 
     <StavDat
@@ -289,6 +329,11 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
       co="Sponzoring politických stran"
       prazdno={zOsob.stav === 'ok' && sponzoring.length === 0}
       modul="propojení dat"
+      poznamky={
+        zOsob.stav === 'ok' && sponzoring.length === 0
+          ? ['Zdroj sponzoring prověřoval, ale u žádné z osob žádný záznam nenašel.']
+          : []
+      }
     />
 
     {
@@ -297,9 +342,9 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
           <table>
             <thead>
               <tr>
-                <th scope="col">Strana</th>
                 <th scope="col">Dárce</th>
-                <th scope="col">Typ</th>
+                <th scope="col">Strana</th>
+                <th scope="col">Druh</th>
                 <th scope="col" class="cislo">Částka</th>
                 <th scope="col" class="cislo">Rok</th>
               </tr>
@@ -307,7 +352,6 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
             <tbody>
               {sponzoring.map((s) => (
                 <tr>
-                  <td>{s.strana ?? '—'}</td>
                   <td>
                     {s.osoba_id ? (
                       <a href={`/lide/${s.osoba_id}`}>
@@ -316,11 +360,14 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
                     ) : (
                       (s.darce ?? '—')
                     )}
-                    {s.ico && <span class="mono"> ({s.ico})</span>}
                   </td>
-                  <td>{s.typ ?? '—'}</td>
+                  <td>
+                    {s.strana ?? '—'}
+                    {s.strana_ico && <span class="mono"> ({s.strana_ico})</span>}
+                  </td>
+                  <td>{s.druh ?? '—'}</td>
                   <td class="cislo">{s.castka_czk === null ? '—' : kc(s.castka_czk)}</td>
-                  <td class="cislo">{s.rok ?? (s.datum ? datumKratke(s.datum) : '—')}</td>
+                  <td class="cislo">{s.rok ?? '—'}</td>
                 </tr>
               ))}
             </tbody>
@@ -330,6 +377,26 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
     }
   </section>
 
+  {
+    propojeni.metodika.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Jak přehled vznikl</h2>
+        <p class="karta__podnadpis">
+          Popis metody pochází přímo ze zdrojového souboru — na webu tak stojí přesně to, podle
+          čeho se data skládala.
+        </p>
+        <dl class="metodika">
+          {propojeni.metodika.map((m) => (
+            <>
+              <dt>{m.klic.replace(/_/g, ' ')}</dt>
+              <dd>{m.text}</dd>
+            </>
+          ))}
+        </dl>
+      </section>
+    )
+  }
+
   <section class="karta">
     <h2 class="karta__nadpis">Jak číst tenhle přehled</h2>
     <ul>
@@ -338,16 +405,20 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
         o zakázku ucházela nebo jak se rozhodovalo.
       </li>
       <li>
-        <strong>„S městem neobchoduje" je stejně důležité jako částka.</strong> Většina angažmá
-        s rozpočtem města nijak nesouvisí.
+        <strong>Městská organizace není totéž co cizí dodavatel.</strong> Peníze, které město
+        posílá vlastní příspěvkové organizaci, nejsou platba cizí firmě.
       </li>
       <li>
-        <strong>Chybějící údaj není nula.</strong> Když zdroj objem neuvádí, je v tabulce
-        „v datech není" — ne prázdno a ne nula.
+        <strong>„S městem neobchoduje" je stejně důležité jako částka.</strong> Bez těch firem by
+        přehled tvrdil něco jiného, než co v datech je.
       </li>
       <li>
-        <strong>Hlasování se hodnotí samostatně.</strong> U hlasování, kde má hlasující vazbu na
-        dotčenou firmu, je to uvedené přímo u daného bodu — opět jen jako věcný záznam.
+        <strong>„Nezjištěno" není nula.</strong> Osoby, u kterých se identita nedohledala, jsou
+        uvedené zvlášť, aby seznam nevypadal úplněji, než je.
+      </li>
+      <li>
+        <strong>Hlasování se uvádí samostatně.</strong> U bodů, kde má hlasující vazbu na dotčenou
+        firmu, je to napsané přímo u daného hlasování — opět jen jako věcný záznam.
       </li>
     </ul>
   </section>

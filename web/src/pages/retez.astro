@@ -2,10 +2,13 @@
 /**
  * Řetěz usnesení → smlouva → peníze.
  *
- * Párování mezi usnesením a smlouvou se dělá podle shody údajů a nemusí být
+ * Párování mezi usnesením a smlouvou se skládá z nepřímých indicií a nemusí být
  * správné. Proto se jistota párování ZOBRAZUJE VŽDY a u nízké jistoty je
- * u každé položky napsané, že jde o odhad. Bez toho by odhad vypadal jako
- * doložený fakt — a to je přesně ta záměna, které se projekt vyhýbá.
+ * u každé položky napsané, že jde o nepotvrzenou domněnku. Bez toho by odhad
+ * vypadal jako doložený fakt — a to je přesně ta záměna, které se projekt vyhýbá.
+ *
+ * Vysvětlení jednotlivých stupňů jistoty se přebírá ze `metodika.jistota`
+ * zdrojového souboru, aby na webu stálo přesně to, podle čeho se párovalo.
  */
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
@@ -13,23 +16,32 @@ import Dlazdice from '../components/Dlazdice.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiProtistrany } from '../lib/data';
 import { nactiNespojene, nactiRetezy, popisJistoty, type Jistota, type Retez } from '../lib/vazby';
-import { cislo, datumKratke, kc, kcZkraceno, nazevOrganu, sklonuj } from '../lib/format';
+import { cislo, datumKratke, kc, kcZkraceno, nazevOrganu, orez, sklonuj } from '../lib/format';
 
 const zRetezu = nactiRetezy();
 const zNespojenych = nactiNespojene();
 const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 
-const retezy = zRetezu.data;
-const nespojene = zNespojenych.data;
+const retezy = zRetezu.data.retezy;
+const varovani = zRetezu.data.varovani;
+const jistotyZdroje = zRetezu.data.jistoty;
+const nespojeneSmlouvy = zNespojenych.data.smlouvy;
+const nespojenaUsneseni = zNespojenych.data.usneseni;
+
+/** Kolik položek se vypisuje jako karta. Zbytek je v tabulce pod tím. */
+const KARET = 25;
 
 const poradi: Jistota[] = ['vysoka', 'stredni', 'nizka', null];
 const skupiny = poradi
-  .map((j) => ({ jistota: j, polozky: retezy.filter((r) => r.jistota === j) }))
+  .map((j) => ({
+    jistota: j,
+    polozky: [...retezy.filter((r) => r.jistota === j)].sort(
+      (a, b) => (b.smlouva?.castka_czk ?? 0) - (a.smlouva?.castka_czk ?? 0),
+    ),
+  }))
   .filter((s) => s.polozky.length > 0);
 
 const pocet = (j: Jistota) => retezy.filter((r) => r.jistota === j).length;
-
-const objemSmluv = retezy.reduce((s, r) => s + (r.smlouva?.castka_czk ?? 0), 0);
 const maData = retezy.length > 0;
 
 const dlazdice: Polozka[] = maData
@@ -39,26 +51,23 @@ const dlazdice: Polozka[] = maData
         hodnota: cislo(retezy.length),
         doplnek:
           pocet(null) > 0
-            ? `usnesení spojené se smlouvou · u ${cislo(pocet(null))} zdroj jistotu neuvádí`
+            ? `u ${cislo(pocet(null))} zdroj jistotu neuvádí`
             : 'usnesení spojené se smlouvou',
       },
       {
         popisek: 'S vysokou jistotou',
         hodnota: cislo(pocet('vysoka')),
-        doplnek: 'doložené shodným identifikátorem',
-        stav: { uroven: 'dobre', text: 'spojení je doložené' },
+        stav: { uroven: 'dobre', text: 'spojení stojí na tvrdé shodě' },
       },
       {
         popisek: 'Se střední jistotou',
         hodnota: cislo(pocet('stredni')),
-        doplnek: 'shoda více údajů, bez identifikátoru',
-        stav: { uroven: 'pozor', text: 'spojení je pravděpodobné' },
+        stav: { uroven: 'pozor', text: 'jedna z indicií chybí' },
       },
       {
         popisek: 'S nízkou jistotou',
         hodnota: cislo(pocet('nizka')),
-        doplnek: 'párováno podle podobnosti',
-        stav: { uroven: 'vazne', text: 'jde o odhad, může být chybný' },
+        stav: { uroven: 'vazne', text: 'nepotvrzená domněnka' },
       },
     ]
   : [];
@@ -66,8 +75,21 @@ const dlazdice: Polozka[] = maData
 function popisUsneseni(r: Retez): string {
   const u = r.usneseni;
   if (!u) return 'usnesení v datech není';
-  const casti = [u.organ ? nazevOrganu(u.organ) : null, u.cj ? `č. j. ${u.cj}` : null, u.bod ? `bod ${u.bod}` : null];
+  const casti = [
+    u.organ ? nazevOrganu(u.organ) : null,
+    u.cislo_usneseni ? `usnesení ${u.cislo_usneseni}` : u.cj ? `č. j. ${u.cj}` : null,
+    u.bod ? `bod ${u.bod}` : null,
+  ];
   return casti.filter(Boolean).join(' · ') || 'usnesení bez bližšího označení';
+}
+
+function popisOdstupu(r: Retez): string | null {
+  if (r.odstup_dni === null) return null;
+  const d = Math.abs(r.odstup_dni);
+  const tvar = sklonuj(d, 'den', 'dny', 'dní');
+  return r.odstup_dni >= 0
+    ? `smlouva podepsaná ${cislo(d)} ${tvar} po usnesení`
+    : `smlouva podepsaná ${cislo(d)} ${tvar} PŘED usnesením`;
 }
 ---
 
@@ -75,7 +97,7 @@ function popisUsneseni(r: Retez): string {
   titulek="Řetěz"
   aktivni="retez"
   nadpis="Od usnesení ke smlouvě a k penězům"
-  uvod="Pokus spojit tři věci, které město zveřejňuje odděleně: usnesení, uzavřenou smlouvu a skutečně zaplacené peníze. Spojení se hledá podle shody údajů, takže nemusí být správné — u každé položky je proto vždy vidět, jak jisté párování je."
+  uvod="Pokus spojit tři věci, které město zveřejňuje odděleně: usnesení, uzavřenou smlouvu a peníze, které protistraně od města tečou. Společný identifikátor neexistuje, spojení se skládá z nepřímých indicií — u každé položky je proto vždy vidět, jak jisté párování je."
 >
   <StavDat
     stav={zRetezu.stav}
@@ -94,7 +116,7 @@ function popisUsneseni(r: Retez): string {
           <h2 class="karta__nadpis">Co která jistota znamená</h2>
           <ul class="jistoty">
             {(['vysoka', 'stredni', 'nizka'] as Jistota[]).map((j) => {
-              const p = popisJistoty(j);
+              const p = popisJistoty(j, jistotyZdroje);
               return (
                 <li>
                   <span class={`stav-znacka stav-znacka--${p.uroven}`}>
@@ -107,14 +129,15 @@ function popisUsneseni(r: Retez): string {
             })}
           </ul>
           <p class="graf-poznamka">
-            Součet částek u nalezených smluv je {kcZkraceno(objemSmluv, true)}. Do součtu jsou
-            započítané i položky s nízkou jistotou, takže se na něj nedá spoléhat jako na
-            přesné číslo — je to orientační objem, ne výsledek kontroly.
+            Tenhle přehled není úřední doklad o tom, že smlouva vznikla z daného usnesení. Je to
+            odhad vazby, a proto se u něj vždy uvádí, na čem stojí. Částky se tu nesčítají do
+            jednoho čísla: součet přes položky s nízkou jistotou by tvrdil víc, než v datech je.
           </p>
         </section>
 
         {skupiny.map((s) => {
-          const p = popisJistoty(s.jistota);
+          const p = popisJistoty(s.jistota, jistotyZdroje);
+          const karty = s.polozky.slice(0, KARET);
           return (
             <section>
               <h2>
@@ -123,7 +146,7 @@ function popisUsneseni(r: Retez): string {
               <p class="uvod">{p.vysvetleni}</p>
 
               <ul class="seznam">
-                {s.polozky.map((r) => (
+                {karty.map((r) => (
                   <li class="polozka">
                     <div class="polozka__hlava">
                       <span class={`stav-znacka stav-znacka--${p.uroven}`}>
@@ -131,21 +154,18 @@ function popisUsneseni(r: Retez): string {
                         <span>jistota párování: {p.nazev}</span>
                       </span>
                       {r.usneseni?.datum && <span>{datumKratke(r.usneseni.datum)}</span>}
+                      {popisOdstupu(r) && <span>{popisOdstupu(r)}</span>}
                     </div>
 
                     <h3 class="polozka__nazev">
                       {r.usneseni?.nazev ?? r.smlouva?.predmet ?? 'Bez názvu'}
                     </h3>
 
-                    {r.duvod && (
-                      <p class="graf-poznamka">
-                        Podle čeho se spojilo: {r.duvod}
-                      </p>
-                    )}
+                    {r.duvod && <p class="graf-poznamka">Podle čeho se spojilo: {r.duvod}</p>}
                     {s.jistota === 'nizka' && (
                       <p class="graf-poznamka">
-                        Tohle spojení je odhad. Že usnesení a smlouva spolu opravdu souvisejí,
-                        z dat doložené není.
+                        Tohle spojení je nepotvrzená domněnka. Že usnesení a smlouva spolu opravdu
+                        souvisejí, z dat doložené není.
                       </p>
                     )}
 
@@ -155,13 +175,11 @@ function popisUsneseni(r: Retez): string {
                         <span class="retez-krok__hlavni">{popisUsneseni(r)}</span>
                         <span class="retez-krok__doplnek">
                           {r.usneseni?.castka_czk !== null && r.usneseni?.castka_czk !== undefined
-                            ? `schváleno ${kc(r.usneseni.castka_czk)}`
+                            ? `v usnesení ${kc(r.usneseni.castka_czk)}`
                             : 'částka v usnesení neuvedena'}
                         </span>
                         {r.usneseni?.url && (
-                          <a href={r.usneseni.url} rel="noreferrer noopener">
-                            zdroj usnesení
-                          </a>
+                          <a href={r.usneseni.url} rel="noreferrer noopener">zdroj usnesení</a>
                         )}
                       </li>
 
@@ -185,33 +203,89 @@ function popisUsneseni(r: Retez): string {
                             )}
                           </span>
                         )}
+                        {r.smlouva?.subjekt && (
+                          <span class="retez-krok__doplnek">za město: {r.smlouva.subjekt}</span>
+                        )}
                         {r.smlouva?.url && (
-                          <a href={r.smlouva.url} rel="noreferrer noopener">
-                            zdroj smlouvy
-                          </a>
+                          <a href={r.smlouva.url} rel="noreferrer noopener">zdroj smlouvy</a>
                         )}
                       </li>
 
                       <li class="retez-krok">
-                        <span class="retez-krok__popisek">3 · Peníze</span>
+                        <span class="retez-krok__popisek">3 · Peníze protistraně</span>
                         <span class="retez-krok__hlavni">
-                          {r.penize_czk === null ? 'v datech není' : kc(r.penize_czk)}
+                          {r.protistrana_celkem_czk === null
+                            ? 'v datech není'
+                            : kc(r.protistrana_celkem_czk)}
                         </span>
                         <span class="retez-krok__doplnek">
-                          {r.plateb === null
-                            ? 'počet plateb zdroj neuvádí'
-                            : `${cislo(r.plateb)} ${sklonuj(r.plateb, 'platba', 'platby', 'plateb')}`}
+                          {r.protistrana_smluv === null
+                            ? 'počet smluv zdroj neuvádí'
+                            : `celkem ${cislo(r.protistrana_smluv)} ${sklonuj(r.protistrana_smluv, 'smlouva', 'smlouvy', 'smluv')} s městem`}
                         </span>
-                        {r.rozdil_czk !== null && (
-                          <span class="retez-krok__doplnek">
-                            rozdíl proti smlouvě: {kc(r.rozdil_czk)}
-                          </span>
-                        )}
+                        <span class="retez-krok__doplnek">
+                          Jde o objem za celou protistranu, ne o platby k této smlouvě.
+                          {r.interni === true && ' Protistrana je organizace města.'}
+                        </span>
                       </li>
                     </ol>
                   </li>
                 ))}
               </ul>
+
+              {s.polozky.length > karty.length && (
+                <details class="tabulkovy-pohled">
+                  <summary>
+                    Zbývajících {cislo(s.polozky.length - karty.length)} jako tabulka
+                  </summary>
+                  <div class="tabulka-obal">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th scope="col">Datum usnesení</th>
+                          <th scope="col">Usnesení</th>
+                          <th scope="col">Smlouva</th>
+                          <th scope="col">Protistrana</th>
+                          <th scope="col" class="cislo">Částka smlouvy</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {s.polozky.slice(KARET).map((r) => (
+                          <tr>
+                            <td class="cislo">{datumKratke(r.usneseni?.datum ?? null)}</td>
+                            <td>
+                              {r.usneseni?.url ? (
+                                <a href={r.usneseni.url} rel="noreferrer noopener">
+                                  {orez(r.usneseni?.nazev ?? 'usnesení', 90)}
+                                </a>
+                              ) : (
+                                orez(r.usneseni?.nazev ?? 'usnesení', 90)
+                              )}
+                            </td>
+                            <td>
+                              {r.smlouva?.url ? (
+                                <a href={r.smlouva.url} rel="noreferrer noopener">
+                                  {orez(r.smlouva?.predmet ?? 'smlouva', 70)}
+                                </a>
+                              ) : (
+                                orez(r.smlouva?.predmet ?? 'smlouva', 70)
+                              )}
+                            </td>
+                            <td>
+                              {r.smlouva?.ico && zname.has(r.smlouva.ico) ? (
+                                <a href={`/penize/${r.smlouva.ico}`}>{r.smlouva.protistrana}</a>
+                              ) : (
+                                (r.smlouva?.protistrana ?? '—')
+                              )}
+                            </td>
+                            <td class="cislo">{kc(r.smlouva?.castka_czk ?? null)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              )}
             </section>
           );
         })}
@@ -219,24 +293,86 @@ function popisUsneseni(r: Retez): string {
     )
   }
 
+  {
+    varovani.length > 0 && (
+      <section>
+        <h2>Smlouva podepsaná před usnesením ({cislo(varovani.length)})</h2>
+        <p class="uvod">
+          {popisJistoty('varovani', jistotyZdroje).vysvetleni} Zdroj tyhle případy vede zvlášť
+          a nepočítá je mezi spojení. Důvodů může být víc — od chyby v datech přes dodatek
+          k dřívější smlouvě až po dodatečné schválení. Přehled žádný z nich netvrdí.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum usnesení</th>
+                <th scope="col">Usnesení</th>
+                <th scope="col">Smlouva</th>
+                <th scope="col">Protistrana</th>
+                <th scope="col" class="cislo">Částka</th>
+                <th scope="col">Odstup</th>
+              </tr>
+            </thead>
+            <tbody>
+              {varovani.map((r) => (
+                <tr>
+                  <td class="cislo">{datumKratke(r.usneseni?.datum ?? null)}</td>
+                  <td>
+                    {r.usneseni?.url ? (
+                      <a href={r.usneseni.url} rel="noreferrer noopener">
+                        {orez(r.usneseni?.nazev ?? 'usnesení', 90)}
+                      </a>
+                    ) : (
+                      orez(r.usneseni?.nazev ?? 'usnesení', 90)
+                    )}
+                  </td>
+                  <td>
+                    {r.smlouva?.url ? (
+                      <a href={r.smlouva.url} rel="noreferrer noopener">
+                        {orez(r.smlouva?.predmet ?? 'smlouva', 70)}
+                      </a>
+                    ) : (
+                      orez(r.smlouva?.predmet ?? 'smlouva', 70)
+                    )}
+                  </td>
+                  <td>
+                    {r.smlouva?.ico && zname.has(r.smlouva.ico) ? (
+                      <a href={`/penize/${r.smlouva.ico}`}>{r.smlouva.protistrana}</a>
+                    ) : (
+                      (r.smlouva?.protistrana ?? '—')
+                    )}
+                  </td>
+                  <td class="cislo">{kc(r.smlouva?.castka_czk ?? null)}</td>
+                  <td>{popisOdstupu(r) ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
   <section>
     <h2>Velké smlouvy bez nalezeného usnesení</h2>
     <p class="uvod">
-      Smlouvy, ke kterým se odpovídající usnesení nenašlo. Nenalezené usnesení neznamená, že
-      neexistuje — může být jinak pojmenované, může spadat do pravomoci, kde se usnesení
-      nezveřejňuje, nebo se párování nepovedlo. Seznam je proto podnět k dohledání, ne zjištění.
+      Smlouvy nad {zNespojenych.data.prah_czk === null ? 'stanovenou hranicí' : kcZkraceno(zNespojenych.data.prah_czk, true)},
+      ke kterým se odpovídající usnesení nenašlo. Nenalezené usnesení neznamená, že neexistuje —
+      může být jinak pojmenované, může jít o pravomoc, kde se o smlouvě nehlasuje, nebo se párování
+      nepovedlo. Seznam je podnět k dohledání, ne zjištění.
     </p>
 
     <StavDat
       stav={zNespojenych.stav}
       zdroj={zNespojenych.zdroj}
       co="Smlouvy bez nalezeného usnesení"
-      prazdno={zNespojenych.stav === 'ok' && nespojene.length === 0}
+      prazdno={zNespojenych.stav === 'ok' && nespojeneSmlouvy.length === 0}
       modul="propojení dat"
     />
 
     {
-      nespojene.length > 0 && (
+      nespojeneSmlouvy.length > 0 && (
         <div class="tabulka-obal">
           <table>
             <thead>
@@ -244,12 +380,13 @@ function popisUsneseni(r: Retez): string {
                 <th scope="col">Datum</th>
                 <th scope="col">Předmět</th>
                 <th scope="col">Protistrana</th>
+                <th scope="col">Za město</th>
                 <th scope="col" class="cislo">Částka</th>
-                <th scope="col">Proč se nespojila</th>
+                <th scope="col">Poznámka zdroje</th>
               </tr>
             </thead>
             <tbody>
-              {nespojene.map((s) => (
+              {nespojeneSmlouvy.map((s) => (
                 <tr>
                   <td class="cislo">{datumKratke(s.datum)}</td>
                   <td>
@@ -263,11 +400,12 @@ function popisUsneseni(r: Retez): string {
                     {s.ico && zname.has(s.ico) ? (
                       <a href={`/penize/${s.ico}`}>{s.protistrana ?? s.ico}</a>
                     ) : (
-                      (s.protistrana ?? '—')
+                      (s.protistrana ?? 'neuvedena')
                     )}
                   </td>
+                  <td>{s.subjekt ?? '—'}</td>
                   <td class="cislo">{s.castka_czk === null ? 'v datech není' : kc(s.castka_czk)}</td>
-                  <td>{s.duvod ?? 'zdroj důvod neuvádí'}</td>
+                  <td>{s.poznamka ?? '—'}</td>
                 </tr>
               ))}
             </tbody>
@@ -276,4 +414,81 @@ function popisUsneseni(r: Retez): string {
       )
     }
   </section>
+
+  {
+    nespojenaUsneseni.length > 0 && (
+      <section>
+        <h2>Schválené částky bez nalezené smlouvy ({cislo(nespojenaUsneseni.length)})</h2>
+        <p class="uvod">
+          Opačný směr: body usnesení s velkou částkou, ke kterým se v registru smluv nic nenašlo.
+          Velká část z nich žádnou smlouvu mít nemůže — rozpočtová opatření, zapojení fondů,
+          ručení za úvěr nebo záměr prodeje smlouvou nekončí. Registr smluv navíc běží až
+          od 1. 7. 2016.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Orgán</th>
+                <th scope="col">Bod</th>
+                <th scope="col" class="cislo">Schválená částka</th>
+              </tr>
+            </thead>
+            <tbody>
+              {nespojenaUsneseni.map((u) => (
+                <tr>
+                  <td class="cislo">{datumKratke(u.datum)}</td>
+                  <td>{u.organ ? nazevOrganu(u.organ) : '—'}</td>
+                  <td>
+                    {u.url ? (
+                      <a href={u.url} rel="noreferrer noopener">{orez(u.nazev ?? 'bod usnesení', 110)}</a>
+                    ) : (
+                      orez(u.nazev ?? 'bod usnesení', 110)
+                    )}
+                    {u.bod && <span class="stav-dat__zdroj"> · bod {u.bod}</span>}
+                  </td>
+                  <td class="cislo">
+                    {u.castka_podezrela === true ? (
+                      <>
+                        <span>{u.castka_czk === null ? '—' : kc(u.castka_czk)}</span>
+                        <br />
+                        <span class="stav-dat__zdroj">
+                          {u.poznamka_k_castce ?? 'zdroj u částky varuje, že může být špatně načtená'}
+                        </span>
+                      </>
+                    ) : u.castka_czk === null ? (
+                      '—'
+                    ) : (
+                      kc(u.castka_czk)
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    zRetezu.data.metodika.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Jak se párovalo</h2>
+        <p class="karta__podnadpis">
+          Popis metody pochází přímo ze zdrojového souboru — na webu tak stojí přesně to, podle
+          čeho se spojení skládala.
+        </p>
+        <dl class="metodika">
+          {zRetezu.data.metodika.map((m) => (
+            <>
+              <dt>{m.klic.replace(/_/g, ' ')}</dt>
+              <dd>{m.text}</dd>
+            </>
+          ))}
+        </dl>
+      </section>
+    )
+  }
 </Zaklad>

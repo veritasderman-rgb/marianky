@@ -168,8 +168,10 @@ const variantyHeatmapy = maData
 
 const zVazebDodavatelu = nactiDodavatelePolitiky();
 const zOsobFirem = nactiOsobyFirmy();
-const zeSouboruVazeb = zVazebDodavatelu.data.length > 0;
-const dodavateleVazby = zeSouboruVazeb ? zVazebDodavatelu.data : dodavateleZOsob(zOsobFirem.data);
+const zeSouboruVazeb = zVazebDodavatelu.data.dodavatele.length > 0;
+const dodavateleVazby = zeSouboruVazeb
+  ? zVazebDodavatelu.data.dodavatele
+  : dodavateleZOsob(zOsobFirem.data);
 const stavVazeb = zeSouboruVazeb ? zVazebDodavatelu : zOsobFirem;
 
 const protistranyPodleIca = new Map(
@@ -178,10 +180,14 @@ const protistranyPodleIca = new Map(
 
 const spojeniDodavatele = dodavateleVazby
   .map((d) => ({ d, p: d.ico ? (protistranyPodleIca.get(d.ico) ?? null) : null }))
-  .sort((a, b) => (b.p?.celkem_czk ?? b.d.celkem_czk ?? 0) - (a.p?.celkem_czk ?? a.d.celkem_czk ?? 0));
+  .sort(
+    (a, b) =>
+      (b.p?.celkem_czk ?? b.d.od_mesta_czk ?? 0) - (a.p?.celkem_czk ?? a.d.od_mesta_czk ?? 0),
+  );
 
 const vAgregaci = spojeniDodavatele.filter((x) => x.p !== null);
 const objemVazeb = vAgregaci.reduce((s, x) => s + (x.p?.celkem_czk ?? 0), 0);
+const mestskychVazeb = spojeniDodavatele.filter((x) => x.d.mestsky === true).length;
 
 const variantyVazby: Varianta[] =
   vAgregaci.length > 0
@@ -281,9 +287,9 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
         <section class="karta" id="dodavatele-vazby">
           <h2 class="karta__nadpis">Dodavatelé s vazbou na politiky</h2>
           <p class="karta__podnadpis">
-            Firmy, u kterých je některý zastupitel, radní nebo jiný politik uvedený v rejstříku,
-            a které zároveň mají smlouvu s městem nebo jeho organizacemi. Zápis ve firmě je
-            veřejný údaj — samo o sobě z něj nic neplyne. Přehled ho uvádí jako fakt a nehodnotí ho.
+            Firmy, u kterých je některá veřejně činná osoba města uvedená v rejstříku, a které
+            zároveň mají smlouvu s městem nebo jeho organizacemi. Zápis ve firmě je veřejný údaj —
+            samo o sobě z něj nic neplyne. Velká část seznamu jsou přímo organizace města.
             {' '}
             <a href="/propojeni">Celý přehled vazeb</a> ukazuje i firmy, které s městem neobchodují.
           </p>
@@ -301,7 +307,8 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
               <p class="graf-poznamka">
                 {cislo(spojeniDodavatele.length)}{' '}
                 {sklonuj(spojeniDodavatele.length, 'firma', 'firmy', 'firem')} s uvedenou vazbou,
-                z toho {cislo(vAgregaci.length)} se podařilo najít v registru smluv města.
+                z toho {cislo(mestskychVazeb)} přímo organizace města a {cislo(vAgregaci.length)}{' '}
+                se podařilo najít v registru smluv města.
                 {vAgregaci.length > 0 && <> Objem těchto smluv je {kcZkraceno(objemVazeb, true)}.</>}
                 {!zeSouboruVazeb && (
                   <>
@@ -326,6 +333,7 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
                     <tr>
                       <th scope="col">Firma</th>
                       <th scope="col">IČO</th>
+                      <th scope="col">Vlastnictví</th>
                       <th scope="col" class="cislo">Od města celkem</th>
                       <th scope="col" class="cislo">Smluv</th>
                       <th scope="col">Kdo je ve firmě uvedený</th>
@@ -336,11 +344,18 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
                       <tr>
                         <td>{p ? <a href={`/penize/${p.klic}`}>{p.nazev}</a> : d.nazev}</td>
                         <td class="mono">{d.ico ?? 'bez IČO'}</td>
+                        <td>
+                          {d.mestsky === true
+                            ? 'organizace města'
+                            : d.mestsky === false
+                              ? 'mimo město'
+                              : 'v datech není'}
+                        </td>
                         <td class="cislo">
                           {p
                             ? kc(p.celkem_czk)
-                            : d.celkem_czk !== null
-                              ? kc(d.celkem_czk)
+                            : d.od_mesta_czk !== null
+                              ? kc(d.od_mesta_czk)
                               : 'v registru smluv města není'}
                         </td>
                         <td class="cislo">{p ? cislo(p.smluv) : (d.smluv === null ? '—' : cislo(d.smluv))}</td>

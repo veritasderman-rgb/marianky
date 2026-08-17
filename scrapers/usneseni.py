@@ -383,6 +383,22 @@ def _cislo(surove: str, nasobek: int) -> float | None:
         return None
 
 
+# Rozpočtová opatření se sázejí jako "paragraf položka ORJ částka", a to
+# v několika variantách: "3745 6121 210 190,00 tis. Kč" i kratší
+# "8115 209 190,00 tis. Kč". Schváleno je pokaždé 190 tisíc, ale kódy
+# vypadají jako první trojice velkého čísla a parser z nich udělá
+# 209 190 tisíc, tedy tisícinásobek.
+#
+# Předpona se proto odstraní ještě před hledáním částky. Vzor je ukotvený
+# na ZAČÁTEK ŘÁDKU, a to je na něm to podstatné: účetní řádky tam stojí
+# samostatně, kdežto letopočet je vždycky uprostřed věty. Bez ukotvení by
+# vzor v "v roce 2019 bylo 450 000 Kč" spolkl rok i první trojici částky
+# a zbylo by z ní 0 Kč.
+_UCETNI_PREDPONA = re.compile(
+    r"(?m)^[ \t]*\d{4}(?:\s+\d{4})*\s+(?:\d{3}\s+)?(?=\d)"
+)
+
+
 def castka_z_textu(text: str) -> int | None:
     """Největší výslovně uvedená koruna v textu, jinak None.
 
@@ -390,8 +406,9 @@ def castka_z_textu(text: str) -> int | None:
     tenhle kód nic nedopočítává, jen čte, co je napsané. Když je částek víc
     (typicky rozpis dotací), bere se nejvyšší — bývá to celková suma bodu.
     """
+    ocisteny = _UCETNI_PREDPONA.sub("", text or "")
     nejvic = 0.0
-    for surove, jednotka in _CASTKA.findall(text or ""):
+    for surove, jednotka in _CASTKA.findall(ocisteny):
         j = (jednotka or "").lower()
         nasobek = 1_000_000_000 if j.startswith("mld") else 1_000_000 if j.startswith("mil") else 1_000 if j.startswith("tis") else 1
         hodnota = _cislo(surove, nasobek)
