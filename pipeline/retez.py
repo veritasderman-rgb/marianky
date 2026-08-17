@@ -565,6 +565,15 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
         signaly.append("predmet")
         duvody.append(popis)
 
+    # Samotné jméno firmy někde v usnesení a smlouva o pár týdnů později
+    # není důvod — je to shoda okolností. Jméno se navíc trefuje i do
+    # běžných slov („SLEPIČKA s.r.o." do usnesení o něčem jiném). Bez IČO
+    # musí přijít ještě částka, číslo smlouvy nebo shoda předmětu.
+    if "ico" not in signaly and not _tvrda_indicie(
+        {"signaly": signaly}
+    ) and "predmet" not in signaly:
+        return None
+
     return {"skore": skore, "signaly": signaly, "duvody": duvody, "odstup_dni": odstup}
 
 
