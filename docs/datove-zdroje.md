@@ -388,6 +388,20 @@ Převažující obor (`czNacePrevazujici`) a kategorii počtu pracovníků dotah
 
 **Obrat ARES nezveřejňuje vůbec.** Kategorie počtu pracovníků chybí u 2 639 ze 4 177 subjektů. Pásma obratu jsou jen u 21 nejvýznamnějších firem doplněných z Hlídače státu — a jsou to pásma, ne čísla.
 
+### Výpis z veřejného rejstříku — lidé za firmami
+
+```
+GET https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-vr/{ico}
+```
+
+Vrací `statutarniOrgany`, `spolecnici`, `zakladniKapital`, `datumZapisu`, `zpusobRizeni`. Odtud se staví přehled podnikatelů: 953 firem, **2 952 osob, 5 955 angažmá**.
+
+**IČO tu chodí bez vedoucích nul.** Město je v základní evidenci `00254061`, ale v rejstříkovém výpisu `254061`. Celý projekt slučuje protistrany podle IČO, takže **bez doplnění nul by se propojení tiše minulo** — nespadlo by nic, jen by data přestala na sebe sedět.
+
+**Datum narození chybí u 40 % zápisů**, hlavně u těch z devadesátých let. To má přímý důsledek: bez něj **nelze spolehlivě rozlišit jmenovce**. Datum narození se přitom nikam neukládá (osobní údaj), používá se jen v paměti k rozlišení a zahodí se. Kdo není jednoznačný, nedostane `osoba_id` a zůstane jménem — raději dva samostatné záznamy než jeden vymyšlený člověk.
+
+**Polovina dat angažmá je jen datum zápisu do rejstříku**, ne skutečný nástup — rejstřík u nich přesné datum nevede. Časová osa to nese jako horní odhad.
+
 ### Drobnosti, na kterých se dá ztratit čas
 
 - U části subjektů vrací ARES **`ico: null`** a jen interní `icoId` tvaru `ARES_00361728`. Číslo v něm vypadá jako IČO, ale detail pod ním vrací 404 — neodvozovat.

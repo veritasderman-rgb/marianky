@@ -36,6 +36,7 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.volby",     "Výsledky voleb po okrscích",     False),
     ("scrapers.csu",       "Statistiky ČSÚ o městě",         False),
     ("scrapers.firmy",     "Firmy se sídlem ve městě",       False),
+    ("scrapers.podnikatele", "Podnikatelé z rejstříku",      False),
     # Pořadí je závazné: památky používají hranici obce z geodat
     # k dohledání chráněných území. Bez ní proběhnou taky, jen se omezí
     # na to, co uvádí katalog, a napíšou to do logu.
@@ -58,6 +59,7 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     # Osa čte výstup řetězu i propojení, proto stojí až za nimi.
     ("pipeline.casova_osa",     "Jednotná časová osa",          False),
     ("pipeline.firmy_prehled",  "Přehled firem ve městě",       False),
+    ("pipeline.podnikatele_prehled", "Přehled podnikatelů",     False),
     ("pipeline.vydani",         "Sestavení týdenního vydání",   True),
 ]
 
