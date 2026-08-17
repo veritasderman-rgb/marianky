@@ -412,9 +412,16 @@ const VYSKA_PRUHU = 38;
 const SIRKA_POPISKU = 186;
 const HLAVICKA = 32;
 const SPODEK = 30;
-const MAX_ZNACEK = 900;
 const MAX_RADKU_TABULKY = 300;
 const UROVNE_POSUNU = [0, -10, 10];
+/**
+ * Nad tímhle počtem se v pruhu přestanou kreslit jednotlivé značky a začnou
+ * se kreslit shluky. Devět set koleček přes sebe není časová osa, ale čára —
+ * a čára o hustotě dění lže méně než překrytá kupa značek.
+ */
+const PRAH_SHLUKU = 120;
+/** Šířka shluku v px. Užší už oko stejně nerozliší. */
+const SIRKA_SHLUKU = 7;
 
 function krokLet(rozsah: number): number {
   for (const k of [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500]) {
@@ -463,23 +470,30 @@ export function grafCasovaOsa(udalosti: UdalostOsy[], nazev: string, sirka = 900
     `<line class="g-osa" x1="${SIRKA_POPISKU}" y1="${spodekMrizky}" x2="${(SIRKA_POPISKU + pw).toFixed(1)}" y2="${spodekMrizky}"/>`,
   );
 
-  /* Značky. Když je jich přes limit, kreslí se nejnovější — starší zůstávají
-     v tabulce. Zamlčet se nesmí ani jedno, proto je o tom poznámka. */
+  /* Značky. Hustý pruh se kreslí po shlucích — jednotlivé značky by se přes
+     sebe stejně nedaly rozlišit a překrytá kupa lže o hustotě dění. */
   const kresleneVse = [...platne].sort((a, b) => b.datum.localeCompare(a.datum));
-  const kreslene = new Set(kresleneVse.slice(0, MAX_ZNACEK).map((u) => u.id));
+  const pruhySeShluky: string[] = [];
 
   let prekryvu = 0;
   pritomne.forEach((klic, ri) => {
     const y = HLAVICKA + ri * VYSKA_PRUHU;
     const stred = y + VYSKA_PRUHU / 2;
     const barva = barvaPruhu.get(klic) ?? cssBarvaSlotu(null);
-    const vPruhu = platne.filter((u) => u.druh === klic && kreslene.has(u.id));
+    const vsechnyVPruhu = platne.filter((u) => u.druh === klic);
 
     casti.push(
       `<text class="g-radek-nazev" x="0" y="${(stred + 4).toFixed(1)}">${escSvg(nazevDruhu(klic))}</text>`,
       `<line class="osa-linka" x1="${SIRKA_POPISKU}" y1="${stred.toFixed(1)}" x2="${(SIRKA_POPISKU + pw).toFixed(1)}" y2="${stred.toFixed(1)}"/>`,
     );
 
+    if (vsechnyVPruhu.length > PRAH_SHLUKU) {
+      pruhySeShluky.push(nazevDruhu(klic));
+      casti.push(...shlukyPruhu(vsechnyVPruhu, stred, barva, x));
+      return;
+    }
+
+    const vPruhu = vsechnyVPruhu;
     const obsazeno: number[] = UROVNE_POSUNU.map(() => -Infinity);
 
     for (const u of vPruhu) {
@@ -533,9 +547,9 @@ export function grafCasovaOsa(udalosti: UdalostOsy[], nazev: string, sirka = 900
   });
 
   const poznamky: string[] = [];
-  if (kresleneVse.length > kreslene.size) {
+  if (pruhySeShluky.length > 0) {
     poznamky.push(
-      `Na ose je vykresleno ${cislo(kreslene.size)} nejnovějších z ${cislo(kresleneVse.length)} událostí. Starší se z osy vešly jen do rozsahu, ne do značek — jinak by se z pruhu stala souvislá čára.`,
+      `Pruh ${pruhySeShluky.map((n) => `„${n}"`).join(' a ')} má tolik událostí, že by se jednotlivé značky překryly. Kreslí se proto po shlucích: jedna značka je několik událostí ze stejného okamžiku osy a její velikost roste s jejich počtem. Přesný počet i výčet je v bublince a v tabulce.`,
     );
   }
   if (prekryvu > 0) {
