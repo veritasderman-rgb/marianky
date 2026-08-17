@@ -1231,6 +1231,14 @@ th.cislo {
   stroke-width: 1.5;
 }
 
+/* Vrstva s tisíci body. Barva sedí na skupině, jednotlivé prvky nemají
+   ani třídu, ani tooltip — jinak by stránka narostla o megabajty. */
+.mapa-vrstva--nalehko circle {
+  stroke: var(--surface);
+  stroke-width: 1;
+  opacity: 0.75;
+}
+
 .mapa-prvek:hover .mapa-plocha,
 .mapa-prvek:hover .mapa-bod,
 .mapa-prvek:focus-visible .mapa-plocha,

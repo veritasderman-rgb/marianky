@@ -1,0 +1,93 @@
+name: Týdenní běh
+
+# Neděle 5:00 UTC = 7:00 v létě, 6:00 v zimě. Vydání je tak hotové,
+# než si ho někdo ráno otevře.
+on:
+  schedule:
+    - cron: "0 5 * * 0"
+  workflow_dispatch:        # umožní spustit ručně z GitHubu
+    inputs:
+      bez_sberu:
+        description: "Přeskočit sběr, jen přepočítat z uložených dat"
+        type: boolean
+        default: false
+
+# Souběžné běhy by si přepisovaly data a zbytečně bušily do webu města,
+# jehož strop je sdílený. Radši nový běh zahodit než pustit dva naráz.
+concurrency:
+  group: tydenni-beh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  beh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Závislosti
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils   # bez update selže na 404
+          pip install requests selectolax yt-dlp
+
+      # Cache šetří web města, jehož strop je sdílený pro všechny moduly.
+      # Bez ní by se každý týden stahoval celý archiv znovu.
+      - name: Obnovit cache sběračů
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: sberace-${{ github.run_id }}
+          restore-keys: sberace-
+
+      - name: Týdenní běh
+        env:
+          HLIDAC_TOKEN: ${{ secrets.HLIDAC_TOKEN }}
+        run: |
+          if [ "${{ inputs.bez_sberu }}" = "true" ]; then
+            python3 run_tyden.py --bez-sberu
+          else
+            python3 run_tyden.py
+          fi
+
+      # Tohle je pojistka mezi během a publikací. Když neprojde, nová data
+      # se nezveřejní a venku zůstane minulé číslo — lepší než vydat nové
+      # s tichou lží.
+      - name: Kontrola dat
+        run: python3 kontrola.py
+
+      - name: Sestavit web
+        run: |
+          cd web
+          npm ci
+          npm run build
+
+      - name: Uložit data
+        run: |
+          git config user.name "Týdenní běh"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Za tento týden nepřibylo nic nového."
+          else
+            git commit -m "Týdenní běh $(date +%Y-%m-%d)"
+            git push
+          fi
+
+      # Když běh spadne, ať se to nedozvíme až za měsíc z prázdného webu.
+      - name: Log běhu při selhání
+        if: failure()
+        run: |
+          echo "::error::Týdenní běh selhal — web zůstává na minulém čísle."
+          find data/logy -name '*.json' -newermt '-1 day' -exec sh -c \
+            'echo "--- $1"; cat "$1"' _ {} \; 2>/dev/null | head -100

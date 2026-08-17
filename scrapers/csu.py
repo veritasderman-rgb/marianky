@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import re
@@ -99,6 +100,10 @@ class Sada:
     # Ukazatele, které se propíšou do plochých časových řad k vykreslení.
     # {kód naší řady: (název ukazatele ve zdroji, filtr členění)}
     rady: dict[str, tuple[str, dict]] = field(default_factory=dict)
+    # Některé sady vozí jen číselný kód ukazatele (`stapro_kod`) bez textu —
+    # sada 130149 má sloupec `stapro_txt` úplně vynechaný. Pak se název bere
+    # odsud. Je to překlad číselníku ČSÚ, ne domýšlení dat.
+    kody_ukazatelu: dict[str, str] = field(default_factory=dict)
 
 
 SADY: list[Sada] = [
@@ -109,13 +114,14 @@ SADY: list[Sada] = [
         perioda="rok",
         popis="Stav obyvatel k 31. 12. od roku 2000, v členění na pohlaví "
               "a věkové skupiny 0–14 / 15–64 / 65 a více.",
+        kody_ukazatelu={"2406": "Počet obyvatel k 31. 12."},
         rady={
-            "obyvatel_celkem": ("Počet obyvatel", {"pohlavi": None, "vek": None}),
-            "obyvatel_muzi": ("Počet obyvatel", {"pohlavi": "muž", "vek": None}),
-            "obyvatel_zeny": ("Počet obyvatel", {"pohlavi": "žena", "vek": None}),
-            "obyvatel_0_14": ("Počet obyvatel", {"pohlavi": None, "vek": "0 až 14"}),
-            "obyvatel_15_64": ("Počet obyvatel", {"pohlavi": None, "vek": "15 až 64"}),
-            "obyvatel_65_vic": ("Počet obyvatel", {"pohlavi": None, "vek": "65 a více"}),
+            "obyvatel_celkem": ("Počet obyvatel k 31. 12.", {"pohlavi": None, "vek": None}),
+            "obyvatel_muzi": ("Počet obyvatel k 31. 12.", {"pohlavi": "muž", "vek": None}),
+            "obyvatel_zeny": ("Počet obyvatel k 31. 12.", {"pohlavi": "žena", "vek": None}),
+            "obyvatel_0_14": ("Počet obyvatel k 31. 12.", {"pohlavi": None, "vek": "0 až 14"}),
+            "obyvatel_15_64": ("Počet obyvatel k 31. 12.", {"pohlavi": None, "vek": "15 až 64"}),
+            "obyvatel_65_vic": ("Počet obyvatel k 31. 12.", {"pohlavi": None, "vek": "65 a více"}),
         },
     ),
     Sada(
@@ -147,9 +153,11 @@ SADY: list[Sada] = [
         popis="Měsíční řada podle obcí. Zdrojem čísel je Úřad práce, ČSÚ je "
               "publikuje.",
         rady={
-            "podil_nezamestnanych": ("Podíl nezaměstnaných osob (%)", {}),
+            "podil_nezamestnanych": ("Podíl nezaměstnaných osob", {}),
+            "podil_nezamestnanych_zeny": ("Podíl nezaměstnaných osob - ženy", {}),
             "uchazeci": ("Uchazeči o zaměstnání", {}),
             "uchazeci_dosazitelni": ("Uchazeči o zaměstnání dosažitelní", {}),
+            "uchazecky_dosazitelne": ("Uchazeči o zaměstnání dosažitelní - ženy", {}),
         },
     ),
     Sada(
@@ -211,6 +219,25 @@ SADY: list[Sada] = [
         },
     ),
     Sada(
+        kod="domy_byty_2021",
+        nazev="Sčítání 2021 — domy a byty",
+        vzor_id=r"^sldb2021_(domy_obydlen_druh|byty_obydlenost)$",
+        perioda="scitani",
+        popis="Kolik má město domů a bytů a kolik z nich je obydlených. "
+              "Doplňuje řadu ze sčítání od roku 1869, která končí rokem 2011. "
+              "Podíl neobydlených bytů je u lázeňského města samostatné téma.",
+        rady={
+            "domy_2021": ("Počet domů", {"obydlen": None, "druh_domu": None}),
+            "domy_obydlene_2021": ("Počet domů",
+                                   {"obydlen": "Obvykle obydlen", "druh_domu": None}),
+            "domy_neobydlene_2021": ("Počet domů",
+                                     {"obydlen": "Obvykle neobydlen", "druh_domu": None}),
+            "byty_2021": ("Počet bytů", {"obydlenost": None}),
+            "byty_obydlene_2021": ("Počet bytů", {"obydlenost": "obvykle obydlen"}),
+            "byty_neobydlene_2021": ("Počet bytů", {"obydlenost": "obvykle neobydlen"}),
+        },
+    ),
+    Sada(
         kod="socialni_sluzby",
         nazev="Zařízení sociálních služeb podle obcí",
         vzor_id=r"^190037$",
@@ -231,16 +258,28 @@ def _hlavicky(extra: dict | None = None) -> dict[str, str]:
     return h
 
 
-def _velikost_hlavou(url: str) -> int:
-    """Velikost souboru podle HEAD. U některých adres ČSÚ ji HEAD neuvádí —
-    pak vrací 0 a zjistí se až z odpovědi na GET."""
-    req = urllib.request.Request(url, headers=_hlavicky(), method="HEAD")
-    _pockej_na_rade(urlparse(url).netloc)
-    try:
-        with urllib.request.urlopen(req, timeout=60) as r:
-            return int(r.headers.get("Content-Length") or 0)
-    except Exception:  # noqa: BLE001
-        return 0
+def _ocekavana_velikost(url: str) -> int:
+    """Kolik bajtů má soubor mít.
+
+    Nejdřív se ptáme metodou HEAD. Část adres ČSÚ (nezabalená CSV) na HEAD
+    délku neposílá, ale na GET ano — tak se pošle GET a odpověď se po
+    přečtení hlaviček zavře, aniž by se tělo stahovalo. Bez znalosti
+    velikosti by nešlo poznat useknutý přenos od hotového a už stažený
+    soubor by se navazoval donekonečna.
+    """
+    for pokus in range(8):
+        metoda = "HEAD" if pokus % 2 == 0 else "GET"
+        req = urllib.request.Request(url, headers=_hlavicky(), method=metoda)
+        _pockej_na_rade(urlparse(url).netloc)
+        try:
+            with urllib.request.urlopen(req, timeout=45) as r:
+                delka = int(r.headers.get("Content-Length") or 0)
+        except Exception:  # noqa: BLE001 — zkoušíme dál, síť sem tam vypadne
+            delka = 0
+        if delka:
+            return delka
+        time.sleep(min(2 ** (pokus // 2), 8))
+    return 0
 
 
 def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
@@ -255,27 +294,28 @@ def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
     """
     STAHOVANE.mkdir(parents=True, exist_ok=True)
     cil = STAHOVANE / jmeno
-    celkem = _velikost_hlavou(url)
-    if celkem and cil.exists() and cil.stat().st_size == celkem:
+    celkem = _ocekavana_velikost(url)
+    if not celkem:
+        raise ZdrojSelhal(f"{url}: server neuvedl velikost, nelze ověřit úplnost stažení")
+    if cil.exists() and cil.stat().st_size >= celkem:
         return cil
 
-    hlaseno = False
-    for pokus in range(pokusu):
+    hlaseno = naprazdno = 0
+    for _ in range(pokusu):
         mam = cil.stat().st_size if cil.exists() else 0
-        if celkem and mam >= celkem:
+        if mam >= celkem:
             return cil
-        if celkem and mam and not hlaseno:
+        if mam and not hlaseno:
             log.info(f"{jmeno}: spojení useknuto na {mam}/{celkem} B, navazuji")
-            hlaseno = True
+            hlaseno = 1
         req = urllib.request.Request(
             url, headers=_hlavicky({"Range": f"bytes={mam}-"} if mam else None))
         try:
             _pockej_na_rade(urlparse(url).netloc)
-            with urllib.request.urlopen(req, timeout=180) as r:
-                # Část adres ČSÚ hlásí délku až v odpovědi na GET, ne na HEAD.
-                if not celkem:
-                    delka = int(r.headers.get("Content-Length") or 0)
-                    celkem = delka + mam if r.status == 206 else delka
+            # Krátký časový limit schválně: spojení sem tam neskončí, jen
+            # umlkne. Čekat na něj tři minuty je dražší než začít znovu —
+            # rozdělaný soubor se stejně jen doplní.
+            with urllib.request.urlopen(req, timeout=45) as r:
                 rezim = "ab" if (mam and r.status == 206) else "wb"
                 with open(cil, rezim) as f:
                     while True:
@@ -284,13 +324,32 @@ def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
                             break
                         f.write(blok)
         except Exception:  # noqa: BLE001 — opakujeme na čemkoliv síťovém
-            time.sleep(min(2 ** (pokus % 5), 8))
-    if not celkem:
-        raise ZdrojSelhal(f"{url}: server neuvedl velikost souboru, nelze ověřit úplnost")
+            pass
+        # Čeká se, jen když pokus nepřinesl ani bajt. Useknuté spojení není
+        # zahlcený server — couvat před ním by stahování jen protahovalo.
+        pote = cil.stat().st_size if cil.exists() else 0
+        naprazdno = naprazdno + 1 if pote <= mam else 0
+        if naprazdno:
+            time.sleep(min(2 ** naprazdno, 15))
     mam = cil.stat().st_size if cil.exists() else 0
     if mam < celkem:
         raise ZdrojSelhal(f"{url}: stáhlo se jen {mam} z {celkem} B ani na {pokusu} pokusů")
     return cil
+
+
+def _cti_proud(fh):
+    """Přečte otevřený textový proud jako CSV a sám pozná oddělovač.
+
+    Většina souborů ČSÚ má čárku, ale ne všechny — sada nezaměstnanosti za
+    rok 2015 je se středníkem. Bez rozpoznání by se celý řádek načetl jako
+    jeden sloupec, obec by se nenašla a rok 2015 by z řady tiše vypadl.
+    """
+    prvni = fh.readline()
+    if not prvni:
+        return
+    oddelovac = ";" if prvni.count(";") > prvni.count(",") else ","
+    hlavicka = next(csv.reader([prvni], delimiter=oddelovac))
+    yield from csv.DictReader(fh, fieldnames=hlavicka, delimiter=oddelovac)
 
 
 def _radky_csv(cesta: Path):
@@ -306,10 +365,10 @@ def _radky_csv(cesta: Path):
             raise ZdrojSelhal(f"{cesta.name}: v archivu není žádné CSV")
         for jmeno in jmena:
             with z.open(jmeno) as fh:
-                yield from csv.DictReader(io.TextIOWrapper(fh, encoding="utf-8-sig"))
+                yield from _cti_proud(io.TextIOWrapper(fh, encoding="utf-8-sig"))
     else:
         with open(cesta, encoding="utf-8-sig", newline="") as fh:
-            yield from csv.DictReader(fh)
+            yield from _cti_proud(fh)
 
 
 # --------------------------------------------------------------------------
@@ -354,14 +413,41 @@ def sady_z_katalogu(sada: Sada, radky: list[dict]) -> list[dict]:
 # Převod dlouhého tvaru ČSÚ na naše záznamy
 # --------------------------------------------------------------------------
 
-SLOUPCE_UZEMI = ("uzemi_kod", "vuzemi_kod")
-SLOUPCE_UKAZATELE = ("stapro_txt", "vuk_text")
-CLENENI = {"pohlavi": "pohlavi_txt", "vek": "vek_txt", "kategorie": "kat_txt",
-           "typ": "tb_txt", "druh": "sluzba_txt"}
+# Názvy sloupců se mezi sadami ČSÚ liší; sjednocují se až tady.
+SLOUPCE_UZEMI = ("uzemi_kod", "vuzemi_kod", "obec_kod")
+SLOUPCE_UKAZATELE = ("stapro_txt", "vuk_text", "ukaz_txt")
+CLENENI = {
+    "pohlavi": "pohlavi_txt",
+    "vek": "vek_txt",
+    "kategorie": "kat_txt",
+    "typ": "tb_txt",
+    "druh": "dsz_txt",              # druh sociální služby
+    "obydlenost": "obydlenost_txt",  # sčítání 2021 — byty
+    "obydlen": "obydlen_txt",        # sčítání 2021 — domy
+    "druh_domu": "druh_txt",
+}
 
 
 def _je_nase_obec(r: dict) -> bool:
     return any((r.get(s) or "").strip() == OBEC for s in SLOUPCE_UZEMI)
+
+
+def _nazev_ukazatele(text: str) -> tuple[str, str | None]:
+    """Sjednotí zápis názvu ukazatele a oddělí jednotku.
+
+    ČSÚ mezi ročníky téže sady mění drobnosti: „Uchazeči o zaměstnání
+    dosažitelní" má v jednom roce dvě mezery, „Podíl nezaměstnaných osob"
+    má v jednom roce na konci „(%)" a v jiném ne. Bez sjednocení by se
+    z jedné časové řady staly dvě, každá s jinou částí let — a graf by
+    ukázal přerušený vývoj tam, kde se jen přepsala hlavička.
+    """
+    t = " ".join((text or "").split())
+    jednotka = None
+    m = re.search(r"\s*\((%|tis\.[^)]*|mil\.[^)]*)\)$", t)
+    if m:
+        jednotka = m.group(1)
+        t = t[: m.start()].strip()
+    return t, jednotka
 
 
 def _hodnota(r: dict) -> tuple[float | int | None, bool]:
@@ -386,7 +472,11 @@ def _obdobi(r: dict, perioda: str) -> str | None:
         obd = (r.get("obdobi") or "").strip()
         return f"{obd[:4]}-{obd[4:6]}" if len(obd) >= 6 else None
     if perioda == "scitani":
-        return (r.get("datum") or "").strip() or (r.get("rok") or "").strip() or None
+        for s in ("datum", "sldb_datum", "rok", "sldb_rok"):
+            v = (r.get(s) or "").strip()
+            if v:
+                return v
+        return None
     rok = (r.get("rok") or "").strip()
     if rok:
         return rok
@@ -405,10 +495,15 @@ def zaznamy(cesta: Path, sada: Sada) -> list[dict]:
             continue
         ukazatel = next(((r.get(s) or "").strip() for s in SLOUPCE_UKAZATELE
                          if (r.get(s) or "").strip()), "")
+        if not ukazatel:
+            kod = (r.get("stapro_kod") or r.get("vuk") or "").strip()
+            ukazatel = sada.kody_ukazatelu.get(kod) or (f"ukazatel {kod}" if kod else "")
+        ukazatel, jednotka = _nazev_ukazatele(ukazatel)
         hod, duverne = _hodnota(r)
         zaznam = {
             "obdobi": _obdobi(r, sada.perioda),
             "ukazatel": ukazatel,
+            "jednotka": jednotka,
             "hodnota": hod,
             "duverne": duverne,
         }
@@ -454,6 +549,7 @@ def rady_ze_zaznamu(sada: Sada, zaz: list[dict]) -> list[dict]:
         out.append({
             "kod": kod,
             "nazev": ukazatel,
+            "jednotka": next((b.get("jednotka") for b in body if b.get("jednotka")), None),
             "clenění": {k: v for k, v in filtr.items() if v is not None} or None,
             "perioda": sada.perioda,
             "sada": sada.kod,
@@ -467,6 +563,52 @@ def rady_ze_zaznamu(sada: Sada, zaz: list[dict]) -> list[dict]:
                      for o in sorted(podle_obdobi)],
         })
     return out
+
+
+# Součtové kontroly: {kód sady: [(celek, [části])]}. Když se rozpad nesečte
+# na celek, je něco špatně v tom, jak čteme zdroj — a je lepší se to dozvědět
+# hned než z grafu, který nikdo nepřepočítá.
+KONTROLY: dict[str, list[tuple[str, list[str]]]] = {
+    "obyvatelstvo": [
+        ("obyvatel_celkem", ["obyvatel_muzi", "obyvatel_zeny"]),
+        ("obyvatel_celkem", ["obyvatel_0_14", "obyvatel_15_64", "obyvatel_65_vic"]),
+    ],
+    "cestovni_ruch": [
+        ("hoste_celkem", ["hoste_rezidenti", "hoste_nerezidenti"]),
+        ("prenocovani_celkem", ["prenocovani_rezidenti", "prenocovani_nerezidenti"]),
+    ],
+    "dokoncene_byty": [
+        # Schválně jen jako informace: kromě rodinných a bytových domů se
+        # byty dokončují i v nástavbách a nebytových budovách, takže se
+        # tyhle dvě položky na celek sečíst NEMUSÍ.
+    ],
+    "domy_byty_2021": [
+        ("domy_2021", ["domy_obydlene_2021", "domy_neobydlene_2021"]),
+        ("byty_2021", ["byty_obydlene_2021", "byty_neobydlene_2021"]),
+    ],
+}
+
+
+def zkontroluj(sada: Sada, rady: list[dict]) -> list[str]:
+    """Ověří součtové vztahy. Prázdný seznam znamená, že data sedí.
+
+    Neznámá hodnota se do součtu nepočítá a kontrola se pro dané období
+    přeskočí — sečíst „neznámo" jako nulu by z kontroly udělalo generátor
+    falešných poplachů.
+    """
+    podle_kodu = {r["kod"]: {b["obdobi"]: b["hodnota"] for b in r["body"]} for r in rady}
+    potize = []
+    for celek, casti in KONTROLY.get(sada.kod, []):
+        if celek not in podle_kodu or any(c not in podle_kodu for c in casti):
+            continue
+        for obdobi, hodnota in sorted(podle_kodu[celek].items()):
+            dilci = [podle_kodu[c].get(obdobi) for c in casti]
+            if hodnota is None or any(d is None for d in dilci):
+                continue  # neznámo se nesčítá
+            if abs(sum(dilci) - hodnota) > 0.5:
+                potize.append(f"{sada.kod}/{obdobi}: {' + '.join(casti)} = "
+                              f"{sum(dilci)} != {celek} = {hodnota}")
+    return potize
 
 
 def mezery(rada: dict) -> list[str]:
@@ -513,7 +655,11 @@ def zpracuj_sadu(sada: Sada, katalog_radky: list[dict], log: Log) -> dict:
             continue
         for d in dists:
             pripona = ".zip" if ".zip" in d["url"].lower() else ".csv"
-            jmeno = f"{sada.kod}-{z['dataset_id']}-{abs(hash(d['url'])) % 10**8}{pripona}"
+            # Otisk adresy musí být stálý mezi běhy, jinak by se cache míjela
+            # a stahovalo by se pořád dokola — vestavěný `hash()` je u řetězců
+            # per proces náhodný, proto sha256.
+            otisk = hashlib.sha256(d["url"].encode()).hexdigest()[:10]
+            jmeno = f"{sada.kod}-{z['dataset_id']}-{otisk}{pripona}"
             try:
                 cesta = _stahni(d["url"], jmeno, log)
                 cast = zaznamy(cesta, sada)
@@ -539,6 +685,9 @@ def zpracuj_sadu(sada: Sada, katalog_radky: list[dict], log: Log) -> dict:
     rady = rady_ze_zaznamu(sada, zaz)
     for r in rady:
         r["chybejici_obdobi"] = mezery(r) or None
+    potize = zkontroluj(sada, rady)
+    for p in potize:
+        log.chyba(p)
 
     ukazatele = sorted({z["ukazatel"] for z in zaz})
     obdobi = sorted({z["obdobi"] for z in zaz if z["obdobi"]})
@@ -555,6 +704,7 @@ def zpracuj_sadu(sada: Sada, katalog_radky: list[dict], log: Log) -> dict:
         "do": obdobi[-1] if obdobi else None,
         "ukazatele": ukazatele,
         "zaznamu": len(zaz),
+        "kontrola": {"nesrovnalosti": potize},
         "zaznamy": zaz,
         "rady": rady,
     }
@@ -607,6 +757,7 @@ def sber(vybrane: list[Sada], log: Log) -> dict:
             "zaznamu": v["zaznamu"], "ukazatelu": len(v["ukazatele"]),
             "rad": len(v["rady"]),
             "zdroju_chybi": sum(1 for z in v["zdroje"] if z["stav"] == "chybi"),
+            "nesrovnalosti": len(v.get("kontrola", {}).get("nesrovnalosti", [])),
         } for v in hotove],
     }
     uloz(f"{VYSTUP}/prehled.json", prehled)

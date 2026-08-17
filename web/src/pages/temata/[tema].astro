@@ -5,8 +5,7 @@ import Sledovat from '../../components/Sledovat.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
 import { nactiCiselnikTagu, nactiClanky, nactiHlasovani, nactiUsneseni, type Tag } from '../../lib/data';
 import { zplostiHlasovani, zplostiUsneseni } from '../../lib/prehledy';
-import { jednou } from '../../lib/cache';
-import { nactiCasovouOsu, proTema, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
+import { nactiOsuTagu, popisModulu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
 import { cislo, datumKratke, kc, nazevOrganu, nazevVysledku, orez } from '../../lib/format';
 
 interface Udalost {
@@ -89,47 +88,50 @@ const nazvyDruhu: Record<Udalost['druh'], string> = {
 const roky = [...new Set(udalosti.map((u) => u.datum.slice(0, 4)).filter(Boolean))].sort((a, b) => b.localeCompare(a));
 
 /* ── Časová osa tématu ──────────────────────────────────────────────────
-   Události ze tří zdrojů v jednom pruhu na druh. Osa je lineární v čase, takže
-   je z ní vidět i to, kdy se k tématu dlouho nic nedělo — a to je informace. */
+   Přednost má jednotná časová osa (`casova_osa/tagy/{tag}.json`), která už
+   spojuje usnesení, hlasování, smlouvy, zpravodaj i média. Když pro téma
+   soubor není, sestaví se osa z týchž záznamů, které jsou vypsané níže —
+   stránka tak není bez osy jen proto, že jiný modul ještě nedoběhl. */
 
 const DRUHY_NA_OSE: Record<Udalost['druh'], string> = {
   usneseni: 'usneseni',
   hlasovani: 'hlasovani',
   clanek: 'zpravodaj',
 };
+const ZDROJE_DRUHU: Record<Udalost['druh'], string> = {
+  usneseni: 'usnesení rady a zastupitelstva',
+  hlasovani: 'jmenovitá hlasování',
+  clanek: 'Městský zpravodaj',
+};
 
-const zJednotneOsy = proTema(jednou('casova-osa', nactiCasovouOsu).data ?? [], tag.id);
+const zOsy = nactiOsuTagu(tag.id);
+const zeZaznamu: UdalostOsy[] =
+  zOsy.data.udalosti.length > 0
+    ? []
+    : udalosti
+        .filter((u) => /^\d{4}/.test(u.datum))
+        .map((u, i) =>
+          udalost({
+            id: `${u.druh}-${i}`,
+            datum: u.datum,
+            presnost: u.druh === 'clanek' ? 'mesic' : 'den',
+            druh: DRUHY_NA_OSE[u.druh],
+            nadpis: u.nadpis,
+            popis: u.popis,
+            odkaz: u.odkaz,
+            detail: u.meta,
+            jistota: 'fakt',
+            zdroj: ZDROJE_DRUHU[u.druh],
+            tagy: [tag.id],
+          }),
+        );
 
-const naOse: UdalostOsy[] = slucUdalosti(
-  udalosti
-    .filter((u) => /^\d{4}/.test(u.datum))
-    .map((u, i) =>
-      udalost({
-        id: `${u.druh}-${i}`,
-        datum: u.datum,
-        druh: DRUHY_NA_OSE[u.druh],
-        nadpis: u.nadpis,
-        popis: u.popis,
-        odkaz: u.odkaz,
-        detail: u.meta,
-        zdroj:
-          u.druh === 'clanek'
-            ? 'zpravodaj/clanky/'
-            : u.druh === 'hlasovani'
-              ? 'hlasovani/'
-              : 'usneseni/',
-        temata: [tag.id],
-      }),
-    ),
-  zJednotneOsy,
-);
-
-const zdrojeOsy = [
-  ...(udalosti.some((u) => u.druh === 'usneseni') ? ['usneseni/'] : []),
-  ...(udalosti.some((u) => u.druh === 'hlasovani') ? ['hlasovani/'] : []),
-  ...(udalosti.some((u) => u.druh === 'clanek') ? ['zpravodaj/clanky/'] : []),
-  ...(zJednotneOsy.length > 0 ? ['casova_osa/'] : []),
-];
+const naOse = slucUdalosti(zOsy.data.udalosti, zeZaznamu);
+const moduly = popisModulu(zOsy.data.moduly);
+const zdrojeOsy =
+  moduly.length > 0
+    ? moduly
+    : [...new Set(zeZaznamu.map((u) => u.zdroj).filter((x): x is string => Boolean(x)))];
 ---
 
 <Zaklad titulek={`Téma: ${tag.nazev}`} aktivni="usneseni" nadpis={tag.nazev} uvod={tag.popis}>
@@ -161,7 +163,7 @@ const zdrojeOsy = [
         nadpis={`Časová osa tématu ${tag.nazev}`}
         udalosti={naOse}
         popis="Kdy se k tématu co dělo. Každý pruh je jeden druh záznamu; osa je lineární v čase, takže delší mezera znamená, že se k tématu opravdu dlouho nic neobjevilo."
-        zdroje={zdrojeOsy}
+        zdroje={zdrojeOsy.length > 0 ? zdrojeOsy : ['jednotná časová osa (casova_osa/tagy/)']}
         neuplnost="Do osy se dostane jen to, co má v datech téma přiřazené. Záznam bez tagu tu chybí, i kdyby o téma šlo."
       />
     )

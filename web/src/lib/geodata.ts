@@ -12,7 +12,7 @@
  */
 import { nactiAdresarSoubory, slug, type Nacteno } from './data';
 import { bodZeZaznamu, tvaryZGeometrie, type Tvar } from './mapy';
-import { ano, cis, ico as icoZ, jeObjekt, rokZ, txt, type Zaznam } from './tolerantni';
+import { cis, ico as icoZ, jeObjekt, txt, type Zaznam } from './tolerantni';
 
 export interface PrvekZdroje {
   id: string;
@@ -71,13 +71,15 @@ function geometriePrvku(f: Zaznam): unknown {
 
 const KLICE_NAZVU = [
   'nazev', 'název', 'name', 'NAZEV', 'NÁZEV', 'NAME', 'title', 'titul',
-  'popis', 'label', 'oznaceni', 'označení', 'ulice', 'adresa',
+  'popis', 'label', 'oznaceni', 'označení', 'adresa', 'ulice',
 ];
 
 function nazevPrvku(v: Zaznam, poradi: number): string {
   const n = txt(v, ...KLICE_NAZVU);
   if (n) return n;
-  const c = txt(v, 'cislo', 'číslo', 'okrsek', 'OKRSEK', 'kod', 'kód', 'id', 'ID');
+  const okrsek = txt(v, 'cislo_okrsku', 'okrsek', 'OKRSEK', 'CISLO');
+  if (okrsek) return `Okrsek ${okrsek}`;
+  const c = txt(v, 'cislo', 'číslo', 'kod', 'kód', 'kod_okrsku', 'kod_ku', 'kod_zsj', 'kod_casti', 'id', 'ID');
   return c ? `č. ${c}` : `Prvek ${poradi + 1}`;
 }
 
@@ -103,6 +105,7 @@ function klicZeJmena(soubor: string): string {
 function rozborSouboru(cesta: string, jmeno: string, obsah: unknown): GeoSoubor {
   const koren = jeObjekt(obsah) ? obsah : {};
   const metadata = jeObjekt(koren.metadata) ? koren.metadata : koren;
+  const dolozka = txt(metadata, 'povinna_dolozka', 'dolozka');
 
   const surove = features(obsah);
   const prvky: PrvekZdroje[] = [];
@@ -120,13 +123,15 @@ function rozborSouboru(cesta: string, jmeno: string, obsah: unknown): GeoSoubor 
     prvky.push({ id: idPrvku(v, f, i), nazev: nazevPrvku(v, i), tvary, vlastnosti: v });
   });
 
+  const zdroj = txt(metadata, 'zdroj', 'source', 'attribution', 'zdroj_dat', 'provider');
   return {
     klic: klicZeJmena(cesta.split('/').pop() ?? jmeno),
-    nazev: txt(metadata, ...KLICE_NAZVU) ?? nazevZeJmena(jmeno),
+    nazev: txt(metadata, 'name', 'nazev', 'název', 'title') ?? nazevZeJmena(jmeno),
     popis: txt(metadata, 'popis', 'description', 'poznamka'),
     cesta,
     prvky,
-    zdroj: txt(metadata, 'zdroj', 'source', 'attribution', 'zdroj_dat', 'provider'),
+    // Povinná doložka (OpenStreetMap, NPÚ) se lepí ke zdroji — musí být vidět.
+    zdroj: dolozka ? (zdroj ? `${zdroj} — ${dolozka}` : dolozka) : zdroj,
     licence: txt(metadata, 'licence', 'license', 'licence_dat', 'podminky'),
     bezGeometrie,
   };
@@ -148,16 +153,34 @@ export function nactiGeo(): Nacteno<GeoSoubor[]> {
 export interface Pamatka {
   id: string;
   nazev: string;
-  druh: string | null;
+  /** Ze kterého souboru záznam pochází — body, plochy, ochranná území. */
+  sada: string;
+  /** `objekt`, `areál`… podle ÚSKP. */
+  kategorie: string | null;
+  /** Slovní typ ochrany: kulturní památka, památková zóna, světové dědictví… */
+  ochrana: string | null;
+  /** Kód typu ochrany podle NPÚ: KP, NKP, PR, PZ, SD (světové dědictví), NZ. */
+  ochranaKod: string | null;
   adresa: string | null;
   /** Rejstříkové číslo ÚSKP — jediný spolehlivý identifikátor památky. */
   rejstrik: string | null;
-  /** `true` jen když to data výslovně říkají. `null` = neuvedeno, ne „ne". */
+  /**
+   * U bodu: LEŽÍ uvnitř statku světového dědictví. Není to totéž jako „je to
+   * památka UNESCO" — zdroj to výslovně vysvětluje a web tenhle rozdíl drží.
+   * `null` = zdroj o tom u záznamu nic neříká.
+   */
   unesco: boolean | null;
-  ochrana: string | null;
-  rok: number | null;
+  /** Sám statek světového dědictví (kód ochrany SD). */
+  jeStatekUnesco: boolean;
+  /** Nárazníková zóna statku světového dědictví (kód NZ). */
+  jeNarazkovaZona: boolean;
+  chraneno: boolean | null;
+  fazeOchrany: string | null;
+  rokZapisu: number | null;
+  /** Do jakých plošných ochran bod spadá. */
+  vUzemich: string[];
   url: string | null;
-  poznamka: string | null;
+  anotace: string | null;
   tvary: Tvar[];
   maPolohu: boolean;
 }
@@ -166,26 +189,44 @@ export interface Pamatky {
   pamatky: Pamatka[];
   zdroj: string | null;
   licence: string | null;
+  /** Povinná doložka NPÚ — musí se zobrazit doslova. */
+  dolozka: string | null;
+  /** Kolik záznamů zdroj sám hlásí jako bez souřadnic. */
+  bezSouradnicDleZdroje: number | null;
 }
+
+const SADY: Record<string, string> = {
+  pamatky: 'body památek',
+  pamatky_plochy: 'plochy památek',
+  ochranna_uzemi: 'ochranná území',
+};
 
 /**
  * Památky z `opendata/pamatky/`. Poloha je nepovinná — památka bez souřadnic
  * se do mapy nedostane, ale ze seznamu nezmizí.
+ *
+ * UNESCO se NEHÁDÁ z názvu. Bere se z kódu typu ochrany, který NPÚ uvádí:
+ * `SD` = světové dědictví, `NZ` = nárazníková zóna statku světového dědictví.
  */
 export function nactiPamatky(): Nacteno<Pamatky> {
   const v = nactiAdresarSoubory<unknown>('opendata/pamatky', ['.json', '.geojson']);
   const ven: Pamatka[] = [];
   let zdroj: string | null = null;
   let licence: string | null = null;
+  let dolozka: string | null = null;
+  let bezSouradnic: number | null = null;
   const videna = new Set<string>();
 
   for (const s of v.data) {
     const koren = jeObjekt(s.data) ? s.data : {};
-    const metadata = jeObjekt(koren.metadata) ? koren.metadata : koren;
-    zdroj = zdroj ?? txt(metadata, 'zdroj', 'source', 'attribution', 'zdroj_dat');
-    licence = licence ?? txt(metadata, 'licence', 'license', 'podminky');
-
     const zaznamy = features(s.data);
+    if (zaznamy.length === 0) continue;
+
+    zdroj = zdroj ?? txt(koren, 'zdroj', 'source', 'attribution');
+    licence = licence ?? txt(koren, 'licence', 'license');
+    dolozka = dolozka ?? txt(koren, 'dolozka', 'povinna_dolozka');
+    bezSouradnic = bezSouradnic ?? cis(koren, 'bez_souradnic');
+
     zaznamy.forEach((f, i) => {
       const p = vlastnostiPrvku(f);
       let tvary = tvaryZGeometrie(geometriePrvku(f));
@@ -193,23 +234,30 @@ export function nactiPamatky(): Nacteno<Pamatky> {
         const b = bodZeZaznamu(p) ?? bodZeZaznamu(f);
         if (b) tvary = [{ druh: 'bod', prstence: [[b]] }];
       }
-      const rejstrik = txt(p, 'rejstrik', 'rejstříkové_číslo', 'cislo_rejstriku', 'uskp', 'id_uskp', 'katalog');
-      const zaklad = rejstrik ?? txt(p, 'id', 'ID') ?? `${s.jmeno}-${i + 1}`;
-      let id = zaklad;
-      for (let k = 2; videna.has(id); k++) id = `${zaklad}-${k}`;
+
+      const kod = txt(p, 'typ_ochrany_kod');
+      const typ = txt(p, 'typ_ochrany');
+      const rejstrik = txt(p, 'rejstrikove_cislo_uskp', 'rejstrik', 'cislo_rejstriku');
+      const zaklad = txt(p, 'katalogove_cislo', 'prstav_id') ?? rejstrik ?? `${s.jmeno}-${i + 1}`;
+      let id = `${s.jmeno}-${zaklad}`;
+      for (let k = 2; videna.has(id); k++) id = `${s.jmeno}-${zaklad}-${k}`;
       videna.add(id);
 
       ven.push({
         id,
         nazev: nazevPrvku(p, i),
-        druh: txt(p, 'druh', 'typ', 'kategorie', 'type', 'kategorie_pamatky'),
-        adresa: txt(p, 'adresa', 'ulice', 'misto', 'místo', 'lokalita', 'address'),
+        sada: SADY[s.jmeno] ?? s.jmeno,
+        kategorie: txt(p, 'kategorie', 'sada'),
+        typOchrany: typ,
+        typOchranyKod: kod,
+        adresa: txt(p, 'adresa', 'ulice', 'lokalita'),
         rejstrik,
-        unesco: ano(p, 'unesco', 'UNESCO', 'svetove_dedictvi', 'world_heritage'),
-        ochrana: txt(p, 'ochrana', 'stupen_ochrany', 'ochranny_rezim', 'pamatkova_ochrana'),
-        rok: rokZ(p, 'rok', 'rok_zapisu', 'zapis', 'vznik', 'datum_zapisu', 'year'),
-        url: txt(p, 'url', 'odkaz', 'link', 'zdroj_url'),
-        poznamka: txt(p, 'poznamka', 'popis', 'description', 'note'),
+        unesco: kod === 'SD',
+        unescoZona: kod === 'NZ',
+        chraneno: typeof p.chraneno === 'boolean' ? p.chraneno : null,
+        fazeOchrany: txt(p, 'faze_ochrany'),
+        url: txt(p, 'url', 'odkaz'),
+        anotace: txt(p, 'anotace', 'popis', 'upresneni_ochrany'),
         tvary,
         maPolohu: tvary.length > 0,
       });
@@ -217,7 +265,12 @@ export function nactiPamatky(): Nacteno<Pamatky> {
   }
 
   ven.sort((a, b) => a.nazev.localeCompare(b.nazev, 'cs-CZ'));
-  return { stav: v.stav, zdroj: v.zdroj, poznamka: v.poznamka, data: { pamatky: ven, zdroj, licence } };
+  return {
+    stav: v.stav,
+    zdroj: v.zdroj,
+    poznamka: v.poznamka,
+    data: { pamatky: ven, zdroj, licence, dolozka, bezSouradnicDleZdroje: bezSouradnic },
+  };
 }
 
 /* ────────────────────  Pomocníci pro párování vrstev  ──────────────── */

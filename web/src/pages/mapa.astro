@@ -2,9 +2,10 @@
 /**
  * Město v mapě.
  *
- * Vrstvy se objeví samy podle toho, co je v `data/opendata/`. Nic se
- * nenatvrdo nepojmenovává: každý GeoJSON pod `opendata/geo/` se stane vrstvou,
- * památky mají vlastní dvě vrstvy (zápis UNESCO zvlášť) a všechno jde vypnout.
+ * Vrstvy vznikají samy z toho, co je v `data/opendata/`. Památky se dělí podle
+ * kódu ochrany, který uvádí NPÚ (SD = světové dědictví, NZ = nárazníková zóna,
+ * PR/PZ = rezervace a zóny, KP/NKP = jednotlivé památky), body z OpenStreetMap
+ * podle tématu. UNESCO se z názvu NEHÁDÁ — bere se z kódu ochrany.
  *
  * Mapa je SVG složené při buildu z geometrie ve WGS-84. Žádná mapová knihovna
  * a žádné dlaždice z cizího serveru (web/DESIGN.md §3.6).
@@ -14,11 +15,12 @@ import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import MapaKarta from '../components/MapaKarta.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
-import { nactiGeo, nactiPamatky, type Pamatka } from '../lib/geodata';
+import { nactiGeo, nactiPamatky, type GeoSoubor, type Pamatka } from '../lib/geodata';
 import { mapaSvg, type PrvekMapy, type VrstvaMapy } from '../lib/mapy';
 import { cssBarvaSlotu, MAX_KATEGORII } from '../lib/barvy';
 import { cislo, sklonuj } from '../lib/format';
 import { spojStavy } from '../lib/data';
+import { txt } from '../lib/tolerantni';
 
 const zGeo = nactiGeo();
 const zPamatek = nactiPamatky();
@@ -27,29 +29,33 @@ const { poznamky: poznamkyStavu } = spojStavy(zGeo, zPamatek);
 const pamatky = zPamatek.data.pamatky ?? [];
 const geoSoubory = [...(zGeo.data ?? [])].sort((a, b) => a.klic.localeCompare(b.klic, 'cs-CZ'));
 
-/* ── Vrstvy památek ──────────────────────────────────────────────────────
-   UNESCO zvlášť: zápis na seznam světového dědictví je jiná kategorie než
-   místní kulturní památka a slévat je do jedné vrstvy by ten rozdíl smazalo. */
+/** Kolik řádků nejvýš do tabulky vrstvy — u 2 500 adresních míst by jinak
+ *  stránka narostla o megabajty. Zkrácení se vždy napíše. */
+const MAX_RADKU_VRSTVY = 250;
+/** Vrstva s víc prvky se načte vypnutá — jinak by mapa byla jeden šedý flek. */
+const PRAH_VYCHOZIHO_VYPNUTI = 400;
+
+/* ── Vrstvy památek ──────────────────────────────────────────────────── */
+
+const HLAVICKA_PAMATEK = [
+  { nazev: 'Název' },
+  { nazev: 'Typ ochrany' },
+  { nazev: 'Kde' },
+  { nazev: 'Rejstřík ÚSKP' },
+  { nazev: 'Stav ochrany' },
+  { nazev: 'V mapě' },
+];
 
 function radkyPamatek(seznam: Pamatka[]): string[][] {
   return seznam.map((p) => [
     p.nazev,
-    p.druh ?? 'v datech není',
-    p.adresa ?? 'v datech není',
+    p.typOchrany ?? 'v datech není',
+    p.adresa ?? '—',
     p.rejstrik ?? '—',
-    p.unesco === true ? 'ano' : p.unesco === false ? 'ne' : 'v datech není',
-    p.maPolohu ? 'ano' : 'ne',
+    p.fazeOchrany ?? (p.chraneno === true ? 'chráněno' : p.chraneno === false ? 'nechráněno' : 'v datech není'),
+    p.maPolohu ? 'ano' : 'ne — chybí souřadnice',
   ]);
 }
-
-const HLAVICKA_PAMATEK = [
-  { nazev: 'Památka' },
-  { nazev: 'Druh' },
-  { nazev: 'Kde' },
-  { nazev: 'Rejstřík ÚSKP' },
-  { nazev: 'UNESCO' },
-  { nazev: 'Souřadnice' },
-];
 
 function prvkyPamatek(seznam: Pamatka[], barva: string): PrvekMapy[] {
   return seznam.map((p) => ({
@@ -58,126 +64,213 @@ function prvkyPamatek(seznam: Pamatka[], barva: string): PrvekMapy[] {
     tvary: p.tvary,
     barva,
     tip: [
-      { l: 'Druh', v: p.druh ?? 'v datech není' },
-      { l: 'Kde', v: p.adresa ?? 'v datech není' },
+      { l: 'Typ ochrany', v: p.typOchrany ?? 'v datech není' },
+      ...(p.kategorie ? [{ l: 'Kategorie', v: p.kategorie }] : []),
+      ...(p.adresa ? [{ l: 'Kde', v: p.adresa }] : []),
       ...(p.rejstrik ? [{ l: 'Rejstřík ÚSKP', v: p.rejstrik }] : []),
-      ...(p.unesco === true ? [{ l: 'UNESCO', v: 'součást zápisu' }] : []),
-      ...(p.ochrana ? [{ l: 'Ochrana', v: p.ochrana }] : []),
+      ...(p.fazeOchrany ? [{ l: 'Stav', v: p.fazeOchrany }] : []),
     ],
-    popis: `${p.nazev}${p.druh ? ` — ${p.druh}` : ''}${p.adresa ? `, ${p.adresa}` : ''}`,
+    popis: `${p.nazev}${p.typOchrany ? ` — ${p.typOchrany}` : ''}${p.adresa ? `, ${p.adresa}` : ''}`,
   }));
 }
 
-const unesco = pamatky.filter((p) => p.unesco === true);
-const ostatniPamatky = pamatky.filter((p) => p.unesco !== true);
+interface SkupinaPamatek {
+  klic: string;
+  nazev: string;
+  popis: string;
+  filtr: (p: Pamatka) => boolean;
+}
 
-const vrstvyPamatek: VrstvaMapy[] = [];
-if (unesco.length > 0) {
-  vrstvyPamatek.push({
+const SKUPINY: SkupinaPamatek[] = [
+  {
     klic: 'unesco',
     nazev: 'UNESCO — světové dědictví',
-    popis: 'Objekty, které data označují jako součást zápisu na seznam UNESCO.',
-    druh: 'bod',
-    prvky: prvkyPamatek(unesco, cssBarvaSlotu(1)),
-    zapnuta: true,
-    legenda: [{ nazev: 'UNESCO — světové dědictví', barva: cssBarvaSlotu(1), tvar: 'rect' }],
-    zdroj: zPamatek.data.zdroj ?? 'neuveden',
-    licence: zPamatek.data.licence,
-    tabulka: { hlavicka: HLAVICKA_PAMATEK, radky: radkyPamatek(unesco) },
-  });
-}
-if (ostatniPamatky.length > 0) {
+    popis:
+      'Území zapsané na seznam světového dědictví UNESCO. Označení se bere z kódu ochrany, který uvádí Národní památkový ústav (SD), ne z názvu.',
+    filtr: (p) => p.unesco,
+  },
+  {
+    klic: 'unesco-zona',
+    nazev: 'UNESCO — nárazníková zóna',
+    popis:
+      'Nárazníková zóna kolem statku světového dědictví (kód ochrany NZ). Není součástí zápisu, ale chrání jeho okolí.',
+    filtr: (p) => p.unescoZona,
+  },
+  {
+    klic: 'rezervace',
+    nazev: 'Památkové rezervace a zóny',
+    popis: 'Plošná památková ochrana — rezervace a zóny (kódy PR, PZ).',
+    filtr: (p) => p.typOchranyKod === 'PR' || p.typOchranyKod === 'PZ',
+  },
+  {
+    klic: 'pamatky-plochy',
+    nazev: 'Kulturní památky — plochy',
+    popis: 'Rozsah jednotlivých kulturních a národních kulturních památek.',
+    filtr: (p) => p.sada === 'plochy památek',
+  },
+  {
+    klic: 'pamatky-body',
+    nazev: 'Kulturní památky — body',
+    popis: 'Jednotlivé kulturní a národní kulturní památky, definiční bod.',
+    filtr: (p) => p.sada === 'body památek',
+  },
+];
+
+const pouzite = new Set<string>();
+const vrstvyPamatek: VrstvaMapy[] = [];
+let slot = 0;
+
+for (const s of SKUPINY) {
+  const vyber = pamatky.filter((p) => !pouzite.has(p.id) && s.filtr(p));
+  if (vyber.length === 0) continue;
+  for (const p of vyber) pouzite.add(p.id);
+
+  const barva = cssBarvaSlotu(slot < MAX_KATEGORII ? slot : null);
+  slot++;
+  const druh: VrstvaMapy['druh'] = vyber.some((p) => p.tvary.some((t) => t.druh === 'plocha')) ? 'plocha' : 'bod';
+  const radky = radkyPamatek(vyber);
+
   vrstvyPamatek.push({
-    klic: 'pamatky',
-    nazev: unesco.length > 0 ? 'Ostatní kulturní památky' : 'Kulturní památky',
-    popis: 'Nemovité kulturní památky tak, jak je vede zdroj.',
-    druh: 'bod',
-    prvky: prvkyPamatek(ostatniPamatky, cssBarvaSlotu(0)),
-    zapnuta: true,
-    legenda: [
-      {
-        nazev: unesco.length > 0 ? 'Ostatní kulturní památky' : 'Kulturní památky',
-        barva: cssBarvaSlotu(0),
-        tvar: 'rect',
-      },
-    ],
+    klic: s.klic,
+    nazev: s.nazev,
+    popis: s.popis,
+    druh,
+    prvky: prvkyPamatek(vyber, barva),
+    zapnuta: vyber.length <= PRAH_VYCHOZIHO_VYPNUTI,
+    legenda: [{ nazev: s.nazev, barva, tvar: 'rect' }],
     zdroj: zPamatek.data.zdroj ?? 'neuveden',
     licence: zPamatek.data.licence,
-    tabulka: { hlavicka: HLAVICKA_PAMATEK, radky: radkyPamatek(ostatniPamatky) },
+    tabulka: {
+      hlavicka: HLAVICKA_PAMATEK,
+      radky: radky.slice(0, MAX_RADKU_VRSTVY),
+    },
   });
 }
+
+const zbylePamatky = pamatky.filter((p) => !pouzite.has(p.id));
 
 /* ── Vrstvy z opendata/geo/ ──────────────────────────────────────────────
-   Barva se přiděluje podle klíče vrstvy (tedy jména souboru), ne podle pořadí
-   vykreslení — vypnutí vrstvy tak nikdy nepřebarví zbylé. Od sedmé vrstvy dál
-   je barva „Ostatní"; sedmý odstín by se od šesti předchozích nedal spolehlivě
-   odlišit (web/DESIGN.md §2). */
+   Barva se přiděluje podle pořadí vrstvy v abecedně seřazeném seznamu, tedy
+   podle identity souboru — vypnutí vrstvy nikdy nepřebarví zbylé. Od sedmé
+   vrstvy dál je barva „Ostatní"; sedmý odstín by se od šesti předchozích
+   nedal spolehlivě odlišit (web/DESIGN.md §2). */
 
-const zacatekSlotu = vrstvyPamatek.length;
+/** Vlastnosti, které mají smysl v tabulce. Technické kódy se vynechávají. */
+const ZAJIMAVE = ['nazev', 'tema', 'adresa', 'ulice', 'cislo_okrsku', 'kod_ku', 'kod_zsj', 'vymera_m2', 'osm_url', 'plati_od'];
 
-const vrstvyGeo: VrstvaMapy[] = geoSoubory.map((g, i) => {
-  const slot = zacatekSlotu + i;
-  const barva = cssBarvaSlotu(slot < MAX_KATEGORII ? slot : null);
-  const druh: VrstvaMapy['druh'] = g.prvky.some((p) => p.tvary.some((t) => t.druh === 'plocha'))
-    ? 'plocha'
-    : g.prvky.some((p) => p.tvary.some((t) => t.druh === 'linie'))
-      ? 'linie'
-      : 'bod';
+function vrstvyZeSouboru(g: GeoSoubor, prvniSlot: number): VrstvaMapy[] {
+  // OSM vrstva nese `tema` (prameny, lázeňství, zeleň…). Rozdělit ji podle
+  // tématu je užitečnější než jeden barevný chuchvalec — a jde to vypnout.
+  const temata = [...new Set(g.prvky.map((p) => txt(p.vlastnosti, 'tema')).filter((t): t is string => Boolean(t)))];
+  const skupiny =
+    temata.length > 1 && temata.length <= 8
+      ? temata.map((t) => ({ klic: `${g.klic}-${t}`, nazev: `${g.nazev}: ${nazevTematu(t)}`, prvky: g.prvky.filter((p) => txt(p.vlastnosti, 'tema') === t) }))
+      : [{ klic: g.klic, nazev: g.nazev, prvky: g.prvky }];
 
-  // Do tabulky se propíšou i vlastnosti ze zdroje, ale jen ty textové a krátké —
-  // GeoJSON nese často desítky technických polí, která by tabulku zaplavila.
-  const klicoveVlastnosti = [
-    ...new Set(
-      g.prvky
-        .flatMap((p) => Object.entries(p.vlastnosti))
-        .filter(([, v]) => (typeof v === 'string' && v.length <= 60) || typeof v === 'number')
-        .map(([k]) => k),
-    ),
-  ].slice(0, 4);
+  return skupiny.map((s, i) => {
+    const cislo = prvniSlot + i;
+    const barva = cssBarvaSlotu(cislo < MAX_KATEGORII ? cislo : null);
+    const druh: VrstvaMapy['druh'] = s.prvky.some((p) => p.tvary.some((t) => t.druh === 'plocha'))
+      ? 'plocha'
+      : s.prvky.some((p) => p.tvary.some((t) => t.druh === 'linie'))
+        ? 'linie'
+        : 'bod';
 
-  return {
-    klic: g.klic,
-    nazev: g.nazev,
-    popis: g.popis ?? undefined,
-    druh,
-    prvky: g.prvky.map((p) => ({
-      id: p.id,
-      nazev: p.nazev,
-      tvary: p.tvary,
-      barva,
-      tip: klicoveVlastnosti
-        .map((k) => ({ l: k, v: String(p.vlastnosti[k] ?? '') }))
-        .filter((r) => r.v.length > 0)
-        .slice(0, 5),
-      popis: `${g.nazev}: ${p.nazev}`,
-    })),
-    zapnuta: true,
-    legenda: [{ nazev: g.nazev, barva, tvar: 'rect' }],
-    zdroj: g.zdroj ?? `soubor ${g.cesta}`,
-    licence: g.licence,
-    tabulka: {
-      hlavicka: [{ nazev: 'Prvek' }, ...klicoveVlastnosti.map((k) => ({ nazev: k })), { nazev: 'Souřadnice' }],
-      radky: g.prvky.map((p) => [
-        p.nazev,
-        ...klicoveVlastnosti.map((k) => String(p.vlastnosti[k] ?? '—')),
-        p.tvary.length > 0 ? 'ano' : 'ne',
-      ]),
-    },
+    const sloupce = ZAJIMAVE.filter((k) => s.prvky.some((p) => typeof p.vlastnosti[k] !== 'undefined' && p.vlastnosti[k] !== null));
+
+    return {
+      klic: s.klic,
+      nazev: s.nazev,
+      popis: g.popis ?? undefined,
+      druh,
+      prvky: s.prvky.map((p) => ({
+        id: p.id,
+        nazev: p.nazev,
+        tvary: p.tvary,
+        barva,
+        tip: sloupce
+          .map((k) => ({ l: popisekPole(k), v: String(p.vlastnosti[k] ?? '') }))
+          .filter((r) => r.v.length > 0)
+          .slice(0, 5),
+        popis: `${s.nazev}: ${p.nazev}`,
+      })),
+      zapnuta: s.prvky.length <= PRAH_VYCHOZIHO_VYPNUTI,
+      bezTooltipu: s.prvky.length > PRAH_VYCHOZIHO_VYPNUTI,
+      legenda: [{ nazev: s.nazev, barva, tvar: 'rect' as const }],
+      zdroj: g.zdroj ?? `soubor ${g.cesta}`,
+      licence: g.licence,
+      tabulka: {
+        hlavicka: [{ nazev: 'Prvek' }, ...sloupce.map((k) => ({ nazev: popisekPole(k) })), { nazev: 'V mapě' }],
+        radky: s.prvky
+          .slice(0, MAX_RADKU_VRSTVY)
+          .map((p) => [
+            p.nazev,
+            ...sloupce.map((k) => String(p.vlastnosti[k] ?? '—')),
+            p.tvary.length > 0 ? 'ano' : 'ne',
+          ]),
+      },
+    };
+  });
+}
+
+function nazevTematu(t: string): string {
+  const m: Record<string, string> = {
+    prameny: 'minerální prameny',
+    lazenstvi: 'lázeňství',
+    ubytovani: 'ubytování',
+    zelen: 'parky a zeleň',
+    kultura_a_historie: 'kultura a historie',
   };
-});
+  return m[t] ?? t.replace(/_/g, ' ');
+}
+
+function popisekPole(k: string): string {
+  const m: Record<string, string> = {
+    nazev: 'Název',
+    tema: 'Téma',
+    adresa: 'Adresa',
+    ulice: 'Ulice',
+    cislo_okrsku: 'Okrsek',
+    kod_ku: 'Kód k. ú.',
+    kod_zsj: 'Kód ZSJ',
+    vymera_m2: 'Výměra (m²)',
+    osm_url: 'OpenStreetMap',
+    plati_od: 'Platí od',
+  };
+  return m[k] ?? k;
+}
+
+const vrstvyGeo: VrstvaMapy[] = [];
+for (const g of geoSoubory) {
+  vrstvyGeo.push(...vrstvyZeSouboru(g, vrstvyPamatek.length + vrstvyGeo.length));
+}
 
 const vrstvy = [...vrstvyGeo, ...vrstvyPamatek];
-const mapa = mapaSvg(vrstvy, { popis: 'Mapa města: památky, majetek a další vrstvy z otevřených dat', maxVyska: 660 });
+const mapa = mapaSvg(vrstvy, {
+  popis: 'Mapa města: památky, ochranná území a další vrstvy z otevřených dat',
+  maxVyska: 680,
+});
 
 const zdrojeMapy = [
-  ...vrstvyGeo.map((v) => ({ nazev: `${v.nazev}: ${v.zdroj}`, licence: v.licence })),
+  ...[...new Set(vrstvyGeo.map((v) => `${v.zdroj}||${v.licence ?? ''}`))].map((s) => {
+    const [nazev, licence] = s.split('||');
+    return { nazev, licence: licence || null };
+  }),
   ...(vrstvyPamatek.length > 0
-    ? [{ nazev: `Památky: ${zPamatek.data.zdroj ?? 'zdroj v datech není'}`, licence: zPamatek.data.licence }]
+    ? [
+        {
+          nazev: zPamatek.data.dolozka ?? zPamatek.data.zdroj ?? 'Památky — zdroj v datech není',
+          licence: zPamatek.data.licence,
+        },
+      ]
     : []),
 ];
 
 const sPolohou = vrstvy.reduce((s, v) => s + v.prvky.filter((p) => p.tvary.length > 0).length, 0);
 const maData = vrstvy.length > 0;
+const unesco = pamatky.filter((p) => p.unesco);
+const zkraceneTabulky = vrstvy.filter((v) => v.prvky.length > v.tabulka.radky.length);
+const nalehko = vrstvy.filter((v) => v.bezTooltipu);
 
 const dlazdice: Polozka[] = maData
   ? [
@@ -189,23 +282,24 @@ const dlazdice: Polozka[] = maData
       {
         popisek: 'Prvků se souřadnicemi',
         hodnota: cislo(sPolohou),
-        doplnek: mapa.bezGeometrie > 0 ? `${cislo(mapa.bezGeometrie)} bez souřadnic` : 'všechny prvky mají polohu',
+        doplnek:
+          mapa.bezGeometrie > 0 ? `${cislo(mapa.bezGeometrie)} prvků bez souřadnic` : 'všechny prvky mají polohu',
       },
       {
-        popisek: 'Kulturních památek',
+        popisek: 'Památkových záznamů',
         hodnota: pamatky.length > 0 ? cislo(pamatky.length) : '—',
         doplnek:
           pamatky.length > 0
-            ? `${cislo(pamatky.filter((p) => p.maPolohu).length)} má v datech souřadnice`
+            ? `${cislo(pamatky.filter((p) => p.maPolohu).length)} má v datech geometrii`
             : 'data o památkách zatím nejsou',
       },
       {
-        popisek: 'Z toho UNESCO',
+        popisek: 'Zápis UNESCO',
         hodnota: unesco.length > 0 ? cislo(unesco.length) : '—',
         doplnek:
           unesco.length > 0
-            ? 'označeno v datech jako součást zápisu'
-            : 'zápis UNESCO data u žádné položky neuvádějí',
+            ? unesco.map((p) => p.nazev).join(', ')
+            : 'zápis světového dědictví data u žádné položky neuvádějí',
       },
     ]
   : [];
@@ -217,7 +311,7 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
   titulek="Mapa města"
   aktivni="mapa"
   nadpis="Město v mapě"
-  uvod="Památky, městský majetek a další vrstvy z otevřených dat. Mapa je SVG vykreslené při buildu — nenačítá se z cizího serveru a nepotřebuje mapovou knihovnu."
+  uvod="Památky, ochranná území, prameny a další vrstvy z otevřených dat. Mapa je SVG vykreslené při buildu — nenačítá se z cizího serveru a nepotřebuje mapovou knihovnu."
 >
   <StavDat
     stav={zGeo.stav === 'ok' && vrstvy.length === 0 ? zPamatek.stav : zGeo.stav}
@@ -236,38 +330,93 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
         <MapaKarta
           id="mapa-mesta"
           nadpis="Vrstvy města"
-          popis="Každá vrstva se dá vypnout. Výřez mapy se počítá ze všech vrstev včetně vypnutých, aby zapnutí vrstvy mapou neposunulo a nezmátlo. Barva patří vrstvě, ne pořadí vykreslení."
+          popis="Každá vrstva se dá vypnout. Výřez mapy se počítá ze všech vrstev včetně vypnutých, aby zapnutí vrstvy mapou neposunulo. Vrstvy s velkým počtem bodů jsou vypnuté hned na začátku — jinak by mapa byla jeden souvislý flek."
           mapa={mapa}
           vrstvy={vrstvy}
           zdroje={zdrojeMapy}
           poznamky={[
             'Mapa ukazuje jen to, co je v datech. Chybějící objekt neznamená, že ve městě není — znamená, že ho zdroj neuvádí nebo u něj nemá souřadnice.',
+            ...(zkraceneTabulky.length > 0
+              ? [
+                  `U ${cislo(zkraceneTabulky.length)} ${sklonuj(zkraceneTabulky.length, 'vrstvy je', 'vrstev je', 'vrstev je')} tabulka zkrácená na prvních ${cislo(MAX_RADKU_VRSTVY)} prvků (${zkraceneTabulky.map((v) => `${v.nazev}: ${cislo(v.prvky.length)}`).join(', ')}). V mapě jsou všechny.`,
+                ]
+              : []),
+            ...(nalehko.length > 0
+              ? [
+                  `Vrstvy s tisíci body (${nalehko.map((v) => v.nazev).join(', ')}) se kreslí zjednodušeně: bez bublinky s podrobnostmi, jen s popiskem po najetí. Plná verze by ke stránce přidala megabajty a k obsahu nic.`,
+                ]
+              : []),
           ]}
         />
 
-        {bezPolohy.length > 0 && (
+        {unesco.length > 0 && (
           <section class="karta">
-            <h2 class="karta__nadpis">Památky bez souřadnic</h2>
+            <h2 class="karta__nadpis">Zápis na seznam UNESCO</h2>
             <p class="karta__podnadpis">
-              {cislo(bezPolohy.length)} {sklonuj(bezPolohy.length, 'památka nemá', 'památky nemají', 'památek nemá')}
-              {' '}v datech polohu. Ze seznamu proto nezmizely, jen je nejde umístit do mapy.
+              Označení se bere výhradně z kódu ochrany, který u záznamu uvádí Národní památkový
+              ústav — ne z názvu a ne z toho, co se o městě obecně ví.
             </p>
             <div class="tabulka-obal">
               <table>
                 <thead>
                   <tr>
-                    <th scope="col">Památka</th>
-                    <th scope="col">Druh</th>
+                    <th scope="col">Název statku</th>
+                    <th scope="col">Typ ochrany</th>
+                    <th scope="col">Rejstřík ÚSKP</th>
+                    <th scope="col">Stav</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {unesco.map((p) => (
+                    <tr>
+                      <td>{p.url ? <a href={p.url} rel="noreferrer noopener">{p.nazev}</a> : p.nazev}</td>
+                      <td>{p.typOchrany ?? 'v datech není'}</td>
+                      <td class="mono">{p.rejstrik ?? '—'}</td>
+                      <td>{p.fazeOchrany ?? 'v datech není'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {(bezPolohy.length > 0 || zbylePamatky.length > 0) && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Památkové záznamy mimo mapu</h2>
+            <p class="karta__podnadpis">
+              {bezPolohy.length > 0 && (
+                <>
+                  {cislo(bezPolohy.length)}{' '}
+                  {sklonuj(bezPolohy.length, 'záznam nemá', 'záznamy nemají', 'záznamů nemá')} v datech
+                  geometrii.{' '}
+                </>
+              )}
+              {zbylePamatky.length > 0 && (
+                <>
+                  {cislo(zbylePamatky.length)}{' '}
+                  {sklonuj(zbylePamatky.length, 'záznam se nevešel', 'záznamy se nevešly', 'záznamů se nevešlo')}
+                  {' '}do žádné z vrstev výše.
+                </>
+              )}
+              {' '}Ze seznamu proto nezmizely.
+            </p>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Název</th>
+                    <th scope="col">Typ ochrany</th>
                     <th scope="col">Kde</th>
                     <th scope="col">Rejstřík ÚSKP</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {bezPolohy.map((p) => (
+                  {[...new Map([...bezPolohy, ...zbylePamatky].map((p) => [p.id, p])).values()].map((p) => (
                     <tr>
                       <td>{p.url ? <a href={p.url} rel="noreferrer noopener">{p.nazev}</a> : p.nazev}</td>
-                      <td>{p.druh ?? 'v datech není'}</td>
-                      <td>{p.adresa ?? 'v datech není'}</td>
+                      <td>{p.typOchrany ?? 'v datech není'}</td>
+                      <td>{p.adresa ?? '—'}</td>
                       <td class="mono">{p.rejstrik ?? '—'}</td>
                     </tr>
                   ))}
@@ -278,10 +427,11 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
         )}
 
         <p class="graf-poznamka">
-          Souřadnice se převádějí z WGS-84 do Web Mercatoru (EPSG:3857) při buildu. V měřítku
-          města je zkreslení projekce zanedbatelné, měřítko u mapy přesto platí pro střed
-          výřezu, ne pro jeho okraje.
+          Souřadnice zdroj převádí ze systému S-JTSK (EPSG:5514) do WGS-84 a web je pak při buildu
+          promítá do Web Mercatoru (EPSG:3857). V měřítku města je zkreslení projekce zanedbatelné;
+          měřítko u mapy přesto platí pro střed výřezu, ne pro jeho okraje.
         </p>
+        {zPamatek.data.dolozka && <p class="graf-poznamka">{zPamatek.data.dolozka}</p>}
       </>
     )
   }

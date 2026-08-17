@@ -48,8 +48,7 @@ const maCo = osa.pocet > 0;
       <div class="graf-karta__hlava">
         <h2 class="graf-karta__nadpis" id={`${id}-nadpis`}>{nadpis}</h2>
         <p class="osa-rozsah cislo">
-          {osa.rokOd === osa.rokDo ? osa.rokOd : `${osa.rokOd}–${osa.rokDo}`} ·{' '}
-          {cislo(osa.pocet)} {sklonuj(osa.pocet, 'událost', 'události', 'událostí')}
+          {`${osa.rokOd === osa.rokDo ? osa.rokOd : `${osa.rokOd}–${osa.rokDo}`} · ${cislo(osa.pocet)} ${sklonuj(osa.pocet, 'událost', 'události', 'událostí')}`}
         </p>
       </div>
 
@@ -98,7 +97,7 @@ const maCo = osa.pocet > 0;
       </p>
 
       <details class="tabulkovy-pohled">
-        <summary>Zobrazit jako tabulku ({cislo(osa.tabulka.radky.length)} {sklonuj(osa.tabulka.radky.length, 'událost', 'události', 'událostí')}, od nejnovější)</summary>
+        <summary>{`Zobrazit jako tabulku (${cislo(osa.tabulka.radky.length)} ${sklonuj(osa.tabulka.radky.length, 'událost', 'události', 'událostí')}, od nejnovější)`}</summary>
         <div class="tabulka-obal">
           <table>
             <thead>

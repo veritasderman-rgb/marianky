@@ -162,6 +162,12 @@ export interface VrstvaMapy {
   prvky: PrvekMapy[];
   /** Zapnutá při načtení stránky. */
   zapnuta: boolean;
+  /**
+   * Vrstva s tisíci prvky se kreslí „nalehko": bez tooltipu a bez obalu,
+   * jen tvar s `<title>`. U 2 500 adresních míst by plná verze přidala
+   * megabajty HTML. Obsah nesou `<title>` a tabulka pod mapou.
+   */
+  bezTooltipu?: boolean;
   legenda: LegendaPolozka[];
   /** Odkud data pocházejí — u map povinné (§3.6). */
   zdroj: string;
@@ -240,11 +246,13 @@ export function mapaSvg(vrstvy: VrstvaMapy[], nastaveni: Nastaveni): Mapa {
     const obsah: string[] = [];
     for (const p of v.prvky) {
       if (p.tvary.length === 0) continue;
-      obsah.push(prvekSvg(p, v.druh, proj));
+      obsah.push(prvekSvg(p, v.druh, proj, v.bezTooltipu === true));
     }
     if (obsah.length === 0) continue;
+    // Barva vrstvy kreslené nalehko sedí na skupině, ne na každém prvku.
+    const barvaSkupiny = v.bezTooltipu ? ` fill="${v.prvky[0]?.barva ?? 'var(--g-ost)'}" class="mapa-vrstva mapa-vrstva--nalehko"` : ' class="mapa-vrstva"';
     casti.push(
-      `<g class="mapa-vrstva" data-vrstva="${escSvg(v.klic)}"${v.zapnuta ? '' : ' data-vypnuta="1"'}>${obsah.join('')}</g>`,
+      `<g${barvaSkupiny} data-vrstva="${escSvg(v.klic)}"${v.zapnuta ? '' : ' data-vypnuta="1"'}>${obsah.join('')}</g>`,
     );
   }
 
@@ -302,9 +310,18 @@ function spocitejVyrez(vrstvy: VrstvaMapy[]): Vyrez | null {
   return { minX, minY, maxX, maxY, stredLat: (minLat + maxLat) / 2 };
 }
 
-function prvekSvg(p: PrvekMapy, druh: Druh, proj: (lon: number, lat: number) => [number, number]): string {
+function prvekSvg(
+  p: PrvekMapy,
+  druh: Druh,
+  proj: (lon: number, lat: number) => [number, number],
+  nalehko = false,
+): string {
   const tridy = ['mapa-prvek', `mapa-prvek--${druh}`];
   if (p.bezDat) tridy.push('mapa-prvek--bez-dat');
+
+  // U vrstvy kreslené nalehko nese barvu skupina vrstvy, ne každý prvek —
+  // u tisíců bodů ušetří opakovaný atribut stovky kilobajtů HTML.
+  const vypln = nalehko ? '' : ` fill="${p.barva}"`;
 
   const telo: string[] = [];
   for (const t of p.tvary) {
@@ -312,22 +329,31 @@ function prvekSvg(p: PrvekMapy, druh: Druh, proj: (lon: number, lat: number) => 
       const b = t.prstence[0]?.[0];
       if (!b) continue;
       const [x, y] = proj(b[0], b[1]);
-      telo.push(`<circle class="mapa-bod" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" fill="${p.barva}"/>`);
+      telo.push(
+        nalehko
+          ? `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"/>`
+          : `<circle class="mapa-bod" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5"${vypln}/>`,
+      );
     } else if (t.druh === 'linie') {
       const d = cesta(t.prstence, proj, false);
-      if (d) telo.push(`<path class="mapa-linie" d="${d}" stroke="${p.barva}" fill="none"/>`);
+      if (d) telo.push(`<path class="mapa-linie" d="${d}"${nalehko ? '' : ` stroke="${p.barva}"`} fill="none"/>`);
     } else {
       const d = cesta(t.prstence, proj, true);
       if (d) {
         telo.push(
           p.bezDat
             ? `<path class="mapa-plocha mapa-plocha--bez-dat" d="${d}" fill-rule="evenodd"/>`
-            : `<path class="mapa-plocha" d="${d}" fill="${p.barva}" fill-rule="evenodd"/>`,
+            : `<path class="mapa-plocha" d="${d}"${vypln} fill-rule="evenodd"/>`,
         );
       }
     }
   }
   if (telo.length === 0) return '';
+
+  // Nalehko: jen tvar s `<title>`, bez tooltipu a bez tříd na každém prvku.
+  if (nalehko) {
+    return `<g><title>${escSvg(p.popis)}</title>${telo.join('')}</g>`;
+  }
 
   // Prvky jsou mimo pořadí tabulátoru — u stovek polygonů a bodů by z nich byly
   // stovky zastávek. Kompletní data i odkazy nese povinný tabulkový pohled.

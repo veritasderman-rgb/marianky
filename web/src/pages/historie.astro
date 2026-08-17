@@ -2,12 +2,15 @@
 /**
  * Dějiny města po obdobích.
  *
- * U historie platí §3.7 dvojnásob: událost z městské kroniky a údaj převzatý
- * z lázeňské literatury nejsou stejně jistá věc. Jistota se proto propisuje
- * do tvaru značky na ose i do tabulky slovy — a když ji zdroj neuvádí, napíše
- * se „jistota v datech není", nikdy „doloženo".
+ * Zdroj sám formuluje pravidlo, které tahle stránka jen dodržuje:
  *
- * Přesnost data se nedoplňuje: „1865" zůstane rokem.
+ *   > Pole `jistota` nabývá hodnot `dolozeno` a `nejiste` (prameny se
+ *   > rozcházejí, rozpor je v poli `poznamka`). **Web nesmí nejistý údaj
+ *   > zobrazit jako doložený.**
+ *
+ * Nejistý záznam má proto na ose jiný tvar značky, v tabulce vlastní sloupec
+ * a rozpor je vypsaný slovy. Přesnost datace se nedoplňuje — „1193" zůstane
+ * rokem, nestane se z něj 1. leden.
  */
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
@@ -15,84 +18,69 @@ import Dlazdice from '../components/Dlazdice.astro';
 import CasovaOsa from '../components/CasovaOsa.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiLidi, spojStavy } from '../lib/data';
-import { historieNaOsu, nactiPrehledHistorie, nactiUdalostiHistorie } from '../lib/historie';
-import { nactiCasovouOsu, popisDatumu, slucUdalosti, jeNejista, popisekJistoty, udalost } from '../lib/osa';
-import type { Jistota } from '../lib/vazby';
+import { historieNaOsu, nactiPrehledHistorie, nactiUdalostiHistorie, type Zdroj } from '../lib/historie';
+import { jeSporne, nactiOsuMesta, popisDatumu, popisekJistoty, slucUdalosti } from '../lib/osa';
 import { cislo, sklonuj } from '../lib/format';
 
 const zPrehledu = nactiPrehledHistorie();
 const zUdalosti = nactiUdalostiHistorie();
 const zLidi = nactiLidi();
-const zOsy = nactiCasovouOsu();
+const zOsyMesta = nactiOsuMesta();
 const { poznamky: poznamkyStavu } = spojStavy(zPrehledu, zUdalosti);
 
 const obdobi = zPrehledu.data.obdobi ?? [];
-const udalosti = zUdalosti.data ?? [];
+const udalosti = zUdalosti.data.udalosti ?? [];
 const maData = obdobi.length > 0 || udalosti.length > 0;
 
 const lide = new Map((zLidi.data ?? []).map((o) => [o.id, o]));
+const zdroje = new Map<string, Zdroj>([...zPrehledu.data.zdroje, ...zUdalosti.data.zdroje]);
 
+/* Do osy jdou období, jednotlivé události i to, co k dějinám města přiřazuje
+   jednotná časová osa (volby, velké milníky) — a nic víc. */
 const naOse = slucUdalosti(
   historieNaOsu(udalosti, obdobi),
-  (zOsy.data ?? []).filter((u) => u.druh === 'historie'),
+  (zOsyMesta.data.udalosti ?? []).filter((u) => u.druh === 'historie' || u.druh === 'volby'),
 );
 
-/* Osobnosti, které se v dějinách objevují. Odkaz vede jen tam, kde profil je. */
 const osobyVHistorii = new Map<string, number>();
-for (const u of udalosti) {
-  for (const id of u.osoby) osobyVHistorii.set(id, (osobyVHistorii.get(id) ?? 0) + 1);
-}
+for (const u of udalosti) for (const id of u.osoby) osobyVHistorii.set(id, (osobyVHistorii.get(id) ?? 0) + 1);
+for (const o of obdobi) for (const id of o.osobnosti) osobyVHistorii.set(id, (osobyVHistorii.get(id) ?? 0) + 1);
+
 const propojeneOsobnosti = [...osobyVHistorii.entries()]
   .map(([id, pocet]) => ({ id, pocet, osoba: lide.get(id) ?? null }))
   .sort((a, b) => b.pocet - a.pocet || a.id.localeCompare(b.id, 'cs-CZ'));
 
-const roky = udalosti.map((u) => u.rok).filter((r): r is number => r !== null);
-
-/** Jistota tak, jak ji zdroj píše. Co se nedá zařadit, zůstane „neuvedeno". */
-function jistotaZ(v: string | null): Jistota {
-  if (!v) return null;
-  const s = v.trim().toLowerCase();
-  if (s.startsWith('nizk') || s.startsWith('nízk') || s.startsWith('nejist') || s.startsWith('legend') || s.startsWith('trad')) {
-    return 'nizka';
-  }
-  if (s.startsWith('stredn') || s.startsWith('střed')) return 'stredni';
-  if (s.startsWith('vysok') || s.startsWith('dolož') || s.startsWith('dolozen')) return 'vysoka';
-  return null;
-}
-
-/** Datum tak přesně, jak ho zdroj uvádí — rok se nedoplňuje na 1. leden. */
-function kdy(u: { datum: string; datum_do: string | null }): string {
-  return popisDatumu({ ...prazdnaUdalost, datum: u.datum, datum_do: u.datum_do });
-}
-const prazdnaUdalost = udalost({ id: '', datum: '', druh: 'historie', nadpis: '' });
-
-const nejista = udalosti.filter((u) => jeNejista(jistotaZ(u.jistota))).length;
+const nejistych = udalosti.filter((u) => jeSporne(u.jistota)).length;
+const rozsah = zPrehledu.data.statistika.rozsah;
 
 const dlazdice: Polozka[] = maData
   ? [
       {
         popisek: 'Období v přehledu',
         hodnota: cislo(obdobi.length),
-        doplnek: obdobi.length > 0 ? `${obdobi[0].nazev} a další` : undefined,
+        doplnek: rozsah ? `dějiny od roku ${rozsah[0]} do ${rozsah[1]}` : undefined,
       },
       {
         popisek: 'Zaznamenaných událostí',
         hodnota: cislo(udalosti.length),
-        doplnek: roky.length > 0 ? `od roku ${Math.min(...roky)} do ${Math.max(...roky)}` : undefined,
+        doplnek: `${cislo(propojeneOsobnosti.length)} ${sklonuj(propojeneOsobnosti.length, 'osobnost', 'osobnosti', 'osobností')} v nich figuruje`,
       },
       {
-        popisek: 'Událostí s nízkou jistotou',
-        hodnota: cislo(nejista),
-        doplnek: nejista > 0 ? 'na ose dutá přerušovaná značka' : 'zdroj žádnou takto neoznačuje',
+        popisek: 'Nejistých údajů',
+        hodnota: cislo(nejistych),
+        doplnek:
+          nejistych > 0
+            ? 'prameny se u nich rozcházejí — na ose mají jiný tvar značky'
+            : 'zdroj žádný záznam neoznačuje za nejistý',
         stav:
-          nejista > 0
-            ? { uroven: 'pozor', text: 'nejsou to doložená fakta' }
-            : { uroven: 'neznamo', text: 'jistota se v datech nerozlišuje' },
+          nejistych > 0
+            ? { uroven: 'pozor', text: 'nesmí se číst jako doložený fakt' }
+            : { uroven: 'dobre', text: 'všechny záznamy zdroj označuje za doložené' },
       },
       {
-        popisek: 'Propojených osobností',
-        hodnota: cislo(propojeneOsobnosti.length),
-        doplnek: `${cislo(propojeneOsobnosti.filter((o) => o.osoba).length)} má profil v přehledu lidí`,
+        popisek: 'Uvedených zdrojů',
+        hodnota: cislo(zdroje.size),
+        doplnek: 'ke každému období i události',
       },
     ]
   : [];
@@ -101,6 +89,10 @@ function udalostiObdobi(id: string) {
   return udalosti.filter((u) => u.obdobi === id);
 }
 const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id === u.obdobi));
+
+function odkazyZdroju(ids: string[]) {
+  return ids.map((id) => zdroje.get(id) ?? { id, nazev: id, url: null, typ: null });
+}
 ---
 
 <Zaklad
@@ -131,11 +123,7 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
             nadpis="Časová osa dějin města"
             udalosti={naOse}
             popis="Období jsou vodorovné pruhy, jednotlivé události značky. Osa je lineární v čase, takže staletí bez záznamu jsou vidět jako prázdná plocha — mezera v našich datech je taky informace."
-            zdroje={[
-              'historie/prehled.json',
-              'historie/udalosti.json',
-              ...(zOsy.stav === 'ok' ? ['casova_osa/'] : []),
-            ]}
+            zdroje={['historie/prehled.json', 'historie/udalosti.json', 'jednotná časová osa (casova_osa/mesto.json)']}
             neuplnost="Osa neobsahuje dějiny města, ale záznamy, které o nich máme. Řídké období nemusí znamenat, že se nic nedělo."
           />
         )}
@@ -149,12 +137,23 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
               <div class="obdobi-hlava">
                 <h3 class="karta__nadpis">{o.nazev}</h3>
                 <span class="obdobi-roky">
-                  {o.od !== null || o.do !== null
-                    ? `${o.od ?? '?'} – ${o.do ?? 'trvá'}`
-                    : 'roky v datech nejsou'}
+                  {o.od !== null || o.do !== null ? `${o.od ?? '?'} – ${o.do ?? 'trvá'}` : 'roky v datech nejsou'}
+                  {o.presnostRozsahu === 'priblizna' && ' (přibližně)'}
                 </span>
               </div>
-              {o.popis && <p>{o.popis}</p>}
+              {o.text && <p>{o.text}</p>}
+
+              {o.osobnosti.length > 0 && (
+                <p class="graf-poznamka">
+                  Osobnosti období:{' '}
+                  {o.osobnosti.map((id, i) => (
+                    <>
+                      {i > 0 && ', '}
+                      {lide.has(id) ? <a href={`/lide/${id}`}>{lide.get(id)?.jmeno ?? id}</a> : <span class="mono">{id}</span>}
+                    </>
+                  ))}
+                </p>
+              )}
 
               {vObdobi.length > 0 && (
                 <div class="tabulka-obal">
@@ -170,7 +169,7 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
                     <tbody>
                       {vObdobi.map((u) => (
                         <tr>
-                          <td class="cislo">{kdy(u)}</td>
+                          <td class="cislo">{popisDatumu(u)}</td>
                           <td>
                             {u.odkaz ? (
                               <a href={u.odkaz} rel={u.odkaz.startsWith('http') ? 'noreferrer noopener' : undefined}>
@@ -181,7 +180,10 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
                             )}
                             {u.popis && <div class="duvod__detail">{u.popis}</div>}
                           </td>
-                          <td>{popisekJistoty(jistotaZ(u.jistota))}</td>
+                          <td>
+                            {popisekJistoty(u.jistota)}
+                            {u.poznamka && <div class="duvod__detail">{u.poznamka}</div>}
+                          </td>
                           <td>
                             {u.osoby.length === 0
                               ? '—'
@@ -203,13 +205,13 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
                 <p class="graf-poznamka">K tomuhle období nemáme v datech žádnou jednotlivou událost.</p>
               )}
 
-              {o.zdroje.length > 0 && (
+              {o.zdrojeIds.length > 0 && (
                 <p class="graf-poznamka">
                   Zdroje:{' '}
-                  {o.zdroje.map((z, i) => (
+                  {odkazyZdroju(o.zdrojeIds).map((z, i) => (
                     <>
                       {i > 0 && ' · '}
-                      {z.startsWith('http') ? <a href={z} rel="noreferrer noopener">{z}</a> : z}
+                      {z.url ? <a href={z.url} rel="noreferrer noopener">{z.nazev}</a> : z.nazev}
                     </>
                   ))}
                 </p>
@@ -232,15 +234,15 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
                   <tr>
                     <th scope="col">Kdy</th>
                     <th scope="col">Událost</th>
-                    <th scope="col">Zdroje</th>
+                    <th scope="col">Jistota</th>
                   </tr>
                 </thead>
                 <tbody>
                   {bezObdobi.map((u) => (
                     <tr>
-                      <td class="cislo">{kdy(u)}</td>
+                      <td class="cislo">{popisDatumu(u)}</td>
                       <td>{u.nazev}</td>
-                      <td>{u.zdroje.length > 0 ? u.zdroje.join(', ') : 'v datech nejsou'}</td>
+                      <td>{popisekJistoty(u.jistota)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -253,15 +255,15 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
           <section class="karta">
             <h2 class="karta__nadpis">Osobnosti v dějinách města</h2>
             <p class="karta__podnadpis">
-              Kdo se objevuje u zaznamenaných událostí. Odkaz vede jen tam, kde má osoba profil
-              v našem přehledu lidí — u zbylých zůstává jen identifikátor ze zdroje.
+              Kdo se objevuje u zaznamenaných událostí a období. Odkaz vede jen tam, kde má osoba
+              profil v našem přehledu lidí — u zbylých zůstává jen identifikátor ze zdroje.
             </p>
             <ul class="seznam-temat">
               {propojeneOsobnosti.map((o) => (
                 <li class="seznam-temat__polozka">
                   {o.osoba ? <a href={`/lide/${o.id}`}>{o.osoba.jmeno}</a> : <span class="mono">{o.id}</span>}
                   <span class="seznam-temat__pocet">
-                    {cislo(o.pocet)} {sklonuj(o.pocet, 'událost', 'události', 'událostí')}
+                    {cislo(o.pocet)}× {sklonuj(o.pocet, 'zmínka', 'zmínky', 'zmínek')}
                   </span>
                 </li>
               ))}
@@ -269,22 +271,33 @@ const bezObdobi = udalosti.filter((u) => !u.obdobi || !obdobi.some((o) => o.id =
           </section>
         )}
 
-        {zPrehledu.data.zdroje.length > 0 && (
+        {zPrehledu.data.metodika.length > 0 && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Jak přehled vznikl</h2>
+            <dl class="metodika">
+              {zPrehledu.data.metodika.map((m) => (
+                <>
+                  <dt>{m.klic.replace(/_/g, ' ')}</dt>
+                  <dd>{m.text}</dd>
+                </>
+              ))}
+            </dl>
+          </section>
+        )}
+
+        {zdroje.size > 0 && (
           <section class="karta">
             <h2 class="karta__nadpis">Zdroje k dějinám města</h2>
             <ul>
-              {zPrehledu.data.zdroje.map((z) => (
-                <li>{z.startsWith('http') ? <a href={z} rel="noreferrer noopener">{z}</a> : z}</li>
+              {[...zdroje.values()].map((z) => (
+                <li>
+                  {z.url ? <a href={z.url} rel="noreferrer noopener">{z.nazev}</a> : z.nazev}
+                  {z.typ && <span class="stav-dat__zdroj"> ({z.typ})</span>}
+                </li>
               ))}
             </ul>
           </section>
         )}
-
-        <p class="graf-poznamka">
-          Historické údaje se liší jistotou. Kde zdroj uvádí, jak jistý údaj je, přehled to
-          přebírá; kde neuvádí, píše „jistota v datech není" — a to není totéž jako „doloženo".
-          Přehled sám nic nedatuje, nespojuje a nedopočítává.
-        </p>
       </>
     )
   }

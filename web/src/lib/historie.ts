@@ -1,146 +1,181 @@
 /**
  * Dějiny města — `data/historie/prehled.json` a `udalosti.json`.
  *
- * U historie platí §3.7 dvojnásob: událost ze staré literatury a událost
- * z městské kroniky nejsou stejně jistá věc. Proto se `jistota` čte a
- * propisuje až do značky na ose i do tabulky — a když ji zdroj neuvádí,
- * napíše se „jistota v datech není", ne „doloženo".
+ * Zdroj sám formuluje pravidlo, které tenhle soubor jen přenáší:
  *
- * Přesnost data se nedoplňuje: „1865" zůstane rokem, nestane se z něj
- * 1. leden 1865.
+ *   > Pole `jistota` nabývá hodnot `dolozeno` (údaj se v použitých pramenech
+ *   > shoduje) a `nejiste` (prameny se rozcházejí). U nejistých záznamů je
+ *   > rozpor popsán v poli `poznamka`. **Web nesmí nejistý údaj zobrazit jako
+ *   > doložený.**
+ *
+ * A druhé: `presnost` říká, jak přesně je událost datovaná (den / mesic / rok /
+ * obdobi). Přesnost se NEDOPLŇUJE — „1193" zůstane rokem.
+ *
+ * Zdroje se u období i událostí odkazují přes `zdroje_ids` do rejstříku
+ * `zdroje_rejstrik`; web z nich sestaví odkazy a nic si nedomýšlí.
  */
-import { nactiJson, slug, type Nacteno } from './data';
-import { isoDatum, jeObjekt, objekty, rokZ, rokZIso, texty, txt, type Zaznam } from './tolerantni';
-import { normalizujDruh, udalost, type UdalostOsy } from './osa';
+import { nactiJson, type Nacteno } from './data';
+import { cis, jeObjekt, objekty, texty, txt, type Zaznam } from './tolerantni';
+import {
+  normalizujDruh,
+  normalizujJistotu,
+  rokZIso,
+  udalost,
+  type JistotaOsy,
+  type Presnost,
+  type UdalostOsy,
+} from './osa';
+
+export interface Zdroj {
+  id: string;
+  nazev: string;
+  url: string | null;
+  typ: string | null;
+}
 
 export interface Obdobi {
   id: string;
+  poradi: number | null;
   nazev: string;
   od: number | null;
   do: number | null;
-  popis: string | null;
-  zdroje: string[];
+  /** `priblizna` u období, jehož hranice zdroj sám označuje za přibližné. */
+  presnostRozsahu: string | null;
+  text: string | null;
+  osobnosti: string[];
+  zdrojeIds: string[];
 }
 
 export interface UdalostHistorie {
   id: string;
   datum: string;
   datum_do: string | null;
+  presnost: Presnost;
   rok: number | null;
+  obdobi: string | null;
+  kategorie: string | null;
   nazev: string;
   popis: string | null;
-  obdobi: string | null;
   osoby: string[];
-  zdroje: string[];
+  tagy: string[];
+  jistota: JistotaOsy;
+  /** Čím se prameny rozcházejí. Povinné u nejistého záznamu. */
+  poznamka: string | null;
   odkaz: string | null;
-  jistota: string | null;
-  druh: string | null;
+  zdrojeIds: string[];
 }
 
 export interface Prehled {
   nazev: string | null;
   uvod: string | null;
   obdobi: Obdobi[];
-  zdroje: string[];
+  zdroje: Map<string, Zdroj>;
+  metodika: { klic: string; text: string }[];
+  statistika: { obdobi: number | null; udalosti: number | null; rozsah: [number, number] | null };
 }
 
-/* ─────────────────────────  historie/prehled.json  ─────────────────── */
+function presnostZ(v: string | null): Presnost {
+  const s = (v ?? '').trim().toLowerCase();
+  return s === 'den' || s === 'mesic' || s === 'rok' || s === 'obdobi' ? s : null;
+}
+
+function rejstrikZdroju(k: Zaznam): Map<string, Zdroj> {
+  const ven = new Map<string, Zdroj>();
+  const r = jeObjekt(k.zdroje_rejstrik) ? k.zdroje_rejstrik : null;
+  if (!r) return ven;
+  for (const [id, z] of Object.entries(r)) {
+    if (!jeObjekt(z)) continue;
+    ven.set(id, {
+      id,
+      nazev: txt(z, 'nazev') ?? id,
+      url: txt(z, 'url'),
+      typ: txt(z, 'typ'),
+    });
+  }
+  return ven;
+}
 
 export function nactiPrehledHistorie(): Nacteno<Prehled> {
   const v = nactiJson<unknown>('historie/prehled.json', null);
-  const koren = jeObjekt(v.data) ? v.data : {};
-  const surova = Array.isArray(v.data)
-    ? v.data.filter(jeObjekt)
-    : objekty(koren, 'obdobi', 'období', 'etapy', 'kapitoly', 'periods', 'prehled');
+  const k = jeObjekt(v.data) ? v.data : {};
+  const metodika = jeObjekt(k.metodika) ? k.metodika : {};
+  const statistika = jeObjekt(k.statistika) ? k.statistika : null;
+  const rozsah = statistika && Array.isArray(statistika.rozsah_let) ? statistika.rozsah_let : null;
 
-  const videna = new Set<string>();
-  const obdobi: Obdobi[] = surova
+  const obdobi: Obdobi[] = objekty(k, 'obdobi')
     .map((z, i) => {
-      const nazev = txt(z, 'nazev', 'název', 'obdobi', 'období', 'titul', 'title');
+      const nazev = txt(z, 'nazev');
       if (!nazev) return null;
-      const zaklad = txt(z, 'id', 'klic') ?? (slug(nazev) || `obdobi-${i + 1}`);
-      let id = zaklad;
-      for (let k = 2; videna.has(id); k++) id = `${zaklad}-${k}`;
-      videna.add(id);
       return {
-        id,
+        id: txt(z, 'id') ?? `obdobi-${i + 1}`,
+        poradi: cis(z, 'poradi'),
         nazev,
-        od: rokZ(z, 'od', 'rok_od', 'zacatek', 'začátek', 'from'),
-        do: rokZ(z, 'do', 'rok_do', 'konec', 'to'),
-        popis: txt(z, 'popis', 'text', 'shrnuti', 'shrnutí', 'description', 'perex'),
-        zdroje: texty(z, 'zdroje', 'zdroj', 'sources', 'literatura'),
+        od: cis(z, 'od'),
+        do: cis(z, 'do'),
+        presnostRozsahu: txt(z, 'presnost_rozsahu'),
+        text: txt(z, 'text', 'popis'),
+        osobnosti: texty(z, 'osobnosti', 'osoby'),
+        zdrojeIds: texty(z, 'zdroje_ids'),
       };
     })
     .filter((o): o is Obdobi => o !== null)
-    .sort((a, b) => (a.od ?? Infinity) - (b.od ?? Infinity));
+    .sort((a, b) => (a.poradi ?? 999) - (b.poradi ?? 999) || (a.od ?? 0) - (b.od ?? 0));
 
   return {
-    stav: v.stav,
-    zdroj: v.zdroj,
-    poznamka: v.poznamka,
+    ...v,
     data: {
-      nazev: txt(koren, 'nazev', 'název', 'title'),
-      uvod: txt(koren, 'uvod', 'úvod', 'perex', 'popis', 'intro'),
+      nazev: txt(k, 'nazev'),
+      uvod: txt(k, 'uvod'),
       obdobi,
-      zdroje: texty(koren, 'zdroje', 'zdroj', 'sources', 'literatura'),
+      zdroje: rejstrikZdroju(k),
+      metodika: Object.entries(metodika)
+        .filter(([, x]) => typeof x === 'string')
+        .map(([klic, text]) => ({ klic, text: text as string })),
+      statistika: {
+        obdobi: cis(statistika, 'obdobi'),
+        udalosti: cis(statistika, 'udalosti'),
+        rozsah:
+          rozsah && rozsah.length === 2 && typeof rozsah[0] === 'number' && typeof rozsah[1] === 'number'
+            ? [rozsah[0], rozsah[1]]
+            : null,
+      },
     },
   };
 }
 
-/* ────────────────────────  historie/udalosti.json  ─────────────────── */
-
-export function nactiUdalostiHistorie(): Nacteno<UdalostHistorie[]> {
+export function nactiUdalostiHistorie(): Nacteno<{ udalosti: UdalostHistorie[]; zdroje: Map<string, Zdroj> }> {
   const v = nactiJson<unknown>('historie/udalosti.json', null);
-  const surove = Array.isArray(v.data)
-    ? v.data.filter(jeObjekt)
-    : jeObjekt(v.data)
-      ? objekty(v.data, 'udalosti', 'události', 'events', 'zaznamy', 'polozky')
-      : [];
+  const k = jeObjekt(v.data) ? v.data : {};
+  const surove = Array.isArray(v.data) ? (v.data as unknown[]).filter(jeObjekt) : objekty(k, 'udalosti');
 
-  const videna = new Set<string>();
-  const ven: UdalostHistorie[] = [];
+  const udalosti: UdalostHistorie[] = surove
+    .map((z, i) => {
+      const nazev = txt(z, 'nazev', 'nadpis');
+      const datum = txt(z, 'datum');
+      if (!nazev || !datum) return null;
+      const doIso = txt(z, 'datum_do');
+      return {
+        id: txt(z, 'id') ?? `udalost-${i + 1}`,
+        datum,
+        datum_do: doIso && doIso >= datum ? doIso : null,
+        presnost: presnostZ(txt(z, 'presnost')),
+        rok: cis(z, 'rok') ?? rokZIso(datum),
+        obdobi: txt(z, 'obdobi'),
+        kategorie: txt(z, 'kategorie'),
+        nazev,
+        popis: txt(z, 'popis'),
+        osoby: texty(z, 'osoby'),
+        tagy: texty(z, 'tagy'),
+        jistota: normalizujJistotu(txt(z, 'jistota')),
+        poznamka: txt(z, 'poznamka'),
+        odkaz: txt(z, 'odkaz', 'url'),
+        zdrojeIds: texty(z, 'zdroje_ids'),
+      };
+    })
+    .filter((u): u is UdalostHistorie => u !== null)
+    .sort((a, b) => a.datum.localeCompare(b.datum));
 
-  surove.forEach((z: Zaznam) => {
-    const nazev = txt(z, 'nazev', 'název', 'nadpis', 'udalost', 'událost', 'titul', 'title');
-    if (!nazev) return;
-    const datum =
-      isoDatum(z, 'datum', 'date', 'datum_od', 'od', 'kdy') ??
-      (() => {
-        const r = rokZ(z, 'rok', 'year', 'rok_od');
-        return r === null ? null : String(r);
-      })();
-    if (!datum) return;
-
-    const doIso =
-      isoDatum(z, 'datum_do', 'do', 'konec') ??
-      (() => {
-        const r = rokZ(z, 'rok_do', 'do_roku');
-        return r === null ? null : String(r);
-      })();
-
-    const zaklad = txt(z, 'id', 'ID') ?? `${slug(nazev) || 'udalost'}-${datum}`;
-    let id = zaklad;
-    for (let k = 2; videna.has(id); k++) id = `${zaklad}-${k}`;
-    videna.add(id);
-
-    ven.push({
-      id,
-      datum,
-      datum_do: doIso && doIso >= datum ? doIso : null,
-      rok: rokZIso(datum),
-      nazev,
-      popis: txt(z, 'popis', 'text', 'description', 'perex'),
-      obdobi: txt(z, 'obdobi', 'období', 'etapa', 'kapitola', 'obdobi_id'),
-      osoby: texty(z, 'osoby', 'lide', 'lidé', 'osoba_id', 'osobnosti'),
-      zdroje: texty(z, 'zdroje', 'zdroj', 'sources', 'literatura'),
-      odkaz: txt(z, 'odkaz', 'url', 'link'),
-      jistota: txt(z, 'jistota', 'spolehlivost', 'certainty'),
-      druh: txt(z, 'druh', 'typ', 'kategorie'),
-    });
-  });
-
-  ven.sort((a, b) => a.datum.localeCompare(b.datum));
-  return { stav: v.stav, zdroj: v.zdroj, poznamka: v.poznamka, data: ven };
+  return { ...v, data: { udalosti, zdroje: rejstrikZdroju(k) } };
 }
 
 /* ──────────────────  Převod na jednotnou časovou osu  ──────────────── */
@@ -155,12 +190,22 @@ export function historieNaOsu(udalosti: UdalostHistorie[], obdobi: Obdobi[]): Ud
         id: `obdobi-${o.id}`,
         datum: String(o.od),
         datum_do: o.do === null ? null : String(o.do),
+        presnost: 'obdobi',
         druh: 'historie',
         nadpis: o.nazev,
-        popis: o.popis,
+        popis: o.text,
         odkaz: `#obdobi-${o.id}`,
         zdroj: 'historie/prehled.json',
-        detail: 'období dějin města',
+        detail:
+          o.presnostRozsahu === 'priblizna'
+            ? 'období dějin města — hranice let jsou podle zdroje přibližné'
+            : 'období dějin města',
+        // Přibližný rozsah není doložený letopočet; zdroj to sám říká.
+        jistota: o.presnostRozsahu === 'priblizna' ? 'sporne' : 'fakt',
+        jistotaDuvod:
+          o.presnostRozsahu === 'priblizna'
+            ? 'Zdroj označuje rozsah období za přibližný — hranice let nejsou přesné datum.'
+            : null,
       }),
     );
 
@@ -169,27 +214,19 @@ export function historieNaOsu(udalosti: UdalostHistorie[], obdobi: Obdobi[]): Ud
       id: `historie-${u.id}`,
       datum: u.datum,
       datum_do: u.datum_do,
-      druh: u.druh ? normalizujDruh(u.druh) : 'historie',
+      presnost: u.presnost,
+      druh: u.kategorie ? normalizujDruh('historie') : 'historie',
       nadpis: u.nazev,
       popis: u.popis,
       odkaz: u.odkaz,
-      jistota: normalizujJistotuText(u.jistota),
-      zdroj: u.zdroje.length > 0 ? u.zdroje.join(', ') : 'historie/udalosti.json',
-      detail: u.obdobi ? (nazvyObdobi.get(u.obdobi) ?? u.obdobi) : null,
+      jistota: u.jistota,
+      jistotaDuvod: u.poznamka,
+      zdroj: 'historie/udalosti.json',
+      detail: u.obdobi ? (nazvyObdobi.get(u.obdobi) ?? u.obdobi) : u.kategorie,
       osoby: u.osoby,
+      tagy: u.tagy,
     }),
   );
 
   return [...zObdobi, ...zUdalosti];
-}
-
-function normalizujJistotuText(v: string | null): UdalostOsy['jistota'] {
-  if (!v) return null;
-  const s = v.trim().toLowerCase();
-  if (s.startsWith('vysok') || s === 'high' || s.startsWith('dolož') || s.startsWith('dolozen')) return 'vysoka';
-  if (s.startsWith('stredn') || s.startsWith('střed') || s === 'medium') return 'stredni';
-  if (s.startsWith('nizk') || s.startsWith('nízk') || s === 'low' || s.startsWith('nejist') || s.startsWith('trad') || s.startsWith('legend')) {
-    return 'nizka';
-  }
-  return null;
 }

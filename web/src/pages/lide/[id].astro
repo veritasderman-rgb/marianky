@@ -8,10 +8,10 @@ import Vazby from '../../components/Vazby.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
-import { nactiCiselnikTagu, nactiClanky, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
+import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
 import { mapaTagu, zplostiHlasovani } from '../../lib/prehledy';
 import { jednou } from '../../lib/cache';
-import { nactiCasovouOsu, proOsobu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
+import { nactiOsuOsoby, popisModulu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
 import { statistikyOsoby, seradPocty } from '../../lib/profil';
 import { grafVodorovny, type BodVodorovny } from '../../lib/grafy';
 import {
@@ -61,8 +61,6 @@ const zOsobFirem = jednou('propojeni', nactiOsobyFirmy);
 const zProfilu = jednou('profily', nactiProfily);
 const zVazeb = jednou('vazby-hlasovani', nactiVazbyHlasovani);
 const zLidi = jednou('lide', nactiLidi);
-const zClanku = jednou('clanky', nactiClanky);
-const zOsy = jednou('casova-osa', nactiCasovouOsu);
 
 const ciselnik = jednou('tagy-mapa', () => mapaTagu(zTagu.data?.tagy ?? []));
 const vsechna = jednou('hlasovani-ploche', () => zplostiHlasovani(zHlasovani.data ?? []));
@@ -232,78 +230,78 @@ function jmenoShody(s: ShodaSOsobou): string {
 const spolehliveOmluvy = zProfilu.data.omluvySpolehliveOd;
 
 /* ── Časová osa osoby ───────────────────────────────────────────────────
-   Hlasování se na osu dává po JEDNÁNÍCH, ne po jednotlivých bodech. Tisíc
-   značek nad sebou by z pruhu udělalo souvislý pás, ze kterého se nic nevyčte
-   — a stránku by nafouklo o stovky kilobajtů. Jedno jednání = jedna značka
-   s počty; jednotlivé body zůstávají v tabulce hlasovací historie níže. */
+   Přednost má jednotná osa (`casova_osa/osoby/{id}.json`), která už spojuje
+   funkce, hlasování, zpravodaj i média — a která hlasování sama prořezává,
+   aby z pruhu nebyl souvislý pás. Kolik hlasování zůstalo jen v souhrnu,
+   soubor uvádí; napíšeme to.
 
-const podleJednani = new Map<string, { datum: string; organ: string; celkem: number; hlasy: Record<string, number> }>();
-for (const z of st.zaznamy) {
-  if (!z.h.datum) continue;
-  const klic = `${z.h.organ}|${z.h.datum}`;
-  const stav = podleJednani.get(klic) ?? { datum: z.h.datum, organ: z.h.organ, celkem: 0, hlasy: {} };
-  stav.celkem++;
-  stav.hlasy[z.hlas] = (stav.hlasy[z.hlas] ?? 0) + 1;
-  podleJednani.set(klic, stav);
+   Když soubor pro osobu není, sestaví se osa z funkcí a z hlasování po
+   JEDNÁNÍCH: tisíc značek nad sebou by z pruhu udělalo čáru, ze které se nic
+   nevyčte. Jednotlivé body zůstávají v tabulce hlasovací historie níže. */
+
+const zOsy = nactiOsuOsoby(osoba.id);
+const zJednotneOsy = zOsy.data.udalosti;
+
+const nahradniOsa: UdalostOsy[] = [];
+if (zJednotneOsy.length === 0) {
+  for (const [i, f] of (osoba.funkce ?? []).entries()) {
+    if (!f.od) continue;
+    nahradniOsa.push(
+      udalost({
+        id: `funkce-${osoba.id}-${i}`,
+        datum: f.od,
+        datum_do: f.do ?? null,
+        presnost: 'obdobi',
+        druh: 'funkce',
+        nadpis: f.nazev,
+        jistota: 'fakt',
+        detail: f.do ? `do ${f.do}` : 'v datech bez konce — nemusí to znamenat, že funkce trvá',
+        zdroj: 'data/lide/osobnosti.json',
+        osoby: [osoba.id],
+      }),
+    );
+  }
+
+  const podleJednani = new Map<string, { datum: string; organ: string; celkem: number; hlasy: Record<string, number> }>();
+  for (const z of st.zaznamy) {
+    if (!z.h.datum) continue;
+    const klic = `${z.h.organ}|${z.h.datum}`;
+    const stav = podleJednani.get(klic) ?? { datum: z.h.datum, organ: z.h.organ, celkem: 0, hlasy: {} };
+    stav.celkem++;
+    stav.hlasy[z.hlas] = (stav.hlasy[z.hlas] ?? 0) + 1;
+    podleJednani.set(klic, stav);
+  }
+  for (const [klic, j] of podleJednani) {
+    nahradniOsa.push(
+      udalost({
+        id: `jednani-${klic}`,
+        datum: j.datum,
+        presnost: 'den',
+        druh: 'hlasovani',
+        nadpis: `${nazevOrganu(j.organ)} — ${cislo(j.celkem)} ${sklonuj(j.celkem, 'hlasování', 'hlasování', 'hlasování')}`,
+        jistota: 'fakt',
+        detail: Object.entries(j.hlasy)
+          .map(([h, p]) => `${nazevHlasu(h)} ${cislo(p)}×`)
+          .join(', '),
+        zdroj: 'data/hlasovani/ (jmenovitá hlasování, sloučeno po jednáních)',
+        osoby: [osoba.id],
+      }),
+    );
+  }
 }
 
-const udalostiHlasovani: UdalostOsy[] = [...podleJednani.entries()].map(([klic, j]) =>
-  udalost({
-    id: `jednani-${klic}`,
-    datum: j.datum,
-    druh: 'hlasovani',
-    nadpis: `${nazevOrganu(j.organ)} — ${cislo(j.celkem)} ${sklonuj(j.celkem, 'hlasování', 'hlasování', 'hlasování')}`,
-    detail: Object.entries(j.hlasy)
-      .map(([h, p]) => `${nazevHlasu(h)} ${cislo(p)}×`)
-      .join(', '),
-    zdroj: 'hlasovani/ (jmenovité hlasování)',
-    osoby: [osoba.id],
-  }),
-);
+const naOse = slucUdalosti(zJednotneOsy, nahradniOsa);
+const moduly = popisModulu(zOsy.data.moduly);
+const zdrojeOsy =
+  moduly.length > 0
+    ? moduly
+    : [
+        ...(nahradniOsa.some((u) => u.druh === 'funkce') ? ['funkce z data/lide/osobnosti.json'] : []),
+        ...(nahradniOsa.some((u) => u.druh === 'hlasovani') ? ['jmenovitá hlasování'] : []),
+      ];
 
-const udalostiFunkci: UdalostOsy[] = (osoba.funkce ?? [])
-  .filter((f) => f.od)
-  .map((f, i) =>
-    udalost({
-      id: `funkce-${osoba.id}-${i}`,
-      datum: f.od as string,
-      datum_do: f.do ?? null,
-      druh: 'funkce',
-      nadpis: f.nazev,
-      detail: f.do ? `do ${f.do}` : 'v datech bez konce — nemusí to znamenat, že funkce trvá',
-      zdroj: 'lide/osobnosti.json',
-      osoby: [osoba.id],
-    }),
-  );
-
-const clankyOsoby = (zClanku.data ?? []).filter((c) => (c.osoby ?? []).includes(osoba.id));
-const udalostiClanku: UdalostOsy[] = clankyOsoby
-  .map((c) => {
-    const m = /^(\d{4})-(\d{2})/.exec(c.cislo ?? '');
-    if (!m) return null;
-    return udalost({
-      id: `clanek-${c.id}`,
-      datum: `${m[1]}-${m[2]}`,
-      druh: 'zpravodaj',
-      nadpis: c.nadpis,
-      popis: c.perex ?? null,
-      odkaz: `/zpravodaj/${c.cislo}`,
-      detail: `Zpravodaj ${c.cislo}${c.strana ? `, strana ${c.strana}` : ''}`,
-      zdroj: 'zpravodaj/clanky/',
-      osoby: [osoba.id],
-    });
-  })
-  .filter((u): u is UdalostOsy => u !== null);
-
-const zJednotneOsy = proOsobu(zOsy.data ?? [], osoba.id);
-const naOse = slucUdalosti(udalostiFunkci, udalostiHlasovani, udalostiClanku, zJednotneOsy);
-
-const zdrojeOsy = [
-  ...(udalostiFunkci.length > 0 ? ['lide/osobnosti.json (funkce)'] : []),
-  ...(udalostiHlasovani.length > 0 ? ['hlasovani/ (jmenovitá hlasování, po jednáních)'] : []),
-  ...(udalostiClanku.length > 0 ? ['zpravodaj/clanky/'] : []),
-  ...(zJednotneOsy.length > 0 ? ['casova_osa/'] : []),
-];
+const hlasovaniMimoOsu =
+  zOsy.data.hlasovaniVSouhrnu !== null && zOsy.data.hlasovaniVSouhrnu > 0 ? zOsy.data.hlasovaniVSouhrnu : null;
 ---
 
 <Zaklad titulek={osoba.jmeno} aktivni="lide" nadpis={osoba.jmeno}>
@@ -358,9 +356,13 @@ const zdrojeOsy = [
         id="osa-osoby"
         nadpis="Časová osa"
         udalosti={naOse}
-        popis="Funkce jako vodorovné pruhy, jednání a zmínky ve zpravodaji jako značky. Hlasování je na ose po jednáních, ne po jednotlivých bodech — jinak by z pruhu byl souvislý pás, ze kterého se nedá nic vyčíst. Jednotlivé body jsou v tabulce hlasovací historie níže."
+        popis="Funkce jako vodorovné pruhy, jednání a zmínky v tisku jako značky. Osa je lineární v čase, takže je z ní vidět i to, kdy se dlouho nic nedělo."
         zdroje={zdrojeOsy}
-        neuplnost="Osa ukazuje jen zaznamenanou veřejnou činnost z našich dat. Prázdné období neznamená, že osoba nic nedělala — znamená, že o tom v datech nic nemáme."
+        neuplnost={`Osa ukazuje jen zaznamenanou veřejnou činnost z našich dat. Prázdné období neznamená, že osoba nic nedělala — znamená, že o tom v datech nic nemáme.${
+          hlasovaniMimoOsu
+            ? ` Hlasování je na ose jen výběr; dalších ${cislo(hlasovaniMimoOsu)} zůstává v souhrnných číslech a v tabulce hlasovací historie níže.`
+            : ''
+        }`}
       />
     )
   }

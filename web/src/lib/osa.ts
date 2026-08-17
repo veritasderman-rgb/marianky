@@ -133,7 +133,7 @@ export function jeSporne(j: JistotaOsy): boolean {
 
 export function popisekJistoty(j: JistotaOsy): string {
   if (j === 'fakt') return 'doložený záznam';
-  if (j === 'sporne') return 'prameny se rozcházejí — údaj není jistý';
+  if (j === 'sporne') return 'údaj není jistý — zdroj u něj uvádí výhradu';
   if (j === 'vysoka') return 'odhad spojení, vysoká jistota — není to doložený fakt';
   if (j === 'stredni') return 'odhad spojení, střední jistota — není to doložený fakt';
   if (j === 'nizka') return 'odhad spojení, nízká jistota — nepotvrzená domněnka';
@@ -597,7 +597,7 @@ function legendaJistot(u: UdalostOsy[]): { nazev: string; trida: string }[] {
   }
   if (u.some((x) => jeSporne(x.jistota))) {
     ven.push({
-      nazev: 'prameny se rozcházejí — plná značka s přerušovaným obrysem, důvod je v tabulce',
+      nazev: 'údaj s výhradou — plná značka s přerušovaným obrysem; čím je sporný, stojí v tabulce',
       trida: 'legenda__znacka--sporne',
     });
   }

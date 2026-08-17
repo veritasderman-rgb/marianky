@@ -16,8 +16,8 @@ Soubory jsou celorepublikové (6–14 MB zabalené), takže se stahují celé do
 `.cache/` a **filtrují se až při čtení** na obec 554642. Do `data/` jde jen
 Mariánské Lázně.
 
-Tři věci, které nejsou samozřejmé
---------------------------------
+Čtyři věci, které nejsou samozřejmé
+----------------------------------
 1. **Kódování.** Adresář `csv/` v ZIPu je "excelovská" varianta ve
    windows-1250 se středníkem, adresář `csv_od/` je varianta pro otevřená
    data v UTF-8 s čárkou. Jenže ne vždycky — registr kandidátů na prezidenta
@@ -25,14 +25,21 @@ Tři věci, které nejsou samozřejmé
    adresáře, ale zkouší** (`_dekoduj`), jinak by v datech byl mojibake.
 
 2. **Okrsky se v čase mění.** Jejich počet i hranice. Kód proto ukládá
-   `okrsky.json`, kde je u každé dvojice cyklů napsané, co o srovnatelnosti
-   VÍME (počet a čísla okrsků) a co NEVÍME (hranice). Hranice zná jen
-   GeoJSON k roku 2022 — pro starší roky je zdroj nemá a **nedomýšlíme je**.
+   `okrsky.json`, kde je u každé dvojice po sobě jdoucích voleb napsané, co
+   o srovnatelnosti VÍME (počet a čísla okrsků, ta jsou přímo v datech)
+   a co NEVÍME (hranice). Hranice zná jen samostatná geografická vrstva
+   k roku 2022 a 2024 — pro starší volby je zdroj nemá a **nedomýšlíme je**.
+   Mariánské Lázně mají shodou okolností všech 36 sledovaných voleb 17
+   okrsků číslovaných 1–17, ale i tak platí: shodné číslo ≠ shodné území.
 
 3. **Rozcestník otevřených dat neuvádí všechny cykly.** Chybí na něm
-   `ps2017` a `prez2023`, přestože obě adresy existují a data mají. Seznam
-   cyklů se proto skládá z rozcestníku PLUS ručně doplněných, ověřených
-   adres (`CYKLY_NAVIC`).
+   `ps2017`, `prez2023`, `se2014` a `se2018`, přestože ty adresy existují
+   a data mají. Seznam cyklů se proto skládá z rozcestníku PLUS ručně
+   doplněných, ověřených adres (`CYKLY_NAVIC`).
+
+4. **Starší senátní cykly nemají CSV vůbec** — jen XML a Excel. Datový
+   balík se proto vybírá podle formátu: CSV má přednost, XML je záchrana
+   (`_cti_xml`). Bez toho by ze senátních voleb chyběly roky 2008–2017.
 
 Spuštění:
     python3 scrapers/volby.py                    # vše
@@ -60,7 +67,6 @@ from selectolax.parser import HTMLParser
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from lib.core import (  # noqa: E402
-    CACHE,
     DATA,
     Log,
     ZdrojSelhal,

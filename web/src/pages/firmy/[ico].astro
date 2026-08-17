@@ -2,115 +2,84 @@
 /**
  * Detail firmy s doloženým vztahem k městu.
  *
- * Vlastní stránku dostávají jen firmy, u kterých se dá vztah k městu doložit
- * (`duvody.length > 0`). Pro zbylé tisíce subjektů se sídlem ve městě by
- * stránka neřekla nic než „sídlí tady", a to už stojí v přehledu.
+ * Vlastní stránku dostávají jen firmy, které zdroj vede v přehledu důležitých
+ * (`firmy/prehled/dulezite.json`). Pro zbylé tisíce subjektů se sídlem ve
+ * městě by stránka neřekla nic než „sídlí tady", a to už stojí v přehledu.
  *
- * Kritérium důležitosti je na stránce první věc pod nadpisem — čtenář má hned
- * vidět, proč se na tuhle firmu vůbec dívá.
+ * Kritérium důležitosti je první věc pod nadpisem — čtenář má hned vidět, proč
+ * se na tuhle firmu vůbec dívá.
  */
 import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
-import { nactiProtistrany, nactiSmlouvy, nactiSubjekty, type Smlouva } from '../../lib/data';
-import { nactiOsobyFirmy } from '../../lib/vazby';
+import { nactiProtistrany, type Protistrana } from '../../lib/data';
 import { jednou } from '../../lib/cache';
-import { dulezite, nactiFirmy, sKontextem, type FirmaSKontextem } from '../../lib/firmy';
-import { nactiCasovouOsu, proIco, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
-import { cislo, datumKratke, kc, kcZkraceno, orez } from '../../lib/format';
+import { nactiDulezite, nactiMestoAFirmy, seradDulezite, type DuleziaFirma } from '../../lib/firmy';
+import { nactiOsuFirmy, popisModulu, udalost, slucUdalosti, type UdalostOsy } from '../../lib/osa';
+import { cislo, kc, kcZkraceno, sklonuj } from '../../lib/format';
 
 export async function getStaticPaths() {
-  const zFirem = jednou('firmy', nactiFirmy);
-  const zProtistran = jednou('protistrany', nactiProtistrany);
-  const zPropojeni = jednou('propojeni', nactiOsobyFirmy);
-  const zSubjektu = jednou('subjekty', nactiSubjekty);
-
-  const mestskaIca = new Set(
-    (zSubjektu.data?.subjekty ?? []).map((s) => s.ico).filter((i): i is string => Boolean(i)),
-  );
-  if (zSubjektu.data?.mesto?.ico) mestskaIca.add(zSubjektu.data.mesto.ico);
-
-  const firmy = sKontextem(zFirem.data ?? [], {
-    protistrany: zProtistran.data.protistrany ?? [],
-    propojeni: zPropojeni.data,
-    mestskaIca,
-    kc,
-    cislo,
-  });
-
-  return dulezite(firmy).map((f) => ({ params: { ico: f.klic }, props: { firma: f } }));
+  const zDulezitych = jednou('firmy-dulezite', () => nactiDulezite(kc, cislo));
+  return seradDulezite(zDulezitych.data.firmy ?? []).map((f) => ({
+    params: { ico: f.klic },
+    props: { firma: f },
+  }));
 }
 
-const { firma } = Astro.props as { firma: FirmaSKontextem };
+const { firma } = Astro.props as { firma: DuleziaFirma };
 
-const zSmluv = jednou('smlouvy', nactiSmlouvy);
-const zOsy = jednou('casova-osa', nactiCasovouOsu);
-const znameProtistrany = new Set(
-  (jednou('protistrany', nactiProtistrany).data.protistrany ?? []).map((p) => p.klic),
-);
+const zMesta = jednou('firmy-mesto', nactiMestoAFirmy);
+const zProtistran = jednou('protistrany', nactiProtistrany);
 
-/* ── Smlouvy s městem ──────────────────────────────────────────────────── */
+const vRegistru = firma.ico ? (zMesta.data.firmy.find((f) => f.ico === firma.ico) ?? null) : null;
+const protistrana: Protistrana | null = firma.ico
+  ? ((zProtistran.data.protistrany ?? []).find((p) => p.ico === firma.ico) ?? null)
+  : null;
 
-const smlouvy: (Smlouva & { odKoho: string })[] = [];
-if (firma.ico) {
-  for (const soubor of zSmluv.data ?? []) {
-    for (const s of soubor?.smlouvy ?? []) {
-      if (s?.protistrana_ico === firma.ico) smlouvy.push({ ...s, odKoho: soubor.nazev ?? soubor.ico });
-    }
-  }
-}
-smlouvy.sort((a, b) => String(b.datum ?? '').localeCompare(String(a.datum ?? '')));
-const vadnych = smlouvy.filter((s) => s.vada).length;
+/* ── Časová osa firmy ──────────────────────────────────────────────────
+   Jednotná osa z `casova_osa/firmy/{ico}.json` — jeden soubor na firmu, takže
+   se nemusí číst celý adresář. Zápis a výmaz z rejstříku se doplní z ARES,
+   protože v jednotné ose nemusí být. */
 
-/* ── Časová osa firmy ──────────────────────────────────────────────────── */
+const zOsy = firma.ico ? nactiOsuFirmy(firma.ico) : null;
+const zJednotneOsy = zOsy?.data.udalosti ?? [];
 
-const udalosti: UdalostOsy[] = [];
-
+const vlastni: UdalostOsy[] = [];
 if (firma.vznik) {
-  udalosti.push(
+  vlastni.push(
     udalost({
       id: `${firma.klic}-vznik`,
       datum: firma.vznik,
+      presnost: 'den',
       druh: 'firma',
       nadpis: 'Zápis do rejstříku',
-      detail: firma.pravniForma ?? null,
-      zdroj: 'firmy/ (ARES)',
+      detail: firma.pravniForma,
+      zdroj: 'ARES — data/firmy/subjekty.json',
+      jistota: 'fakt',
     }),
   );
 }
 if (firma.zanik) {
-  udalosti.push(
+  vlastni.push(
     udalost({
       id: `${firma.klic}-zanik`,
       datum: firma.zanik,
+      presnost: 'den',
       druh: 'firma',
       nadpis: 'Výmaz z rejstříku',
-      zdroj: 'firmy/ (ARES)',
+      zdroj: 'obchodní rejstřík přes ARES',
+      jistota: 'fakt',
     }),
   );
 }
 
-for (const s of smlouvy) {
-  if (!s.datum) continue;
-  udalosti.push(
-    udalost({
-      id: `smlouva-${s.id ?? `${s.datum}-${s.castka_czk ?? 0}`}`,
-      datum: s.datum,
-      druh: 'smlouva',
-      nadpis: s.predmet ? orez(s.predmet, 90) : 'Smlouva s městem',
-      popis: s.predmet ?? null,
-      odkaz: s.url ?? null,
-      zdroj: 'penize/smlouvy/ (registr smluv)',
-      detail: `${s.smer === 'prijem' ? 'město inkasuje' : 'město platí'} ${kc(s.castka_czk)} · ${s.odKoho}${s.vada ? ' · Hlídač označuje smlouvu za vadnou' : ''}`,
-      ica: firma.ico ? [firma.ico] : [],
-    }),
-  );
-}
-
-const zJednotneOsy = firma.ico ? proIco(zOsy.data ?? [], firma.ico) : [];
-const vseNaOse = slucUdalosti(udalosti, zJednotneOsy);
+const naOse = slucUdalosti(vlastni, zJednotneOsy);
+const zdrojeOsy = [
+  'ARES — rejstříkové zápisy',
+  ...popisModulu(zOsy?.data.moduly ?? []),
+];
 
 /* ── Dlaždice ──────────────────────────────────────────────────────────── */
 
@@ -121,32 +90,36 @@ const dlazdice: Polozka[] = [
     doplnek:
       firma.odMesta === null
         ? 'v registru smluv města firma není'
-        : `${kc(firma.odMesta)}${firma.smluv === null ? '' : ` ve ${cislo(firma.smluv)} smlouvách`}`,
-  },
-  {
-    popisek: 'Městu',
-    hodnota: firma.mestu === null ? '—' : kcZkraceno(firma.mestu, true),
-    doplnek: firma.mestu === null ? 'město od ní podle registru neinkasovalo' : kc(firma.mestu),
-  },
-  {
-    popisek: 'Existuje',
-    hodnota: firma.zanik ? 'Zanikla' : firma.vznik ? 'Zapsaná' : '—',
-    doplnek: firma.zanik
-      ? `výmaz ${firma.zanik}, zápis ${firma.vznik ?? 'v datech není'}`
-      : firma.vznik
-        ? `zápis ${firma.vznik}`
-        : 'datum vzniku v datech není',
+        : `${kc(firma.odMesta)}${firma.smluv === null ? '' : ` ve ${cislo(firma.smluv)} ${sklonuj(firma.smluv, 'smlouvě', 'smlouvách', 'smlouvách')}`}`,
   },
   {
     popisek: 'Období s městem',
-    hodnota:
-      firma.prvniRok && firma.posledniRok ? `${firma.prvniRok}–${firma.posledniRok}` : '—',
+    hodnota: firma.prvniRok && firma.posledniRok ? `${firma.prvniRok}–${firma.posledniRok}` : '—',
     doplnek:
       firma.prvniRok && firma.posledniRok
         ? 'roky, ve kterých má registr smlouvu'
         : 'v registru smluv města firma není',
   },
+  {
+    popisek: 'Existuje',
+    hodnota: firma.stav ?? (firma.zanik ? 'zaniklá' : 'v datech není'),
+    doplnek: firma.zanik
+      ? `výmaz ${firma.zanik}, zápis ${firma.vznik ?? 'v datech není'}`
+      : firma.vznik
+        ? `zápis ${firma.vznik}; datum výmazu zdroj nemá — není to „trvá"`
+        : 'datum vzniku v datech není',
+  },
+  {
+    popisek: 'Zaměstnanci',
+    hodnota: firma.zamestnancuRozsah ?? '—',
+    doplnek:
+      firma.zamestnancuRozsah === null
+        ? 'registr u téhle firmy pásmo nevede — není to nula'
+        : 'pásmo z registru ekonomických subjektů, ne přesný počet',
+  },
 ];
+
+const poLetech = vRegistru ? [...vRegistru.poLetech.entries()].sort((a, b) => a[0] - b[0]) : [];
 ---
 
 <Zaklad titulek={firma.nazev} aktivni="firmy" nadpis={firma.nazev}>
@@ -154,20 +127,30 @@ const dlazdice: Polozka[] = [
     {firma.ico ? <>IČO <span class="mono">{firma.ico}</span></> : <>bez IČO — zdroj ho u téhle firmy neuvádí</>}
     {firma.pravniForma && <> · {firma.pravniForma}</>}
     {firma.obor && <> · {firma.obor}</>}
-    {firma.sidlo && <> · {firma.sidlo}</>}
+    {firma.adresa && <> · {firma.adresa}</>}
   </p>
+
+  {
+    firma.sidloVObci === false && (
+      <p class="graf-poznamka">
+        Tahle firma dnes sídlí mimo Mariánské Lázně. ARES ji k městu váže historickou adresou —
+        v přehledu je proto, že tu dřív sídlila, ne proto, že tu sídlí teď.
+      </p>
+    )
+  }
 
   <section class="karta">
     <h2 class="karta__nadpis">Podle čeho je firma v přehledu zvýrazněná</h2>
     <p class="karta__podnadpis">
-      Kritéria jsou uzavřený seznam a každé se dá dohledat ve zdroji. Zvýraznění není
-      hodnocení firmy — jen upozornění, že s městem něco spojuje.
+      Kritéria přebírá web ze zdroje a každé se dá dohledat. Zvýraznění není hodnocení firmy —
+      jen upozornění, že s městem něco spojuje.
     </p>
     <ul class="duvody">
-      {firma.duvody.map((d) => (
+      {firma.kriteria.map((k) => (
         <li>
-          <span class="duvod__nazev">{d.nazev}</span>
-          {d.detail && <span class="duvod__detail"> — {d.detail}</span>}
+          <span class="duvod__nazev">{k.nazev}</span>
+          {k.detail && <span class="duvod__detail"> — {k.detail}</span>}
+          {k.zdroj && <span class="stav-dat__zdroj"> (zdroj: {k.zdroj})</span>}
         </li>
       ))}
     </ul>
@@ -176,115 +159,116 @@ const dlazdice: Polozka[] = [
   <Dlazdice polozky={dlazdice} />
 
   {
-    firma.mestska === true && (
+    firma.mestskyHolding && (
       <p class="graf-poznamka">
-        Tohle je organizace města. Peníze, které jí město posílá, nejsou platby cizí firmě, ale
-        financování vlastní organizace — technických služeb, kultury, sportovišť. Bez tohohle
-        rozlišení by přehled tvrdil opak toho, co v datech stojí.
+        Tohle je subjekt městského holdingu. Peníze, které mu město posílá, nejsou platby cizí
+        firmě, ale financování vlastní organizace — technických služeb, kultury, sportovišť. Bez
+        tohohle rozlišení by přehled tvrdil opak toho, co v datech stojí.
+        {firma.vnitromestskyPrevod && ' Zdroj u smluv s touhle firmou uvádí, že jde o přesun peněz uvnitř města.'}
       </p>
     )
   }
 
   {
-    vseNaOse.length > 0 && (
+    naOse.length > 0 && (
       <CasovaOsa
         id="osa-firmy"
         nadpis="Časová osa firmy"
-        udalosti={vseNaOse}
+        udalosti={naOse}
         popis="Zápis a výmaz v rejstříku, smlouvy s městem a další doložené události. Roky bez jediné události zabírají na ose stejně místa jako ostatní — mezera je informace."
-        zdroje={[
-          'firmy/ (ARES)',
-          ...(smlouvy.length > 0 ? ['penize/smlouvy/ (registr smluv)'] : []),
-          ...(zJednotneOsy.length > 0 ? ['casova_osa/'] : []),
-        ]}
-        neuplnost="Osa neobsahuje činnost firmy jako takovou, jen to, co je v našich datech — rejstříkové zápisy a smlouvy s městem."
+        zdroje={zdrojeOsy}
+        neuplnost="Osa neobsahuje činnost firmy jako takovou, jen to, co je v našich datech — rejstříkové zápisy a doklady o vztahu k městu."
       />
     )
   }
 
   {
-    firma.osoby.length > 0 && (
+    firma.hlidac && (
       <section class="karta">
-        <h2 class="karta__nadpis">Kdo ze samosprávy je u firmy uvedený</h2>
+        <h2 class="karta__nadpis">Doplňky z Hlídače státu</h2>
         <p class="karta__podnadpis">
-          Zápis ve firmě je veřejný údaj z rejstříku. Sám o sobě neznamená nic víc, než že je
-          osoba ve firmě zapsaná — přehled z něj nevyvozuje žádný závěr.
+          Hlídač uvádí pásma, ne čísla. Přesný obrat ani počet zaměstnanců nezveřejňuje ani on,
+          ani ARES.
         </p>
         <div class="tabulka-obal">
           <table>
             <thead>
-              <tr>
-                <th scope="col">Osoba</th>
-                <th scope="col">Role podle rejstříku</th>
-              </tr>
+              <tr><th scope="col">Údaj</th><th scope="col">Hodnota</th></tr>
             </thead>
             <tbody>
-              {firma.osoby.map((o) => (
-                <tr>
-                  <td>
-                    {o.osoba_id ? (
-                      <a href={`/lide/${o.osoba_id}`}>{o.jmeno ?? o.osoba_id}</a>
-                    ) : (
-                      (o.jmeno ?? 'neuvedeno')
-                    )}
-                  </td>
-                  <td>{o.role.length > 0 ? o.role.join(', ') : 'zdroj ji u firmy neuvádí'}</td>
-                </tr>
-              ))}
+              <tr><td>Pásmo obratu</td><td>{firma.hlidac.obratPasmo ?? 'v datech není'}</td></tr>
+              <tr><td>Pásmo počtu zaměstnanců</td><td>{firma.hlidac.zamestnancuPasmo ?? 'v datech není'}</td></tr>
+              <tr><td>Obor podle Hlídače</td><td>{firma.hlidac.obor ?? 'v datech není'}</td></tr>
+              <tr><td>Plátce DPH</td><td>{firma.hlidac.platceDph === null ? 'v datech není' : firma.hlidac.platceDph ? 'ano' : 'ne'}</td></tr>
+              <tr><td>Osob ve vedení</td><td>{firma.hlidac.osobVeVedeni === null ? 'v datech není' : cislo(firma.hlidac.osobVeVedeni)}</td></tr>
+              <tr>
+                <td>Z toho s politickou angažovaností nebo sponzorstvím</td>
+                <td>
+                  {firma.hlidac.osobSVazbouNaPolitiku === null
+                    ? 'v datech není'
+                    : cislo(firma.hlidac.osobSVazbouNaPolitiku)}
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <p class="graf-poznamka">
+          Poslední řádek je údaj o OSOBÁCH ve vedení, ne o firmě, a neříká nic o tom, že by na
+          něčem bylo něco v nepořádku. Politická angažovanost je veřejná a legální věc.
+          {firma.hlidac.odkaz && (
+            <>
+              {' '}
+              <a href={firma.hlidac.odkaz} rel="noreferrer noopener">Profil firmy na Hlídači státu</a>
+            </>
+          )}
+        </p>
       </section>
     )
   }
 
   <section class="karta">
-    <h2 class="karta__nadpis">Smlouvy s městem</h2>
+    <h2 class="karta__nadpis">Peníze od města po letech</h2>
     <StavDat
-      stav={zSmluv.stav}
-      zdroj="penize/smlouvy/"
-      co={`Smlouvy mezi městem a ${firma.nazev}`}
-      prazdno={zSmluv.stav === 'ok' && smlouvy.length === 0}
-      modul="A3 Peníze"
+      stav={zMesta.stav}
+      zdroj={zMesta.zdroj}
+      co={`Objem smluv mezi městem a ${firma.nazev}`}
+      prazdno={zMesta.stav === 'ok' && poLetech.length === 0}
+      modul="firmy × registr smluv"
       poznamky={
-        zSmluv.stav === 'ok' && smlouvy.length === 0 && firma.odMesta !== null
-          ? ['Souhrn z agregace peněz objem uvádí, ale jednotlivé smlouvy se k téhle firmě v datech nenašly.']
+        zMesta.stav === 'ok' && poLetech.length === 0
+          ? ['Firma je v přehledu z jiného důvodu než obchodu s městem — v registru smluv města se nenašla.']
           : []
       }
     />
     {
-      smlouvy.length > 0 && (
+      poLetech.length > 0 && (
         <>
           <p class="karta__podnadpis">
-            {cislo(smlouvy.length)} smluv z registru smluv
-            {vadnych > 0 && `, z toho ${cislo(vadnych)} označuje Hlídač státu za vážně vadné`}.
+            {vRegistru?.smer === 'prijem' ? 'Město od firmy inkasovalo' : 'Město firmě zaplatilo'}{' '}
+            {kc(vRegistru?.celkem ?? null)} ve {cislo(vRegistru?.smluv ?? 0)}{' '}
+            {sklonuj(vRegistru?.smluv ?? 0, 'smlouvě', 'smlouvách', 'smlouvách')}
+            {vRegistru?.smluvBezCeny ? `, z toho ${cislo(vRegistru.smluvBezCeny)} bez uvedené ceny` : ''}.
           </p>
           <div class="tabulka-obal">
             <table>
               <thead>
-                <tr>
-                  <th scope="col">Datum</th>
-                  <th scope="col">Předmět</th>
-                  <th scope="col">Za město</th>
-                  <th scope="col">Směr</th>
-                  <th scope="col" class="cislo">Částka</th>
-                  <th scope="col">Poznámka</th>
-                </tr>
+                <tr><th scope="col">Rok</th><th scope="col" class="cislo">Objem</th></tr>
               </thead>
               <tbody>
-                {smlouvy.map((s) => (
+                {poLetech.map(([rok, castka]) => (
                   <tr>
-                    <td class="cislo">{datumKratke(s.datum)}</td>
-                    <td>{s.url ? <a href={s.url} rel="noreferrer noopener">{s.predmet ?? 'Smlouva'}</a> : (s.predmet ?? 'Smlouva')}</td>
-                    <td>{s.odKoho}</td>
-                    <td>{s.smer === 'prijem' ? 'město inkasuje' : 'město platí'}</td>
-                    <td class="cislo">{kc(s.castka_czk)}</td>
-                    <td>{s.vada ? 'Hlídač státu označuje za vadnou' : ''}</td>
+                    <td class="cislo">{rok}</td>
+                    <td class="cislo">{kc(castka)}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {vRegistru?.smluvBezCeny ? (
+            <p class="graf-poznamka">
+              Smlouvy bez uvedené ceny se do objemů nezapočítávají. Chybějící cena není nula.
+            </p>
+          ) : null}
         </>
       )
     }
@@ -293,12 +277,12 @@ const dlazdice: Polozka[] = [
   <p>
     <a href="/firmy">← Zpět na přehled firem</a>
     {
-      firma.protistranaKlic && znameProtistrany.has(firma.protistranaKlic) && (
-        <> · <a href={`/penize/${firma.protistranaKlic}`}>Peníze od města podrobně</a></>
+      protistrana && (
+        <> · <a href={`/penize/${protistrana.klic}`}>Jednotlivé smlouvy s městem</a></>
       )
     }
     {
-      firma.ico && (
+      firma.ico && !firma.hlidac?.odkaz && (
         <>
           {' · '}
           <a href={`https://www.hlidacstatu.cz/subjekt/${firma.ico}`} rel="noreferrer noopener">
@@ -307,6 +291,5 @@ const dlazdice: Polozka[] = [
         </>
       )
     }
-    {firma.url && <> · <a href={firma.url} rel="noreferrer noopener">zdrojový záznam</a></>}
   </p>
 </Zaklad>
