@@ -912,7 +912,9 @@ def spoj(log: Log, body: list[dict], smlouvy: list[dict],
         tvrde = _tvrda_indicie(n["h"])
         kandidatu_usneseni, kandidatu_smluv = pocty_tvrde if tvrde else pocty_vse
         n_usn = kandidatu_usneseni[n["sml_i"]]
-        n_sml = kandidatu_smluv[(n["bod_i"], _identita(s))]
+        # Nejméně jedna — tahle dvojice sama. Nula by vyšla u kandidáta,
+        # který není pro svou smlouvu ten nejlepší, a mátla by.
+        n_sml = max(1, kandidatu_smluv[(n["bod_i"], _identita(s))])
         if not tvrde and (n_usn > MAX_KANDIDATU or n_sml > MAX_KANDIDATU):
             zahozeno_nejednoznacne += 1
             continue
@@ -1054,7 +1056,7 @@ METODIKA = {
                        "schvalují opakovaně a vybrat jeden bod by bylo hádání."),
     "jednoznacnost": ("kandidatu_usneseni = kolik bodů se o tutéž smlouvu uchází, "
                       "kandidatu_smluv = kolik smluv téže protistrany má tentýž bod "
-                      "za svého nejlepšího kandidáta. Jednička v obou znamená, že "
+                      "za svého nejlepšího kandidáta (nejméně tahle). Jednička v obou znamená, že "
                       "dvojice je v datech jediná svého druhu. Když by konkurentů "
                       f"bylo víc než {MAX_KANDIDATU} a nedrží to shoda částky ani "
                       "číslo smlouvy, spojení se neuloží vůbec."),
