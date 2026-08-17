@@ -117,13 +117,29 @@ Souřadnice převádět do jednotné projekce při buildu. Vždy uvést **zdroj 
 
 Barvení podle **účasti nebo podílu** → sekvenční rampa. Barvení podle **vítězné strany** → kategoriální paleta, max 6 + „Ostatní", a stranám se barva přiřazuje podle jejich identity, ne podle pořadí ve výsledku.
 
-Okrsky se v čase mění — když se srovnávají volební roky, musí to být u mapy napsané.
+Okrsky se v čase mění — když se srovnávají volební roky, musí to být u mapy napsané. Zdroj sám u polygonů uvádí šest různých dat platnosti, a **shodné číslo okrsku neznamená shodné území**.
+
+**U komunálních voleb se nesmí srovnávat hlasy s účastí.** Volič má tolik hlasů, kolik se volí zastupitelů, takže „platných hlasů" je 70 704 při 10 008 voličích. Kdo ta dvě čísla postaví vedle sebe jako srovnatelná, vyrobí nesmysl.
+
+Pravidlo o doprovodu mapy **je vynucené v kódu**, ne jen popsané: komponenta mapy s barvením ploch se bez doprovodných absolutních počtů nevykreslí a napíše proč. Zapsané pravidlo se dá přehlédnout, vynucené ne.
 
 ### 3.7 Časové osy
 
 Vodorovná osa, události jako značky, čas zleva doprava. U delších období osa **nesmí přeskakovat prázdné roky** — mezera je informace stejně jako značka.
 
-Události se liší jistotou: spojení usnesení se smlouvou má pole `jistota`, a **nízká jistota se v ose nesmí tvářit jako fakt**. Odliš ji vizuálně (slabší značka, přerušovaná čára) a popiskem.
+Události se liší jistotou a **jsou tři, ne dvě** — původně tu stály jen „fakt" a „nízká jistota", data ale rozlišují i třetí případ:
+
+| stav | co znamená | jak vypadá |
+|---|---|---|
+| `fakt` | doložený údaj | plná značka |
+| `sporne` | **doložený** údaj, ale prameny se rozcházejí (např. založení Teplé 1193 vs. 1197) | jiný tvar značky + rozpor vypsaný slovy |
+| odhad | spojení dopočítané párováním, se stupněm jistoty | slabší značka, u nízké jistoty výslovná výhrada |
+
+Rozdíl mezi `sporne` a odhadem je podstatný: **sporný údaj je doložený, jen si zdroje odporují** — není to náš dohad. Slít je dohromady by křivdilo oběma směry.
+
+Odlišuj **tvarem, ne jen barvou** — barva sama nesmí nést význam.
+
+Když je na ose hodně událostí, nekresli je jako jednotlivé značky: **900 překrytých koleček neříká nic**. Shlukuj je a velikost značky odvoď od počtu.
 
 U osy jedné entity (osoba, firma, téma) uvádět, z jakých zdrojů se skládá — jinak vypadá jako úplný obraz, ačkoliv obsahuje jen to, co je v našich datech.
 
