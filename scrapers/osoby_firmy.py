@@ -54,9 +54,10 @@ Podle toho se nastaví `stav`:
                     (typicky bývalý senátor stejného jména)
 - `nenalezeno`    — Hlídač osobu shodného jména nezná
 
-Firmy se zapisují jen u `potvrzeno` a `pravdepodobne`. U ostatních zůstává
-seznam prázdný a v záznamu je vypsaný seznam kandidátů, aby bylo vidět, proč
-se údaj nedoplnil.
+Firmy se zapisují jen u `potvrzeno` a `pravdepodobne`. U ostatních je `firmy`
+`null` a v záznamu je vypsaný seznam kandidátů, aby bylo vidět, proč se údaj
+nedoplnil. Prázdný seznam `[]` znamená něco jiného než `null`: Hlídač osobu zná
+a žádnou firmu u ní nevede.
 
 KOHO SLEDUJEME
 --------------
@@ -401,19 +402,18 @@ def main() -> None:
         pid = rozpoznani["person_id"]
         detail = sklizen["osoby"].get(pid) if pid else None
 
-        firmy = []
+        # Prázdný seznam znamená „Hlídač u osoby žádnou firmu nevede".
+        # Když detail osoby ve sklizni chybí, je to neznámý údaj, tedy null —
+        # ta dvě se nesmí splést.
+        firmy = None
         if detail:
-            for f in detail.get("firmy", []):
-                firmy.append({
-                    "ico": f["ico"],
-                    "nazev": f["nazev"],
-                    "url": f"{WEB_SUBJEKT}{f['ico']}",
-                })
+            firmy = [
+                {"ico": f["ico"], "nazev": f["nazev"], "url": f"{WEB_SUBJEKT}{f['ico']}"}
+                for f in detail.get("firmy", [])
+            ]
 
-        sponzor = (sklizen["sponzoring"].get(pid) if pid else None) or {
-            "zaznamu": None, "celkem_czk": None, "strany": [],
-            "zaznamy_uplne": False, "zaznamy": [],
-        }
+        # Totéž u sponzoringu: null = nedohledáno, ne „nesponzoroval".
+        sponzor = sklizen["sponzoring"].get(pid) if pid else None
 
         holding = {"smluv": None, "protistrany": []}
         if pid:
@@ -445,7 +445,7 @@ def main() -> None:
             },
             "firmy": firmy,
             "sponzoring": sponzor,
-            "smlouvy_se_statem": (detail or {}).get("smlouvy_se_statem") or [],
+            "smlouvy_se_statem": detail.get("smlouvy_se_statem") if detail else None,
             "smlouvy_holdingu": holding,
         })
         log.pricti()

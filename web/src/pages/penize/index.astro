@@ -6,6 +6,7 @@ import Dlazdice from '../../components/Dlazdice.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
 import { nactiProtistrany, nactiSouhrn, nactiSmlouvy, posledniKindex, spojStavy } from '../../lib/data';
+import { dodavateleZOsob, nactiDodavatelePolitiky, nactiOsobyFirmy } from '../../lib/vazby';
 import { grafHeatmapa, grafObjemPoLetech, grafSkladany, type BodObjemu } from '../../lib/grafy';
 import {
   celkem,
@@ -21,7 +22,7 @@ import {
   vRoce,
   type Smer,
 } from '../../lib/penize';
-import { cislo, kcZkraceno, sklonuj } from '../../lib/format';
+import { cislo, kc, kcZkraceno, sklonuj } from '../../lib/format';
 
 const zProtistran = nactiProtistrany();
 const zSouhrnu = nactiSouhrn();
@@ -159,6 +160,56 @@ const variantyHeatmapy = maData
   ? ([variantaHeatmapy('vydaj', 'Dodavatelé'), variantaHeatmapy('prijem', 'Odběratelé')].filter(Boolean) as Varianta[])
   : [];
 
+/* ── Dodavatelé s vazbou na politiky ──────────────────────────────────────
+   Samostatný pohled. Objem se bere z agregace peněz podle IČO, ne z propojení —
+   peníze jsou doména `penize/`, propojení jen říká, kdo je ve firmě uvedený.
+   Firmy, které se v agregaci nenajdou, se nezahazují: je u nich napsané, že
+   v registru smluv města nejsou. */
+
+const zVazebDodavatelu = nactiDodavatelePolitiky();
+const zOsobFirem = nactiOsobyFirmy();
+const zeSouboruVazeb = zVazebDodavatelu.data.length > 0;
+const dodavateleVazby = zeSouboruVazeb ? zVazebDodavatelu.data : dodavateleZOsob(zOsobFirem.data);
+const stavVazeb = zeSouboruVazeb ? zVazebDodavatelu : zOsobFirem;
+
+const protistranyPodleIca = new Map(
+  protistrany.filter((p) => p.ico).map((p) => [p.ico as string, p]),
+);
+
+const spojeniDodavatele = dodavateleVazby
+  .map((d) => ({ d, p: d.ico ? (protistranyPodleIca.get(d.ico) ?? null) : null }))
+  .sort((a, b) => (b.p?.celkem_czk ?? b.d.celkem_czk ?? 0) - (a.p?.celkem_czk ?? a.d.celkem_czk ?? 0));
+
+const vAgregaci = spojeniDodavatele.filter((x) => x.p !== null);
+const objemVazeb = vAgregaci.reduce((s, x) => s + (x.p?.celkem_czk ?? 0), 0);
+
+const variantyVazby: Varianta[] =
+  vAgregaci.length > 0
+    ? [
+        {
+          klic: 'vazby',
+          popisek: 'Firmy s vazbou na politiky',
+          graf: (() => {
+            const g = grafObjemPoLetech(
+              roky.map((rok) => ({
+                rok,
+                castka: vAgregaci.reduce((s, x) => s + (x.p ? vRoce(x.p, rok) : 0), 0),
+                smluv: null,
+              })),
+              'Platby firmám s vazbou na politiky po letech',
+            );
+            g.poznamky.push(
+              `Součet za ${cislo(vAgregaci.length)} ${sklonuj(vAgregaci.length, 'firmu', 'firmy', 'firem')}, které se podařilo spárovat s registrem smluv podle IČO. Jedna série, proto bez legendy — graf neříká, která firma kolik dostala; to je v tabulce pod ním.`,
+            );
+            g.poznamky.push(
+              'Počet smluv za rok se u tohohle pohledu nepočítá — v podkladech pro propojení není.',
+            );
+            return g;
+          })(),
+        },
+      ]
+    : [];
+
 /* ── Přehled protistran pod grafy ─────────────────────────────────────── */
 
 const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0)).slice(0, 200);
@@ -223,6 +274,98 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
             varianty={variantyHeatmapy}
           />
         )}
+
+        <section class="karta" id="dodavatele-vazby">
+          <h2 class="karta__nadpis">Dodavatelé s vazbou na politiky</h2>
+          <p class="karta__podnadpis">
+            Firmy, u kterých je některý zastupitel, radní nebo jiný politik uvedený v rejstříku,
+            a které zároveň mají smlouvu s městem nebo jeho organizacemi. Zápis ve firmě je
+            veřejný údaj — samo o sobě z něj nic neplyne. Přehled ho uvádí jako fakt a nehodnotí ho.
+            {' '}
+            <a href="/propojeni">Celý přehled vazeb</a> ukazuje i firmy, které s městem neobchodují.
+          </p>
+
+          <StavDat
+            stav={stavVazeb.stav}
+            zdroj={zeSouboruVazeb ? zVazebDodavatelu.zdroj : `${zVazebDodavatelu.zdroj} ani ${zOsobFirem.zdroj}`}
+            co="Dodavatelé s vazbou na politiky"
+            prazdno={stavVazeb.stav === 'ok' && spojeniDodavatele.length === 0}
+            modul="propojení dat"
+          />
+
+          {spojeniDodavatele.length > 0 && (
+            <>
+              <p class="graf-poznamka">
+                {cislo(spojeniDodavatele.length)}{' '}
+                {sklonuj(spojeniDodavatele.length, 'firma', 'firmy', 'firem')} s uvedenou vazbou,
+                z toho {cislo(vAgregaci.length)} se podařilo najít v registru smluv města.
+                {vAgregaci.length > 0 && <> Objem těchto smluv je {kcZkraceno(objemVazeb, true)}.</>}
+                {!zeSouboruVazeb && (
+                  <>
+                    {' '}Soubor <span class="stav-dat__zdroj">propojeni/dodavatele_politici.json</span>{' '}
+                    zatím není — seznam je poskládaný z propojení osob a firem.
+                  </>
+                )}
+              </p>
+
+              {variantyVazby.length > 0 && (
+                <GrafKarta
+                  id="vazby-objem"
+                  nadpis="Platby firmám s vazbou na politiky po letech"
+                  popis="Součet plateb firmám ze seznamu níže, po letech. Čísla pocházejí z registru smluv, ne z propojení — propojení jen určuje, které firmy do součtu patří."
+                  varianty={variantyVazby}
+                />
+              )}
+
+              <div class="tabulka-obal">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Firma</th>
+                      <th scope="col">IČO</th>
+                      <th scope="col" class="cislo">Od města celkem</th>
+                      <th scope="col" class="cislo">Smluv</th>
+                      <th scope="col">Kdo je ve firmě uvedený</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {spojeniDodavatele.map(({ d, p }) => (
+                      <tr>
+                        <td>{p ? <a href={`/penize/${p.klic}`}>{p.nazev}</a> : d.nazev}</td>
+                        <td class="mono">{d.ico ?? 'bez IČO'}</td>
+                        <td class="cislo">
+                          {p
+                            ? kc(p.celkem_czk)
+                            : d.celkem_czk !== null
+                              ? kc(d.celkem_czk)
+                              : 'v registru smluv města není'}
+                        </td>
+                        <td class="cislo">{p ? cislo(p.smluv) : (d.smluv === null ? '—' : cislo(d.smluv))}</td>
+                        <td>
+                          {d.osoby.length === 0
+                            ? 'v datech není'
+                            : d.osoby.map((o, i) => (
+                                <>
+                                  {i > 0 && ', '}
+                                  {o.osoba_id ? (
+                                    <a href={`/lide/${o.osoba_id}`}>{o.jmeno ?? o.osoba_id}</a>
+                                  ) : (
+                                    (o.jmeno ?? 'neuvedeno')
+                                  )}
+                                  {o.role.length > 0 && (
+                                    <span class="stav-dat__zdroj"> ({o.role.join(', ')})</span>
+                                  )}
+                                </>
+                              ))}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </section>
 
         <section class="karta">
           <h2 class="karta__nadpis">Všechny protistrany</h2>

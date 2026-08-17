@@ -92,6 +92,11 @@ OKNO_PRED = 545        # jak daleko zpět se hledá podpis PŘED usnesením
 # částku včetně. Zkouší se i opačný směr (usnesení s DPH, registr bez).
 SAZBY_DPH = (21, 15, 12)
 
+# Usnesení uvádějí částky zaokrouhlené na tisíce („2 000,0 tis. Kč"),
+# registr na koruny. Malý rozdíl proto shodu nevylučuje — ale nikdy se
+# nevydává za shodu přesnou, rozdíl se vypíše do důvodu.
+TOLERANCE_CASTKY = 0.002
+
 # Bodové prahy. PRAH_ULOZIT je hranice, pod kterou se spojení neuloží —
 # co se nedá odůvodnit, to se neukládá.
 PRAH_ULOZIT = 62
@@ -421,20 +426,27 @@ def _shoda_castky(castka_bodu, castka_smlouvy) -> tuple[str, str] | None:
     if a <= 0 or b <= 0:
         return None
 
+    def rozdil(x: float, y: float) -> str:
+        """Nikdy netvrdit „sedí přesně", když se částky liší. Usnesení
+        zaokrouhlují na tisíce, registr uvádí korunu — rozdíl se přizná."""
+        d = abs(x - y)
+        return "shodná" if d < 0.5 else f"rozdíl {d:,.0f} Kč".replace(",", " ")
+
     def sedi(x: float, y: float) -> bool:
-        return abs(x - y) <= max(1.0, 0.004 * max(x, y))
+        return abs(x - y) <= max(1.0, TOLERANCE_CASTKY * max(x, y))
 
     if sedi(a, b):
-        return "castka_presna", "částka bodu a smlouvy sedí přesně"
+        return "castka_presna", f"částka bodu a smlouvy si odpovídá ({rozdil(a, b)})"
     for sazba in SAZBY_DPH:
         koef = 1 + sazba / 100
         if sedi(a * koef, b):
             return (f"castka_dph_{sazba}",
-                    f"částka smlouvy odpovídá částce bodu po připočtení {sazba} % DPH")
+                    f"částka smlouvy odpovídá částce bodu po připočtení {sazba} % DPH "
+                    f"({rozdil(a * koef, b)})")
         if sedi(a, b * koef):
             return (f"castka_dph_opacne_{sazba}",
                     f"částka bodu odpovídá částce smlouvy zvýšené o {sazba} % DPH "
-                    "(bod uvedl cenu včetně daně)")
+                    f"— bod uvedl cenu včetně daně ({rozdil(a, b * koef)})")
     return None
 
 

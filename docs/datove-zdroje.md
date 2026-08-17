@@ -167,14 +167,36 @@ a statického stavu.
 <word xMin="28.346400" yMin="34.182000" xMax="55.513400" yMax="43.156000">Městský</word>
 ```
 
-Z výšky boxu (`yMax - yMin`) lze odvodit **velikost písma** → detekce nadpisů.
-Z `xMin` lze odvodit **příslušnost ke sloupci**.
+> **Opraveno po zpracování celého archivu.** Dvě doporučení, která tu původně stála, se na 122 číslech neosvědčila.
 
-Navržený postup: heuristika nad bboxy najde kandidáty na nadpisy a hranice, jazykový model pak výsledek ověří, vyčistí a doplní metadata (rubrika, osoby, témata).
+**Výška boxu NENÍ velikost písma.** Původně tu stálo, že se dá odvodit z `yMax - yMin`. Nedá: v čísle 3/2020 vychází běžný text na 30,7 pt a nadpisy na 28,5 pt, protože tělo je sázené písmem s obrovským deklarovaným FontBBoxem. Signál je tedy obrácený a heuristika by systematicky prohlašovala běžný text za nadpisy. Použitelná je místo toho **šířka slova na znak** — ta je napříč všemi ročníky konzistentní a nadpisy vycházejí 1,65× až 3,8× nad tělem textu.
 
-### OCR fallback
+**Výchozí pořadí čtení `pdftotext` neplatí univerzálně.** Pro dvousloupcovou sazbu od roku 2024 ano, ale v ročnících 2016–2017 stojí vedle sebe dva nezávislé články a poppler je prokládá po vodorovných pásech — z jednoho odstavce se stane směs dvou textů. Na tyto ročníky je potřeba **vlastní rekurzivní XY-řez**. Nadpisy se z měření mezer vynechávají (přetékají přes sloupce) a přiřazují se k textu pod sebou.
 
-I když aktuální čísla textovou vrstvu mají, **starší mohou být skenovaná**. Pipeline musí měřit hustotu extrahovaného textu a při poklesu pod práh (návrh: **< 200 znaků na stranu**) spustit `tesseract` s českým jazykovým modelem (`ces`).
+Drobnost, na které se dá ztratit půl hodiny: `-bbox-layout` občas vrátí uvnitř textu řídicí znak `\x08`, na kterém XML parser spadne. Parsovat selectolaxem.
+
+### OCR fallback — nakonec nebyl potřeba nikde
+
+Předpokládalo se, že starší ročníky budou skenované. **Nejsou: všech 122 čísel má plnou textovou vrstvu až do 02/2016**, takže OCR se nespustilo ani jednou. Detekce zůstává v kódu jako pojistka pro budoucí čísla (práh < 200 znaků na stranu, `tesseract` s modelem `ces`).
+
+### Výsledek zpracování archivu
+
+| | |
+|---|---|
+| čísel | **122 / 122** (02/2016 – 08/2026) |
+| stran | 2 476 |
+| článků | **4 519** |
+| pokrytí textu čísla | **93,4 %** (nejhůř 79 %) |
+| skenů | 0 |
+| článků začínajících uprostřed věty | 3,4 % |
+
+V archivu **chybí 01/2016 a 08/2020** — nejsou tam vůbec, není to chyba sběrače. Prázdninová dvojčísla (07-08 v letech 2019, 2021, 2022, 2023) dostávají id podle prvního měsíce a pole `mesic_do`.
+
+**Názvu souboru se nedá věřit** — číslo 02/2021 je v archivu nahrané jako `ml zpravodaj - 2020 - unor.pdf`. Autoritativní je nadpis položky ve výpisu, `Content-Disposition` slouží jen jako záloha.
+
+**`?page=N` za koncem výpisu vrací pořád poslední stránku**, ne prázdno; konec stránkování se pozná podle opakování obsahu.
+
+Prostý text každého čísla se odkládá do `data/zpravodaj/text/` (11 MB). Archiv tak přežije smazání PDF — a právě z něj staví web, protože 1,7 GB originálů se do repozitáře ani na Vercel nevejde.
 
 ### Prostředí
 
