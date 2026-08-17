@@ -89,6 +89,7 @@ class Blok:
     slov: int
     strana: int
     rubrika: str | None = None
+    je_nadpis: bool = False
 
     @property
     def stred_x(self) -> float:
@@ -270,30 +271,57 @@ def poradi_cteni(bloky: list[Blok], hloubka: int = 0) -> list[Blok]:
     V každém kroku se hledá největší souvislá mezera vodorovně i svisle
     a řeže se tou širší: svislá mezera (mezisloupcová) dá pořadí
     "nejdřív levý sloupec, pak pravý", vodorovná dá "nejdřív horní pás".
+
+    Mezery se měří JEN na běžných blocích, nadpisy se z měření vynechávají.
+    Nadpis totiž zabírá několik sloupců naráz, takže přes něj mezisloupcová
+    mezera nevede — a když se počítá s ním, čtyřsloupcová sazba ročníků
+    2018–2021 se rozsype a text článku začne uprostřed věty. Nadpis se
+    pak do poloviny zařadí tam, kam patří čtenářsky: při svislém řezu
+    podle levého okraje (patří k prvnímu sloupci, který zahajuje),
+    při vodorovném podle spodního okraje (patří k textu POD sebou).
     """
     if len(bloky) <= 1 or hloubka > 20:
         return sorted(bloky, key=lambda b: (b.y0, b.x0))
 
-    mx, rez_x = _nejvetsi_mezera([(b.x0, b.x1) for b in bloky])
-    my, rez_y = _nejvetsi_mezera([(b.y0, b.y1) for b in bloky])
+    bezne = [b for b in bloky if not b.je_nadpis] or bloky
+    mx, rez_x = _nejvetsi_mezera([(b.x0, b.x1) for b in bezne])
+    my, rez_y = _nejvetsi_mezera([(b.y0, b.y1) for b in bezne])
+
+    def svisle() -> list[Blok] | None:
+        levy = [b for b in bloky if b.x0 < rez_x]
+        pravy = [b for b in bloky if b.x0 >= rez_x]
+        if not levy or not pravy:
+            return None
+        return poradi_cteni(levy, hloubka + 1) + poradi_cteni(pravy, hloubka + 1)
+
+    def vodorovne() -> list[Blok] | None:
+        horni = [b for b in bezne if b.y1 <= rez_y]
+        dolni = [b for b in bezne if b.y1 > rez_y]
+        if not horni or not dolni:
+            return None
+        # Nadpis patří k textu, který pod ním následuje. Bere se nejbližší
+        # běžný blok pod nadpisem se společným rozsahem x — nadpis totiž
+        # bývá oddělený od svého článku fotkou přes půl stránky a podle
+        # vlastní souřadnice by skončil u článku nad sebou.
+        for h in (b for b in bloky if b.je_nadpis):
+            pod = [b for b in bezne if b.y0 >= h.y1 - 4 and b.x0 < h.x1 and h.x0 < b.x1]
+            nasleduje = min(pod, key=lambda b: b.y0) if pod else None
+            v_hornim = nasleduje.y1 <= rez_y if nasleduje is not None else h.y1 <= rez_y
+            (horni if v_hornim else dolni).append(h)
+        return poradi_cteni(horni, hloubka + 1) + poradi_cteni(dolni, hloubka + 1)
 
     if mx >= MIN_MEZERA_X and mx >= my:
-        levy = [b for b in bloky if b.x1 <= rez_x]
-        pravy = [b for b in bloky if b.x1 > rez_x]
-        if levy and pravy:
-            return poradi_cteni(levy, hloubka + 1) + poradi_cteni(pravy, hloubka + 1)
-
+        out = svisle()
+        if out:
+            return out
     if my >= MIN_MEZERA_Y:
-        horni = [b for b in bloky if b.y1 <= rez_y]
-        dolni = [b for b in bloky if b.y1 > rez_y]
-        if horni and dolni:
-            return poradi_cteni(horni, hloubka + 1) + poradi_cteni(dolni, hloubka + 1)
-
+        out = vodorovne()
+        if out:
+            return out
     if mx >= MIN_MEZERA_X:
-        levy = [b for b in bloky if b.x1 <= rez_x]
-        pravy = [b for b in bloky if b.x1 > rez_x]
-        if levy and pravy:
-            return poradi_cteni(levy, hloubka + 1) + poradi_cteni(pravy, hloubka + 1)
+        out = svisle()
+        if out:
+            return out
 
     return sorted(bloky, key=lambda b: (b.y0, b.x0))
 
@@ -738,6 +766,9 @@ def clanky_z_cisla(zaznam: dict, log: Log) -> list[dict]:
 
     telo = mira_tela(stranky)
     roztrid_bloky(stranky, telo)
+    for st in stranky:
+        for b in st.bloky:
+            b.je_nadpis = _je_nadpis(b, telo)
     slovnik = slovnik_rubrik(stranky, telo)
     priraz_rubriky(stranky, slovnik)
 
@@ -748,7 +779,7 @@ def clanky_z_cisla(zaznam: dict, log: Log) -> list[dict]:
     for st in stranky:
         serazene = poradi_cteni(st.bloky)
         for b in serazene:
-            if _je_nadpis(b, telo):
+            if b.je_nadpis:
                 akt = {
                     "strana": b.strana,
                     "rubrika": b.rubrika,

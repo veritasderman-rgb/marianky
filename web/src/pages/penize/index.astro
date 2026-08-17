@@ -68,9 +68,9 @@ const dlazdice: Polozka[] = maData
         doplnek: `${cislo(dodavatelu)} ${sklonuj(dodavatelu, 'dodavatel', 'dodavatelé', 'dodavatelů')} · ${cislo(odberatelu)} ${sklonuj(odberatelu, 'odběratel', 'odběratelé', 'odběratelů')}`,
       },
       {
-        popisek: 'Aktivních dodavatelů',
+        popisek: 'Aktivních protistran',
         hodnota: cislo(aktivnich),
-        doplnek: 'dostali peníze v posledních 12 měsících',
+        doplnek: 'mají smlouvu z posledních 12 měsíců',
       },
       {
         popisek: 'K-index Hlídače státu',
@@ -193,8 +193,7 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
         )}
         {vadnych !== null && vadnych > 0 && (
           <p class="graf-poznamka">
-            Hlídač státu označuje {cislo(vadnych)} {sklonuj(vadnych, 'smlouvu', 'smlouvy', 'smluv')} za vážně vadnou.
-            {' '}Jsou vypsané u příslušných protistran.
+            Vážně vadných smluv podle Hlídače státu: {cislo(vadnych)}. Jsou označené u příslušných protistran.
           </p>
         )}
 

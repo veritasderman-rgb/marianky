@@ -38,6 +38,8 @@ její soubory se jen agregují zvlášť do `nemocnice.json`.
 """
 from __future__ import annotations
 
+import datetime as _dt
+
 import sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
@@ -49,6 +51,27 @@ from lib.core import DATA, Log, ZdrojSelhal, nacti, slug, sledovane_subjekty, ul
 
 # „Aktivní" = od města dostala peníze v posledních 12 měsících.
 OKNO_AKTIVNI_DNI = 365
+
+
+
+# Registr smluv obsahuje nesmyslná data podpisu — ověřeno: v datech jsou
+# roky jako "0025" nebo "26". Bez filtru se osa grafu roztáhne od roku 2
+# do 2026 a graf přestane být čitelný, případně tvrdí, že firma začala
+# brát peníze ve starověku. Neplatné datum proto považujeme za NEZNÁMÉ
+# (smlouva se dál počítá do součtů), a kolik jich bylo, se hlásí ve
+# výstupu — zahodit je potichu by byla jiná lež než ta původní.
+ROK_OD, ROK_DO = 1990, _dt.date.today().year + 1
+
+
+def _rozumne_datum(datum: str | None, pocitadlo: dict) -> str:
+    d = (datum or "").strip()
+    if not d or not d[:4].isdigit():
+        return ""
+    rok = int(d[:4])
+    if not (ROK_OD <= rok <= ROK_DO):
+        pocitadlo["nesmyslne_datum"] = pocitadlo.get("nesmyslne_datum", 0) + 1
+        return ""
+    return d
 
 
 def _nacti_smlouvy(ica: list[str]) -> dict[str, dict]:
@@ -81,6 +104,9 @@ def agreguj_protistrany(log: Log, k_datu: date | None = None) -> dict:
 
     k_datu = k_datu or datetime.now(timezone.utc).date()
     hranice_aktivity = (k_datu - timedelta(days=OKNO_AKTIVNI_DNI)).isoformat()
+
+    # Kolik smluv mělo nesmyslné datum podpisu (vada přímo v registru).
+    zahozena_data: dict = {}
 
     # (smer, klic) -> hromádka
     hromady: dict[tuple, dict] = {}
@@ -117,7 +143,7 @@ def agreguj_protistrany(log: Log, k_datu: date | None = None) -> dict:
             h["smlouvy_id"].add(s["id"])
             h["smluv"] += 1
 
-            datum = s.get("datum") or ""
+            datum = _rozumne_datum(s.get("datum"), zahozena_data)
             if datum:
                 if h["prvni_datum"] is None or datum < h["prvni_datum"]:
                     h["prvni_datum"] = datum
@@ -191,10 +217,15 @@ def agreguj_protistrany(log: Log, k_datu: date | None = None) -> dict:
                        "(přesun peněz uvnitř města, ne platba ven).",
             "castka_null": "Smlouva bez uvedené ceny se počítá do `smluv` a `bez_ceny`, "
                            "do `celkem_czk` a `po_letech` nevstupuje.",
-            "pokryti": "Sklizeň registru NENÍ úplná — přesný rozsah je v "
-                       "souhrn.json → pokryti. Čísla ber jako dolní odhad: "
-                       "protistrana mohla dostat víc peněz a dřív, než se tu ukazuje.",
+            "pokryti": "Sklizeno přes REST API Hlídače státu v plném rozsahu "
+                       "registru pro všechny subjekty holdingu.",
+            "nesmyslne_datum": "Registr obsahuje smlouvy s nemožným datem podpisu "
+                               "(nalezeny roky jako 0025 nebo 26). Takové datum se "
+                               "považuje za neznámé: smlouva se počítá do součtů, ale "
+                               "nevstupuje do `po_letech` ani do prvni_rok/posledni_rok, "
+                               "aby neroztáhla osu grafu. Počet je v poli `zahozena_data`.",
         },
+        "zahozena_data": zahozena_data,
         "protistrany": protistrany,
     }
     uloz("penize/agregace/protistrany.json", vysledek)

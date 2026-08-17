@@ -1,8 +1,12 @@
 """Sběrač B1 — Kdo je kdo.
 
-Natáhne z webu města to, co jde získat automaticky (zastupitelé, rada, vedení,
-vedoucí odborů úřadu, ředitelé a jednatelé městských organizací) a sloučí to
-do `data/lide/osobnosti.json`.
+Natáhne z webu města to, co jde získat automaticky — zastupitelstvo, radu,
+vedení města, vedoucí odborů úřadu, ředitele a jednatele městských organizací
+a členy dozorčích rad městských firem — a sloučí to do
+`data/lide/osobnosti.json`.
+
+Zbytek databáze (historické osobnosti, kultura, sport, věda, podnikání) je
+doplněn ručně a sběrač se ho nedotýká.
 
 ZÁSADY (drží se docs/PLAN.md):
 
@@ -41,6 +45,11 @@ WEB = "https://www.muml.cz"
 # Volební období 2022–2026. Ustavující zasedání zastupitelstva proběhlo v
 # říjnu 2022 po komunálních volbách 23.–24. 9. 2022.
 OBDOBI_OD = "2022-10"
+
+# Web města sneseme jen v rozumné dávce — modulů, které ho čtou, je víc.
+# Hodinová cache znamená, že opakované spuštění během ladění nesahá na server
+# znovu, denní běh přesto dostane čerstvá data.
+CACHE_S = 3600
 
 # Kontrolní minima — když se jich nedosáhne, zdroj se nejspíš rozbil.
 MIN_ZASTUPITELU = 15
@@ -163,6 +172,13 @@ def rozloz_jmeno(jmeno: str) -> tuple[str, str]:
 
     `id` MUSÍ odpovídat `osoba_id` v hlasování a v článcích zpravodaje,
     proto se počítá z jména bez titulů a bez diakritiky.
+
+    Pravidlo je **příjmení + jedno křestní jméno**, nikdy víc. „Johann Wolfgang
+    von Goethe" je `goethe-johann`, ne `goethe-johann-wolfgang` — jinak by se
+    tentýž člověk v článcích zpravodaje a tady rozešel na dva různé lidi.
+    Výjimky (predikáty typu „von Heilborn", panovnická jména jako „Eduard VII.")
+    se v `data/lide/osobnosti.json` udržují ručně; sběrač na ně na webu města
+    nenarazí.
     """
     if jmeno.strip() in VYJIMKY:
         return VYJIMKY[jmeno.strip()]
@@ -178,41 +194,8 @@ def rozloz_jmeno(jmeno: str) -> tuple[str, str]:
 
 
 # --------------------------------------------------------------------------
-# Parsování stránek
+# Sjednocení názvů
 # --------------------------------------------------------------------------
-
-def _osoby_na_strance(html: str) -> list[dict]:
-    """Vytáhne bloky `div.person` — jméno, politická příslušnost, funkce.
-
-    Kontakty (telefon, mobil, e-mail) se záměrně ignorují.
-    """
-    strom = HTMLParser(html)
-    out = []
-    for blok in strom.css("div.person"):
-        nadpis = blok.css_first("h3")
-        if not nadpis:
-            continue
-        jmeno = cistit(nadpis.text())
-        if not jmeno:
-            continue
-        funkce = blok.css_first("div.function")
-        strana = None
-        for span in blok.css("span"):
-            t = cistit(span.text())
-            if t.lower().startswith("politická příslušnost"):
-                strana = t.split(":", 1)[1].strip() or None
-        out.append({
-            "jmeno_raw": jmeno,
-            "funkce": cistit(funkce.text()) if funkce else None,
-            "strana": normalizuj_stranu(strana),
-        })
-    return out
-
-
-def _nazev_stranky(html: str) -> str:
-    h1 = HTMLParser(html).css_first("div.gcm-main h1")
-    return cistit(h1.text()) if h1 else ""
-
 
 # Web města píše tutéž funkci na různých stránkách různě. Bez sjednocení by
 # vznikaly dvojí záznamy („starosta" a „starosta města").
@@ -260,6 +243,43 @@ def normalizuj_funkci(nazev: str) -> str:
     return NAZVY_FUNKCI.get(n.lower(), n)
 
 
+# --------------------------------------------------------------------------
+# Parsování stránek
+# --------------------------------------------------------------------------
+
+def _osoby_na_strance(html: str) -> list[dict]:
+    """Vytáhne bloky `div.person` — jméno, politická příslušnost, funkce.
+
+    Kontakty (telefon, mobil, e-mail) se záměrně ignorují.
+    """
+    strom = HTMLParser(html)
+    out = []
+    for blok in strom.css("div.person"):
+        nadpis = blok.css_first("h3")
+        if not nadpis:
+            continue
+        jmeno = cistit(nadpis.text())
+        if not jmeno:
+            continue
+        funkce = blok.css_first("div.function")
+        strana = None
+        for span in blok.css("span"):
+            t = cistit(span.text())
+            if t.lower().startswith("politická příslušnost"):
+                strana = t.split(":", 1)[1].strip() or None
+        out.append({
+            "jmeno_raw": jmeno,
+            "funkce": cistit(funkce.text()) if funkce else None,
+            "strana": strana,
+        })
+    return out
+
+
+def _nazev_stranky(html: str) -> str:
+    h1 = HTMLParser(html).css_first("div.gcm-main h1")
+    return cistit(h1.text()) if h1 else ""
+
+
 def _zaznam(jmeno_raw: str, *, kategorie: str, role: str,
             funkce: list[dict], strana: str | None, zdroj: str) -> dict:
     ident, jmeno = rozloz_jmeno(jmeno_raw)
@@ -273,12 +293,14 @@ def _zaznam(jmeno_raw: str, *, kategorie: str, role: str,
         "popis": None,
         "zdroje": [zdroj],
         "zijici": True,
+        "narozen": None,
+        "zemrel": None,
     }
 
 
 def sber_zastupitele(log: Log) -> list[dict]:
     url = STRANKY["zastupitelstvo"]
-    osoby = _osoby_na_strance(fetch(url, max_age=0))
+    osoby = _osoby_na_strance(fetch(url, max_age=CACHE_S))
     if len(osoby) < MIN_ZASTUPITELU:
         raise ZdrojSelhal(
             f"Seznam zastupitelů vrátil jen {len(osoby)} osob (min. {MIN_ZASTUPITELU}) — "
@@ -298,7 +320,7 @@ def sber_zastupitele(log: Log) -> list[dict]:
 
 def sber_rada(log: Log) -> list[dict]:
     url = STRANKY["rada"]
-    osoby = _osoby_na_strance(fetch(url, max_age=0))
+    osoby = _osoby_na_strance(fetch(url, max_age=CACHE_S))
     if not osoby:
         raise ZdrojSelhal(f"Na {url} nebyl nalezen žádný člen rady")
     out = []
@@ -320,7 +342,7 @@ def sber_vedeni(log: Log) -> list[dict]:
     a stranické zázemí v první položce seznamu pod ním.
     """
     url = STRANKY["vedeni"]
-    strom = HTMLParser(fetch(url, max_age=0))
+    strom = HTMLParser(fetch(url, max_age=CACHE_S))
     hlavni = strom.css_first("div.gcm-main")
     if hlavni is None:
         raise ZdrojSelhal(f"Na {url} chybí blok div.gcm-main")
@@ -350,12 +372,19 @@ def sber_vedeni(log: Log) -> list[dict]:
 
 
 def _sber_subjektu(log: Log, kody: list[str], *, kategorie: str, role: str,
-                   klice: tuple[str, ...], minimum: int, popis: str) -> list[dict]:
+                   klice: tuple[str, ...], minimum: int, popis: str,
+                   chybi: str = "bez uvedeného vedoucího") -> list[dict]:
+    """Projde stránky subjektů telefonního seznamu a vybere z nich jen ty osoby,
+    jejichž funkce odpovídá některému z `klice`.
+
+    `minimum` je pojistka: když se osoba nenajde u dost subjektů, není to
+    „nikdo tam není", ale nejspíš změna struktury zdroje — a to je chyba.
+    """
     out = []
     nalezeno_subjektu = 0
     for kod in kody:
         url = f"{WEB}/kontakty/telefonni-seznam/subjekt-{kod}.html"
-        html = fetch(url, max_age=0)
+        html = fetch(url, max_age=CACHE_S)
         nazev = _nazev_stranky(html)
         mel_nekoho = False
         for o in _osoby_na_strance(html):
@@ -371,7 +400,7 @@ def _sber_subjektu(log: Log, kody: list[str], *, kategorie: str, role: str,
         if mel_nekoho:
             nalezeno_subjektu += 1
         else:
-            log.info(f"{popis}: bez uvedeného vedoucího", subjekt=nazev or kod)
+            log.info(f"{popis}: {chybi}", subjekt=nazev or kod)
     if nalezeno_subjektu < minimum:
         raise ZdrojSelhal(
             f"{popis}: vedoucí nalezen jen u {nalezeno_subjektu} z {len(kody)} subjektů "
@@ -388,15 +417,18 @@ def sber_urad(log: Log) -> list[dict]:
 
 
 def sber_organizace(log: Log) -> list[dict]:
+    """Ředitelé příspěvkových organizací a škol, jednatelé městských firem."""
     return _sber_subjektu(log, ORGANIZACE, kategorie="mestske-firmy", role="statutár",
                           klice=FIRMY_FUNKCE, minimum=MIN_ORGANIZACI,
                           popis="městské organizace")
 
 
 def sber_dozorci_rady(log: Log) -> list[dict]:
+    """Zástupci města v dozorčích radách městských a spoluvlastněných firem."""
     return _sber_subjektu(log, DOZORCI_RADY, kategorie="mestske-firmy",
                           role="člen dozorčí rady", klice=DOZORCI_FUNKCE,
-                          minimum=MIN_DOZORCICH_RAD, popis="dozorčí rady")
+                          minimum=MIN_DOZORCICH_RAD, popis="dozorčí rady",
+                          chybi="bez uvedeného člena dozorčí rady")
 
 
 # --------------------------------------------------------------------------
@@ -408,6 +440,15 @@ RUCNI_POLE = ("popis", "kategorie", "zijici", "narozen", "zemrel")
 
 PORADI_KATEGORII = ["politika", "urad", "mestske-firmy", "kultura", "sport",
                     "veda", "podnikani", "historie"]
+
+# Web (modul B2) čte pevnou sadu polí. Každý záznam je musí mít všechna
+# a ve stejném pořadí, i když je zrovna prázdné.
+POLE = ["id", "jmeno", "role", "kategorie", "strana", "funkce", "popis",
+        "zdroje", "zijici", "narozen", "zemrel"]
+
+
+def _sjednot_pole(z: dict) -> dict:
+    return {k: z.get(k) for k in POLE}
 
 
 def _stejna_funkce(a: dict, b: dict) -> bool:
@@ -482,8 +523,9 @@ def slouc(stare: list[dict], nove: list[dict], log: Log) -> list[dict]:
                  id=ident, funkce=nazev)
 
     poradi = {k: i for i, k in enumerate(PORADI_KATEGORII)}
-    return sorted(podle_id.values(),
-                  key=lambda z: (poradi.get(z.get("kategorie"), 99), z["id"]))
+    serazene = sorted(podle_id.values(),
+                      key=lambda z: (poradi.get(z.get("kategorie"), 99), z["id"]))
+    return [_sjednot_pole(z) for z in serazene]
 
 
 # --------------------------------------------------------------------------
