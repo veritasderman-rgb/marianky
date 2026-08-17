@@ -2,14 +2,19 @@
 import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
 import PolozkaHlasovaniKarta from '../../components/PolozkaHlasovani.astro';
-import { nactiCiselnikTagu, nactiHlasovani } from '../../lib/data';
+import { nactiCiselnikTagu, nactiHlasovani, nactiProtistrany } from '../../lib/data';
 import { mapaTagu, seradRoky, spocitejTagy, zplostiHlasovani } from '../../lib/prehledy';
+import { nactiVazbyHlasovani, vazbyPodleHlasovani } from '../../lib/vazby';
 import { cislo, nazevOrganu, orderCs, sklonuj } from '../../lib/format';
 
 const zHlasovani = nactiHlasovani();
 const zTagu = nactiCiselnikTagu();
+const zVazeb = nactiVazbyHlasovani();
+const vazby = vazbyPodleHlasovani(zVazeb.data ?? []);
+const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 
 const polozky = zplostiHlasovani(zHlasovani.data ?? []);
+const sVazbou = polozky.filter((p) => (vazby.get(p.id)?.length ?? 0) > 0).length;
 const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
 const pocty = spocitejTagy(polozky);
 const roky = seradRoky(polozky);
@@ -40,6 +45,20 @@ const skupiny = zTagu.data?.skupiny ?? [];
   />
 
   {zTagu.stav !== 'ok' && <StavDat stav={zTagu.stav} zdroj={zTagu.zdroj} co="Číselník tagů" />}
+
+  {
+    zVazeb.stav !== 'ok' && (
+      <StavDat
+        stav={zVazeb.stav}
+        zdroj={zVazeb.zdroj}
+        co="Označení vazeb hlasujících na dotčené firmy"
+        modul="propojení dat"
+        poznamky={[
+          'Dokud soubor nevznikne, u hlasování žádné vazby vidět nejsou. Neznamená to, že žádné neexistují — jen se zatím nepárovaly.',
+        ]}
+      />
+    )
+  }
 
   {
     polozky.length > 0 && (
@@ -103,6 +122,16 @@ const skupiny = zTagu.data?.skupiny ?? [];
             <input type="search" id="f-text" name="text" placeholder="např. kolonáda" autocomplete="off" />
           </div>
 
+          {sVazbou > 0 && (
+            <div class="filtr">
+              <span class="filtr__popisek">Vazby</span>
+              <label class="filtr__zaskrtnuti">
+                <input type="checkbox" id="f-vazba" name="vazba" />
+                <span>Jen s vazbou na dotčenou firmu ({cislo(sVazbou)})</span>
+              </label>
+            </div>
+          )}
+
           <div class="filtry__akce">
             <button type="button" class="tlacitko" id="f-reset">Zrušit filtry</button>
           </div>
@@ -119,7 +148,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
 
         <ul class="seznam" id="seznam-hlasovani">
           {polozky.map((h) => (
-            <PolozkaHlasovaniKarta h={h} ciselnik={ciselnik} />
+            <PolozkaHlasovaniKarta h={h} ciselnik={ciselnik} vazby={vazby.get(h.id) ?? []} zname={zname} />
           ))}
         </ul>
 
@@ -152,6 +181,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
         rok: document.getElementById('f-rok') as HTMLSelectElement,
         vysledek: document.getElementById('f-vysledek') as HTMLSelectElement,
         text: document.getElementById('f-text') as HTMLInputElement,
+        vazba: document.getElementById('f-vazba') as HTMLInputElement | null,
       };
 
       const bezDiakritiky = (s: string) =>
@@ -163,6 +193,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
         const rok = pole.rok.value;
         const vysledek = pole.vysledek.value;
         const text = bezDiakritiky(pole.text.value.trim());
+        const jenVazba = Boolean(pole.vazba?.checked);
 
         let videno = 0;
         for (const li of polozky) {
@@ -172,6 +203,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
             (!organ || li.dataset.organ === organ) &&
             (!rok || li.dataset.rok === rok) &&
             (!vysledek || li.dataset.vysledek === vysledek) &&
+            (!jenVazba || li.dataset.vazba === '1') &&
             (!text || (li.dataset.hledat ?? '').includes(text));
           li.hidden = !ok;
           if (ok) videno++;
@@ -187,6 +219,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
           if (organ) q.set('organ', organ);
           if (rok) q.set('rok', rok);
           if (vysledek) q.set('vysledek', vysledek);
+          if (jenVazba) q.set('vazba', '1');
           if (pole.text.value.trim()) q.set('text', pole.text.value.trim());
           const adresa = q.toString() ? `?${q}` : location.pathname;
           history.replaceState(null, '', adresa);
@@ -204,6 +237,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
       nastav(pole.rok, 'rok');
       nastav(pole.vysledek, 'vysledek');
       nastav(pole.text, 'text');
+      if (pole.vazba && q.get('vazba') === '1') pole.vazba.checked = true;
 
       form.addEventListener('change', () => pouzij());
       pole.text.addEventListener('input', () => pouzij());

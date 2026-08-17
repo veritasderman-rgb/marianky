@@ -1,6 +1,7 @@
 ---
 import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
+import Sledovat from '../../components/Sledovat.astro';
 import { nactiCiselnikTagu, nactiClanky, nactiHlasovani, nactiUsneseni, type Tag } from '../../lib/data';
 import { zplostiHlasovani, zplostiUsneseni } from '../../lib/prehledy';
 import { cislo, datumKratke, kc, nazevOrganu, nazevVysledku, orez } from '../../lib/format';
@@ -86,9 +87,17 @@ const roky = [...new Set(udalosti.map((u) => u.datum.slice(0, 4)).filter(Boolean
 ---
 
 <Zaklad titulek={`Téma: ${tag.nazev}`} aktivni="usneseni" nadpis={tag.nazev} uvod={tag.popis}>
-  <p class="pocet-vysledku">
-    {udalosti.length > 0 ? `${cislo(udalosti.length)} záznamů z usnesení, hlasování a zpravodaje · ` : ''}
-    <a href={`/hlasovani/tag/${tag.id}`}>Jen hlasování k tématu</a>
+  <div class="radek-akci">
+    <p class="pocet-vysledku">
+      {udalosti.length > 0 ? `${cislo(udalosti.length)} záznamů z usnesení, hlasování a zpravodaje · ` : ''}
+      <a href={`/hlasovani/tag/${tag.id}`}>Jen hlasování k tématu</a>
+    </p>
+    <Sledovat tag={tag.id} nazev={tag.nazev} />
+  </div>
+
+  <p class="graf-poznamka">
+    Sledování je uložené jen ve vašem prohlížeči — na úvodní stránce se z něj složí přehled
+    nejnovějšího dění ve sledovaných tématech. Nic se neodesílá a nic se neregistruje.
   </p>
 
   <StavDat

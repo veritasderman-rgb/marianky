@@ -30,6 +30,7 @@ const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.o
   data-rok={h.rok ?? ''}
   data-vysledek={h.vysledek}
   data-hledat={hledat}
+  data-vazba={vazby.length > 0 ? '1' : undefined}
 >
   <div class="polozka__hlava">
     <span>{nazevOrganu(h.organ)}</span>
@@ -52,6 +53,8 @@ const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.o
     </span>
     <Znacky tagy={h.tagy} ciselnik={ciselnik} />
   </div>
+
+  <Vazby vazby={vazby} zname={zname} />
 
   {
     h.jmenovite.length > 0 && (

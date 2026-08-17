@@ -100,8 +100,12 @@ PRAH_VYSOKA = 98
 
 # Kolik nejlepších bodů usnesení si u jedné smlouvy necháme. Když je shoda
 # nerozhodná (rámcová smlouva a její dodatky), je poctivější nabídnout
-# několik kandidátů než jednoho vylosovat.
+# několik kandidátů než jednoho vylosovat. Nad tenhle počet už se ale
+# nelosuje vůbec — dvojice se bez tvrdé indicie zahodí.
 MAX_KANDIDATU = 3
+
+# O kolik bodů smí být kandidát horší než nejlepší, aby ještě „byl ve hře".
+ROZDIL_KANDIDATU = 12
 
 # Jméno rozeseté po stovkách usnesení je slabší identita než jméno, které
 # padne na hrstku bodů — a jméno, které je shodou okolností i běžné české
@@ -305,11 +309,20 @@ def nacti_smlouvy(log: Log) -> list[dict]:
             "Nenalezena žádná data/penize/smlouvy/*.json — nejdřív spusť scrapers/hlidac.py"
         )
     smlouvy: list[dict] = []
+    videne: set[str] = set()
+    duplicit = 0
     for cesta in soubory:
         obsah = nacti(cesta)
         subjekt_ico = obsah.get("ico") or cesta.stem
         subjekt_nazev = obsah.get("nazev") or ""
         for s in obsah.get("smlouvy", []):
+            # Když jsou v registru sledované obě strany, tatáž smlouva je
+            # v datech dvakrát. Bez tohoto by každý řetěz vznikl dvakrát
+            # a součty by tvrdily dvojnásobek skutečnosti.
+            if s.get("id") in videne:
+                duplicit += 1
+                continue
+            videne.add(s.get("id"))
             protistrana_ico = (s.get("protistrana_ico") or "").strip()
             # Zdroj u části smluv místo protistrany zopakoval sám subjekt —
             # protistrana je tím pádem neznámá, ne že by jí bylo město.
@@ -331,22 +344,29 @@ def nacti_smlouvy(log: Log) -> list[dict]:
                 "_cisla": _cisla_smlouvy(s.get("predmet") or ""),
                 "_slova": _obsahova_slova(s.get("predmet") or ""),
             })
-    log.info("načteno smluv", pocet=len(smlouvy), subjektu=len(soubory))
+    log.info("načteno smluv", pocet=len(smlouvy), subjektu=len(soubory),
+             duplicit_mezi_subjekty=duplicit)
     return smlouvy
 
 
-def nacti_penize(log: Log) -> dict[str, dict]:
-    """Agregace protistran — konec řetězu: kolik ta firma od města dostala."""
+def nacti_penize(log: Log) -> dict[tuple[str, str], dict]:
+    """Agregace protistran — konec řetězu: kolik ta firma od města dostala.
+
+    Agregace vede každou protistranu zvlášť pro směr `vydaj` a `prijem`
+    (a u subjektů bez IČO drží klíč v názvu, ne v poli `ico`), takže klíč
+    tady musí být dvojice (směr, identita) — jinak se půlka záznamů
+    navzájem přepíše.
+    """
     agr = nacti("penize/agregace/protistrany.json")
     if not agr:
         raise ZdrojSelhal(
             "Chybí data/penize/agregace/protistrany.json — "
             "nejdřív spusť pipeline/agregace_penez.py"
         )
-    out: dict[str, dict] = {}
+    out: dict[tuple[str, str], dict] = {}
     for p in agr.get("protistrany", []):
-        klic = p["ico"] if p.get("klic_dle") == "ico" else f"nazev:{p['ico']}"
-        out[klic] = p
+        identita = p["ico"] if p.get("klic_dle") == "ico" else "nazev:" + slug(p.get("nazev") or "")
+        out[(p.get("smer") or "", identita)] = p
     log.info("načteno protistran", pocet=len(out))
     return out
 
@@ -451,8 +471,21 @@ def _prekryv_predmetu(bod: dict, smlouva: dict) -> tuple[int, str | None]:
     return 0, None
 
 
+def _sila_nazvu(vyskytu: int) -> tuple[int, str | None]:
+    """Kolik váží shoda názvu podle toho, na kolik bodů usnesení jméno padlo."""
+    mez_d, body_d = NAZEV_DISTINKTIVNI
+    mez_b, body_b = NAZEV_BEZNY
+    if vyskytu <= mez_d:
+        return body_d, None
+    if vyskytu <= mez_b:
+        return body_b, f"název se ale objevuje v {vyskytu} bodech usnesení"
+    return NAZEV_VSUDYPRITOMNY, (
+        f"název se objevuje v {vyskytu} bodech usnesení, sám o sobě neurčuje nic"
+    )
+
+
 def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
-             distinktivni: bool) -> dict | None:
+             vyskytu_jmena: int) -> dict | None:
     """Sečte indicie pro jednu dvojici. None = nedá se odůvodnit."""
     if bod["den"] is None or smlouva["_den"] is None:
         return None
@@ -473,11 +506,12 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
             skore += 12
             duvody.append("v usnesení je i název protistrany")
         else:
-            skore += 38 if distinktivni else 24
+            b, vyhrada = _sila_nazvu(vyskytu_jmena)
+            skore += b
             duvody.append(f"název protistrany ({smlouva.get('protistrana')}) "
                           "je v textu usnesení")
-            if not distinktivni:
-                duvody.append("název je ale v usneseních častý, sám o sobě nestačí")
+            if vyhrada:
+                duvody.append(vyhrada)
     if not signaly:
         return None
 
@@ -522,17 +556,22 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
     return {"skore": skore, "signaly": signaly, "duvody": duvody, "odstup_dni": odstup}
 
 
-def _jistota(h: dict) -> str:
-    """Skóre a signály na tři stupně, které web ukazuje čtenáři."""
+def _jistota(h: dict, kandidatu_usneseni: int = 1, kandidatu_smluv: int = 1) -> str:
+    """Skóre, signály a jednoznačnost na tři stupně, které web ukazuje čtenáři.
+
+    Jednoznačnost je stejně důležitá jako skóre: dvojice, ke které existuje
+    pět stejně dobrých alternativ, není jistá, ať má bodů kolik chce.
+    """
     s, sig = h["skore"], set(h["signaly"])
     ma_castku = any(x.startswith("castka_") for x in sig)
     tvrda_identita = "ico" in sig or "cislo_smlouvy" in sig
     v_case = bool({"cas_tesne", "cas_bezne", "cas_siroke"} & sig)
+    jedina = kandidatu_usneseni == 1 and kandidatu_smluv == 1
 
-    if (s >= PRAH_VYSOKA and v_case and tvrda_identita
+    if (s >= PRAH_VYSOKA and v_case and tvrda_identita and jedina
             and (ma_castku or "cislo_smlouvy" in sig)):
         return "vysoka"
-    if s >= PRAH_STREDNI and v_case:
+    if s >= PRAH_STREDNI and v_case and (_tvrda_indicie(h) or jedina):
         return "stredni"
     return "nizka"
 
@@ -563,11 +602,13 @@ def _vystup_smlouvy(s: dict) -> dict:
     }
 
 
-def _vystup_penez(s: dict, penize: dict[str, dict]) -> dict | None:
+def _vystup_penez(s: dict, penize: dict[tuple[str, str], dict]) -> dict | None:
     """Konec řetězu: co protistrana od města dostala (nebo městu zaplatila) celkem."""
-    p = penize.get(s["_ico"]) if s["_ico"] else None
+    smer = s.get("smer") or ""
+    ico = (s.get("protistrana_ico") or "").strip()
+    p = penize.get((smer, ico)) if ico else None
     if p is None:
-        p = penize.get("nazev:" + slug(s.get("protistrana") or ""))
+        p = penize.get((smer, "nazev:" + slug(s.get("protistrana") or "")))
     if p is None:
         return None
     return {
@@ -580,32 +621,51 @@ def _vystup_penez(s: dict, penize: dict[str, dict]) -> dict | None:
     }
 
 
-def _retez(bod: dict, smlouva: dict, h: dict, penize: dict[str, dict],
-           jistota: str | None = None) -> dict:
+def _retez(bod: dict, smlouva: dict, h: dict, penize: dict[tuple[str, str], dict],
+           jistota: str | None = None,
+           nejednoznacnost: tuple[int, int] = (1, 1)) -> dict:
+    n_usn, n_sml = nejednoznacnost
+    duvody = list(h["duvody"])
+    if n_usn > 1:
+        duvody.append(f"stejně dobře sedí i {n_usn - 1} další usnesení")
+    if n_sml > 1:
+        duvody.append(f"témuž usnesení odpovídá i {n_sml - 1} dalších smluv téže protistrany")
     return {
         "id": f"{bod['organ']}-{bod['datum'][:4]}-{bod['bod']}__{smlouva.get('id')}",
-        "jistota": jistota or _jistota(h),
+        "jistota": jistota or _jistota(h, n_usn, n_sml),
         "skore": h["skore"],
         "signaly": h["signaly"],
-        "duvod": "; ".join(h["duvody"]),
+        "duvod": "; ".join(duvody),
         "odstup_dni": h["odstup_dni"],
+        # Kolik jiných usnesení se hlásí k téže smlouvě a kolik jiných smluv
+        # téže protistrany k témuž usnesení. Jednička v obou znamená, že
+        # dvojice je v datech jediná svého druhu.
+        "kandidatu_usneseni": n_usn,
+        "kandidatu_smluv": n_sml,
         "usneseni": _vystup_bodu(bod),
         "smlouva": _vystup_smlouvy(smlouva),
         "penize": _vystup_penez(smlouva, penize),
     }
 
 
-def spoj(log: Log, body: list[dict], smlouvy: list[dict],
-         penize: dict[str, dict]) -> tuple[list[dict], list[dict]]:
+def _identita(s: dict) -> str:
+    return s["_ico"] or s["_jadro"]
+
+
+def _navrhy(log: Log, body: list[dict], smlouvy: list[dict]) -> tuple[list[dict], list[dict]]:
+    """První průchod: ke každé smlouvě posbírá všechny odůvodnitelné dvojice.
+
+    Rozhodovat se tady ještě nedá — jestli je dvojice věrohodná, závisí i na
+    tom, kolik jiných dvojic se o totéž uchází. To ví až druhý průchod.
+    """
     dle_ica, dle_zacatku = _rejstriky(body)
     cache_jmen: dict[str, set[int]] = {}
-
-    retezy: list[dict] = []
-    pred: list[dict] = []
+    dopredu: list[dict] = []
+    zpetne: list[dict] = []
     bez_identity = 0
-    bez_kandidata = 0
+    bez_zminky = 0
 
-    for s in smlouvy:
+    for si, s in enumerate(smlouvy):
         if s["_den"] is None:
             continue
         if not s["_ico"] and not s["_jadro"]:
@@ -619,13 +679,11 @@ def spoj(log: Log, body: list[dict], smlouvy: list[dict],
             idx_nazev = cache_jmen[s["_jadro"]]
         else:
             idx_nazev = set()
-
         if not idx_ico and not idx_nazev:
-            bez_kandidata += 1
+            bez_zminky += 1
             continue
-        distinktivni = 0 < len(idx_nazev) <= PRAH_DISTINKTIVNI
 
-        hodnoceni: list[tuple[dict, dict]] = []
+        nejlepsi_zpetny: dict | None = None
         for i in idx_ico | idx_nazev:
             b = body[i]
             if b["den"] is None:
@@ -634,35 +692,93 @@ def spoj(log: Log, body: list[dict], smlouvy: list[dict],
             if odstup > OKNO_SIROKE or odstup < -OKNO_PRED:
                 continue
             h = _ohodnot(b, s, ma_ico=i in idx_ico, ma_nazev=i in idx_nazev,
-                         distinktivni=distinktivni)
-            if h:
-                hodnoceni.append((b, h))
-        if not hodnoceni:
-            continue
-        hodnoceni.sort(key=lambda x: (-x[1]["skore"], abs(x[1]["odstup_dni"])))
-
-        # Podpis PŘED usnesením není shoda — jde na vlastní hromádku a jen
-        # tehdy, když ho drží tvrdá indicie (částka nebo číslo smlouvy).
-        for b, h in hodnoceni:
-            if h["odstup_dni"] >= 0:
+                         vyskytu_jmena=len(idx_nazev))
+            if not h:
                 continue
-            tvrde = ("cislo_smlouvy" in h["signaly"]
-                     or any(x.startswith("castka_") for x in h["signaly"]))
-            if tvrde:
-                pred.append(_retez(b, s, h, penize, jistota="varovani"))
-                break
+            navrh = {"bod_i": i, "sml_i": si, "h": h}
+            if odstup >= 0:
+                dopredu.append(navrh)
+            elif _tvrda_indicie(h) and (
+                nejlepsi_zpetny is None or h["skore"] > nejlepsi_zpetny["h"]["skore"]
+            ):
+                # Podpis PŘED usnesením není shoda. Bereme jen ten nejlépe
+                # doložený, a jen když ho drží částka nebo číslo smlouvy.
+                nejlepsi_zpetny = navrh
+        if nejlepsi_zpetny:
+            zpetne.append(nejlepsi_zpetny)
 
-        dopredne = [(b, h) for b, h in hodnoceni if h["odstup_dni"] >= 0]
-        if not dopredne or dopredne[0][1]["skore"] < PRAH_ULOZIT:
+    log.info("smlouvy nepárovatelné podle identity",
+             bez_identity=bez_identity, identita_bez_zminky=bez_zminky)
+    return dopredu, zpetne
+
+
+def _pocty_kandidatu(navrhy: list[dict], smlouvy: list[dict]
+                     ) -> tuple[dict[int, int], dict[tuple[int, str], int]]:
+    """(smlouva → kolik bodů se o ni uchází, bod+firma → kolik jejích smluv)."""
+    dle_smlouvy: dict[int, int] = defaultdict(int)
+    dle_bodu: dict[tuple[int, str], int] = defaultdict(int)
+    for n in navrhy:
+        dle_smlouvy[n["sml_i"]] += 1
+        dle_bodu[(n["bod_i"], _identita(smlouvy[n["sml_i"]]))] += 1
+    return dle_smlouvy, dle_bodu
+
+
+def _tvrda_indicie(h: dict) -> bool:
+    """Částka nebo číslo smlouvy — jediné signály, které vážou konkrétní kus."""
+    return "cislo_smlouvy" in h["signaly"] or any(
+        x.startswith("castka_") for x in h["signaly"]
+    )
+
+
+def spoj(log: Log, body: list[dict], smlouvy: list[dict],
+         penize: dict[tuple[str, str], dict]) -> tuple[list[dict], list[dict]]:
+    dopredu, zpetne = _navrhy(log, body, smlouvy)
+
+    # --- druhý průchod: jak moc je dvojice jednoznačná ---
+    # Bez tvrdé indicie drží dvojici jen to, že firma je v usnesení zmíněná
+    # a smlouva přišla brzy po něm. Když se ale o tutéž smlouvu uchází pět
+    # usnesení, nebo když jedno usnesení o firmě sedí na padesát jejích
+    # smluv, není to zjištění, je to losování — a ty se neukládají.
+    nejlepsi_pro_smlouvu: dict[int, int] = {}
+    for n in dopredu:
+        si, sk = n["sml_i"], n["h"]["skore"]
+        if sk > nejlepsi_pro_smlouvu.get(si, -1):
+            nejlepsi_pro_smlouvu[si] = sk
+
+    ve_hre = [n for n in dopredu
+              if n["h"]["skore"] >= PRAH_ULOZIT
+              and n["h"]["skore"] >= nejlepsi_pro_smlouvu[n["sml_i"]] - ROZDIL_KANDIDATU]
+
+    # Konkurence se počítá ve stejné váhové kategorii. Dvojici drženou
+    # shodou částky neshazuje to, že se k témuž usnesení volně hlásí
+    # padesát dalších smluv téže firmy — ta shoda míří na konkrétní kus.
+    pocty_vse = _pocty_kandidatu(ve_hre, smlouvy)
+    pocty_tvrde = _pocty_kandidatu([n for n in ve_hre if _tvrda_indicie(n["h"])], smlouvy)
+
+    ve_hre.sort(key=lambda n: (n["sml_i"], -n["h"]["skore"], abs(n["h"]["odstup_dni"])))
+
+    retezy: list[dict] = []
+    zahozeno_nejednoznacne = 0
+    poradi: dict[int, int] = defaultdict(int)
+    for n in ve_hre:
+        s = smlouvy[n["sml_i"]]
+        tvrde = _tvrda_indicie(n["h"])
+        kandidatu_usneseni, kandidatu_smluv = pocty_tvrde if tvrde else pocty_vse
+        n_usn = kandidatu_usneseni[n["sml_i"]]
+        n_sml = kandidatu_smluv[(n["bod_i"], _identita(s))]
+        if not tvrde and (n_usn > MAX_KANDIDATU or n_sml > MAX_KANDIDATU):
+            zahozeno_nejednoznacne += 1
             continue
-        nejlepsi = dopredne[0][1]["skore"]
-        for b, h in dopredne[:MAX_KANDIDATU]:
-            if h["skore"] < PRAH_ULOZIT or h["skore"] < nejlepsi - 12:
-                break
-            retezy.append(_retez(b, s, h, penize))
+        poradi[n["sml_i"]] += 1
+        if poradi[n["sml_i"]] > MAX_KANDIDATU:
+            continue
+        retezy.append(_retez(body[n["bod_i"]], s, n["h"], penize,
+                             nejednoznacnost=(n_usn, n_sml)))
 
-    log.info("smlouvy nepárovatelné podle identity", bez_identity=bez_identity,
-             identita_bez_zminky=bez_kandidata)
+    pred = [_retez(body[n["bod_i"]], smlouvy[n["sml_i"]], n["h"], penize,
+                   jistota="varovani") for n in zpetne]
+
+    log.info("zahozeno jako nejednoznačné", pocet=zahozeno_nejednoznacne)
     retezy.sort(key=lambda r: (r["smlouva"]["datum"] or "", str(r["smlouva"]["id"])))
     pred.sort(key=lambda r: (r["smlouva"]["datum"] or "", str(r["smlouva"]["id"])))
     return retezy, pred

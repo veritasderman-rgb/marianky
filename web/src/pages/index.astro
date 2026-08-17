@@ -2,7 +2,9 @@
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import VydaniKarta from '../components/Vydani.astro';
+import Sledovat from '../components/Sledovat.astro';
 import {
+  nactiCiselnikTagu,
   nactiCisla,
   nactiClanky,
   nactiHlasovani,
@@ -13,7 +15,7 @@ import {
   type Nacteno,
 } from '../lib/data';
 import { zplostiHlasovani, zplostiUsneseni } from '../lib/prehledy';
-import { cislo, datum } from '../lib/format';
+import { cislo, datum, datumKratke, nazevOrganu, nazevVysledku, orderCs, orez } from '../lib/format';
 
 const zVydani = nactiVydani();
 const vydani = zVydani.data ?? [];
@@ -60,6 +62,83 @@ function stavTrida(r: Radek): string {
   if (r.pocet === 0) return 'neznamo';
   return 'dobre';
 }
+
+/* ── Podklad pro osobní sekci „Vaše sledovaná témata" ─────────────────────
+   Web je statický a bez přihlášení: výběr témat žije jen v localStorage
+   prohlížeče. Server proto nemůže vědět, co kdo sleduje — do stránky se vloží
+   poslední dění ke VŠEM tématům a prohlížeč z toho vybere jen ta sledovaná.
+   Data se skládají při buildu, nic se nikam nedotahuje. */
+
+const zTagu = nactiCiselnikTagu();
+const tagy = [...(zTagu.data?.tagy ?? [])].sort((a, b) => orderCs(a.nazev, b.nazev));
+
+interface UdalostTematu {
+  /** ISO datum — jen pro řazení. */
+  d: string;
+  /** Datum k zobrazení, naformátované už při buildu. */
+  dz: string;
+  /** Druh záznamu — Usnesení / Hlasování / Zpravodaj. */
+  k: string;
+  n: string; // nadpis
+  m: string; // doplňující údaje
+  o: string | null; // odkaz
+}
+
+const NEJVYSE_UDALOSTI = 5;
+const denikTemat = new Map<string, UdalostTematu[]>();
+
+function pridejUdalost(tagyPolozky: string[] | undefined, u: UdalostTematu): void {
+  for (const t of tagyPolozky ?? []) {
+    const pole = denikTemat.get(t);
+    if (pole) pole.push(u);
+    else denikTemat.set(t, [u]);
+  }
+}
+
+for (const u of zplostiUsneseni(zUsneseni.data ?? [])) {
+  pridejUdalost(u.tagy, {
+    d: u.datum,
+    dz: datumKratke(u.datum),
+    k: 'Usnesení',
+    n: orez(u.nazev ?? '', 140),
+    m: `${nazevOrganu(u.organ)} · bod ${u.cislo}`,
+    o: u.url ?? null,
+  });
+}
+
+for (const h of zplostiHlasovani(zHlasovani.data ?? [])) {
+  pridejUdalost(h.tagy, {
+    d: h.datum,
+    dz: datumKratke(h.datum),
+    k: 'Hlasování',
+    n: orez(h.nazev ?? '', 140),
+    m: `${nazevOrganu(h.organ)} · ${nazevVysledku(h.vysledek)} · pro ${h.pro}, proti ${h.proti}, zdrželo se ${h.zdrzel}`,
+    o: null,
+  });
+}
+
+for (const c of zClanku.data ?? []) {
+  const m = /^(\d{4})-(\d{2})/.exec(c.cislo ?? '');
+  pridejUdalost(c.tagy, {
+    d: m ? `${m[1]}-${m[2]}-01` : '',
+    dz: m ? `${Number(m[2])}/${m[1]}` : '—',
+    k: 'Zpravodaj',
+    n: orez(c.nadpis ?? '', 140),
+    m: `Zpravodaj ${c.cislo}${c.strana ? `, strana ${c.strana}` : ''}`,
+    o: `/zpravodaj/${c.cislo}`,
+  });
+}
+
+const denikProKlienta: Record<string, { nazev: string; udalosti: UdalostTematu[] }> = {};
+for (const t of tagy) {
+  const udalosti = (denikTemat.get(t.id) ?? [])
+    .sort((a, b) => b.d.localeCompare(a.d))
+    .slice(0, NEJVYSE_UDALOSTI);
+  denikProKlienta[t.id] = { nazev: t.nazev, udalosti };
+}
+
+// `<` se escapuje, aby obsah nemohl předčasně ukončit značku <script>.
+const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
 ---
 
 <Zaklad
@@ -103,6 +182,46 @@ function stavTrida(r: Radek): string {
     )
   }
 
+  <section class="sledovana" id="sledovana">
+    <h2>Vaše sledovaná témata</h2>
+    <p class="uvod">
+      Témata si můžete označit na stránce tématu nebo v seznamu níže. Výběr zůstává jen ve vašem
+      prohlížeči — web je statický, nic se neodesílá a nikam se nepřihlašujete. Když prohlížeč
+      vyčistíte, výběr zmizí.
+    </p>
+
+    <div id="sledovana-obsah">
+      <div class="stav-dat">
+        <strong class="stav-dat__nadpis">Sledování potřebuje JavaScript</strong>
+        <span>
+          Bez něj se výběr témat nedá uložit ani zobrazit. Všechna témata mají vlastní stránku,
+          například <a href="/temata/rozpocet">/temata/rozpocet</a>.
+        </span>
+      </div>
+    </div>
+
+    {
+      tagy.length > 0 && (
+        <details class="tabulkovy-pohled">
+          <summary>Vybrat témata ke sledování ({cislo(tagy.length)})</summary>
+          <ul class="seznam-temat">
+            {tagy.map((t) => (
+              <li class="seznam-temat__polozka">
+                <a href={`/temata/${t.id}`}>{t.nazev}</a>
+                <span class="seznam-temat__pocet">
+                  {cislo((denikTemat.get(t.id) ?? []).length)} záznamů
+                </span>
+                <Sledovat tag={t.id} nazev={t.nazev} kompakt />
+              </li>
+            ))}
+          </ul>
+        </details>
+      )
+    }
+
+    <script type="application/json" id="denik-temat" set:html={denikJson} />
+  </section>
+
   <section>
     <h2>Co v přehledu už je</h2>
     <p class="uvod">
@@ -138,3 +257,136 @@ function stavTrida(r: Radek): string {
     </div>
   </section>
 </Zaklad>
+
+<script>
+  /* ── Osobní sekce „Vaše sledovaná témata" ─────────────────────────────
+     Data ke všem tématům jsou v <script type="application/json"> na stránce,
+     výběr v localStorage. Skript jen spáruje jedno s druhým — žádné dotahování
+     dat, funguje i offline.
+
+     Texty ze zdrojů (názvy usnesení, firem) se do DOM vkládají výhradně přes
+     textContent, nikdy přes innerHTML. */
+  {
+    interface Udalost {
+      d: string;
+      dz: string;
+      k: string;
+      n: string;
+      m: string;
+      o: string | null;
+    }
+    type Denik = Record<string, { nazev: string; udalosti: Udalost[] }>;
+
+    const KLIC = 'sledovana-temata';
+    const obal = document.getElementById('sledovana-obsah');
+    const zdroj = document.getElementById('denik-temat');
+
+    let denik: Denik = {};
+    try {
+      denik = zdroj?.textContent ? (JSON.parse(zdroj.textContent) as Denik) : {};
+    } catch {
+      denik = {};
+    }
+
+    function sledovana(): string[] {
+      try {
+        const s = localStorage.getItem(KLIC);
+        const d: unknown = s ? JSON.parse(s) : [];
+        return Array.isArray(d) ? d.filter((x): x is string => typeof x === 'string') : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function prvek(znacka: string, trida: string, text?: string): HTMLElement {
+      const el = document.createElement(znacka);
+      if (trida) el.className = trida;
+      if (text !== undefined) el.textContent = text;
+      return el;
+    }
+
+    function hlaska(nadpis: string, text: string): HTMLElement {
+      const box = prvek('div', 'stav-dat stav-dat--prazdno');
+      box.appendChild(prvek('strong', 'stav-dat__nadpis', nadpis));
+      box.appendChild(prvek('span', '', text));
+      return box;
+    }
+
+    function vykresli(): void {
+      if (!obal) return;
+      obal.textContent = '';
+      const vybrana = sledovana().filter((t) => denik[t]);
+
+      if (vybrana.length === 0) {
+        obal.appendChild(
+          hlaska(
+            'Zatím nesledujete žádné téma',
+            'Vyberte si témata v seznamu níže nebo tlačítkem „Sledovat téma“ přímo na stránce tématu. Přehled se pak složí tady.',
+          ),
+        );
+        return;
+      }
+
+      const seznam = prvek('ul', 'seznam');
+      for (const id of vybrana) {
+        const t = denik[id];
+        const li = prvek('li', 'polozka');
+
+        const hlava = prvek('div', 'polozka__hlava');
+        hlava.appendChild(prvek('span', '', 'Sledované téma'));
+        hlava.appendChild(
+          prvek('span', '', t.udalosti.length === 0 ? 'zatím bez záznamů' : `poslední: ${t.udalosti[0].dz}`),
+        );
+        li.appendChild(hlava);
+
+        const nadpis = prvek('h3', 'polozka__nazev');
+        const odkaz = document.createElement('a');
+        odkaz.href = `/temata/${encodeURIComponent(id)}`;
+        odkaz.textContent = t.nazev;
+        nadpis.appendChild(odkaz);
+        li.appendChild(nadpis);
+
+        if (t.udalosti.length === 0) {
+          li.appendChild(
+            prvek('p', 'graf-poznamka', 'K tomuhle tématu zatím v datech není žádný záznam.'),
+          );
+        } else {
+          const ul = prvek('ul', 'deni');
+          for (const u of t.udalosti) {
+            const radek = prvek('li', 'deni__polozka');
+            radek.appendChild(prvek('span', 'deni__datum', u.dz));
+            radek.appendChild(prvek('span', 'deni__druh', u.k));
+            if (u.o) {
+              const a = document.createElement('a');
+              a.href = u.o;
+              a.textContent = u.n;
+              if (u.o.startsWith('http')) a.rel = 'noreferrer noopener';
+              radek.appendChild(a);
+            } else {
+              radek.appendChild(prvek('span', '', u.n));
+            }
+            radek.appendChild(prvek('span', 'deni__meta', u.m));
+            ul.appendChild(radek);
+          }
+          li.appendChild(ul);
+        }
+
+        const patka = prvek('p', 'graf-poznamka');
+        const naHlasovani = document.createElement('a');
+        naHlasovani.href = `/hlasovani/tag/${encodeURIComponent(id)}`;
+        naHlasovani.textContent = 'Hlasování k tématu';
+        patka.appendChild(naHlasovani);
+        li.appendChild(patka);
+
+        seznam.appendChild(li);
+      }
+      obal.appendChild(seznam);
+    }
+
+    document.addEventListener('temata-zmena', vykresli);
+    window.addEventListener('storage', (e) => {
+      if (e.key === KLIC) vykresli();
+    });
+    vykresli();
+  }
+</script>

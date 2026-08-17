@@ -791,6 +791,12 @@ def clanky_z_cisla(zaznam: dict, log: Log) -> list[dict]:
             log.chyba(f"{zaznam['id']}/str. {st.cislo}: XY-řez vrátil jiný počet bloků, beru prosté pořadí")
             serazene = sorted(st.bloky, key=lambda b: (b.y0, b.x0))
         for b in serazene:
+            # Inzertní blok se nepřilepuje k okolnímu článku. Reklama se
+            # totiž zpravidla vůbec nestane samostatným článkem (nemá nadpis
+            # v článkové velikosti), takže bez tohohle by skončila uprostřed
+            # textu sousedního článku.
+            if ZAHOZENA_RUBRIKA.search(_norm(b.rubrika or "")):
+                continue
             if b.je_nadpis:
                 akt = {
                     "strana": b.strana,

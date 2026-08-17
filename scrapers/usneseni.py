@@ -324,10 +324,29 @@ def parsuj_detail(html: str) -> dict:
 # --------------------------------------------------------------------------
 
 # "1 250 000 Kč", "1.250.000,- Kč", "250 000,00 Kč", "2,4 mil. Kč", "800 tis. Kč"
+#
+# POZOR na volnost tohohle vzoru — původní verze měla uvnitř čísla prostě
+# třídu [\d .,]*, takže přes mezery a konce řádků slepila dvě nesouvisející
+# čísla do jednoho. "Rozpočet na rok 2020 ... příjmy 700 000" se tak četl
+# jako 2 020 700 000 Kč a účetní položka "8115 209 + 200,0 tis." jako
+# 51 612 190 000 Kč. Vzor teď vyžaduje ŘÁDNÉ české oddělování tisíců po
+# trojicích: první skupina 1–3 číslice, další přesně tři. Letopočet (čtyři
+# číslice v kuse) tím z čísla vypadne sám.
+_MEZERY = " \xa0\u202f"
+_SKUPINY = rf"\d{{1,3}}(?:[{_MEZERY}.]\d{{3}})+(?:,\d+)?"
+# "1.250.000,- Kč" je běžný účetní zápis; ",-" musí vzor spolknout,
+# jinak na něm uvázne a částku vůbec nenajde.
+_KONCOVKA = r"(?:,[-\u2013])?"
+_PROSTE = r"\d{1,9}(?:[,.]\d{1,2})?"
 _CASTKA = re.compile(
-    r"(\d[\d   .,]*?)\s*(mil\.?|mld\.?|tis\.?)?\s*(?:Kč|CZK)\b",
+    rf"(?<![\d,.])({_SKUPINY}|{_PROSTE}){_KONCOVKA}\s*(mil\.?|mld\.?|tis\.?)?\s*(?:Kč|CZK)\b",
     re.IGNORECASE,
 )
+
+# Rozpočet celého města se pohybuje ve stovkách milionů. Jediný bod usnesení
+# nad miliardu je v třináctitisícovém městě prakticky vyloučený a v praxi
+# vždycky znamenal špatně přečtené číslo.
+STROP_CASTKY = 1_000_000_000
 
 
 def _cislo(surove: str, nasobek: int) -> float | None:
@@ -335,11 +354,23 @@ def _cislo(surove: str, nasobek: int) -> float | None:
     if not t or not t[0].isdigit():
         return None
     if nasobek > 1:
-        # U "2,4 mil." je čárka desetinná; tečka taky ("1.5 mil.").
-        t = t.replace(",", ".")
-        if t.count(".") > 1:
+        # Pozor, tady byla chyba za 400násobek: "397.951,0 tis. Kč" je
+        # 397 951 tisíc, tedy 397,9 mil. Naivní záměna čárky za tečku
+        # vyrobila "397.951.0", dvě tečky, a funkce to zahodila jako
+        # nesmysl — rozpočet města tím z usnesení zmizel a nahradilo ho
+        # první menší číslo, které se v textu našlo.
+        #
+        # České psaní odděluje tisíce tečkou a desetinnou část čárkou.
+        if "," in t:
+            t = t.replace(".", "").replace(",", ".")
+        elif re.fullmatch(r"\d{1,3}(\.\d{3})+", t):
+            t = t.replace(".", "")          # "1.250 tis." = 1 250 tisíc
+        elif t.count(".") > 1:
             return None
-        return float(t) * nasobek
+        try:
+            return float(t) * nasobek
+        except ValueError:
+            return None
     if "," in t:  # "250000,00" — čárka je desetinná, tečky jsou oddělovače tisíců
         t = t.replace(".", "").replace(",", ".")
     elif "." in t:
@@ -366,8 +397,8 @@ def castka_z_textu(text: str) -> int | None:
         hodnota = _cislo(surove, nasobek)
         if hodnota is None or hodnota <= 0:
             continue
-        if hodnota > 1e11:
-            continue  # nad 100 mld. jde jistě o špatně přečtené číslo
+        if hodnota > STROP_CASTKY:
+            continue  # nad strop = špatně přečtené číslo, ne skutečná částka
         nejvic = max(nejvic, hodnota)
     return int(round(nejvic)) if nejvic else None
 

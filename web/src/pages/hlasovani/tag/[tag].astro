@@ -2,8 +2,10 @@
 import Zaklad from '../../../layouts/Zaklad.astro';
 import StavDat from '../../../components/StavDat.astro';
 import PolozkaHlasovaniKarta from '../../../components/PolozkaHlasovani.astro';
-import { nactiCiselnikTagu, nactiHlasovani, type Tag } from '../../../lib/data';
+import Sledovat from '../../../components/Sledovat.astro';
+import { nactiCiselnikTagu, nactiHlasovani, nactiProtistrany, type Tag } from '../../../lib/data';
 import { mapaTagu, spocitejTagy, zplostiHlasovani, type PolozkaHlasovani } from '../../../lib/prehledy';
+import { nactiVazbyHlasovani, vazbyPodleHlasovani } from '../../../lib/vazby';
 import { cislo, nazevOrganu, orderCs } from '../../../lib/format';
 
 export async function getStaticPaths() {
@@ -34,18 +36,28 @@ const { tag, polozky } = Astro.props as Props;
 const zHlasovani = nactiHlasovani();
 const zTagu = nactiCiselnikTagu();
 const ciselnikMapa = mapaTagu(zTagu.data?.tagy ?? []);
+const vazby = vazbyPodleHlasovani(nactiVazbyHlasovani().data ?? []);
+const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 const organy = [...new Set(polozky.map((p) => p.organ))].sort(orderCs);
 const roky = [...new Set(polozky.map((p) => p.rok).filter((r): r is number => r !== null))].sort((a, b) => b - a);
 ---
 
 <Zaklad titulek={`Hlasování — ${tag.nazev}`} aktivni="hlasovani" nadpis={`Hlasování: ${tag.nazev}`} uvod={tag.popis}>
-  <p class="pocet-vysledku">
-    {
-      polozky.length > 0
-        ? `${cislo(polozky.length)} hlasování · ${organy.map(nazevOrganu).join(' a ')} · roky ${roky[roky.length - 1]}–${roky[0]}`
-        : ''
-    }
-    <a href={`/hlasovani?tema=${tag.id}`}>Otevřít v plném filtru</a>
+  <div class="radek-akci">
+    <p class="pocet-vysledku">
+      {
+        polozky.length > 0
+          ? `${cislo(polozky.length)} hlasování · ${organy.map(nazevOrganu).join(' a ')} · roky ${roky[roky.length - 1]}–${roky[0]}`
+          : ''
+      }
+      <a href={`/hlasovani?tema=${tag.id}`}>Otevřít v plném filtru</a>
+    </p>
+    <Sledovat tag={tag.id} nazev={tag.nazev} />
+  </div>
+
+  <p class="graf-poznamka">
+    Sledovaná témata se ukládají jen ve vašem prohlížeči. Nikam se neodesílají, nic se neregistruje.
+    Na úvodní stránce se z nich pak složí přehled nejnovějšího dění.
   </p>
 
   <StavDat
@@ -60,7 +72,7 @@ const roky = [...new Set(polozky.map((p) => p.rok).filter((r): r is number => r 
     polozky.length > 0 && (
       <ul class="seznam">
         {polozky.map((h) => (
-          <PolozkaHlasovaniKarta h={h} ciselnik={ciselnikMapa} />
+          <PolozkaHlasovaniKarta h={h} ciselnik={ciselnikMapa} vazby={vazby.get(h.id) ?? []} zname={zname} />
         ))}
       </ul>
     )
