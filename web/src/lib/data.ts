@@ -360,7 +360,7 @@ export interface Ciselnik {
 /* ─────────────────────────────  Konkrétní loadery  ────────────────────────── */
 
 /** Slug pro URL — bez diakritiky, jen písmena, číslice a pomlčky. */
-function slug(s: string): string {
+export function slug(s: string): string {
   return s
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -368,6 +368,16 @@ function slug(s: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .slice(0, 60);
+}
+
+/**
+ * Klíč protistrany. Musí se počítat na jednom místě, aby agregace
+ * (`protistrany.json`) a jednotlivé smlouvy (`smlouvy/*.json`) spadly do
+ * stejného kbelíku i tam, kde registr IČO neuvádí.
+ */
+export function klicProtistrany(ico: string | null | undefined, nazev: string | null | undefined): string {
+  if (typeof ico === 'string' && ico) return ico;
+  return `n-${slug(nazev ?? '')}`;
 }
 
 export function nactiProtistrany(): Nacteno<AgregaceProtistran> {
@@ -389,7 +399,7 @@ export function nactiProtistrany(): Nacteno<AgregaceProtistran> {
     v.data.protistrany = v.data.protistrany
       .filter((p) => p && typeof p.nazev === 'string' && p.nazev.length > 0)
       .map((p) => {
-        const zaklad = typeof p.ico === 'string' && p.ico ? p.ico : `n-${slug(p.nazev)}`;
+        const zaklad = klicProtistrany(p.ico, p.nazev);
         let klic = zaklad;
         for (let i = 2; videne.has(klic); i++) klic = `${zaklad}-${i}`;
         videne.add(klic);

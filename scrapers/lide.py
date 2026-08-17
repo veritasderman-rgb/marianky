@@ -494,12 +494,19 @@ def main() -> dict:
     log.info("stávající databáze", osob=len(stare))
 
     nove: list[dict] = []
-    nove += sber_zastupitele(log)
-    nove += sber_rada(log)
-    nove += sber_vedeni(log)
-    nove += sber_urad(log)
-    nove += sber_organizace(log)
-    nove += sber_dozorci_rady(log)
+    try:
+        nove += sber_zastupitele(log)
+        nove += sber_rada(log)
+        nove += sber_vedeni(log)
+        nove += sber_urad(log)
+        nove += sber_organizace(log)
+        nove += sber_dozorci_rady(log)
+    except ZdrojSelhal as e:
+        # Selhání se zapíše do logu běhu a pak bublá dál. Databáze zůstává
+        # netknutá — polovičatý sběr by z ní smazal víc, než by přinesl.
+        log.chyba(str(e))
+        log.uzavri()
+        raise
 
     vysledek = slouc(stare, nove, log)
     uloz(SOUBOR, vysledek)

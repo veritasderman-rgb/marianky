@@ -6,7 +6,7 @@
  * z `data/penize/smlouvy/*.json`, pokud existují. Když ne, do UI se napíše
  * „v datech není". Nic se nedohaduje.
  */
-import type { Protistrana, SmlouvySubjektu } from './data';
+import { klicProtistrany as klicZ, type Protistrana, type SmlouvySubjektu } from './data';
 import { souvisleRoky, type RadekHeatmapy, type SerieSkladana } from './grafy';
 import { sestavRegistr, type RegistrBarev } from './barvy';
 import { rokZData } from './format';
@@ -31,7 +31,7 @@ export interface IndexSmluv {
 }
 
 const klicRoku = (smer: string, rok: number) => `${smer}|${rok}`;
-const klicProtistrany = (smer: string, ico: string, rok: number) => `${smer}|${ico}|${rok}`;
+const klicBunky = (smer: string, klic: string, rok: number) => `${smer}|${klic}|${rok}`;
 
 export function indexujSmlouvy(soubory: SmlouvySubjektu[]): IndexSmluv {
   const poRoce = new Map<string, number>();
@@ -47,10 +47,9 @@ export function indexujSmlouvy(soubory: SmlouvySubjektu[]): IndexSmluv {
       const smer = String(s.smer ?? '');
       smery.add(smer);
       poRoce.set(klicRoku(smer, rok), (poRoce.get(klicRoku(smer, rok)) ?? 0) + 1);
-      if (s.protistrana_ico) {
-        const k = klicProtistrany(smer, s.protistrana_ico, rok);
-        poProtistrane.set(k, (poProtistrane.get(k) ?? 0) + 1);
-      }
+      // Klíč se počítá stejně jako v agregaci, aby seděl i u smluv bez IČO.
+      const k = klicBunky(smer, klicZ(s.protistrana_ico, s.protistrana), rok);
+      poProtistrane.set(k, (poProtistrane.get(k) ?? 0) + 1);
     }
   }
   return { dostupny: videno > 0, smery, poRoce, poProtistrane };
@@ -64,11 +63,11 @@ export function smluvZaRok(index: IndexSmluv, smer: Smer, rok: number): number |
 export function smluvProtistranyZaRok(
   index: IndexSmluv,
   smer: Smer,
-  ico: string,
+  protistrana: Pick<Protistrana, 'klic'>,
   rok: number,
 ): number | null {
   if (!index.dostupny || !index.smery.has(smer)) return null;
-  return index.poProtistrane.get(klicProtistrany(smer, ico, rok)) ?? 0;
+  return index.poProtistrane.get(klicBunky(smer, protistrana.klic, rok)) ?? 0;
 }
 
 /** Roky, které se mají objevit na ose. Chybějící rok uvnitř rozsahu = nula, ne díra. */
