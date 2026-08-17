@@ -189,35 +189,52 @@ const vAgregaci = spojeniDodavatele.filter((x) => x.p !== null);
 const objemVazeb = vAgregaci.reduce((s, x) => s + (x.p?.celkem_czk ?? 0), 0);
 const mestskychVazeb = spojeniDodavatele.filter((x) => x.d.mestsky === true).length;
 
-const variantyVazby: Varianta[] =
-  vAgregaci.length > 0
-    ? [
-        {
-          klic: 'vazby',
-          popisek: 'Firmy s vazbou na politiky',
-          graf: (() => {
-            // Osa se počítá z těchhle firem, ne z celé agregace — jinak by graf
-            // začínal roky, ve kterých žádná z nich ještě neexistovala.
-            const rokyVazeb = rokyZProtistran(vAgregaci.map((x) => x.p!));
-            const g = grafObjemPoLetech(
-              rokyVazeb.map((rok) => ({
-                rok,
-                castka: vAgregaci.reduce((s, x) => s + (x.p ? vRoce(x.p, rok) : 0), 0),
-                smluv: null,
-              })),
-              'Platby firmám s vazbou na politiky po letech',
-            );
-            g.poznamky.push(
-              `Součet za ${cislo(vAgregaci.length)} ${sklonuj(vAgregaci.length, 'firmu', 'firmy', 'firem')}, které se podařilo spárovat s registrem smluv podle IČO. Jedna série, proto bez legendy — graf neříká, která firma kolik dostala; to je v tabulce pod ním.`,
-            );
-            g.poznamky.push(
-              'Počet smluv za rok se u tohohle pohledu nepočítá — v podkladech pro propojení není.',
-            );
-            return g;
-          })(),
-        },
-      ]
-    : [];
+/**
+ * Dva pohledy: se všemi firmami a jen s těmi mimo město. Bez toho druhého by
+ * součet vypadal jako „miliarda firmám politiků", zatímco většinu tvoří platby
+ * města vlastním organizacím.
+ */
+function variantaVazeb(
+  klic: string,
+  popisek: string,
+  vyber: typeof vAgregaci,
+  poznamka: string,
+): Varianta | null {
+  if (vyber.length === 0) return null;
+  // Osa se počítá z vybraných firem, ne z celé agregace — jinak by graf
+  // začínal roky, ve kterých žádná z nich ještě neexistovala.
+  const rokyVyberu = rokyZProtistran(vyber.map((x) => x.p!));
+  const g = grafObjemPoLetech(
+    rokyVyberu.map((rok) => ({
+      rok,
+      castka: vyber.reduce((s, x) => s + (x.p ? vRoce(x.p, rok) : 0), 0),
+      smluv: null,
+    })),
+    `Platby po letech — ${popisek.toLowerCase()}`,
+  );
+  g.poznamky.push(poznamka);
+  g.poznamky.push(
+    `Součet za ${cislo(vyber.length)} ${sklonuj(vyber.length, 'firmu', 'firmy', 'firem')} spárovaných s registrem smluv podle IČO. Jedna série, proto bez legendy — graf neříká, která firma kolik dostala; to je v tabulce pod ním. Počet smluv za rok se u tohohle pohledu nepočítá.`,
+  );
+  return { klic, popisek, graf: g };
+}
+
+const mimoMesto = vAgregaci.filter((x) => x.d.mestsky !== true);
+
+const variantyVazby: Varianta[] = [
+  variantaVazeb(
+    'vse',
+    'Všechny firmy s vazbou',
+    vAgregaci,
+    'Součet zahrnuje i organizace samotného města — příspěvek zřizovatele vlastní příspěvkové organizaci je většina objemu, ne platba cizí firmě.',
+  ),
+  variantaVazeb(
+    'mimo',
+    'Jen firmy mimo město',
+    mimoMesto,
+    'Jen firmy, které nejsou organizací města. Tenhle pohled odpovídá otázce „kolik od města dostaly cizí firmy, ve kterých je někdo ze samosprávy uvedený".',
+  ),
+].filter((v): v is Varianta => v !== null);
 
 /* ── Přehled protistran pod grafy ─────────────────────────────────────── */
 
