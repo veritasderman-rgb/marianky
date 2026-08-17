@@ -2,25 +2,43 @@
   "datum": "2026-08-17",
   "obdobi_od": "2026-08-10",
   "obdobi_do": "2026-08-17",
-  "trvani_s": 0.0,
+  "trvani_s": 60.8,
   "kroky": [
     {
       "modul": "pipeline.tagovani",
       "popis": "Otagování usnesení",
       "povinny": true,
-      "stav": "chybi_modul"
+      "stav": "ok"
     },
     {
       "modul": "pipeline.clanky",
-      "popis": "Rozbor článků",
+      "popis": "Rozbor článků zpravodaje",
       "povinny": false,
-      "stav": "chybi_modul"
+      "stav": "chybi_main"
     },
     {
       "modul": "pipeline.agregace_penez",
       "popis": "Agregace peněz po letech",
       "povinny": true,
-      "stav": "chybi_modul"
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.propojeni",
+      "popis": "Propojení lidí, firem a peněz",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.profily",
+      "popis": "Hlasovací profily",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.retez",
+      "popis": "Řetěz usnesení → smlouva → peníze",
+      "povinny": false,
+      "stav": "ok"
     },
     {
       "modul": "pipeline.prepis",
@@ -28,6 +46,12 @@
       "povinny": false,
       "stav": "selhal",
       "chyba": "SystemExit 2"
+    },
+    {
+      "modul": "pipeline.vydani",
+      "popis": "Sestavení týdenního vydání",
+      "povinny": true,
+      "stav": "ok"
     }
   ],
   "uspech": true

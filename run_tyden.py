@@ -35,11 +35,17 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.zaznamy",   "Záznamy zastupitelstva",         False),
 ]
 
+# Pořadí je závazné: propojení a řetěz čtou výstup agregace peněz,
+# vydání čte úplně všechno, takže musí být poslední.
 NAVAZNE: list[tuple[str, str, bool]] = [
-    ("pipeline.tagovani",       "Otagování usnesení",     True),
-    ("pipeline.clanky",         "Rozbor článků",          False),
-    ("pipeline.agregace_penez", "Agregace peněz po letech", True),
-    ("pipeline.prepis",         "Přepisy jednání",        False),
+    ("pipeline.tagovani",       "Otagování usnesení",           True),
+    ("pipeline.clanky",         "Rozbor článků zpravodaje",     False),
+    ("pipeline.agregace_penez", "Agregace peněz po letech",     True),
+    ("pipeline.propojeni",      "Propojení lidí, firem a peněz", False),
+    ("pipeline.profily",        "Hlasovací profily",            False),
+    ("pipeline.retez",          "Řetěz usnesení → smlouva → peníze", False),
+    ("pipeline.prepis",         "Přepisy jednání",              False),
+    ("pipeline.vydani",         "Sestavení týdenního vydání",   True),
 ]
 
 
@@ -55,6 +61,11 @@ def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
     if not hasattr(m, "main"):
         return {**vysledek, "stav": "chybi_main"}
 
+    # Moduly si samy parsují argumenty přes argparse, tedy čtou sys.argv.
+    # Bez téhle výměny by `run_tyden.py --bez-sberu` spadlo uvnitř modulu na
+    # "unrecognized arguments: --bez-sberu" — přepínač patří rutině, ne jemu.
+    puvodni_argv = sys.argv
+    sys.argv = [modul.replace(".", "/") + ".py"]
     try:
         m.main()
         return {**vysledek, "stav": "ok"}
@@ -67,6 +78,8 @@ def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
         print(f"  CHYBA: {e}", flush=True)
         traceback.print_exc(limit=3)
         return {**vysledek, "stav": "selhal", "chyba": str(e)[:300]}
+    finally:
+        sys.argv = puvodni_argv
 
 
 def main() -> int:

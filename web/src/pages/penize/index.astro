@@ -329,11 +329,10 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
                   <>
                     {' '}V registru smluv města se jich našlo {cislo(vAgregaci.length)} s objemem{' '}
                     {kcZkraceno(objemVazeb, true)}; na firmy mimo město z toho připadá{' '}
-                    {kcZkraceno(
+                    {`${kcZkraceno(
                       mimoMesto.reduce((s, x) => s + (x.p?.celkem_czk ?? 0), 0),
                       true,
-                    )}
-                    .
+                    )}.`}
                   </>
                 )}
                 {!zeSouboruVazeb && (
