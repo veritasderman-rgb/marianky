@@ -22,20 +22,41 @@ Technická příloha k [`ZADANI.md`](../ZADANI.md). Všechny údaje ověřeny **
 
 ### Technické poznámky
 
-- **Serverové HTML.** Obsah je přímo v odpovědi, žádný client-side rendering. Nepotřebuje headless browser.
-- **Vyžaduje `User-Agent`.** Bez hlavičky server vrací **503**. S `Mozilla/5.0` vrací 200.
+> **Opraveno po implementaci.** Původně tu stálo, že obsah je přímo v HTML. Není — úvodní stránka jen nese kostru, samotné výpisy jedou AJAXem. Níže je stav ověřený stažením celého archivu.
+
+- **Výpisy jedou přes AJAX**, ne z HTML: `POST /{organ}/ajax/list/…` s parametry `filter[...]`.
+- **Nutné jsou DVĚ nestandardní hlavičky**, každá jinak selže:
   ```
-  curl "https://usneseni.muml.cz/rada/usneseni"                  → 503
-  curl -A "Mozilla/5.0" "https://usneseni.muml.cz/rada/usneseni" → 200, 92 853 B
+  bez User-Agent                     → 503
+  bez X-Requested-With: XMLHttpRequest → 500
   ```
-- Tabulky renderované přes **DataTables** (`cdn.datatables.net`) + Select2 + Fancybox. Data jsou ale v HTML, ne dotahovaná AJAXem.
-- Jednání jsou identifikována dvojicí **datum + č. j.**, což je vhodný primární klíč.
+  `lib/core.fetch()` posílá User-Agent sám; druhou hlavičku si volající předá parametrem `headers=`.
+- **Odpověď nemá v `Content-Type` charset.** `requests` pak podle staré normy hádá ISO-8859-1 a čeština se rozsype na mojibake — a protože je výsledek platný řetězec, projde to bez chyby až do dat. `core.fetch()` to už řeší (`_dekoduj`): když charset chybí, zkouší UTF-8, pak windows-1250 a iso-8859-2.
+- **`recordsTotal` v odpovědi je při filtrování nepravdivý** — počítej délku pole `data`.
+- **Keep-alive se vyplatí**: sdílená session dělá 0,26 s na stránku místo 0,67 s. `core.fetch()` ji drží.
+- Jednání jsou identifikována dvojicí **datum + č. j.** — vhodný primární klíč.
 
-### Rozsah archivu
+### Rozsah archivu (ověřeno staženým archivem)
 
-**Rada města** — aktuálně č. j. 124 (7. 8. 2026). Jednání zhruba jednou za 2 týdny. Výpis sahá minimálně k č. j. 41 (9. 1. 2024) a pokračuje dál do minulosti.
+| | rada | zastupitelstvo | celkem |
+|---|---|---|---|
+| jednání | 579 | 111 | **690** |
+| bodů usnesení | 10 289 | 2 601 | **12 890** |
+| hlasování | 9 801 | 2 548 | **12 349** |
+| jmenovitých hlasů | | | **121 935** |
 
-**Zastupitelstvo** — aktuálně č. j. 28 (20. 7. 2026). Zasedání zhruba 6× ročně. Výpis sahá minimálně k roku **2019** (č. j. 8, 2019). Číslování se resetuje s volebním obdobím — pozor při návrhu klíče, `č. j. 28` samo o sobě není unikátní.
+**Archiv sahá k roku 2012** u obou orgánů — o čtyři roky hlouběji, než tu stálo původně. Rada zasedá zhruba jednou za dva týdny, zastupitelstvo zhruba 6× ročně.
+
+Číslování č. j. se resetuje s volebním obdobím, takže `č. j. 28` samo o sobě není unikátní — klíč je `(rok, č. j.)`. **Pozor na výjimku:** rada má 22. 11. 2022 jednání č. j. **0** zařazené až za č. j. 3, takže naivní detekce resetu podle „menší než minule" tam vyrobí falešné volební období. Sběrač detekuje propad ≥ 10.
+
+### Kvalita a zvláštnosti dat
+
+- **Jmenovité hlasy jsou u 100 % hlasování** (12 349 z 12 349), 56 osob, žádný hlas bez uvedené strany. Křížová kontrola součtů proti souhrnům portálu: **0 nesrovnalostí**.
+- **Portál rozlišuje 6 typů hlasu**, ne 5: přibývá *omluven*. Bez odděleného počtu omluvených a nepřítomných součty nedávají smysl.
+- **Pole `vysledek` je prakticky jednohodnotové** — portál u všech 12 349 hlasování uvádí „schváleno". Hodnoty `neschvaleno`, `staženo` ani `odlozeno` se v archivu nevyskytují.
+- **Ve čtyřech hlasováních zastupitelstva je proti víc hlasů než pro, a portál je přesto vede jako „schváleno"** (např. 731/18: 4 pro, 8 proti). Ukládá se, co zdroj tvrdí. Web na to musí brát ohled a nespoléhat na `vysledek` jako na pravdu — spolehlivější je porovnat počty hlasů.
+- Částka je rozpoznána u 30,1 % bodů; jinde je `null`, protože v textu žádná není.
+- 27 bodů (0,2 %) má prázdný text — ověřeno, že je prázdný i na zdroji, není to chyba parseru.
 
 ### Proč je hlasování klíčové
 

@@ -30,6 +30,21 @@ příležitostí. Odvozené skupiny:
 
     hlasoval = pro + proti + zdrzel          (odevzdal hlas)
     pritomen = hlasoval + nehlasoval          (byl u toho)
+    neucast  = omluven + nepritomen           (nebyl u toho)
+
+--------------------------------------------------------------------------
+!!! PŘÍZNAK OMLUVY VE STARŠÍCH DATECH NENÍ !!!
+--------------------------------------------------------------------------
+Zdroj začal omluvy zapisovat až u zastupitelstva od roku 2019 a u rady od
+roku 2023 — ve starších zápisech je **každá** neúčast vedená jako
+`nepritomen` bez příznaku. Není to tím, že by se dřív nikdo neomlouval;
+zdroj to prostě neuvádí.
+
+Číst z toho, že někdo „má 793 neomluvených absencí", by proto byla lež
+o zdroji, ne údaj o člověku. Kde je to spolehlivé, říká top-level blok
+`dostupnost_omluv` (podle orgánu a roku, včetně `spolehlive_od`) a u každého
+profilu `rozliseni_omluv`. **Mimo spolehlivé období smí web zobrazit jen
+souhrnné `neucast`, nikdy rozpad na omluven/nepritomen.**
 
 --------------------------------------------------------------------------
 Proč se procenta počítají z vlastních příležitostí
@@ -78,6 +93,11 @@ PRAH_VELKA_CASTKA = 1_000_000
 # spočítáme, kolik jich je nad stropem, a hlásíme to ve výstupu. Objemy v Kč
 # se proto v profilech vůbec nesčítají, publikují se jen počty hlasování.
 STROP_ROZUMNE_CASTKY = 1_000_000_000
+
+# Od jakého podílu omluvených neúčastí se bere, že zdroj omluvy v daném roce
+# opravdu zapisuje. Nižší podíl znamená pár ojedinělých záznamů (rada 2015 má
+# 7 omluv z 783 neúčastí) — z toho se rozpad omluven/nepritomen číst nedá.
+PRAH_DOSTUPNOSTI_OMLUV = 0.5
 
 
 # --------------------------------------------------------------------------
@@ -214,6 +234,39 @@ def _podil(cast: int, celek: int) -> float | None:
     return round(cast / celek, 4) if celek else None
 
 
+def _dostupnost_omluv(neucasti: dict[tuple[str, str], Counter]) -> dict:
+    """Zjistí, od kdy zdroj u kterého orgánu vůbec zapisuje omluvy.
+
+    `spolehlive_od` je nejstarší rok, od kterého už podíl omluvených neúčastí
+    v žádném dalším roce neklesne pod práh. Před ním se rozpad
+    omluven/nepritomen nesmí zobrazovat — chybí ve zdroji, ne v realitě.
+    """
+    dle_organu: dict[str, dict[str, dict]] = defaultdict(dict)
+    for (organ, rok), c in neucasti.items():
+        celkem_neucasti = c["omluven"] + c["nepritomen"]
+        dle_organu[organ][rok] = {
+            "neucasti": celkem_neucasti,
+            "omluvenych": c["omluven"],
+            "podil_omluvenych": _podil(c["omluven"], celkem_neucasti),
+        }
+    out = {}
+    for organ, roky in dle_organu.items():
+        serazene = sorted(roky)
+        spolehlive_od = None
+        # zprava doleva: jakmile rok propadne pod práh, spolehlivá řada končí
+        for rok in reversed(serazene):
+            if (roky[rok]["podil_omluvenych"] or 0) < PRAH_DOSTUPNOSTI_OMLUV:
+                break
+            spolehlive_od = rok
+        for rok in serazene:
+            roky[rok]["spolehlive"] = spolehlive_od is not None and rok >= spolehlive_od
+        out[organ] = {
+            "spolehlive_od": spolehlive_od,
+            "po_letech": {r: roky[r] for r in serazene},
+        }
+    return out
+
+
 def _souhrn(c: Counter) -> dict:
     """Jeden řez profilu: počty šesti stavů plus odvozené podíly."""
     prilezitosti = sum(c[s] for s in STAVY)
@@ -224,6 +277,9 @@ def _souhrn(c: Counter) -> dict:
         **{s: c[s] for s in STAVY},
         "pritomen": pritomen,
         "hlasoval": hlasoval,
+        # Souhrnná neúčast je jediné číslo o absenci, které platí ve všech
+        # letech — rozpad na omluven/nepritomen zdroj u starších zápisů nemá.
+        "neucast": c["omluven"] + c["nepritomen"],
         "podil_pritomen": _podil(pritomen, prilezitosti),
         "podil_hlasoval": _podil(hlasoval, prilezitosti),
         # Rozložení se počítá z odevzdaných hlasů, ne z příležitostí —
@@ -287,6 +343,11 @@ def spocti_profily(log: Log) -> dict:
 
     # kolik hlasování měl orgán v období celkem — základna pro `podil_obdobi`
     hlasovani_v_obdobi: Counter = Counter()
+    # (organ, rok) -> stavy neúčasti, kvůli zjištění dostupnosti omluv
+    neucasti: dict[tuple[str, str], Counter] = defaultdict(Counter)
+    # osoba -> (organ, rok) -> příležitosti, kvůli `rozliseni_omluv`
+    po_organ_rok: dict[str, Counter] = defaultdict(Counter)
+    omluven_organ_rok: dict[str, Counter] = defaultdict(Counter)
     velkych_hlasovani = 0
     bez_vetsiny = 0
 
@@ -335,6 +396,11 @@ def spocti_profily(log: Log) -> dict:
             celkem[osoba_id][stav] += 1
             po_letech[osoba_id][rok][stav] += 1
             po_organech[osoba_id][organ][stav] += 1
+            po_organ_rok[osoba_id][(organ, rok)] += 1
+            if stav in ("omluven", "nepritomen"):
+                neucasti[(organ, rok)][stav] += 1
+                if stav == "omluven":
+                    omluven_organ_rok[osoba_id][(organ, rok)] += 1
             if obdobi:
                 po_obdobich[osoba_id][obdobi][stav] += 1
             for t in z["tagy"]:
@@ -393,8 +459,11 @@ def spocti_profily(log: Log) -> dict:
                 p["organy"][organ][0] += 1
                 p["organy"][organ][1] += shoda
 
+    dostupnost = _dostupnost_omluv(neucasti)
     log.info("agregováno", osob=len(celkem), dvojic=len(pary),
              velkych_hlasovani=velkych_hlasovani, bez_jednoznacne_vetsiny=bez_vetsiny)
+    log.info("omluvy zdroj zapisuje od",
+             **{o: (v["spolehlive_od"] or "nikdy") for o, v in dostupnost.items()})
 
     # --- sousedé v matici pro rychlý přístup z profilu ------------------
     sousede: dict[str, list[dict]] = defaultdict(list)
@@ -428,6 +497,17 @@ def spocti_profily(log: Log) -> dict:
                         key=lambda s: (-s["podil"], -s["spolecnych"], s["id"]))
         for s in blizci:
             s["jmeno"] = (osobnosti.get(s["id"]) or clenove.get(s["id"]) or {}).get("jmeno", s["id"])
+        _kolik = min(10, len(blizci) // 2)
+
+        # kolik z příležitostí (a omluv) spadá do doby, kdy zdroj omluvy vede
+        def _je_spolehlivy(organ_rok: tuple[str, str]) -> bool:
+            od = dostupnost.get(organ_rok[0], {}).get("spolehlive_od")
+            return od is not None and organ_rok[1] >= od
+
+        _spolehlive = sum(n for kl, n in po_organ_rok[osoba_id].items()
+                          if _je_spolehlivy(kl))
+        _mimo = sum(n for kl, n in omluven_organ_rok[osoba_id].items()
+                    if not _je_spolehlivy(kl))
 
         # kontrolní součet proti rejstříku hlasujících
         kontrola = None
@@ -450,6 +530,17 @@ def spocti_profily(log: Log) -> dict:
             "obdobi": sorted(m["obdobi"]),
             "prvni_hlasovani": m["prvni"],
             "posledni_hlasovani": m["posledni"],
+
+            # Jak velká část záznamu spadá do doby, kdy zdroj omluvy zapisuje.
+            # Kde je `podil` nízký, nesmí web rozpad omluven/nepritomen ukazovat.
+            "rozliseni_omluv": {
+                **_pomer(_spolehlive, sum(po_organ_rok[osoba_id].values()),
+                         "prilezitosti", "s_rozlisenim"),
+                # Zdroj sem tam omluvu zapíše i v ročníku, kde je jinak
+                # nevede (rada 2015 a 2022). Je to pár záznamů a nedělá
+                # to z ročníku spolehlivý — přiznáváme je číslem.
+                "omluv_mimo_spolehlive_obdobi": _mimo,
+            },
 
             "ucast": _souhrn(c),
             "po_letech": {r: _souhrn(po_letech[osoba_id][r])
@@ -487,8 +578,11 @@ def spocti_profily(log: Log) -> dict:
                                            "z_hlasovani", "shodnych"),
             },
 
-            "nejcasteji_shodne": blizci[:10],
-            "nejcasteji_odlisne": list(reversed(blizci[-10:])),
+            # Oba žebříčky se krájí z téhož seřazeného seznamu, takže u lidí
+            # s málo protějšky by se překryly a tentýž člověk by figuroval
+            # jako nejshodnější i nejodlišnější. Krájí se proto nejvýš půlka.
+            "nejcasteji_shodne": blizci[:_kolik],
+            "nejcasteji_odlisne": list(reversed(blizci[len(blizci) - _kolik:])) if _kolik else [],
             "kontrola": kontrola,
         }
 
@@ -547,6 +641,10 @@ def spocti_profily(log: Log) -> dict:
             "rozsah": [min(z["datum"] for z in zaznamy), max(z["datum"] for z in zaznamy)],
             "hlasovani_bez_jednoznacne_vetsiny": bez_vetsiny,
             "hlasovani_nad_prahem_castky": velkych_hlasovani,
+            "neucasti_celkem": sum(sum(c.values()) for c in neucasti.values()),
+            "omluvenych_celkem": sum(c["omluven"] for c in neucasti.values()),
+            "omluv_mimo_spolehlive_obdobi": sum(
+                p["rozliseni_omluv"]["omluv_mimo_spolehlive_obdobi"] for p in profily),
             "castek_nad_stropem_duveryhodnosti": sum(
                 1 for c in castky.values()
                 if c is not None and c > STROP_ROZUMNE_CASTKY),
@@ -558,6 +656,16 @@ def spocti_profily(log: Log) -> dict:
                        "'omluven' = omluvená neúčast, 'nepritomen' = neomluvená.",
             "hlasoval": "pro + proti + zdrzel",
             "pritomen": "pro + proti + zdrzel + nehlasoval",
+            "neucast": "omluven + nepritomen",
+            "dostupnost_omluv": "Zdroj příznak omluvy u starších zápisů vůbec "
+                                "nemá — zastupitelstvo ho zapisuje od roku 2019, "
+                                "rada od roku 2023. Před tím je každá neúčast "
+                                "vedená jako 'nepritomen', ačkoliv se lidé "
+                                "samozřejmě omlouvali. Mimo spolehlivé období "
+                                "(viz blok 'dostupnost_omluv' a u profilu "
+                                "'rozliseni_omluv') se smí zobrazovat jen "
+                                "souhrnné 'neucast', nikdy rozpad na omluvené "
+                                "a neomluvené.",
             "prilezitosti": "Počet hlasování, u kterých je člověk na jmenovité "
                             "listině. Všechna procenta se počítají z tohoto čísla, "
                             "ne z počtu všech hlasování orgánu — jinak by neúplné "
@@ -584,6 +692,7 @@ def spocti_profily(log: Log) -> dict:
                              "Nízká účast nemá v datech uvedený důvod a nesmí se "
                              "prezentovat jako selhání.",
         },
+        "dostupnost_omluv": dostupnost,
         "profily": profily,
         "matice_shody": matice,
     }
@@ -601,8 +710,15 @@ def zkontroluj(vysledek: dict, log: Log) -> None:
         soucet = sum(u[s] for s in STAVY)
         if soucet != u["prilezitosti"]:
             log.chyba(f"{p['id']}: součet stavů {soucet} != příležitostí {u['prilezitosti']}")
-        if u["pritomen"] + u["omluven"] + u["nepritomen"] != u["prilezitosti"]:
+        if u["pritomen"] + u["neucast"] != u["prilezitosti"]:
             log.chyba(f"{p['id']}: přítomen + neúčast != příležitostí")
+        if u["omluven"] + u["nepritomen"] != u["neucast"]:
+            log.chyba(f"{p['id']}: omluven + nepřítomen != neúčasti")
+        if p["rozliseni_omluv"]["prilezitosti"] != u["prilezitosti"]:
+            log.chyba(f"{p['id']}: základna rozlišení omluv != příležitostí")
+        ro = p["rozliseni_omluv"]
+        if u["omluven"] - ro["omluv_mimo_spolehlive_obdobi"] > ro["s_rozlisenim"]:
+            log.chyba(f"{p['id']}: víc omluv než příležitostí s rozlišením omluv")
         po_letech = sum(r["prilezitosti"] for r in p["po_letech"].values())
         if po_letech != u["prilezitosti"]:
             log.chyba(f"{p['id']}: po letech {po_letech} != celkem {u['prilezitosti']}")

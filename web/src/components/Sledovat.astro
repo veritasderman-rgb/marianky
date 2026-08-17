@@ -1,0 +1,92 @@
+---
+/**
+ * Tlačítko „sledovat téma".
+ *
+ * Web je statický a bez přihlášení — výběr proto zůstává jen v prohlížeči
+ * (`localStorage`). Nic se nikam neodesílá, žádná registrace, žádný server.
+ *
+ * Bez JavaScriptu se tlačítko vůbec nezobrazí: mrtvé tlačítko, které nic
+ * neudělá, je horší než žádné.
+ */
+export interface Props {
+  /** Id tagu z `config/tagy.json`. */
+  tag: string;
+  nazev: string;
+  /** Menší varianta do seznamů. */
+  kompakt?: boolean;
+}
+
+const { tag, nazev, kompakt = false } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['tlacitko', 'sledovat', kompakt && 'sledovat--kompakt']}
+  data-sledovat={tag}
+  data-nazev={nazev}
+  aria-pressed="false"
+  hidden
+>
+  <span aria-hidden="true" class="sledovat__znak">☆</span>
+  <span class="sledovat__text">Sledovat téma</span>
+</button>
+
+<script>
+  /* ── Sledovaná témata ─────────────────────────────────────────────────
+     Uloženo jen v prohlížeči. Klíč drží pole id tagů z config/tagy.json.
+     Ostatní části stránky se o změně dozvědí přes událost `temata-zmena`,
+     aby se osobní sekce na úvodu překreslila bez reloadu. */
+  const KLIC = 'sledovana-temata';
+
+  function nactiTemata(): string[] {
+    try {
+      const syrove = localStorage.getItem(KLIC);
+      if (!syrove) return [];
+      const d: unknown = JSON.parse(syrove);
+      return Array.isArray(d) ? d.filter((x): x is string => typeof x === 'string') : [];
+    } catch {
+      /* privátní režim nebo poškozený obsah — chováme se jako „nic nesleduje" */
+      return [];
+    }
+  }
+
+  function uloz(temata: string[]): void {
+    try {
+      localStorage.setItem(KLIC, JSON.stringify(temata));
+    } catch {
+      /* zápis nemusí projít; tlačítko pak platí jen do zavření stránky */
+    }
+    document.dispatchEvent(new CustomEvent('temata-zmena', { detail: { temata } }));
+  }
+
+  function vykresli(): void {
+    const temata = nactiTemata();
+    document.querySelectorAll<HTMLButtonElement>('[data-sledovat]').forEach((b) => {
+      const tag = b.dataset.sledovat ?? '';
+      const sleduje = temata.includes(tag);
+      b.hidden = false;
+      b.setAttribute('aria-pressed', sleduje ? 'true' : 'false');
+      const znak = b.querySelector('.sledovat__znak');
+      const text = b.querySelector('.sledovat__text');
+      if (znak) znak.textContent = sleduje ? '★' : '☆';
+      if (text) text.textContent = sleduje ? 'Sleduji — zrušit' : 'Sledovat téma';
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    const cil = e.target instanceof Element ? e.target.closest<HTMLElement>('[data-sledovat]') : null;
+    if (!cil) return;
+    const tag = cil.dataset.sledovat;
+    if (!tag) return;
+    const temata = nactiTemata();
+    uloz(temata.includes(tag) ? temata.filter((t) => t !== tag) : [...temata, tag]);
+    vykresli();
+  });
+
+  /* Změna v jiné záložce se propíše i sem. */
+  window.addEventListener('storage', (e) => {
+    if (e.key === KLIC) vykresli();
+  });
+
+  vykresli();
+</script>

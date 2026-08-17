@@ -16,9 +16,9 @@ stejně vysokými nadpisy a poppler je ve výchozím režimu prokládá
 po vodorovných pásech — z textu pak vznikne nesmysl. XY-řez najde
 nejdřív mezisloupcovou mezeru a čte sloupec po sloupci; naopak tam,
 kde nadpis přetéká přes oba sloupce (sazba od 2024), najde nejdřív
-vodorovnou mezeru pod nadpisem. Běžný textový výstup `pdf_na_text()`
-slouží jako kontrola výtěžnosti a jako záloha pro stránky, ze kterých
-geometrie nic nedá.
+vodorovnou mezeru pod nadpisem. Běžný textový výstup `pdf_na_text()`,
+který si odkládá sběrač do data/zpravodaj/text/, slouží jako kontrola
+výtěžnosti — viz `vytezenost()`.
 
 Rubriky se neberou z pevného seznamu: nasbírají se ze záhlaví stránek
 daného čísla ("Dění ve městě", "RADNICE", "INZERCE" …) a stejné popisky
@@ -843,6 +843,25 @@ def clanky_z_cisla(zaznam: dict, log: Log) -> list[dict]:
     return hotove
 
 
+def vytezenost(cislo: str, clanky: list[dict]) -> float | None:
+    """Kolik textu čísla se doopravdy dostalo do článků, 0–1.
+
+    Porovnává se s prostým výstupem `pdf_na_text()`, který si odkládá
+    sběrač do data/zpravodaj/text/. Podíl nikdy nebude 1 — z čísla odpadá
+    inzerce, tiráž, popisky fotek a stránky s programem. Prudký propad
+    proti okolním číslům ale spolehlivě ukáže, že se sazba daného ročníku
+    rozebrat nepodařila.
+    """
+    soubor = TEXT_DIR / f"{cislo}.txt"
+    if not soubor.exists():
+        return None
+    celkem = len(re.sub(r"\s+", "", soubor.read_text(encoding="utf-8")))
+    if celkem < 1000:
+        return None
+    v_clancich = sum(len(re.sub(r"\s+", "", c["text"])) for c in clanky)
+    return min(v_clancich / celkem, 1.0)
+
+
 def uloz_clanky(cislo: str, clanky: list[dict]) -> int:
     adresar = CLANKY_DIR / cislo
     if adresar.exists():
@@ -886,6 +905,7 @@ def hlavni(argv: list[str] | None = None) -> int:
 
     celkem = 0
     zpracovano = 0
+    pokryto: dict[str, float | None] = {}
     for i, z in enumerate(vyber, 1):
         adresar = CLANKY_DIR / z["id"]
         if adresar.exists() and any(adresar.glob("*.json")) and not args.prepsat:
@@ -908,13 +928,20 @@ def hlavni(argv: list[str] | None = None) -> int:
         zpracovano += 1
         log.pricti(n)
         prum = sum(len(c["text"]) for c in clanky) // max(n, 1)
-        log.info(f"[{i}/{len(vyber)}] {z['id']}: {n} článků, průměr {prum} znaků")
+        podil = vytezenost(z["id"], clanky)
+        pokryto[z["id"]] = round(podil, 3) if podil is not None else None
+        log.info(
+            f"[{i}/{len(vyber)}] {z['id']}: {n} článků, průměr {prum} znaků"
+            + (f", pokryto {podil:.0%} textu čísla" if podil is not None else "")
+        )
 
     # Do indexu čísel se propíše, kolik z kterého vzniklo článků — je to
     # nejrychlejší způsob, jak poznat číslo, které se rozebrat nepodařilo.
     for z in index:
         adresar = CLANKY_DIR / z["id"]
         z["clanku"] = len(list(adresar.glob("*.json"))) if adresar.exists() else 0
+        if z["id"] in pokryto:
+            z["pokryto"] = pokryto[z["id"]]
     uloz(INDEX, index)
 
     log.info(f"hotovo: {zpracovano}/{len(vyber)} čísel, {celkem} článků")

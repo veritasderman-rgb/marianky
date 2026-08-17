@@ -179,6 +179,90 @@ export function grafObjemPoLetech(body: BodObjemu[], titulek = 'Objem plateb po 
   };
 }
 
+/* ──────────────  Vodorovný sloupcový graf — jedna série  ────────────── */
+
+export interface BodVodorovny {
+  nazev: string;
+  hodnota: number;
+  /** Volitelný odkaz z popisku řádku. */
+  odkaz?: string;
+  /** Doplňkové řádky do tooltipu — např. „z toho pro: 12". */
+  doplnky?: { l: string; v: string }[];
+}
+
+/**
+ * Vodorovné sloupce se hodí tam, kde jsou popisky dlouhé (názvy témat, druhy
+ * hlasů, jména firem) — svislý graf by je musel otáčet a to se špatně čte.
+ *
+ * Jedna série, tedy podle web/DESIGN.md §2 bez legendy: název grafu ji
+ * pojmenuje. Čísla jsou v barvě textu, nikdy v barvě sloupce.
+ */
+export function grafVodorovny(
+  body: BodVodorovny[],
+  titulek: string,
+  formatuj: (v: number) => string = (v) => cislo(v),
+): Graf {
+  const SIRKA_POPISKU = 210;
+  const W = 900;
+  const VYSKA_RADKU = 22;
+  const MEZERA = 8;
+  const m = { t: 10, r: 96, b: 34 };
+  const pw = W - SIRKA_POPISKU - m.r;
+  const H = m.t + body.length * (VYSKA_RADKU + MEZERA) + m.b;
+
+  const { horni, tiky } = osaY(Math.max(0, ...body.map((b) => b.hodnota)), 4);
+  const x = (v: number) => SIRKA_POPISKU + (v / horni) * pw;
+
+  const casti: string[] = [];
+  const spodek = m.t + body.length * (VYSKA_RADKU + MEZERA);
+
+  for (const t of tiky) {
+    casti.push(
+      `<line class="g-mrizka" x1="${x(t).toFixed(1)}" y1="${m.t}" x2="${x(t).toFixed(1)}" y2="${spodek}"/>`,
+      `<text class="g-popisek g-popisek--x" x="${x(t).toFixed(1)}" y="${spodek + 20}">${esc(formatuj(t))}</text>`,
+    );
+  }
+  casti.push(`<line class="g-osa" x1="${SIRKA_POPISKU}" y1="${m.t}" x2="${SIRKA_POPISKU}" y2="${spodek}"/>`);
+
+  body.forEach((b, i) => {
+    const y = m.t + i * (VYSKA_RADKU + MEZERA);
+    const sirka = b.hodnota > 0 ? Math.max(1.5, (b.hodnota / horni) * pw) : 0;
+    const popisek = zkratNazev(b.nazev);
+
+    casti.push(
+      b.odkaz
+        ? `<a href="${esc(b.odkaz)}" class="g-radek-odkaz"><text class="g-radek-nazev" x="0" y="${(y + VYSKA_RADKU - 6).toFixed(1)}">${esc(popisek)}</text></a>`
+        : `<text class="g-radek-nazev" x="0" y="${(y + VYSKA_RADKU - 6).toFixed(1)}">${esc(popisek)}</text>`,
+    );
+
+    const radky: TipRadek[] = [{ l: 'Hodnota', v: formatuj(b.hodnota) }, ...(b.doplnky ?? [])];
+    casti.push(
+      `<g class="g-sloupec" ${tip(b.nazev, radky, 'var(--g1)')} role="img" aria-label="${esc(`${b.nazev}: ${formatuj(b.hodnota)}`)}">`,
+      `<rect class="g-terc" x="${SIRKA_POPISKU}" y="${y}" width="${pw}" height="${VYSKA_RADKU}"/>`,
+    );
+    if (sirka > 0) {
+      casti.push(
+        `<rect class="g-vypln" x="${SIRKA_POPISKU}" y="${y}" width="${sirka.toFixed(1)}" height="${VYSKA_RADKU}" rx="3" fill="var(--g1)"/>`,
+      );
+    }
+    casti.push(
+      `<text class="g-hodnota g-hodnota--vlevo" x="${(SIRKA_POPISKU + sirka + 8).toFixed(1)}" y="${(y + VYSKA_RADKU - 6).toFixed(1)}">${esc(formatuj(b.hodnota))}</text>`,
+      '</g>',
+    );
+  });
+
+  return {
+    sirka: W,
+    svg: obalSvg(W, H, casti.join(''), `${titulek}: vodorovný sloupcový graf, ${body.length} položek`),
+    legenda: null,
+    tabulka: {
+      hlavicka: [{ nazev: 'Položka' }, { nazev: 'Hodnota', cislo: true }],
+      radky: body.map((b) => [b.nazev, formatuj(b.hodnota)]),
+    },
+    poznamky: [],
+  };
+}
+
 /* ────────────────────  3.2 Kdo od města dostává peníze  ─────────────── */
 
 export interface SerieSkladana {
