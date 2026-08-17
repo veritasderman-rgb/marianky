@@ -95,6 +95,18 @@ V datech chybějící rok znamená nulu — do osy ho **doplň jako nulu**, nep�
 
 Hover na buňku: firma, rok, částka, počet smluv. Klik: detail protistrany.
 
+### 3.5 Vlastnictví se nesmí slít — jinak graf tvrdí opak
+
+U každého pohledu na peníze musí být vidět, jestli protistrana **patří městu**, nebo je cizí. Není to kosmetika, je to rozdíl mezi pravdou a opakem:
+
+> Z 1,34 mld. Kč u „dodavatelů s vazbou na politiky" připadá **99,1 % na vlastní organizace města** — technické služby, orchestr, infocentrum, sportoviště. Mimo město jde **11,5 mil. Kč, tedy 0,9 %**.
+
+Bez odlišení by přehled hlásil miliardu odteklou firmám napojeným na politiky. Ve skutečnosti město platí své vlastní organizace a „vazba na politiky" znamená, že v jejich dozorčích radách sedí zastupitelé — což je jejich úkol.
+
+Totéž platí pro TDS, největšího příjemce peněz od města: je to **městská firma**, ne cizí dodavatel.
+
+Proto: sloupec vlastnictví v tabulkách, přepínač „všechny / jen mimo město" u grafů, a věta, která rozdíl pojmenuje.
+
 ### 3.4 Dlaždice nad grafy
 Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se stavovou barvou a **vždy i textovým popiskem**, ne barvou samotnou).
 
@@ -109,7 +121,9 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 | `/usneseni` | Usnesení, filtr podle orgánu, roku a tagu |
 | `/hlasovani` | Hlasování, **filtr podle tagu** — výslovné přání zadavatele |
 | `/hlasovani/tag/[tag]` | Hlasování k jednomu tématu |
-| `/lide` · `/lide/[id]` | Kdo je kdo, profil s hlasovací historií |
+| `/lide` · `/lide/[id]` | Kdo je kdo, profil s hlasovací historií a sekcí „Kde je aktivní" |
+| `/propojeni` | Kdo ze samosprávy sedí ve kterých firmách |
+| `/retez` | Řetěz usnesení → smlouva → peníze, vždy s uvedenou jistotou |
 | `/penize` | Dashboard s grafy výše |
 | `/penize/[ico]` | Detail protistrany — co dostala a kdy |
 | `/zpravodaj` · `/zpravodaj/[id]` | Archiv článků |
