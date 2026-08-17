@@ -17,6 +17,7 @@ from dataclasses import asdict, is_dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import urlparse
 
 import requests
 
@@ -36,6 +37,33 @@ class ZdrojSelhal(Exception):
 # --------------------------------------------------------------------------
 # HTTP
 # --------------------------------------------------------------------------
+
+# Nejmenší odstup mezi požadavky na stejný server, v sekundách.
+# Web města je malý obecní web a projekt na něj útočí z několika modulů
+# naráz — při souběžném běhu začal odmítat spojení. Odstup se drží přes
+# soubor, aby platil i mezi samostatnými procesy, ne jen uvnitř jednoho.
+ODSTUP_NA_HOST = {
+    "www.muml.cz": 1.5,
+    "usneseni.muml.cz": 1.0,
+}
+ODSTUP_VYCHOZI = 0.3
+
+
+def _pockej_na_rade(host: str) -> None:
+    odstup = ODSTUP_NA_HOST.get(host, ODSTUP_VYCHOZI)
+    znacka = CACHE / "tempo" / f"{host}.stamp"
+    znacka.parent.mkdir(parents=True, exist_ok=True)
+    for _ in range(200):  # strop, ať se běh nezasekne natrvalo
+        try:
+            posledni = znacka.stat().st_mtime
+        except FileNotFoundError:
+            posledni = 0.0
+        zbyva = odstup - (time.time() - posledni)
+        if zbyva <= 0:
+            break
+        time.sleep(min(zbyva, odstup))
+    znacka.touch()
+
 
 def fetch(
     url: str,
@@ -63,9 +91,11 @@ def fetch(
     if referer:
         headers["Referer"] = referer
 
+    host = urlparse(url).netloc
     last: Exception | None = None
     for pokus in range(retries):
         try:
+            _pockej_na_rade(host)
             r = requests.get(url, headers=headers, timeout=timeout)
             if r.status_code == 429 or 500 <= r.status_code < 600:
                 raise ZdrojSelhal(f"HTTP {r.status_code} u {url}")
