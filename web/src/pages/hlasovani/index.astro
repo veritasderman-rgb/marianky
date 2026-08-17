@@ -1,0 +1,218 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import PolozkaHlasovaniKarta from '../../components/PolozkaHlasovani.astro';
+import { nactiCiselnikTagu, nactiHlasovani } from '../../lib/data';
+import { mapaTagu, seradRoky, spocitejTagy, zplostiHlasovani } from '../../lib/prehledy';
+import { cislo, nazevOrganu, orderCs, sklonuj } from '../../lib/format';
+
+const zHlasovani = nactiHlasovani();
+const zTagu = nactiCiselnikTagu();
+
+const polozky = zplostiHlasovani(zHlasovani.data ?? []);
+const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
+const pocty = spocitejTagy(polozky);
+const roky = seradRoky(polozky);
+const organy = [...new Set(polozky.map((p) => p.organ))].sort(orderCs);
+
+// Nabízíme jen tagy, které v datech opravdu něco najdou — prázdná volba ve
+// filtru je horší než chybějící volba.
+const dostupneTagy = (zTagu.data?.tagy ?? [])
+  .filter((t) => (pocty.get(t.id) ?? 0) > 0)
+  .sort((a, b) => orderCs(a.nazev, b.nazev));
+
+const skupiny = zTagu.data?.skupiny ?? [];
+---
+
+<Zaklad
+  titulek="Hlasování"
+  aktivni="hlasovani"
+  nadpis="Hlasování rady a zastupitelstva"
+  uvod="Jednotlivá hlasování s výsledkem a jmenovitým rozpisem tam, kde byl zveřejněn. Filtry se dají kombinovat — téma, orgán i rok najednou. Odkaz se dá poslat: zvolené filtry se propíšou do adresy."
+>
+  <StavDat
+    stav={zHlasovani.stav}
+    zdroj={zHlasovani.zdroj}
+    co="Hlasování rady a zastupitelstva"
+    prazdno={zHlasovani.stav === 'ok' && polozky.length === 0}
+    modul="A1 Usnesení a hlasování"
+    poznamky={zHlasovani.stav === 'chyba' && zHlasovani.poznamka ? [zHlasovani.poznamka] : []}
+  />
+
+  {zTagu.stav !== 'ok' && <StavDat stav={zTagu.stav} zdroj={zTagu.zdroj} co="Číselník tagů" />}
+
+  {
+    polozky.length > 0 && (
+      <>
+        <form class="filtry" id="filtry-hlasovani" role="search" aria-label="Filtr hlasování">
+          <div class="filtr filtr--siroky">
+            <label class="filtr__popisek" for="f-tema">Téma</label>
+            <select id="f-tema" name="tema">
+              <option value="">Všechna témata ({cislo(polozky.length)})</option>
+              {skupiny.map((s) => {
+                const vSkupine = dostupneTagy.filter((t) => t.skupina === s.id);
+                return vSkupine.length > 0 ? (
+                  <optgroup label={s.nazev}>
+                    {vSkupine.map((t) => (
+                      <option value={t.id}>
+                        {t.nazev} ({cislo(pocty.get(t.id) ?? 0)})
+                      </option>
+                    ))}
+                  </optgroup>
+                ) : null;
+              })}
+              {dostupneTagy.filter((t) => !skupiny.some((s) => s.id === t.skupina)).map((t) => (
+                <option value={t.id}>
+                  {t.nazev} ({cislo(pocty.get(t.id) ?? 0)})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div class="filtr">
+            <label class="filtr__popisek" for="f-organ">Orgán</label>
+            <select id="f-organ" name="organ">
+              <option value="">Oba orgány</option>
+              {organy.map((o) => (
+                <option value={o}>{nazevOrganu(o)}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="filtr">
+            <label class="filtr__popisek" for="f-rok">Rok</label>
+            <select id="f-rok" name="rok">
+              <option value="">Všechny roky</option>
+              {roky.map((r) => (
+                <option value={String(r)}>{r}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="filtr">
+            <label class="filtr__popisek" for="f-vysledek">Výsledek</label>
+            <select id="f-vysledek" name="vysledek">
+              <option value="">Jakýkoliv</option>
+              <option value="schvaleno">Schváleno</option>
+              <option value="neschvaleno">Neschváleno</option>
+            </select>
+          </div>
+
+          <div class="filtr filtr--siroky">
+            <label class="filtr__popisek" for="f-text">Hledat v názvu</label>
+            <input type="search" id="f-text" name="text" placeholder="např. kolonáda" autocomplete="off" />
+          </div>
+
+          <div class="filtry__akce">
+            <button type="button" class="tlacitko" id="f-reset">Zrušit filtry</button>
+          </div>
+        </form>
+
+        <p class="pocet-vysledku" id="pocet-vysledku" aria-live="polite">
+          {cislo(polozky.length)} {sklonuj(polozky.length, 'hlasování', 'hlasování', 'hlasování')}
+        </p>
+
+        <div class="stav-dat stav-dat--prazdno" id="prazdny-vyber" hidden>
+          <strong class="stav-dat__nadpis">Nic neodpovídá</strong>
+          <span>Žádné hlasování nesplňuje zvolenou kombinaci filtrů. Zkuste některý uvolnit.</span>
+        </div>
+
+        <ul class="seznam" id="seznam-hlasovani">
+          {polozky.map((h) => (
+            <PolozkaHlasovaniKarta h={h} ciselnik={ciselnik} />
+          ))}
+        </ul>
+
+        <noscript>
+          <p class="stav-dat">
+            Filtry potřebují JavaScript. Bez něj je vidět celý seznam — jednotlivá témata mají
+            i vlastní stránky, například <a href="/hlasovani/tag/rozpocet">/hlasovani/tag/rozpocet</a>.
+          </p>
+        </noscript>
+      </>
+    )
+  }
+</Zaklad>
+
+<script>
+  /* Filtrování hlasování. Vše je předrenderované, skript jen skrývá položky —
+     žádné dotahování dat, funguje i offline. Zvolené filtry jdou do adresy,
+     aby se dal výběr poslat odkazem. */
+  {
+    const form = document.getElementById('filtry-hlasovani') as HTMLFormElement | null;
+    const seznam = document.getElementById('seznam-hlasovani');
+    const pocet = document.getElementById('pocet-vysledku');
+    const prazdno = document.getElementById('prazdny-vyber');
+
+    if (form && seznam) {
+      const polozky = Array.from(seznam.querySelectorAll<HTMLElement>('[data-hlasovani]'));
+      const pole = {
+        tema: document.getElementById('f-tema') as HTMLSelectElement,
+        organ: document.getElementById('f-organ') as HTMLSelectElement,
+        rok: document.getElementById('f-rok') as HTMLSelectElement,
+        vysledek: document.getElementById('f-vysledek') as HTMLSelectElement,
+        text: document.getElementById('f-text') as HTMLInputElement,
+      };
+
+      const bezDiakritiky = (s: string) =>
+        s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+      function pouzij(zapsatDoUrl = true) {
+        const tema = pole.tema.value;
+        const organ = pole.organ.value;
+        const rok = pole.rok.value;
+        const vysledek = pole.vysledek.value;
+        const text = bezDiakritiky(pole.text.value.trim());
+
+        let videno = 0;
+        for (const li of polozky) {
+          const tagy = (li.dataset.tagy ?? '').split(' ').filter(Boolean);
+          const ok =
+            (!tema || tagy.includes(tema)) &&
+            (!organ || li.dataset.organ === organ) &&
+            (!rok || li.dataset.rok === rok) &&
+            (!vysledek || li.dataset.vysledek === vysledek) &&
+            (!text || (li.dataset.hledat ?? '').includes(text));
+          li.hidden = !ok;
+          if (ok) videno++;
+        }
+
+        // „hlasování" má stejný tvar v jednotném i množném čísle, skloňovat není co
+        if (pocet) pocet.textContent = `${videno.toLocaleString('cs-CZ')} hlasování`;
+        if (prazdno) prazdno.hidden = videno !== 0;
+
+        if (zapsatDoUrl) {
+          const q = new URLSearchParams();
+          if (tema) q.set('tema', tema);
+          if (organ) q.set('organ', organ);
+          if (rok) q.set('rok', rok);
+          if (vysledek) q.set('vysledek', vysledek);
+          if (pole.text.value.trim()) q.set('text', pole.text.value.trim());
+          const adresa = q.toString() ? `?${q}` : location.pathname;
+          history.replaceState(null, '', adresa);
+        }
+      }
+
+      /* Předvyplnění z adresy — odkaz z /hlasovani/tag/[tag] i sdílený odkaz. */
+      const q = new URLSearchParams(location.search);
+      const nastav = (el: HTMLSelectElement | HTMLInputElement, klic: string) => {
+        const v = q.get(klic);
+        if (v !== null) el.value = v;
+      };
+      nastav(pole.tema, 'tema');
+      nastav(pole.organ, 'organ');
+      nastav(pole.rok, 'rok');
+      nastav(pole.vysledek, 'vysledek');
+      nastav(pole.text, 'text');
+
+      form.addEventListener('change', () => pouzij());
+      pole.text.addEventListener('input', () => pouzij());
+      document.getElementById('f-reset')?.addEventListener('click', () => {
+        form.reset();
+        pouzij();
+      });
+
+      pouzij(false);
+    }
+  }
+</script>

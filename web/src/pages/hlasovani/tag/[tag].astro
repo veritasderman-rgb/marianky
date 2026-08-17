@@ -1,0 +1,70 @@
+---
+import Zaklad from '../../../layouts/Zaklad.astro';
+import StavDat from '../../../components/StavDat.astro';
+import PolozkaHlasovaniKarta from '../../../components/PolozkaHlasovani.astro';
+import { nactiCiselnikTagu, nactiHlasovani, type Tag } from '../../../lib/data';
+import { mapaTagu, spocitejTagy, zplostiHlasovani, type PolozkaHlasovani } from '../../../lib/prehledy';
+import { cislo, nazevOrganu, orderCs } from '../../../lib/format';
+
+export async function getStaticPaths() {
+  const { data: ciselnik } = nactiCiselnikTagu();
+  const { data: soubory } = nactiHlasovani();
+  const polozky = zplostiHlasovani(soubory ?? []);
+  const pocty = spocitejTagy(polozky);
+
+  // Stránka vzniká pro každý tag z číselníku, i pro ten bez záznamů — aby
+  // odkaz nikdy nevedl na 404 a čtenář se dozvěděl, že k tématu zatím nic není.
+  return (ciselnik?.tagy ?? []).map((t) => ({
+    params: { tag: t.id },
+    props: {
+      tag: t,
+      polozky: polozky.filter((p) => p.tagy.includes(t.id)),
+      pocet: pocty.get(t.id) ?? 0,
+    },
+  }));
+}
+
+interface Props {
+  tag: Tag;
+  polozky: PolozkaHlasovani[];
+  pocet: number;
+}
+
+const { tag, polozky } = Astro.props as Props;
+const zHlasovani = nactiHlasovani();
+const zTagu = nactiCiselnikTagu();
+const ciselnikMapa = mapaTagu(zTagu.data?.tagy ?? []);
+const organy = [...new Set(polozky.map((p) => p.organ))].sort(orderCs);
+const roky = [...new Set(polozky.map((p) => p.rok).filter((r): r is number => r !== null))].sort((a, b) => b - a);
+---
+
+<Zaklad titulek={`Hlasování — ${tag.nazev}`} aktivni="hlasovani" nadpis={`Hlasování: ${tag.nazev}`} uvod={tag.popis}>
+  <p class="pocet-vysledku">
+    {
+      polozky.length > 0
+        ? `${cislo(polozky.length)} hlasování · ${organy.map(nazevOrganu).join(' a ')} · roky ${roky[roky.length - 1]}–${roky[0]}`
+        : ''
+    }
+    <a href={`/hlasovani?tema=${tag.id}`}>Otevřít v plném filtru</a>
+  </p>
+
+  <StavDat
+    stav={zHlasovani.stav}
+    zdroj={zHlasovani.zdroj}
+    co={`Hlasování k tématu ${tag.nazev}`}
+    prazdno={zHlasovani.stav === 'ok' && polozky.length === 0}
+    modul="A1 Usnesení a hlasování"
+  />
+
+  {
+    polozky.length > 0 && (
+      <ul class="seznam">
+        {polozky.map((h) => (
+          <PolozkaHlasovaniKarta h={h} ciselnik={ciselnikMapa} />
+        ))}
+      </ul>
+    )
+  }
+
+  <p><a href="/hlasovani">← Všechna hlasování</a> · <a href={`/temata/${tag.id}`}>Časová osa tématu</a></p>
+</Zaklad>

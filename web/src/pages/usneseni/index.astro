@@ -1,0 +1,38 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import PrehledUsneseni from '../../components/PrehledUsneseni.astro';
+import { nactiCiselnikTagu, nactiUsneseni } from '../../lib/data';
+import { mapaTagu, seradRoky, zplostiUsneseni } from '../../lib/prehledy';
+import { cislo } from '../../lib/format';
+
+const zUsneseni = nactiUsneseni();
+const zTagu = nactiCiselnikTagu();
+
+const vse = zplostiUsneseni(zUsneseni.data ?? []);
+const roky = seradRoky(vse);
+const nejnovejsi = roky[0] ?? null;
+const polozky = nejnovejsi === null ? [] : vse.filter((p) => p.rok === nejnovejsi);
+---
+
+<Zaklad
+  titulek="Usnesení"
+  aktivni="usneseni"
+  nadpis="Usnesení rady a zastupitelstva"
+  uvod={`Rejstřík bodů usnesení. Filtr podle orgánu, roku a tématu. Částka se zobrazuje jen tam, kde je v textu usnesení skutečně uvedená — nikde se nedopočítává; plné znění je na originálu na portálu města.${nejnovejsi !== null ? ` Zobrazen rok ${nejnovejsi}, celkem je v přehledu ${cislo(vse.length)} bodů napříč roky.` : ''}`}
+>
+  <PrehledUsneseni
+    polozky={polozky}
+    ciselnik={mapaTagu(zTagu.data?.tagy ?? [])}
+    ciselnikSurovy={zTagu.data ?? { tagy: [], skupiny: [] }}
+    roky={roky}
+    aktualniRok={nejnovejsi}
+    stav={zUsneseni.stav}
+    zdroj={zUsneseni.zdroj}
+    poznamka={zUsneseni.poznamka}
+  />
+
+  <p class="graf-poznamka">
+    Napříč všemi roky se dá hledat přes <a href="/hledat">fulltext</a>, po tématech přes
+    <a href="/temata/rozpocet">časové osy témat</a>.
+  </p>
+</Zaklad>

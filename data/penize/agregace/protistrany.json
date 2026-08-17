@@ -1,0 +1,4522 @@
+{
+  "generovano": "2026-08-17",
+  "zdroj": "Hlídač státu — registr smluv",
+  "holding": [
+    "00254061",
+    "25208438",
+    "64831086",
+    "61776068",
+    "26412501",
+    "00074071",
+    "00368997",
+    "00575143",
+    "19882629",
+    "47720654",
+    "72559772",
+    "26320053",
+    "47721472",
+    "69979430",
+    "47723505",
+    "47724978",
+    "70997543",
+    "47723483",
+    "70997560",
+    "70997578",
+    "70997586",
+    "70997594",
+    "72073993"
+  ],
+  "metodika": {
+    "chybejici_rok": "Chybějící rok v po_letech = nula. Graf ho MUSÍ vykreslit jako nulu, ne přeskočit — jinak časová osa lže.",
+    "slucovani": "Protistrany se slučují podle IČO; bez IČO podle normalizovaného názvu (klic_dle: 'nazev').",
+    "aktivni": "Podpis smlouvy v posledních 365 dnech (od 2025-08-17).",
+    "smer": "vydaj = sledovaný subjekt je v registru veden jako plátce; prijem = je veden jako příjemce. Směr se přebírá ze zdroje a nepřepisuje se — u nájmů a prodejů zveřejňovatelé často zapisují město jako plátce, i když peníze inkasují.",
+    "interni": "true = protistrana je sama subjektem městského holdingu (přesun peněz uvnitř města, ne platba ven).",
+    "castka_null": "Smlouva bez uvedené ceny se počítá do `smluv` a `bez_ceny`, do `celkem_czk` a `po_letech` nevstupuje.",
+    "pokryti": "Sklizeň registru NENÍ úplná — přesný rozsah je v souhrn.json → pokryti. Čísla ber jako dolní odhad: protistrana mohla dostat víc peněz a dřív, než se tu ukazuje."
+  },
+  "protistrany": [
+    {
+      "ico": "00254061",
+      "nazev": "Město Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 302512474.21,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 6494059.0,
+        "2017": 8726066.59,
+        "2018": 9000000.0,
+        "2019": 11495000.0,
+        "2020": 29940000.0,
+        "2021": 12500000.0,
+        "2022": 40116470.0,
+        "2023": 80264843.99,
+        "2024": 58140800.0,
+        "2025": 15000000.0,
+        "2026": 30835234.63
+      },
+      "smluv": 43,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061",
+        "25208438",
+        "26320053",
+        "26412501",
+        "61776068",
+        "72559772"
+      ]
+    },
+    {
+      "ico": "70891168",
+      "nazev": "Karlovarský kraj",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 199911051.74,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 3400400.0,
+        "2017": 3921475.0,
+        "2018": 66337675.74,
+        "2020": 11073400.0,
+        "2021": 18833301.0,
+        "2022": 13208400.0,
+        "2023": 16706200.0,
+        "2024": 16576300.0,
+        "2025": 24232500.0,
+        "2026": 25621400.0
+      },
+      "smluv": 19,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061",
+        "00575143",
+        "26412501"
+      ]
+    },
+    {
+      "ico": "70856508",
+      "nazev": "Státní fond dopravní infrastruktury",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 89977926.0,
+      "prvni_rok": 2022,
+      "posledni_rok": 2023,
+      "aktivni": false,
+      "po_letech": {
+        "2022": 44988963.0,
+        "2023": 44988963.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "49790676",
+      "nazev": "Veolia Energie Mariánské Lázně, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 82906243.59,
+      "prvni_rok": 2004,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2004": 10407500.0,
+        "2005": 632500.0,
+        "2008": 9947500.0,
+        "2016": 3047500.0,
+        "2017": 7072500.0,
+        "2025": 43548795.4,
+        "2026": 8249948.19
+      },
+      "smluv": 35,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061",
+        "00368997",
+        "00575143",
+        "47723483",
+        "47723505",
+        "69979430",
+        "70997543",
+        "70997560",
+        "70997578",
+        "72559772"
+      ]
+    },
+    {
+      "ico": "49787977",
+      "nazev": "CHEVAK Cheb, a.s.",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 46516030.0,
+      "prvni_rok": 2021,
+      "posledni_rok": 2021,
+      "aktivni": false,
+      "po_letech": {
+        "2021": 46516030.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "70947023",
+      "nazev": "Krajská správa a údržba silnic Karlovarského kraje, příspěvková organizace",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 31700000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 31700000.0
+      },
+      "smluv": 2,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25208438",
+      "nazev": "Infocentrum Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 6230870.8,
+      "prvni_rok": 2006,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2006": 2615463.4,
+        "2026": 3615407.4
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "25208438"
+      ]
+    },
+    {
+      "ico": "61776068",
+      "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o.",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 5181861.3,
+      "prvni_rok": 2025,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 825861.3,
+        "2026": 4356000.0
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061",
+        "61776068"
+      ]
+    },
+    {
+      "ico": "00020729",
+      "nazev": "Státní fond životního prostředí České republiky",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 206312.0,
+      "prvni_rok": 2013,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2013": 206312.0
+      },
+      "smluv": 3,
+      "bez_ceny": 2,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "61384984",
+      "nazev": "Akademie múzických umění v Praze",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 114950.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 114950.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26320053"
+      ]
+    },
+    {
+      "ico": "70994234",
+      "nazev": "Správa železniční dopravní cesty, státní organizace",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 106480.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 106480.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "49277600",
+      "nazev": "Česká centrála cestovního ruchu-Czechtourism",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 100000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 100000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "25208438"
+      ]
+    },
+    {
+      "ico": "47723505",
+      "nazev": "Základní škola JIH, Mariánské Lázně, Komenského 459",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 64600.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 64600.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "47723505"
+      ]
+    },
+    {
+      "ico": "00077119",
+      "nazev": "Hotelová škola Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "72559772"
+      ]
+    },
+    {
+      "ico": "26412501",
+      "nazev": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 2,
+      "bez_ceny": 2,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "47672234",
+      "nazev": "Česká průmyslová zdravotní pojišťovna",
+      "klic_dle": "ico",
+      "smer": "prijem",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "25213261",
+      "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 748560791.99,
+      "prvni_rok": 2017,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2017": 3040791.99,
+        "2020": 16000000.0,
+        "2025": 724520000.0,
+        "2026": 5000000.0
+      },
+      "smluv": 4,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "TECHNICKÝ A DOPRAVNÍ SERVIS s.r.o.",
+        "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o., Daniel Javůrek"
+      ]
+    },
+    {
+      "ico": "26320053",
+      "nazev": "Západočeský symfonický orchestr, o.p.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 235465000.0,
+      "prvni_rok": 2018,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2018": 9000000.0,
+        "2019": 11495000.0,
+        "2020": 29940000.0,
+        "2021": 12500000.0,
+        "2022": 30730000.0,
+        "2023": 61500000.0,
+        "2024": 50300000.0,
+        "2025": 15000000.0,
+        "2026": 15000000.0
+      },
+      "smluv": 16,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s."
+      ]
+    },
+    {
+      "ico": "26177005",
+      "nazev": "COLAS CZ, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 178216248.78,
+      "prvni_rok": 2015,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2015": 48367415.11,
+        "2016": 29125419.88,
+        "2024": 100723413.79
+      },
+      "smluv": 9,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26356503",
+      "nazev": "Stavební společnost VARO, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 111531837.71,
+      "prvni_rok": 2020,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2020": 24013771.03,
+        "2021": 24805075.37,
+        "2022": 62712991.31
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "48035599",
+      "nazev": "SWIETELSKY stavební s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 101308639.43,
+      "prvni_rok": 2024,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2024": 15051823.47,
+        "2025": 42280309.58,
+        "2026": 43976506.38
+      },
+      "smluv": 4,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "42194407",
+      "nazev": "KTS - AME s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 88529932.21,
+      "prvni_rok": 2024,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 43487471.49,
+        "2025": 45042460.72
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "47115921",
+      "nazev": "Elektrizace železnic Praha a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 86795282.96,
+      "prvni_rok": 2021,
+      "posledni_rok": 2023,
+      "aktivni": false,
+      "po_letech": {
+        "2021": 28895123.37,
+        "2023": 57900159.59
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "26342057",
+      "nazev": "PROLEMAX s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 78825353.82,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 78825353.82
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25751018",
+      "nazev": "ELTODO OSVĚTLENÍ, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 75297711.67,
+      "prvni_rok": 2023,
+      "posledni_rok": 2023,
+      "aktivni": false,
+      "po_letech": {
+        "2023": 75297711.67
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "44017553",
+      "nazev": "BRNOFROST spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 75200697.76,
+      "prvni_rok": 2019,
+      "posledni_rok": 2019,
+      "aktivni": false,
+      "po_letech": {
+        "2019": 75200697.76
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25208438",
+      "nazev": "Infocentrum Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 33931470.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 845000.0,
+        "2022": 9386470.0,
+        "2023": 9000000.0,
+        "2026": 14700000.0
+      },
+      "smluv": 6,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "KIS Mariánské Lázně s.r.o."
+      ]
+    },
+    {
+      "ico": "15030865",
+      "nazev": "SOR Libchavy spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 33550275.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 33550275.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "17151881",
+      "nazev": "Marienbad Immobilien s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 32154443.2,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 32154443.2
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "02088843",
+      "nazev": "Capacity Expo s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 24066241.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 24066241.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "09782966",
+      "nazev": "SUAS Real Estate s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 24030600.0,
+      "prvni_rok": 2024,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 12015300.0,
+        "2025": 12015300.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "SUAS Real Estate s. r. o."
+      ]
+    },
+    {
+      "ico": "45359164",
+      "nazev": "Silnice Horšovský Týn a. s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 23328800.0,
+      "prvni_rok": 2018,
+      "posledni_rok": 2019,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 11603900.0,
+        "2019": 11724900.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "61070702",
+      "nazev": "ESU SML ESU SML nar. 1961",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 23107500.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 23107500.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "46824286",
+      "nazev": "Miroslava Slepičková",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 22888679.81,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 244216.75,
+        "2023": 13315145.98,
+        "2026": 9329317.08
+      },
+      "smluv": 4,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "10725415",
+      "nazev": "Grathon Business a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 21429348.94,
+      "prvni_rok": 2025,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 10106648.5,
+        "2026": 11322700.44
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26384442",
+      "nazev": "S.A.O.CH. spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 20704124.36,
+      "prvni_rok": 2025,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 16528302.96,
+        "2026": 4175821.4
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061",
+        "26412501"
+      ],
+      "drive_nazvy": [
+        "S.A.O.CH spol. s r.o."
+      ]
+    },
+    {
+      "ico": "28420403",
+      "nazev": "ALGON, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 19174201.77,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 2126337.0,
+        "2026": 17047864.77
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25218948",
+      "nazev": "HELLMICH, spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 18645101.41,
+      "prvni_rok": 2018,
+      "posledni_rok": 2019,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 9156633.75,
+        "2019": 9488467.66
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27086631",
+      "nazev": "Masák & Partner, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 18029000.0,
+      "prvni_rok": 2022,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2022": 18029000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "61776068",
+      "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 17605643.99,
+      "prvni_rok": 2023,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2023": 9764843.99,
+        "2024": 7840800.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27967638",
+      "nazev": "VYSSPA Sports Technology s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 15561793.4,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 15561793.4
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "00254061",
+      "nazev": "Město Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 15405521.22,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 1914220.0,
+        "2017": 8726066.59,
+        "2026": 4765234.63
+      },
+      "smluv": 7,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061",
+        "61776068"
+      ],
+      "drive_nazvy": [
+        "Baugreen s.r.o.",
+        "Bc. Denisa Švarcová",
+        "Bronislava Müllerová",
+        "Lenka Růžičková"
+      ]
+    },
+    {
+      "ico": "25205978",
+      "nazev": "Zahradní a parková spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 13949874.14,
+      "prvni_rok": 2017,
+      "posledni_rok": 2023,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 197066.65,
+        "2023": 13752807.49
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "Zahradní a parková spol. s.r.o."
+      ]
+    },
+    {
+      "ico": "26376709",
+      "nazev": "Nemocnice Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 12470690.75,
+      "prvni_rok": 2018,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2018": 8300690.75,
+        "2026": 4170000.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "08457751",
+      "nazev": "Herman technologies s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 12366167.18,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 12366167.18
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "29156513",
+      "nazev": "AZ VIA s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 12041006.45,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 12041006.45
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS s. r.o.",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 11953302.25,
+      "prvni_rok": 2020,
+      "posledni_rok": 2020,
+      "aktivni": false,
+      "po_letech": {
+        "2020": 11953302.25
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "09359508",
+      "nazev": "VDED s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 11246540.87,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 11246540.87
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "04308697",
+      "nazev": "Aricoma Systems a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 11007095.0,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 11007095.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Miroslava Slepičková",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 10047478.61,
+      "prvni_rok": 2016,
+      "posledni_rok": 2018,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 66090.0,
+        "2018": 9981388.61
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "64948242",
+      "nazev": "UniCredit Bank Czech Republic and Slovakia, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 10000000.0,
+      "prvni_rok": 2022,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2022": 10000000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Zahradní a parková spol. s.r.o.",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 9831969.22,
+      "prvni_rok": 2018,
+      "posledni_rok": 2018,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 9831969.22
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "01752499",
+      "nazev": "Certero IT Solutions s.r.o., Martin Dudek",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 8941481.34,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 8941481.34
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27977951",
+      "nazev": "SILNICE CHMELÍŘ s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 8477866.21,
+      "prvni_rok": 2023,
+      "posledni_rok": 2023,
+      "aktivni": false,
+      "po_letech": {
+        "2023": 8477866.21
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "KIS Mariánské Lázně s. r. o.",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 8470000.0,
+      "prvni_rok": 2020,
+      "posledni_rok": 2020,
+      "aktivni": false,
+      "po_letech": {
+        "2020": 8470000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "28036166",
+      "nazev": "Komunikace Sokolov s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 8322934.54,
+      "prvni_rok": 2022,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2022": 8322934.54
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "04637551",
+      "nazev": "Cafe Classic ML s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 8245167.48,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 8245167.48
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "17546371",
+      "nazev": "JČ Leščinský s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 8134039.92,
+      "prvni_rok": 2024,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2024": 8134039.92
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "22562362",
+      "nazev": "Karlovarské stavby s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 7721323.97,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 7721323.97
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "28831365",
+      "nazev": "CALYPSO GROUP s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 6576229.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 6576229.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26378191",
+      "nazev": "ČEZNET s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 5789428.92,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 5789428.92
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "SK-00254061",
+      "nazev": "Město Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 5224729.93,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 5224729.93
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26315769",
+      "nazev": "JAZUU s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 3925000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 2480500.0,
+        "2026": 1444500.0
+      },
+      "smluv": 3,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "NEW YORK M.L., s.r.o."
+      ]
+    },
+    {
+      "ico": "26711206",
+      "nazev": "Z production s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 3615407.4,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 3615407.4
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "25208438"
+      ]
+    },
+    {
+      "ico": "28968506",
+      "nazev": "City Parking Group s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 3187140.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 3187140.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "45244782",
+      "nazev": "Česká spořitelna, a. s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 3011400.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 3011400.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "17299608",
+      "nazev": "Tilia ML s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2675461.25,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 2675461.25
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "07997264",
+      "nazev": "DR servis s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2615463.4,
+      "prvni_rok": 2006,
+      "posledni_rok": 2006,
+      "aktivni": false,
+      "po_letech": {
+        "2006": 2615463.4
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "25208438"
+      ]
+    },
+    {
+      "ico": "03361985",
+      "nazev": "ANTISTAV s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2272077.5,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 2272077.5
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25740253",
+      "nazev": "TEMO-TELEKOMUNIKACE a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2191726.24,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 2191726.24
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "01496735",
+      "nazev": "GRACCULUS s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2158782.2,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 2158782.2
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "68806612",
+      "nazev": "Marian Valko",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2145735.41,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 1174814.41,
+        "2026": 970921.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27094359",
+      "nazev": "ACG-Real s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2142026.8,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 2142026.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "43277748",
+      "nazev": "Rosenkranc-Sváta - Instalatérství, topenářství, provádění staveb, jejich změn a odstraňování",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2135560.46,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1063041.87,
+        "2017": 1072518.59
+      },
+      "smluv": 12,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "Instalace vody a topení - Rosenkranc-Sváta",
+        "Instalace vody a topení Rosenkranc-Sváta",
+        "Instalace vody a topení, Rosenkranc-Sváta",
+        "Instalace vody a topení, provádění staveb Rosenkranc - Sváta",
+        "Rosenkranc - Sváta",
+        "Rosenkranc – Sváta",
+        "Rosenkranc-Sváta"
+      ]
+    },
+    {
+      "ico": "00572756",
+      "nazev": "Obec Velká Hleďsebe",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 2098130.32,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 2098130.32
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "26412501"
+      ]
+    },
+    {
+      "ico": "04318102",
+      "nazev": "Snowhill Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1818810.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1818810.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "468247155",
+      "nazev": "Alena Vondrašová",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1762970.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1762970.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25205099",
+      "nazev": "VOJÁČEK s.r.o – topení – plyn - voda",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1753747.82,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1587645.49,
+        "2017": 166102.33
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "VOJÁČEK s.r.o."
+      ]
+    },
+    {
+      "ico": "03025519",
+      "nazev": "TRAFIKA SJ s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1597200.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1597200.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "08825734",
+      "nazev": "STATIC BUREAU PRAHA s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1397550.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1397550.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "08775958",
+      "nazev": "Zlatnictví hodinářství Růžičková s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1320000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1320000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "61060631",
+      "nazev": "VITA software, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1311906.6,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 1311906.6
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26450691",
+      "nazev": "MAKRO Cash & Carry ČR s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1210000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 1210000.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 2,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "29107750",
+      "nazev": "KLEPONA s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1209972.17,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 534850.25,
+        "2017": 675121.92
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "64392031",
+      "nazev": "Petr Václavík",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1200000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1200000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "16713044",
+      "nazev": "Elsa Sovková",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1194875.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1194875.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "46514503",
+      "nazev": "Ing. Kohlová Jana",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1167650.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1167650.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "65410840",
+      "nazev": "REINVEST spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1133700.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1133700.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Ing. arch. Ondřej Tuček",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 1101100.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1101100.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "45534306",
+      "nazev": "ČSOB Pojišťovna, a. s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1101003.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1101003.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "73681423",
+      "nazev": "Ing. Pavel Graca",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1093306.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1093306.0
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26341778",
+      "nazev": "GOROSHIT s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 1089000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 1089000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Petr Christov",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 1040601.21,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 1040601.21
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "24385417",
+      "nazev": "Olga Forejtová",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 991666.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 991666.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25710257",
+      "nazev": "KOSMAS s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 960000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 960000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "04974638",
+      "nazev": "Euro Reality Plzeň s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 935051.7,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 935051.7
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "42194920",
+      "nazev": "Marius Pedersen a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 918299.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 918299.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "13895524",
+      "nazev": "Bohumír Jungbauer",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 916804.9,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 397204.28,
+        "2017": 519600.62
+      },
+      "smluv": 10,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26355639",
+      "nazev": "Stav - elektro s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 863218.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 863218.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "17176646",
+      "nazev": "BUILDTHINX s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 825861.3,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 825861.3
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "61776068"
+      ]
+    },
+    {
+      "ico": "45359113",
+      "nazev": "Léčebné lázně Mariánské Lázně a. s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 810429.79,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": true,
+      "po_letech": {
+        "2025": 810429.79
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "48365165",
+      "nazev": "KOVODŘEVO.CZ, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 769731.75,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 769731.75
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "45805369",
+      "nazev": "ŠkoFIN s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 735773.99,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 735773.99
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "66383218",
+      "nazev": "Luděk KUTTA",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 733089.39,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 119759.75,
+        "2017": 613329.64
+      },
+      "smluv": 6,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25181700",
+      "nazev": "AVÍZO s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 726000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 726000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "09365508",
+      "nazev": "HOTELIS s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 726000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 726000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "61776068"
+      ]
+    },
+    {
+      "ico": "11610590",
+      "nazev": "Sovka Roman",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 711000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 711000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Mirek Reindl",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 666165.5,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 666165.5
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26385783",
+      "nazev": "GASEKO s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 650798.5,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 557640.6,
+        "2017": 93157.9
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "GASEKO, plyn, topení, sanita s.r.o."
+      ]
+    },
+    {
+      "ico": "09562681",
+      "nazev": "ANDREEV GLOBAL s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 650000.0,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 650000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "68820895",
+      "nazev": "PACLT - TRUHLÁŘSTVÍ",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 646961.59,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 231768.24,
+        "2017": 415193.35
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "12396729",
+      "nazev": "Hana Hončíková",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 637670.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 637670.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "02022915",
+      "nazev": "Zahradní centrum Malinkovič - Důbrava s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 629428.8,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 629428.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "49787977",
+      "nazev": "CHEVAK Cheb, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 629200.0,
+      "prvni_rok": 2012,
+      "posledni_rok": 2013,
+      "aktivni": false,
+      "po_letech": {
+        "2012": 302500.0,
+        "2013": 326700.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "72559772"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Jan Mergl",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 620609.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 620609.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "28234642",
+      "nazev": "Bidfood Czech Republic s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "26797283",
+      "nazev": "CHRISTEYNS s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2022,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2022": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "18691471",
+      "nazev": "František Jauris",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "28714857",
+      "nazev": "GASTROPLUS Louny s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "25249894",
+      "nazev": "HELLMICH - zelenina, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "18711227",
+      "nazev": "Jan Špilar, Ryby - drůbež",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "87176823",
+      "nazev": "Michal Hurajčík",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "62613481",
+      "nazev": "Miroslava Drahokoupilová",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 605000.0,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 605000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "49618997",
+      "nazev": "Pyramida s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 602653.81,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 499186.71,
+        "2017": 103467.1
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061",
+        "72559772"
+      ],
+      "drive_nazvy": [
+        "PYRAMIDA s.r.o."
+      ]
+    },
+    {
+      "ico": "24138878",
+      "nazev": "AIRCON CLIMA CZ, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 599555.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 599555.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26379490",
+      "nazev": "PRIMO CAR Cheb s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 541256.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 541256.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "46866612",
+      "nazev": "Pavel VĚRNÝ",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 520775.53,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 520775.53
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26376717",
+      "nazev": "PROSTROM Bohemia s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 518618.78,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 518618.78
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "03673073",
+      "nazev": "Hřiště hrou s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 502504.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 397994.0,
+        "2017": 104510.0
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "29123461",
+      "nazev": "Truhlářství Turner s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 484580.8,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 484580.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Ing. Pavel Šimánek - Florart",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 475288.0,
+      "prvni_rok": 2015,
+      "posledni_rok": 2015,
+      "aktivni": false,
+      "po_letech": {
+        "2015": 475288.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27998681",
+      "nazev": "SLEPIČKA s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 473502.04,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 335931.09,
+        "2017": 137570.95
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "49789210",
+      "nazev": "M.L.PROFIT v.o.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 439956.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 439956.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47720654"
+      ]
+    },
+    {
+      "ico": "72242183",
+      "nazev": "Milan Uxa",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 427856.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 427856.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25337220",
+      "nazev": "PSJ, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 394104.26,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 394104.26
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "73681334",
+      "nazev": "ZEDNICKÉ PRÁCE ROMAN ZÍDEK",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 343027.74,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 343027.74
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "62913671",
+      "nazev": "Up Česká republika s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 336000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 336000.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "12397181",
+      "nazev": "Petr Schneiderwinkl",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 316710.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 316710.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26341565",
+      "nazev": "PRO AKTIV Marienbad, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 302500.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 302500.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "74443500",
+      "nazev": "Roman Babej",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 279806.45,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 177733.27,
+        "2017": 102073.18
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "16143655",
+      "nazev": "Vladimír Stránský",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 270271.65,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 173030.0,
+        "2017": 97241.65
+      },
+      "smluv": 3,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "47693053",
+      "nazev": "Vladimír Sláva",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 204313.34,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 107051.12,
+        "2017": 97262.22
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "70957142",
+      "nazev": "Centrum denních služeb v Mariánských Lázních o.p.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 200000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 200000.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "Centurm denních služeb o.p.s."
+      ]
+    },
+    {
+      "ico": "28030672",
+      "nazev": "CHRISTO GROUP s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 195294.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 195294.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "69076821",
+      "nazev": "Le Thi Thanh Tam",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 188179.2,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 188179.2
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "01978918",
+      "nazev": "Jiří Oboznenko",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 187230.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 74700.0,
+        "2017": 112530.0
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ],
+      "drive_nazvy": [
+        "Ing. Jiří Oboznenko"
+      ]
+    },
+    {
+      "ico": "71810200",
+      "nazev": "Janek Róbert",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 181500.0,
+      "prvni_rok": 2014,
+      "posledni_rok": 2014,
+      "aktivni": false,
+      "po_letech": {
+        "2014": 181500.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "72559772"
+      ]
+    },
+    {
+      "ico": "76234495",
+      "nazev": "Petr Bandas",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 177598.96,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 177598.96
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Bc. Ivana Vránková",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 170900.4,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 170900.4
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Rostislav Hažva",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 170400.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 170400.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26297850",
+      "nazev": "IReSoft, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 169400.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 169400.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "45358460",
+      "nazev": "Geoing Plzeň, spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 157300.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 157300.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "42324254",
+      "nazev": "OTIS a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 156763.97,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 156763.97
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "03978427",
+      "nazev": "ML Strategy s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 151250.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 151250.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Markéta Kaňková",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 146000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 146000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "71203354",
+      "nazev": "Mariánskolázeňsko",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 145200.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 145200.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "15741567",
+      "nazev": "MVDr. Mirko Pyskatý",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 140844.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 140844.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Václav Korbel",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 135907.2,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 135907.2
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26373386",
+      "nazev": "AKLEN stavební s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 129731.06,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 129731.06
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "45349282",
+      "nazev": "INVEKO spol. s r. o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 123274.8,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 123274.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47720654"
+      ]
+    },
+    {
+      "ico": "02949440",
+      "nazev": "TAKTO agency s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 121000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 121000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "14715074",
+      "nazev": "Ing. Josef Hlavnička - REKO",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 120395.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 120395.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "66334187",
+      "nazev": "Tesařství a truhlářství Václav Holub",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 120140.9,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 120140.9
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26233100",
+      "nazev": "DATmoLUX a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 117612.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 117612.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "03050394",
+      "nazev": "Kamemosochařství Junek, Stanislav Junek",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 117303.45,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 117303.45
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27643298",
+      "nazev": "Delfín travel s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 114520.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 114520.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47721472"
+      ]
+    },
+    {
+      "ico": "25897250",
+      "nazev": "KLIMAPRODUKT A.S.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 112196.04,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 112196.04
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "72559772",
+      "nazev": "Správa městských sportovišť",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 111320.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 111320.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "18735495",
+      "nazev": "Miloslav Zeman - autobusová doprava",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 110000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 110000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47721472"
+      ]
+    },
+    {
+      "ico": "13898086",
+      "nazev": "Ing. Jiří Kovařík",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 108900.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 108900.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Libor Moulík",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 104471.4,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 104471.4
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "66333407",
+      "nazev": "Daniel Dvořák",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 102253.47,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 102253.47
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "70829306",
+      "nazev": "FC VIKTORIA Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 99399.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 99399.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "63485290",
+      "nazev": "ikis, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 94380.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 94380.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "74968122",
+      "nazev": "Jiří Kučera - elektroinstalace",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 94362.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 94362.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "64392911",
+      "nazev": "Miroslav Hřebík",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 93654.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 93654.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Jaroslava Levá",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 93581.4,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 93581.4
+      },
+      "smluv": 2,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "01249550",
+      "nazev": "\"MOTOKROS NA CECHU\"",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 90000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 90000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "18233341",
+      "nazev": "TFC Signalbau Mariánské Lázně z.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 85000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 85000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "František Kučaba",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 83199.6,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 83199.6
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26544725",
+      "nazev": "HC Mariánské Lázně.cz",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 83000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 83000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "00516121",
+      "nazev": "Royal Golf Club Mariánské Lázně z.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 80000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 80000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26321181",
+      "nazev": "TVSat Multimedia, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 79955.52,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 79955.52
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25232932",
+      "nazev": "FLASHDANCE CLUB s. r. o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 78650.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 78650.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "73438448",
+      "nazev": "Zdeněk Hanzlík - zámečnictví",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 77899.8,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 77899.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "43279317",
+      "nazev": "Bielko Josef - stavební práce",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 72810.54,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 72810.54
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Tesařství Václav Holub",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 70143.7,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 70143.7
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "26668084",
+      "nazev": "Folklérní soubor Marjánek, z. s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 68365.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 68365.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "43277501",
+      "nazev": "Karel Čermák",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 64600.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 64600.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47723505"
+      ]
+    },
+    {
+      "ico": "25237462",
+      "nazev": "M´PLAN s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 64000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 64000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Jaromír Pokorný",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 63234.6,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 63234.6
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Pokorný Jaromír",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 63234.6,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 63234.6
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "41621531",
+      "nazev": "Karel Býček, zemní práce a stavební činnost",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 61310.7,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 61310.7
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "25638955",
+      "nazev": "SUEZ Využití zdrojů a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 60500.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 60500.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "12398985",
+      "nazev": "Jiří Kroupa",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 60000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 60000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47723483"
+      ]
+    },
+    {
+      "ico": "73732931",
+      "nazev": "Klub plastikových modelářů Mariánské Lázně",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 60000.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 60000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "27926826",
+      "nazev": "ARBOEKO s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 57132.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 57132.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Václav Eichler",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 55000.0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 55000.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "47721472"
+      ]
+    },
+    {
+      "ico": "46615876",
+      "nazev": "Bohumila Hrašková",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 54300.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 54300.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "49202979",
+      "nazev": "Martina Doležalová",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 54300.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 54300.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "68821697",
+      "nazev": "Rostislav Hažva",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 54300.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 54300.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "87146142",
+      "nazev": "Václav Nekovář",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 54300.0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 54300.0
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Jiří Dvořáček",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 45883.2,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 45883.2
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Alexandr Frolov",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 40365.6,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 40365.6
+      },
+      "smluv": 2,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "70998353",
+      "nazev": "Společenství vlastníků U mlékárny 404 a 45",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 24054.8,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {
+        "2016": 24054.8
+      },
+      "smluv": 1,
+      "bez_ceny": 0,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "\"MOTOKROS NA CECHU\"",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "28198395",
+      "nazev": "3P Consulting, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "FC VIKTORIA Mariánské Lázně",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "HC Mariánské Lázně. cz",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Ladislav Jezdinský",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "62412051",
+      "nazev": "MK MARKET spol. s r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "05597790",
+      "nazev": "MONTRAVEL technology, s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "72559772"
+      ]
+    },
+    {
+      "ico": "26412501",
+      "nazev": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 3,
+      "bez_ceny": 3,
+      "vadnych": 0,
+      "interni": true,
+      "subjekty": [
+        "00254061",
+        "26412501"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "MĚSTSKÁ DOPRAVA Mariánské Lázně, s.r.o. - IČ 26412501",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "03777944",
+      "nazev": "Poltona s.r.o.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2017,
+      "posledni_rok": 2017,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": "40525929",
+      "nazev": "Praní a čištění, a.s.",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00575143"
+      ]
+    },
+    {
+      "ico": "16714229",
+      "nazev": "Tomáš Skurka",
+      "klic_dle": "ico",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 2,
+      "bez_ceny": 2,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    },
+    {
+      "ico": null,
+      "nazev": "Údaj není veřejný na základě § 5 odst. 6 zákona č. 340/2015 Sb., o registru smluv.",
+      "klic_dle": "nazev",
+      "smer": "vydaj",
+      "celkem_czk": 0,
+      "prvni_rok": 2016,
+      "posledni_rok": 2016,
+      "aktivni": false,
+      "po_letech": {},
+      "smluv": 1,
+      "bez_ceny": 1,
+      "vadnych": 0,
+      "interni": false,
+      "subjekty": [
+        "00254061"
+      ]
+    }
+  ]
+}

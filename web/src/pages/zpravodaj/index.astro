@@ -1,0 +1,85 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import { nactiCisla, nactiClanky } from '../../lib/data';
+import { cislo, sklonuj } from '../../lib/format';
+
+const zCisel = nactiCisla();
+const zClanku = nactiClanky();
+
+const cisla = zCisel.data ?? [];
+const clanky = zClanku.data ?? [];
+
+const clankuVCisle = new Map<string, number>();
+for (const c of clanky) clankuVCisle.set(c.cislo, (clankuVCisle.get(c.cislo) ?? 0) + 1);
+
+const roky = [...new Set(cisla.map((c) => c.rok))].sort((a, b) => b - a);
+const sOcr = cisla.filter((c) => c.ocr).length;
+---
+
+<Zaklad
+  titulek="Zpravodaj"
+  aktivni="zpravodaj"
+  nadpis="Městský zpravodaj"
+  uvod="Archiv čísel Zpravodaje města. Originální PDF zůstávají na webu města — tady je jen přehled a rozebrané články. Inzerce se nezpracovává."
+>
+  <StavDat
+    stav={zCisel.stav}
+    zdroj={zCisel.zdroj}
+    co="Archiv čísel zpravodaje"
+    prazdno={zCisel.stav === 'ok' && cisla.length === 0}
+    modul="A2 Zpravodaj"
+  />
+
+  {
+    cisla.length > 0 && (
+      <>
+        <p class="pocet-vysledku">
+          {cislo(cisla.length)} {sklonuj(cisla.length, 'číslo', 'čísla', 'čísel')} ·
+          {' '}{roky.length > 0 ? `roky ${roky[roky.length - 1]}–${roky[0]}` : ''}
+          {sOcr > 0 && ` · ${cislo(sOcr)} z nich prošlo OCR`}
+        </p>
+
+        {zClanku.stav !== 'ok' && (
+          <StavDat
+            stav={zClanku.stav}
+            zdroj={zClanku.zdroj}
+            co="Rozebrané články ze zpravodaje"
+            modul="A2 Zpravodaj"
+          />
+        )}
+
+        {roky.map((rok) => (
+          <section>
+            <h2>{rok}</h2>
+            <ul class="seznam">
+              {cisla
+                .filter((c) => c.rok === rok)
+                .map((c) => (
+                  <li class="polozka">
+                    <h3 class="polozka__nazev">
+                      <a href={`/zpravodaj/${c.id}`}>{c.nazev}</a>
+                    </h3>
+                    <div class="polozka__hlava">
+                      {c.stran ? <span>{cislo(c.stran)} {sklonuj(c.stran, 'strana', 'strany', 'stran')}</span> : null}
+                      {(clankuVCisle.get(c.id) ?? 0) > 0 ? (
+                        <span>{cislo(clankuVCisle.get(c.id) ?? 0)} {sklonuj(clankuVCisle.get(c.id) ?? 0, 'článek', 'články', 'článků')}</span>
+                      ) : (
+                        <span>články zatím nerozebrané</span>
+                      )}
+                      {c.ocr && <span>text z OCR</span>}
+                    </div>
+                    {c.url && (
+                      <div class="polozka__meta">
+                        <a href={c.url} rel="noreferrer noopener">Originál PDF na webu města</a>
+                      </div>
+                    )}
+                  </li>
+                ))}
+            </ul>
+          </section>
+        ))}
+      </>
+    )
+  }
+</Zaklad>

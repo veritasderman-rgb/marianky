@@ -1,0 +1,48 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import PrehledUsneseni from '../../components/PrehledUsneseni.astro';
+import { nactiCiselnikTagu, nactiUsneseni } from '../../lib/data';
+import { mapaTagu, seradRoky, zplostiUsneseni, type PolozkaUsneseni } from '../../lib/prehledy';
+import { cislo } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const { data } = nactiUsneseni();
+  const vse = zplostiUsneseni(data ?? []);
+  const roky = seradRoky(vse);
+  return roky.map((rok) => ({
+    params: { rok: String(rok) },
+    props: { rok, polozky: vse.filter((p) => p.rok === rok), roky, celkem: vse.length },
+  }));
+}
+
+interface Props {
+  rok: number;
+  polozky: PolozkaUsneseni[];
+  roky: number[];
+  celkem: number;
+}
+
+const { rok, polozky, roky, celkem } = Astro.props as Props;
+const zUsneseni = nactiUsneseni();
+const zTagu = nactiCiselnikTagu();
+---
+
+<Zaklad
+  titulek={`Usnesení ${rok}`}
+  aktivni="usneseni"
+  nadpis={`Usnesení ${rok}`}
+  uvod={`${cislo(polozky.length)} bodů usnesení za rok ${rok}. Celkem je v přehledu ${cislo(celkem)} bodů napříč roky.`}
+>
+  <PrehledUsneseni
+    polozky={polozky}
+    ciselnik={mapaTagu(zTagu.data?.tagy ?? [])}
+    ciselnikSurovy={zTagu.data ?? { tagy: [], skupiny: [] }}
+    roky={roky}
+    aktualniRok={rok}
+    stav={zUsneseni.stav}
+    zdroj={zUsneseni.zdroj}
+    poznamka={zUsneseni.poznamka}
+  />
+
+  <p><a href="/usneseni">← Přehled usnesení</a></p>
+</Zaklad>

@@ -1,0 +1,199 @@
+---
+/**
+ * Filtrovatelný rejstřík usnesení pro jeden rok.
+ *
+ * Roky se dělí na samostatné stránky schválně: rada probere přes tisíc bodů
+ * ročně a jedna společná stránka by měla desítky tisíc uzlů v DOM. Filtr podle
+ * orgánu, tématu a názvu pak běží nad tím, co je na stránce — bez dotahování
+ * dat, takže funguje i bez sítě.
+ */
+import StavDat from './StavDat.astro';
+import Znacky from './Znacky.astro';
+import type { Ciselnik, Stav, Tag } from '../lib/data';
+import type { PolozkaUsneseni } from '../lib/prehledy';
+import { spocitejTagy } from '../lib/prehledy';
+import { bezDiakritiky, cislo, datumKratke, kc, nazevOrganu, orderCs } from '../lib/format';
+
+export interface Props {
+  polozky: PolozkaUsneseni[];
+  ciselnik: Map<string, Tag>;
+  ciselnikSurovy: Ciselnik;
+  roky: number[];
+  aktualniRok: number | null;
+  stav: Stav;
+  zdroj: string;
+  poznamka: string | null;
+}
+
+const { polozky, ciselnik, ciselnikSurovy, roky, aktualniRok, stav, zdroj, poznamka } = Astro.props;
+
+const pocty = spocitejTagy(polozky);
+const organy = [...new Set(polozky.map((p) => p.organ))].sort(orderCs);
+const skupiny = ciselnikSurovy.skupiny ?? [];
+const dostupneTagy = (ciselnikSurovy.tagy ?? [])
+  .filter((t) => (pocty.get(t.id) ?? 0) > 0)
+  .sort((a, b) => orderCs(a.nazev, b.nazev));
+const sCastkou = polozky.filter((p) => typeof p.castka_czk === 'number').length;
+---
+
+<StavDat
+  stav={stav}
+  zdroj={zdroj}
+  co="Usnesení rady a zastupitelstva"
+  prazdno={stav === 'ok' && polozky.length === 0}
+  modul="A1 Usnesení a hlasování"
+  poznamky={stav === 'chyba' && poznamka ? [poznamka] : []}
+/>
+
+{
+  roky.length > 0 && (
+    <nav class="filtry" aria-label="Roky">
+      <div class="filtr filtr--siroky">
+        <span class="filtr__popisek">Rok</span>
+        <div class="znacky">
+          {roky.map((r) => (
+            <a class="znacka" href={`/usneseni/${r}`} aria-current={r === aktualniRok ? 'page' : undefined}>
+              {r}
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+{
+  polozky.length > 0 && (
+    <>
+      <form class="filtry" id="filtry-usneseni" role="search" aria-label="Filtr usnesení">
+        <div class="filtr filtr--siroky">
+          <label class="filtr__popisek" for="u-tema">Téma</label>
+          <select id="u-tema" name="tema">
+            <option value="">Všechna témata ({cislo(polozky.length)})</option>
+            {skupiny.map((s) => {
+              const v = dostupneTagy.filter((t) => t.skupina === s.id);
+              return v.length > 0 ? (
+                <optgroup label={s.nazev}>
+                  {v.map((t) => (
+                    <option value={t.id}>
+                      {t.nazev} ({cislo(pocty.get(t.id) ?? 0)})
+                    </option>
+                  ))}
+                </optgroup>
+              ) : null;
+            })}
+          </select>
+        </div>
+        <div class="filtr">
+          <label class="filtr__popisek" for="u-organ">Orgán</label>
+          <select id="u-organ" name="organ">
+            <option value="">Oba orgány</option>
+            {organy.map((o) => (
+              <option value={o}>{nazevOrganu(o)}</option>
+            ))}
+          </select>
+        </div>
+        <div class="filtr filtr--siroky">
+          <label class="filtr__popisek" for="u-text">Hledat v názvu</label>
+          <input type="search" id="u-text" name="text" placeholder="např. pozemek" autocomplete="off" />
+        </div>
+        <div class="filtry__akce">
+          <button type="button" class="tlacitko" id="u-reset">Zrušit filtry</button>
+        </div>
+      </form>
+
+      <p class="pocet-vysledku" id="u-pocet" aria-live="polite">
+        {cislo(polozky.length)} bodů usnesení · u {cislo(sCastkou)} z nich je v textu uvedená částka
+      </p>
+
+      <div class="stav-dat stav-dat--prazdno" id="u-prazdno" hidden>
+        <strong class="stav-dat__nadpis">Nic neodpovídá</strong>
+        <span>Žádný bod usnesení nesplňuje zvolenou kombinaci filtrů.</span>
+      </div>
+
+      <ul class="seznam" id="u-seznam">
+        {polozky.map((b) => (
+          <li
+            class="polozka"
+            data-usneseni
+            data-tagy={(b.tagy ?? []).join(' ')}
+            data-organ={b.organ}
+            data-hledat={bezDiakritiky(`${b.nazev} ${b.cislo}`)}
+          >
+            <div class="polozka__hlava">
+              <span>{nazevOrganu(b.organ)}</span>
+              <span>{datumKratke(b.datum)}</span>
+              <span class="mono">{b.cislo}</span>
+              {typeof b.castka_czk === 'number' && <span class="cislo">{kc(b.castka_czk)}</span>}
+            </div>
+            <h3 class="polozka__nazev">{b.nazev}</h3>
+            <div class="polozka__meta">
+              <Znacky tagy={b.tagy} ciselnik={ciselnik} />
+              {b.url && (
+                <a href={b.url} rel="noreferrer noopener">
+                  Originál
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+<script>
+  {
+    const form = document.getElementById('filtry-usneseni') as HTMLFormElement | null;
+    const seznam = document.getElementById('u-seznam');
+    const pocet = document.getElementById('u-pocet');
+    const prazdno = document.getElementById('u-prazdno');
+
+    if (form && seznam) {
+      const polozky = Array.from(seznam.querySelectorAll<HTMLElement>('[data-usneseni]'));
+      const tema = document.getElementById('u-tema') as HTMLSelectElement;
+      const organ = document.getElementById('u-organ') as HTMLSelectElement;
+      const text = document.getElementById('u-text') as HTMLInputElement;
+
+      const bezDia = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+      function pouzij(doUrl = true) {
+        const t = tema.value;
+        const o = organ.value;
+        const q = bezDia(text.value.trim());
+        let videno = 0;
+        for (const li of polozky) {
+          const tagy = (li.dataset.tagy ?? '').split(' ').filter(Boolean);
+          const ok =
+            (!t || tagy.includes(t)) &&
+            (!o || li.dataset.organ === o) &&
+            (!q || (li.dataset.hledat ?? '').includes(q));
+          li.hidden = !ok;
+          if (ok) videno++;
+        }
+        if (pocet) pocet.textContent = `${videno.toLocaleString('cs-CZ')} bodů usnesení`;
+        if (prazdno) prazdno.hidden = videno !== 0;
+        if (doUrl) {
+          const p = new URLSearchParams();
+          if (t) p.set('tema', t);
+          if (o) p.set('organ', o);
+          if (text.value.trim()) p.set('text', text.value.trim());
+          history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname);
+        }
+      }
+
+      const q = new URLSearchParams(location.search);
+      if (q.get('tema')) tema.value = q.get('tema') as string;
+      if (q.get('organ')) organ.value = q.get('organ') as string;
+      if (q.get('text')) text.value = q.get('text') as string;
+
+      form.addEventListener('change', () => pouzij());
+      text.addEventListener('input', () => pouzij());
+      document.getElementById('u-reset')?.addEventListener('click', () => {
+        form.reset();
+        pouzij();
+      });
+      pouzij(false);
+    }
+  }
+</script>

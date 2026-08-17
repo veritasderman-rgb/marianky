@@ -1,0 +1,98 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import { nactiHlasovani, nactiLidi } from '../../lib/data';
+import { zplostiHlasovani } from '../../lib/prehledy';
+import { cislo, orderCs, orez } from '../../lib/format';
+
+const zLidi = nactiLidi();
+const zHlasovani = nactiHlasovani();
+
+const lide = [...(zLidi.data ?? [])].sort((a, b) => orderCs(a.jmeno ?? '', b.jmeno ?? ''));
+const hlasovani = zplostiHlasovani(zHlasovani.data ?? []);
+
+/* Kolik hlasování má kdo za sebou — jen z dat, nikde se nedopočítává. */
+const pocetHlasu = new Map<string, number>();
+for (const h of hlasovani) {
+  for (const j of h.jmenovite) {
+    if (j.osoba_id) pocetHlasu.set(j.osoba_id, (pocetHlasu.get(j.osoba_id) ?? 0) + 1);
+  }
+}
+
+const nazvyKategorii: Record<string, string> = {
+  politika: 'Politika',
+  urad: 'Úřad',
+  'mestske-firmy': 'Městské firmy',
+  kultura: 'Kultura',
+  sport: 'Sport',
+  historie: 'Historické osobnosti',
+  veda: 'Věda',
+  podnikani: 'Podnikání',
+};
+
+const kategorie = [...new Set(lide.map((o) => o.kategorie ?? 'ostatni'))].sort(orderCs);
+
+/* Lidé, kteří hlasují, ale v osobnostech nejsou — na to je potřeba upozornit,
+   ne to zamlčet. */
+const znameId = new Set(lide.map((o) => o.id));
+const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.osoba_id)))]
+  .filter((id) => id && !znameId.has(id))
+  .sort(orderCs);
+---
+
+<Zaklad
+  titulek="Kdo je kdo"
+  aktivni="lide"
+  nadpis="Kdo je kdo"
+  uvod="Lidé, kteří ve městě rozhodují nebo ho reprezentují. U zastupitelů a radních je k profilu připojená hlasovací historie z dat, ne z převyprávění."
+>
+  <StavDat
+    stav={zLidi.stav}
+    zdroj={zLidi.zdroj}
+    co="Profily osobností"
+    prazdno={zLidi.stav === 'ok' && lide.length === 0}
+    modul="B1 Kdo je kdo"
+  />
+
+  {
+    kategorie.map((k) => {
+      const skupina = lide.filter((o) => (o.kategorie ?? 'ostatni') === k);
+      return skupina.length > 0 ? (
+        <section>
+          <h2>{nazvyKategorii[k] ?? 'Ostatní'}</h2>
+          <ul class="seznam">
+            {skupina.map((o) => (
+              <li class="polozka">
+                <h3 class="polozka__nazev">
+                  <a href={`/lide/${o.id}`}>{o.jmeno}</a>
+                </h3>
+                <div class="polozka__hlava">
+                  {o.role && o.role.length > 0 && <span>{o.role.join(', ')}</span>}
+                  {o.strana && <span>{o.strana}</span>}
+                  {o.zijici === false && <span>historická osobnost</span>}
+                  {(pocetHlasu.get(o.id) ?? 0) > 0 && (
+                    <span>{cislo(pocetHlasu.get(o.id) ?? 0)} zaznamenaných hlasů</span>
+                  )}
+                </div>
+                {o.popis && <p>{orez(o.popis, 220)}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null;
+    })
+  }
+
+  {
+    chybejici.length > 0 && (
+      <div class="stav-dat stav-dat--chybi">
+        <strong class="stav-dat__nadpis">Chybějící profily</strong>
+        <span>
+          V hlasování se objevuje {cislo(chybejici.length)} osob, které zatím nemají profil v
+          <span class="stav-dat__zdroj"> lide/osobnosti.json</span>: {chybejici.slice(0, 12).join(', ')}
+          {chybejici.length > 12 ? ' a další' : ''}.
+        </span>
+      </div>
+    )
+  }
+</Zaklad>

@@ -1,0 +1,41 @@
+---
+/**
+ * Pás dlaždic nad grafy.
+ *
+ * Stavová barva se NIKDY nepoužívá sama — vždy s textovým popiskem vedle
+ * tečky (web/DESIGN.md §3.4). Velká čísla používají proporcionální číslice,
+ * tabular-nums patří do sloupců, ne pod sebe stojící hodnotu.
+ */
+export type Uroven = 'dobre' | 'pozor' | 'vazne' | 'neznamo';
+
+export interface Polozka {
+  popisek: string;
+  hodnota: string;
+  doplnek?: string;
+  stav?: { uroven: Uroven; text: string };
+}
+
+export interface Props {
+  polozky: Polozka[];
+}
+
+const { polozky } = Astro.props;
+---
+
+<div class="dlazdice">
+  {
+    polozky.map((p) => (
+      <div class="dlazdice__polozka">
+        <p class="dlazdice__popisek">{p.popisek}</p>
+        <div class="dlazdice__hodnota">{p.hodnota}</div>
+        {p.doplnek && <p class="dlazdice__doplnek">{p.doplnek}</p>}
+        {p.stav && (
+          <p class={`stav-znacka stav-znacka--${p.stav.uroven}`}>
+            <span class="stav-znacka__tecka" aria-hidden="true" />
+            <span>{p.stav.text}</span>
+          </p>
+        )}
+      </div>
+    ))
+  }
+</div>

@@ -44,6 +44,21 @@ export const POUZIVA_FIXTURES: boolean =
 
 export const KOREN_CONFIG: string = path.join(KOREN_REPO, 'config');
 
+/*
+ * Když kořen dat vůbec neexistuje, tichý build by vyrobil web, na kterém je
+ * všude „data zatím nejsou" — a vypadalo by to jako stav světa, ne jako špatná
+ * konfigurace. Proto o tom build hlasitě řekne. Nepadá: částečná data jsou
+ * legitimní stav, chybějící adresář dat obvykle znamená špatné nastavení
+ * Root Directory na Vercelu.
+ */
+if (!fs.existsSync(KOREN_DAT)) {
+  console.warn(
+    `\n[mariánky] POZOR: adresář s daty neexistuje: ${KOREN_DAT}\n` +
+      '           Web se sestaví, ale všechny sekce budou hlásit „data zatím nejsou".\n' +
+      '           Zkontrolujte, že build vidí data/ v kořeni repozitáře, nebo nastavte MARIANKY_DATA.\n',
+  );
+}
+
 function ok<T>(data: T, zdroj: string): Nacteno<T> {
   return { stav: 'ok', data, zdroj, poznamka: null };
 }
@@ -144,7 +159,13 @@ export function spojStavy(...zdroje: Nacteno<unknown>[]): { stav: Stav; poznamky
 /* ─────────────────────────  Typy podle docs/PLAN.md  ───────────────────────── */
 
 export interface Protistrana {
-  ico: string;
+  /** `null` u protistran, které Hlídač vede bez IČO (slučují se podle názvu). */
+  ico: string | null;
+  /**
+   * Stabilní klíč do URL a do registru barev. IČO tam, kde je; jinak slug
+   * z názvu. Doplňuje ho `nactiProtistrany()` — v datech není.
+   */
+  klic: string;
   nazev: string;
   smer: 'vydaj' | 'prijem';
   celkem_czk: number;
@@ -162,18 +183,51 @@ export interface AgregaceProtistran {
   protistrany: Protistrana[];
 }
 
-/** `souhrn.json` — formát není v PLAN.md pevně daný, čteme ho tolerantně. */
+/**
+ * `souhrn.json` — docs/PLAN.md tenhle soubor nepopisuje, jen ho zmiňuje.
+ * Čteme ho proto tolerantně a zvlášť ošetřujeme obě podoby, na které jsme
+ * narazili: vnořenou (`celkem.vydaj_czk`, `kindex[]`) i plochou.
+ * Cokoliv, co nesedí, se prostě neukáže — nic se nedohaduje.
+ */
+export interface SouhrnCelkem {
+  smluv?: number;
+  vydaj_czk?: number;
+  prijem_czk?: number;
+  bez_ceny?: number;
+  podil_bez_ceny?: number;
+  vadnych?: number;
+  dodavatelu?: number;
+  odberatelu?: number;
+  aktivnich_dodavatelu?: number;
+}
+
+export interface ZaznamKindexu {
+  rok?: number;
+  stupen?: string;
+  popis?: string;
+}
+
 export interface Souhrn {
   generovano?: string;
+  zdroj?: string;
+  rozsah_let?: { od?: number; do?: number };
+  celkem?: SouhrnCelkem;
+  kindex?: ZaznamKindexu[];
+  po_letech?: Record<string, { smluv?: number; vydaj_czk?: number; prijem_czk?: number; vadnych?: number }>;
+  /* plochá varianta */
   celkem_czk?: number;
-  smluv?: number;
-  protistran?: number;
-  kindex?: string | number | null;
   kindex_stupen?: string | null;
   kindex_rok?: number | null;
-  kindex_url?: string | null;
-  vadnych_smluv?: number | null;
   [k: string]: unknown;
+}
+
+/** Nejnovější záznam K-indexu. `null`, když v souhrnu žádný není. */
+export function posledniKindex(s: Souhrn): ZaznamKindexu | null {
+  if (Array.isArray(s?.kindex) && s.kindex.length > 0) {
+    return [...s.kindex].sort((a, b) => (b.rok ?? 0) - (a.rok ?? 0))[0];
+  }
+  if (s?.kindex_stupen) return { stupen: String(s.kindex_stupen), rok: s.kindex_rok ?? undefined };
+  return null;
 }
 
 export interface BodUsneseni {
@@ -305,6 +359,17 @@ export interface Ciselnik {
 
 /* ─────────────────────────────  Konkrétní loadery  ────────────────────────── */
 
+/** Slug pro URL — bez diakritiky, jen písmena, číslice a pomlčky. */
+function slug(s: string): string {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60);
+}
+
 export function nactiProtistrany(): Nacteno<AgregaceProtistran> {
   const v = nactiJson<AgregaceProtistran>('penize/agregace/protistrany.json', { protistrany: [] });
   // Obrana proti neúplnému souboru: chybějící pole neshodí build.
@@ -317,7 +382,19 @@ export function nactiProtistrany(): Nacteno<AgregaceProtistran> {
     };
   }
   if (v.stav === 'ok') {
-    v.data.protistrany = v.data.protistrany.filter((p) => p && typeof p.ico === 'string');
+    // Protistrany bez IČO (Hlídač je slučuje podle názvu) se NEZAHAZUJÍ —
+    // jsou mezi nimi firmy s desítkami milionů a bez nich by „Ostatní"
+    // i celkové objemy tvrdily míň, než ve skutečnosti odteklo.
+    const videne = new Set<string>();
+    v.data.protistrany = v.data.protistrany
+      .filter((p) => p && typeof p.nazev === 'string' && p.nazev.length > 0)
+      .map((p) => {
+        const zaklad = typeof p.ico === 'string' && p.ico ? p.ico : `n-${slug(p.nazev)}`;
+        let klic = zaklad;
+        for (let i = 2; videne.has(klic); i++) klic = `${zaklad}-${i}`;
+        videne.add(klic);
+        return { ...p, ico: typeof p.ico === 'string' && p.ico ? p.ico : null, klic };
+      });
   }
   return v;
 }

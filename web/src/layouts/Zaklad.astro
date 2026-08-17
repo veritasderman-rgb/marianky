@@ -1,0 +1,255 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  titulek: string;
+  /** Krátký úvodní odstavec pod nadpisem stránky. */
+  uvod?: string;
+  /** Klíč aktivní položky navigace. */
+  aktivni?: string;
+  /** Nadpis H1. Když chybí, použije se `titulek`. */
+  nadpis?: string;
+  /** Vypne obal `<h1>` — stránka si nadpis řeší sama. */
+  bezNadpisu?: boolean;
+}
+
+const { titulek, uvod, aktivni, nadpis, bezNadpisu = false } = Astro.props;
+
+const polozkyNavigace = [
+  { klic: 'vydani', cesta: '/', nazev: 'Vydání' },
+  { klic: 'usneseni', cesta: '/usneseni', nazev: 'Usnesení' },
+  { klic: 'hlasovani', cesta: '/hlasovani', nazev: 'Hlasování' },
+  { klic: 'penize', cesta: '/penize', nazev: 'Peníze' },
+  { klic: 'lide', cesta: '/lide', nazev: 'Lidé' },
+  { klic: 'zpravodaj', cesta: '/zpravodaj', nazev: 'Zpravodaj' },
+  { klic: 'hledat', cesta: '/hledat', nazev: 'Hledat' },
+];
+---
+
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Neveřejnost zajišťuje neznámá adresa. Tohle jen brání tomu, aby se
+         adresa dostala do vyhledávačů sama od sebe. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="referrer" content="no-referrer" />
+    <title>{titulek} — Naše Mariánky v přehledech</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!--
+      Motiv má tři stavy: "dark", "light" a výchozí "system" (bez stampu).
+      Skript běží před vykreslením, aby nebliklo špatné pozadí. Když uživatel
+      nic nezvolil, ŽÁDNÝ atribut se nenastaví a rozhodne prefers-color-scheme.
+    -->
+    <script is:inline>
+      (function () {
+        try {
+          var m = localStorage.getItem('motiv');
+          if (m === 'dark' || m === 'light') {
+            document.documentElement.setAttribute('data-theme', m);
+          }
+        } catch (e) {
+          /* privátní režim — zůstane "system" */
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a href="#obsah" class="vizualne-skryto">Přeskočit na obsah</a>
+
+    <header class="hlavicka-webu">
+      <div class="obal hlavicka-webu__radek">
+        <a href="/" class="znacka-webu">Naše Mariánky <span>v přehledech</span></a>
+        <nav class="navigace" aria-label="Hlavní navigace">
+          {
+            polozkyNavigace.map((p) => (
+              <a href={p.cesta} aria-current={aktivni === p.klic ? 'page' : undefined}>
+                {p.nazev}
+              </a>
+            ))
+          }
+        </nav>
+        <button
+          type="button"
+          class="prepinac-motivu"
+          id="prepinac-motivu"
+          aria-live="polite"
+        >
+          <span aria-hidden="true">◐</span>
+          <span id="prepinac-motivu-popisek">Motiv: podle systému</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="obsah" class="obal" data-pagefind-body>
+      {!bezNadpisu && <h1>{nadpis ?? titulek}</h1>}
+      {uvod && <p class="uvod">{uvod}</p>}
+      <slot />
+    </main>
+
+    <footer class="paticka-webu">
+      <div class="obal">
+        <p>
+          Neveřejný přehled dění v Mariánských Lázních. Data pocházejí z veřejných
+          zdrojů — portálu usnesení města, Městského zpravodaje, registru smluv
+          a Hlídače státu. Čísla a jména se propisují z dat, ne z generovaného textu.
+        </p>
+        <p>
+          <a href="/usneseni">Usnesení</a> · <a href="/hlasovani">Hlasování</a> ·
+          <a href="/penize">Peníze</a> · <a href="/lide">Lidé</a> ·
+          <a href="/zpravodaj">Zpravodaj</a> · <a href="/hledat">Hledat</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      /* ── Přepínač motivu: system → světlý → tmavý → system ───────────── */
+      {
+        const koren = document.documentElement;
+        const tlacitko = document.getElementById('prepinac-motivu');
+        const popisek = document.getElementById('prepinac-motivu-popisek');
+        const nazvy: Record<string, string> = {
+          system: 'Motiv: podle systému',
+          light: 'Motiv: světlý',
+          dark: 'Motiv: tmavý',
+        };
+
+        function precti(): string {
+          const a = koren.getAttribute('data-theme');
+          return a === 'dark' || a === 'light' ? a : 'system';
+        }
+
+        function zobraz() {
+          if (popisek) popisek.textContent = nazvy[precti()];
+        }
+
+        tlacitko?.addEventListener('click', () => {
+          const dalsi = { system: 'light', light: 'dark', dark: 'system' }[precti()] ?? 'system';
+          if (dalsi === 'system') {
+            koren.removeAttribute('data-theme');
+            try {
+              localStorage.removeItem('motiv');
+            } catch {
+              /* ignoruj */
+            }
+          } else {
+            koren.setAttribute('data-theme', dalsi);
+            try {
+              localStorage.setItem('motiv', dalsi);
+            } catch {
+              /* ignoruj */
+            }
+          }
+          zobraz();
+        });
+
+        zobraz();
+      }
+
+      /* ── Tooltipy grafů ───────────────────────────────────────────────
+         Hodnoty se do DOM vkládají přes textContent, nikdy přes innerHTML —
+         názvy firem jsou cizí data. Tooltip nic negatuje: každé číslo je
+         zároveň v rozbalovací tabulce pod grafem. */
+      {
+        interface TipData {
+          t: string;
+          r: [string, string][];
+          c: string | null;
+        }
+
+        const bublina = document.createElement('div');
+        bublina.className = 'tooltip';
+        bublina.setAttribute('role', 'tooltip');
+        document.body.appendChild(bublina);
+
+        function vykresli(d: TipData) {
+          bublina.textContent = '';
+          const hlava = document.createElement('div');
+          hlava.className = 'tooltip__nadpis';
+          if (d.c) {
+            const klic = document.createElement('span');
+            klic.className = 'tooltip__klic';
+            klic.style.background = d.c;
+            hlava.appendChild(klic);
+          }
+          hlava.appendChild(document.createTextNode(d.t));
+          bublina.appendChild(hlava);
+          for (const dvojice of d.r ?? []) {
+            const radek = document.createElement('div');
+            radek.className = 'tooltip__radek';
+            const l = document.createElement('span');
+            l.className = 'tooltip__popisek';
+            l.textContent = String(dvojice[0]);
+            const v = document.createElement('span');
+            v.className = 'tooltip__hodnota';
+            v.textContent = String(dvojice[1]);
+            radek.append(l, v);
+            bublina.appendChild(radek);
+          }
+        }
+
+        function umisti(x: number, y: number) {
+          const r = bublina.getBoundingClientRect();
+          let lx = x + 14;
+          let ly = y + 16;
+          if (lx + r.width > window.innerWidth - 8) lx = x - r.width - 14;
+          if (ly + r.height > window.innerHeight - 8) ly = y - r.height - 14;
+          bublina.style.left = `${Math.max(8, lx)}px`;
+          bublina.style.top = `${Math.max(8, ly)}px`;
+        }
+
+        function skryj() {
+          bublina.removeAttribute('data-viditelny');
+        }
+
+        function zdroj(cil: EventTarget | null): HTMLElement | null {
+          if (!(cil instanceof Element)) return null;
+          return cil.closest<HTMLElement>('[data-tip]');
+        }
+
+        function otevri(el: HTMLElement, x: number, y: number) {
+          const syrove = el.getAttribute('data-tip');
+          if (!syrove) return;
+          let d: TipData;
+          try {
+            d = JSON.parse(syrove) as TipData;
+          } catch {
+            return;
+          }
+          vykresli(d);
+          bublina.setAttribute('data-viditelny', '1');
+          umisti(x, y);
+        }
+
+        document.addEventListener('pointermove', (e) => {
+          const el = zdroj(e.target);
+          if (!el) {
+            skryj();
+            return;
+          }
+          otevri(el, e.clientX, e.clientY);
+        });
+
+        document.addEventListener('pointerleave', skryj);
+        document.addEventListener('scroll', skryj, { passive: true });
+
+        document.addEventListener('focusin', (e) => {
+          const el = zdroj(e.target);
+          if (!el) {
+            skryj();
+            return;
+          }
+          const r = el.getBoundingClientRect();
+          otevri(el, r.left + r.width / 2, r.bottom);
+        });
+        document.addEventListener('focusout', skryj);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') skryj();
+        });
+      }
+    </script>
+  </body>
+</html>

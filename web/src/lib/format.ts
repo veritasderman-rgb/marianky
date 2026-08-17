@@ -68,7 +68,7 @@ export function sklonuj(n: number, jeden: string, dva: string, pet: string): str
 
 /** Odstraní diakritiku — pro klientské filtrování a řazení. */
 export function bezDiakritiky(s: string): string {
-  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
 export function orderCs(a: string, b: string): number {

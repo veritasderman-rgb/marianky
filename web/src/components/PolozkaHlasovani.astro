@@ -1,0 +1,83 @@
+---
+import Znacky from './Znacky.astro';
+import type { Tag } from '../lib/data';
+import type { PolozkaHlasovani } from '../lib/prehledy';
+import { souhrnHlasu, tridaVysledku } from '../lib/prehledy';
+import { bezDiakritiky, datumKratke, nazevOrganu, nazevVysledku } from '../lib/format';
+
+export interface Props {
+  h: PolozkaHlasovani;
+  ciselnik: Map<string, Tag>;
+}
+
+const { h, ciselnik } = Astro.props;
+const skupiny = souhrnHlasu(h);
+const nazvyTagu = h.tagy.map((t) => ciselnik.get(t)?.nazev ?? t).join(' ');
+const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.organ)}`);
+---
+
+<li
+  class="polozka"
+  data-hlasovani
+  data-tagy={h.tagy.join(' ')}
+  data-organ={h.organ}
+  data-rok={h.rok ?? ''}
+  data-vysledek={h.vysledek}
+  data-hledat={hledat}
+>
+  <div class="polozka__hlava">
+    <span>{nazevOrganu(h.organ)}</span>
+    <span>{datumKratke(h.datum)}</span>
+    <span class="mono">bod {h.bod}</span>
+  </div>
+
+  <h3 class="polozka__nazev">{h.nazev}</h3>
+
+  <div class="polozka__meta">
+    <span class={`vysledek vysledek--${tridaVysledku(h.vysledek)}`}>
+      <span class="vysledek__tecka" aria-hidden="true"></span>
+      {nazevVysledku(h.vysledek)}
+    </span>
+    <span class="rozdeleni-hlasu">
+      <span>pro {h.pro}</span>
+      <span>proti {h.proti}</span>
+      <span>zdrželo se {h.zdrzel}</span>
+      {h.nehlasoval > 0 && <span>nehlasovalo {h.nehlasoval}</span>}
+    </span>
+    <Znacky tagy={h.tagy} ciselnik={ciselnik} />
+  </div>
+
+  {
+    h.jmenovite.length > 0 && (
+      <details class="tabulkovy-pohled">
+        <summary>Jmenovité hlasování ({h.jmenovite.length})</summary>
+        <div class="mrizka-2">
+          {(
+            [
+              ['Pro', skupiny.pro],
+              ['Proti', skupiny.proti],
+              ['Zdrželi se', skupiny.zdrzel],
+              ['Ostatní', skupiny.ostatni],
+            ] as const
+          ).map(([nadpis, lide]) =>
+            lide.length > 0 ? (
+              <div>
+                <strong>
+                  {nadpis} ({lide.length})
+                </strong>
+                <ul>
+                  {lide.map((j) => (
+                    <li>
+                      <a href={`/lide/${j.osoba_id}`}>{j.jmeno}</a>
+                      {j.strana && <span class="stav-dat__zdroj"> · {j.strana}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null,
+          )}
+        </div>
+      </details>
+    )
+  }
+</li>

@@ -1,0 +1,160 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import GrafKarta from '../../components/GrafKarta.astro';
+import StavDat from '../../components/StavDat.astro';
+import Dlazdice from '../../components/Dlazdice.astro';
+import type { Varianta } from '../../components/GrafKarta.astro';
+import { nactiProtistrany, nactiSmlouvy, nactiSubjekty, type Protistrana, type Smlouva } from '../../lib/data';
+import { grafObjemPoLetech } from '../../lib/grafy';
+import { rokyZProtistran, smluvProtistranyZaRok, indexujSmlouvy, vRoce } from '../../lib/penize';
+import { cislo, datumKratke, kc, kcZkraceno, sklonuj } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const { data } = nactiProtistrany();
+  // `klic` je IČO tam, kde je; u protistran bez IČO slug z názvu.
+  return (data.protistrany ?? [])
+    .filter((p) => p?.klic)
+    .map((p) => ({ params: { ico: p.klic }, props: { protistrana: p } }));
+}
+
+const { protistrana } = Astro.props;
+const zSmluv = nactiSmlouvy();
+const index = indexujSmlouvy(zSmluv.data ?? []);
+const zSubjektu = nactiSubjekty();
+
+const roky = rokyZProtistran([protistrana]);
+const smer = protistrana.smer === 'prijem' ? 'prijem' : 'vydaj';
+
+const graf = grafObjemPoLetech(
+  roky.map((rok) => ({
+    rok,
+    castka: vRoce(protistrana, rok),
+    smluv: smluvProtistranyZaRok(index, smer, protistrana, rok),
+  })),
+  'Platby po letech',
+);
+const varianty: Varianta[] = [{ klic: 'vse', popisek: 'Po letech', graf }];
+
+/* Konkrétní smlouvy s touhle protistranou napříč subjekty města. */
+const smlouvy: (Smlouva & { odKoho: string })[] = [];
+for (const soubor of zSmluv.data ?? []) {
+  for (const s of soubor?.smlouvy ?? []) {
+    // Bez IČO se páruje podle názvu — stejně jako to dělá agregace.
+    const sedi = protistrana.ico
+      ? s?.protistrana_ico === protistrana.ico
+      : !s?.protistrana_ico && s?.protistrana === protistrana.nazev;
+    if (sedi) smlouvy.push({ ...s, odKoho: soubor.nazev ?? soubor.ico });
+  }
+}
+smlouvy.sort((a, b) => String(b.datum ?? '').localeCompare(String(a.datum ?? '')));
+const vadnych = smlouvy.filter((s) => s.vada).length;
+
+const nazvySubjektu = new Map<string, string>(
+  (zSubjektu.data?.subjekty ?? []).filter((s) => s.ico).map((s) => [s.ico as string, s.nazev]),
+);
+---
+
+<Zaklad titulek={protistrana.nazev} aktivni="penize" nadpis={protistrana.nazev}>
+  <p class="uvod">
+    {protistrana.ico ? (
+      <>IČO <span class="mono">{protistrana.ico}</span></>
+    ) : (
+      <>bez IČO — registr smluv ho u téhle protistrany neuvádí, záznamy se slučují podle názvu</>
+    )} ·
+    {smer === 'vydaj' ? ' dodavatel — město platí' : ' odběratel — město inkasuje'}
+    {protistrana.ico && (
+      <>
+        {' · '}
+        <a href={`https://www.hlidacstatu.cz/subjekt/${protistrana.ico}`} rel="noreferrer noopener">
+          profil na Hlídači státu
+        </a>
+      </>
+    )}
+  </p>
+
+  <Dlazdice
+    polozky={[
+      { popisek: 'Celkem', hodnota: kcZkraceno(protistrana.celkem_czk, true), doplnek: kc(protistrana.celkem_czk) },
+      {
+        popisek: 'Smluv',
+        hodnota: cislo(protistrana.smluv),
+        doplnek: vadnych > 0 ? `${cislo(vadnych)} ${sklonuj(vadnych, 'označena za vadnou', 'označeny za vadné', 'označeno za vadné')}` : undefined,
+      },
+      {
+        popisek: 'Období',
+        hodnota: `${protistrana.prvni_rok}–${protistrana.posledni_rok}`,
+        doplnek: `${cislo(roky.length)} ${sklonuj(roky.length, 'rok', 'roky', 'let')} na časové ose`,
+      },
+      {
+        popisek: 'Stav',
+        hodnota: protistrana.aktivni ? 'Aktivní' : 'Neaktivní',
+        stav: protistrana.aktivni
+          ? { uroven: 'dobre', text: 'platba v posledních 12 měsících' }
+          : { uroven: 'neznamo', text: 'poslední rok s platbou ' + protistrana.posledni_rok },
+      },
+    ]}
+  />
+
+  <GrafKarta
+    id="detail-objem"
+    nadpis="Platby po letech"
+    popis="Roky bez jediné platby se v grafu zobrazí jako nulový sloupec — nepřeskakují se, aby časová osa nelhala o tom, kdy vztah začal a skončil."
+    varianty={varianty}
+  />
+
+  {
+    protistrana.subjekty && protistrana.subjekty.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Od kterých subjektů města peníze tekly</h2>
+        <ul>
+          {protistrana.subjekty.map((s) => (
+            <li>
+              {nazvySubjektu.get(s) ?? 'Subjekt'} <span class="mono">({s})</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Jednotlivé smlouvy</h2>
+    <StavDat
+      stav={zSmluv.stav}
+      zdroj="penize/smlouvy/"
+      co="Rozpis jednotlivých smluv"
+      prazdno={zSmluv.stav === 'ok' && smlouvy.length === 0}
+      modul="A3 Peníze"
+    />
+    {
+      smlouvy.length > 0 && (
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Předmět</th>
+                <th scope="col">Za město</th>
+                <th scope="col" class="cislo">Částka</th>
+                <th scope="col">Poznámka</th>
+              </tr>
+            </thead>
+            <tbody>
+              {smlouvy.map((s) => (
+                <tr>
+                  <td class="cislo">{datumKratke(s.datum)}</td>
+                  <td>{s.url ? <a href={s.url} rel="noreferrer noopener">{s.predmet ?? 'Smlouva'}</a> : (s.predmet ?? 'Smlouva')}</td>
+                  <td>{s.odKoho}</td>
+                  <td class="cislo">{kc(s.castka_czk)}</td>
+                  <td>{s.vada ? 'Hlídač státu označuje za vadnou' : ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+  </section>
+
+  <p><a href="/penize">← Zpět na přehled peněz</a></p>
+</Zaklad>

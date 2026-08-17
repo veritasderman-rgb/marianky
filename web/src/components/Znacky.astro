@@ -1,0 +1,30 @@
+---
+/** Štítky tagů. Odkazují na časovou osu tématu. */
+import type { Tag } from '../lib/data';
+
+export interface Props {
+  tagy?: string[];
+  ciselnik: Map<string, Tag>;
+  /** `false` u seznamů, kde by odkaz kolidoval s odkazem celé položky. */
+  odkazovat?: boolean;
+}
+
+const { tagy = [], ciselnik, odkazovat = true } = Astro.props;
+---
+
+{
+  tagy.length > 0 && (
+    <span class="znacky">
+      {tagy.map((t) => {
+        const nazev = ciselnik.get(t)?.nazev ?? t;
+        return odkazovat ? (
+          <a class="znacka" href={`/temata/${t}`} data-pagefind-filter={`téma:${nazev}`}>
+            {nazev}
+          </a>
+        ) : (
+          <span class="znacka">{nazev}</span>
+        );
+      })}
+    </span>
+  )
+}

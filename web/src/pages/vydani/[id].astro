@@ -1,0 +1,36 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import VydaniKarta from '../../components/Vydani.astro';
+import { nactiVydani, type Vydani } from '../../lib/data';
+import { datum } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const { data } = nactiVydani();
+  return (data ?? [])
+    .filter((v) => v?.id)
+    .map((v, i, pole) => ({
+      params: { id: v.id },
+      props: { vydani: v, novejsi: pole[i - 1] ?? null, starsi: pole[i + 1] ?? null },
+    }));
+}
+
+interface Props {
+  vydani: Vydani;
+  novejsi: Vydani | null;
+  starsi: Vydani | null;
+}
+
+const { vydani: v, novejsi, starsi } = Astro.props as Props;
+---
+
+<Zaklad titulek={v.nazev ?? `Vydání ${v.id}`} aktivni="vydani" bezNadpisu>
+  <h1>{v.nazev ?? `Vydání ${v.id}`}</h1>
+  <VydaniKarta vydani={v} uroven="h2" />
+
+  <p>
+    {starsi && <a href={`/vydani/${starsi.id}`}>← {starsi.nazev ?? datum(starsi.datum ?? starsi.id)}</a>}
+    {starsi && novejsi ? ' · ' : ''}
+    {novejsi && <a href={`/vydani/${novejsi.id}`}>{novejsi.nazev ?? datum(novejsi.datum ?? novejsi.id)} →</a>}
+  </p>
+  <p><a href="/">← Poslední vydání</a></p>
+</Zaklad>

@@ -1,0 +1,57 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+---
+
+<Zaklad
+  titulek="Hledat"
+  aktivni="hledat"
+  nadpis="Hledat"
+  uvod="Fulltext přes celý přehled — usnesení, hlasování, protistrany, profily lidí i archiv zpravodaje. Index se staví při buildu z vygenerovaných stránek, hledá se v prohlížeči. Diakritika funguje, dotaz bez háčků najde i slova s háčky."
+>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+
+  <div id="hledani" data-pagefind-ignore></div>
+
+  <div class="stav-dat stav-dat--chybi" id="hledani-chyba" hidden data-pagefind-ignore>
+    <strong class="stav-dat__nadpis">Vyhledávací index není k dispozici</strong>
+    <span>
+      Index vzniká až v kroku <span class="stav-dat__zdroj">pagefind --site dist</span> po sestavení webu.
+      Ve vývojovém režimu (<span class="stav-dat__zdroj">npm run dev</span>) proto hledání nefunguje —
+      spusťte <span class="stav-dat__zdroj">npm run build</span> a <span class="stav-dat__zdroj">npm run preview</span>.
+    </span>
+  </div>
+
+  <noscript>
+    <p class="stav-dat">Fulltextové hledání potřebuje JavaScript. Bez něj se dá procházet přes sekce v horní navigaci.</p>
+  </noscript>
+
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof window.PagefindUI === 'undefined') {
+        var chyba = document.getElementById('hledani-chyba');
+        if (chyba) chyba.hidden = false;
+        return;
+      }
+      new window.PagefindUI({
+        element: '#hledani',
+        showSubResults: true,
+        showImages: false,
+        excerptLength: 24,
+        translations: {
+          placeholder: 'Hledat v přehledech',
+          clear_search: 'Vymazat',
+          load_more: 'Načíst další výsledky',
+          search_label: 'Hledat na tomto webu',
+          filters_label: 'Filtry',
+          zero_results: 'Pro výraz [SEARCH_TERM] se nic nenašlo',
+          many_results: 'Nalezeno [COUNT] výsledků pro [SEARCH_TERM]',
+          one_result: 'Nalezen [COUNT] výsledek pro [SEARCH_TERM]',
+          alt_search: 'Pro [SEARCH_TERM] se nic nenašlo. Zobrazeny výsledky pro [DIFFERENT_TERM]',
+          search_suggestion: 'Pro [SEARCH_TERM] se nic nenašlo. Zkuste některý z těchto dotazů:',
+          searching: 'Hledám [SEARCH_TERM]…',
+        },
+      });
+    });
+  </script>
+</Zaklad>

@@ -1,0 +1,178 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import Znacky from '../../components/Znacky.astro';
+import Dlazdice from '../../components/Dlazdice.astro';
+import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, type Osobnost } from '../../lib/data';
+import { mapaTagu, zplostiHlasovani, type PolozkaHlasovani } from '../../lib/prehledy';
+import { cislo, datumKratke, nazevHlasu, nazevOrganu, nazevVysledku } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const { data: lide } = nactiLidi();
+  const { data: soubory } = nactiHlasovani();
+  const hlasovani = zplostiHlasovani(soubory ?? []);
+
+  const znami = new Set((lide ?? []).map((o) => o.id));
+  // Stránku dostanou i lidé, kteří hlasují, ale profil zatím nemají —
+  // odkaz ze jmenovitého hlasování jinak vede na 404.
+  const bezProfilu = new Map<string, string>();
+  for (const h of hlasovani) {
+    for (const j of h.jmenovite) {
+      if (j.osoba_id && !znami.has(j.osoba_id) && !bezProfilu.has(j.osoba_id)) {
+        bezProfilu.set(j.osoba_id, j.jmeno ?? j.osoba_id);
+      }
+    }
+  }
+
+  const cesty: { params: { id: string }; props: { osoba: Osobnost; maProfil: boolean } }[] = [];
+  for (const o of lide ?? []) {
+    if (o?.id) cesty.push({ params: { id: o.id }, props: { osoba: o, maProfil: true } });
+  }
+  for (const [id, jmeno] of bezProfilu) {
+    cesty.push({ params: { id }, props: { osoba: { id, jmeno }, maProfil: false } });
+  }
+  return cesty;
+}
+
+const { osoba, maProfil } = Astro.props;
+
+const zHlasovani = nactiHlasovani();
+const zTagu = nactiCiselnikTagu();
+const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
+const vsechna = zplostiHlasovani(zHlasovani.data ?? []);
+
+interface Ucast {
+  h: PolozkaHlasovani;
+  hlas: string;
+}
+const ucast: Ucast[] = [];
+for (const h of vsechna) {
+  const j = h.jmenovite.find((x) => x.osoba_id === osoba.id);
+  if (j) ucast.push({ h, hlas: j.hlas });
+}
+
+const pocty = ucast.reduce<Record<string, number>>((a, u) => {
+  a[u.hlas] = (a[u.hlas] ?? 0) + 1;
+  return a;
+}, {});
+
+const proti = pocty.proti ?? 0;
+const celkem = ucast.length;
+---
+
+<Zaklad titulek={osoba.jmeno} aktivni="lide" nadpis={osoba.jmeno}>
+  {
+    !maProfil && (
+      <div class="stav-dat stav-dat--chybi">
+        <strong class="stav-dat__nadpis">Profil zatím není</strong>
+        <span>
+          Tahle osoba se objevuje ve jmenovitých hlasováních, ale popis, funkce ani zdroje
+          zatím v <span class="stav-dat__zdroj">lide/osobnosti.json</span> nejsou. Níže je jen to,
+          co plyne přímo z hlasovacích dat.
+        </span>
+      </div>
+    )
+  }
+
+  <p class="uvod">
+    {osoba.role && osoba.role.length > 0 && <>{osoba.role.join(', ')}. </>}
+    {osoba.strana && <>Politická příslušnost: {osoba.strana}. </>}
+  </p>
+
+  {osoba.popis && <p>{osoba.popis}</p>}
+
+  {
+    osoba.funkce && osoba.funkce.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Funkce</h2>
+        <p class="karta__podnadpis">Funkce se v čase mění — proto s platností, ne jako aktuální stav.</p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr><th scope="col">Funkce</th><th scope="col">Od</th><th scope="col">Do</th></tr>
+            </thead>
+            <tbody>
+              {osoba.funkce.map((f) => (
+                <tr>
+                  <td>{f.nazev}</td>
+                  <td class="cislo">{f.od ?? '—'}</td>
+                  <td class="cislo">{f.do ?? 'trvá'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  <h2>Hlasovací historie</h2>
+
+  <StavDat
+    stav={zHlasovani.stav}
+    zdroj={zHlasovani.zdroj}
+    co={`Jmenovitá hlasování ${osoba.jmeno}`}
+    prazdno={zHlasovani.stav === 'ok' && celkem === 0}
+    modul="A1 Usnesení a hlasování"
+  />
+
+  {
+    celkem > 0 && (
+      <>
+        <Dlazdice
+          polozky={[
+            { popisek: 'Zaznamenaných hlasování', hodnota: cislo(celkem) },
+            { popisek: 'Hlasoval pro', hodnota: cislo(pocty.pro ?? 0) },
+            { popisek: 'Hlasoval proti', hodnota: cislo(proti) },
+            {
+              popisek: 'Zdržel se nebo nehlasoval',
+              hodnota: cislo((pocty.zdrzel ?? 0) + (pocty.nehlasoval ?? 0) + (pocty.nepritomen ?? 0)),
+            },
+          ]}
+        />
+
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Orgán</th>
+                <th scope="col">Bod</th>
+                <th scope="col">Hlas</th>
+                <th scope="col">Výsledek</th>
+                <th scope="col">Téma</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ucast.map((u) => (
+                <tr>
+                  <td class="cislo">{datumKratke(u.h.datum)}</td>
+                  <td>{nazevOrganu(u.h.organ)}</td>
+                  <td>{u.h.nazev}</td>
+                  <td>{nazevHlasu(u.hlas)}</td>
+                  <td>{nazevVysledku(u.h.vysledek)}</td>
+                  <td><Znacky tagy={u.h.tagy} ciselnik={ciselnik} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+
+  {
+    osoba.zdroje && osoba.zdroje.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Zdroje</h2>
+        <ul>
+          {osoba.zdroje.map((z) => (
+            <li><a href={z} rel="noreferrer noopener">{z}</a></li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <p><a href="/lide">← Zpět na přehled lidí</a></p>
+</Zaklad>

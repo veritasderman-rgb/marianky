@@ -1,0 +1,155 @@
+---
+/**
+ * Karta jednoho grafu.
+ *
+ * Podle web/DESIGN.md §2:
+ *   – ke KAŽDÉMU grafu patří rozbalovací tabulkový pohled (ve světlém režimu je
+ *     povinný, tři z barev mají kontrast pod 3:1)
+ *   – při 2+ sériích je legenda vždy, u jedné série legenda není
+ *   – popisky a čísla jsou v barvě textu, nikdy v barvě série
+ *
+ * Když má karta víc variant (např. dodavatelé / odběratelé), přepínač jen
+ * přepne viditelnost předrenderovaných SVG. Nic se nepřepočítává, takže se
+ * ani nemůže přebarvit — barvu drží IČO, ne pořadí.
+ */
+import type { Graf } from '../lib/grafy';
+import { kcZkraceno } from '../lib/format';
+import { KROKU_RAMPY, cssKrokRampy } from '../lib/barvy';
+
+export interface Varianta {
+  klic: string;
+  popisek: string;
+  graf: Graf;
+  /** Rozsah sekvenční rampy — jen pro heatmapu. */
+  rampa?: { od: number; doo: number };
+}
+
+export interface Props {
+  nadpis: string;
+  popis?: string;
+  varianty: Varianta[];
+  /** Prefix id, aby šlo mít na stránce víc karet. */
+  id: string;
+}
+
+const { nadpis, popis, varianty, id } = Astro.props;
+const maPrepinac = varianty.length > 1;
+const kroky = Array.from({ length: KROKU_RAMPY }, (_, i) => cssKrokRampy(i));
+---
+
+<section class="graf-karta" aria-labelledby={`${id}-nadpis`}>
+  <div class="graf-karta__hlava">
+    <h2 class="graf-karta__nadpis" id={`${id}-nadpis`}>{nadpis}</h2>
+    {
+      maPrepinac && (
+        <div class="prepinac" role="group" aria-label="Zobrazený pohled" data-graf-prepinac={id}>
+          {varianty.map((v, i) => (
+            <button
+              type="button"
+              class="tlacitko"
+              data-varianta={v.klic}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              {v.popisek}
+            </button>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  {popis && <p class="graf-karta__popis">{popis}</p>}
+
+  {
+    varianty.map((v, i) => (
+      <div class="graf-varianta" data-graf-obsah={id} data-varianta={v.klic} hidden={i !== 0}>
+        {v.rampa && (
+          <div class="legenda-rampa">
+            <span class="legenda-rampa__pas">
+              <span class="legenda__vzorek legenda__vzorek--prazdno" aria-hidden="true" />
+              <span>bez plateb v daném roce</span>
+            </span>
+            <span class="legenda-rampa__pas">
+              <span>{kcZkraceno(v.rampa.od)}</span>
+              <span class="legenda-rampa__kroky" aria-hidden="true">
+                {kroky.map((b) => (
+                  <span class="legenda-rampa__krok" style={`background:${b}`} />
+                ))}
+              </span>
+              <span>{kcZkraceno(v.rampa.doo)}</span>
+            </span>
+            <span class="vizualne-skryto">
+              Sytost buňky roste s objemem od {kcZkraceno(v.rampa.od)} do {kcZkraceno(v.rampa.doo)}.
+              Rok bez plateb je prázdná buňka s rámečkem, ne nejsvětlejší odstín.
+            </span>
+          </div>
+        )}
+
+        {v.graf.legenda && v.graf.legenda.length > 1 && (
+          <ul class="legenda">
+            {v.graf.legenda.map((p) => (
+              <li class="legenda__polozka">
+                <span class="legenda__vzorek" style={`background:${p.barva}`} aria-hidden="true" />
+                {p.odkaz ? <a href={p.odkaz}>{p.nazev}</a> : <span>{p.nazev}</span>}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div class="graf-plocha">
+          <Fragment set:html={v.graf.svg} />
+        </div>
+
+        {v.graf.poznamky.map((p) => (
+          <p class="graf-poznamka">{p}</p>
+        ))}
+
+        <details class="tabulkovy-pohled">
+          <summary>Zobrazit jako tabulku ({v.popisek.toLowerCase()})</summary>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  {v.graf.tabulka.hlavicka.map((s) => (
+                    <th scope="col" class={s.cislo ? 'cislo' : undefined}>
+                      {s.nazev}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {v.graf.tabulka.radky.map((r) => (
+                  <tr>
+                    {r.map((bunka, ci) => (
+                      <td class={v.graf.tabulka.hlavicka[ci]?.cislo ? 'cislo' : undefined}>{bunka}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    ))
+  }
+</section>
+
+<script>
+  /* Přepínač variant grafu. Jen mění viditelnost — data ani barvy se nepřepočítávají. */
+  document.querySelectorAll<HTMLElement>('[data-graf-prepinac]').forEach((skupina) => {
+    const id = skupina.dataset.grafPrepinac;
+    if (!id) return;
+    const obsahy = document.querySelectorAll<HTMLElement>(`[data-graf-obsah="${id}"]`);
+    skupina.querySelectorAll<HTMLButtonElement>('button[data-varianta]').forEach((tlacitko) => {
+      tlacitko.addEventListener('click', () => {
+        const vybrana = tlacitko.dataset.varianta;
+        skupina.querySelectorAll<HTMLButtonElement>('button[data-varianta]').forEach((b) => {
+          b.setAttribute('aria-pressed', b.dataset.varianta === vybrana ? 'true' : 'false');
+        });
+        obsahy.forEach((o) => {
+          o.hidden = o.dataset.varianta !== vybrana;
+        });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,140 @@
+---
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import VydaniKarta from '../components/Vydani.astro';
+import {
+  nactiCisla,
+  nactiClanky,
+  nactiHlasovani,
+  nactiLidi,
+  nactiProtistrany,
+  nactiUsneseni,
+  nactiVydani,
+  type Nacteno,
+} from '../lib/data';
+import { zplostiHlasovani, zplostiUsneseni } from '../lib/prehledy';
+import { cislo, datum } from '../lib/format';
+
+const zVydani = nactiVydani();
+const vydani = zVydani.data ?? [];
+const posledni = vydani[0] ?? null;
+const starsi = vydani.slice(1, 9);
+
+/* Rozcestník stavu: co už v přehledu je a co se ještě plní. Prázdná sekce
+   bez vysvětlení je horší než žádná sekce, takže se to napíše natvrdo. */
+const zUsneseni = nactiUsneseni();
+const zHlasovani = nactiHlasovani();
+const zPenez = nactiProtistrany();
+const zLidi = nactiLidi();
+const zCisel = nactiCisla();
+const zClanku = nactiClanky();
+
+interface Radek {
+  nazev: string;
+  cesta: string;
+  pocet: number;
+  jednotka: string;
+  zdroj: Nacteno<unknown>;
+  modul: string;
+}
+
+const prehled: Radek[] = [
+  { nazev: 'Usnesení', cesta: '/usneseni', pocet: zplostiUsneseni(zUsneseni.data ?? []).length, jednotka: 'bodů', zdroj: zUsneseni, modul: 'A1' },
+  { nazev: 'Hlasování', cesta: '/hlasovani', pocet: zplostiHlasovani(zHlasovani.data ?? []).length, jednotka: 'hlasování', zdroj: zHlasovani, modul: 'A1' },
+  { nazev: 'Peníze', cesta: '/penize', pocet: (zPenez.data?.protistrany ?? []).length, jednotka: 'protistran', zdroj: zPenez, modul: 'A3' },
+  { nazev: 'Lidé', cesta: '/lide', pocet: (zLidi.data ?? []).length, jednotka: 'profilů', zdroj: zLidi, modul: 'B1' },
+  { nazev: 'Zpravodaj', cesta: '/zpravodaj', pocet: (zCisel.data ?? []).length, jednotka: 'čísel', zdroj: zCisel, modul: 'A2' },
+  { nazev: 'Články ze zpravodaje', cesta: '/zpravodaj', pocet: (zClanku.data ?? []).length, jednotka: 'článků', zdroj: zClanku, modul: 'A2' },
+];
+
+function stavText(r: Radek): string {
+  if (r.zdroj.stav === 'chyba') return 'zdroj se nepodařilo načíst';
+  if (r.zdroj.stav === 'chybi') return 'data zatím nejsou sebraná';
+  if (r.pocet === 0) return 'načteno, ale zatím prázdné';
+  return 'připraveno';
+}
+
+function stavTrida(r: Radek): string {
+  if (r.zdroj.stav === 'chyba') return 'vazne';
+  if (r.zdroj.stav === 'chybi') return 'pozor';
+  if (r.pocet === 0) return 'neznamo';
+  return 'dobre';
+}
+---
+
+<Zaklad
+  titulek="Poslední vydání"
+  aktivni="vydani"
+  nadpis="Naše Mariánky v přehledech"
+  uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když zdroj v daném týdnu selže, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
+>
+  {
+    posledni ? (
+      <>
+        <VydaniKarta vydani={posledni} uroven="h2" />
+        {starsi.length > 0 && (
+          <section>
+            <h2>Starší vydání</h2>
+            <ul class="seznam">
+              {starsi.map((v) => (
+                <li class="polozka">
+                  <h3 class="polozka__nazev">
+                    <a href={`/vydani/${v.id}`}>{v.nazev ?? `Vydání ${v.id}`}</a>
+                  </h3>
+                  <div class="polozka__hlava">
+                    <span>{v.datum ? datum(v.datum) : v.id}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </>
+    ) : (
+      <StavDat
+        stav={zVydani.stav}
+        zdroj="vydani/"
+        co="Týdenní vydání"
+        prazdno={zVydani.stav === 'ok' && vydani.length === 0}
+        poznamky={[
+          'Formát týdenního vydání zatím není v docs/PLAN.md popsaný a žádný modul ho negeneruje. Web ho umí zobrazit, jakmile soubory vzniknou.',
+        ]}
+      />
+    )
+  }
+
+  <section>
+    <h2>Co v přehledu už je</h2>
+    <p class="uvod">
+      Jednotlivé sekce plní samostatné sběrače. Tabulka rozlišuje „ještě se nesbíralo",
+      „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou tři různé věci.
+    </p>
+    <div class="tabulka-obal">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Sekce</th>
+            <th scope="col" class="cislo">Záznamů</th>
+            <th scope="col">Stav</th>
+            <th scope="col">Zdroj</th>
+          </tr>
+        </thead>
+        <tbody>
+          {prehled.map((r) => (
+            <tr>
+              <td><a href={r.cesta}>{r.nazev}</a></td>
+              <td class="cislo">{r.pocet > 0 ? `${cislo(r.pocet)} ${r.jednotka}` : '—'}</td>
+              <td>
+                <span class={`stav-znacka stav-znacka--${stavTrida(r)}`}>
+                  <span class="stav-znacka__tecka" aria-hidden="true" />
+                  <span>{stavText(r)}</span>
+                </span>
+              </td>
+              <td class="mono">{r.zdroj.zdroj}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Zaklad>

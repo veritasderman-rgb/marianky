@@ -1,0 +1,126 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import { nactiCiselnikTagu, nactiClanky, nactiHlasovani, nactiUsneseni, type Tag } from '../../lib/data';
+import { zplostiHlasovani, zplostiUsneseni } from '../../lib/prehledy';
+import { cislo, datumKratke, kc, nazevOrganu, nazevVysledku, orez } from '../../lib/format';
+
+interface Udalost {
+  datum: string;
+  druh: 'usneseni' | 'hlasovani' | 'clanek';
+  nadpis: string;
+  popis: string | null;
+  meta: string;
+  odkaz: string | null;
+}
+
+export async function getStaticPaths() {
+  const { data: ciselnik } = nactiCiselnikTagu();
+  const { data: usneseniSoubory } = nactiUsneseni();
+  const { data: hlasovaniSoubory } = nactiHlasovani();
+  const { data: clanky } = nactiClanky();
+
+  const usneseni = zplostiUsneseni(usneseniSoubory ?? []);
+  const hlasovani = zplostiHlasovani(hlasovaniSoubory ?? []);
+
+  return (ciselnik?.tagy ?? []).map((t) => {
+    const udalosti: Udalost[] = [];
+
+    for (const u of usneseni) {
+      if (!(u.tagy ?? []).includes(t.id)) continue;
+      udalosti.push({
+        datum: u.datum,
+        druh: 'usneseni',
+        nadpis: u.nazev,
+        popis: u.text ? orez(u.text, 180) : null,
+        meta: `${nazevOrganu(u.organ)} · bod ${u.cislo}${typeof u.castka_czk === 'number' ? ` · ${kc(u.castka_czk)}` : ''}`,
+        odkaz: u.url ?? null,
+      });
+    }
+
+    for (const h of hlasovani) {
+      if (!h.tagy.includes(t.id)) continue;
+      udalosti.push({
+        datum: h.datum,
+        druh: 'hlasovani',
+        nadpis: h.nazev,
+        popis: `${nazevVysledku(h.vysledek)} — pro ${h.pro}, proti ${h.proti}, zdrželo se ${h.zdrzel}`,
+        meta: `${nazevOrganu(h.organ)} · bod ${h.bod}`,
+        odkaz: `/hlasovani/tag/${t.id}`,
+      });
+    }
+
+    for (const c of clanky ?? []) {
+      if (!(c.tagy ?? []).includes(t.id)) continue;
+      const m = /^(\d{4})-(\d{2})/.exec(c.cislo ?? '');
+      udalosti.push({
+        datum: m ? `${m[1]}-${m[2]}-01` : '',
+        druh: 'clanek',
+        nadpis: c.nadpis,
+        popis: c.perex ? orez(c.perex, 180) : null,
+        meta: `Zpravodaj ${c.cislo}${c.strana ? `, strana ${c.strana}` : ''}`,
+        odkaz: `/zpravodaj/${c.cislo}`,
+      });
+    }
+
+    udalosti.sort((a, b) => b.datum.localeCompare(a.datum));
+    return { params: { tema: t.id }, props: { tag: t, udalosti } };
+  });
+}
+
+interface Props {
+  tag: Tag;
+  udalosti: Udalost[];
+}
+
+const { tag, udalosti } = Astro.props as Props;
+const zUsneseni = nactiUsneseni();
+
+const nazvyDruhu: Record<Udalost['druh'], string> = {
+  usneseni: 'Usnesení',
+  hlasovani: 'Hlasování',
+  clanek: 'Zpravodaj',
+};
+
+const roky = [...new Set(udalosti.map((u) => u.datum.slice(0, 4)).filter(Boolean))].sort((a, b) => b.localeCompare(a));
+---
+
+<Zaklad titulek={`Téma: ${tag.nazev}`} aktivni="usneseni" nadpis={tag.nazev} uvod={tag.popis}>
+  <p class="pocet-vysledku">
+    {udalosti.length > 0 ? `${cislo(udalosti.length)} záznamů z usnesení, hlasování a zpravodaje · ` : ''}
+    <a href={`/hlasovani/tag/${tag.id}`}>Jen hlasování k tématu</a>
+  </p>
+
+  <StavDat
+    stav={zUsneseni.stav}
+    zdroj="usneseni/, hlasovani/, zpravodaj/clanky/"
+    co={`Časová osa tématu ${tag.nazev}`}
+    prazdno={zUsneseni.stav === 'ok' && udalosti.length === 0}
+    modul="A1 a A2"
+  />
+
+  {
+    roky.map((rok) => (
+      <section>
+        <h2>{rok}</h2>
+        <ul class="seznam">
+          {udalosti
+            .filter((u) => u.datum.startsWith(rok))
+            .map((u) => (
+              <li class="polozka">
+                <div class="polozka__hlava">
+                  <span>{nazvyDruhu[u.druh]}</span>
+                  <span>{datumKratke(u.datum)}</span>
+                  <span>{u.meta}</span>
+                </div>
+                <h3 class="polozka__nazev">
+                  {u.odkaz ? <a href={u.odkaz} rel={u.odkaz.startsWith('http') ? 'noreferrer noopener' : undefined}>{u.nadpis}</a> : u.nadpis}
+                </h3>
+                {u.popis && <p>{u.popis}</p>}
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</Zaklad>

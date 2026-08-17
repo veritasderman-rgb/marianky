@@ -1,0 +1,267 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import GrafKarta from '../../components/GrafKarta.astro';
+import Dlazdice from '../../components/Dlazdice.astro';
+import type { Varianta } from '../../components/GrafKarta.astro';
+import type { Polozka } from '../../components/Dlazdice.astro';
+import { nactiProtistrany, nactiSouhrn, nactiSmlouvy, posledniKindex, spojStavy } from '../../lib/data';
+import { grafHeatmapa, grafObjemPoLetech, grafSkladany, type BodObjemu } from '../../lib/grafy';
+import {
+  celkem,
+  indexujSmlouvy,
+  podleSmeru,
+  radkyHeatmapy,
+  registrProSmer,
+  rokyZProtistran,
+  serieTop,
+  smluvProtistranyZaRok,
+  smluvZaRok,
+  urovenKindexu,
+  vRoce,
+  type Smer,
+} from '../../lib/penize';
+import { cislo, kcZkraceno, sklonuj } from '../../lib/format';
+
+const zProtistran = nactiProtistrany();
+const zSouhrnu = nactiSouhrn();
+const zSmluv = nactiSmlouvy();
+const { poznamky } = spojStavy(zProtistran, zSmluv);
+
+const protistrany = zProtistran.data.protistrany ?? [];
+const souhrn = zSouhrnu.data ?? {};
+const indexSmluv = indexujSmlouvy(zSmluv.data ?? []);
+
+const maData = protistrany.length > 0;
+const roky = maData ? rokyZProtistran(protistrany) : [];
+
+const vydaje = podleSmeru(protistrany, 'vydaj');
+const prijmy = podleSmeru(protistrany, 'prijem');
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+// Přednost mají čísla ze souhrnu; když tam nejsou, dopočítá se z agregace.
+const celkovyObjem = souhrn.celkem?.vydaj_czk ?? souhrn.celkem_czk ?? celkem(vydaje);
+const aktivnich = protistrany.filter((p) => p.aktivni).length;
+const dodavatelu = vydaje.length;
+const odberatelu = prijmy.length;
+const bezIca = protistrany.filter((p) => p.ico === null).length;
+const kindexZaznam = posledniKindex(souhrn);
+const kindex = urovenKindexu(kindexZaznam?.stupen ?? null);
+
+// Smlouvy bez uvedené ceny se do objemů nezapočítávají. Chybějící cena není
+// nula — kdyby se to nenapsalo, graf by tvrdil něco, co v datech není.
+const bezCeny = souhrn.celkem?.bez_ceny ?? 0;
+const podilBezCeny = souhrn.celkem?.podil_bez_ceny ?? null;
+const vadnych = souhrn.celkem?.vadnych ?? null;
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Objem plateb města',
+        hodnota: kcZkraceno(celkovyObjem, true),
+        doplnek: roky.length ? `za období ${roky[0]}–${roky[roky.length - 1]}` : undefined,
+      },
+      {
+        popisek: 'Protistran celkem',
+        hodnota: cislo(protistrany.length),
+        doplnek: `${cislo(dodavatelu)} ${sklonuj(dodavatelu, 'dodavatel', 'dodavatelé', 'dodavatelů')} · ${cislo(odberatelu)} ${sklonuj(odberatelu, 'odběratel', 'odběratelé', 'odběratelů')}`,
+      },
+      {
+        popisek: 'Aktivních dodavatelů',
+        hodnota: cislo(aktivnich),
+        doplnek: 'dostali peníze v posledních 12 měsících',
+      },
+      {
+        popisek: 'K-index Hlídače státu',
+        hodnota: kindexZaznam?.stupen ?? '—',
+        doplnek: kindexZaznam?.rok ? `hodnocení za rok ${kindexZaznam.rok}` : undefined,
+        stav: { uroven: kindex.uroven, text: kindex.text },
+      },
+    ]
+  : [];
+
+/* ── 3.1 Objem plateb města po letech ─────────────────────────────────── */
+
+function bodyObjemu(smer: Smer): BodObjemu[] {
+  const mnozina = smer === 'vydaj' ? vydaje : prijmy;
+  return roky.map((rok) => ({
+    rok,
+    castka: mnozina.reduce((s, p) => s + vRoce(p, rok), 0),
+    smluv: smluvZaRok(indexSmluv, smer, rok),
+  }));
+}
+
+function variantaObjem(smer: Smer, popisek: string, titulek: string): Varianta {
+  const graf = grafObjemPoLetech(bodyObjemu(smer), titulek);
+  if (bezCeny > 0) {
+    graf.poznamky.push(
+      `U ${cislo(bezCeny)} ${sklonuj(bezCeny, 'smlouvy', 'smluv', 'smluv')} není v registru uvedená cena${podilBezCeny !== null ? ` (${(podilBezCeny * 100).toFixed(1).replace('.', ',')} % všech)` : ''}. Do objemů se nezapočítávají — chybějící cena není nula.`,
+    );
+  }
+  return { klic: smer, popisek, graf };
+}
+
+const variantyObjem: Varianta[] = maData
+  ? [
+      variantaObjem('vydaj', 'Co město zaplatilo', 'Objem plateb města po letech'),
+      variantaObjem('prijem', 'Co město inkasovalo', 'Objem příjmů města po letech'),
+    ]
+  : [];
+
+/* ── 3.2 Kdo od města dostává peníze ──────────────────────────────────── */
+
+const registrVydaj = registrProSmer(protistrany, 'vydaj');
+const registrPrijem = registrProSmer(protistrany, 'prijem');
+
+function variantaSkladana(smer: Smer, popisek: string): Varianta {
+  const mnozina = smer === 'vydaj' ? vydaje : prijmy;
+  const registr = smer === 'vydaj' ? registrVydaj : registrPrijem;
+  const { serie, pocetOstatnich } = serieTop(mnozina, roky, registr);
+  const graf = grafSkladany(roky, serie, popisek);
+  if (pocetOstatnich > 0) {
+    graf.poznamky.push(
+      `Šest největších protistran má vlastní barvu. Zbylých ${cislo(pocetOstatnich)} je sloučeno do „Ostatní" — sedmá barva by se už nedala spolehlivě rozlišit.`,
+    );
+  }
+  return { klic: smer, popisek, graf };
+}
+
+const variantySkladany: Varianta[] = maData
+  ? [variantaSkladana('vydaj', 'Dodavatelé'), variantaSkladana('prijem', 'Odběratelé')]
+  : [];
+
+/* ── 3.3 Heatmapa — kdo kdy začal a kdy přestal dostávat peníze ───────── */
+
+function variantaHeatmapy(smer: Smer, popisek: string): Varianta | null {
+  const mnozina = smer === 'vydaj' ? vydaje : prijmy;
+  if (mnozina.length === 0) return null;
+  const { radky, vynechano } = radkyHeatmapy(mnozina, roky, (p, rok) =>
+    smluvProtistranyZaRok(indexSmluv, smer, p, rok),
+  );
+  const graf = grafHeatmapa(roky, radky);
+
+  if (!indexSmluv.dostupny || !indexSmluv.smery.has(smer)) {
+    graf.poznamky.push('Počet smluv za jednotlivé roky pro tenhle směr zatím v datech není — tooltip ukazuje jen částku.');
+  }
+  if (vynechano > 0) {
+    graf.poznamky.push(
+      `Zobrazeno ${cislo(radky.length)} největších protistran z ${cislo(mnozina.length)}. Zbylých ${cislo(vynechano)} najdete v přehledu níže.`,
+    );
+  }
+  graf.poznamky.push(
+    'Prázdná buňka s rámečkem znamená rok bez jediné platby. Nejsvětlejší odstín rampy je naopak malá, ale skutečná částka — proto se nedají zaměnit.',
+  );
+  return { klic: smer, popisek, graf, rampa: { od: graf.rampaOd, doo: graf.rampaDo } };
+}
+
+const variantyHeatmapy = maData
+  ? ([variantaHeatmapy('vydaj', 'Dodavatelé'), variantaHeatmapy('prijem', 'Odběratelé')].filter(Boolean) as Varianta[])
+  : [];
+
+/* ── Přehled protistran pod grafy ─────────────────────────────────────── */
+
+const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0)).slice(0, 200);
+---
+
+<Zaklad
+  titulek="Peníze města"
+  aktivni="penize"
+  nadpis="Peníze města"
+  uvod="Kdo od města a jeho organizací dostává peníze, kolik a v jakých letech. Podklad je registr smluv přes Hlídače státu. Grafy se počítají při buildu — nic se nedopočítává v prohlížeči a nic se nedohaduje."
+>
+  <StavDat
+    stav={zProtistran.stav}
+    zdroj={zProtistran.zdroj}
+    co="Agregace plateb města"
+    prazdno={zProtistran.stav === 'ok' && protistrany.length === 0}
+    modul="A3 Peníze"
+    poznamky={poznamky.filter((p) => p !== zProtistran.poznamka)}
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        {kindexZaznam?.popis && <p class="graf-poznamka">K-index {kindexZaznam.stupen}: {kindexZaznam.popis}</p>}
+        {bezIca > 0 && (
+          <p class="graf-poznamka">
+            U {cislo(bezIca)} {sklonuj(bezIca, 'protistrany', 'protistran', 'protistran')} nemá registr smluv IČO —
+            slučují se podle názvu. V grafech i součtech jsou započítané, jen je nejde ověřit proti rejstříku.
+          </p>
+        )}
+        {vadnych !== null && vadnych > 0 && (
+          <p class="graf-poznamka">
+            Hlídač státu označuje {cislo(vadnych)} {sklonuj(vadnych, 'smlouvu', 'smlouvy', 'smluv')} za vážně vadnou.
+            {' '}Jsou vypsané u příslušných protistran.
+          </p>
+        )}
+
+        {zSouhrnu.stav !== 'ok' && (
+          <StavDat stav={zSouhrnu.stav} zdroj={zSouhrnu.zdroj} co="Souhrnné ukazatele (K-index, počty smluv)" modul="A3 Peníze" />
+        )}
+
+        <GrafKarta
+          id="objem"
+          nadpis="Objem plateb po letech"
+          popis="Součet všech částek za rok. Jedna série, takže legenda není potřeba — název grafu ji pojmenuje. Chybějící roky jsou doplněné jako nula, aby se časová osa nescvrkla."
+          varianty={variantyObjem}
+        />
+
+        <GrafKarta
+          id="dodavatele"
+          nadpis="Kdo od města dostává peníze"
+          popis="Šest největších protistran plus „Ostatní“, po letech. Barva patří konkrétnímu IČO, ne pořadí v grafu — přepnutí mezi dodavateli a odběrateli tedy nikomu barvu nepřehodí."
+          varianty={variantySkladany}
+        />
+
+        {variantyHeatmapy.length > 0 && (
+          <GrafKarta
+            id="heatmapa"
+            nadpis="Kdo kdy začal a kdy přestal dostávat peníze"
+            popis="Řádek je protistrana, sloupec rok, sytost buňky objem. Řazeno podle roku první smlouvy. Kliknutím na buňku se otevře detail protistrany."
+            varianty={variantyHeatmapy}
+          />
+        )}
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Všechny protistrany</h2>
+          <p class="karta__podnadpis">
+            Řazeno podle celkového objemu. {prehled.length < protistrany.length ? `Zobrazeno prvních ${cislo(prehled.length)} z ${cislo(protistrany.length)}.` : `Celkem ${cislo(protistrany.length)}.`}
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Protistrana</th>
+                  <th scope="col">IČO</th>
+                  <th scope="col">Směr</th>
+                  <th scope="col" class="cislo">Celkem</th>
+                  <th scope="col" class="cislo">Smluv</th>
+                  <th scope="col" class="cislo">Od</th>
+                  <th scope="col" class="cislo">Do</th>
+                  <th scope="col">Aktivní</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prehled.map((p) => (
+                  <tr>
+                    <td><a href={`/penize/${p.klic}`}>{p.nazev}</a></td>
+                    <td class="mono">{p.ico ?? 'bez IČO'}</td>
+                    <td>{p.smer === 'vydaj' ? 'dodavatel' : 'odběratel'}</td>
+                    <td class="cislo">{kcZkraceno(p.celkem_czk, true)}</td>
+                    <td class="cislo">{cislo(p.smluv)}</td>
+                    <td class="cislo">{p.prvni_rok}</td>
+                    <td class="cislo">{p.posledni_rok}</td>
+                    <td>{p.aktivni ? 'ano' : 'ne'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </>
+    )
+  }
+</Zaklad>

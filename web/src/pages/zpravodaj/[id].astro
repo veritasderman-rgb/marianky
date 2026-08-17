@@ -1,0 +1,92 @@
+---
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import Znacky from '../../components/Znacky.astro';
+import { nactiCiselnikTagu, nactiCisla, nactiClanky, type CisloZpravodaje, type Clanek } from '../../lib/data';
+import { mapaTagu } from '../../lib/prehledy';
+import { cislo, orez, sklonuj } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const { data: cisla } = nactiCisla();
+  const { data: clanky } = nactiClanky();
+  return (cisla ?? [])
+    .filter((c) => c?.id)
+    .map((c) => ({
+      params: { id: c.id },
+      props: { cisloZpravodaje: c, clanky: (clanky ?? []).filter((a) => a.cislo === c.id) },
+    }));
+}
+
+interface Props {
+  cisloZpravodaje: CisloZpravodaje;
+  clanky: Clanek[];
+}
+
+const { cisloZpravodaje: c, clanky } = Astro.props as Props;
+const zClanku = nactiClanky();
+const zTagu = nactiCiselnikTagu();
+const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
+
+const serazene = [...clanky].sort((a, b) => (a.strana ?? 0) - (b.strana ?? 0));
+const rubriky = [...new Set(serazene.map((a) => a.rubrika ?? 'Bez rubriky'))];
+---
+
+<Zaklad titulek={c.nazev} aktivni="zpravodaj" nadpis={c.nazev}>
+  <p class="uvod">
+    {c.stran ? `${cislo(c.stran)} ${sklonuj(c.stran, 'strana', 'strany', 'stran')}` : ''}
+    {c.znaku ? ` · ${cislo(c.znaku)} znaků textu` : ''}
+    {c.ocr ? ' · text získaný přes OCR, může obsahovat překlepy' : ''}
+    {c.url && (
+      <>
+        {' · '}
+        <a href={c.url} rel="noreferrer noopener">Originál PDF na webu města</a>
+      </>
+    )}
+  </p>
+
+  <StavDat
+    stav={zClanku.stav}
+    zdroj={zClanku.zdroj}
+    co={`Články z čísla ${c.id}`}
+    prazdno={zClanku.stav === 'ok' && serazene.length === 0}
+    modul="A2 Zpravodaj"
+  />
+
+  {
+    rubriky.map((r) => (
+      <section>
+        <h2>{r}</h2>
+        <ul class="seznam">
+          {serazene
+            .filter((a) => (a.rubrika ?? 'Bez rubriky') === r)
+            .map((a) => (
+              <li class="polozka">
+                <div class="polozka__hlava">
+                  {a.strana && <span class="mono">strana {a.strana}</span>}
+                </div>
+                <h3 class="polozka__nazev">
+                  {a.pdf_odkaz ? <a href={a.pdf_odkaz} rel="noreferrer noopener">{a.nadpis}</a> : a.nadpis}
+                </h3>
+                {a.perex && <p>{orez(a.perex, 400)}</p>}
+                <div class="polozka__meta">
+                  <Znacky tagy={a.tagy} ciselnik={ciselnik} />
+                  {a.osoby && a.osoby.length > 0 && (
+                    <span>
+                      {a.osoby.map((o, i) => (
+                        <>
+                          {i > 0 && ', '}
+                          <a href={`/lide/${o}`}>{o}</a>
+                        </>
+                      ))}
+                    </span>
+                  )}
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <p><a href="/zpravodaj">← Zpět na archiv zpravodaje</a></p>
+</Zaklad>

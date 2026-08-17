@@ -1,0 +1,62 @@
+---
+/**
+ * Hláška o stavu dat.
+ *
+ * Zásada celého projektu: „nic se nestalo" a „nepodařilo se načíst" nesmí
+ * vypadat stejně. Prázdná sekce bez vysvětlení je horší než žádná sekce.
+ */
+import type { Stav } from '../lib/data';
+
+export interface Props {
+  stav: Stav;
+  /** Cesta k očekávanému souboru — čtenář vidí, na co se čeká. */
+  zdroj?: string;
+  /** Popis sekce v 1. pádě, např. „Usnesení rady a zastupitelstva". */
+  co: string;
+  /** `true`, když se data načetla, ale nic v nich není. */
+  prazdno?: boolean;
+  poznamky?: string[];
+  /** Kdo data plní — pro hlášku „čeká se na modul A3". */
+  modul?: string;
+}
+
+const { stav, zdroj, co, prazdno = false, poznamky = [], modul } = Astro.props;
+
+const zobrazit = stav !== 'ok' || prazdno;
+const druh = stav === 'chyba' ? 'chyba' : stav === 'chybi' ? 'chybi' : 'prazdno';
+
+const nadpisy: Record<string, string> = {
+  chybi: 'Data zatím nejsou',
+  chyba: 'Data se nepodařilo načíst',
+  prazdno: 'Nic k zobrazení',
+};
+
+const texty: Record<string, string> = {
+  chybi: `${co} se zatím nepodařilo do přehledu dostat — zdrojový soubor ještě nevznikl. Není to tím, že by se nic nedělo; data prostě ještě nejsou sebraná.`,
+  chyba: `${co} — zdroj existuje, ale nešel přečíst. To je porucha, ne prázdný týden. Než se opraví, tahle sekce nic neukazuje.`,
+  prazdno: `${co} — data se načetla v pořádku, ale neobsahují žádný záznam. Tohle skutečně znamená, že se nic nestalo.`,
+};
+---
+
+{
+  zobrazit && (
+    <div class={`stav-dat stav-dat--${druh}`} role={druh === 'chyba' ? 'alert' : undefined}>
+      <strong class="stav-dat__nadpis">{nadpisy[druh]}</strong>
+      <span>{texty[druh]}</span>
+      {zdroj && (
+        <>
+          {' '}
+          <span class="stav-dat__zdroj">Očekávaný zdroj: {zdroj}</span>
+        </>
+      )}
+      {modul && <> · <span class="stav-dat__zdroj">plní modul {modul}</span></>}
+      {poznamky.length > 0 && (
+        <ul>
+          {poznamky.map((p) => (
+            <li>{p}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}

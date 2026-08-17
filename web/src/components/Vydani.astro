@@ -1,0 +1,103 @@
+---
+/**
+ * Vykreslení jednoho týdenního vydání.
+ *
+ * Formát vydání není v docs/PLAN.md zafixovaný a zatím ho žádný modul
+ * negeneruje. Čteme ho proto tolerantně: sekce se vykreslí, i když má jen
+ * poznámku o chybějícím zdroji — podle zásady, že výpadek se přizná,
+ * nezamlčí. Neznámá pole se ignorují, nikdy neshodí build.
+ */
+import type { Vydani } from '../lib/data';
+import { datum as fmtDatum } from '../lib/format';
+
+export interface Props {
+  vydani: Vydani;
+  /** Na titulní stránce se nadpis vydání vykresluje jako H2, ne H1. */
+  uroven?: 'h1' | 'h2';
+}
+
+const { vydani: v, uroven = 'h2' } = Astro.props;
+const Nadpis = uroven;
+
+function jakoText(x: unknown): string | null {
+  if (typeof x === 'string') return x;
+  if (x && typeof x === 'object') {
+    const o = x as Record<string, unknown>;
+    const t = o.nazev ?? o.nadpis ?? o.titulek ?? o.text ?? o.popis;
+    if (typeof t === 'string') return t;
+  }
+  return null;
+}
+
+function odkaz(x: unknown): string | null {
+  if (x && typeof x === 'object') {
+    const o = x as Record<string, unknown>;
+    for (const k of ['url', 'odkaz', 'zdroj']) {
+      if (typeof o[k] === 'string') return o[k] as string;
+    }
+  }
+  return null;
+}
+
+function popis(x: unknown): string | null {
+  if (x && typeof x === 'object') {
+    const o = x as Record<string, unknown>;
+    for (const k of ['perex', 'shrnuti', 'popis', 'text']) {
+      const h = o[k];
+      if (typeof h === 'string' && h !== jakoText(x)) return h;
+    }
+  }
+  return null;
+}
+
+const obdobi =
+  v.obdobi ??
+  (v.obdobi_od && v.obdobi_do ? `období ${fmtDatum(v.obdobi_od)} – ${fmtDatum(v.obdobi_do)}` : null);
+---
+
+<article class="karta">
+  <Nadpis class="karta__nadpis">{v.nazev ?? `Vydání ${v.id}`}</Nadpis>
+  <p class="karta__podnadpis">
+    {v.cislo ? `Číslo ${v.cislo} · ` : ''}
+    {v.datum ? fmtDatum(v.datum) : v.id}
+    {obdobi ? ` · ${obdobi}` : ''}
+  </p>
+
+  {v.perex && <p>{v.perex}</p>}
+
+  {
+    (v.sekce ?? []).map((s) => (
+      <section>
+        <h3>{s.nadpis}</h3>
+        {s.text && <p>{s.text}</p>}
+        {s.poznamka && (
+          <p class="stav-dat stav-dat--chybi">
+            <strong class="stav-dat__nadpis">Zdroj v tomhle týdnu nedal data</strong>
+            <span>{s.poznamka}</span>
+          </p>
+        )}
+        {Array.isArray(s.polozky) && s.polozky.length > 0 && (
+          <ul class="seznam">
+            {s.polozky.map((p) => {
+              const nazev = jakoText(p);
+              const url = odkaz(p);
+              const detail = popis(p);
+              return nazev ? (
+                <li class="polozka">
+                  <h4 class="polozka__nazev">{url ? <a href={url} rel="noreferrer noopener">{nazev}</a> : nazev}</h4>
+                  {detail && <p>{detail}</p>}
+                </li>
+              ) : null;
+            })}
+          </ul>
+        )}
+        {Array.isArray(s.polozky) && s.polozky.length === 0 && !s.text && !s.poznamka && (
+          <p class="stav-dat stav-dat--prazdno">
+            <strong class="stav-dat__nadpis">Nic k hlášení</strong>
+            <span>Zdroj se podařilo načíst, ale v tomhle období v něm nic nového nebylo.</span>
+          </p>
+        )}
+      </section>
+    ))
+  }
+</article>
