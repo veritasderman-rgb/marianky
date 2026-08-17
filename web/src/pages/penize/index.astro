@@ -324,9 +324,18 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
               <p class="graf-poznamka">
                 {cislo(spojeniDodavatele.length)}{' '}
                 {sklonuj(spojeniDodavatele.length, 'firma', 'firmy', 'firem')} s uvedenou vazbou,
-                z toho {cislo(mestskychVazeb)} přímo organizace města a {cislo(vAgregaci.length)}{' '}
-                se podařilo najít v registru smluv města.
-                {vAgregaci.length > 0 && <> Objem těchto smluv je {kcZkraceno(objemVazeb, true)}.</>}
+                z toho {cislo(mestskychVazeb)} přímo organizace města.
+                {vAgregaci.length > 0 && (
+                  <>
+                    {' '}V registru smluv města se jich našlo {cislo(vAgregaci.length)} s objemem{' '}
+                    {kcZkraceno(objemVazeb, true)}; na firmy mimo město z toho připadá{' '}
+                    {kcZkraceno(
+                      mimoMesto.reduce((s, x) => s + (x.p?.celkem_czk ?? 0), 0),
+                      true,
+                    )}
+                    .
+                  </>
+                )}
                 {!zeSouboruVazeb && (
                   <>
                     {' '}Soubor <span class="stav-dat__zdroj">propojeni/dodavatele_politici.json</span>{' '}
@@ -339,7 +348,7 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
                 <GrafKarta
                   id="vazby-objem"
                   nadpis="Platby firmám s vazbou na politiky po letech"
-                  popis="Součet plateb firmám ze seznamu níže, po letech. Čísla pocházejí z registru smluv, ne z propojení — propojení jen určuje, které firmy do součtu patří."
+                  popis="Součet plateb firmám ze seznamu níže, po letech. Čísla pocházejí z registru smluv, ne z propojení — propojení jen určuje, které firmy do součtu patří. Přepínač odděluje organizace města od firem mimo město."
                   varianty={variantyVazby}
                 />
               )}
