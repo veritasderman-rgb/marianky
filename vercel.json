@@ -1,0 +1,40 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "_comment": [
+    "Tahle konfigurace je v KOŘENI repozitáře schválně, i když web žije ve web/.",
+    "Vercel čte vercel.json z adresáře nastaveného jako Root Directory:",
+    "  Root Directory = kořen repozitáře (výchozí) -> přečte tenhle soubor",
+    "  Root Directory = web                        -> přečte web/vercel.json",
+    "Díky tomu se web nasadí správně v obou případech a nezávisí na tom,",
+    "jestli si někdo v nastavení projektu vzpomene Root Directory přepnout.",
+    "Bez toho Vercel na kořeni nenajde žádný framework, nenasadí nic",
+    "a každá adresa vrátí 404 NOT_FOUND.",
+    "",
+    "Build MUSÍ běžet s celým checkoutem: web čte data/ a config/ z kořene",
+    "repozitáře, ne z web/. Cestu jde přebít proměnnou MARIANKY_DATA."
+  ],
+
+  "installCommand": "cd web && npm ci",
+  "buildCommand": "cd web && npm run build",
+  "outputDirectory": "web/dist",
+  "framework": null,
+
+  "cleanUrls": true,
+  "trailingSlash": false,
+
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive, nosnippet" },
+        { "key": "Referrer-Policy", "value": "no-referrer" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    },
+    {
+      "source": "/pagefind/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    }
+  ]
+}
