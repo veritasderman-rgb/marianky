@@ -10,15 +10,16 @@ import type { Polozka } from '../../components/Dlazdice.astro';
 import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
 import { mapaTagu, zplostiHlasovani } from '../../lib/prehledy';
 import { statistikyOsoby, seradPocty } from '../../lib/profil';
-import { grafVodorovny } from '../../lib/grafy';
+import { grafVodorovny, type BodVodorovny } from '../../lib/grafy';
 import {
   nactiOsobyFirmy,
   nactiProfily,
   nactiVazbyHlasovani,
+  popisOvereni,
+  popisVztahu,
   procenta,
-  shodaOsoby,
-  vazbyPodleHlasovani,
-  vsechenSponzoring,
+  type Rez,
+  type ShodaSOsobou,
 } from '../../lib/vazby';
 import { cislo, datumKratke, kc, nazevHlasu, nazevOrganu, nazevVysledku, sklonuj } from '../../lib/format';
 
@@ -56,56 +57,117 @@ const zTagu = nactiCiselnikTagu();
 const zOsobFirem = nactiOsobyFirmy();
 const zProfilu = nactiProfily();
 const zVazeb = nactiVazbyHlasovani();
+const zLidi = nactiLidi();
 
 const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
 const vsechna = zplostiHlasovani(zHlasovani.data ?? []);
 const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
+const jmenaLidi = new Map((zLidi.data ?? []).map((o) => [o.id, o.jmeno]));
 
-/* ── Statistiky spočítané přímo z hlasovacích dat ─────────────────────── */
+/* ── Statistiky ───────────────────────────────────────────────────────────
+   Přednost má `lide/profily.json`: rozlišuje omluvenou a neomluvenou neúčast
+   a počítá věci, které z prostého součtu neplynou. Když soubor chybí, spočítá
+   se základ přímo z hlasovacích dat, ať stránka není prázdná. */
 
+const profil = zProfilu.data.profily.get(osoba.id) ?? null;
 const st = statistikyOsoby(vsechna, osoba.id);
 const celkem = st.zaznamy.length;
-const rozlozeni = seradPocty(st.pocty);
+const rez: Rez | null = profil?.celek ?? null;
 
-const dlazdice: Polozka[] = [
-  {
-    popisek: 'Zaznamenaných hlasování',
-    hodnota: cislo(celkem),
-    doplnek:
-      st.prvni && st.posledni ? `od ${datumKratke(st.prvni)} do ${datumKratke(st.posledni)}` : undefined,
-  },
-  {
-    popisek: 'Odevzdaných hlasů',
-    hodnota: cislo(st.odevzdanych),
-    doplnek:
-      st.podilOdevzdanych === null
-        ? undefined
-        : `${procenta(st.podilOdevzdanych)} zaznamenaných hlasování (pro, proti nebo zdržel se)`,
-  },
-  { popisek: 'Hlasoval pro', hodnota: cislo(st.pocty.pro ?? 0) },
-  { popisek: 'Hlasoval proti', hodnota: cislo(st.pocty.proti ?? 0) },
+/** Podíl se u malého vzorku neukazuje — zdroj to výslovně zakazuje. */
+function podilNeboPocet(hodnota: number | null, pocet: number | null, maly: boolean): string {
+  if (maly) return pocet === null ? '—' : `${cislo(pocet)} hlasování (na podíl je vzorek malý)`;
+  return procenta(hodnota);
+}
+
+const dlazdice: Polozka[] = rez
+  ? [
+      {
+        popisek: 'Zaznamenaných hlasování',
+        hodnota: cislo(rez.prilezitosti ?? celkem),
+        doplnek:
+          profil?.prvni && profil?.posledni
+            ? `od ${datumKratke(profil.prvni)} do ${datumKratke(profil.posledni)}`
+            : undefined,
+      },
+      {
+        popisek: 'Odevzdaných hlasů',
+        hodnota: cislo(rez.hlasoval ?? 0),
+        doplnek: `${podilNeboPocet(rez.podil_hlasoval, rez.hlasoval, rez.maly_vzorek)} — pro, proti nebo zdržel se`,
+      },
+      {
+        popisek: 'Neúčast',
+        hodnota: cislo(rez.neucast ?? 0),
+        doplnek:
+          rez.omluven !== null || rez.nepritomen !== null
+            ? `z toho omluvených ${cislo(rez.omluven ?? 0)}`
+            : undefined,
+      },
+      {
+        popisek: 'Shoda s většinou',
+        hodnota: profil?.shodaSVetsinou
+          ? podilNeboPocet(
+              profil.shodaSVetsinou.podil,
+              profil.shodaSVetsinou.shodnych,
+              profil.shodaSVetsinou.maly_vzorek,
+            )
+          : '—',
+        doplnek: profil?.shodaSVetsinou?.odlisnych
+          ? `odlišně hlasoval ${cislo(profil.shodaSVetsinou.odlisnych)}×`
+          : undefined,
+      },
+    ]
+  : [
+      {
+        popisek: 'Zaznamenaných hlasování',
+        hodnota: cislo(celkem),
+        doplnek:
+          st.prvni && st.posledni ? `od ${datumKratke(st.prvni)} do ${datumKratke(st.posledni)}` : undefined,
+      },
+      {
+        popisek: 'Odevzdaných hlasů',
+        hodnota: cislo(st.odevzdanych),
+        doplnek:
+          st.podilOdevzdanych === null
+            ? undefined
+            : `${procenta(st.podilOdevzdanych)} — pro, proti nebo zdržel se`,
+      },
+      { popisek: 'Hlasoval pro', hodnota: cislo(st.pocty.pro ?? 0) },
+      { popisek: 'Hlasoval proti', hodnota: cislo(st.pocty.proti ?? 0) },
+    ];
+
+/* ── Graf: rozložení hlasů ────────────────────────────────────────────── */
+
+const POPISKY_HLASU: [keyof Rez, string][] = [
+  ['pro', 'pro'],
+  ['proti', 'proti'],
+  ['zdrzel', 'zdržel se'],
+  ['nehlasoval', 'nehlasoval'],
+  ['omluven', 'omluvená neúčast'],
+  ['nepritomen', 'nepřítomen bez zapsané omluvy'],
 ];
 
-/* ── Grafy ────────────────────────────────────────────────────────────── */
+const bodyRozlozeni: BodVodorovny[] = rez
+  ? POPISKY_HLASU.map(([klic, nazev]) => ({ nazev, hodnota: (rez[klic] as number | null) ?? 0 })).filter(
+      (b) => b.hodnota > 0,
+    )
+  : seradPocty(st.pocty).map((r) => ({ nazev: nazevHlasu(r.hlas), hodnota: r.pocet }));
 
 const variantyRozlozeni: Varianta[] =
-  rozlozeni.length > 0
-    ? [
-        {
-          klic: 'rozlozeni',
-          popisek: 'Rozložení hlasů',
-          graf: grafVodorovny(
-            rozlozeni.map((r) => ({ nazev: nazevHlasu(r.hlas), hodnota: r.pocet })),
-            'Rozložení hlasů',
-          ),
-        },
-      ]
+  bodyRozlozeni.length > 0
+    ? [{ klic: 'rozlozeni', popisek: 'Rozložení hlasů', graf: grafVodorovny(bodyRozlozeni, 'Rozložení hlasů') }]
     : [];
 
+/* ── Graf: aktivita podle témat ───────────────────────────────────────── */
+
 const NEJVYSE_TEMAT = 12;
-const temataOsoby = [...st.podleTagu.entries()]
-  .map(([id, pocet]) => ({ id, nazev: ciselnik.get(id)?.nazev ?? id, pocet }))
-  .sort((a, b) => b.pocet - a.pocet);
+const temataOsoby = profil && profil.podleTagu.length > 0
+  ? profil.podleTagu
+      .map((t) => ({ id: t.tag, nazev: t.nazev ?? ciselnik.get(t.tag)?.nazev ?? t.tag, pocet: t.prilezitosti ?? 0 }))
+      .sort((a, b) => b.pocet - a.pocet)
+  : [...st.podleTagu.entries()]
+      .map(([id, pocet]) => ({ id, nazev: ciselnik.get(id)?.nazev ?? id, pocet }))
+      .sort((a, b) => b.pocet - a.pocet);
 const temataGraf = temataOsoby.slice(0, NEJVYSE_TEMAT);
 
 const variantyTemat: Varianta[] =
@@ -121,13 +183,12 @@ const variantyTemat: Varianta[] =
             );
             if (temataOsoby.length > temataGraf.length) {
               g.poznamky.push(
-                `Zobrazeno ${cislo(temataGraf.length)} nejčastějších témat z ${cislo(temataOsoby.length)}. Jedno hlasování může mít víc témat, součet je proto vyšší než počet hlasování.`,
-              );
-            } else {
-              g.poznamky.push(
-                'Jedno hlasování může mít víc témat, součet je proto vyšší než počet hlasování.',
+                `Zobrazeno ${cislo(temataGraf.length)} nejčastějších témat z ${cislo(temataOsoby.length)}.`,
               );
             }
+            g.poznamky.push(
+              'Jedno hlasování může mít víc témat, součet je proto vyšší než počet hlasování.',
+            );
             return g;
           })(),
         },
@@ -138,28 +199,29 @@ const variantyTemat: Varianta[] =
 
 const zaznamOsoby = zOsobFirem.data.osoby.find((o) => o.osoba_id === osoba.id) ?? null;
 const firmy = [...(zaznamOsoby?.firmy ?? [])].sort(
-  (a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0),
+  (a, b) => (b.od_mesta_czk ?? 0) - (a.od_mesta_czk ?? 0),
 );
-const firmySMestem = firmy.filter((f) => f.obchoduje === true);
-const firmyBezMesta = firmy.filter((f) => f.obchoduje === false);
-
-const sponzoringOsoby = vsechenSponzoring(zOsobFirem.data).filter((s) => s.osoba_id === osoba.id);
+const mestskych = firmy.filter((f) => f.vztah === 'mestsky-subjekt').length;
+const obchodujicich = firmy.filter((f) => f.vztah === 'obchoduje-s-mestem').length;
+const bezVazby = firmy.filter((f) => f.vztah === 'bez-vazby-na-mesto').length;
+const sponzoring = zaznamOsoby?.sponzoring ?? null;
 
 /* ── Vazby u konkrétních hlasování ────────────────────────────────────── */
 
-const vsechnyVazby = zVazeb.data ?? [];
+const vsechnyVazby = zVazeb.data.vazby;
 const vazbyOsoby = vsechnyVazby.filter((v) => v.osoba_id === osoba.id);
-const vazbyPodleId = vazbyPodleHlasovani(vsechnyVazby);
-const maVazbu = (idHlasovani: string) =>
-  (vazbyPodleId.get(idHlasovani) ?? []).some((v) => v.osoba_id === osoba.id);
+const idSVazbou = new Set(vazbyOsoby.map((v) => v.hlasovani_id).filter((x): x is string => Boolean(x)));
 
-/* ── Hlasovací profil z lide/profily.json ─────────────────────────────── */
+/* ── Shoda s ostatními ────────────────────────────────────────────────── */
 
-const profil = zProfilu.data.profily.get(osoba.id) ?? null;
-const shoda = shodaOsoby(zProfilu.data, osoba.id).slice(0, 10);
-const odchylky = profil?.odchylky.polozky ?? [];
-const velkeCastky = profil?.velke_castky ?? [];
-const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
+const shodne = profil?.nejcastejiShodne ?? [];
+const odlisne = profil?.nejcastejiOdlisne ?? [];
+
+function jmenoShody(s: ShodaSOsobou): string {
+  return s.jmeno ?? (s.osoba_id ? (jmenaLidi.get(s.osoba_id) ?? s.osoba_id) : '—');
+}
+
+const spolehliveOmluvy = zProfilu.data.omluvySpolehliveOd;
 ---
 
 <Zaklad titulek={osoba.jmeno} aktivni="lide" nadpis={osoba.jmeno}>
@@ -170,7 +232,7 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
         <span>
           Tahle osoba se objevuje ve jmenovitých hlasováních, ale popis, funkce ani zdroje
           zatím v <span class="stav-dat__zdroj">lide/osobnosti.json</span> nejsou. Níže je jen to,
-          co plyne přímo z hlasovacích dat.
+          co plyne přímo z dat.
         </span>
       </div>
     )
@@ -214,35 +276,48 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
     stav={zHlasovani.stav}
     zdroj={zHlasovani.zdroj}
     co={`Jmenovitá hlasování ${osoba.jmeno}`}
-    prazdno={zHlasovani.stav === 'ok' && celkem === 0}
+    prazdno={zHlasovani.stav === 'ok' && celkem === 0 && rez === null}
     modul="A1 Usnesení a hlasování"
   />
 
   {
-    celkem > 0 && (
+    (celkem > 0 || rez) && (
       <>
         <Dlazdice polozky={dlazdice} />
 
         <p class="graf-poznamka">
-          Jmenovatel je počet hlasování, kde je osoba uvedená ve jmenovitém seznamu — ne počet
-          všech jednání orgánu. Kdo v seznamu není, nemusel chybět: nemusel v tu dobu být členem
-          orgánu. Podíl proto vypovídá o zaznamenaných hlasováních, ne o docházce.
-          {st.podleOrganu.size > 0 && (
+          Jmenovatel je počet hlasování, kde je osoba na jmenovité listině — ne počet všech
+          jednání orgánu. Kdo na listině není, nemusel chybět: nemusel v tu dobu být členem
+          orgánu. Podíly proto vypovídají o zaznamenaných hlasováních, ne o docházce, a neúčast
+          nemá v datech uvedený důvod.
+          {profil && profil.podleOrganu.length > 0 && (
             <>
-              {' '}Rozdělení podle orgánu:{' '}
-              {`${[...st.podleOrganu.entries()]
-                .sort((a, b) => b[1] - a[1])
-                .map(([o, p]) => `${nazevOrganu(o)} ${cislo(p)}`)
+              {' '}
+              {`Rozdělení podle orgánu: ${profil.podleOrganu
+                .map((o) => `${nazevOrganu(o.organ)} ${cislo(o.rez.prilezitosti ?? 0)}`)
                 .join(', ')}.`}
             </>
           )}
         </p>
 
+        {spolehliveOmluvy.length > 0 && (rez?.omluven ?? 0) >= 0 && rez && (
+          <p class="graf-poznamka">
+            Omluvenou a neomluvenou neúčast lze rozlišit jen tam, kde zdroj příznak omluvy zapisuje:
+            {' '}
+            {spolehliveOmluvy.map((o) => `${nazevOrganu(o.organ)} od roku ${o.od}`).join(', ')}.
+            U starších zápisů je každá neúčast vedená jako „nepřítomen", ačkoliv se lidé
+            samozřejmě omlouvali.
+            {profil?.rozliseniOmluv?.podil !== null && profil?.rozliseniOmluv?.podil !== undefined && (
+              <> U této osoby má rozlišení {procenta(profil.rozliseniOmluv.podil)} hlasování.</>
+            )}
+          </p>
+        )}
+
         {variantyRozlozeni.length > 0 && (
           <GrafKarta
             id="rozlozeni-hlasu"
             nadpis="Rozložení hlasů"
-            popis="Kolikrát osoba hlasovala jak. „Nepřítomen“ a „nehlasoval“ jsou uvedené jako záznam z dat — přehled z neúčasti nic nevyvozuje."
+            popis="Kolikrát osoba hlasovala jak. Neúčast je uvedená jako záznam z dat — přehled z ní nic nevyvozuje."
             varianty={variantyRozlozeni}
           />
         )}
@@ -255,7 +330,147 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
             varianty={variantyTemat}
           />
         )}
+
+        {profil?.velkeCastky && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Hlasování o velkých částkách</h2>
+            <p class="karta__podnadpis">
+              Body, kde usnesení uvádí částku nad{' '}
+              {profil.velkeCastky.prah_czk === null ? 'stanovenou hranicí' : kc(profil.velkeCastky.prah_czk)}.
+              Zdroj u nich publikuje jen počty hlasování, ne součty korun — část částek je
+              v podkladech zjevně špatně načtená a součet by lhal.
+            </p>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Ukazatel</th>
+                    <th scope="col" class="cislo">Počet hlasování</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Na jmenovité listině</td><td class="cislo">{cislo(profil.velkeCastky.prilezitosti ?? 0)}</td></tr>
+                  <tr><td>Hlasoval pro</td><td class="cislo">{cislo(profil.velkeCastky.pro ?? 0)}</td></tr>
+                  <tr><td>Hlasoval proti</td><td class="cislo">{cislo(profil.velkeCastky.proti ?? 0)}</td></tr>
+                  <tr><td>Zdržel se</td><td class="cislo">{cislo(profil.velkeCastky.zdrzel ?? 0)}</td></tr>
+                  <tr><td>Nehlasoval</td><td class="cislo">{cislo(profil.velkeCastky.nehlasoval ?? 0)}</td></tr>
+                  <tr><td>Neúčast</td><td class="cislo">{cislo(profil.velkeCastky.neucast ?? 0)}</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {profil?.odchylky && profil.odchylky.porovnatelnych !== null && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Hlasy odlišné od většiny vlastního uskupení</h2>
+            <p class="karta__podnadpis">
+              Porovnává se jen tam, kde hlasovali aspoň dva členové téhož uskupení. Je to prostý
+              rozdíl v datech, ne hodnocení — hlasovat jinak než klub je běžná součást
+              zastupitelské práce.
+            </p>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Ukazatel</th>
+                    <th scope="col" class="cislo">Hodnota</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Porovnatelných hlasování</td>
+                    <td class="cislo">{cislo(profil.odchylky.porovnatelnych)}</td>
+                  </tr>
+                  <tr>
+                    <td>Hlasoval jinak než většina uskupení</td>
+                    <td class="cislo">{cislo(profil.odchylky.odchylek ?? 0)}</td>
+                  </tr>
+                  <tr>
+                    <td>Podíl odlišných hlasů</td>
+                    <td class="cislo">
+                      {podilNeboPocet(profil.odchylky.podil, profil.odchylky.odchylek, profil.odchylky.maly_vzorek)}
+                    </td>
+                  </tr>
+                  {profil.shodaSVetsinou?.jediny !== null && profil.shodaSVetsinou?.jediny !== undefined && (
+                    <tr>
+                      <td>Hlasoval odlišně od většiny celého orgánu jako jediný</td>
+                      <td class="cislo">{cislo(profil.shodaSVetsinou.jediny)}×</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {(shodne.length > 0 || odlisne.length > 0) && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Shoda hlasování s ostatními</h2>
+            <p class="karta__podnadpis">
+              Podíl hlasování, kde oba odevzdali stejný hlas, ze společných hlasování. Neúčast se
+              nepočítá jako neshoda. Vysoká shoda vzniká i tím, že se většina bodů schvaluje
+              jednomyslně — sama o sobě neznamená domluvu.
+            </p>
+            <div class="mrizka-2">
+              {(
+                [
+                  ['Nejčastěji hlasovali stejně', shodne],
+                  ['Nejčastěji hlasovali jinak', odlisne],
+                ] as [string, ShodaSOsobou[]][]
+              ).map(([nadpis, seznam]) =>
+                seznam.length > 0 ? (
+                  <div>
+                    <strong>{nadpis}</strong>
+                    <div class="tabulka-obal">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th scope="col">Zastupitel</th>
+                            <th scope="col" class="cislo">Shoda</th>
+                            <th scope="col" class="cislo">Společných</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {seznam.slice(0, 8).map((s) => (
+                            <tr>
+                              <td>
+                                {s.osoba_id ? (
+                                  <a href={`/lide/${s.osoba_id}`}>{jmenoShody(s)}</a>
+                                ) : (
+                                  jmenoShody(s)
+                                )}
+                              </td>
+                              <td class="cislo">
+                                {s.maly_vzorek ? `${cislo(s.shodnych)} z ${cislo(s.spolecnych)}` : procenta(s.podil)}
+                              </td>
+                              <td class="cislo">{s.spolecnych === null ? '—' : cislo(s.spolecnych)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                ) : null,
+              )}
+            </div>
+          </section>
+        )}
       </>
+    )
+  }
+
+  {
+    zProfilu.stav !== 'ok' && celkem > 0 && (
+      <StavDat
+        stav={zProfilu.stav}
+        zdroj={zProfilu.zdroj}
+        co="Hlasovací profil (shoda mezi zastupiteli, odchylky od uskupení, velké částky)"
+        modul="hlasovací profily"
+        poznamky={[
+          'Statistiky výše jsou spočítané přímo z hlasovacích dat. Rozlišení omluvené neúčasti a shoda mezi zastupiteli se počítají jinde a zatím nejsou.',
+        ]}
+      />
     )
   }
 
@@ -265,23 +480,37 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
     stav={zOsobFirem.stav}
     zdroj={zOsobFirem.zdroj}
     co={`Firmy, ve kterých je ${osoba.jmeno} uvedený`}
-    prazdno={zOsobFirem.stav === 'ok' && firmy.length === 0}
+    prazdno={zOsobFirem.stav === 'ok' && zaznamOsoby !== null && zaznamOsoby.firmyZjisteny && firmy.length === 0}
     modul="propojení dat"
     poznamky={
-      zOsobFirem.stav === 'ok' && firmy.length === 0
-        ? ['Soubor se načetl, ale pro tuhle osobu v něm žádná firma není.']
+      zOsobFirem.stav === 'ok' && zaznamOsoby !== null && zaznamOsoby.firmyZjisteny && firmy.length === 0
+        ? ['Identita byla dohledaná, ale žádné angažmá ve firmě u ní zdroj nevede.']
         : []
     }
   />
+
+  {
+    zaznamOsoby !== null && !zaznamOsoby.firmyZjisteny && (
+      <div class="stav-dat stav-dat--chybi">
+        <strong class="stav-dat__nadpis">Firmy se nedohledaly</strong>
+        <span>
+          Zdroj u téhle osoby seznam firem nevede: {popisOvereni(zaznamOsoby.overeni.stav)}
+          {zaznamOsoby.overeni.kandidatu !== null && zaznamOsoby.overeni.kandidatu > 1 && (
+            <> — v rejstříku je {cislo(zaznamOsoby.overeni.kandidatu)} osob téhož jména</>
+          )}. Neznamená to, že žádné firmy nemá; znamená to, že se nedaly spolehlivě přiřadit.
+        </span>
+      </div>
+    )
+  }
 
   {
     firmy.length > 0 && (
       <section class="karta">
         <p class="karta__podnadpis">
           Všechny firmy, ve kterých je osoba podle zdrojů uvedená — včetně těch, které s městem
-          nijak neobchodují. Smlouvu s městem nebo jeho organizacemi má {cislo(firmySMestem.length)}{' '}
-          z {cislo(firmy.length)} {sklonuj(firmy.length, 'firmy', 'firem', 'firem')}, s městem
-          neobchoduje {cislo(firmyBezMesta.length)}.
+          nijak neobchodují. Z {cislo(firmy.length)} {sklonuj(firmy.length, 'firmy', 'firem', 'firem')}
+          {' '}je {cislo(mestskych)} organizace města, {cislo(obchodujicich)} obchoduje s městem
+          zvenčí a {cislo(bezVazby)} s městem neobchoduje.
         </p>
 
         <div class="tabulka-obal">
@@ -289,10 +518,10 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
             <thead>
               <tr>
                 <th scope="col">Firma</th>
+                <th scope="col">Vztah k městu</th>
                 <th scope="col">Role</th>
-                <th scope="col">Platnost</th>
-                <th scope="col">Obchoduje s městem</th>
-                <th scope="col" class="cislo">Od města celkem</th>
+                <th scope="col" class="cislo">Od města</th>
+                <th scope="col" class="cislo">Městu</th>
                 <th scope="col" class="cislo">Smluv</th>
               </tr>
             </thead>
@@ -301,30 +530,29 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
                 <tr>
                   <td>
                     {f.ico && zname.has(f.ico) ? <a href={`/penize/${f.ico}`}>{f.nazev}</a> : f.nazev}
-                    {f.ico && <><br /><span class="mono">{f.ico}</span></>}
+                    {f.ico && (
+                      <>
+                        <br />
+                        <span class="mono">{f.ico}</span>
+                      </>
+                    )}
                   </td>
-                  <td>{f.role.length > 0 ? f.role.join(', ') : 'v datech není'}</td>
+                  <td>{popisVztahu(f.vztah)}</td>
                   <td>
-                    {f.od || f.do
-                      ? `${f.od ?? '?'} – ${f.do ?? 'trvá'}`
-                      : f.aktivni === false
-                        ? 'ukončeno'
-                        : '—'}
-                  </td>
-                  <td>
-                    {f.obchoduje === true
-                      ? 'ano'
-                      : f.obchoduje === false
-                        ? 's městem neobchoduje'
-                        : 'v datech není uvedeno'}
+                    {f.role.length > 0
+                      ? f.role.join(', ')
+                      : zaznamOsoby?.role.length
+                        ? `${zaznamOsoby.role.join(', ')} (role u firmy zdroj neuvádí)`
+                        : 'v datech není'}
                   </td>
                   <td class="cislo">
-                    {f.obchoduje === false
+                    {f.vztah === 'bez-vazby-na-mesto'
                       ? '—'
-                      : f.celkem_czk === null
+                      : f.od_mesta_czk === null
                         ? 'v datech není'
-                        : kc(f.celkem_czk)}
+                        : kc(f.od_mesta_czk)}
                   </td>
+                  <td class="cislo">{f.mestu_czk === null ? '—' : kc(f.mestu_czk)}</td>
                   <td class="cislo">{f.smluv === null ? '—' : cislo(f.smluv)}</td>
                 </tr>
               ))}
@@ -334,39 +562,59 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
 
         <p class="graf-poznamka">
           Zápis ve firmě je veřejný údaj z rejstříku. Sám o sobě neznamená nic víc, než že je
-          osoba ve firmě zapsaná — přehled z něj nevyvozuje žádný závěr.
+          osoba ve firmě zapsaná — přehled z něj nevyvozuje žádný závěr. Sloupec „Od města" je
+          objem smluv mezi městem (či jeho organizacemi) a danou firmou, ne příjem osoby.
+          {zaznamOsoby?.hlidacUrl && (
+            <>
+              {' '}
+              <a href={zaznamOsoby.hlidacUrl} rel="noreferrer noopener">Profil osoby na Hlídači státu</a>
+              {zaznamOsoby.overeni.stav && <> · {popisOvereni(zaznamOsoby.overeni.stav)}</>}
+            </>
+          )}
         </p>
       </section>
     )
   }
 
   {
-    sponzoringOsoby.length > 0 && (
+    sponzoring !== null && (
       <section class="karta">
         <h2 class="karta__nadpis">Sponzoring politických stran</h2>
-        <p class="karta__podnadpis">Dary tak, jak je uvádí zdroj. Zákonná a veřejně vykazovaná věc.</p>
-        <div class="tabulka-obal">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Strana</th>
-                <th scope="col">Typ</th>
-                <th scope="col" class="cislo">Částka</th>
-                <th scope="col" class="cislo">Rok</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sponzoringOsoby.map((s) => (
+        <p class="karta__podnadpis">
+          Dary a příspěvky tak, jak je uvádí zdroj. Zákonná a veřejně vykazovaná věc — přehled ji
+          uvádí jako fakt, ne jako výtku.
+          {sponzoring.uplne === false && ' Zdroj upozorňuje, že seznam nemusí být úplný.'}
+        </p>
+
+        {sponzoring.zaznamy.length === 0 ? (
+          <p>
+            Zdroj sponzoring u téhle osoby prověřoval a žádný záznam nenašel
+            {sponzoring.zaznamu !== null && <> (záznamů: {cislo(sponzoring.zaznamu)})</>}.
+          </p>
+        ) : (
+          <div class="tabulka-obal">
+            <table>
+              <thead>
                 <tr>
-                  <td>{s.strana ?? '—'}</td>
-                  <td>{s.typ ?? '—'}</td>
-                  <td class="cislo">{s.castka_czk === null ? '—' : kc(s.castka_czk)}</td>
-                  <td class="cislo">{s.rok ?? (s.datum ? datumKratke(s.datum) : '—')}</td>
+                  <th scope="col">Strana</th>
+                  <th scope="col">Druh</th>
+                  <th scope="col" class="cislo">Částka</th>
+                  <th scope="col" class="cislo">Rok</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {sponzoring.zaznamy.map((s) => (
+                  <tr>
+                    <td>{s.strana ?? '—'}</td>
+                    <td>{s.druh ?? '—'}</td>
+                    <td class="cislo">{s.castka_czk === null ? '—' : kc(s.castka_czk)}</td>
+                    <td class="cislo">{s.rok ?? '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
     )
   }
@@ -381,156 +629,6 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
         </p>
         <Vazby vazby={vazbyOsoby} zname={zname} otevreno bezOsoby />
       </section>
-    )
-  }
-
-  {
-    (odchylky.length > 0 || velkeCastky.length > 0 || shoda.length > 0 || profil?.ucast) && (
-      <h2>Hlasovací profil</h2>
-    )
-  }
-
-  {
-    profil?.ucast && celkem === 0 && (
-      <Dlazdice
-        polozky={[
-          {
-            popisek: 'Účast podle profilu',
-            hodnota: profil.ucast.podil !== null ? procenta(profil.ucast.podil) : cislo(profil.ucast.hlasoval ?? 0),
-            doplnek:
-              profil.ucast.celkem !== null
-                ? `z ${cislo(profil.ucast.celkem)} hlasování podle lide/profily.json`
-                : 'podle lide/profily.json',
-          },
-        ]}
-      />
-    )
-  }
-
-  {
-    velkeCastky.length > 0 && (
-      <section class="karta">
-        <h2 class="karta__nadpis">Hlasování o velkých částkách</h2>
-        <p class="karta__podnadpis">
-          Body s vysokou částkou, u kterých je osoba ve jmenovitém seznamu. Výběr dělá
-          <span class="stav-dat__zdroj"> lide/profily.json</span>, tenhle přehled ho jen zobrazuje.
-        </p>
-        <div class="tabulka-obal">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Bod</th>
-                <th scope="col" class="cislo">Částka</th>
-                <th scope="col">Hlas</th>
-                <th scope="col">Výsledek</th>
-              </tr>
-            </thead>
-            <tbody>
-              {velkeCastky.map((p) => (
-                <tr>
-                  <td class="cislo">{datumKratke(p.datum)}</td>
-                  <td>{p.nazev ?? p.hlasovani_id ?? '—'}</td>
-                  <td class="cislo">{p.castka_czk === null ? '—' : kc(p.castka_czk)}</td>
-                  <td>{p.hlas ? nazevHlasu(p.hlas) : '—'}</td>
-                  <td>{p.vysledek ? nazevVysledku(p.vysledek) : '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    odchylky.length > 0 && (
-      <section class="karta">
-        <h2 class="karta__nadpis">Hlasy odlišné od většiny vlastního uskupení</h2>
-        <p class="karta__podnadpis">
-          Případy, kdy osoba hlasovala jinak než většina jejího uskupení.
-          {profil?.odchylky.podil !== null && profil?.odchylky.podil !== undefined && (
-            <> Podle zdroje jde o {procenta(profil.odchylky.podil)} jejích hlasů.</>
-          )}{' '}
-          Je to prostý rozdíl v datech, ne hodnocení — hlasovat odlišně od klubu je běžná součást
-          zastupitelské práce.
-        </p>
-        <div class="tabulka-obal">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Bod</th>
-                <th scope="col">Její/jeho hlas</th>
-                <th scope="col">Většina uskupení</th>
-              </tr>
-            </thead>
-            <tbody>
-              {odchylky.map((p) => (
-                <tr>
-                  <td class="cislo">{datumKratke(p.datum)}</td>
-                  <td>{p.nazev ?? p.hlasovani_id ?? '—'}</td>
-                  <td>{p.hlas ? nazevHlasu(p.hlas) : '—'}</td>
-                  <td>{p.vetsina ? nazevHlasu(p.vetsina) : '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    shoda.length > 0 && (
-      <section class="karta">
-        <h2 class="karta__nadpis">Shoda hlasování s ostatními</h2>
-        <p class="karta__podnadpis">
-          Podíl hlasování, kde oba hlasovali stejně, ze společně zaznamenaných hlasování. Vysoká
-          shoda může vzniknout i tím, že se většina bodů schvaluje jednomyslně — sama o sobě
-          neznamená domluvu.
-        </p>
-        <div class="tabulka-obal">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Zastupitel</th>
-                <th scope="col" class="cislo">Shoda</th>
-                <th scope="col" class="cislo">Společných hlasování</th>
-              </tr>
-            </thead>
-            <tbody>
-              {shoda.map((s) => (
-                <tr>
-                  <td>
-                    {s.osoba_id ? (
-                      <a href={`/lide/${s.osoba_id}`}>{s.jmeno ?? jmenaLidi.get(s.osoba_id) ?? s.osoba_id}</a>
-                    ) : (
-                      (s.jmeno ?? '—')
-                    )}
-                  </td>
-                  <td class="cislo">{procenta(s.shoda)}</td>
-                  <td class="cislo">{s.spolecnych === null ? 'v datech není' : cislo(s.spolecnych)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-    )
-  }
-
-  {
-    zProfilu.stav !== 'ok' && celkem > 0 && (
-      <StavDat
-        stav={zProfilu.stav}
-        zdroj={zProfilu.zdroj}
-        co="Hlasovací profil (matice shody, odchylky od uskupení, velké částky)"
-        modul="hlasovací profily"
-        poznamky={[
-          'Statistiky výše jsou spočítané přímo z hlasovacích dat. Matice shody a odchylky od vlastního uskupení se počítají jinde a zatím nejsou.',
-        ]}
-      />
     )
   }
 
@@ -561,12 +659,17 @@ const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
                   <td class="cislo">{datumKratke(u.h.datum)}</td>
                   <td>{nazevOrganu(u.h.organ)}</td>
                   <td>{u.h.nazev}</td>
-                  <td>{nazevHlasu(u.hlas)}</td>
+                  <td>
+                    {nazevHlasu(u.hlas)}
+                    {u.h.jmenovite.find((j) => j.osoba_id === osoba.id)?.omluven === true && (
+                      <span class="stav-dat__zdroj"> (omluven)</span>
+                    )}
+                  </td>
                   <td>{nazevVysledku(u.h.vysledek)}</td>
                   <td><Znacky tagy={u.h.tagy} ciselnik={ciselnik} /></td>
                   {vazbyOsoby.length > 0 && (
                     <td>
-                      {maVazbu(u.h.id) ? (
+                      {idSVazbou.has(u.h.id) ? (
                         <span class="znacka znacka--vazba">vazba na dotčenou firmu</span>
                       ) : (
                         ''

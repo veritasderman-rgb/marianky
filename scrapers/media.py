@@ -622,7 +622,7 @@ def zmer_hloubku(log: Log, vzorek: int = 6) -> list[dict]:
         )
         log.info(
             f"{z.nazev}: {len(vsechny)} URL, z toho {len(ml)} o ML, "
-            f"nejstarší ověřené vydání {rec['nejstarsi_datum']}"
+            f"nejstarší ověřené vydání {rec['nejstarsi_overene']}"
         )
         zprava.append(rec)
     uloz(ZDROJE_STAV, {"overeno": datetime.now(timezone.utc).strftime("%Y-%m-%d"),

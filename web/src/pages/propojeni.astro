@@ -65,7 +65,6 @@ const vsechnyFirmy = [...firmy.values()];
 const mestskych = vsechnyFirmy.filter((f) => f.vztah === 'mestsky-subjekt').length;
 const cizichObchodujicich = vsechnyFirmy.filter((f) => f.vztah === 'obchoduje-s-mestem').length;
 const bezVazby = vsechnyFirmy.filter((f) => f.vztah === 'bez-vazby-na-mesto').length;
-const neurcenych = vsechnyFirmy.length - mestskych - cizichObchodujicich - bezVazby;
 
 const objemCelkem = vsechnyFirmy.reduce((s, f) => s + (f.od_mesta_czk ?? 0), 0);
 const objemCizich = vsechnyFirmy
