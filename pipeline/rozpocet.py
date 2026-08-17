@@ -47,6 +47,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -326,6 +327,77 @@ def kontrola_dopoctu(fin: list[dict]) -> dict:
     }
 
 
+def overeni_proti_usnesenim(osa: dict) -> dict:
+    """Porovná schválený rozpočet výdajů s částkou z usnesení zastupitelstva.
+
+    Nezávislá kontrola jednotek. Monitor vede částky v celých korunách,
+    ale kdyby je někdy začal vozit v tisících, tenhle test to chytne dřív,
+    než se rozpočet ve stovkách milionů zobrazí jako stovky tisíc — což se
+    v tomhle projektu už jednou stalo.
+
+    Zastupitelstvo schvaluje rozpočet na příští rok, takže se usnesení
+    z prosince roku N páruje s rozpočtem roku N+1. Body, kde je výše jen
+    v příloze a v textu zůstala jiná částka (Fond z pobytu), test poznají
+    podle řádového rozdílu a hlásí je jako `neporovnano`, ne jako neshodu.
+    """
+    # Schválený rozpočet se během roku nemění, takže na tenhle test stačí
+    # i běžící období — jinak by poslední schválený rozpočet zůstal
+    # neověřený celý rok, právě když je nejčerstvější.
+    podle_roku = {}
+    for r in osa["roky"]:
+        if r["rok"] not in podle_roku or r["koncove"]:
+            podle_roku[r["rok"]] = r
+    sedi = neshody = neporovnano = 0
+    polozky = []
+
+    for cesta in sorted((DATA / "usneseni").glob("*/*/*.json")):
+        jednani = json.loads(cesta.read_text(encoding="utf-8"))
+        for bod in jednani.get("body") or []:
+            nazev = bod.get("nazev") or ""
+            castka = bod.get("castka_czk")
+            m = re.search(r"Rozpočet města.*na rok (\d{4})", nazev)
+            if not (m and castka):
+                continue
+            rok = int(m.group(1))
+            r = podle_roku.get(rok)
+            plan = (r or {}).get("vydaje", {}).get("schvaleny")
+            if plan is None:
+                stav = "rok_neni_v_datech"
+                neporovnano += 1
+            elif abs(castka - plan) < 1:
+                stav = "sedi"
+                sedi += 1
+            elif castka < plan / 5:
+                # Řádově menší číslo — v usnesení je odkaz na přílohu
+                # a vyparsovaná částka patří jinému bodu (typicky Fondu
+                # z pobytu). Není to rozpor v datech Monitoru.
+                stav = "usneseni_uvadi_jinou_castku"
+                neporovnano += 1
+            else:
+                stav = "neshoda"
+                neshody += 1
+            polozky.append({
+                "rok": rok,
+                "datum_usneseni": jednani.get("datum"),
+                "castka_v_usneseni": castka,
+                "schvalene_vydaje_monitor": plan,
+                "stav": stav,
+            })
+
+    return {
+        "popis": ("Schválený rozpočet výdajů podle Monitoru proti částce "
+                  "v usnesení zastupitelstva. Kontrola jednotek — Monitor "
+                  "vede částky v celých korunách."),
+        "sedi": sedi,
+        "neshod": neshody,
+        "neporovnano": neporovnano,
+        "polozky": sorted(polozky, key=lambda z: z["rok"]),
+        "zaver": ("schválený rozpočet z Monitoru se do koruny shoduje "
+                  f"s {sedi} usneseními zastupitelstva" if not neshody else
+                  "POZOR: Monitor se rozchází s usnesením zastupitelstva"),
+    }
+
+
 def po_letech(fin: list[dict], log: Log) -> dict:
     roky = []
     for obd in fin:
@@ -407,6 +479,7 @@ def po_letech(fin: list[dict], log: Log) -> dict:
             "šestnácti uzavřených ročníků.",
         ],
         "kontrola_dopoctu": kontrola_dopoctu(fin),
+        "overeni_proti_usnesenim": None,   # doplní se níž, potřebuje hotovou osu
         "roky": roky,
         "roky_bez_dat": mezery,
     }
@@ -943,6 +1016,7 @@ def main() -> int:
                  f"vyzz {len(vyzz)} období")
 
         osa = po_letech(fin, log)
+        osa["overeni_proti_usnesenim"] = overeni_proti_usnesenim(osa)
         uloz(f"{VYSTUP}/po_letech.json", osa)
         log.info(f"po_letech: {len(osa['roky'])} období, "
                  f"mezery {osa['roky_bez_dat'] or 'žádné'}")
@@ -951,6 +1025,12 @@ def main() -> int:
                  f"souhrnům výkazu, neshod {kd['neshod']}")
         if kd["neshod"]:
             log.chyba(kd["zaver"])
+
+        ku = osa["overeni_proti_usnesenim"]
+        log.info(f"ověření proti usnesením: sedí {ku['sedi']}, "
+                 f"neshod {ku['neshod']}, neporovnáno {ku['neporovnano']}")
+        if ku["neshod"]:
+            log.chyba(ku["zaver"])
 
         struktura = vydaje_struktura(fin, cis_par, log)
         uloz(f"{VYSTUP}/vydaje_struktura.json", struktura)
