@@ -1,0 +1,371 @@
+{
+  "generovano": "2026-08-17",
+  "mesto": "Mariánské Lázně",
+  "shrnuti": "Mariánské Lázně vznikly na klášterním panství tepelských premonstrátů. Prameny byly doloženy roku 1528, léčebné využití prosadil roku 1779 klášterní lékař Johann Josef Nehr, roku 1808 dostaly lázně jméno, roku 1812 se staly samostatnou obcí a 6. listopadu 1818 veřejným lázeňským místem. Roku 1865 byly povýšeny na město a do první světové války prošly obdobím největšího rozmachu evropských lázní. Po druhé světové válce bylo německé obyvatelstvo, které tvořilo drtivou většinu obyvatel, odsunuto a nahrazeno českými osídlenci; lázně byly roku 1948 znárodněny a čtyřicet let fungovaly jako státní a odborové lázeňství. Po roce 1989 následovala privatizace, památková ochrana historického jádra a 24. července 2021 zápis na seznam světového dědictví UNESCO v rámci položky Slavná lázeňská města Evropy.",
+  "metodika": {
+    "co_to_je": "Přehled dějin Mariánských Lázní členěný na období a doprovodný seznam datovaných událostí. Slouží jako historická vrstva webu a jako zdroj pro jednotnou časovou osu (pipeline/casova_osa.py).",
+    "fakt_a_hodnoceni": "Texty uvádějí jen doložitelná tvrzení. Hodnocení („zaslouženě“, „bohužel“, „vyvrcholení“) sem nepatří a v textech nejsou. Kde zdroj sám hodnotí, je to označeno formulací „podle přehledu města“ a podobně.",
+    "zdroje": "Ke každému období i každé události je uveden seznam id do registru zdrojů. Zdroj bez id se nepoužívá.",
+    "nejistota": "Pole jistota nabývá hodnot fakt (údaj se v použitých pramenech shoduje) a sporne (prameny se rozcházejí). U sporných záznamů je rozpor popsán v poli poznamka. Web nesmí sporný údaj zobrazit jako fakt.",
+    "presnost": "Pole presnost říká, jak přesně je událost datovaná: den, mesic, rok, obdobi. Pole datum drží ISO datum v odpovídající přesnosti (2021-07-24, 1946-01, 1929), u přesnosti obdobi je konec v poli datum_do.",
+    "tagy": "Tagy se berou výhradně z config/tagy.json. Kde žádný tag číselníku nesedí, je seznam prázdný.",
+    "osoby": "Odkazy do data/lide/osobnosti.json podle pole id. Osoby, které v souboru osobností nejsou, se neuvádějí.",
+    "rozsah": "Přehled končí u současnosti. Období od roku 2012 dál je v tomto projektu pokryté primárními daty (usnesení, hlasování, smlouvy, zpravodaj), historická vrstva tam proto uvádí jen zlomové události."
+  },
+  "zdroje": {
+    "muml-historie": {
+      "nazev": "Historie — oficiální stránky města Mariánské Lázně",
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "typ": "oficialni"
+    },
+    "muml-osmicky": {
+      "nazev": "Osmičkové roky v historii Mariánských Lázní — oficiální stránky města",
+      "url": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+      "typ": "oficialni"
+    },
+    "ml-historie": {
+      "nazev": "Historie města — turistický portál marianskelazne.cz",
+      "url": "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+      "typ": "oficialni"
+    },
+    "ml-unesco": {
+      "nazev": "UNESCO — turistický portál marianskelazne.cz",
+      "url": "https://www.marianskelazne.cz/unesco/",
+      "typ": "oficialni"
+    },
+    "ml-osvobozeni": {
+      "nazev": "Oslavy osvobození — turistický portál marianskelazne.cz",
+      "url": "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
+      "typ": "oficialni"
+    },
+    "wiki-ml": {
+      "nazev": "Mariánské Lázně — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "typ": "encyklopedie"
+    },
+    "wiki-tepla": {
+      "nazev": "Klášter Teplá — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Kl%C3%A1%C5%A1ter_Tepl%C3%A1",
+      "typ": "encyklopedie"
+    },
+    "wiki-predstavitele": {
+      "nazev": "Seznam představitelů Mariánských Lázní — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "typ": "encyklopedie"
+    },
+    "wiki-slavna-lazne": {
+      "nazev": "Slavná lázeňská města Evropy — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy",
+      "typ": "encyklopedie"
+    },
+    "wiki-lessing": {
+      "nazev": "Theodor Lessing — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Theodor_Lessing",
+      "typ": "encyklopedie"
+    },
+    "wiki-zso": {
+      "nazev": "Západočeský symfonický orchestr — Wikipedie",
+      "url": "https://cs.wikipedia.org/wiki/Z%C3%A1pado%C4%8Desk%C3%BD_symfonick%C3%BD_orchestr",
+      "typ": "encyklopedie"
+    },
+    "hamelika-analy": {
+      "nazev": "Mariánskolázeňské anály 1193–1990 — Hamelika, vlastivědný web o historii Mariánských Lázní",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "typ": "vlastiveda"
+    },
+    "denik-odsun": {
+      "nazev": "Přelidněné město a odsun. Leden 1946 v kronice Mariánských Lázní — Chebský deník",
+      "url": "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
+      "typ": "media",
+      "poznamka": "Článek cituje městskou kroniku."
+    },
+    "denik-osvobozeni": {
+      "nazev": "Američané přijeli od Velké Hleďsebi do Němci přelidněných Mariánských Lázní — Chebský deník",
+      "url": "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+      "typ": "media"
+    },
+    "mzv-unesco": {
+      "nazev": "Slavná lázeňská města Evropy jsou světovým dědictvím UNESCO — Ministerstvo zahraničních věcí ČR",
+      "url": "https://mzv.gov.cz/jnp/cz/zahranicni_vztahy/cr_v_mezinarodnich_organizacich/unesco/aktualne/slavna_lazenska_mesta_evropy_jsou.html",
+      "typ": "oficialni"
+    },
+    "unesco-1613": {
+      "nazev": "The Great Spa Towns of Europe — UNESCO World Heritage List, ref. 1613",
+      "url": "https://whc.unesco.org/en/list/1613/",
+      "typ": "oficialni"
+    },
+    "vyhlaska-476-1992": {
+      "nazev": "Vyhláška MK ČR č. 476/1992 Sb., o prohlášení území historických jader vybraných měst za památkové zóny",
+      "url": "https://www.zakonyprolidi.cz/cs/1992-476",
+      "typ": "pravni"
+    },
+    "or-lecebne-lazne": {
+      "nazev": "Léčebné lázně Mariánské Lázně a.s., IČO 45359113 — obchodní rejstřík",
+      "url": "https://www.podnikatel.cz/rejstrik/lecebne-lazne-marianske-lazne-a-s-45359113/",
+      "typ": "rejstrik"
+    },
+    "novinky-kolonady": {
+      "nazev": "Kolonády a pavilony se po privatizaci vrací do majetku města (2. 1. 2026) — Novinky.cz",
+      "url": "https://www.novinky.cz/clanek/domaci-zpravy-karlovarsky-kraj-kolonady-a-pavilony-se-po-privatizaci-vraci-do-majetku-mesta-marianske-lazne-je-vymenily-za-sluzebnost-mineralkovodu-40555189",
+      "typ": "media"
+    }
+  },
+  "obdobi": [
+    {
+      "id": "klasterni-panstvi",
+      "poradi": 1,
+      "nazev": "Klášterní panství a první zprávy o pramenech",
+      "od": 1193,
+      "do": 1779,
+      "presnost_rozsahu": "priblizna",
+      "text": "Území dnešních Mariánských Lázní patřilo od přelomu 12. a 13. století premonstrátskému klášteru v Teplé, který založil šlechtic Hroznata. Klášter byl po staletí vlastníkem zdejších pramenů a řeholníci z nich odpařovali sůl, kterou prodávali jako projímadlo. První písemná zpráva o zdejších minerálních pramenech pochází podle přehledu města z roku 1528, kdy byly prameny na příkaz krále Ferdinanda I. zkoumány na obsah soli. Údolí bylo v té době neosídlené a zamokřené; trvalé sídlo tu ještě nestálo.",
+      "osobnosti": [
+        "hroznata"
+      ],
+      "zdroje": [
+        "wiki-tepla",
+        "wiki-ml",
+        "muml-historie",
+        "muml-osmicky",
+        "hamelika-analy"
+      ]
+    },
+    {
+      "id": "vznik-lazni",
+      "poradi": 2,
+      "nazev": "Vznik lázní (1779–1818)",
+      "od": 1779,
+      "do": 1818,
+      "presnost_rozsahu": "presna",
+      "text": "Rozhodujícím krokem bylo přesvědčení kláštera, že prameny mají léčebnou cenu. To se roku 1779 podařilo klášternímu lékaři Johannu Josefu Nehrovi, který přiměl opata a několik řeholníků vyzkoušet lázeňskou kúru. Nehr pak nechal u Křížového pramene postavit první zděný dům pro hosty, „Zlatou kouli“. Roku 1812 byly Mariánské Lázně vyčleněny z Úšovic jako samostatná obec, o rok dříve nastoupil do čela tepelského kláštera opat Karel Kašpar Reitenberger, který zahájil systematickou výstavbu lázeňských domů a pavilonů. Vládním výnosem ze 6. listopadu 1818 byly Mariánské Lázně prohlášeny veřejným lázeňským místem.",
+      "osobnosti": [
+        "nehr-johann",
+        "reitenberger-karel",
+        "seidl-franz",
+        "lang-johann",
+        "felbinger-johann"
+      ],
+      "zdroje": [
+        "muml-historie",
+        "muml-osmicky",
+        "ml-historie",
+        "wiki-ml"
+      ]
+    },
+    {
+      "id": "goethova-era",
+      "poradi": 3,
+      "nazev": "Parkové město a Goethova éra (1818–1865)",
+      "od": 1818,
+      "do": 1865,
+      "presnost_rozsahu": "presna",
+      "text": "V letech 1817–1823 se bažinaté údolí proměnilo v parkové město. Zahradník Václav Skalník vypracoval plán, jehož středem byl park a kolem něhož komponoval zástavbu; spolupracoval s architektem Jiřím Fischerem a stavitelem Antonem Turnerem. Skalník byl v letech 1824–1843 zároveň přednostou obce. Mladé lázně přitáhly evropskou kulturní elitu: Johann Wolfgang Goethe je poprvé navštívil roku 1820 a roku 1823 tu prožil svůj pozdní vztah s Ulrikou von Levetzow, roku 1836 sem přijel Fryderyk Chopin a v létě 1845 tu Richard Wagner pracoval na Lohengrinovi. Rok 1848 ukončil poddanský poměr obce vůči tepelskému klášteru a od roku 1850 vedli obec starostové. Nejvyšším rozhodnutím císaře Františka Josefa I. z 29. května 1865 byly Mariánské Lázně povýšeny na město.",
+      "osobnosti": [
+        "skalnik-vaclav",
+        "skalnik-karel",
+        "goethe-johann",
+        "levetzow-ulrika",
+        "chopin-fryderyk",
+        "wagner-richard",
+        "weber-carl",
+        "abel-josef",
+        "hanish-a",
+        "halbmayr-josef",
+        "schneider-a",
+        "frantisek-josef-i",
+        "danzer-adalbert",
+        "schlesinger-johann"
+      ],
+      "zdroje": [
+        "muml-historie",
+        "muml-osmicky",
+        "ml-historie",
+        "wiki-ml",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "zlaty-vek",
+      "poradi": 4,
+      "nazev": "Zlatý věk evropských lázní (1865–1914)",
+      "od": 1865,
+      "do": 1914,
+      "presnost_rozsahu": "presna",
+      "text": "Půlstoletí mezi povýšením na město a první světovou válkou je obdobím největšího stavebního i společenského rozmachu. Roku 1872 získalo město železniční spojení s Chebem a Prahou, roku 1898 přibyla trať do Karlových Varů. V letech 1888–1889 byla podle projektu architektů Hanse Mikscheho a Juliana Niedzielského postavena litinová kolonáda, hlavní lázeňská stavba města. Přibývaly hotely, divadlo, kursál, pravoslavný kostel i golfové hřiště. Od roku 1897 sem devětkrát přijel britský panovník Eduard VII.; 16. srpna 1904 se v hotelu Nové Lázně sešel s císařem Františkem Josefem I. Rok 1913 byl s 34 509 hosty rekordní předválečnou sezonou.",
+      "osobnosti": [
+        "eduard-vii",
+        "frantisek-josef-i",
+        "miksch-hans",
+        "niedzielski-julian",
+        "zickler-friedrich",
+        "schaffer-josef",
+        "herzig-august",
+        "kroha-johann",
+        "nadler-franz",
+        "dietl-wenzel",
+        "reiniger-heinrich",
+        "clementso-ambros",
+        "twain-mark",
+        "edison-thomas",
+        "morgan-john",
+        "kipling-rudyard",
+        "nietzsche-friedrich",
+        "freud-sigmund",
+        "strauss-johann",
+        "dvorak-antonin",
+        "neruda-jan",
+        "trebizsky-vaclav",
+        "lincolnova-mary",
+        "fisher-john",
+        "destinnova-ema",
+        "krasny-frantisek"
+      ],
+      "zdroje": [
+        "muml-historie",
+        "muml-osmicky",
+        "wiki-ml",
+        "hamelika-analy",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "valka-a-republika",
+      "poradi": 5,
+      "nazev": "Válka, Československo a meziválečná léta (1914–1938)",
+      "od": 1914,
+      "do": 1938,
+      "presnost_rozsahu": "presna",
+      "text": "První světová válka lázeňský provoz srazila; návštěvnost klesla z 34 509 hostů roku 1913 na 23 365 roku 1914. Po vzniku Československa bylo město na přelomu listopadu a prosince 1918 obsazeno československým vojskem. Obyvatelstvo zůstalo převážně německé — anály města uvádějí k roku 1922 celkem 6 909 obyvatel, z toho 6 131 Němců. Ve dvacátých letech se lázně vrátily k rozkvětu a roku 1929 dosáhly historicky nejsilnější sezony se 41 226 hosty; téhož roku byl vybudován Dyleňský vodovod a rok předtím hotelová škola. Světová hospodářská krize návštěvnost opět srazila na 28 482 hostů roku 1931. Napětí třicátých let ilustruje vražda německého filozofa Theodora Lessinga, který uprchl před nacisty do Československa a byl 30. srpna 1933 ve svém mariánskolázeňském domě postřelen.",
+      "osobnosti": [
+        "rubritius-johann",
+        "turba-hans",
+        "turba-josef",
+        "kafka-franz",
+        "lessing-theodor",
+        "masaryk-tomas",
+        "kanik-frantisek",
+        "lichtenstejn-eduard",
+        "seifert-jaroslav",
+        "renault-louis",
+        "schweitzer-albert"
+      ],
+      "zdroje": [
+        "hamelika-analy",
+        "muml-osmicky",
+        "wiki-ml",
+        "wiki-lessing",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "okupace-a-valka",
+      "poradi": 6,
+      "nazev": "Nacistické Německo a druhá světová válka (1938–1945)",
+      "od": 1938,
+      "do": 1945,
+      "presnost_rozsahu": "presna",
+      "text": "Na základě mnichovské dohody bylo v říjnu 1938 pohraničí včetně Mariánských Lázní připojeno k nacistickému Německu. Během Křišťálové noci 9. listopadu 1938 byla ve městě vypálena židovská synagoga. Posledním starostou tohoto období byl v letech 1938–1945 právník Otto Manner. K městu byly roku 1941 připojeny Úšovice. Za války se lázeňské kapacity měnily na nemocniční: od roku 1942 tu vznikaly rezervní lazarety a k 1. září 1943 byla do města přemístěna berlínská nemocnice. V dubnu 1945 bylo město přeplněné raněnými a uprchlíky. Dne 6. května 1945 do něj vstoupily jednotky americké armády pod velením generála Pattona; k boji nedošlo.",
+      "osobnosti": [
+        "manner-otto"
+      ],
+      "zdroje": [
+        "hamelika-analy",
+        "muml-osmicky",
+        "wiki-ml",
+        "ml-osvobozeni",
+        "denik-osvobozeni",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "odsun-a-vymena",
+      "poradi": 7,
+      "nazev": "Odsun německého obyvatelstva a výměna obyvatelstva (1945–1948)",
+      "od": 1945,
+      "do": 1948,
+      "presnost_rozsahu": "presna",
+      "text": "Podle městské kroniky mělo město ke konci války se všemi vojenskými lazarety na 40 tisíc obyvatel a bylo zcela přelidněné; mezi nimi bylo pouze asi osmdesát Čechů a Slováků. Vedení města se v roce 1945 několikrát změnilo — v květnu byl dočasným starostou Karel Tesař, od 28. května přebíral vedení jako správní komisař František Skácelík — a od května přicházeli čeští osídlenci. Začátkem roku 1946 žilo podle kroniky v mariánskolázeňském okrese na 36 tisíc Němců. Dne 25. ledna 1946 začal odsun osob německé národnosti: za odpoledne bylo ve čtyřiceti vozech odsunuto 1 200 lidí a od toho dne byl z různých míst pohraničí vypravován jeden transport denně. Sčítání lidu ukazuje výsledek na dnešním území města: 11 794 obyvatel roku 1930 a 9 261 roku 1950. Lázeňský provoz se propadl na 5 050 hostů roku 1946.",
+      "osobnosti": [
+        "tesar-karel",
+        "skacelik-frantisek",
+        "manner-otto"
+      ],
+      "zdroje": [
+        "denik-odsun",
+        "hamelika-analy",
+        "wiki-ml",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "statni-lazne",
+      "poradi": 8,
+      "nazev": "Státní lázně a socialistické lázeňství (1948–1989)",
+      "od": 1948,
+      "do": 1989,
+      "presnost_rozsahu": "presna",
+      "text": "Zákonem ze 6. května 1948 byly znárodněny přírodní léčivé zdroje a lázně; stát získal výhradní práva k lázním a pramenům, které do té doby patřily tepelskému klášteru. Nová koncepce se řídila heslem „Lázně patří pracujícím“ a od roku 1950 přicházeli do města ve velkém dělníci na rekreaci ROH. Roku 1952 zde vznikl Výzkumný ústav balneologický, téhož roku byla zrušena tramvaj a nahrazena trolejbusy, roku 1955 přešly lázně na celoroční provoz. K 1. červenci 1960 byl zrušen okres Mariánské Lázně. Z pozdějších let patří k trvalým stopám vyhlášení CHKO Slavkovský les roku 1973, výzdoba stropu kolonády od Josefa Vyleťala z roku 1979 a Zpívající fontána, uvedená do provozu 30. dubna 1986. Období uzavírají listopadové demonstrace roku 1989.",
+      "osobnosti": [
+        "prihoda-jan",
+        "kopek-rudolf",
+        "gagarin-jurij",
+        "tyl-herman",
+        "vyletal-josef",
+        "hornicek-miroslav"
+      ],
+      "zdroje": [
+        "muml-historie",
+        "muml-osmicky",
+        "hamelika-analy",
+        "wiki-ml",
+        "wiki-predstavitele"
+      ]
+    },
+    {
+      "id": "obnova-a-privatizace",
+      "poradi": 9,
+      "nazev": "Obnova samosprávy, privatizace a památková ochrana (1989–2021)",
+      "od": 1989,
+      "do": 2021,
+      "presnost_rozsahu": "presna",
+      "text": "Po roce 1989 se obce připojené k městu roku 1976 opět osamostatnily a ve Skalníkových sadech byl roku 1990 odhalen pomník vojákům americké armády, jejichž podíl na osvobození města se předtím veřejně nepřipomínal. K 1. květnu 1992 vznikla privatizací státního podniku Státní léčebné lázně Mariánské Lázně akciová společnost Léčebné lázně Mariánské Lázně a.s.; lázeňské objekty byly nabídnuty i městu, které je nepřevzalo. Vyhláškou ministerstva kultury č. 476/1992 Sb. z 10. září 1992 bylo historické jádro prohlášeno městskou památkovou zónou. Počet obyvatel po roce 1991, kdy dosáhl doloženého maxima 15 382, klesá — 14 741 roku 2001 a 12 906 roku 2011. Od roku 2012 běželo úsilí o zápis jedenácti evropských lázeňských měst na seznam UNESCO, nominace byla předložena roku 2019.",
+      "osobnosti": [
+        "kopek-rudolf",
+        "tyl-herman"
+      ],
+      "zdroje": [
+        "wiki-ml",
+        "or-lecebne-lazne",
+        "vyhlaska-476-1992",
+        "wiki-slavna-lazne",
+        "ml-osvobozeni"
+      ]
+    },
+    {
+      "id": "unesco-a-soucasnost",
+      "poradi": 10,
+      "nazev": "Světové dědictví UNESCO a současnost (od 2021)",
+      "od": 2021,
+      "do": null,
+      "presnost_rozsahu": "presna",
+      "text": "Dne 24. července 2021 zapsal Výbor pro světové dědictví na 44. zasedání ve Fu-čou položku Slavná lázeňská města Evropy (referenční číslo 1613) na seznam světového dědictví UNESCO. Položka zahrnuje jedenáct měst v sedmi zemích, z Česka Františkovy Lázně, Karlovy Vary a Mariánské Lázně. Chráněná část na území Mariánských Lázní má 835 hektarů, nárazníková zóna 3 677 hektarů. K roku 2025 má město 14 052 obyvatel. V září 2025 schválili zastupitelé bezúplatný převod pavilonů Ferdinandova, Rudolfova a Lesního pramene od společnosti Léčebné lázně Mariánské Lázně výměnou za služebnost pro rozvody minerální vody. Od roku 2012 pokrývá dění ve městě také vlastní datová část tohoto projektu — usnesení rady a zastupitelstva, hlasování, smlouvy v registru smluv a zpravodaj města.",
+      "osobnosti": [],
+      "zdroje": [
+        "mzv-unesco",
+        "wiki-slavna-lazne",
+        "unesco-1613",
+        "ml-unesco",
+        "wiki-ml",
+        "novinky-kolonady"
+      ]
+    }
+  ],
+  "statistika": {
+    "obdobi": 10,
+    "udalosti": 100,
+    "rozsah_let": [
+      1193,
+      2025
+    ]
+  }
+}

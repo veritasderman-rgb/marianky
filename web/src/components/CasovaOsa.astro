@@ -1,0 +1,133 @@
+---
+/**
+ * Časová osa — jedna komponenta pro celý web (web/DESIGN.md §3.7).
+ *
+ * Používá ji profil osoby, detail protistrany, téma, firma, dějiny města
+ * i volby. Drží tři věci, na kterých se osa láme:
+ *
+ *   1. **Prázdné roky se nepřeskakují.** Osa je spojitá lineární škála; mezera
+ *      je informace stejně jako značka. Zajišťuje `grafCasovaOsa()`.
+ *   2. **Nízká jistota se nesmí tvářit jako fakt.** Nejistá značka je dutá
+ *      a přerušovaná, má vlastní řádek legendy a v tabulce je jistota slovy —
+ *      rozdíl nikdy nestojí jen na barvě.
+ *   3. **Zdroje se uvádějí.** Bez seznamu zdrojů vypadá osa jako úplný obraz,
+ *      ačkoliv obsahuje jen to, co je v našich datech. Proto je `zdroje`
+ *      povinná vlastnost.
+ *
+ * Tabulkový pohled je povinný u každého grafu (§2 bod 5) — je součástí
+ * komponenty, ne volbou volajícího.
+ */
+import { grafCasovaOsa, type UdalostOsy } from '../lib/osa';
+import { cislo, sklonuj } from '../lib/format';
+
+export interface Props {
+  udalosti: UdalostOsy[];
+  nadpis: string;
+  /** Prefix id, aby šlo mít na stránce víc os. */
+  id: string;
+  popis?: string;
+  /**
+   * Z čeho se osa skládá — POVINNÉ. Píše se pod osu, aby bylo vidět, že
+   * neobsahuje všechno, co se kdy stalo, ale jen to, co máme v datech.
+   */
+  zdroje: string[];
+  /** Věta o tom, co v ose ještě chybí. */
+  neuplnost?: string;
+}
+
+const { udalosti, nadpis, id, popis, zdroje, neuplnost } = Astro.props;
+
+const osa = grafCasovaOsa(udalosti, nadpis);
+const maCo = osa.pocet > 0;
+---
+
+{
+  maCo && (
+    <section class="graf-karta osa-karta" aria-labelledby={`${id}-nadpis`}>
+      <div class="graf-karta__hlava">
+        <h2 class="graf-karta__nadpis" id={`${id}-nadpis`}>{nadpis}</h2>
+        <p class="osa-rozsah cislo">
+          {osa.rokOd === osa.rokDo ? osa.rokOd : `${osa.rokOd}–${osa.rokDo}`} ·{' '}
+          {cislo(osa.pocet)} {sklonuj(osa.pocet, 'událost', 'události', 'událostí')}
+        </p>
+      </div>
+
+      {popis && <p class="graf-karta__popis">{popis}</p>}
+
+      {osa.legenda.length > 1 && (
+        <ul class="legenda">
+          {osa.legenda.map((p) => (
+            <li class="legenda__polozka">
+              <span class="legenda__vzorek" style={`background:${p.barva}`} aria-hidden="true" />
+              <span>{p.nazev}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {osa.legendaJistoty.length > 0 && (
+        <ul class="legenda legenda--jistota">
+          {osa.legendaJistoty.map((p) => (
+            <li class="legenda__polozka">
+              <span
+                class={`legenda__znacka${p.nejista ? ' legenda__znacka--nejista' : ''}`}
+                aria-hidden="true"
+              />
+              <span>{p.nazev}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div class="graf-plocha">
+        <Fragment set:html={osa.svg} />
+      </div>
+
+      {osa.poznamky.map((p) => (
+        <p class="graf-poznamka">{p}</p>
+      ))}
+
+      <p class="graf-poznamka">
+        Osa nepřeskakuje prázdné roky — rok, ve kterém se nic nestalo, zabírá na ose
+        stejně místa jako kterýkoliv jiný. Prázdné místo je proto informace, ne chyba.
+        {neuplnost && ` ${neuplnost}`}
+      </p>
+
+      <p class="graf-poznamka">
+        <strong>Z čeho se osa skládá:</strong>{' '}
+        {zdroje.length > 0 ? zdroje.join(' · ') : 'zdroj není uvedený'}. Nic dalšího v ní
+        není — osa ukazuje jen to, co je v našich datech, ne všechno, co se stalo.
+      </p>
+
+      <details class="tabulkovy-pohled">
+        <summary>Zobrazit jako tabulku ({cislo(osa.tabulka.radky.length)} {sklonuj(osa.tabulka.radky.length, 'událost', 'události', 'událostí')})</summary>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                {osa.tabulka.hlavicka.map((s) => (
+                  <th scope="col" class={s.cislo ? 'cislo' : undefined}>{s.nazev}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {osa.tabulka.radky.map((r) => (
+                <tr>
+                  {r.map((bunka, ci) => (
+                    <td class={osa.tabulka.hlavicka[ci]?.cislo ? 'cislo' : undefined}>{bunka}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {osa.vynechanoVTabulce > 0 && (
+          <p class="graf-poznamka">
+            Tabulka ukazuje {cislo(osa.tabulka.radky.length)} nejnovějších událostí;
+            dalších {cislo(osa.vynechanoVTabulce)} se do ní nevešlo. Na ose jsou všechny.
+          </p>
+        )}
+      </details>
+    </section>
+  )
+}

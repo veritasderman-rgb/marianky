@@ -99,8 +99,8 @@ export function nactiConfig<T>(soubor: string, vychozi: T): Nacteno<T> {
   }
 }
 
-/** Rekurzivně posbírá cesty k `*.json` pod daným adresářem (relativně ke KOREN_DAT). */
-function sesbirejJson(absAdresar: string, ven: string[]): void {
+/** Rekurzivně posbírá cesty k souborům s danou příponou (relativně ke KOREN_DAT). */
+function sesbirejSoubory(absAdresar: string, pripony: string[], ven: string[]): void {
   let polozky: fs.Dirent[];
   try {
     polozky = fs.readdirSync(absAdresar, { withFileTypes: true });
@@ -109,31 +109,52 @@ function sesbirejJson(absAdresar: string, ven: string[]): void {
   }
   for (const p of polozky) {
     const plna = path.join(absAdresar, p.name);
-    if (p.isDirectory()) sesbirejJson(plna, ven);
-    else if (p.isFile() && p.name.endsWith('.json')) ven.push(plna);
+    if (p.isDirectory()) sesbirejSoubory(plna, pripony, ven);
+    else if (p.isFile() && pripony.some((x) => p.name.endsWith(x))) ven.push(plna);
   }
 }
 
+/** Jeden soubor z adresáře i s cestou — mapy potřebují vědět, z čeho vrstva vznikla. */
+export interface SouborDat<T> {
+  /** Cesta relativní ke KOREN_DAT, např. `opendata/geo/okrsky.geojson`. */
+  cesta: string;
+  /** Jméno souboru bez přípony — výchozí název vrstvy, když ho data neuvádějí. */
+  jmeno: string;
+  data: T;
+}
+
 /**
- * Načte všechny `*.json` pod adresářem. Jeden vadný soubor neshodí zbytek —
- * skončí v `chybneSoubory` a stav se překlopí na `chyba`, aby se o tom vědělo.
+ * Načte všechny soubory s danou příponou pod adresářem, i s cestou ke každému.
+ * Jeden vadný soubor neshodí zbytek — skončí v `chybneSoubory` a stav se
+ * překlopí na `chyba`, aby se o tom vědělo.
+ *
+ * GeoJSON se ukládá s příponou `.json` i `.geojson`; proto je seznam přípon
+ * parametr a ne konstanta.
  */
-export function nactiAdresar<T>(relAdresar: string): Nacteno<T[]> & { chybneSoubory: string[] } {
+export function nactiAdresarSoubory<T>(
+  relAdresar: string,
+  pripony: string[] = ['.json'],
+): Nacteno<SouborDat<T>[]> & { chybneSoubory: string[] } {
   const absAdresar = path.join(KOREN_DAT, relAdresar);
   if (!fs.existsSync(absAdresar)) {
-    return { ...chybi<T[]>([], relAdresar), chybneSoubory: [] };
+    return { ...chybi<SouborDat<T>[]>([], relAdresar), chybneSoubory: [] };
   }
   const soubory: string[] = [];
-  sesbirejJson(absAdresar, soubory);
+  sesbirejSoubory(absAdresar, pripony, soubory);
   soubory.sort();
 
-  const data: T[] = [];
+  const data: SouborDat<T>[] = [];
   const chybne: string[] = [];
   for (const s of soubory) {
+    const rel = path.relative(KOREN_DAT, s).split(path.sep).join('/');
     try {
-      data.push(JSON.parse(fs.readFileSync(s, 'utf8')) as T);
+      data.push({
+        cesta: rel,
+        jmeno: path.basename(s).replace(/\.[^.]+$/, ''),
+        data: JSON.parse(fs.readFileSync(s, 'utf8')) as T,
+      });
     } catch {
-      chybne.push(path.relative(KOREN_DAT, s));
+      chybne.push(rel);
     }
   }
   if (chybne.length > 0) {
@@ -146,6 +167,15 @@ export function nactiAdresar<T>(relAdresar: string): Nacteno<T[]> & { chybneSoub
     };
   }
   return { ...ok(data, relAdresar), chybneSoubory: [] };
+}
+
+/**
+ * Načte všechny `*.json` pod adresářem. Jeden vadný soubor neshodí zbytek —
+ * skončí v `chybneSoubory` a stav se překlopí na `chyba`, aby se o tom vědělo.
+ */
+export function nactiAdresar<T>(relAdresar: string): Nacteno<T[]> & { chybneSoubory: string[] } {
+  const v = nactiAdresarSoubory<T>(relAdresar, ['.json']);
+  return { ...v, data: v.data.map((s) => s.data) };
 }
 
 /** Spojí stavy více zdrojů do jednoho — nejhorší vyhrává (chyba > chybi > ok). */

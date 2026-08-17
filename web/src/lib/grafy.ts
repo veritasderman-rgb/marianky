@@ -60,7 +60,7 @@ function esc(s: string): string {
     .replace(/'/g, '&#39;');
 }
 
-interface TipRadek {
+export interface TipRadek {
   l: string;
   v: string;
 }
@@ -499,3 +499,18 @@ function obalSvg(w: number, h: number, obsah: string, popis: string): string {
     '</svg>'
   );
 }
+
+/* ─────────  Sdílené stavební kameny pro mapy a časové osy  ─────────
+ * Mapa (§3.6) i časová osa (§3.7) se kreslí při buildu do SVG úplně stejně
+ * jako grafy. Aby escapovaly, obalovaly a tooltipovaly shodně — a aby se
+ * chování nezačalo rozcházet ve dvou kopiích téhož kódu — vyváží se tyhle
+ * funkce beze změny. Nic se tím v grafech nemění.
+ */
+export {
+  esc as escSvg,
+  tip as tipAtribut,
+  obalSvg as obalSvgGrafu,
+  zkratNazev,
+  osaY as osaYGrafu,
+  sloupecPath,
+};

@@ -117,6 +117,27 @@ TEXT_VZORY = [
     re.compile(r"zabolotn[ýy]", re.I),
 ]
 
+# Výrazy, které vypadají jako zmínka o městě, ale nejsou jí. Stejná past
+# jako u „lázeňských lesů“, jen obráceně: Karlovy Vary mají
+# **Mariánskolázeňskou ulici**, takže vzor `mariánskolázeňsk*` do dat
+# pustil tři články o opravě karlovarské silnice.
+#
+# Neruší celý článek — jen se z textu vyškrtnou a teprve zbytek se zkouší
+# na TEXT_VZORY. Článek, který mimo tu ulici město opravdu jmenuje, tedy
+# projde dál; ten, který stál jen na ní, vypadne.
+NEGATIVNI_VZORY = [
+    re.compile(r"mari[áa]nskol[áa]ze[ňn]sk\w*\s+ulic\w*", re.I),
+    re.compile(r"v\s+mari[áa]nskol[áa]ze[ňn]sk[ée]\s+ulici", re.I),
+]
+
+
+def tyka_se_mesta(titulek: str, perex: str) -> bool:
+    """Týká se text opravdu Mariánských Lázní?"""
+    text = f"{titulek} {perex}"
+    for veto in NEGATIVNI_VZORY:
+        text = veto.sub(" ", text)
+    return any(v.search(text) for v in TEXT_VZORY)
+
 # Jména, která umíme ve zmínce rozpoznat → slug `prijmeni-jmeno`,
 # aby šel článek spárovat s databází osobností (modul B1).
 # Detekce je doslovná: jméno v textu opravdu stojí, nic se nedovozuje.
@@ -485,7 +506,7 @@ def nacti_clanek(z: Zdroj, url: str) -> dict | None:
     if not titulek:
         return None
     perex = _meta(tab, "og:description", "description") or ""
-    if not any(v.search(f"{titulek} {perex}") for v in TEXT_VZORY):
+    if not tyka_se_mesta(titulek, perex):
         return None
     return {
         "id": clanek_id(z, url),
@@ -538,7 +559,7 @@ def uklid(log: Log) -> int:
             p = PODKLADY / f"{c['id']}.json"
             if p.exists():
                 perex = json.loads(p.read_text(encoding="utf-8")).get("perex", "")
-                if not any(v.search(f"{c['titulek']} {perex}") for v in TEXT_VZORY):
+                if not tyka_se_mesta(c["titulek"], perex):
                     duvod = "netýká se Mariánských Lázní"
         if duvod:
             c["_duvod"] = duvod
