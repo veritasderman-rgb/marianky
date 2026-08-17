@@ -318,7 +318,7 @@ def rozpoznej(osoba: dict, sklizen: dict, ica_mesta: set[str]) -> dict:
 # Smlouvy městského holdingu, kde je osoba angažovaná
 # --------------------------------------------------------------------------
 
-def smlouvy_holdingu(person_id: str, ico_mesta: str, tok: str, log: Log) -> dict:
+def smlouvy_holdingu(person_id: str, ico_mesta: str, tok: str) -> dict:
     """Smlouvy holdingu města, u nichž je osoba vedená jako angažovaná.
 
     Operátor `osobaId:` Hlídač podporuje; `holding:{ico}` omezí na město
@@ -418,7 +418,7 @@ def main() -> None:
         holding = {"smluv": None, "protistrany": []}
         if pid:
             try:
-                holding = smlouvy_holdingu(pid, ico_mesta, tok, log)
+                holding = smlouvy_holdingu(pid, ico_mesta, tok)
             except ZdrojSelhal as e:
                 log.chyba(f"{osoba['jmeno']} ({pid}): smlouvy holdingu — {e}")
             time.sleep(0.3)

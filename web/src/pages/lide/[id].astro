@@ -3,9 +3,24 @@ import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
 import Znacky from '../../components/Znacky.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
-import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, type Osobnost } from '../../lib/data';
-import { mapaTagu, zplostiHlasovani, type PolozkaHlasovani } from '../../lib/prehledy';
-import { cislo, datumKratke, nazevHlasu, nazevOrganu, nazevVysledku } from '../../lib/format';
+import GrafKarta from '../../components/GrafKarta.astro';
+import Vazby from '../../components/Vazby.astro';
+import type { Varianta } from '../../components/GrafKarta.astro';
+import type { Polozka } from '../../components/Dlazdice.astro';
+import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
+import { mapaTagu, zplostiHlasovani } from '../../lib/prehledy';
+import { statistikyOsoby, seradPocty } from '../../lib/profil';
+import { grafVodorovny } from '../../lib/grafy';
+import {
+  nactiOsobyFirmy,
+  nactiProfily,
+  nactiVazbyHlasovani,
+  procenta,
+  shodaOsoby,
+  vazbyPodleHlasovani,
+  vsechenSponzoring,
+} from '../../lib/vazby';
+import { cislo, datumKratke, kc, nazevHlasu, nazevOrganu, nazevVysledku, sklonuj } from '../../lib/format';
 
 export async function getStaticPaths() {
   const { data: lide } = nactiLidi();
@@ -38,26 +53,113 @@ const { osoba, maProfil } = Astro.props;
 
 const zHlasovani = nactiHlasovani();
 const zTagu = nactiCiselnikTagu();
+const zOsobFirem = nactiOsobyFirmy();
+const zProfilu = nactiProfily();
+const zVazeb = nactiVazbyHlasovani();
+
 const ciselnik = mapaTagu(zTagu.data?.tagy ?? []);
 const vsechna = zplostiHlasovani(zHlasovani.data ?? []);
+const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 
-interface Ucast {
-  h: PolozkaHlasovani;
-  hlas: string;
-}
-const ucast: Ucast[] = [];
-for (const h of vsechna) {
-  const j = h.jmenovite.find((x) => x.osoba_id === osoba.id);
-  if (j) ucast.push({ h, hlas: j.hlas });
-}
+/* ── Statistiky spočítané přímo z hlasovacích dat ─────────────────────── */
 
-const pocty = ucast.reduce<Record<string, number>>((a, u) => {
-  a[u.hlas] = (a[u.hlas] ?? 0) + 1;
-  return a;
-}, {});
+const st = statistikyOsoby(vsechna, osoba.id);
+const celkem = st.zaznamy.length;
+const rozlozeni = seradPocty(st.pocty);
 
-const proti = pocty.proti ?? 0;
-const celkem = ucast.length;
+const dlazdice: Polozka[] = [
+  {
+    popisek: 'Zaznamenaných hlasování',
+    hodnota: cislo(celkem),
+    doplnek:
+      st.prvni && st.posledni ? `od ${datumKratke(st.prvni)} do ${datumKratke(st.posledni)}` : undefined,
+  },
+  {
+    popisek: 'Odevzdaných hlasů',
+    hodnota: cislo(st.odevzdanych),
+    doplnek:
+      st.podilOdevzdanych === null
+        ? undefined
+        : `${procenta(st.podilOdevzdanych)} zaznamenaných hlasování (pro, proti nebo zdržel se)`,
+  },
+  { popisek: 'Hlasoval pro', hodnota: cislo(st.pocty.pro ?? 0) },
+  { popisek: 'Hlasoval proti', hodnota: cislo(st.pocty.proti ?? 0) },
+];
+
+/* ── Grafy ────────────────────────────────────────────────────────────── */
+
+const variantyRozlozeni: Varianta[] =
+  rozlozeni.length > 0
+    ? [
+        {
+          klic: 'rozlozeni',
+          popisek: 'Rozložení hlasů',
+          graf: grafVodorovny(
+            rozlozeni.map((r) => ({ nazev: nazevHlasu(r.hlas), hodnota: r.pocet })),
+            'Rozložení hlasů',
+          ),
+        },
+      ]
+    : [];
+
+const NEJVYSE_TEMAT = 12;
+const temataOsoby = [...st.podleTagu.entries()]
+  .map(([id, pocet]) => ({ id, nazev: ciselnik.get(id)?.nazev ?? id, pocet }))
+  .sort((a, b) => b.pocet - a.pocet);
+const temataGraf = temataOsoby.slice(0, NEJVYSE_TEMAT);
+
+const variantyTemat: Varianta[] =
+  temataGraf.length > 0
+    ? [
+        {
+          klic: 'temata',
+          popisek: 'Aktivita podle témat',
+          graf: (() => {
+            const g = grafVodorovny(
+              temataGraf.map((t) => ({ nazev: t.nazev, hodnota: t.pocet, odkaz: `/temata/${t.id}` })),
+              'Hlasování podle témat',
+            );
+            if (temataOsoby.length > temataGraf.length) {
+              g.poznamky.push(
+                `Zobrazeno ${cislo(temataGraf.length)} nejčastějších témat z ${cislo(temataOsoby.length)}. Jedno hlasování může mít víc témat, součet je proto vyšší než počet hlasování.`,
+              );
+            } else {
+              g.poznamky.push(
+                'Jedno hlasování může mít víc témat, součet je proto vyšší než počet hlasování.',
+              );
+            }
+            return g;
+          })(),
+        },
+      ]
+    : [];
+
+/* ── Kde je osoba uvedená (firmy) ─────────────────────────────────────── */
+
+const zaznamOsoby = zOsobFirem.data.osoby.find((o) => o.osoba_id === osoba.id) ?? null;
+const firmy = [...(zaznamOsoby?.firmy ?? [])].sort(
+  (a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0),
+);
+const firmySMestem = firmy.filter((f) => f.obchoduje === true);
+const firmyBezMesta = firmy.filter((f) => f.obchoduje === false);
+
+const sponzoringOsoby = vsechenSponzoring(zOsobFirem.data).filter((s) => s.osoba_id === osoba.id);
+
+/* ── Vazby u konkrétních hlasování ────────────────────────────────────── */
+
+const vsechnyVazby = zVazeb.data ?? [];
+const vazbyOsoby = vsechnyVazby.filter((v) => v.osoba_id === osoba.id);
+const vazbyPodleId = vazbyPodleHlasovani(vsechnyVazby);
+const maVazbu = (idHlasovani: string) =>
+  (vazbyPodleId.get(idHlasovani) ?? []).some((v) => v.osoba_id === osoba.id);
+
+/* ── Hlasovací profil z lide/profily.json ─────────────────────────────── */
+
+const profil = zProfilu.data.profily.get(osoba.id) ?? null;
+const shoda = shodaOsoby(zProfilu.data, osoba.id).slice(0, 10);
+const odchylky = profil?.odchylky.polozky ?? [];
+const velkeCastky = profil?.velke_castky ?? [];
+const jmenaLidi = new Map((nactiLidi().data ?? []).map((o) => [o.id, o.jmeno]));
 ---
 
 <Zaklad titulek={osoba.jmeno} aktivni="lide" nadpis={osoba.jmeno}>
@@ -106,7 +208,7 @@ const celkem = ucast.length;
     )
   }
 
-  <h2>Hlasovací historie</h2>
+  <h2>Hlasovací statistiky</h2>
 
   <StavDat
     stav={zHlasovani.stav}
@@ -119,18 +221,327 @@ const celkem = ucast.length;
   {
     celkem > 0 && (
       <>
-        <Dlazdice
-          polozky={[
-            { popisek: 'Zaznamenaných hlasování', hodnota: cislo(celkem) },
-            { popisek: 'Hlasoval pro', hodnota: cislo(pocty.pro ?? 0) },
-            { popisek: 'Hlasoval proti', hodnota: cislo(proti) },
-            {
-              popisek: 'Zdržel se nebo nehlasoval',
-              hodnota: cislo((pocty.zdrzel ?? 0) + (pocty.nehlasoval ?? 0) + (pocty.nepritomen ?? 0)),
-            },
-          ]}
-        />
+        <Dlazdice polozky={dlazdice} />
 
+        <p class="graf-poznamka">
+          Jmenovatel je počet hlasování, kde je osoba uvedená ve jmenovitém seznamu — ne počet
+          všech jednání orgánu. Kdo v seznamu není, nemusel chybět: nemusel v tu dobu být členem
+          orgánu. Podíl proto vypovídá o zaznamenaných hlasováních, ne o docházce.
+          {st.podleOrganu.size > 0 && (
+            <>
+              {' '}Rozdělení podle orgánu:{' '}
+              {`${[...st.podleOrganu.entries()]
+                .sort((a, b) => b[1] - a[1])
+                .map(([o, p]) => `${nazevOrganu(o)} ${cislo(p)}`)
+                .join(', ')}.`}
+            </>
+          )}
+        </p>
+
+        {variantyRozlozeni.length > 0 && (
+          <GrafKarta
+            id="rozlozeni-hlasu"
+            nadpis="Rozložení hlasů"
+            popis="Kolikrát osoba hlasovala jak. „Nepřítomen“ a „nehlasoval“ jsou uvedené jako záznam z dat — přehled z neúčasti nic nevyvozuje."
+            varianty={variantyRozlozeni}
+          />
+        )}
+
+        {variantyTemat.length > 0 && (
+          <GrafKarta
+            id="temata-osoby"
+            nadpis="Aktivita podle témat"
+            popis="U kolika hlasování se objevilo které téma. Téma se bere z tagů usnesení, ne z posouzení obsahu."
+            varianty={variantyTemat}
+          />
+        )}
+      </>
+    )
+  }
+
+  <h2 id="kde-je-aktivni">Kde je aktivní</h2>
+
+  <StavDat
+    stav={zOsobFirem.stav}
+    zdroj={zOsobFirem.zdroj}
+    co={`Firmy, ve kterých je ${osoba.jmeno} uvedený`}
+    prazdno={zOsobFirem.stav === 'ok' && firmy.length === 0}
+    modul="propojení dat"
+    poznamky={
+      zOsobFirem.stav === 'ok' && firmy.length === 0
+        ? ['Soubor se načetl, ale pro tuhle osobu v něm žádná firma není.']
+        : []
+    }
+  />
+
+  {
+    firmy.length > 0 && (
+      <section class="karta">
+        <p class="karta__podnadpis">
+          Všechny firmy, ve kterých je osoba podle zdrojů uvedená — včetně těch, které s městem
+          nijak neobchodují. Smlouvu s městem nebo jeho organizacemi má {cislo(firmySMestem.length)}{' '}
+          z {cislo(firmy.length)} {sklonuj(firmy.length, 'firmy', 'firem', 'firem')}, s městem
+          neobchoduje {cislo(firmyBezMesta.length)}.
+        </p>
+
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Firma</th>
+                <th scope="col">Role</th>
+                <th scope="col">Platnost</th>
+                <th scope="col">Obchoduje s městem</th>
+                <th scope="col" class="cislo">Od města celkem</th>
+                <th scope="col" class="cislo">Smluv</th>
+              </tr>
+            </thead>
+            <tbody>
+              {firmy.map((f) => (
+                <tr>
+                  <td>
+                    {f.ico && zname.has(f.ico) ? <a href={`/penize/${f.ico}`}>{f.nazev}</a> : f.nazev}
+                    {f.ico && <><br /><span class="mono">{f.ico}</span></>}
+                  </td>
+                  <td>{f.role.length > 0 ? f.role.join(', ') : 'v datech není'}</td>
+                  <td>
+                    {f.od || f.do
+                      ? `${f.od ?? '?'} – ${f.do ?? 'trvá'}`
+                      : f.aktivni === false
+                        ? 'ukončeno'
+                        : '—'}
+                  </td>
+                  <td>
+                    {f.obchoduje === true
+                      ? 'ano'
+                      : f.obchoduje === false
+                        ? 's městem neobchoduje'
+                        : 'v datech není uvedeno'}
+                  </td>
+                  <td class="cislo">
+                    {f.obchoduje === false
+                      ? '—'
+                      : f.celkem_czk === null
+                        ? 'v datech není'
+                        : kc(f.celkem_czk)}
+                  </td>
+                  <td class="cislo">{f.smluv === null ? '—' : cislo(f.smluv)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="graf-poznamka">
+          Zápis ve firmě je veřejný údaj z rejstříku. Sám o sobě neznamená nic víc, než že je
+          osoba ve firmě zapsaná — přehled z něj nevyvozuje žádný závěr.
+        </p>
+      </section>
+    )
+  }
+
+  {
+    sponzoringOsoby.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Sponzoring politických stran</h2>
+        <p class="karta__podnadpis">Dary tak, jak je uvádí zdroj. Zákonná a veřejně vykazovaná věc.</p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Strana</th>
+                <th scope="col">Typ</th>
+                <th scope="col" class="cislo">Částka</th>
+                <th scope="col" class="cislo">Rok</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sponzoringOsoby.map((s) => (
+                <tr>
+                  <td>{s.strana ?? '—'}</td>
+                  <td>{s.typ ?? '—'}</td>
+                  <td class="cislo">{s.castka_czk === null ? '—' : kc(s.castka_czk)}</td>
+                  <td class="cislo">{s.rok ?? (s.datum ? datumKratke(s.datum) : '—')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    vazbyOsoby.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Hlasování o firmách, kde je osoba uvedená</h2>
+        <p class="karta__podnadpis">
+          Body, u kterých zdroj eviduje vazbu této osoby na dotčenou firmu. Věcný výpis: jak
+          hlasovala, v jaké roli je ve firmě uvedená a kolik firma od města dostala.
+        </p>
+        <Vazby vazby={vazbyOsoby} zname={zname} otevreno bezOsoby />
+      </section>
+    )
+  }
+
+  {
+    (odchylky.length > 0 || velkeCastky.length > 0 || shoda.length > 0 || profil?.ucast) && (
+      <h2>Hlasovací profil</h2>
+    )
+  }
+
+  {
+    profil?.ucast && celkem === 0 && (
+      <Dlazdice
+        polozky={[
+          {
+            popisek: 'Účast podle profilu',
+            hodnota: profil.ucast.podil !== null ? procenta(profil.ucast.podil) : cislo(profil.ucast.hlasoval ?? 0),
+            doplnek:
+              profil.ucast.celkem !== null
+                ? `z ${cislo(profil.ucast.celkem)} hlasování podle lide/profily.json`
+                : 'podle lide/profily.json',
+          },
+        ]}
+      />
+    )
+  }
+
+  {
+    velkeCastky.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Hlasování o velkých částkách</h2>
+        <p class="karta__podnadpis">
+          Body s vysokou částkou, u kterých je osoba ve jmenovitém seznamu. Výběr dělá
+          <span class="stav-dat__zdroj"> lide/profily.json</span>, tenhle přehled ho jen zobrazuje.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Bod</th>
+                <th scope="col" class="cislo">Částka</th>
+                <th scope="col">Hlas</th>
+                <th scope="col">Výsledek</th>
+              </tr>
+            </thead>
+            <tbody>
+              {velkeCastky.map((p) => (
+                <tr>
+                  <td class="cislo">{datumKratke(p.datum)}</td>
+                  <td>{p.nazev ?? p.hlasovani_id ?? '—'}</td>
+                  <td class="cislo">{p.castka_czk === null ? '—' : kc(p.castka_czk)}</td>
+                  <td>{p.hlas ? nazevHlasu(p.hlas) : '—'}</td>
+                  <td>{p.vysledek ? nazevVysledku(p.vysledek) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    odchylky.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Hlasy odlišné od většiny vlastního uskupení</h2>
+        <p class="karta__podnadpis">
+          Případy, kdy osoba hlasovala jinak než většina jejího uskupení.
+          {profil?.odchylky.podil !== null && profil?.odchylky.podil !== undefined && (
+            <> Podle zdroje jde o {procenta(profil.odchylky.podil)} jejích hlasů.</>
+          )}{' '}
+          Je to prostý rozdíl v datech, ne hodnocení — hlasovat odlišně od klubu je běžná součást
+          zastupitelské práce.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Datum</th>
+                <th scope="col">Bod</th>
+                <th scope="col">Její/jeho hlas</th>
+                <th scope="col">Většina uskupení</th>
+              </tr>
+            </thead>
+            <tbody>
+              {odchylky.map((p) => (
+                <tr>
+                  <td class="cislo">{datumKratke(p.datum)}</td>
+                  <td>{p.nazev ?? p.hlasovani_id ?? '—'}</td>
+                  <td>{p.hlas ? nazevHlasu(p.hlas) : '—'}</td>
+                  <td>{p.vetsina ? nazevHlasu(p.vetsina) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    shoda.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Shoda hlasování s ostatními</h2>
+        <p class="karta__podnadpis">
+          Podíl hlasování, kde oba hlasovali stejně, ze společně zaznamenaných hlasování. Vysoká
+          shoda může vzniknout i tím, že se většina bodů schvaluje jednomyslně — sama o sobě
+          neznamená domluvu.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Zastupitel</th>
+                <th scope="col" class="cislo">Shoda</th>
+                <th scope="col" class="cislo">Společných hlasování</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shoda.map((s) => (
+                <tr>
+                  <td>
+                    {s.osoba_id ? (
+                      <a href={`/lide/${s.osoba_id}`}>{s.jmeno ?? jmenaLidi.get(s.osoba_id) ?? s.osoba_id}</a>
+                    ) : (
+                      (s.jmeno ?? '—')
+                    )}
+                  </td>
+                  <td class="cislo">{procenta(s.shoda)}</td>
+                  <td class="cislo">{s.spolecnych === null ? 'v datech není' : cislo(s.spolecnych)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    zProfilu.stav !== 'ok' && celkem > 0 && (
+      <StavDat
+        stav={zProfilu.stav}
+        zdroj={zProfilu.zdroj}
+        co="Hlasovací profil (matice shody, odchylky od uskupení, velké částky)"
+        modul="hlasovací profily"
+        poznamky={[
+          'Statistiky výše jsou spočítané přímo z hlasovacích dat. Matice shody a odchylky od vlastního uskupení se počítají jinde a zatím nejsou.',
+        ]}
+      />
+    )
+  }
+
+  {
+    celkem > 0 && (
+      <section>
+        <h2>Hlasovací historie</h2>
+        <p class="uvod">
+          Všechna zaznamenaná jmenovitá hlasování, od nejnovějšího.
+          {vazbyOsoby.length > 0 && ' Sloupec „Vazba“ označuje body, u kterých zdroj eviduje vazbu na dotčenou firmu.'}
+        </p>
         <div class="tabulka-obal">
           <table>
             <thead>
@@ -141,10 +552,11 @@ const celkem = ucast.length;
                 <th scope="col">Hlas</th>
                 <th scope="col">Výsledek</th>
                 <th scope="col">Téma</th>
+                {vazbyOsoby.length > 0 && <th scope="col">Vazba</th>}
               </tr>
             </thead>
             <tbody>
-              {ucast.map((u) => (
+              {st.zaznamy.map((u) => (
                 <tr>
                   <td class="cislo">{datumKratke(u.h.datum)}</td>
                   <td>{nazevOrganu(u.h.organ)}</td>
@@ -152,12 +564,21 @@ const celkem = ucast.length;
                   <td>{nazevHlasu(u.hlas)}</td>
                   <td>{nazevVysledku(u.h.vysledek)}</td>
                   <td><Znacky tagy={u.h.tagy} ciselnik={ciselnik} /></td>
+                  {vazbyOsoby.length > 0 && (
+                    <td>
+                      {maVazbu(u.h.id) ? (
+                        <span class="znacka znacka--vazba">vazba na dotčenou firmu</span>
+                      ) : (
+                        ''
+                      )}
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </>
+      </section>
     )
   }
 
@@ -174,5 +595,5 @@ const celkem = ucast.length;
     )
   }
 
-  <p><a href="/lide">← Zpět na přehled lidí</a></p>
+  <p><a href="/lide">← Zpět na přehled lidí</a> · <a href="/propojeni">Přehled vazeb samosprávy a firem</a></p>
 </Zaklad>

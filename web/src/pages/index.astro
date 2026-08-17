@@ -219,7 +219,8 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
       )
     }
 
-    <script type="application/json" id="denik-temat" set:html={denikJson} />
+    {/* Datový blok, ne kód — proto is:inline: nemá se bundlovat ani zpracovávat. */}
+    <script is:inline type="application/json" id="denik-temat" set:html={denikJson} />
   </section>
 
   <section>

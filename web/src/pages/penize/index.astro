@@ -190,8 +190,11 @@ const variantyVazby: Varianta[] =
           klic: 'vazby',
           popisek: 'Firmy s vazbou na politiky',
           graf: (() => {
+            // Osa se počítá z těchhle firem, ne z celé agregace — jinak by graf
+            // začínal roky, ve kterých žádná z nich ještě neexistovala.
+            const rokyVazeb = rokyZProtistran(vAgregaci.map((x) => x.p!));
             const g = grafObjemPoLetech(
-              roky.map((rok) => ({
+              rokyVazeb.map((rok) => ({
                 rok,
                 castka: vAgregaci.reduce((s, x) => s + (x.p ? vRoce(x.p, rok) : 0), 0),
                 smluv: null,

@@ -1,0 +1,1286 @@
+{
+  "generovano": "2026-08-17",
+  "zdroje": [
+    "https://www.hlidacstatu.cz",
+    "https://api.hlidacstatu.cz/Api/v2",
+    "https://smlouvy.gov.cz",
+    "https://usneseni.muml.cz"
+  ],
+  "metodika": {
+    "co_to_je": "Dodavatelé a protistrany městského holdingu, u kterých Hlídač státu vede angažmá některé z veřejně činných osob města.",
+    "zaklad": {
+      "angazma-dle-hlidace": "Osoba je podle Hlídače angažovaná ve firmě.",
+      "smlouvy-dle-hlidace": "Hlídač váže smlouvy holdingu na osobu dotazem osobaId:{id} AND holding:{ico_mesta}. Započítává se jen protistrana, která je sama firmou dané osoby — dotaz vrací i druhou stranu smlouvy (u ředitelky domova pro seniory tak vyjdou i dodavatelé potravin), a to stopa k politice u takového dodavatele není."
+    },
+    "priznak_vazba_na_politiky": "Pole `vazba_na_politiky` v data/penize/smlouvy/*.json je u všech 6521 smluv false, protože API v2 Hlídače pole sVazbouNaPolitiky nevyplňuje (vrací null i v detailu smlouvy a filtr sVazbouNaPolitiky:1 vrací nula výsledků, ověřeno 17. 8. 2026). Příznak se proto nepoužívá a v záznamech je jako null = nezjištěno."
+  },
+  "priznak_ve_smlouvach": {
+    "smluv_celkem": 6521,
+    "s_priznakem": 0,
+    "pole_plnene": false
+  },
+  "souhrn": {
+    "dodavatelu": 25,
+    "mestskych_subjektu": 13,
+    "mimo_holding": 12,
+    "celkem_od_mesta_czk": 1337224759.75,
+    "dotcenych_osob": 24
+  },
+  "dodavatele": [
+    {
+      "ico": "25213261",
+      "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/25213261",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto_100",
+      "celkem_od_mesta_czk": 865087980.33,
+      "mestu_czk": 2936940.48,
+      "smluv": 235,
+      "prvni_rok": 2017,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2017": 280440.0,
+        "2018": 11490160.0,
+        "2019": 5504436.82,
+        "2020": 20236128.4,
+        "2021": 5754089.68,
+        "2022": 15159905.46,
+        "2023": 7065091.69,
+        "2024": 29334138.57,
+        "2025": 756896920.28,
+        "2026": 16303609.91
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "dubnicky-roman",
+          "jmeno": "Roman Dubnický",
+          "role": [
+            "zastupitel",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/roman-dubnicky",
+          "smluv_s_holdingem": 70,
+          "castka_smluv_czk": 811149788.99,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "fedosejevova-eva",
+          "jmeno": "Eva Fedosejevová",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/eva-fedosejevova",
+          "smluv_s_holdingem": 70,
+          "castka_smluv_czk": 812763800.24,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "hamar-jan",
+          "jmeno": "Jan Hamar",
+          "role": [
+            "člen dozorčí rady"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jan-hamar",
+          "smluv_s_holdingem": 70,
+          "castka_smluv_czk": 811149788.99,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "roznicek-pavel",
+          "jmeno": "Pavel Rozníček",
+          "role": [
+            "člen dozorčí rady"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/pavel-roznicek-2",
+          "smluv_s_holdingem": 70,
+          "castka_smluv_czk": 809747758.99,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "26320053",
+      "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/26320053",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 232544204.0,
+      "mestu_czk": null,
+      "smluv": 48,
+      "prvni_rok": 2017,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2017": 800000.0,
+        "2018": 12000000.0,
+        "2019": 15730000.0,
+        "2020": 29940000.0,
+        "2021": 12840000.0,
+        "2022": 30830000.0,
+        "2023": 61500000.0,
+        "2024": 50300000.0,
+        "2025": 1092135.0,
+        "2026": 17512069.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "bartos-jaromir",
+          "jmeno": "Jaromír Bartoš",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jaromir-bartos-8",
+          "smluv_s_holdingem": 77,
+          "castka_smluv_czk": 269639675.05,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "mikova-ludmila",
+          "jmeno": "Ludmila Míková",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "ODS Plus",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/ludmila-mikova",
+          "smluv_s_holdingem": 77,
+          "castka_smluv_czk": 269639675.05,
+          "overeni_osoby": "pravdepodobne"
+        },
+        {
+          "osoba_id": "pavlovic-josef",
+          "jmeno": "Josef Pavlovic",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "Piráti",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/josef-pavlovic-2",
+          "smluv_s_holdingem": 77,
+          "castka_smluv_czk": 269639675.05,
+          "overeni_osoby": "pravdepodobne"
+        },
+        {
+          "osoba_id": "roubalova-jana",
+          "jmeno": "Jana Roubalová",
+          "role": [
+            "zastupitel",
+            "radní",
+            "vedení města",
+            "statutár"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jana-roubalova-5",
+          "smluv_s_holdingem": 77,
+          "castka_smluv_czk": 269639675.05,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "zabolotny-samuel",
+          "jmeno": "Samuel Zabolotný",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/samuel-zabolotny",
+          "smluv_s_holdingem": 77,
+          "castka_smluv_czk": 269639675.05,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "25208438",
+      "nazev": "Infocentrum Mariánské Lázně s.r.o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/25208438",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto_100",
+      "celkem_od_mesta_czk": 101935758.88,
+      "mestu_czk": 54600.0,
+      "smluv": 84,
+      "prvni_rok": 2006,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2006": 2615463.4,
+        "2016": 845000.0,
+        "2017": 150000.0,
+        "2018": 2014009.5,
+        "2019": 2156900.0,
+        "2020": 2571897.0,
+        "2021": 13288138.11,
+        "2022": 24367240.0,
+        "2023": 17883702.0,
+        "2024": 1623557.55,
+        "2025": 14948137.5,
+        "2026": 19526313.82
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "chadim-miloslav",
+          "jmeno": "Miloslav Chadim",
+          "role": [
+            "zastupitel",
+            "radní",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/miloslav-chadim",
+          "smluv_s_holdingem": 84,
+          "castka_smluv_czk": 96903134.06,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "hala-petr",
+          "jmeno": "Petr Hála",
+          "role": [
+            "zastupitel",
+            "člen dozorčí rady"
+          ],
+          "strana": "Změna pro ML",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/petr-hala-3",
+          "smluv_s_holdingem": 84,
+          "castka_smluv_czk": 96964213.36,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "mottlova-ivana",
+          "jmeno": "Ivana Mottlová",
+          "role": [
+            "zastupitel",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/ivana-mottlova-2",
+          "smluv_s_holdingem": 84,
+          "castka_smluv_czk": 96964213.36,
+          "overeni_osoby": "pravdepodobne"
+        },
+        {
+          "osoba_id": "tinterova-barbora",
+          "jmeno": "Barbora Tintěrová",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/barbora-tinterova",
+          "smluv_s_holdingem": 84,
+          "castka_smluv_czk": 96964213.36,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "26376709",
+      "nazev": "Nemocnice Mariánské Lázně s.r.o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/26376709",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mimo_mesto",
+      "celkem_od_mesta_czk": 39628055.95,
+      "mestu_czk": null,
+      "smluv": 13,
+      "prvni_rok": 2017,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2017": 6972000.0,
+        "2018": 8300690.75,
+        "2019": 4428600.0,
+        "2022": 5045700.0,
+        "2023": 4788455.2,
+        "2024": 5046910.0,
+        "2025": 5045700.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "blaha-vladislav",
+          "jmeno": "Vladislav Bláha",
+          "role": [
+            "člen dozorčí rady"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/vladislav-blaha-3",
+          "smluv_s_holdingem": 17,
+          "castka_smluv_czk": 53469855.95,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "roubalova-jana",
+          "jmeno": "Jana Roubalová",
+          "role": [
+            "zastupitel",
+            "radní",
+            "vedení města",
+            "statutár"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jana-roubalova-5",
+          "smluv_s_holdingem": 17,
+          "castka_smluv_czk": 53469855.95,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "72559772",
+      "nazev": "SPRÁVA MĚSTSKÝCH SPORTOVIŠŤ příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/72559772",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 34816362.83,
+      "mestu_czk": null,
+      "smluv": 114,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 111320.0,
+        "2017": 300000.0,
+        "2018": 2117000.0,
+        "2019": 2518200.0,
+        "2020": 80000.0,
+        "2021": 959000.0,
+        "2022": 8334400.0,
+        "2023": 5488906.0,
+        "2024": 5870300.0,
+        "2025": 7933632.42,
+        "2026": 1103604.41
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "borsik-viktor",
+          "jmeno": "Viktor Borsik",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/viktor-borsik",
+          "smluv_s_holdingem": 225,
+          "castka_smluv_czk": 144814928.5,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "61776068",
+      "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/61776068",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto_100",
+      "celkem_od_mesta_czk": 31136644.89,
+      "mestu_czk": 3952452.9,
+      "smluv": 34,
+      "prvni_rok": 2016,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2016": 338800.0,
+        "2023": 10046851.43,
+        "2024": 9475400.0,
+        "2025": 5984016.62,
+        "2026": 9244029.74
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "chadim-miloslav",
+          "jmeno": "Miloslav Chadim",
+          "role": [
+            "zastupitel",
+            "radní",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/miloslav-chadim",
+          "smluv_s_holdingem": 20,
+          "castka_smluv_czk": 24656480.85,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "kral-zdenek",
+          "jmeno": "Zdeněk Král",
+          "role": [
+            "zastupitel",
+            "radní",
+            "vedení města"
+          ],
+          "strana": "ODS Plus",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/zdenek-kral-27",
+          "smluv_s_holdingem": 20,
+          "castka_smluv_czk": 24656480.85,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "64831086",
+      "nazev": "Lázeňské lesy, spol. s r.o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/64831086",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto_100",
+      "celkem_od_mesta_czk": 15525039.06,
+      "mestu_czk": null,
+      "smluv": 24,
+      "prvni_rok": 2018,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2018": 1414974.0,
+        "2019": 1396340.0,
+        "2020": 1381457.0,
+        "2021": 626796.8,
+        "2022": 127776.0,
+        "2023": 249308.49,
+        "2024": 4423782.77,
+        "2025": 5175654.0,
+        "2026": 728950.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "slehofer-martin",
+          "jmeno": "Martin Šlehofer",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/martin-slehofer-1",
+          "smluv_s_holdingem": 32,
+          "castka_smluv_czk": 23121588.46,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "25963643",
+      "nazev": "Bytové družstvo Mariánské Lázně v likvidaci",
+      "url": "https://www.hlidacstatu.cz/subjekt/25963643",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 4654285.0,
+      "mestu_czk": null,
+      "smluv": 1,
+      "prvni_rok": 2025,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2025": 4654285.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "spindler-kamil",
+          "jmeno": "Kamil Špindler",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "STAN",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/kamil-spindler",
+          "smluv_s_holdingem": 1,
+          "castka_smluv_czk": 4654285.0,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "49787977",
+      "nazev": "CHEVAK Cheb, a.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/49787977",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 3292376.12,
+      "mestu_czk": 47420202.5,
+      "smluv": 19,
+      "prvni_rok": 2012,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2012": 302500.0,
+        "2013": 326700.0,
+        "2015": 1137400.0,
+        "2018": 60500.0,
+        "2019": 60500.0,
+        "2020": 696960.0,
+        "2021": 46612830.0,
+        "2022": 849688.62,
+        "2023": 302500.0,
+        "2024": 181500.0,
+        "2025": 181500.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "chadim-miloslav",
+          "jmeno": "Miloslav Chadim",
+          "role": [
+            "zastupitel",
+            "radní",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/miloslav-chadim",
+          "smluv_s_holdingem": 10,
+          "castka_smluv_czk": 2893076.12,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "pavlovic-josef",
+          "jmeno": "Josef Pavlovic",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "Piráti",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/josef-pavlovic-2",
+          "smluv_s_holdingem": 10,
+          "castka_smluv_czk": 2893076.12,
+          "overeni_osoby": "pravdepodobne"
+        },
+        {
+          "osoba_id": "spindler-kamil",
+          "jmeno": "Kamil Špindler",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "STAN",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/kamil-spindler",
+          "smluv_s_holdingem": 10,
+          "castka_smluv_czk": 2893076.12,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "00368997",
+      "nazev": "Městské muzeum a galerie Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/00368997",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 1772311.64,
+      "mestu_czk": null,
+      "smluv": 22,
+      "prvni_rok": 2018,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2018": 628690.0,
+        "2020": 53500.0,
+        "2023": 140833.69,
+        "2024": 368298.82,
+        "2025": 517839.13,
+        "2026": 63150.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "bartos-jaromir",
+          "jmeno": "Jaromír Bartoš",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jaromir-bartos-8",
+          "smluv_s_holdingem": 39,
+          "castka_smluv_czk": 8821285.74,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47724978",
+      "nazev": "Základní škola Vítězství Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/47724978",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 1156981.77,
+      "mestu_czk": null,
+      "smluv": 12,
+      "prvni_rok": 2019,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2020": 393781.99,
+        "2021": 75044.93,
+        "2022": 178981.0,
+        "2023": 213590.85,
+        "2024": 241969.0,
+        "2025": 53614.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "borka-lubos",
+          "jmeno": "Luboš Borka",
+          "role": [
+            "zastupitel",
+            "radní",
+            "statutár"
+          ],
+          "strana": "Město sobě",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/lubos-borka",
+          "smluv_s_holdingem": 17,
+          "castka_smluv_czk": 1492181.77,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "00575143",
+      "nazev": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/00575143",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 715412.5,
+      "mestu_czk": 0.0,
+      "smluv": 3,
+      "prvni_rok": 2019,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2019": 715412.5
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "roubalova-jana",
+          "jmeno": "Jana Roubalová",
+          "role": [
+            "zastupitel",
+            "radní",
+            "vedení města",
+            "statutár"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jana-roubalova-5",
+          "smluv_s_holdingem": 68,
+          "castka_smluv_czk": 214532627.42,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47725532",
+      "nazev": "Divadlo lidové tvorby Mariánské Lázně z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/47725532",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 702000.0,
+      "mestu_czk": null,
+      "smluv": 9,
+      "prvni_rok": 2018,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 80000.0,
+        "2019": 85000.0,
+        "2020": 81000.0,
+        "2021": 90000.0,
+        "2022": 80000.0,
+        "2023": 95000.0,
+        "2024": 91000.0,
+        "2025": 100000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "hala-petr",
+          "jmeno": "Petr Hála",
+          "role": [
+            "zastupitel",
+            "člen dozorčí rady"
+          ],
+          "strana": "Změna pro ML",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/petr-hala-3",
+          "smluv_s_holdingem": 10,
+          "castka_smluv_czk": 802000.0,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47720654",
+      "nazev": "Městská knihovna Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/47720654",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 618815.58,
+      "mestu_czk": null,
+      "smluv": 4,
+      "prvni_rok": 2020,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2020": 71508.58,
+        "2021": 297669.0,
+        "2024": 112714.0,
+        "2026": 136924.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "batkova-tatana",
+          "jmeno": "Taťána Baťková",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/tatana-batkova",
+          "smluv_s_holdingem": 42,
+          "castka_smluv_czk": 11688217.21,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "48364282",
+      "nazev": "Dopravní podnik Karlovy Vary, a.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/48364282",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 600160.0,
+      "mestu_czk": null,
+      "smluv": 3,
+      "prvni_rok": 2019,
+      "posledni_rok": 2024,
+      "aktivni": false,
+      "po_letech": {
+        "2019": 237160.0,
+        "2024": 363000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "hurajcik-martin",
+          "jmeno": "Martin Hurajčík",
+          "role": [
+            "zastupitel",
+            "radní",
+            "vedení města",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/martin-hurajcik-1",
+          "smluv_s_holdingem": null,
+          "castka_smluv_czk": null,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47721472",
+      "nazev": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/47721472",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 572100.0,
+      "mestu_czk": null,
+      "smluv": 5,
+      "prvni_rok": 2019,
+      "posledni_rok": 2025,
+      "aktivni": false,
+      "po_letech": {
+        "2019": 347500.0,
+        "2023": 124600.0,
+        "2025": 100000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "tomanek-david",
+          "jmeno": "David Tománek",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/david-tomanek-7",
+          "smluv_s_holdingem": 36,
+          "castka_smluv_czk": 10771611.06,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47725184",
+      "nazev": "Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/47725184",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 478000.0,
+      "mestu_czk": null,
+      "smluv": 7,
+      "prvni_rok": 2017,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2017": 80000.0,
+        "2018": 70000.0,
+        "2022": 60000.0,
+        "2023": 52000.0,
+        "2024": 86000.0,
+        "2025": 60000.0,
+        "2026": 70000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "mikova-ludmila",
+          "jmeno": "Ludmila Míková",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "ODS Plus",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/ludmila-mikova",
+          "smluv_s_holdingem": 7,
+          "castka_smluv_czk": 478000.0,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "07652305",
+      "nazev": "Komunitní centrum Chebsko z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/07652305",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 446000.0,
+      "mestu_czk": null,
+      "smluv": 4,
+      "prvni_rok": 2024,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2024": 121000.0,
+        "2025": 200000.0,
+        "2026": 125000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "hamar-jan",
+          "jmeno": "Jan Hamar",
+          "role": [
+            "člen dozorčí rady"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jan-hamar",
+          "smluv_s_holdingem": 4,
+          "castka_smluv_czk": 446000.0,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "70835799",
+      "nazev": "Athletic club Mariánské Lázně, z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/70835799",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 401200.0,
+      "mestu_czk": null,
+      "smluv": 6,
+      "prvni_rok": 2013,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2013": 60000.0,
+        "2018": 60500.0,
+        "2022": 60500.0,
+        "2024": 72600.0,
+        "2025": 72600.0,
+        "2026": 75000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "borsik-viktor",
+          "jmeno": "Viktor Borsik",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/viktor-borsik",
+          "smluv_s_holdingem": 7,
+          "castka_smluv_czk": 461700.0,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "47723581",
+      "nazev": "Junák - český skaut, středisko Stopa Mariánské Lázně, z. s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/47723581",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 368000.0,
+      "mestu_czk": null,
+      "smluv": 5,
+      "prvni_rok": 2019,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2019": 50000.0,
+        "2023": 80000.0,
+        "2024": 73000.0,
+        "2025": 85000.0,
+        "2026": 80000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "bartos-jaromir",
+          "jmeno": "Jaromír Bartoš",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/jaromir-bartos-8",
+          "smluv_s_holdingem": 6,
+          "castka_smluv_czk": 448000.0,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "26523043",
+      "nazev": "AIKIDO Mariánské Lázně z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/26523043",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 251413.8,
+      "mestu_czk": null,
+      "smluv": 4,
+      "prvni_rok": 2018,
+      "posledni_rok": 2022,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 61443.8,
+        "2020": 64130.0,
+        "2021": 64130.0,
+        "2022": 61710.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "pavlovic-josef",
+          "jmeno": "Josef Pavlovic",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "Piráti",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/josef-pavlovic-2",
+          "smluv_s_holdingem": 4,
+          "castka_smluv_czk": 251413.8,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "19882629",
+      "nazev": "Městské divadlo Mariánské Lázně, příspěvková organizace",
+      "url": "https://www.hlidacstatu.cz/subjekt/19882629",
+      "mestsky_subjekt": true,
+      "vlastnictvi": "mesto",
+      "celkem_od_mesta_czk": 215000.0,
+      "mestu_czk": 0.0,
+      "smluv": 7,
+      "prvni_rok": 2024,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2024": 70000.0,
+        "2025": 80000.0,
+        "2026": 65000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "havrdova-alena",
+          "jmeno": "Alena Havrdová",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/alena-havrdova-3",
+          "smluv_s_holdingem": 11,
+          "castka_smluv_czk": 918199.1,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    },
+    {
+      "ico": "68784732",
+      "nazev": "Plavecký klub Mariánské Lázně, z. s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/68784732",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 136657.4,
+      "mestu_czk": null,
+      "smluv": 2,
+      "prvni_rok": 2018,
+      "posledni_rok": 2019,
+      "aktivni": false,
+      "po_letech": {
+        "2018": 68121.79,
+        "2019": 68535.61
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "drexler-dusan",
+          "jmeno": "Dušan Drexler",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "STAN",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/dusan-drexler",
+          "smluv_s_holdingem": 3,
+          "castka_smluv_czk": 201657.4,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "08056196",
+      "nazev": "Spolek Mariánský z.s.",
+      "url": "https://www.hlidacstatu.cz/subjekt/08056196",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 90000.0,
+      "mestu_czk": null,
+      "smluv": 2,
+      "prvni_rok": 2021,
+      "posledni_rok": 2021,
+      "aktivni": false,
+      "po_letech": {
+        "2021": 90000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "batkova-tatana",
+          "jmeno": "Taťána Baťková",
+          "role": [
+            "statutár"
+          ],
+          "strana": null,
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/tatana-batkova",
+          "smluv_s_holdingem": 2,
+          "castka_smluv_czk": 90000.0,
+          "overeni_osoby": "potvrzeno"
+        },
+        {
+          "osoba_id": "mikova-ludmila",
+          "jmeno": "Ludmila Míková",
+          "role": [
+            "zastupitel"
+          ],
+          "strana": "ODS Plus",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/ludmila-mikova",
+          "smluv_s_holdingem": 2,
+          "castka_smluv_czk": 90000.0,
+          "overeni_osoby": "pravdepodobne"
+        }
+      ]
+    },
+    {
+      "ico": "06377459",
+      "nazev": "Lorawelt s.r.o.",
+      "url": "https://www.hlidacstatu.cz/subjekt/06377459",
+      "mestsky_subjekt": false,
+      "vlastnictvi": null,
+      "celkem_od_mesta_czk": 80000.0,
+      "mestu_czk": null,
+      "smluv": 1,
+      "prvni_rok": 2026,
+      "posledni_rok": 2026,
+      "aktivni": true,
+      "po_letech": {
+        "2026": 80000.0
+      },
+      "hlidac_priznak_vazby": null,
+      "osoby": [
+        {
+          "osoba_id": "chadim-miloslav",
+          "jmeno": "Miloslav Chadim",
+          "role": [
+            "zastupitel",
+            "radní",
+            "člen dozorčí rady"
+          ],
+          "strana": "ANO 2011",
+          "zaklad": [
+            "angazma-dle-hlidace",
+            "smlouvy-dle-hlidace"
+          ],
+          "zdroj": "https://www.hlidacstatu.cz/osoba/miloslav-chadim",
+          "smluv_s_holdingem": 1,
+          "castka_smluv_czk": 80000.0,
+          "overeni_osoby": "potvrzeno"
+        }
+      ]
+    }
+  ]
+}

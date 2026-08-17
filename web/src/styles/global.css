@@ -631,6 +631,10 @@ th.cislo {
   text-anchor: middle;
   font-variant-numeric: tabular-nums;
 }
+/* Hodnota za koncem vodorovného sloupce — zarovnaná od začátku textu. */
+.g-hodnota--vlevo {
+  text-anchor: start;
+}
 .g-terc {
   fill: transparent;
 }
@@ -932,6 +936,173 @@ th.cislo {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
   gap: 1rem;
+}
+
+/* ════════════════════  Vazby, sledování, řetěz  ═════════════════════ */
+
+/* Řádek s akcí vpravo (např. tlačítko „sledovat téma"). */
+.radek-akci {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+.radek-akci .pocet-vysledku {
+  margin-bottom: 0;
+}
+
+.sledovat {
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.sledovat--kompakt {
+  font-size: 0.82rem;
+  padding: 0.2rem 0.55rem;
+  min-height: auto;
+}
+
+.filtr__zaskrtnuti {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  min-height: 2.25rem;
+}
+
+.seznam-temat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 0.35rem 1.25rem;
+}
+.seznam-temat__polozka {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.seznam-temat__pocet {
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+  margin-inline-start: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dění ve sledovaném tématu na úvodní stránce. */
+.deni {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+.deni__polozka {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.6rem;
+}
+.deni__datum {
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  min-width: 5.5rem;
+}
+.deni__druh {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0 0.5rem;
+}
+.deni__meta {
+  color: var(--ink-faint);
+  font-size: 0.82rem;
+  flex-basis: 100%;
+}
+
+/* Označení vazby u hlasování. Neutrální štítek — barva tu nic nehodnotí. */
+.znacka--vazba {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+
+.vazby {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 0.6rem;
+}
+.vazby > summary {
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+.vazby > summary:hover {
+  color: var(--ink);
+}
+.vazby__popis {
+  margin: 0.6rem 0;
+  color: var(--ink-soft);
+  font-size: 0.87rem;
+  max-width: 46rem;
+}
+
+.jistoty {
+  margin: 0;
+  padding-inline-start: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.jistoty .stav-znacka {
+  margin-top: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.retez-kroky {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+.retez-krok {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: var(--surface-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.88rem;
+}
+.retez-krok__popisek {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.retez-krok__hlavni {
+  color: var(--ink);
+  font-weight: 600;
+}
+.retez-krok__doplnek {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ════════════════════════════  Tooltip  ═════════════════════════════ */

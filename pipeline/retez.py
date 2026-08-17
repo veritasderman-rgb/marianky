@@ -23,6 +23,13 @@ Zásada: **bez identitní shody se spojení neukládá.** Samotná shoda částk
 a data je náhoda, kterou nelze odůvodnit — a co nedokážeme odůvodnit,
 to neuložíme.
 
+Druhá zásada: **jednoznačnost váží stejně jako indicie.** Veolia je v datech
+zmíněná ve stovkách usnesení a má stovky smluv; „firma je v tomhle usnesení
+a za měsíc podepsala smlouvu" na ni sedí tisíckrát. Když se o jednu smlouvu
+uchází víc než `MAX_KANDIDATU` stejně dobrých usnesení (nebo naopak), není
+to zjištění, ale losování, a dvojice se zahodí. Kolik konkurentů dvojice
+měla, je ve výstupu (`kandidatu_usneseni`, `kandidatu_smluv`).
+
 --------------------------------------------------------------------------
 Co data ze své podstaty neumí
 --------------------------------------------------------------------------
@@ -44,6 +51,13 @@ Co data ze své podstaty neumí
 6. **Názvy se v usneseních skloňují** („s Kooperativou pojišťovnou“).
    Hledá se proto kmen slova, ne přesný řetězec — což je o kus měkčí
    shoda než IČO, a odráží se to v jistotě.
+7. **Velké stavby mají desítky usnesení o téže věci.** Rozliší je až
+   číslo dodatku: „dodatek č. 4" a „dodatek č. 7" jsou dvě listiny, ne
+   jedna. Dvojice s různými čísly dodatku se proto rovnou zamítá.
+8. **U 14 bodů usnesení je `castka_czk` zjevně chybná** — modul A1 slepil
+   částku s číslem rozpočtové položky (260 tis. → 216 260 tis.). Hodnota
+   se tu neopravuje, patří A1; jen se u ní nese `castka_podezrela`
+   a `castka_v_textu_czk`, aby web netvrdil stamiliony.
 
 --------------------------------------------------------------------------
 Smlouva podepsaná PŘED usnesením
@@ -124,7 +138,7 @@ NAZEV_VSUDYPRITOMNY = 14        # nad 300 bodů: bez další indicie neunese nic
 # Bezobsažná slova — do překryvu předmětu smlouvy a názvu bodu nevstupují.
 STOPSLOVA = {
     "mesto", "mestem", "mesta", "marianske", "lazne", "lazni", "lazenske",
-    "smlouva", "smlouvy", "smlouve", "smlouvou", "smlouvy", "dodatek", "dodatku",
+    "smlouva", "smlouvy", "smlouve", "smlouvou", "dodatek", "dodatku",
     "uzavreni", "schvaluje", "souhlas", "souhlasu", "navrh", "navrhu",
     "rada", "rady", "zastupitelstvo", "zastupitelstva", "poskytnuti",
     "verejne", "verejneho", "verejnou", "cast", "casti", "roku", "rok",
@@ -253,11 +267,59 @@ def _cisla_smlouvy(predmet: str) -> set[str]:
     return out
 
 
+# Rozpočtové opatření se v usneseních sází jako
+# „3319 5213 216 260,0 tis. Kč" = paragraf, položka, ORJ, částka.
+# Když mezi ORJ a částkou chybí znaménko, splynou v jedno číslo a částka
+# bodu vyjde stokrát vyšší (260 tis. → 216 260 tis.). Tohle NEOPRAVUJEME
+# — `castka_czk` patří modulu A1 — jen se to označí, aby se ve výstupu
+# nepodávalo číslo, o kterém víme, že nesedí.
+_RADEK_ROZPOCTU = re.compile(
+    r"(?m)^\s*(?:\d{4}\s+){1,2}(\d{3})\s+(\d[\d\s ]*?)(?:[,.]\d+)?\s*tis\.?\s*K[čc]"
+)
+
+
+def _castka_slepena_s_kodem(text: str, castka) -> int | None:
+    """Vrací částku, jak nejspíš stojí v textu, když ji A1 slepil s kódem ORJ."""
+    if not castka:
+        return None
+    for m in _RADEK_ROZPOCTU.finditer(text or ""):
+        kod = m.group(1)
+        cifry = re.sub(r"\D", "", m.group(2))
+        if cifry and int(kod + cifry) * 1000 == int(castka):
+            return int(cifry) * 1000
+    return None
+
+
+# Dodatky se schvalují po jednom a v registru se zveřejňují po jednom.
+# Jejich čísla jsou tak jediné, čím se od sebe navzájem odliší — bez nich
+# vypadá „dodatek č. 4" a „dodatek č. 7" téže zakázky úplně stejně.
+# Tvary záměrně vypsané: `dodat\w*` by chytalo i „dodání" a „dodatečně".
+_DODATEK_SLOVO = r"dodatek|dodatku|dodatkem|dodatky|dodatcich"
+_DODATEK_RE = re.compile(rf"\b(?:{_DODATEK_SLOVO})(?:\s+ke?)?(?:\s+c)?\s*(\d{{1,2}})\b")
+_JE_DODATEK_RE = re.compile(rf"\b(?:{_DODATEK_SLOVO})\b")
+
+
+def _cislo_dodatku(normalizovany_text: str) -> int | None:
+    m = _DODATEK_RE.search(normalizovany_text)
+    return int(m.group(1)) if m else None
+
+
+def _je_dodatek(normalizovany_text: str) -> bool:
+    return bool(_JE_DODATEK_RE.search(normalizovany_text))
+
+
 def _obsahova_slova(text: str) -> set[str]:
     return {
         s for s in _normalizuj(text).split()
         if len(s) >= 4 and not s.isdigit() and s not in STOPSLOVA
     }
+
+
+def _mnozne(n: int, jeden: str, dva: str, pet: str) -> str:
+    """Česká čísla se skloňují a `duvod` čte člověk, ne stroj."""
+    if n == 1:
+        return f"{n} {jeden}"
+    return f"{n} {dva}" if 2 <= n <= 4 else f"{n} {pet}"
 
 
 def _den(datum: str) -> date | None:
@@ -279,12 +341,16 @@ def nacti_body(log: Log) -> list[dict]:
             "Nenalezena žádná data/usneseni/**/*.json — nejdřív spusť scrapers/usneseni.py"
         )
     body: list[dict] = []
+    podezrelych = 0
     for cesta in soubory:
         zapis = nacti(cesta)
         datum = zapis.get("datum") or ""
         den = _den(datum)
         for b in zapis.get("body", []):
             text = f"{b.get('nazev') or ''}\n{b.get('text') or ''}"
+            v_textu = _castka_slepena_s_kodem(b.get("text") or "", b.get("castka_czk"))
+            if v_textu is not None:
+                podezrelych += 1
             body.append({
                 "organ": zapis.get("organ"),
                 "cj": zapis.get("cj"),
@@ -298,11 +364,21 @@ def nacti_body(log: Log) -> list[dict]:
                 "vysledek": b.get("vysledek"),
                 "hlasovani_id": b.get("hlasovani_id"),
                 "url": b.get("url") or zapis.get("url"),
+                "castka_v_textu_czk": v_textu,
                 "_norm": _normalizuj(text),
                 "_ica": _ica_z_textu(text),
                 "_slova": _obsahova_slova(b.get("nazev") or ""),
+                # Číslo z názvu je spolehlivé, proto jen ono smí dvojici
+                # zamítnout. Číslo z těla textu („souhlasí s uzavřením
+                # dodatku č. 6") se používá jen k bodování — v textu jich
+                # může být víc a spletlo by se.
+                "_dodatek": _cislo_dodatku(_normalizuj(b.get("nazev") or "")),
+                "_dodatek_kdekoliv": (_cislo_dodatku(_normalizuj(b.get("nazev") or ""))
+                                      or _cislo_dodatku(_normalizuj(text))),
+                "_o_dodatku": _je_dodatek(_normalizuj(text)),
             })
-    log.info("načteno bodů usnesení", pocet=len(body), zapisu=len(soubory))
+    log.info("načteno bodů usnesení", pocet=len(body), zapisu=len(soubory),
+             castka_slepena_s_kodem=podezrelych)
     return body
 
 
@@ -348,6 +424,8 @@ def nacti_smlouvy(log: Log) -> list[dict]:
                 "_protistrana_neurcena": neurcena,
                 "_cisla": _cisla_smlouvy(s.get("predmet") or ""),
                 "_slova": _obsahova_slova(s.get("predmet") or ""),
+                "_dodatek": _cislo_dodatku(_normalizuj(s.get("predmet") or "")),
+                "_o_dodatku": _je_dodatek(_normalizuj(s.get("predmet") or "")),
             })
     log.info("načteno smluv", pocet=len(smlouvy), subjektu=len(soubory),
              duplicit_mezi_subjekty=duplicit)
@@ -462,14 +540,18 @@ def _body_za_castku(castka: float) -> int:
     return 8
 
 
+def _dni(n: int) -> str:
+    return _mnozne(n, "den", "dny", "dní")
+
+
 def _body_za_cas(odstup: int) -> tuple[int, str]:
     if odstup <= OKNO_TESNE:
-        return 26, f"smlouva podepsána {odstup} dní po usnesení"
+        return 26, f"smlouva podepsána {_dni(odstup)} po usnesení"
     if odstup <= OKNO_BEZNE:
-        return 16, f"smlouva podepsána {odstup} dní po usnesení"
+        return 16, f"smlouva podepsána {_dni(odstup)} po usnesení"
     if odstup <= OKNO_SIROKE:
-        return 6, f"smlouva podepsána až {odstup} dní po usnesení"
-    return 0, f"smlouva podepsána {odstup} dní po usnesení"
+        return 6, f"smlouva podepsána až {_dni(odstup)} po usnesení"
+    return 0, f"smlouva podepsána {_dni(odstup)} po usnesení"
 
 
 def _prekryv_predmetu(bod: dict, smlouva: dict) -> tuple[int, str | None]:
@@ -502,6 +584,13 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
     if bod["den"] is None or smlouva["_den"] is None:
         return None
     odstup = (smlouva["_den"] - bod["den"]).days
+
+    # Dvě různá čísla dodatku téže zakázky jsou dvě různé listiny. Sedící
+    # IČO, předmět i termín na tom nic nemění — spojit je by bylo tvrzení,
+    # které text sám vyvrací.
+    if (bod["_dodatek"] is not None and smlouva["_dodatek"] is not None
+            and bod["_dodatek"] != smlouva["_dodatek"]):
+        return None
 
     signaly: list[str] = []
     duvody: list[str] = []
@@ -556,25 +645,34 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
         )
     else:
         signaly.append("podpis_pred_usnesenim")
-        duvody.append(f"POZOR: smlouva byla podepsána {abs(odstup)} dní PŘED usnesením")
+        duvody.append(f"POZOR: smlouva byla podepsána {_dni(abs(odstup))} PŘED usnesením")
 
-    # --- předmět ---
+    # --- předmět a číslo dodatku ---
     b, popis = _prekryv_predmetu(bod, smlouva)
     skore += b
     if popis:
         signaly.append("predmet")
         duvody.append(popis)
+    if bod["_dodatek_kdekoliv"] is not None and bod["_dodatek_kdekoliv"] == smlouva["_dodatek"]:
+        skore += 18
+        signaly.append("dodatek")
+        duvody.append(f"obojí je dodatek č. {smlouva['_dodatek']}")
+    elif bod["_o_dodatku"] and not smlouva["_o_dodatku"]:
+        # Usnesení schvaluje dodatek ke starší smlouvě, tahle smlouva se
+        # jako dodatek netváří. Nevylučuje to nic — u velkých staveb běží
+        # o téže věci desítky usnesení a tohle je rozliší.
+        skore -= 10
+        signaly.append("bod_o_dodatku")
+        duvody.append("usnesení mluví o dodatku, smlouva se jako dodatek netváří")
 
     # Samotné jméno firmy někde v usnesení a smlouva o pár týdnů později
     # není důvod — je to shoda okolností. Jméno se navíc trefuje i do
     # běžných slov („SLEPIČKA s.r.o." do usnesení o něčem jiném). Bez IČO
     # musí přijít ještě částka, číslo smlouvy nebo shoda předmětu.
-    if "ico" not in signaly and not _tvrda_indicie(
-        {"signaly": signaly}
-    ) and "predmet" not in signaly:
+    vysledek = {"skore": skore, "signaly": signaly, "duvody": duvody, "odstup_dni": odstup}
+    if "ico" not in signaly and "predmet" not in signaly and not _tvrda_indicie(vysledek):
         return None
-
-    return {"skore": skore, "signaly": signaly, "duvody": duvody, "odstup_dni": odstup}
+    return vysledek
 
 
 def _jistota(h: dict, kandidatu_usneseni: int = 1, kandidatu_smluv: int = 1) -> str:
@@ -602,13 +700,23 @@ def _jistota(h: dict, kandidatu_usneseni: int = 1, kandidatu_smluv: int = 1) -> 
 # --------------------------------------------------------------------------
 
 def _vystup_bodu(b: dict) -> dict:
-    return {
+    out = {
         "organ": b["organ"], "cj": b["cj"], "datum": b["datum"],
         "bod": b["bod"], "cislo_usneseni": b["cislo_usneseni"],
         "nazev": b["nazev"], "tagy": b["tagy"],
         "castka_czk": b["castka_czk"], "vysledek": b["vysledek"],
         "hlasovani_id": b["hlasovani_id"], "url": b["url"],
     }
+    if b.get("castka_v_textu_czk") is not None:
+        # Fakt, ne oprava: castka_czk vlastní modul A1 a nepřepisuje se tu.
+        out["castka_podezrela"] = True
+        out["castka_v_textu_czk"] = b["castka_v_textu_czk"]
+        out["poznamka_k_castce"] = (
+            "castka_czk vypadá jako číslo rozpočtové položky slepené s částkou "
+            f"({b['castka_czk']} Kč); v textu usnesení stojí "
+            f"{b['castka_v_textu_czk']} Kč. Hodnota se tu neopravuje — patří modulu A1."
+        )
+    return out
 
 
 def _vystup_smlouvy(s: dict) -> dict:
@@ -648,9 +756,13 @@ def _retez(bod: dict, smlouva: dict, h: dict, penize: dict[tuple[str, str], dict
     n_usn, n_sml = nejednoznacnost
     duvody = list(h["duvody"])
     if n_usn > 1:
-        duvody.append(f"stejně dobře sedí i {n_usn - 1} další usnesení")
+        duvody.append("stejně dobře sedí i "
+                      + _mnozne(n_usn - 1, "další usnesení", "další usnesení",
+                                "dalších usnesení"))
     if n_sml > 1:
-        duvody.append(f"témuž usnesení odpovídá i {n_sml - 1} dalších smluv téže protistrany")
+        duvody.append("k témuž usnesení se hlásí i "
+                      + _mnozne(n_sml - 1, "další smlouva", "další smlouvy", "dalších smluv")
+                      + " téže protistrany")
     return {
         "id": f"{bod['organ']}-{bod['datum'][:4]}-{bod['bod']}__{smlouva.get('id')}",
         "jistota": jistota or _jistota(h, n_usn, n_sml),
@@ -735,11 +847,25 @@ def _navrhy(log: Log, body: list[dict], smlouvy: list[dict]) -> tuple[list[dict]
 
 def _pocty_kandidatu(navrhy: list[dict], smlouvy: list[dict]
                      ) -> tuple[dict[int, int], dict[tuple[int, str], int]]:
-    """(smlouva → kolik bodů se o ni uchází, bod+firma → kolik jejích smluv)."""
+    """(smlouva → kolik bodů se o ni uchází, bod+firma → kolik smluv ho má za nejlepší).
+
+    Konkurenci na straně smluv nedělá každá smlouva, která se k bodu jakkoliv
+    hlásí — dodatek č. 7 se hlásí i k usnesení o výběru dodavatele, ale svoje
+    vlastní usnesení má lepší. Počítají se proto jen smlouvy, kterým je tenhle
+    bod tím nejlepším, co našly.
+    """
     dle_smlouvy: dict[int, int] = defaultdict(int)
-    dle_bodu: dict[tuple[int, str], int] = defaultdict(int)
+    nejlepsi: dict[int, tuple[int, int]] = {}   # smlouva → (skóre, bod)
     for n in navrhy:
         dle_smlouvy[n["sml_i"]] += 1
+        stav = nejlepsi.get(n["sml_i"])
+        if stav is None or n["h"]["skore"] > stav[0]:
+            nejlepsi[n["sml_i"]] = (n["h"]["skore"], n["bod_i"])
+
+    dle_bodu: dict[tuple[int, str], int] = defaultdict(int)
+    for n in navrhy:
+        if n["h"]["skore"] < nejlepsi[n["sml_i"]][0]:
+            continue  # tahle smlouva má lepšího kandidáta jinde
         dle_bodu[(n["bod_i"], _identita(smlouvy[n["sml_i"]]))] += 1
     return dle_smlouvy, dle_bodu
 
@@ -818,7 +944,10 @@ def nespojene(log: Log, body: list[dict], smlouvy: list[dict],
     """
     spojene_smlouvy = ({r["smlouva"]["id"] for r in retezy}
                        | {r["smlouva"]["id"] for r in pred})
-    spojene_body = {(r["usneseni"]["organ"], r["usneseni"]["bod"]) for r in retezy}
+    # Podpis před usnesením je varovný signál, ale smlouva k té věci
+    # existuje — tvrdit u takového bodu „smlouva nenalezena" by lhalo.
+    spojene_body = {(r["usneseni"]["organ"], r["usneseni"]["bod"])
+                    for r in retezy + pred}
 
     smlouvy_bez: list[dict] = []
     for s in smlouvy:
@@ -854,6 +983,30 @@ def nespojene(log: Log, body: list[dict], smlouvy: list[dict],
 # Běh
 # --------------------------------------------------------------------------
 
+JISTOTY = {"vysoka", "stredni", "nizka"}
+
+
+def zkontroluj(retezy: list[dict], pred: list[dict]) -> None:
+    """Tichý nesmysl na výstupu je horší než spadlý běh — radši spadnout.
+
+    Kontroluje se to, co by web bral jako danost: že řetěz drží identita,
+    že jistota je z číselníku a že se v `retezy` neschová smlouva podepsaná
+    před usnesením (ta patří jen do `podpis_pred_usnesenim`).
+    """
+    if not retezy:
+        raise ZdrojSelhal("Nevznikl ani jeden řetěz — párování je rozbité.")
+    for r in retezy:
+        if r["jistota"] not in JISTOTY:
+            raise ZdrojSelhal(f"Neznámá jistota {r['jistota']!r} u řetězu {r['id']}")
+        if r["odstup_dni"] < 0:
+            raise ZdrojSelhal(f"Řetěz {r['id']} má podpis před usnesením, patří jinam")
+        if not ({"ico", "nazev", "cislo_smlouvy"} & set(r["signaly"])):
+            raise ZdrojSelhal(f"Řetěz {r['id']} nemá identitní signál — neodůvodnitelné")
+    for r in pred:
+        if r["odstup_dni"] >= 0:
+            raise ZdrojSelhal(f"V podpis_pred_usnesenim je řetěz {r['id']} s kladným odstupem")
+
+
 def _statistika(retezy: list[dict], pred: list[dict],
                 body: list[dict], smlouvy: list[dict]) -> dict:
     dle_jistoty = {"vysoka": 0, "stredni": 0, "nizka": 0}
@@ -882,7 +1035,8 @@ METODIKA = {
     ),
     "jistota": {
         "vysoka": ("v usnesení je IČO protistrany (nebo číslo smlouvy), sedí částka "
-                   "— i po přepočtu DPH — a smlouva je podepsaná po usnesení"),
+                   "— i po přepočtu DPH — smlouva je podepsaná po usnesení a žádná "
+                   "jiná dvojice se o totéž neuchází"),
         "stredni": "identita a čas sedí, ale chybí jedna z tvrdých indicií",
         "nizka": ("identita sedí, zbytek ne. Web to MUSÍ označit jako "
                   "nepotvrzenou domněnku, ne jako zjištění."),
@@ -895,9 +1049,21 @@ METODIKA = {
             "usnesením není shoda — je v poli podpis_pred_usnesenim."),
     "sklonovani": ("Názvy se v usneseních skloňují, hledá se proto kmen slova. "
                    "Shoda podle názvu je tím měkčí než shoda podle IČO."),
-    "vice_kandidatu": (f"U jedné smlouvy se ukládá až {MAX_KANDIDATU} bodů, když mají "
+    "vice_kandidatu": (f"U jedné smlouvy se ukládají až {MAX_KANDIDATU} body, když mají "
                        "srovnatelné skóre. Rámcová smlouva a její dodatky se "
                        "schvalují opakovaně a vybrat jeden bod by bylo hádání."),
+    "jednoznacnost": ("kandidatu_usneseni = kolik bodů se o tutéž smlouvu uchází, "
+                      "kandidatu_smluv = kolik smluv téže protistrany má tentýž bod "
+                      "za svého nejlepšího kandidáta. Jednička v obou znamená, že "
+                      "dvojice je v datech jediná svého druhu. Když by konkurentů "
+                      f"bylo víc než {MAX_KANDIDATU} a nedrží to shoda částky ani "
+                      "číslo smlouvy, spojení se neuloží vůbec."),
+    "dodatky": ("Dvojice s různým číslem dodatku se zamítá — jsou to dvě listiny. "
+                "Shodné číslo dodatku naopak spojení výrazně posiluje."),
+    "castka_podezrela": ("U některých bodů je castka_czk zjevně slepená s číslem "
+                         "rozpočtové položky. Takový bod nese castka_podezrela a "
+                         "castka_v_textu_czk. Hodnota patří modulu A1 a tady se "
+                         "neopravuje."),
     "mesto_neni_identita": ("Název ani IČO města se jako identitní signál nepoužívá — "
                             "je v každém usnesení."),
     "registr_od": (f"Registr smluv běží od {REGISTR_OD}. Starší usnesení do seznamu "
@@ -917,6 +1083,7 @@ def main() -> int:
         penize = nacti_penize(log)
 
         retezy, pred = spoj(log, body, smlouvy, penize)
+        zkontroluj(retezy, pred)
         stat = _statistika(retezy, pred, body, smlouvy)
         log.info("řetězů", celkem=stat["retezu"], **stat["dle_jistoty"],
                  pred_usnesenim=stat["podpis_pred_usnesenim"])
@@ -943,6 +1110,17 @@ def main() -> int:
                                    f"{PRAH_VELKE_CZK} Kč."),
                 "protistrana_neurcena": ("U těchto smluv zdroj neuvedl druhou stranu. "
                                          "Nespojení je vada dat, ne nález."),
+                "co_smlouvu_nemá": (
+                    "Velká část schválených částek žádnou smlouvu v registru mít "
+                    "nemůže: rozpočtová opatření, zapojení fondů, ručení za úvěr, "
+                    "rozhodnutí valné hromady městské firmy nebo záměr prodeje. "
+                    "Seznam je proto podnět k dohledání, ne seznam pochybení."
+                ),
+                "castka_podezrela": (
+                    "U bodu je castka_czk zřejmě slepená s číslem rozpočtové "
+                    "položky (viz poznamka_k_castce). Hodnota patří modulu A1 "
+                    "a tady se neopravuje, jen se přiznává."
+                ),
             },
             "pocty": {
                 "smlouvy_bez_usneseni": len(nesp["smlouvy"]),

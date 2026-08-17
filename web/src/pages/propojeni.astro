@@ -32,6 +32,10 @@ const zProtistran = nactiProtistrany();
 const propojeni = zOsob.data;
 const zname = new Set((zProtistran.data.protistrany ?? []).map((p) => p.klic));
 const jmenaOsob = new Map((zLidi.data ?? []).map((o) => [o.id, o.jmeno]));
+// Jméno může být i v propojení — u lidí, kteří ještě nemají profil v osobnostech.
+for (const o of propojeni.osoby) {
+  if (o.jmeno && !jmenaOsob.has(o.osoba_id)) jmenaOsob.set(o.osoba_id, o.jmeno);
+}
 
 const osoby = [...propojeni.osoby].sort((a, b) =>
   orderCs(a.jmeno ?? jmenaOsob.get(a.osoba_id) ?? a.osoba_id, b.jmeno ?? jmenaOsob.get(b.osoba_id) ?? b.osoba_id),
@@ -305,7 +309,13 @@ function textObchodovani(r: { obchoduje: boolean | null; celkem: number | null }
                 <tr>
                   <td>{s.strana ?? '—'}</td>
                   <td>
-                    {s.osoba_id ? <a href={`/lide/${s.osoba_id}`}>{s.darce ?? s.osoba_id}</a> : (s.darce ?? '—')}
+                    {s.osoba_id ? (
+                      <a href={`/lide/${s.osoba_id}`}>
+                        {s.darce ?? jmenaOsob.get(s.osoba_id) ?? s.osoba_id}
+                      </a>
+                    ) : (
+                      (s.darce ?? '—')
+                    )}
                     {s.ico && <span class="mono"> ({s.ico})</span>}
                   </td>
                   <td>{s.typ ?? '—'}</td>

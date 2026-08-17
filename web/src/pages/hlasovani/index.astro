@@ -10,7 +10,7 @@ import { cislo, nazevOrganu, orderCs, sklonuj } from '../../lib/format';
 const zHlasovani = nactiHlasovani();
 const zTagu = nactiCiselnikTagu();
 const zVazeb = nactiVazbyHlasovani();
-const vazby = vazbyPodleHlasovani(zVazeb.data ?? []);
+const vazby = vazbyPodleHlasovani(zVazeb.data.vazby);
 const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 
 const polozky = zplostiHlasovani(zHlasovani.data ?? []);

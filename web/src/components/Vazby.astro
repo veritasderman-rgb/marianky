@@ -8,6 +8,7 @@
  * a neúčast při hlasování nijak nezvýrazňuje.
  */
 import type { VazbaHlasovani } from '../lib/vazby';
+import { popisVztahu } from '../lib/vazby';
 import { kc, nazevHlasu } from '../lib/format';
 
 export interface Props {
@@ -18,13 +19,21 @@ export interface Props {
   bezOsoby?: boolean;
   /**
    * Klíče protistran, pro které existuje stránka `/penize/[ico]`.
-   * Bez toho by odkaz na firmu, která s městem neobchoduje, vedl na 404.
+   * Bez toho by odkaz na firmu mimo registr smluv vedl na 404.
    */
   zname?: Set<string>;
 }
 
 const { vazby, otevreno = false, bezOsoby = false, zname } = Astro.props;
 const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico));
+
+/** Pravděpodobná identita se musí poznat od potvrzené. */
+const popisOvereniOsoby: Record<string, string> = {
+  potvrzeno: 'identita potvrzena',
+  pravdepodobne: 'identita jen pravděpodobná',
+  nejednoznacne: 'identita nejednoznačná',
+  nenalezeno: 'identita nedohledána',
+};
 ---
 
 {
@@ -34,15 +43,15 @@ const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico
         <span class="znacka znacka--vazba">vazba na dotčenou firmu</span>
         <span>
           {vazby.length === 1
-            ? 'Jeden z hlasujících je uveden ve firmě, které se bod týká'
+            ? 'Jeden z hlasujících je ve firmě, které se bod týká, veden jako angažovaný'
             : `Hlasujících s uvedenou vazbou na dotčenou firmu: ${vazby.length}`}
         </span>
       </summary>
 
       <p class="vazby__popis">
-        Údaje níže jsou věcný výpis ze zdrojů: kdo hlasoval, jak hlasoval, v jaké roli je ve firmě
-        uveden a kolik firma od města a jeho organizací dostala. Přehled z toho nevyvozuje žádný
-        závěr a nehodnotí, jestli měl někdo hlasovat jinak.
+        Věcný výpis ze zdrojů: kdo hlasoval, jak hlasoval, v jaké roli je ve firmě uveden a kolik
+        firma od města a jeho organizací dostala. Přehled z toho nevyvozuje žádný závěr a nehodnotí,
+        jestli měl někdo hlasovat jinak. Řada dotčených firem jsou organizace samotného města.
       </p>
 
       <div class="tabulka-obal">
@@ -52,6 +61,7 @@ const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico
               {!bezOsoby && <th scope="col">Osoba</th>}
               <th scope="col">Hlas</th>
               <th scope="col">Firma</th>
+              <th scope="col">Vztah firmy k městu</th>
               <th scope="col">Role ve firmě</th>
               <th scope="col" class="cislo">Od města celkem</th>
             </tr>
@@ -66,6 +76,14 @@ const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico
                     ) : (
                       (v.jmeno ?? 'neuvedena')
                     )}
+                    {v.overeni && v.overeni !== 'potvrzeno' && (
+                      <>
+                        <br />
+                        <span class="stav-dat__zdroj">
+                          {popisOvereniOsoby[v.overeni] ?? v.overeni}
+                        </span>
+                      </>
+                    )}
                   </td>
                 )}
                 <td>{v.hlas ? nazevHlasu(v.hlas) : 'v datech není'}</td>
@@ -75,10 +93,16 @@ const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico
                   ) : (
                     (v.firma ?? v.ico ?? 'neuvedena')
                   )}
-                  {v.ico && <span class="mono"> ({v.ico})</span>}
+                  {v.ico && (
+                    <>
+                      <br />
+                      <span class="mono">{v.ico}</span>
+                    </>
+                  )}
                 </td>
+                <td>{popisVztahu(v.vztah)}</td>
                 <td>{v.role.length > 0 ? v.role.join(', ') : 'v datech není'}</td>
-                <td class="cislo">{v.celkem_czk === null ? 'v datech není' : kc(v.celkem_czk)}</td>
+                <td class="cislo">{v.od_mesta_czk === null ? 'v datech není' : kc(v.od_mesta_czk)}</td>
               </tr>
             ))}
           </tbody>

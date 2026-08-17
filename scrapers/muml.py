@@ -23,6 +23,7 @@ vracejí 404), takže se vše sbírá z HTML a hlídá přes ``scrapers/snapshot
 from __future__ import annotations
 
 import argparse
+import hashlib
 import re
 import sys
 import threading
@@ -89,6 +90,17 @@ def _stahni(url: str, *, max_age: int = CACHE_LISTING, pokusy: int = 4) -> str:
     if not isinstance(html, str):  # pragma: no cover — binary=False vrací str
         html = html.decode("utf-8", errors="replace")
     return html
+
+
+def _v_cache(url: str) -> bool:
+    """Je stránka už stažená v diskové cache?
+
+    Zrcadlí způsob, jakým si klíč počítá ``core.fetch``. Používá se jen jako
+    optimalizace: když se splete, vrátí False a dotaz se prostě přeskočí —
+    nikdy z toho nevznikne špatný údaj.
+    """
+    klic = hashlib.sha256(url.encode()).hexdigest()[:24]
+    return (core.CACHE / "txt" / f"{klic}.txt").exists()
 
 
 def _hlavni(html: str, url: str) -> HTMLParser:
@@ -356,8 +368,8 @@ def _ud_roky(log: core.Log) -> list[int]:
 
 
 def _ud_detail(z: dict, nezdary: Nezdary) -> None:
-    if nezdary.preskocit():
-        return
+    if nezdary.preskocit() and not _v_cache(z["url"]):
+        return  # pojistka sepnula; co je v cache, dobereme, na síť už nesaháme
     try:
         node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:
@@ -503,8 +515,8 @@ def _novinky_pocet_stran(html: str) -> tuple[int, int]:
 
 
 def _novinka_detail(z: dict, nezdary: Nezdary) -> None:
-    if nezdary.preskocit():
-        return
+    if nezdary.preskocit() and not _v_cache(z["url"]):
+        return  # pojistka sepnula; co je v cache, dobereme, na síť už nesaháme
     try:
         node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:
@@ -668,8 +680,8 @@ def _akce_listing(html: str, url: str) -> tuple[list[dict], int]:
 
 
 def _akce_detail(z: dict, nezdary: Nezdary) -> None:
-    if nezdary.preskocit():
-        return
+    if nezdary.preskocit() and not _v_cache(z["url"]):
+        return  # pojistka sepnula; co je v cache, dobereme, na síť už nesaháme
     try:
         html = _stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2)
     except ZdrojSelhal as e:
@@ -1126,8 +1138,8 @@ SPOLECNOSTI_URL = f"{BASE}/urad/povinne-informace/subjekt-obchodni-spolecnosti-8
 
 
 def _spolecnost_detail(z: dict, nezdary: Nezdary) -> None:
-    if nezdary.preskocit():
-        return
+    if nezdary.preskocit() and not _v_cache(z["url"]):
+        return  # pojistka sepnula; co je v cache, dobereme, na síť už nesaháme
     try:
         node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:

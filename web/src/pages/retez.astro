@@ -37,7 +37,10 @@ const dlazdice: Polozka[] = maData
       {
         popisek: 'Nalezených spojení',
         hodnota: cislo(retezy.length),
-        doplnek: 'usnesení spojené se smlouvou',
+        doplnek:
+          pocet(null) > 0
+            ? `usnesení spojené se smlouvou · u ${cislo(pocet(null))} zdroj jistotu neuvádí`
+            : 'usnesení spojené se smlouvou',
       },
       {
         popisek: 'S vysokou jistotou',

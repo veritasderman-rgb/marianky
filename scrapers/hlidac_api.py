@@ -123,9 +123,16 @@ def prevedi(s: dict, ico: str) -> dict:
         "protistrana_ico": p_ico,
         "protistrana": p_nazev,
         "smer": _smer(s, ico),
-        # Hlídač si sám značí vazbu smlouvy na politiky — cenný signál,
-        # který přes MCP nástroje nebyl dostupný.
-        "vazba_na_politiky": bool(s.get("sVazbouNaPolitiky")),
+        # POZOR: `sVazbouNaPolitiky` API v2 NEVYPLŇUJE — vrací null v seznamu
+        # i v detailu a filtr `sVazbouNaPolitiky:1` nevrací nic. Původně tu
+        # bylo bool(...), což z chybějícího údaje udělalo `false`, a všech
+        # 6 521 smluv tak tvrdilo „ověřeno: bez vazby na politiky", ačkoliv
+        # pravda je „nevíme". Necháváme `null` — neznámý údaj se nesmí tvářit
+        # jako zjištěná nula.
+        #
+        # Vazbu na politiky lze doložit jinudy a spolehlivěji: přes angažmá
+        # osoby ve firmě (viz pipeline/propojeni.py).
+        "vazba_na_politiky": s.get("sVazbouNaPolitiky"),
         "bez_ceny": _cislo(s.get("calculatedPriceWithVATinCZK")) is None,
     }
 

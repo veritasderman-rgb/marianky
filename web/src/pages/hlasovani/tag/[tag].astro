@@ -36,7 +36,7 @@ const { tag, polozky } = Astro.props as Props;
 const zHlasovani = nactiHlasovani();
 const zTagu = nactiCiselnikTagu();
 const ciselnikMapa = mapaTagu(zTagu.data?.tagy ?? []);
-const vazby = vazbyPodleHlasovani(nactiVazbyHlasovani().data ?? []);
+const vazby = vazbyPodleHlasovani(nactiVazbyHlasovani().data.vazby);
 const zname = new Set((nactiProtistrany().data.protistrany ?? []).map((p) => p.klic));
 const organy = [...new Set(polozky.map((p) => p.organ))].sort(orderCs);
 const roky = [...new Set(polozky.map((p) => p.rok).filter((r): r is number => r !== null))].sort((a, b) => b - a);
