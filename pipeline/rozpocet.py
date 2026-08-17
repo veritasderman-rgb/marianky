@@ -828,7 +828,7 @@ def main() -> int:
         plan = plan_vs_skutecnost(osa, struktura, cis_par)
         uloz(f"{VYSTUP}/plan_vs_skutecnost.json", plan)
 
-        majetek = majetek_zadluzenost(rozv, fin)
+        majetek = majetek_zadluzenost(rozv, fin, _ciselnik("polozky_vykazu"))
         uloz(f"{VYSTUP}/majetek_zadluzenost.json", majetek)
 
         orgs = organizace(rozv, vyzz, subjekty)

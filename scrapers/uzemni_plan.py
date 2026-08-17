@@ -693,6 +693,11 @@ RE_ODDELOVAC = re.compile(r"^_{5,}$")
 
 # Etapy pořizování územního plánu podle stavebního zákona. Přiřazují se
 # podle klíčových slov v textu kroku; pořadí rozhoduje o tom, co vyhraje.
+#
+# Na pořadí záleží víc, než je vidět: „před společným jednáním“ obsahuje
+# „společným jednáním“ a „zadáním veřejné zakázky“ obsahuje „zadání“.
+# Kdo by řadil od obecnějšího, zařadil by besedu před společným jednáním
+# do společného jednání a vyhlášení urbanistické soutěže do zadání.
 ETAPY = [
     ("schvaleni-stavajiciho-up", "Schválení platného územního plánu (2002)",
      re.compile(r"stávající\s+územní\s+plán|schválen\w*\s+zastupitelstvem\s+města\s+dne", re.I)),
@@ -702,20 +707,31 @@ ETAPY = [
      re.compile(r"pokyny\s+k\s+úpravě|úprav\w*\s+(návrhu|po\s+společném)|"
                 r"vyhodnocení\s+projednané\s+etapy|vyhodnocení\s+stanovisek|"
                 r"stanovisk\w+|dohodování", re.I)),
-    ("spolecne-jednani", "Společné jednání o návrhu",
-     re.compile(r"společn\w+\s+jednání|společném\s+projednání|připomínkovat", re.I)),
     ("navrh-pred-spolecnym-jednanim", "Pracovní návrh před společným jednáním",
      re.compile(r"před\s+společným\s+jednáním|beseda\s+s\s+veřejností|"
                 r"diskuze\s+nad\s+návrhem|dotazník|vlastní\s+podnět", re.I)),
+    ("spolecne-jednani", "Společné jednání o návrhu",
+     re.compile(r"společn\w+\s+jednání|společném\s+projednání|připomínkovat", re.I)),
     ("vydani-noveho-up", "Vydání nového územního plánu",
      re.compile(r"vydání\s+(nového\s+)?[Úú]zemního\s+plánu", re.I)),
-    ("zadani", "Zadání územního plánu",
-     re.compile(r"zadání", re.I)),
+    ("urbanisticka-soutez", "Urbanistická soutěž o návrh",
+     re.compile(r"urbanistick\w+\s+soutěž|soutěž\w*\s+o\s+návrh|soutěžní|ideov\w+\s+návrh", re.I)),
     # Web má v nadpisu překlep „průzlumy“ — zdroj se opravuje, ne obchází.
     ("pruzkumy-rozbory", "Doplňující průzkumy a rozbory",
      re.compile(r"pr[uů]z[kl]um\w*\s+a\s+rozbor|veřejné\s+setkání", re.I)),
-    ("urbanisticka-soutez", "Urbanistická soutěž o návrh",
-     re.compile(r"urbanistick\w+\s+soutěž|soutěž\w*\s+o\s+návrh|soutěžní|ideov\w+\s+návrh", re.I)),
+    ("zadani", "Zadání územního plánu",
+     re.compile(r"zadání", re.I)),
+    ("zahajeni-porizovani", "Rozhodnutí pořídit nový územní plán",
+     re.compile(r"záměr\w*\s+pořídit|pořídit\s+nový|rozhodnutí\s+o\s+pořízení", re.I)),
+    ("vyber-zpracovatele", "Výběr zpracovatele a smlouva o dílo",
+     re.compile(r"zadávací\w*\s+(řízení|dokumentac|podmínk)|výběr\s+dodavatele|"
+                r"veřejn\w+\s+zakázk|smlouv\w+\s+o\s+dílo|postoupení\s+smluv", re.I)),
+    ("financovani", "Financování pořizování",
+     re.compile(r"dotac|zapojení\s+(dotace|finančních)|rozpočtové\s+opatření|"
+                r"finanční\w*\s+prostředk", re.I)),
+    ("porizovatel-a-zastupitel", "Pořizovatel a určený zastupitel",
+     re.compile(r"určený\s+zastupitel|určení\s+člena\s+zastupitelstva|"
+                r"pořizování\s+územně\s+plánovací\s+dokumentace", re.I)),
 ]
 
 

@@ -10,7 +10,8 @@
     "Rozvahové hodnoty jsou NETTO za běžné období, tedy po odečtení oprávek.",
     "`uvery_celkem` je součet dlouhodobých (D.II.1.) a krátkodobých (D.III.1.) úvěrů. Když výkaz řádek nemá, je null — to není nula, ale „neuvedeno\".",
     "Cizí zdroje (D.) obsahují i běžné závazky vůči dodavatelům, takže se nerovnají dluhu. Zadluženost je `uvery_celkem`.",
-    "`financovani` je třída 8 rozpočtu: kladné číslo znamená, že město peníze do rozpočtu doplnilo (úvěrem nebo z účtů), záporné, že přebytek odložilo nebo splatilo dluh."
+    "`financovani` je třída 8 rozpočtu: kladné číslo znamená, že město peníze do rozpočtu doplnilo (úvěrem nebo z účtů), záporné, že přebytek odložilo nebo splatilo dluh.",
+    "`bezne_ucty_celkem.zdroj` říká, jestli součet běžných účtů vozí sám výkaz (`vykaz`), nebo v něm součtový řádek není (`neuvedeno`) — od roku 2026 tam není. Rozpis jednotlivých účtů je vždy."
   ],
   "roky": [
     {
@@ -41,9 +42,55 @@
         "dlouhodobe_pujcky_splaceno": -595940.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 121369260.0,
-        "koncovy_stav": 153805250.0,
-        "zmena": -32435990.0
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 49868270.0,
+            "koncovy_stav": 80422740.0,
+            "zmena": -30554480.0
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 71501000.0,
+            "koncovy_stav": 73382510.0,
+            "zmena": -1881510.0
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 121369260.0,
+            "koncovy_stav": 153805250.0,
+            "zmena": -32435990.0
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6060",
+            "nazev": "Zvláštní výdajový účet",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 121369260.0,
+          "koncovy_stav": 153805250.0,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -74,9 +121,55 @@
         "dlouhodobe_pujcky_splaceno": -650303.78
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 153805249.04,
-        "koncovy_stav": 101407225.73,
-        "zmena": 52398023.31
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 80422741.51,
+            "koncovy_stav": 26175631.38,
+            "zmena": 54247110.13
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 73382507.53,
+            "koncovy_stav": 75231594.35,
+            "zmena": -1849086.82
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 153805249.04,
+            "koncovy_stav": 101407225.73,
+            "zmena": 52398023.31
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6060",
+            "nazev": "Zvláštní výdajový účet",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 153805249.04,
+          "koncovy_stav": 101407225.73,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -107,9 +200,48 @@
         "dlouhodobe_pujcky_splaceno": -4430704.82
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 101407225.73,
-        "koncovy_stav": 99256865.18,
-        "zmena": 2150360.55
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 26175631.38,
+            "koncovy_stav": 21987239.72,
+            "zmena": 4188391.66
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 75231594.35,
+            "koncovy_stav": 77269625.46,
+            "zmena": -2038031.11
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 101407225.73,
+            "koncovy_stav": 99256865.18,
+            "zmena": 2150360.55
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 101407225.73,
+          "koncovy_stav": 99256865.18,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -140,9 +272,48 @@
         "dlouhodobe_pujcky_splaceno": -5715377.73
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 99256865.18,
-        "koncovy_stav": 136772149.77,
-        "zmena": -37515284.59
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 21987239.72,
+            "koncovy_stav": 59060485.45,
+            "zmena": -37073245.73
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 77269625.46,
+            "koncovy_stav": 77711664.32,
+            "zmena": -442038.86
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 99256865.18,
+            "koncovy_stav": 136772149.77,
+            "zmena": -37515284.59
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 99256865.18,
+          "koncovy_stav": 136772149.77,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -173,9 +344,48 @@
         "dlouhodobe_pujcky_splaceno": -5982171.05
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 136772149.77,
-        "koncovy_stav": 131803853.96,
-        "zmena": 4968295.81
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 59060485.45,
+            "koncovy_stav": 53050283.54,
+            "zmena": 6010201.91
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 77711664.32,
+            "koncovy_stav": 78753570.42,
+            "zmena": -1041906.1
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 136772149.77,
+            "koncovy_stav": 131803853.96,
+            "zmena": 4968295.81
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 136772149.77,
+          "koncovy_stav": 131803853.96,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -206,9 +416,48 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 131803853.96,
-        "koncovy_stav": 122686883.15,
-        "zmena": 9116970.81
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 53050283.54,
+            "koncovy_stav": 44045627.74,
+            "zmena": 9004655.8
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 78753570.42,
+            "koncovy_stav": 78641255.41,
+            "zmena": 112315.01
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 131803853.96,
+            "koncovy_stav": 122686883.15,
+            "zmena": 9116970.81
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6050",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 131803853.96,
+          "koncovy_stav": 122686883.15,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -239,9 +488,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 122686883.15,
-        "koncovy_stav": 165687403.01,
-        "zmena": -43000519.86
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 44045627.74,
+            "koncovy_stav": 86683421.91,
+            "zmena": -42637794.17
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 78641255.41,
+            "koncovy_stav": 79003981.1,
+            "zmena": -362725.69
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 122686883.15,
+            "koncovy_stav": 165687403.01,
+            "zmena": -43000519.86
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 122686883.15,
+          "koncovy_stav": 165687403.01,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -272,9 +553,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 165687403.01,
-        "koncovy_stav": 201030637.44,
-        "zmena": -35343234.43
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 86683421.91,
+            "koncovy_stav": 121812186.19,
+            "zmena": -35128764.28
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 79003981.1,
+            "koncovy_stav": 79218451.25,
+            "zmena": -214470.15
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 165687403.01,
+            "koncovy_stav": 201030637.44,
+            "zmena": -35343234.43
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 165687403.01,
+          "koncovy_stav": 201030637.44,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -305,9 +618,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 201030637.44,
-        "koncovy_stav": 194206847.02,
-        "zmena": 6823790.42
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 121812186.19,
+            "koncovy_stav": 114700857.7,
+            "zmena": 7111328.49
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 79218451.25,
+            "koncovy_stav": 79505989.32,
+            "zmena": -287538.07
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 201030637.44,
+            "koncovy_stav": 194206847.02,
+            "zmena": 6823790.42
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 201030637.44,
+          "koncovy_stav": 194206847.02,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -338,9 +683,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 194206847.02,
-        "koncovy_stav": 161206776.11,
-        "zmena": 33000070.91
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 114700857.7,
+            "koncovy_stav": 81464123.01,
+            "zmena": 33236734.69
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 79505989.32,
+            "koncovy_stav": 79742653.1,
+            "zmena": -236663.78
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 194206847.02,
+            "koncovy_stav": 161206776.11,
+            "zmena": 33000070.91
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 194206847.02,
+          "koncovy_stav": 161206776.11,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -371,9 +748,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 161206776.11,
-        "koncovy_stav": 180623168.79,
-        "zmena": -19416392.68
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 81464123.01,
+            "koncovy_stav": 100725109.02,
+            "zmena": -19260986.01
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 79742653.1,
+            "koncovy_stav": 79898059.77,
+            "zmena": -155406.67
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 161206776.11,
+            "koncovy_stav": 180623168.79,
+            "zmena": -19416392.68
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 161206776.11,
+          "koncovy_stav": 180623168.79,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -404,9 +813,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 180623168.79,
-        "koncovy_stav": 181983774.71,
-        "zmena": -1360605.92
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 100725109.02,
+            "koncovy_stav": 101681168.09,
+            "zmena": -956059.07
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 79898059.77,
+            "koncovy_stav": 80302606.62,
+            "zmena": -404546.85
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 180623168.79,
+            "koncovy_stav": 181983774.71,
+            "zmena": -1360605.92
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 180623168.79,
+          "koncovy_stav": 181983774.71,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -437,9 +878,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 181983774.71,
-        "koncovy_stav": 229044699.62,
-        "zmena": -47060924.91
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 101681168.09,
+            "koncovy_stav": 141872149.05,
+            "zmena": -40190980.96
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 80302606.62,
+            "koncovy_stav": 87172550.57,
+            "zmena": -6869943.95
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 181983774.71,
+            "koncovy_stav": 229044699.62,
+            "zmena": -47060924.91
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 181983774.71,
+          "koncovy_stav": 229044699.62,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -470,9 +943,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 229044699.62,
-        "koncovy_stav": 318217084.27,
-        "zmena": -89172384.65
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 141872149.05,
+            "koncovy_stav": 228279171.94,
+            "zmena": -86407022.89
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 87172550.57,
+            "koncovy_stav": 89937912.33,
+            "zmena": -2765361.76
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 229044699.62,
+            "koncovy_stav": 318217084.27,
+            "zmena": -89172384.65
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 229044699.62,
+          "koncovy_stav": 318217084.27,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -503,9 +1008,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 318217084.27,
-        "koncovy_stav": 308624095.64,
-        "zmena": 9592988.63
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 228279171.94,
+            "koncovy_stav": 299512641.43,
+            "zmena": -71233469.49
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 89937912.33,
+            "koncovy_stav": 9111454.21,
+            "zmena": 80826458.12
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 318217084.27,
+            "koncovy_stav": 308624095.64,
+            "zmena": 9592988.63
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 318217084.27,
+          "koncovy_stav": 308624095.64,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -536,9 +1073,41 @@
         "dlouhodobe_pujcky_splaceno": 0.0
       },
       "bankovni_ucty": {
-        "pocatecni_stav": 308624095.64,
-        "koncovy_stav": 266041414.21,
-        "zmena": 42582681.43
+        "ucty": [
+          {
+            "kod": "6010",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 299512641.43,
+            "koncovy_stav": 256830483.13,
+            "zmena": 42682158.3
+          },
+          {
+            "kod": "6020",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 9111454.21,
+            "koncovy_stav": 9210931.08,
+            "zmena": -99476.87
+          },
+          {
+            "kod": "6030",
+            "nazev": "Běžné účty celkem",
+            "pocatecni_stav": 308624095.64,
+            "koncovy_stav": 266041414.21,
+            "zmena": 42582681.43
+          },
+          {
+            "kod": "6040",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": 308624095.64,
+          "koncovy_stav": 266041414.21,
+          "zdroj": "vykaz"
+        }
       }
     },
     {
@@ -564,14 +1133,67 @@
         "celkem": null,
         "kratkodobe_pujcky_prijate": null,
         "kratkodobe_pujcky_splaceno": null,
-        "zmena_stavu_uctu": null,
+        "zmena_stavu_uctu": -5942640.09,
         "dlouhodobe_pujcky_prijate": null,
         "dlouhodobe_pujcky_splaceno": null
       },
       "bankovni_ucty": {
-        "pocatecni_stav": null,
-        "koncovy_stav": null,
-        "zmena": null
+        "ucty": [
+          {
+            "kod": "1",
+            "nazev": "Termínované vklady dlouhodobé",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "2",
+            "nazev": "Základní běžný účet ÚSC",
+            "pocatecni_stav": 256830483.13,
+            "koncovy_stav": 268215991.99,
+            "zmena": 11385508.86
+          },
+          {
+            "kod": "3",
+            "nazev": "Běžné účty fondů ÚSC",
+            "pocatecni_stav": 9210931.08,
+            "koncovy_stav": 3768062.31,
+            "zmena": -5442868.77
+          },
+          {
+            "kod": "4",
+            "nazev": "Běžný účet",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 0.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "5",
+            "nazev": "Termínované vklady krátkodobé",
+            "pocatecni_stav": 30000000.0,
+            "koncovy_stav": 30000000.0,
+            "zmena": 0.0
+          },
+          {
+            "kod": "6",
+            "nazev": "Jiné běžné účty",
+            "pocatecni_stav": 12068091.89,
+            "koncovy_stav": 2316897.51,
+            "zmena": -9751194.38
+          },
+          {
+            "kod": "7",
+            "nazev": "Pokladna",
+            "pocatecni_stav": 0.0,
+            "koncovy_stav": 101039.42,
+            "zmena": 101039.42
+          }
+        ],
+        "bezne_ucty_celkem": {
+          "pocatecni_stav": null,
+          "koncovy_stav": null,
+          "zdroj": "neuvedeno"
+        }
       }
     }
   ]
