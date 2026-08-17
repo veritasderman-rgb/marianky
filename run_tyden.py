@@ -33,6 +33,14 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.media",     "Mediální monitoring",            False),
     ("scrapers.lide",      "Aktualizace osobností",          False),
     ("scrapers.zaznamy",   "Záznamy zastupitelstva",         False),
+    ("scrapers.volby",     "Výsledky voleb po okrscích",     False),
+    ("scrapers.csu",       "Statistiky ČSÚ o městě",         False),
+    ("scrapers.firmy",     "Firmy se sídlem ve městě",       False),
+    # Pořadí je závazné: památky používají hranici obce z geodat
+    # k dohledání chráněných území. Bez ní proběhnou taky, jen se omezí
+    # na to, co uvádí katalog, a napíšou to do logu.
+    ("scrapers.geodata",   "Geodata a volební okrsky",       False),
+    ("scrapers.pamatky",   "Kulturní památky",               False),
 ]
 
 # Pořadí je závazné: propojení a řetěz čtou výstup agregace peněz,

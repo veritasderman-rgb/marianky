@@ -1,291 +1,536 @@
 /**
- * Firmy se sídlem ve městě — `data/firmy/` (ARES).
+ * Firmy se sídlem ve městě — `data/firmy/`.
  *
- * Web z těchhle dat nic nevyvozuje. Že firma sídlí ve městě, není zásluha ani
- * podezření; že obchoduje s městem, je doložený fakt z registru smluv. Tenhle
- * soubor ty dvě věci drží oddělené a ke každé „důležité" firmě přikládá
- * **kritérium**, podle kterého je za důležitou označená — bez něj by seznam
- * jen tvrdil „tahle je zajímavá" a nikdo by nevěděl proč.
+ * Zdroj má připravené i to nejdůležitější: `prehled/dulezite.json` nese ke
+ * každé zvýrazněné firmě seznam **kritérií**, podle kterých se do přehledu
+ * dostala, včetně metodiky. Web si tedy žádná kritéria nevymýšlí — přebírá je
+ * a jen je přeloží do věty, kterou je vidět u firmy.
+ *
+ * Zásady, které zdroj výslovně formuluje a web je musí přenést beze změny:
+ *   – `datum_zaniku: null` znamená **nevíme**, ne „trvá". Adresní index ARES
+ *     dávno zaniklé firmy nevede vůbec, takže osa zániků je neúplná.
+ *   – Počet zaměstnanců je **pásmo**, ne číslo, a u většiny subjektů chybí.
+ *     Chybějící údaj není nula.
+ *   – Obrat ARES nezveřejňuje. Pásmo obratu je jen u firem doplněných
+ *     z Hlídače státu.
+ *   – Chybějící kritérium „dotace" znamená NEVÍME, ne „dotace nedostává".
  */
-import { nactiAdresarSoubory, slug, type Nacteno, type Protistrana } from './data';
-import { ano, ico as icoZ, isoDatum, jeObjekt, rokZIso, txt, type Zaznam } from './tolerantni';
-import type { PropojeniOsob } from './vazby';
+import { nactiJson, slug, type Nacteno } from './data';
+import { cis, ico as icoZ, jeObjekt, objekty, texty, txt, type Zaznam } from './tolerantni';
 
 export interface Firma {
-  /** `null` u záznamu, kde zdroj IČO neuvádí. */
   ico: string | null;
   /** Stabilní klíč do URL — IČO tam, kde je, jinak slug z názvu. */
   klic: string;
   nazev: string;
   vznik: string | null;
+  /** `null` = zdroj datum výmazu nemá. NENÍ to „firma trvá". */
   zanik: string | null;
-  /** `null` = zdroj o tom mlčí. Není to totéž jako „zaniklá". */
-  aktivni: boolean | null;
-  obor: string | null;
-  nace: string | null;
+  /** `aktivni` | `v_likvidaci` | `zanikla` — přebírá se ze zdroje. */
+  stav: string | null;
   pravniForma: string | null;
-  sidlo: string | null;
-  url: string | null;
+  adresa: string | null;
+  /** `false` = ARES váže firmu k městu jen historickou adresou. */
+  sidloVObci: boolean | null;
+  obor: string | null;
+  oborSekce: string | null;
+  oborKod: string | null;
+  zamestnancuRozsah: string | null;
 }
 
-/** Kritérium, podle kterého je firma v přehledu označená za důležitou. */
-export interface Duvod {
-  klic: string;
+/** Kritérium, podle kterého je firma v přehledu zvýrazněná. */
+export interface Kriterium {
+  kod: string;
   nazev: string;
-  /** Čím konkrétně je kritérium naplněné — částka, počet, jména. */
+  /** Čím konkrétně je kritérium naplněné — částka, pásmo, rok. */
   detail: string | null;
+  zdroj: string | null;
 }
 
-export interface FirmaSKontextem extends Firma {
-  duvody: Duvod[];
-  /** Objem smluv od města. `null` = v registru smluv města firma není. */
+export interface HlidacDoplnek {
+  obratPasmo: string | null;
+  zamestnancuPasmo: string | null;
+  obor: string | null;
+  platceDph: boolean | null;
+  osobVeVedeni: number | null;
+  osobSVazbouNaPolitiku: number | null;
+  odkaz: string | null;
+}
+
+export interface DuleziaFirma extends Firma {
+  kriteria: Kriterium[];
+  hlidac: HlidacDoplnek | null;
+  /** Objem od města z registru smluv, když je firma protistranou. */
   odMesta: number | null;
-  mestu: number | null;
   smluv: number | null;
   prvniRok: number | null;
   posledniRok: number | null;
-  /** Klíč protistrany pro odkaz na `/penize/[ico]`. */
-  protistranaKlic: string | null;
-  /** `true` u organizací města. `null` = v datech to není. */
-  mestska: boolean | null;
-  osoby: { osoba_id: string | null; jmeno: string | null; role: string[] }[];
+  /** `true` u subjektů městského holdingu — přesun peněz uvnitř města. */
+  mestskyHolding: boolean;
+  vnitromestskyPrevod: boolean;
+  smer: string | null;
 }
 
-/* ─────────────────────────────  Čtení  ─────────────────────────────── */
+/* ─────────────────────  firmy/subjekty.json (všechny)  ─────────────── */
 
-const OBALY = ['firmy', 'subjekty', 'zaznamy', 'seznam', 'data', 'items', 'ekonomicke_subjekty'];
+export interface Subjekty {
+  firmy: Firma[];
+  zdroj: string | null;
+  uplnost: { hlasi: number | null; stazeno: number | null; chybi: number | null };
+  metodika: { klic: string; text: string }[];
+}
 
-function firmaZe(z: Zaznam, poradi: number, puvod: string): Firma | null {
-  const nazev = txt(z, 'nazev', 'název', 'obchodni_jmeno', 'obchodní_jméno', 'obchodniJmeno', 'name', 'firma');
+function firmaZe(z: Zaznam): Firma | null {
+  const nazev = txt(z, 'nazev');
   if (!nazev) return null;
-  const ico = icoZ(z, 'ico', 'IČO', 'ICO', 'ic', 'ico_subjektu');
-
+  const ico = icoZ(z, 'ico');
   return {
     ico,
-    klic: ico ?? `n-${slug(nazev) || `${puvod}-${poradi + 1}`}`,
+    klic: ico ?? `n-${slug(nazev) || 'firma'}`,
     nazev,
-    vznik: isoDatum(z, 'vznik', 'datum_vzniku', 'datumVzniku', 'zapis', 'zalozeni', 'od', 'zahajeni_cinnosti'),
-    zanik: isoDatum(z, 'zanik', 'zánik', 'datum_zaniku', 'datumZaniku', 'vymaz', 'do', 'ukonceni_cinnosti'),
-    aktivni: ano(z, 'aktivni', 'aktivní', 'active', 'existuje', 'v_provozu'),
-    obor: txt(z, 'obor', 'odvetvi', 'odvětví', 'cinnost', 'činnost', 'predmet_podnikani', 'kategorie', 'sekce'),
-    nace: txt(z, 'nace', 'NACE', 'cz_nace', 'nace_kod', 'kod_nace'),
-    pravniForma: txt(z, 'pravni_forma', 'právní_forma', 'pravniForma', 'forma', 'typ_subjektu'),
-    sidlo: txt(z, 'sidlo', 'sídlo', 'adresa', 'address', 'ulice'),
-    url: txt(z, 'url', 'odkaz', 'ares_url', 'link'),
+    vznik: txt(z, 'datum_vzniku'),
+    zanik: txt(z, 'datum_zaniku'),
+    stav: txt(z, 'stav'),
+    pravniForma: txt(z, 'pravni_forma_nazev'),
+    adresa: txt(z, 'adresa'),
+    sidloVObci: typeof z.sidlo_v_obci === 'boolean' ? z.sidlo_v_obci : null,
+    obor: txt(z, 'nace_prevazujici_nazev', 'obor'),
+    oborSekce: txt(z, 'nace_sekce_nazev', 'obor_sekce'),
+    oborKod: txt(z, 'nace_prevazujici', 'obor_kod'),
+    zamestnancuRozsah: txt(z, 'zamestnancu_rozsah'),
   };
 }
 
-/** Všechny firmy z `data/firmy/`. Duplicitní IČO se slučují na první výskyt. */
-export function nactiFirmy(): Nacteno<Firma[]> {
-  const v = nactiAdresarSoubory<unknown>('firmy', ['.json']);
-  const ven: Firma[] = [];
+export function nactiSubjektyFirem(): Nacteno<Subjekty> {
+  const v = nactiJson<unknown>('firmy/subjekty.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const uplnost = jeObjekt(k.uplnost) ? k.uplnost : null;
+  const metodika = jeObjekt(k.metodika) ? k.metodika : {};
+
   const videne = new Set<string>();
-
-  for (const s of v.data) {
-    const obsah = s.data;
-    let zaznamy: Zaznam[] = [];
-    if (Array.isArray(obsah)) zaznamy = obsah.filter(jeObjekt);
-    else if (jeObjekt(obsah)) {
-      const vnorene = OBALY.map((k) => obsah[k]).find(Array.isArray);
-      zaznamy = Array.isArray(vnorene) ? vnorene.filter(jeObjekt) : [obsah];
-    }
-
-    zaznamy.forEach((z, i) => {
-      const f = firmaZe(z, i, s.jmeno);
-      if (!f || videne.has(f.klic)) return;
+  const firmy = objekty(k, 'subjekty')
+    .map(firmaZe)
+    .filter((f): f is Firma => f !== null)
+    .filter((f) => {
+      if (videne.has(f.klic)) return false;
       videne.add(f.klic);
-      ven.push(f);
-    });
-  }
-
-  ven.sort((a, b) => a.nazev.localeCompare(b.nazev, 'cs-CZ'));
-  return { stav: v.stav, zdroj: v.zdroj, poznamka: v.poznamka, data: ven };
-}
-
-/* ────────────────────  Doplnění kontextu a kritérií  ───────────────── */
-
-export interface Kontext {
-  protistrany: Protistrana[];
-  propojeni: PropojeniOsob;
-  /** IČO organizací města z `config/subjekty.json`. */
-  mestskaIca: Set<string>;
-  kc: (v: number | null) => string;
-  cislo: (v: number | null) => string;
-}
-
-/**
- * Přilepí k firmám to, co o nich víme odjinud, a spočítá kritéria důležitosti.
- * Kritéria jsou uzavřený seznam — nová se nevymýšlí a každé nese detail.
- */
-export function sKontextem(firmy: Firma[], k: Kontext): FirmaSKontextem[] {
-  const podleIca = new Map<string, Protistrana>();
-  for (const p of k.protistrany) {
-    if (!p.ico) continue;
-    const stav = podleIca.get(p.ico);
-    // Firma může být zároveň dodavatel i odběratel; pro odkaz stačí ta větší.
-    if (!stav || (p.celkem_czk ?? 0) > (stav.celkem_czk ?? 0)) podleIca.set(p.ico, p);
-  }
-  const vydajePodleIca = new Map<string, Protistrana>();
-  const prijmyPodleIca = new Map<string, Protistrana>();
-  for (const p of k.protistrany) {
-    if (!p.ico) continue;
-    (p.smer === 'prijem' ? prijmyPodleIca : vydajePodleIca).set(p.ico, p);
-  }
-
-  const osobyUFirmy = new Map<string, { osoba_id: string | null; jmeno: string | null; role: string[] }[]>();
-  const mestskeZPropojeni = new Set<string>();
-  for (const o of k.propojeni.osoby ?? []) {
-    for (const f of o.firmy ?? []) {
-      if (!f.ico) continue;
-      if (f.vztah === 'mestsky-subjekt') mestskeZPropojeni.add(f.ico);
-      const seznam = osobyUFirmy.get(f.ico) ?? [];
-      if (!seznam.some((x) => x.osoba_id === o.osoba_id)) {
-        seznam.push({ osoba_id: o.osoba_id, jmeno: o.jmeno, role: f.role ?? [] });
-      }
-      osobyUFirmy.set(f.ico, seznam);
-    }
-  }
-
-  return firmy.map((f) => {
-    const ico = f.ico;
-    const vydaj = ico ? (vydajePodleIca.get(ico) ?? null) : null;
-    const prijem = ico ? (prijmyPodleIca.get(ico) ?? null) : null;
-    const hlavni = ico ? (podleIca.get(ico) ?? null) : null;
-    const osoby = ico ? (osobyUFirmy.get(ico) ?? []) : [];
-    const mestska = ico ? (k.mestskaIca.has(ico) || mestskeZPropojeni.has(ico) ? true : null) : null;
-
-    const duvody: Duvod[] = [];
-    if (mestska === true) {
-      duvody.push({
-        klic: 'organizace-mesta',
-        nazev: 'organizace města',
-        detail: 'Vede ji nebo vlastní město — platby jí nejsou platby cizí firmě.',
-      });
-    }
-    if (vydaj) {
-      duvody.push({
-        klic: 'dodavatel',
-        nazev: 'dodavatel města',
-        detail: `V registru smluv ${k.kc(vydaj.celkem_czk)} ve ${k.cislo(vydaj.smluv)} smlouvách, roky ${vydaj.prvni_rok}–${vydaj.posledni_rok}.`,
-      });
-    }
-    if (prijem) {
-      duvody.push({
-        klic: 'odberatel',
-        nazev: 'platí městu',
-        detail: `Město od ní inkasovalo ${k.kc(prijem.celkem_czk)} ve ${k.cislo(prijem.smluv)} smlouvách.`,
-      });
-    }
-    if (osoby.length > 0) {
-      const jmena = osoby.map((o) => o.jmeno ?? o.osoba_id ?? 'neuvedeno').slice(0, 4).join(', ');
-      duvody.push({
-        klic: 'vazba-na-samospravu',
-        nazev: 'je v ní uvedený někdo ze samosprávy',
-        detail: `V rejstříku je u firmy uvedeno: ${jmena}${osoby.length > 4 ? ` a další (${osoby.length} celkem)` : ''}. Zápis ve firmě je veřejný údaj — sám o sobě z něj nic neplyne.`,
-      });
-    }
-
-    return {
-      ...f,
-      duvody,
-      odMesta: vydaj?.celkem_czk ?? null,
-      mestu: prijem?.celkem_czk ?? null,
-      smluv: hlavni?.smluv ?? null,
-      prvniRok: hlavni?.prvni_rok ?? null,
-      posledniRok: hlavni?.posledni_rok ?? null,
-      protistranaKlic: hlavni?.klic ?? null,
-      mestska,
-      osoby,
-    };
-  });
-}
-
-/* ────────────────────────────  Přehledy  ───────────────────────────── */
-
-/** Počty vzniků a zániků po letech. Rok bez události zůstává v ose jako nula. */
-export function vznikyAZaniky(firmy: Firma[]): {
-  roky: number[];
-  vzniky: number[];
-  zaniky: number[];
-  bezData: { vznik: number; zanik: number };
-} {
-  const vzniky = new Map<number, number>();
-  const zaniky = new Map<number, number>();
-  let bezVzniku = 0;
-  let bezZaniku = 0;
-
-  for (const f of firmy) {
-    const rv = rokZIso(f.vznik);
-    if (rv === null) bezVzniku++;
-    else vzniky.set(rv, (vzniky.get(rv) ?? 0) + 1);
-    if (f.zanik) {
-      const rz = rokZIso(f.zanik);
-      if (rz === null) bezZaniku++;
-      else zaniky.set(rz, (zaniky.get(rz) ?? 0) + 1);
-    }
-  }
-
-  const vsechny = [...vzniky.keys(), ...zaniky.keys()];
-  if (vsechny.length === 0) {
-    return { roky: [], vzniky: [], zaniky: [], bezData: { vznik: bezVzniku, zanik: bezZaniku } };
-  }
-  const od = Math.min(...vsechny);
-  const doo = Math.max(...vsechny);
-  const roky: number[] = [];
-  for (let r = od; r <= doo; r++) roky.push(r);
+      return true;
+    })
+    .sort((a, b) => a.nazev.localeCompare(b.nazev, 'cs-CZ'));
 
   return {
-    roky,
-    vzniky: roky.map((r) => vzniky.get(r) ?? 0),
-    zaniky: roky.map((r) => zaniky.get(r) ?? 0),
-    bezData: { vznik: bezVzniku, zanik: bezZaniku },
+    ...v,
+    data: {
+      firmy,
+      zdroj: txt(k, 'zdroj'),
+      uplnost: {
+        hlasi: cis(uplnost, 'ares_hlasi'),
+        stazeno: cis(uplnost, 'stazeno'),
+        chybi: cis(uplnost, 'chybi'),
+      },
+      metodika: Object.entries(metodika)
+        .filter(([, x]) => typeof x === 'string')
+        .map(([klic, text]) => ({ klic, text: text as string })),
+    },
   };
 }
 
-/** Firmy podle oborů, od nejčetnějšího. Bez oboru se nezahazují. */
-export function podleOboru(firmy: Firma[]): { nazev: string; pocet: number }[] {
-  const m = new Map<string, number>();
-  for (const f of firmy) {
-    const o = f.obor ?? f.nace ?? 'obor v datech není';
-    m.set(o, (m.get(o) ?? 0) + 1);
+/* ───────────────────  firmy/prehled/dulezite.json  ─────────────────── */
+
+const NAZVY_KRITERII: Record<string, string> = {
+  obchoduje_s_mestem: 'obchoduje s městem',
+  mestsky_holding: 'subjekt městského holdingu',
+  zamestnavatel: 'zaměstnavatel s doloženým počtem pracovníků',
+  pametnik: 'pamětník — právnická osoba starší roku 1995',
+  dotace: 'doložená dotace',
+  sledovany_subjekt: 'sledovaný subjekt projektu',
+  obor_lazenskeho_mesta: 'obor lázeňského města',
+  forma_s_kapitalem: 'právní forma se základním kapitálem',
+};
+
+function kriteriumZe(z: Zaznam, kcFormat: (v: number | null) => string, cisloFormat: (v: number | null) => string): Kriterium | null {
+  const kod = txt(z, 'kod');
+  if (!kod) return null;
+  const popis = txt(z, 'popis');
+  const jednotka = txt(z, 'jednotka');
+  const hodnotaCislo = typeof z.hodnota === 'number' ? z.hodnota : null;
+  const hodnotaText = typeof z.hodnota === 'string' ? z.hodnota : null;
+
+  const kusy: string[] = [];
+  if (popis) kusy.push(popis);
+
+  if (kod === 'obchoduje_s_mestem') {
+    const smluv = cis(z, 'smluv');
+    const bezCeny = cis(z, 'smluv_bez_ceny');
+    const od = cis(z, 'prvni_rok');
+    const doo = cis(z, 'posledni_rok');
+    const cast: string[] = [];
+    if (hodnotaCislo !== null) cast.push(jednotka === 'Kč' ? kcFormat(hodnotaCislo) : `${cisloFormat(hodnotaCislo)} ${jednotka ?? ''}`.trim());
+    if (smluv !== null) cast.push(`${cisloFormat(smluv)} smluv`);
+    if (bezCeny !== null && bezCeny > 0) cast.push(`z toho ${cisloFormat(bezCeny)} bez uvedené ceny`);
+    if (od !== null && doo !== null) cast.push(`roky ${od}–${doo}`);
+    if (z.vnitromestsky_prevod === true) cast.push('jde o přesun uvnitř města, ne platbu cizí firmě');
+    if (cast.length > 0) kusy.push(cast.join(', '));
+  } else if (hodnotaText) {
+    kusy.push(hodnotaText);
+  } else if (hodnotaCislo !== null) {
+    kusy.push(jednotka === 'Kč' ? kcFormat(hodnotaCislo) : `${cisloFormat(hodnotaCislo)}${jednotka ? ` ${jednotka}` : ''}`);
   }
-  return [...m.entries()]
-    .map(([nazev, pocet]) => ({ nazev, pocet }))
-    .sort((a, b) => b.pocet - a.pocet || a.nazev.localeCompare(b.nazev, 'cs-CZ'));
+
+  const nazevCinnosti = txt(z, 'nazev_cinnosti');
+  if (nazevCinnosti && kod === 'obor_lazenskeho_mesta') kusy.push(nazevCinnosti);
+
+  return {
+    kod,
+    nazev: NAZVY_KRITERII[kod] ?? kod.replace(/_/g, ' '),
+    detail: kusy.length > 0 ? kusy.join(' — ') : null,
+    zdroj: txt(z, 'zdroj'),
+  };
 }
 
-/** Firmy, které jsou v `data/firmy/` a zároveň v registru smluv města. */
-export function obchodujiciSMestem(firmy: FirmaSKontextem[]): FirmaSKontextem[] {
-  return firmy.filter((f) => f.duvody.some((d) => d.klic === 'dodavatel' || d.klic === 'odberatel'));
+function hlidacZe(z: Zaznam | null): HlidacDoplnek | null {
+  if (!z) return null;
+  return {
+    obratPasmo: txt(z, 'obrat_pasmo'),
+    zamestnancuPasmo: txt(z, 'zamestnancu_pasmo'),
+    obor: txt(z, 'obor'),
+    platceDph: typeof z.platce_dph === 'boolean' ? z.platce_dph : null,
+    osobVeVedeni: cis(z, 'osob_ve_vedeni'),
+    osobSVazbouNaPolitiku: cis(z, 'osoby_s_vazbou_na_politiku'),
+    odkaz: txt(z, 'odkaz'),
+  };
 }
 
-/** Počet živých firem na konci každého roku — pro časovou osu vzniků a zániků. */
-export function zivychNaKonciRoku(firmy: Firma[], roky: number[]): (number | null)[] {
+export interface Dulezite {
+  firmy: DuleziaFirma[];
+  metodika: { klic: string; text: string }[];
+  poctyPodleKriteria: { kod: string; nazev: string; pocet: number }[];
+  silnaKriteria: string[];
+  zebricky: { klic: string; nazev: string; polozky: { ico: string | null; nazev: string; popis: string | null }[] }[];
+}
+
+const NAZVY_ZEBRICKU: Record<string, string> = {
+  nejvetsi_zamestnavatele: 'Největší zaměstnavatelé',
+  nejvetsi_protistrany_mesta: 'Největší protistrany města',
+  nejstarsi: 'Nejstarší subjekty',
+  lazenstvi_a_cestovni_ruch: 'Lázeňství a cestovní ruch',
+};
+
+export function nactiDulezite(
+  kcFormat: (v: number | null) => string,
+  cisloFormat: (v: number | null) => string,
+): Nacteno<Dulezite> {
+  const v = nactiJson<unknown>('firmy/prehled/dulezite.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const metodika = jeObjekt(k.metodika) ? k.metodika : {};
+  const pocty = jeObjekt(k.pocty_podle_kriteria) ? k.pocty_podle_kriteria : {};
+  const zebrickyZ = jeObjekt(k.zebricky) ? k.zebricky : {};
+
+  const firmy: DuleziaFirma[] = objekty(k, 'firmy')
+    .map((z) => {
+      const zaklad = firmaZe(z);
+      if (!zaklad) return null;
+      const kriteria = objekty(z, 'kriteria')
+        .map((x) => kriteriumZe(x, kcFormat, cisloFormat))
+        .filter((x): x is Kriterium => x !== null);
+      const obchod = objekty(z, 'kriteria').find((x) => txt(x, 'kod') === 'obchoduje_s_mestem') ?? null;
+
+      return {
+        ...zaklad,
+        kriteria,
+        hlidac: hlidacZe(jeObjekt(z.hlidac_statu) ? z.hlidac_statu : null),
+        odMesta: obchod ? (typeof obchod.hodnota === 'number' ? obchod.hodnota : null) : null,
+        smluv: cis(obchod, 'smluv'),
+        prvniRok: cis(obchod, 'prvni_rok'),
+        posledniRok: cis(obchod, 'posledni_rok'),
+        mestskyHolding: kriteria.some((x) => x.kod === 'mestsky_holding'),
+        vnitromestskyPrevod: obchod?.vnitromestsky_prevod === true,
+        smer: obchod ? txt(obchod, 'smer') : null,
+      };
+    })
+    .filter((f): f is DuleziaFirma => f !== null);
+
+  return {
+    ...v,
+    data: {
+      firmy,
+      metodika: Object.entries(metodika)
+        .filter(([, x]) => typeof x === 'string')
+        .map(([klic, text]) => ({ klic, text: text as string })),
+      poctyPodleKriteria: Object.entries(pocty)
+        .filter(([, x]) => typeof x === 'number')
+        .map(([kod, pocet]) => ({ kod, nazev: NAZVY_KRITERII[kod] ?? kod.replace(/_/g, ' '), pocet: pocet as number }))
+        .sort((a, b) => b.pocet - a.pocet),
+      silnaKriteria: Array.isArray(metodika.silna_kriteria)
+        ? (metodika.silna_kriteria as unknown[]).filter((x): x is string => typeof x === 'string')
+        : texty(metodika, 'silna_kriteria'),
+      zebricky: Object.entries(zebrickyZ)
+        .filter(([, x]) => Array.isArray(x))
+        .map(([klic, x]) => ({
+          klic,
+          nazev: NAZVY_ZEBRICKU[klic] ?? klic.replace(/_/g, ' '),
+          polozky: (x as unknown[]).filter(jeObjekt).map((p) => ({
+            ico: icoZ(p, 'ico'),
+            nazev: txt(p, 'nazev') ?? 'neuvedeno',
+            popis:
+              txt(p, 'zamestnancu_rozsah', 'obor', 'popis') ??
+              (cis(p, 'celkem_czk') !== null ? kcFormat(cis(p, 'celkem_czk')) : null),
+          })),
+        })),
+    },
+  };
+}
+
+/* ──────────────────  firmy/prehled/mesto_a_firmy.json  ─────────────── */
+
+export interface FirmaSMestem {
+  ico: string;
+  nazev: string;
+  smer: string | null;
+  celkem: number | null;
+  smluv: number | null;
+  smluvBezCeny: number | null;
+  prvniRok: number | null;
+  posledniRok: number | null;
+  aktivni: boolean | null;
+  vnitromestskyPrevod: boolean;
+  mestskyHolding: boolean;
+  poLetech: Map<number, number>;
+}
+
+export interface MestoAFirmy {
+  firmy: FirmaSMestem[];
+  souhrn: {
+    protistranSIcem: number | null;
+    veMeste: number | null;
+    mimoMesto: number | null;
+    objemVeMeste: number | null;
+    objemVsech: number | null;
+  };
+  metodika: { klic: string; text: string }[];
+}
+
+export function nactiMestoAFirmy(): Nacteno<MestoAFirmy> {
+  const v = nactiJson<unknown>('firmy/prehled/mesto_a_firmy.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const souhrn = jeObjekt(k.souhrn) ? k.souhrn : null;
+  const metodika = jeObjekt(k.metodika) ? k.metodika : {};
+
+  const firmy: FirmaSMestem[] = objekty(k, 'firmy')
+    .map((z) => {
+      const ico = icoZ(z, 'ico');
+      const nazev = txt(z, 'nazev_ares', 'nazev', 'nazev_v_registru');
+      if (!ico || !nazev) return null;
+      const poLetech = new Map<number, number>();
+      if (jeObjekt(z.po_letech)) {
+        for (const [rok, castka] of Object.entries(z.po_letech)) {
+          const r = Number(rok);
+          if (Number.isFinite(r) && typeof castka === 'number') poLetech.set(r, castka);
+        }
+      }
+      return {
+        ico,
+        nazev,
+        smer: txt(z, 'smer'),
+        celkem: cis(z, 'celkem_czk'),
+        smluv: cis(z, 'smluv'),
+        smluvBezCeny: cis(z, 'smluv_bez_ceny'),
+        prvniRok: cis(z, 'prvni_rok'),
+        posledniRok: cis(z, 'posledni_rok'),
+        aktivni: typeof z.aktivni_v_poslednim_roce === 'boolean' ? z.aktivni_v_poslednim_roce : null,
+        vnitromestskyPrevod: z.vnitromestsky_prevod === true,
+        mestskyHolding: z.mestsky_holding === true,
+        poLetech,
+      };
+    })
+    .filter((f): f is FirmaSMestem => f !== null)
+    .sort((a, b) => (b.celkem ?? 0) - (a.celkem ?? 0));
+
+  return {
+    ...v,
+    data: {
+      firmy,
+      souhrn: {
+        protistranSIcem: cis(souhrn, 'protistran_mesta_s_icem'),
+        veMeste: cis(souhrn, 'z_toho_se_sidlem_ve_meste'),
+        mimoMesto: cis(souhrn, 'z_toho_mimo_mesto'),
+        objemVeMeste: cis(souhrn, 'objem_protistran_ve_meste_czk'),
+        objemVsech: cis(souhrn, 'objem_vsech_protistran_czk'),
+      },
+      metodika: Object.entries(metodika)
+        .filter(([, x]) => typeof x === 'string')
+        .map(([klic, text]) => ({ klic, text: text as string })),
+    },
+  };
+}
+
+/* ─────────────────────  firmy/prehled/obory.json  ──────────────────── */
+
+export interface PohledOboru {
+  klic: string;
+  nazev: string;
+  polozky: { nazev: string; pocet: number }[];
+}
+
+export interface Obory {
+  pohledy: PohledOboru[];
+  /** Který pohled zdroj doporučuje číst a proč. */
+  kteryCist: string | null;
+  mereni: string | null;
+  bezOboru: { vsechny: number | null; pravnicke: number | null; poznamka: string | null };
+}
+
+const NAZVY_POHLEDU: Record<string, string> = {
+  sekce_podnikatelske_subjekty: 'Podnikatelské subjekty podle sekce',
+  sekce_vsechny_subjekty: 'Všechny subjekty podle sekce',
+  sekce_pravnicke_osoby: 'Právnické osoby podle sekce',
+  oddily_podnikatelske_subjekty: 'Podnikatelské subjekty podle oddílu',
+  oddily: 'Všechny subjekty podle oddílu',
+};
+
+export function nactiObory(): Nacteno<Obory> {
+  const v = nactiJson<unknown>('firmy/prehled/obory.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const bez = jeObjekt(k.bez_urceneho_oboru) ? k.bez_urceneho_oboru : null;
+
+  const pohledy: PohledOboru[] = Object.keys(NAZVY_POHLEDU)
+    .filter((klic) => Array.isArray(k[klic]))
+    .map((klic) => ({
+      klic,
+      nazev: NAZVY_POHLEDU[klic],
+      polozky: (k[klic] as unknown[])
+        .filter(jeObjekt)
+        .map((p) => ({ nazev: txt(p, 'nazev') ?? '—', pocet: cis(p, 'subjektu') ?? 0 }))
+        .sort((a, b) => b.pocet - a.pocet),
+    }));
+
+  return {
+    ...v,
+    data: {
+      pohledy,
+      kteryCist: txt(k, 'ktery_pohled_cist'),
+      mereni: txt(k, 'mereni'),
+      bezOboru: {
+        vsechny: cis(bez, 'vsechny_subjekty'),
+        pravnicke: cis(bez, 'pravnicke_osoby'),
+        poznamka: txt(bez, 'poznamka'),
+      },
+    },
+  };
+}
+
+/* ────────────────  firmy/prehled/casova_osa.json a souhrn  ─────────── */
+
+export interface CasovaRadaFirem {
+  vzniky: Map<number, number>;
+  zaniky: Map<number, number>;
+  mereniVzniku: string | null;
+  mereniZaniku: string | null;
+  stavZaniku: string | null;
+  dohledanoZaniku: number | null;
+}
+
+function mapaLet(z: Zaznam | null): Map<number, number> {
+  const ven = new Map<number, number>();
+  const p = z && jeObjekt(z.po_letech) ? z.po_letech : null;
+  if (!p) return ven;
+  for (const [rok, pocet] of Object.entries(p)) {
+    const r = Number(rok);
+    if (Number.isFinite(r) && typeof pocet === 'number') ven.set(r, pocet);
+  }
+  return ven;
+}
+
+export function nactiCasovouRaduFirem(): Nacteno<CasovaRadaFirem> {
+  const v = nactiJson<unknown>('firmy/prehled/casova_osa.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const vzniky = jeObjekt(k.vzniky) ? k.vzniky : null;
+  const zaniky = jeObjekt(k.zaniky) ? k.zaniky : null;
+  return {
+    ...v,
+    data: {
+      vzniky: mapaLet(vzniky),
+      zaniky: mapaLet(zaniky),
+      mereniVzniku: txt(vzniky, 'mereni'),
+      mereniZaniku: txt(zaniky, 'mereni'),
+      stavZaniku: txt(zaniky, 'stav'),
+      dohledanoZaniku: cis(zaniky, 'dohledano_celkem'),
+    },
+  };
+}
+
+export interface SouhrnFirem {
+  celkem: number | null;
+  podleStavu: { nazev: string; pocet: number }[];
+  pravnickychOsob: number | null;
+  fyzickychOsob: number | null;
+  sidloMimoObec: { pocet: number | null; poznamka: string | null };
+  velikost: { sUdajem: number | null; bezUdaje: number | null; od10: number | null; od100: number | null; poznamka: string | null };
+  vPrehleduDulezitych: number | null;
+  napojenychNaRegistr: number | null;
+  vznikyRozsah: { od: number | null; do: number | null };
+  zdroj: string | null;
+}
+
+export function nactiSouhrnFirem(): Nacteno<SouhrnFirem> {
+  const v = nactiJson<unknown>('firmy/prehled/souhrn.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  const stavy = jeObjekt(k.podle_stavu) ? k.podle_stavu : {};
+  const mimo = jeObjekt(k.sidlo_dnes_mimo_obec) ? k.sidlo_dnes_mimo_obec : null;
+  const velikost = jeObjekt(k.velikost) ? k.velikost : null;
+  const rozsah = jeObjekt(k.vzniky_rozsah) ? k.vzniky_rozsah : null;
+
+  const NAZVY_STAVU: Record<string, string> = {
+    aktivni: 'aktivní',
+    v_likvidaci: 'v likvidaci',
+    zanikla: 'zaniklé',
+  };
+
+  return {
+    ...v,
+    data: {
+      celkem: cis(k, 'subjektu_celkem'),
+      podleStavu: Object.entries(stavy)
+        .filter(([, x]) => typeof x === 'number')
+        .map(([klic, pocet]) => ({ nazev: NAZVY_STAVU[klic] ?? klic.replace(/_/g, ' '), pocet: pocet as number }))
+        .sort((a, b) => b.pocet - a.pocet),
+      pravnickychOsob: cis(k, 'pravnickych_osob'),
+      fyzickychOsob: cis(k, 'podnikajicich_fyzickych_osob'),
+      sidloMimoObec: { pocet: cis(mimo, 'pocet'), poznamka: txt(mimo, 'poznamka') },
+      velikost: {
+        sUdajem: cis(velikost, 's_udajem_o_poctu_pracovniku'),
+        bezUdaje: cis(velikost, 'bez_udaje'),
+        od10: cis(velikost, 'od_10_zamestnancu'),
+        od100: cis(velikost, 'od_100_zamestnancu'),
+        poznamka: txt(velikost, 'poznamka'),
+      },
+      vPrehleduDulezitych: cis(k, 'v_prehledu_dulezitych'),
+      napojenychNaRegistr: cis(k, 'napojenych_na_registr_smluv_mesta'),
+      vznikyRozsah: { od: cis(rozsah, 'od'), do: cis(rozsah, 'do') },
+      zdroj: txt(k, 'zdroj'),
+    },
+  };
+}
+
+/* ────────────────────────────  Pomocníci  ──────────────────────────── */
+
+/** Souvislá řada roků z mapy — chybějící rok uvnitř rozsahu je nula, ne díra. */
+export function souvisleRokyMapy(...mapy: Map<number, number>[]): number[] {
+  const roky = mapy.flatMap((m) => [...m.keys()]);
   if (roky.length === 0) return [];
-  // Firmy bez data vzniku by křivku posunuly; do počtu se nezapočítávají.
-  const znameVzniky = firmy.filter((f) => rokZIso(f.vznik) !== null);
-  return roky.map((r) => {
-    let ziva = 0;
-    for (const f of znameVzniky) {
-      const rv = rokZIso(f.vznik) as number;
-      if (rv > r) continue;
-      const rz = rokZIso(f.zanik);
-      if (rz !== null && rz <= r) continue;
-      ziva++;
-    }
-    return ziva;
-  });
+  const od = Math.min(...roky);
+  const doo = Math.max(...roky);
+  const ven: number[] = [];
+  for (let r = od; r <= doo; r++) ven.push(r);
+  return ven;
 }
 
-
-/** Kolik firem má aspoň jedno kritérium důležitosti. */
-export function dulezite(firmy: FirmaSKontextem[]): FirmaSKontextem[] {
-  return firmy
-    .filter((f) => f.duvody.length > 0)
-    .sort(
-      (a, b) =>
-        (b.odMesta ?? 0) - (a.odMesta ?? 0) ||
-        b.duvody.length - a.duvody.length ||
-        a.nazev.localeCompare(b.nazev, 'cs-CZ'),
-    );
+/** Firmy s aspoň jedním kritériem, řazené podle objemu obchodu s městem. */
+export function seradDulezite(firmy: DuleziaFirma[]): DuleziaFirma[] {
+  return [...firmy].sort(
+    (a, b) =>
+      (b.odMesta ?? 0) - (a.odMesta ?? 0) ||
+      b.kriteria.length - a.kriteria.length ||
+      a.nazev.localeCompare(b.nazev, 'cs-CZ'),
+  );
 }
