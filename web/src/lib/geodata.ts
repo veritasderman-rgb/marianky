@@ -12,7 +12,7 @@
  */
 import { nactiAdresarSoubory, slug, type Nacteno } from './data';
 import { bodZeZaznamu, tvaryZGeometrie, type Tvar } from './mapy';
-import { cis, ico as icoZ, jeObjekt, txt, type Zaznam } from './tolerantni';
+import { cis, jeObjekt, txt, type Zaznam } from './tolerantni';
 
 export interface PrvekZdroje {
   id: string;
@@ -92,7 +92,7 @@ function idPrvku(v: Zaznam, f: Zaznam, poradi: number): string {
 }
 
 /** Hezčí název vrstvy z jména souboru: `volebni_okrsky` → „Volební okrsky". */
-export function nazevZeJmena(jmeno: string): string {
+function nazevZeJmena(jmeno: string): string {
   const s = jmeno.replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
   if (!s) return 'Vrstva';
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -291,7 +291,3 @@ export function cisloOkrsku(v: Zaznam | null | undefined): string | null {
   return m ? String(Number(m[1])) : null;
 }
 
-/** IČO z prvku — pro spárování geometrie s firmou nebo majetkem. */
-export function icoPrvku(v: Zaznam | null | undefined): string | null {
-  return icoZ(v, 'ico', 'IČO', 'ICO', 'ic', 'subjekt_ico');
-}

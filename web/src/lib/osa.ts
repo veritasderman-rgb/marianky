@@ -599,9 +599,75 @@ export function grafCasovaOsa(udalosti: UdalostOsy[], nazev: string, sirka = 900
     rokOd,
     rokDo,
     pocet: platne.length,
-    vykresleno: kreslene.size,
+    vykresleno: platne.length,
     vynechanoVTabulce: Math.max(0, kresleneVse.length - doTabulky.length),
   };
+}
+
+/**
+ * Hustý pruh po shlucích. Velikost značky roste s počtem událostí ve shluku,
+ * takže z osy je vidět, kdy se dělo hodně a kdy málo — což překrytá kupa
+ * jednotlivých značek neukáže.
+ *
+ * Jistota se ani tady neztrácí: shluk složený jen z odhadů je dutý, shluk
+ * s příměsí odhadů má přerušovaný obrys a přesné počty jsou v bublince.
+ */
+function shlukyPruhu(
+  udalosti: UdalostOsy[],
+  stred: number,
+  barva: string,
+  x: (rok: number, frakce: number) => number,
+): string[] {
+  const kose = new Map<number, { px: number; polozky: UdalostOsy[] }>();
+  for (const u of udalosti) {
+    const r = rokZIso(u.datum);
+    if (r === null) continue;
+    const px = x(r, pozicevRoce(u.datum));
+    const kos = Math.round(px / SIRKA_SHLUKU);
+    const stav = kose.get(kos) ?? { px: kos * SIRKA_SHLUKU, polozky: [] };
+    stav.polozky.push(u);
+    kose.set(kos, stav);
+  }
+
+  const nejvic = Math.max(1, ...[...kose.values()].map((k) => k.polozky.length));
+  const casti: string[] = [];
+
+  for (const { px, polozky } of kose.values()) {
+    const n = polozky.length;
+    const r = 3 + (Math.log(n + 1) / Math.log(nejvic + 1)) * 4.5;
+    const odhadu = polozky.filter((u) => jeOdhad(u.jistota)).length;
+    const spornych = polozky.filter((u) => jeSporne(u.jistota)).length;
+    const vseOdhad = odhadu === n;
+
+    const serazene = [...polozky].sort((a, b) => a.datum.localeCompare(b.datum));
+    const od = serazene[0];
+    const doo = serazene[serazene.length - 1];
+
+    const radky: TipRadek[] = [
+      { l: 'Kdy', v: od.datum === doo.datum ? popisDatumu(od) : `${popisDatumu(od)} – ${popisDatumu(doo)}` },
+      { l: 'Událostí', v: cislo(n) },
+    ];
+    for (const u of serazene.slice(0, 3)) radky.push({ l: popisDatumu(u), v: orez(u.nadpis, 70) });
+    if (n > 3) radky.push({ l: 'a další', v: `${cislo(n - 3)} — úplný výčet je v tabulce` });
+    if (odhadu > 0) radky.push({ l: 'Z toho odhadů', v: `${cislo(odhadu)} — nejsou to doložená fakta` });
+    if (spornych > 0) radky.push({ l: 'Z toho s výhradou', v: cislo(spornych) });
+
+    const tridy = ['osa-znacka', 'osa-znacka--shluk'];
+    if (vseOdhad) tridy.push('osa-znacka--odhad');
+    else if (odhadu > 0 || spornych > 0) tridy.push('osa-znacka--sporne');
+
+    const popis =
+      `${od.datum === doo.datum ? popisDatumu(od) : `${popisDatumu(od)} – ${popisDatumu(doo)}`}: ` +
+      `${cislo(n)} událostí${odhadu > 0 ? `, z toho ${cislo(odhadu)} odhadů` : ''}`;
+
+    casti.push(
+      `<g ${tipAtribut(`Shluk ${cislo(n)} událostí`, radky, vseOdhad ? undefined : barva, false)} tabindex="-1" aria-hidden="true" class="${tridy.join(' ')}">` +
+        `<title>${escSvg(popis)}</title>` +
+        `<circle cx="${px.toFixed(1)}" cy="${stred.toFixed(1)}" r="${r.toFixed(1)}" fill="${vseOdhad ? 'var(--surface)' : barva}"${vseOdhad ? ` stroke="${barva}"` : ''}/>` +
+        `</g>`,
+    );
+  }
+  return casti;
 }
 
 function legendaJistot(u: UdalostOsy[]): { nazev: string; trida: string }[] {
