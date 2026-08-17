@@ -401,6 +401,58 @@ Největší zaměstnavatel je **OREA HOTELS** (1 000–1 500 zaměstnanců).
 
 Z 1 115 protistran města s IČO jich **248 sídlí přímo ve městě** a připadá na ně 1,74 mld. z 3,74 mld. Kč.
 
+## 6c. Monitor státní pokladny — rozpočet a účetní výkazy
+
+Ministerstvo financí, plnohodnotný katalog otevřených dat. **Ne scraping.**
+
+### Jak se k němu dostat
+
+Cesta vede přes **národní katalog otevřených dat**: `data.gov.cz/sparql` (CKAN API tam neexistuje, SPARQL ano). U sady „MONITOR Státní pokladny" je v poli `dct:identifier` adresa, o úroveň výš je celý lokální katalog:
+
+```
+https://monitor.statnipokladna.gov.cz/api/opendata/monitor     … 803 sad v JSON-LD
+```
+
+Dvě věci, kvůli kterým dřívější pokusy selhaly:
+
+- **`/api/opendata` bez `/monitor` vrací 404.** Jedna úroveň rozdílu.
+- **Adresy souborů se NESMÍ odvozovat z názvu sady.** Skupina v katalogu se jmenuje jinak než složka v úložišti (`Zisk-a-ztraty` → `ZiskZtraty`), takže odvozená adresa vrátí 404. U každé sady se čte `distribuce[].soubor_ke_stažení`.
+- Výpis adresáře `/data/extrakty/csv/` je pořád **403**, ale konkrétní soubor se stáhne bez potíží. Web sám je jednostránková aplikace, která na neznámou cestu vrací vlastní úvodní stránku — hádání adres proto nikam nevede.
+
+### Co z toho je
+
+51 celostátních ZIPů (794 MB do `.cache/`), po oříznutí na 25 sledovaných IČO **18 MB**:
+
+| výkaz | období | řádků |
+|---|---|---|
+| FIN 2-12 M (plnění rozpočtu) | 2010–2025 + běžící rok | 8 792 |
+| Rozvaha | 2010–2026 | 33 972 |
+| Výkaz zisku a ztráty | 2010–2026 | 20 210 |
+
+**Rozpočet má v datech jen město** — FIN 2-12 M podávají pouze územní samosprávné celky. Příspěvkové organizace jsou pokryté rozvahou a výkazem zisku a ztráty. **Obchodní společnosti města v systému nejsou vůbec**, jejich závěrky vede sbírka listin.
+
+### Jednotky jsou celé koruny, ne tisíce
+
+Ověřeno dvakrát nezávisle. Schválený rozpočet výdajů z Monitoru **sedí do koruny u 11 z 11 usnesení** „Rozpočet města na rok N" (2013–2023). Kontrolní bod potvrzen: 2013 = 273 070 000 Kč, 2019 = 397 951 000 Kč. Test je natrvalo v pipeline.
+
+Tím se zaplnila mezera, na kterou upozorňovala `kontrola.py`: u let 2024–2026 je výše rozpočtu v usnesení jen v příloze. Z Monitoru je teď známá — **650,0 / 665,3 / 717,4 mil. Kč**.
+
+### Tři pasti
+
+**Konsolidace.** V roce 2025 je v rozpočtu **1,09 mld. vnitřních převodů mezi fondy města — víc než celý rozpočet.** Do plánu se nerozpočtují, takže se smí srovnávat jen na úrovni „po konsolidaci". A členění po paragrafech je *před* konsolidací, takže by z „finančních operací" vyšla největší kapitola města se 65 % rozpočtu.
+
+**Od roku 2026 je FIN 2-12 M jiný výkaz** (kód 051 → 063): příjmy a výdaje v jedné tabulce, souhrnná tabulka zmizela. A `000200` znamená v každé verzi něco jiného — výdaje proti bankovním účtům. Mapovat podle čísla tabulky by uložilo stavy účtů jako výdaje.
+
+**Řádek „C." výkazu zisku a ztráty je jen nadpis s nulou.** Skutečný hospodářský výsledek je až v C.1./C.2. Naivní čtení dá nulový výsledek u všech organizací ve všech letech — a vypadá to jako fakt.
+
+Drobnosti téhož druhu: IČO má do roku 2012 deset míst vycpaných nulami, záporné částky mají minus **za** číslem (SAP), a tabulka financování veze i vlastní součet, který se nesmí započítat podruhé.
+
+### Poznámka k datům
+
+**Technické služby Mariánské Lázně (00074071) přestaly být účetní jednotkou po roce 2014** — v rozvaze jsou jen 2010–2014. Odpovídá to tomu, že agendu převzalo TDS s.r.o.
+
+**Poměr „kryto smlouvami" překračuje v roce 2025 sto procent** (165,8 %) kvůli in-house smlouvě s TDS na 724,5 mil. Není to míra transparentnosti a web to tak nesmí podat.
+
 ## 7. Média a regionální zpravodajství
 
 > **Doplněno po sklizni.** Otázka zněla, jestli jde jít 12 let zpět. Odpověď: **jde, ale jen u dvou zdrojů ze čtyř** — a u zbylých dvou to není technická překážka, nýbrž fakt, že ty weby dřív neexistovaly.

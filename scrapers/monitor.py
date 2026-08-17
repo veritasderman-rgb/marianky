@@ -20,8 +20,8 @@ Adresa katalogu je ale zaregistrovaná v Národním katalogu otevřených dat:
 O úroveň výš (`/api/opendata/monitor`, bez `/MONITOR`) sedí celý katalog.
 NKOD tedy sloužil jen jako rozcestník; data se pak berou přímo od MF.
 
-Tři věci, které nejsou samozřejmé
----------------------------------
+Čtyři věci, které nejsou samozřejmé
+-----------------------------------
 1. **Adresy souborů se NESMÍ skládat z názvu sady.** Skupina v katalogu se
    jmenuje jinak než složka v úložišti: sada `.../monitor/Zisk-a-ztraty/...`
    leží na `.../extrakty/csv/ZiskZtraty/...`. Odvozená adresa vrátí 404.
@@ -38,6 +38,14 @@ Tři věci, které nejsou samozřejmé
    vycpané nulami (`0000254061`), pak osm (`00254061`). Bez normalizace by
    se starší roky tvářily jako „subjekt nenalezen", tedy jako by město
    neexistovalo — což je tichá díra v časové ose, ne chyba dat.
+
+4. **Od roku 2026 je FIN 2-12 M jiný výkaz.** Kód se změnil z `051` na
+   `063`, příjmy i výdaje se slily do jedné tabulky rozlišené sloupcem
+   `0CI_TYPE` a **souhrnná tabulka (rekapitulace) v extraktu zmizela**.
+   Číslo tabulky proto samo o sobě nic neznamená: `000200` je v `051`
+   tabulka výdajů, ale v `063` tabulka bankovních účtů. Mapuje se dvojicí
+   (výkaz, tabulka) a kódy výkazů se zapisují k datům, aby navazující
+   zpracování poznalo, se kterou podobou má co do činění.
 
 Co se odsud NEDÁ získat
 -----------------------

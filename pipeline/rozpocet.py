@@ -15,29 +15,47 @@ Co se tu počítá
 * **kryti_smlouvami.json** — kolik z výdajů má protějšek v registru smluv
 * **souhrn.json** — čísla pro titulní stranu
 
-Čtyři věci, na kterých se dá tenhle přehled rozbít
---------------------------------------------------
+Pět věcí, na kterých se dá tenhle přehled rozbít
+------------------------------------------------
 1. **Konsolidace se do schváleného rozpočtu nerozpočtuje.** Vnitřní převody
    mezi fondy města se ve skutečnosti odečítají (řádky 4060 a 4250), ale
    v plánu jsou nulové. V roce 2025 to dělá 1,09 mld. Kč — víc, než je celý
    rozpočet města. Kdo porovná plán „před konsolidací" se skutečností
    „po konsolidaci", dostane nesmysl. Tady se porovnává **výhradně
    po konsolidaci** (4200 / 4430), kde plán ani skutečnost nemají co odečítat.
+   Ze stejného důvodu nese členění po třídách celý rozklad až k číslu
+   po konsolidaci — samo se totiž na celek nesečte.
 
 2. **Součet paragrafů není rozpočet.** Členění po paragrafech je před
    konsolidací, takže obsahuje i převody vlastním fondům (paragraf 6330).
-   Ve struktuře výdajů proto vedle sebe stojí `celkem` a `bez_prevodu`;
-   graf „kam jdou peníze" musí kreslit to druhé, jinak největší kapitolou
-   města vyjde přesouvání peněz mezi vlastními účty.
+   Každá položka proto vedle `skutecnost` nese i `skutecnost_bez_prevodu`;
+   graf „kam jdou peníze" musí kreslit to druhé. Jinak vyjde, že největší
+   kapitolou města jsou „finanční operace" se 65 % rozpočtu — a je to jen
+   přesouvání peněz mezi jeho vlastními účty.
 
 3. **Chybějící řádek je null, ne nula.** Když výkaz řádek nemá, neznamená
    to, že je nulový — a naopak, `0.00` ve zdroji je vykázaná nula a ta se
    zachovává. Procenta plnění se nepočítají, když je jmenovatel null nebo 0.
+   Stejně tak řádek „C." výkazu zisku a ztráty je jen nadpis s nulou:
+   skutečný hospodářský výsledek je až v C.1. a C.2.
 
-4. **Registr smluv se rozpočtu nerovná.** Smlouva má hodnotu za celou dobu
+4. **Od roku 2026 vypadá výkaz jinak.** FIN 2-12 M přešel z kódu 051 na 063,
+   příjmy i výdaje sloučil do jedné tabulky a souhrnnou tabulku úplně
+   zrušil. Součty za běžící rok si proto počítáme sami — a `kontrola_dopoctu`
+   při každém běhu prožene stejný výpočet šestnácti ročníky, kde souhrn ve
+   zdroji je, a porovná ho s ním.
+
+5. **Registr smluv se rozpočtu nerovná.** Smlouva má hodnotu za celou dobu
    plnění, ne za rok podpisu; smlouvy do 50 tis. Kč se nezveřejňují;
    registr běží od 1. 7. 2016. Poměr „kryto smlouvami" je proto orientační
    ukazatel, ne míra transparentnosti — a nese to s sebou v datech.
+
+Kontrola jednotek
+-----------------
+`overeni_proti_usnesenim` porovnává schválený rozpočet výdajů s částkou,
+kterou u bodu „Rozpočet města na rok N" uvádí usnesení zastupitelstva.
+Jedenáct ročníků sedí do koruny. Je to nezávislá pojistka proti tomu, aby
+se rozpočet ve stovkách milionů někdy zobrazil jako stovky tisíc.
 
 Spuštění:
     python3 -m pipeline.rozpocet
@@ -979,6 +997,16 @@ def souhrn(osa: dict, struktura: dict, majetek: dict, orgs: dict) -> dict:
         "uvery_celkem": (maj["uvery_celkem"] if maj else None),
         "organizaci_s_vykazy": len(orgs["organizace"]),
         "subjektu_bez_vykazu": len(orgs["subjekty_bez_vykazu"]),
+        "overeni": {
+            "dopocet_proti_souhrnum_vykazu": {
+                k: osa["kontrola_dopoctu"][k]
+                for k in ("porovnanych_hodnot", "neshod", "zaver")
+            },
+            "schvaleny_rozpocet_proti_usnesenim": {
+                k: osa["overeni_proti_usnesenim"][k]
+                for k in ("sedi", "neshod", "neporovnano", "zaver")
+            },
+        },
     }
 
 
