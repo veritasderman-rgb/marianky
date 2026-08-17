@@ -151,6 +151,7 @@ VYSVETLIVKY = {
     "sjtsk": "původní souřadnice zdroje v EPSG:5514 [východ, sever]",
     "lokalizace": "jak je bod ve zdroji určen",
     "prstav_id": "identifikátor právního stavu ochrany, spojuje ÚSKP s geoportálem",
+    "url": "odkaz na záznam právní ochrany v Památkovém katalogu (pole urlExt geoportálu)",
 }
 
 
@@ -172,7 +173,10 @@ def _vlastnosti(radek: dict, sada: str) -> dict:
         "okres": radek["okres"],
         "kraj": radek["kraj"],
         "anotace": radek["anotace"] or None,
-        "url": f"{KATALOG}/{radek['katalogové_číslo']}",
+        # `url` se doplňuje až z geoportálu (pole urlExt) — odkaz na katalog
+        # se nedá poskládat z katalogového čísla, portál je jednostránková
+        # aplikace a na vymyšlené adrese vrátí 200 s prázdným obsahem.
+        "url": None,
     }
 
 
@@ -417,6 +421,26 @@ def zarad_do_uzemi(prvky: list[dict], uzemi: list[dict], log: Log) -> None:
              z_celkem=len(prvky))
 
 
+def doplnit_odkazy(prvky: list[dict], plochy_pamatek: list[dict],
+                   bez_bodu: list[dict], log: Log) -> None:
+    """Doplní odkaz do Památkového katalogu z pole `urlExt` geoportálu.
+
+    Katalog je jednostránková aplikace: na jakékoliv adrese vrátí HTTP 200
+    a prázdnou kostru, takže odkaz poskládaný z katalogového čísla by
+    vypadal funkčně, i kdyby nikam nevedl. Bereme proto jen adresu, kterou
+    zveřejňuje sám NPÚ; komu ji zdroj nedá, zůstane `url: null`.
+    """
+    podle_id = {f["properties"]["prstav_id"]: f["properties"]["url"]
+                for f in plochy_pamatek if f["properties"].get("url")}
+    for f in prvky:
+        f["properties"]["url"] = podle_id.get(f["properties"]["prstav_id"])
+    for zaznam in bez_bodu:
+        zaznam["url"] = podle_id.get(zaznam["prstav_id"])
+    chybi = sum(1 for f in prvky if not f["properties"]["url"])
+    if chybi:
+        log.info("památky bez odkazu do katalogu", pocet=chybi)
+
+
 def _kolekce(prvky: list[dict], popis: str, licence: str, zdroj: str,
              datum: str, navic: dict | None = None) -> dict:
     return {
@@ -485,6 +509,7 @@ def main() -> None:
     prvky.sort(key=lambda f: (f["properties"]["sada"], f["properties"]["nazev"] or ""))
     pamatky_plochy, uzemi = plochy(vybrane, log)
     zarad_do_uzemi(prvky, uzemi, log)
+    doplnit_odkazy(prvky, pamatky_plochy, bez_bodu, log)
 
     uloz(f"{CIL}/pamatky.geojson",
          _kolekce(prvky, "Kulturní a národní kulturní památky v Mariánských Lázních",

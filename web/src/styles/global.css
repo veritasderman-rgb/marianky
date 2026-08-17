@@ -1333,13 +1333,16 @@ th.cislo {
   stroke: var(--surface);
   stroke-width: 1.5;
 }
-.osa-znacka--stredni circle,
-.osa-znacka--stredni rect {
+/* Doložený záznam, ve kterém se ale prameny rozcházejí: plná značka
+   s přerušovaným obrysem. */
+.osa-znacka--sporne circle,
+.osa-znacka--sporne rect {
+  stroke: var(--ink-faint);
   stroke-dasharray: 2 2;
 }
-/* Nejistá událost: dutá značka s přerušovaným obrysem. */
-.osa-znacka--nejista circle,
-.osa-znacka--nejista rect {
+/* Odhad spojení: DUTÁ značka s přerušovaným obrysem. Nesmí vypadat jako fakt. */
+.osa-znacka--odhad circle,
+.osa-znacka--odhad rect {
   stroke-width: 2;
   stroke-dasharray: 3 2;
 }
@@ -1363,7 +1366,11 @@ th.cislo {
   background: var(--ink-soft);
   flex: none;
 }
-.legenda__znacka--nejista {
+.legenda__znacka--sporne {
+  background: var(--ink-soft);
+  border: 2px dashed var(--ink-faint);
+}
+.legenda__znacka--odhad {
   background: var(--surface);
   border: 2px dashed var(--ink-soft);
 }

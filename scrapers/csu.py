@@ -231,36 +231,40 @@ def _hlavicky(extra: dict | None = None) -> dict[str, str]:
     return h
 
 
-def _ocekavana_velikost(url: str) -> int:
+def _velikost_hlavou(url: str) -> int:
+    """Velikost souboru podle HEAD. U některých adres ČSÚ ji HEAD neuvádí —
+    pak vrací 0 a zjistí se až z odpovědi na GET."""
     req = urllib.request.Request(url, headers=_hlavicky(), method="HEAD")
     _pockej_na_rade(urlparse(url).netloc)
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return int(r.headers.get("Content-Length") or 0)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return int(r.headers.get("Content-Length") or 0)
+    except Exception:  # noqa: BLE001
+        return 0
 
 
 def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
     """Stáhne velký soubor a **dotáhne ho, i když spojení spadne uprostřed**.
 
     `csu.gov.cz` přes náš síťový průchod pravidelně ukončí přenos dřív, a to
-    s návratovým kódem 200 — takže se to netváří jako chyba. Jediná obrana
-    je porovnat velikost s `Content-Length` a chybějící část si vyžádat
-    hlavičkou `Range`. Když se soubor nepodaří dotáhnout, letí `ZdrojSelhal`;
-    nedostažený soubor se nikdy nepředstírá jako hotový.
+    s návratovým kódem 200 — takže se to netváří jako chyba (z 20,7MB ZIPu
+    dorazilo v jednom pokusu 1,3 MB, v druhém 5,2 MB). Jediná obrana je
+    porovnat velikost s `Content-Length` a chybějící část si vyžádat
+    hlavičkou `Range`. Když se soubor nepodaří dotáhnout, letí `ZdrojSelhal`
+    — nedostažený soubor se nikdy nepředstírá jako hotový.
     """
     STAHOVANE.mkdir(parents=True, exist_ok=True)
     cil = STAHOVANE / jmeno
-    celkem = _ocekavana_velikost(url)
-    if not celkem:
-        raise ZdrojSelhal(f"{url}: server neuvedl velikost souboru")
-    if cil.exists() and cil.stat().st_size == celkem:
+    celkem = _velikost_hlavou(url)
+    if celkem and cil.exists() and cil.stat().st_size == celkem:
         return cil
 
     hlaseno = False
     for pokus in range(pokusu):
         mam = cil.stat().st_size if cil.exists() else 0
-        if mam >= celkem:
+        if celkem and mam >= celkem:
             return cil
-        if mam and not hlaseno:
+        if celkem and mam and not hlaseno:
             log.info(f"{jmeno}: spojení useknuto na {mam}/{celkem} B, navazuji")
             hlaseno = True
         req = urllib.request.Request(
@@ -268,6 +272,10 @@ def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
         try:
             _pockej_na_rade(urlparse(url).netloc)
             with urllib.request.urlopen(req, timeout=180) as r:
+                # Část adres ČSÚ hlásí délku až v odpovědi na GET, ne na HEAD.
+                if not celkem:
+                    delka = int(r.headers.get("Content-Length") or 0)
+                    celkem = delka + mam if r.status == 206 else delka
                 rezim = "ab" if (mam and r.status == 206) else "wb"
                 with open(cil, rezim) as f:
                     while True:
@@ -277,8 +285,10 @@ def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 60) -> Path:
                         f.write(blok)
         except Exception:  # noqa: BLE001 — opakujeme na čemkoliv síťovém
             time.sleep(min(2 ** (pokus % 5), 8))
-    if not cil.exists() or cil.stat().st_size < celkem:
-        mam = cil.stat().st_size if cil.exists() else 0
+    if not celkem:
+        raise ZdrojSelhal(f"{url}: server neuvedl velikost souboru, nelze ověřit úplnost")
+    mam = cil.stat().st_size if cil.exists() else 0
+    if mam < celkem:
         raise ZdrojSelhal(f"{url}: stáhlo se jen {mam} z {celkem} B ani na {pokusu} pokusů")
     return cil
 

@@ -7,9 +7,10 @@
  *
  *   1. **Prázdné roky se nepřeskakují.** Osa je spojitá lineární škála; mezera
  *      je informace stejně jako značka. Zajišťuje `grafCasovaOsa()`.
- *   2. **Nízká jistota se nesmí tvářit jako fakt.** Nejistá značka je dutá
- *      a přerušovaná, má vlastní řádek legendy a v tabulce je jistota slovy —
- *      rozdíl nikdy nestojí jen na barvě.
+ *   2. **Odhad se nesmí tvářit jako fakt.** Zdroj rozlišuje doložený záznam,
+ *      spornou historickou položku a odhad spojení. Rozdíl nese TVAR značky
+ *      (dutá, přerušovaná), vlastní řádek legendy a v tabulce jistota slovy —
+ *      nikdy jen barva.
  *   3. **Zdroje se uvádějí.** Bez seznamu zdrojů vypadá osa jako úplný obraz,
  *      ačkoliv obsahuje jen to, co je v našich datech. Proto je `zdroje`
  *      povinná vlastnost.
@@ -69,10 +70,7 @@ const maCo = osa.pocet > 0;
         <ul class="legenda legenda--jistota">
           {osa.legendaJistoty.map((p) => (
             <li class="legenda__polozka">
-              <span
-                class={`legenda__znacka${p.nejista ? ' legenda__znacka--nejista' : ''}`}
-                aria-hidden="true"
-              />
+              <span class={`legenda__znacka ${p.trida}`.trim()} aria-hidden="true" />
               <span>{p.nazev}</span>
             </li>
           ))}
@@ -100,7 +98,7 @@ const maCo = osa.pocet > 0;
       </p>
 
       <details class="tabulkovy-pohled">
-        <summary>Zobrazit jako tabulku ({cislo(osa.tabulka.radky.length)} {sklonuj(osa.tabulka.radky.length, 'událost', 'události', 'událostí')})</summary>
+        <summary>Zobrazit jako tabulku ({cislo(osa.tabulka.radky.length)} {sklonuj(osa.tabulka.radky.length, 'událost', 'události', 'událostí')}, od nejnovější)</summary>
         <div class="tabulka-obal">
           <table>
             <thead>

@@ -47,6 +47,10 @@ BASE = "https://www.muml.cz"
 SNAPSHOTY = "mesto/snapshots"
 ZMENY_LOG = f"{SNAPSHOTY}/_zmeny.json"
 
+# Kolik změněných řádků textu si diff pamatuje. Nejde o úplný záznam, ale
+# o vodítko pro člověka: „co se na té stránce vlastně přepsalo".
+UKAZKA_RADKU = 12
+
 # Parametry, které nenesou identitu dokumentu — jen stav prohlížení nebo
 # obcházení cache. Do klíče položky se nepočítají.
 SMETNI_PARAMY = {
@@ -382,6 +386,8 @@ def porovnej(stary: dict | None, novy: dict, *, dnes: str | None = None) -> dict
             "zmenilo": [],
             "radku_pribylo": 0,
             "radku_zmizelo": 0,
+            "text_pribylo": [],
+            "text_zmizelo": [],
             "zpravy": [f"{novy['nazev']}: pořízen první otisk ({novy['polozek']} položek), není s čím porovnávat."],
         }
 
@@ -424,7 +430,11 @@ def porovnej(stary: dict | None, novy: dict, *, dnes: str | None = None) -> dict
                 zbyle.append(z)
         zmizelo = zbyle
 
+    # Řádky textu navíc: chytí i změny, které se nepromítnou do seznamu položek
+    # (přepsaný odstavec, jiná velikost přílohy, upravená úvodní věta).
     stare_r, nove_r = _radky(stary.get("text", "")), _radky(novy.get("text", ""))
+    radky_pribylo = [r for r in novy.get("text", "").split("\n") if r not in stare_r]
+    radky_zmizelo = [r for r in stary.get("text", "").split("\n") if r not in nove_r]
 
     diff = {
         "slug": novy["slug"],
@@ -440,8 +450,10 @@ def porovnej(stary: dict | None, novy: dict, *, dnes: str | None = None) -> dict
         "zmizelo": zmizelo,
         "zmizelo_predcasne": predcasne,
         "zmenilo": zmenilo,
-        "radku_pribylo": len(nove_r - stare_r),
-        "radku_zmizelo": len(stare_r - nove_r),
+        "radku_pribylo": len(radky_pribylo),
+        "radku_zmizelo": len(radky_zmizelo),
+        "text_pribylo": radky_pribylo[:UKAZKA_RADKU],
+        "text_zmizelo": radky_zmizelo[:UKAZKA_RADKU],
     }
     diff["zpravy"] = _zpravy(diff)
     return diff
@@ -487,6 +499,10 @@ def _zpravy(diff: dict) -> list[str]:
             f"{n}: změnil se text stránky "
             f"(+{diff['radku_pribylo']} / −{diff['radku_zmizelo']} řádků), seznam položek beze změny"
         )
+        for r in diff.get("text_pribylo", []):
+            out.append(f"    + {r[:200]}")
+        for r in diff.get("text_zmizelo", []):
+            out.append(f"    − {r[:200]}")
     return out
 
 
