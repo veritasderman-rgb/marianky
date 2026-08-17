@@ -308,7 +308,10 @@ def otisk(slug: str, *, max_age: int = 0) -> dict:
     if slug not in SLEDOVANE:
         raise ZdrojSelhal(f"Neznámá sledovaná stránka '{slug}'")
     cfg = SLEDOVANE[slug]
-    html = core.fetch(cfg["url"], max_age=max_age)
+    # Jen dva pokusy: tohle je hlídač, co běží pravidelně. Když je web dole,
+    # nemá cenu u každé z patnácti stránek odsedět plný exponenciální backoff —
+    # zapíše se, že se nepodařilo načíst, a zkusí se to zas příště.
+    html = core.fetch(cfg["url"], max_age=max_age, retries=2)
     if not isinstance(html, str):  # pragma: no cover
         html = html.decode("utf-8", errors="replace")
 

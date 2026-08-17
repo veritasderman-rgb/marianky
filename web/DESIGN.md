@@ -107,6 +107,26 @@ Totéž platí pro TDS, největšího příjemce peněz od města: je to **měst
 
 Proto: sloupec vlastnictví v tabulkách, přepínač „všechny / jen mimo město" u grafů, a věta, která rozdíl pojmenuje.
 
+### 3.6 Mapy
+
+Kreslit jako **SVG generované při buildu z GeoJSON**, stejně jako ostatní grafy. Žádná mapová knihovna ani dlaždice z cizího serveru — data jsou známá při buildu a runtime knihovna by jen zpomalovala a přidala závislost na cizí službě.
+
+Souřadnice převádět do jednotné projekce při buildu. Vždy uvést **zdroj a licenci** dat (OpenStreetMap to vyžaduje).
+
+**Volební mapa má vestavěnou past.** Barví se plocha, ale volí lidé — velký okrsek s hrstkou voličů zabere na mapě víc místa než hustě obydlený panelák. Mapa proto **nikdy nesmí stát sama**: vedle ní patří sloupcový graf nebo tabulka s počty voličů, aby šlo poznat, že rozlehlá barevná plocha nemusí znamenat mnoho hlasů. K okrskům vždy uvádět **absolutní počty**, ne jen procenta.
+
+Barvení podle **účasti nebo podílu** → sekvenční rampa. Barvení podle **vítězné strany** → kategoriální paleta, max 6 + „Ostatní", a stranám se barva přiřazuje podle jejich identity, ne podle pořadí ve výsledku.
+
+Okrsky se v čase mění — když se srovnávají volební roky, musí to být u mapy napsané.
+
+### 3.7 Časové osy
+
+Vodorovná osa, události jako značky, čas zleva doprava. U delších období osa **nesmí přeskakovat prázdné roky** — mezera je informace stejně jako značka.
+
+Události se liší jistotou: spojení usnesení se smlouvou má pole `jistota`, a **nízká jistota se v ose nesmí tvářit jako fakt**. Odliš ji vizuálně (slabší značka, přerušovaná čára) a popiskem.
+
+U osy jedné entity (osoba, firma, téma) uvádět, z jakých zdrojů se skládá — jinak vypadá jako úplný obraz, ačkoliv obsahuje jen to, co je v našich datech.
+
 ### 3.4 Dlaždice nad grafy
 Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se stavovou barvou a **vždy i textovým popiskem**, ne barvou samotnou).
 
