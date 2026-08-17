@@ -41,6 +41,8 @@ KROKY: list[tuple[str, str, bool]] = [
     # na to, co uvádí katalog, a napíšou to do logu.
     ("scrapers.geodata",   "Geodata a volební okrsky",       False),
     ("scrapers.pamatky",   "Kulturní památky",               False),
+    ("scrapers.uzemni_plan", "Územní plánování",             False),
+    ("scrapers.monitor",   "Rozpočet z Monitoru st. pokladny", False),
 ]
 
 # Pořadí je závazné: propojení a řetěz čtou výstup agregace peněz,

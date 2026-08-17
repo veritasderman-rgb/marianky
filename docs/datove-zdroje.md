@@ -109,13 +109,41 @@ https://www.muml.cz/aktualne/novinky/rss → 404
 
 **Důsledek:** vše se musí scrapovat z HTML a hlídat přes snapshoty (diff-monitoring). Zároveň je to argument pro vlastní RSS feed portálu — město ho nemá a lidem by se hodil.
 
+### Územní plánování
+
+Čtyři stránky, ne jedna:
+
+| URL | Obsah |
+|---|---|
+| `/urad/uzemni-planovani/uzemne-planovaci-dokumentace-a-studie/` | Rozcestník, členěný **po obcích** — Mariánky jsou úřad územního plánování i pro 13 okolních obcí |
+| `/urad/uzemni-planovani/novy-uzemni-plan-marianske-lazne/` | Nový územní plán — živý proces |
+| `/urad/uzemni-planovani/uzemne-analyticke-podklady/` | ÚAP, 84 dokumentů |
+| `/urad/uzemni-planovani/urad-uzemniho-planovani/` | Kontakty a agenda |
+
+`/mesto/investice-a-rozvoj/uzemni-planovani/` je jen **zrcadlo rozcestníku** s totožným obsahem — zpracovávat podruhé nemá smysl.
+
+**Kořenový výpis obce lže o kategoriích.** Vypíše všech 234 dokumentů, ale nadpis kategorie neopakuje při každé změně, takže vizuálně přiřkne jedenáct dokumentů cizí kategorii. Autoritativní je `<select>` na stránce obce — a je i úplnější, regulační plán města na rozcestníku vůbec není.
+
+**Datum „Vloženo" u souboru je datum migrace webu** (u celého archivu změn shodně 25. 4. 2018), ne datum vydání dokumentu.
+
+**Oznámení o vydání jsou skeny** — deset jednostránkových PDF s nulovou textovou vrstvou. Právě v nich je datum nabytí účinnosti, takže u změn 1–19 ho doložit nelze; archiv usnesení začíná až 2012.
+
+**PDF z roku 2012 mají rozbité kódování** — vypadané háčky, „Zm ny .23". Pozná se to spolehlivě: zdravý český text má 3,5–4,7 % háčkovaných písmen, tyhle přesně 0 %.
+
+**Past při dohledávání dat účinnosti:** hledat „nabylo účinnosti dne" v textových částech územního plánu vrací data **cizích předpisů** (zásady územního rozvoje kraje). Hledat se smí jen v dokumentech, které o vydání samy jsou — jinak vzniknou vymyšlená data, která vypadají doložená.
+
+Město důsledně rozlišuje **„Územní plán *města* Mariánské Lázně"** (platný, z roku 2002) od **„Územní plán Mariánské Lázně"** (nový, pořizovaný). Ten rozdíl je jediné, co ta dvě usnesení odlišuje.
+
 ### Stahování souborů
 
-Přílohy a PDF jdou přes redirect skript:
+Přílohy a PDF jdou přes **dva různé** skripty:
 
 ```
-/modules/file_storage/download.php?file=<HASH>%7C<ID>
+/modules/file_storage/download.php?file=<HASH>%7C<ID>     … běžné stránky
+/e_download.php?file=/data/editor/…&original=…            … stránky psané v editoru
 ```
+
+Druhý používají stránky nového územního plánu a ÚAP; nese navíc velikost a typ souboru v atributu `title`.
 
 `HASH` je 8 znaků hex, `ID` je číslo souboru, oddělovač je URL-enkódovaná svislice (`%7C`). **Ani jedno nelze odvodit** — seznam odkazů se musí pokaždé sesbírat z příslušné stránky.
 

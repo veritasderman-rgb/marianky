@@ -596,7 +596,8 @@ def zpracuj_vykaz(vykaz: Vykaz, katalog: list[str], subjekty: dict[str, dict],
         cesta = _stahni(url, f"{nazev_sady}.zip", log)
         oddily, meta = cti_extrakt(cesta, vykaz, ica, log)
 
-        nalezena_ica = sorted({z["ico"] for radky in oddily.values() for z in radky})
+        nalezene = {z["ico"] for radky in oddily.values() for z in radky}
+        nalezena_ica = sorted(nalezene)
         radku = sum(len(v) for v in oddily.values())
 
         obsah = {
@@ -628,7 +629,7 @@ def zpracuj_vykaz(vykaz: Vykaz, katalog: list[str], subjekty: dict[str, dict],
             # tohle je ověřená nepřítomnost ve zdroji, ne chyba stahování.
             "subjekty_bez_dat": [
                 {"ico": i, "nazev": s["nazev"]}
-                for i, s in sorted(subjekty.items()) if i not in set(nalezena_ica)
+                for i, s in sorted(subjekty.items()) if i not in nalezene
             ],
             "radku": radku,
             # Kód výkazu ve zdroji. Od roku 2026 se u FIN 2-12 M změnil

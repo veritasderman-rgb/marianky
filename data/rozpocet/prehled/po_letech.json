@@ -11,6 +11,7 @@
     "Konsolidace se do schváleného ani upraveného rozpočtu nerozpočtuje, proto je plán před konsolidací a po konsolidaci shodný. Porovnávat plán se skutečností jde jen na téhle úrovni.",
     "Chybějící hodnota je null, ne nula. `0` znamená, že výkaz nulu skutečně uvádí.",
     "Období s `koncove: false` je stav k danému měsíci, ne celý rok — do meziročního srovnání nepatří.",
+    "`prijmy_struktura` a `vydaje_struktura` jsou členění po TŘÍDÁCH rozpočtové skladby, a ta jsou PŘED konsolidací. Nesečtou se proto na `prijmy` / `vydaje` — rozklad až k číslu po konsolidaci nese každé členění v sobě (`soucet_pred_konsolidaci` − `minus_konsolidace` = `po_konsolidaci`).",
     "`zdroj_souctu: rekapitulace` znamená, že součty přebíráme ze souhrnné tabulky výkazu. `dopocet_z_polozek` znamená, že souhrnná tabulka v extraktu není (od roku 2026) a součet je náš — včetně konsolidace, jejíž pravidlo se do haléře shoduje se souhrny všech šestnácti uzavřených ročníků."
   ],
   "kontrola_dopoctu": {
@@ -49,6 +50,7 @@
       "plneni_prijmu_pct": 111.9,
       "plneni_vydaju_pct": 77.1,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 137997000.0,
           "upraveny": 176427000.0,
@@ -68,9 +70,25 @@
           "schvaleny": 84720000.0,
           "upraveny": 95721990.0,
           "skutecnost": 842353440.0
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 329586000.0,
+          "upraveny": 390127060.0,
+          "skutecnost": 1183057560.0
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 746623320.0
+        },
+        "po_konsolidaci": {
+          "schvaleny": 329586000.0,
+          "upraveny": 390127060.0,
+          "skutecnost": 436434240.0
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 283709300.0,
           "upraveny": 347855230.0,
@@ -80,6 +98,21 @@
           "schvaleny": 93317000.0,
           "upraveny": 175347630.0,
           "skutecnost": 68856450.0
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 377026300.0,
+          "upraveny": 523202860.0,
+          "skutecnost": 1150025740.0
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 746623320.0
+        },
+        "po_konsolidaci": {
+          "schvaleny": 377026300.0,
+          "upraveny": 523202860.0,
+          "skutecnost": 403402420.0
         }
       },
       "konsolidace": {
@@ -123,6 +156,7 @@
       "plneni_prijmu_pct": 102.5,
       "plneni_vydaju_pct": 91.8,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 140974000.0,
           "upraveny": 169934160.0,
@@ -142,9 +176,25 @@
           "schvaleny": 81550000.0,
           "upraveny": 103530830.0,
           "skutecnost": 999816422.26
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 328615800.0,
+          "upraveny": 382384830.0,
+          "skutecnost": 1288613746.43
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 896815338.63
+        },
+        "po_konsolidaci": {
+          "schvaleny": 328615800.0,
+          "upraveny": 382384830.0,
+          "skutecnost": 391798407.8
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 277545400.0,
           "upraveny": 337280190.0,
@@ -154,6 +204,21 @@
           "schvaleny": 182650000.0,
           "upraveny": 210382590.0,
           "skutecnost": 183444751.06
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 460195400.0,
+          "upraveny": 547662780.0,
+          "skutecnost": 1399493789.96
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 896815338.63
+        },
+        "po_konsolidaci": {
+          "schvaleny": 460195400.0,
+          "upraveny": 547662780.0,
+          "skutecnost": 502678451.33
         }
       },
       "konsolidace": {
@@ -197,6 +262,7 @@
       "plneni_prijmu_pct": 104.0,
       "plneni_vydaju_pct": 89.1,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 142185800.0,
           "upraveny": 160501230.0,
@@ -216,9 +282,25 @@
           "schvaleny": 20465800.0,
           "upraveny": 91318880.0,
           "skutecnost": 716143399.78
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 227306600.0,
+          "upraveny": 317073650.0,
+          "skutecnost": 954726302.85
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 624976345.34
+        },
+        "po_konsolidaci": {
+          "schvaleny": 227306600.0,
+          "upraveny": 317073650.0,
+          "skutecnost": 329749957.51
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 212606600.0,
           "upraveny": 246825580.0,
@@ -228,6 +310,21 @@
           "schvaleny": 46465000.0,
           "upraveny": 64714040.0,
           "skutecnost": 48240291.75
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 259071600.0,
+          "upraveny": 311539620.0,
+          "skutecnost": 902445958.58
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 624976345.34
+        },
+        "po_konsolidaci": {
+          "schvaleny": 259071600.0,
+          "upraveny": 311539620.0,
+          "skutecnost": 277469613.24
         }
       },
       "konsolidace": {
@@ -271,6 +368,7 @@
       "plneni_prijmu_pct": 117.4,
       "plneni_vydaju_pct": 88.1,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 159392000.0,
           "upraveny": 172794790.0,
@@ -290,9 +388,25 @@
           "schvaleny": 17050000.0,
           "upraveny": 52254730.0,
           "skutecnost": 565543892.74
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 234946700.0,
+          "upraveny": 289992090.0,
+          "skutecnost": 853774928.83
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 513307195.14
+        },
+        "po_konsolidaci": {
+          "schvaleny": 234946700.0,
+          "upraveny": 289992090.0,
+          "skutecnost": 340467733.69
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 224946700.0,
           "upraveny": 270174580.0,
@@ -302,6 +416,21 @@
           "schvaleny": 48123300.0,
           "upraveny": 67334100.0,
           "skutecnost": 45972721.8
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 273070000.0,
+          "upraveny": 337508680.0,
+          "skutecnost": 810544266.51
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 513307195.14
+        },
+        "po_konsolidaci": {
+          "schvaleny": 273070000.0,
+          "upraveny": 337508680.0,
+          "skutecnost": 297237071.37
         }
       },
       "konsolidace": {
@@ -345,6 +474,7 @@
       "plneni_prijmu_pct": 115.5,
       "plneni_vydaju_pct": 83.0,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 163800000.0,
           "upraveny": 180727490.0,
@@ -364,9 +494,25 @@
           "schvaleny": 17038000.0,
           "upraveny": 31539870.0,
           "skutecnost": 428294739.59
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 233446500.0,
+          "upraveny": 268302640.0,
+          "skutecnost": 706612175.02
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 396768882.02
+        },
+        "po_konsolidaci": {
+          "schvaleny": 233446500.0,
+          "upraveny": 268302640.0,
+          "skutecnost": 309843293.0
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 228946500.0,
           "upraveny": 262202670.0,
@@ -376,6 +522,21 @@
           "schvaleny": 63915000.0,
           "upraveny": 109737900.0,
           "skutecnost": 66525800.91
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 292861500.0,
+          "upraveny": 371940570.0,
+          "skutecnost": 705598299.78
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 396768882.02
+        },
+        "po_konsolidaci": {
+          "schvaleny": 292861500.0,
+          "upraveny": 371940570.0,
+          "skutecnost": 308829417.76
         }
       },
       "konsolidace": {
@@ -419,6 +580,7 @@
       "plneni_prijmu_pct": 108.6,
       "plneni_vydaju_pct": 87.6,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 169998000.0,
           "upraveny": 189432580.0,
@@ -438,9 +600,25 @@
           "schvaleny": 17035000.0,
           "upraveny": 29182350.0,
           "skutecnost": 396775866.87
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 241805700.0,
+          "upraveny": 273876970.0,
+          "skutecnost": 665028900.01
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 367609067.69
+        },
+        "po_konsolidaci": {
+          "schvaleny": 241805700.0,
+          "upraveny": 273876970.0,
+          "skutecnost": 297419832.32
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 233760700.0,
           "upraveny": 268569260.0,
@@ -450,6 +628,21 @@
           "schvaleny": 65892000.0,
           "upraveny": 81287220.0,
           "skutecnost": 59190113.52
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 299652700.0,
+          "upraveny": 349856480.0,
+          "skutecnost": 674145870.82
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 367609067.69
+        },
+        "po_konsolidaci": {
+          "schvaleny": 299652700.0,
+          "upraveny": 349856480.0,
+          "skutecnost": 306536803.13
         }
       },
       "konsolidace": {
@@ -493,6 +686,7 @@
       "plneni_prijmu_pct": 112.9,
       "plneni_vydaju_pct": 84.6,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 177892000.0,
           "upraveny": 200924920.0,
@@ -512,9 +706,25 @@
           "schvaleny": 17325000.0,
           "upraveny": 39648680.0,
           "skutecnost": 438657548.52
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 245276000.0,
+          "upraveny": 292016870.0,
+          "skutecnost": 728774560.95
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 399009909.05
+        },
+        "po_konsolidaci": {
+          "schvaleny": 245276000.0,
+          "upraveny": 292016870.0,
+          "skutecnost": 329764651.9
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 234806000.0,
           "upraveny": 270484810.0,
@@ -524,6 +734,21 @@
           "schvaleny": 47832000.0,
           "upraveny": 68370260.0,
           "skutecnost": 35596548.37
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 282638000.0,
+          "upraveny": 338855070.0,
+          "skutecnost": 685774041.09
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 399009909.05
+        },
+        "po_konsolidaci": {
+          "schvaleny": 282638000.0,
+          "upraveny": 338855070.0,
+          "skutecnost": 286764132.04
         }
       },
       "konsolidace": {
@@ -567,6 +792,7 @@
       "plneni_prijmu_pct": 107.5,
       "plneni_vydaju_pct": 77.1,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 184140000.0,
           "upraveny": 223044290.0,
@@ -586,9 +812,25 @@
           "schvaleny": 19310000.0,
           "upraveny": 36393860.0,
           "skutecnost": 566423137.79
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 254395300.0,
+          "upraveny": 310912180.0,
+          "skutecnost": 864369967.52
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 530029351.12
+        },
+        "po_konsolidaci": {
+          "schvaleny": 254395300.0,
+          "upraveny": 310912180.0,
+          "skutecnost": 334340616.4
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 251090900.0,
           "upraveny": 297142910.0,
@@ -598,6 +840,21 @@
           "schvaleny": 77314000.0,
           "upraveny": 90817950.0,
           "skutecnost": 24667631.03
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 328404900.0,
+          "upraveny": 387960860.0,
+          "skutecnost": 829026733.09
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 530029351.12
+        },
+        "po_konsolidaci": {
+          "schvaleny": 328404900.0,
+          "upraveny": 387960860.0,
+          "skutecnost": 298997381.97
         }
       },
       "konsolidace": {
@@ -641,6 +898,7 @@
       "plneni_prijmu_pct": 107.2,
       "plneni_vydaju_pct": 80.6,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 205030000.0,
           "upraveny": 236639380.0,
@@ -660,9 +918,25 @@
           "schvaleny": 20376000.0,
           "upraveny": 36662850.0,
           "skutecnost": 808235747.69
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 275036400.0,
+          "upraveny": 323250980.0,
+          "skutecnost": 1118233592.71
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 771572929.56
+        },
+        "po_konsolidaci": {
+          "schvaleny": 275036400.0,
+          "upraveny": 323250980.0,
+          "skutecnost": 346660663.15
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 273006200.0,
           "upraveny": 330029020.0,
@@ -672,6 +946,21 @@
           "schvaleny": 76995000.0,
           "upraveny": 108400350.0,
           "skutecnost": 48802173.8
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 350001200.0,
+          "upraveny": 438429370.0,
+          "skutecnost": 1125057383.13
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 771572929.56
+        },
+        "po_konsolidaci": {
+          "schvaleny": 350001200.0,
+          "upraveny": 438429370.0,
+          "skutecnost": 353484453.57
         }
       },
       "konsolidace": {
@@ -715,6 +1004,7 @@
       "plneni_prijmu_pct": 106.0,
       "plneni_vydaju_pct": 85.3,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 210781500.0,
           "upraveny": 262591360.0,
@@ -734,9 +1024,25 @@
           "schvaleny": 19934000.0,
           "upraveny": 54117830.0,
           "skutecnost": 847614310.86
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 283388700.0,
+          "upraveny": 372340260.0,
+          "skutecnost": 1188341901.04
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 793496561.42
+        },
+        "po_konsolidaci": {
+          "schvaleny": 283388700.0,
+          "upraveny": 372340260.0,
+          "skutecnost": 394845339.62
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 281148700.0,
           "upraveny": 367090490.0,
@@ -746,6 +1052,21 @@
           "schvaleny": 116802300.0,
           "upraveny": 134705800.0,
           "skutecnost": 83917433.1
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 397951000.0,
+          "upraveny": 501796290.0,
+          "skutecnost": 1221341971.95
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 793496561.42
+        },
+        "po_konsolidaci": {
+          "schvaleny": 397951000.0,
+          "upraveny": 501796290.0,
+          "skutecnost": 427845410.53
         }
       },
       "konsolidace": {
@@ -789,6 +1110,7 @@
       "plneni_prijmu_pct": 105.1,
       "plneni_vydaju_pct": 83.4,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 231386500.0,
           "upraveny": 227847600.0,
@@ -808,9 +1130,25 @@
           "schvaleny": 24081900.0,
           "upraveny": 101747260.0,
           "skutecnost": 1082824300.61
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 307340500.0,
+          "upraveny": 374768680.0,
+          "skutecnost": 1374836644.55
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 981077076.45
+        },
+        "po_konsolidaci": {
+          "schvaleny": 307340500.0,
+          "upraveny": 374768680.0,
+          "skutecnost": 393759568.1
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 305740120.0,
           "upraveny": 372174580.0,
@@ -820,6 +1158,21 @@
           "schvaleny": 77884600.0,
           "upraveny": 76585070.0,
           "skutecnost": 26206394.22
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 383624720.0,
+          "upraveny": 448759650.0,
+          "skutecnost": 1355420251.87
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 981077076.45
+        },
+        "po_konsolidaci": {
+          "schvaleny": 383624720.0,
+          "upraveny": 448759650.0,
+          "skutecnost": 374343175.42
         }
       },
       "konsolidace": {
@@ -863,6 +1216,7 @@
       "plneni_prijmu_pct": 106.6,
       "plneni_vydaju_pct": 79.7,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 211027000.0,
           "upraveny": 249312540.0,
@@ -882,9 +1236,25 @@
           "schvaleny": 25252800.0,
           "upraveny": 56326840.0,
           "skutecnost": 1180767585.06
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 289642600.0,
+          "upraveny": 361642640.0,
+          "skutecnost": 1510099114.89
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1124421009.25
+        },
+        "po_konsolidaci": {
+          "schvaleny": 289642600.0,
+          "upraveny": 361642640.0,
+          "skutecnost": 385678105.64
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 308490800.0,
           "upraveny": 364139720.0,
@@ -894,6 +1264,21 @@
           "schvaleny": 106964600.0,
           "upraveny": 118020820.0,
           "skutecnost": 42524915.77
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 415455400.0,
+          "upraveny": 482160540.0,
+          "skutecnost": 1508738508.97
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1124421009.25
+        },
+        "po_konsolidaci": {
+          "schvaleny": 415455400.0,
+          "upraveny": 482160540.0,
+          "skutecnost": 384317499.72
         }
       },
       "konsolidace": {
@@ -937,6 +1322,7 @@
       "plneni_prijmu_pct": 106.9,
       "plneni_vydaju_pct": 83.9,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 239829000.0,
           "upraveny": 318674600.0,
@@ -956,9 +1342,25 @@
           "schvaleny": 25270500.0,
           "upraveny": 58486450.0,
           "skutecnost": 1341175343.58
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 316929000.0,
+          "upraveny": 447437030.0,
+          "skutecnost": 1761042889.64
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1282688550.59
+        },
+        "po_konsolidaci": {
+          "schvaleny": 316929000.0,
+          "upraveny": 447437030.0,
+          "skutecnost": 478354339.05
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 321418900.0,
           "upraveny": 394681450.0,
@@ -968,6 +1370,21 @@
           "schvaleny": 106234000.0,
           "upraveny": 119320590.0,
           "skutecnost": 53280100.49
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 427652900.0,
+          "upraveny": 514002040.0,
+          "skutecnost": 1713981964.73
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1282688550.59
+        },
+        "po_konsolidaci": {
+          "schvaleny": 427652900.0,
+          "upraveny": 514002040.0,
+          "skutecnost": 431293414.14
         }
       },
       "konsolidace": {
@@ -1011,6 +1428,7 @@
       "plneni_prijmu_pct": 103.5,
       "plneni_vydaju_pct": 85.1,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 285179000.0,
           "upraveny": 406450350.0,
@@ -1030,9 +1448,25 @@
           "schvaleny": 26148500.0,
           "upraveny": 113390950.0,
           "skutecnost": 1546627024.35
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 365395900.0,
+          "upraveny": 606286290.0,
+          "skutecnost": 2060497708.38
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1433218150.7
+        },
+        "po_konsolidaci": {
+          "schvaleny": 365395900.0,
+          "upraveny": 606286290.0,
+          "skutecnost": 627279557.68
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 375256820.0,
           "upraveny": 458542980.0,
@@ -1042,6 +1476,21 @@
           "schvaleny": 151322000.0,
           "upraveny": 173501480.0,
           "skutecnost": 116521586.3
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 526578820.0,
+          "upraveny": 632044460.0,
+          "skutecnost": 1971325323.73
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1433218150.7
+        },
+        "po_konsolidaci": {
+          "schvaleny": 526578820.0,
+          "upraveny": 632044460.0,
+          "skutecnost": 538107173.03
         }
       },
       "konsolidace": {
@@ -1085,6 +1534,7 @@
       "plneni_prijmu_pct": 105.9,
       "plneni_vydaju_pct": 74.5,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 360364000.0,
           "upraveny": 407050810.0,
@@ -1104,9 +1554,25 @@
           "schvaleny": 26624900.0,
           "upraveny": 69681010.0,
           "skutecnost": 1294807741.53
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 444256800.0,
+          "upraveny": 568549800.0,
+          "skutecnost": 1826981765.26
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1225144760.58
+        },
+        "po_konsolidaci": {
+          "schvaleny": 444256800.0,
+          "upraveny": 568549800.0,
+          "skutecnost": 601837004.68
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 423131680.0,
           "upraveny": 505954710.0,
@@ -1116,6 +1582,21 @@
           "schvaleny": 226890600.0,
           "upraveny": 314374160.0,
           "skutecnost": 161606741.64
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 650022280.0,
+          "upraveny": 820328870.0,
+          "skutecnost": 1836574753.89
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1225144760.58
+        },
+        "po_konsolidaci": {
+          "schvaleny": 650022280.0,
+          "upraveny": 820328870.0,
+          "skutecnost": 611429993.31
         }
       },
       "konsolidace": {
@@ -1159,6 +1640,7 @@
       "plneni_prijmu_pct": 107.7,
       "plneni_vydaju_pct": 74.5,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 383296000.0,
           "upraveny": 413894240.0,
@@ -1178,9 +1660,25 @@
           "schvaleny": 26372000.0,
           "upraveny": 81024440.0,
           "skutecnost": 1166420660.34
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 469418500.0,
+          "upraveny": 567971630.0,
+          "skutecnost": 1697353222.13
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1085406773.63
+        },
+        "po_konsolidaci": {
+          "schvaleny": 469418500.0,
+          "upraveny": 567971630.0,
+          "skutecnost": 611946448.5
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 459979150.0,
           "upraveny": 554047540.0,
@@ -1190,6 +1688,21 @@
           "schvaleny": 205370600.0,
           "upraveny": 284712490.0,
           "skutecnost": 141609660.51
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 665349750.0,
+          "upraveny": 838760030.0,
+          "skutecnost": 1709935903.56
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 1085406773.63
+        },
+        "po_konsolidaci": {
+          "schvaleny": 665349750.0,
+          "upraveny": 838760030.0,
+          "skutecnost": 624529129.93
         }
       },
       "konsolidace": {
@@ -1233,6 +1746,7 @@
       "plneni_prijmu_pct": 59.4,
       "plneni_vydaju_pct": 42.5,
       "prijmy_struktura": {
+        "pred_konsolidaci": true,
         "danove": {
           "schvaleny": 434230000.0,
           "upraveny": 458950240.0,
@@ -1252,9 +1766,25 @@
           "schvaleny": 26134100.0,
           "upraveny": 64177800.0,
           "skutecnost": 498349985.42
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 506455800.0,
+          "upraveny": 572179000.0,
+          "skutecnost": 784656214.76
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 444809130.61
+        },
+        "po_konsolidaci": {
+          "schvaleny": 506455800.0,
+          "upraveny": 572179000.0,
+          "skutecnost": 339847084.15
         }
       },
       "vydaje_struktura": {
+        "pred_konsolidaci": true,
         "bezne_vydaje": {
           "schvaleny": 504680400.0,
           "upraveny": 569448680.0,
@@ -1264,6 +1794,21 @@
           "schvaleny": 212681110.0,
           "upraveny": 215740630.0,
           "skutecnost": 46546333.14
+        },
+        "soucet_pred_konsolidaci": {
+          "schvaleny": 717361510.0,
+          "upraveny": 785189310.0,
+          "skutecnost": 778713574.67
+        },
+        "minus_konsolidace": {
+          "schvaleny": 0.0,
+          "upraveny": 0.0,
+          "skutecnost": 444809130.61
+        },
+        "po_konsolidaci": {
+          "schvaleny": 717361510.0,
+          "upraveny": 785189310.0,
+          "skutecnost": 333904444.06
         }
       },
       "konsolidace": {

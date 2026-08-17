@@ -33,15 +33,22 @@ dokumentace se nestahuje.
 
 2. **„Vloženo“ není datum vydání.** U souboru je datum nahrání do
    úložiště webu (celý archiv změn ÚP má 25. 4. 2018 — den migrace webu).
-   Datum vydání a účinnosti se bere odjinud: z popisku kategorie na
-   rozcestníku, z usnesení zastupitelstva („Vydání změny č. 27 …“) nebo
-   z čísla opatření obecné povahy v názvu. Každý údaj nese `datum_zdroj`
-   a odvozené údaje mají `odvozeno: true`.
+   Datum vydání a účinnosti se bere odjinud a vždy je u něj vidět odkud:
+   `datum_zdroj` je `rozcestnik` (popisek kategorie) nebo `usneseni`
+   („Vydání změny č. 27 …“). Údaje odvozené z názvu souboru jsou
+   označené zvlášť — `zmena_odvozena` u čísla změny, `rok_odvozen_z_oop`
+   u roku z čísla opatření obecné povahy.
 
 3. **Oznámení o vydání OOP jsou skeny.** Právě ty dokumenty, které nesou
-   datum nabytí účinnosti, nemají textovou vrstvu (`potrebuje_ocr` je u
-   nich pravda). Data se nedomýšlejí — dokument dostane `sken: true` a
-   datum zůstane `null`, dokud ho nedoloží usnesení.
+   datum nabytí účinnosti, nemají textovou vrstvu — všech 10 skenů mezi
+   vytěženými PDF jsou přesně ony. Datum se proto nedomýšlí: dokument
+   dostane `sken: true` a datum zůstane `null`, dokud ho nedoloží
+   usnesení. Vydání změn 1–19 se tak doložit nedá vůbec, protože archiv
+   usnesení začíná rokem 2012. Hledání „nabylo účinnosti dne …“ v textu
+   běží jen v dokumentech, které o vydání samy jsou — v textové části
+   územního plánu se totiž tatáž věta vyskytuje u cizích předpisů
+   (zásady územního rozvoje kraje) a dala by datum, které s dokumentem
+   nesouvisí.
 
 4. **Starší PDF mají rozbité kódování diakritiky.** V textových částech
    změn z roku 2012 vychází „Zm ny .23“ místo „Změny č.23“; od roku 2014

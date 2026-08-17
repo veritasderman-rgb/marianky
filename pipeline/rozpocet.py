@@ -351,12 +351,25 @@ def po_letech(fin: list[dict], log: Log) -> dict:
             "financovani": polozky["financovani"],
             "plneni_prijmu_pct": _plneni(polozky["prijmy"]),
             "plneni_vydaju_pct": _plneni(polozky["vydaje"]),
+            # Členění po třídách rozpočtové skladby je vždycky PŘED
+            # konsolidací — v roce 2025 je v přijatých transferech 1,17 mld.,
+            # z toho 1,09 mld. jsou převody z vlastních fondů města. Aby se
+            # nedalo omylem sečíst členění a porovnat ho s celkem, nese si
+            # každé členění celý rozklad až k číslu po konsolidaci.
             "prijmy_struktura": {
-                k: polozky[k] for k in
-                ("danove", "nedanove", "kapitalove_prijmy", "transfery")
+                "pred_konsolidaci": True,
+                **{k: polozky[k] for k in
+                   ("danove", "nedanove", "kapitalove_prijmy", "transfery")},
+                "soucet_pred_konsolidaci": polozky["prijmy_pred_konsolidaci"],
+                "minus_konsolidace": polozky["konsolidace_prijmu"],
+                "po_konsolidaci": polozky["prijmy"],
             },
             "vydaje_struktura": {
-                k: polozky[k] for k in ("bezne_vydaje", "kapitalove_vydaje")
+                "pred_konsolidaci": True,
+                **{k: polozky[k] for k in ("bezne_vydaje", "kapitalove_vydaje")},
+                "soucet_pred_konsolidaci": polozky["vydaje_pred_konsolidaci"],
+                "minus_konsolidace": polozky["konsolidace_vydaju"],
+                "po_konsolidaci": polozky["vydaje"],
             },
             "konsolidace": {
                 "prijmy": polozky["konsolidace_prijmu"],
@@ -382,6 +395,11 @@ def po_letech(fin: list[dict], log: Log) -> dict:
             "skutečně uvádí.",
             "Období s `koncove: false` je stav k danému měsíci, ne celý rok — "
             "do meziročního srovnání nepatří.",
+            "`prijmy_struktura` a `vydaje_struktura` jsou členění po TŘÍDÁCH "
+            "rozpočtové skladby, a ta jsou PŘED konsolidací. Nesečtou se proto "
+            "na `prijmy` / `vydaje` — rozklad až k číslu po konsolidaci nese "
+            "každé členění v sobě (`soucet_pred_konsolidaci` − "
+            "`minus_konsolidace` = `po_konsolidaci`).",
             "`zdroj_souctu: rekapitulace` znamená, že součty přebíráme ze "
             "souhrnné tabulky výkazu. `dopocet_z_polozek` znamená, že souhrnná "
             "tabulka v extraktu není (od roku 2026) a součet je náš — včetně "
@@ -513,7 +531,7 @@ def vydaje_struktura(fin: list[dict], cis_par: dict, log: Log) -> dict:
 # 3. Plán proti skutečnosti
 # --------------------------------------------------------------------------
 
-def plan_vs_skutecnost(osa: dict, struktura: dict, cis_par: dict) -> dict:
+def plan_vs_skutecnost(osa: dict, struktura: dict) -> dict:
     podle_roku = {r["rok"]: r for r in struktura["roky"]}
     roky = []
 
@@ -937,7 +955,7 @@ def main() -> int:
         struktura = vydaje_struktura(fin, cis_par, log)
         uloz(f"{VYSTUP}/vydaje_struktura.json", struktura)
 
-        plan = plan_vs_skutecnost(osa, struktura, cis_par)
+        plan = plan_vs_skutecnost(osa, struktura)
         uloz(f"{VYSTUP}/plan_vs_skutecnost.json", plan)
 
         majetek = majetek_zadluzenost(rozv, fin, _ciselnik("polozky_vykazu"))
