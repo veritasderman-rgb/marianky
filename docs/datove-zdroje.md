@@ -70,7 +70,8 @@ Sekce *Hlasování → Členové* dává **jmenovitá hlasování**. To umožňu
 
 | URL | Obsah |
 |---|---|
-| `/urad/uredni-deska-archiv/` | Úřední deska včetně archivu |
+| **`/urad/uredni-deska/`** | **Živá úřední deska — viz varování níže** |
+| `/urad/uredni-deska-archiv/` | Archiv složek dokumentů (končí rokem 2025) |
 | `/aktualne/zpravodaj-mesta/` | Archiv PDF zpravodaje (stránkovaný) |
 | `/aktualne/novinky/` | Novinky |
 | `/aktualne/kalendar-akci/` | Kalendář akcí |
@@ -81,6 +82,20 @@ Sekce *Hlasování → Členové* dává **jmenovitá hlasování**. To umožňu
 | `/urad/povinne-informace/subjekt-obchodni-spolecnosti-81.html` | Obchodní společnosti města |
 | `/kontakty/telefonni-seznam/` | Telefonní seznam úřadu |
 | `/urad/dokumenty/strategicke-dokumenty/` | Strategické dokumenty |
+
+### Tři věci, které tu byly špatně
+
+**Úřední deska jsou DVĚ různé stránky.** `/urad/uredni-deska-archiv/`, kterou jsem tu původně uvedl jako *tu* desku, je jen **archiv složek dokumentů** a končí rokem 2025. Živá deska s dokumenty v zákonné lhůtě včetně všech letošních je **`/urad/uredni-deska/`** — jiná šablona, název kategorie v `<button>` místo `<a>`. Kvůli téhle záměně měl projekt data zaseklá v květnu 2025 a týdenní vydání muselo sekci hlásit jako zastaralou. Sbírat je potřeba **obojí**, rozlišené polem `deska`. Po opravě: 6 728 dokumentů, 2013–2026, 123 aktuálně vyvěšených.
+
+**Kalendář akcí na muml.cz vůbec není.** `/aktualne/kalendar-akci/` je jen rozcestník s obrázkovým odkazem na turistický portál **`marianskelazne.cz/kalendar/`**, kde kalendář skutečně je. Výpis je „načítací": `?page=N` vrací kumulativně 13 + (N−1)·12 akcí, takže stačí jeden dotaz s vysokým `page`.
+
+**IČO městských firem na webu jsou** — ne na přehledu, ale v detailu každé firmy: Infocentrum 25208438, TDS 25213261, Lázeňské lesy 64831086, DEVELOP CENTRUM 61776068, MĚSTSKÁ DOPRAVA 26412501. U Nemocnice je web opravdu neuvádí.
+
+### Tempo: web má strop a je sdílený
+
+Při stahování archivu novinek rychlostí **~2,5 dotazu za sekundu** server po několika tisících požadavcích přestal přijímat spojení — **plošně na celý web, ne jen na jednotlivé adresy**. Blokace trvala zhruba **90 minut** a dopadla i na souběžně běžící sběrače.
+
+Ověřené udržitelné tempo je **~1,3 dotazu za sekundu**. `lib/core.fetch()` navíc drží minimální odstup 1,5 s mezi požadavky na `muml.cz`, sdílený přes soubor mezi procesy. **Kdo z muml.cz tahá hromadně, musí počítat s tím, že strop je společný pro všechny běžící moduly.**
 
 ### RSS neexistuje
 

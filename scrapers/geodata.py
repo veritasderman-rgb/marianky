@@ -33,6 +33,20 @@ parametry. U bodových prvků se vedle WGS-84 ukládá i původní S-JTSK.
 
 LICENCE: RÚIAN CC BY 4.0 (ČÚZK, bezúplatně), OSM ODbL 1.0 s povinným
 uvedením zdroje. Přesné znění je v `zdroje.json` vedle dat.
+
+VÝSTUPY do `data/opendata/geo/`
+
+| soubor | co v něm je |
+|---|---|
+| `hranice_obce.geojson` | hranice města, 1 prvek |
+| `katastralni_uzemi.geojson` | 4 katastrální území |
+| `zakladni_sidelni_jednotky.geojson` | 19 ZSJ |
+| `casti_obce.geojson` | 6 částí obce, jen definiční body |
+| `adresni_mista.geojson` | 2 548 adresních míst včetně kódu okrsku |
+| `volebni_okrsky.geojson` | 17 okrsků s hranicí |
+| `okrsky_adresy.json` | okrsek → adresy, podklad pro mapu voleb |
+| `osm_lazenstvi.geojson` | prameny, lázeňství, ubytování, zeleň, historie |
+| `zdroje.json` | zdroje, licence, parametry převodu, počty |
 """
 from __future__ import annotations
 

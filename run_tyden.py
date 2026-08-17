@@ -45,6 +45,9 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.profily",        "Hlasovací profily",            False),
     ("pipeline.retez",          "Řetěz usnesení → smlouva → peníze", False),
     ("pipeline.prepis",         "Přepisy jednání",              False),
+    # Osa čte výstup řetězu i propojení, proto stojí až za nimi.
+    ("pipeline.casova_osa",     "Jednotná časová osa",          False),
+    ("pipeline.firmy_prehled",  "Přehled firem ve městě",       False),
     ("pipeline.vydani",         "Sestavení týdenního vydání",   True),
 ]
 

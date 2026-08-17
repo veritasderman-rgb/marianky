@@ -1,23 +1,26 @@
 /**
  * Výsledky voleb po volebních okrscích — `data/opendata/volby/`.
  *
- * Formát zatím nikde zapsaný není, čte se proto tolerantně (viz `tolerantni.ts`).
- * Pravidla, která se tu drží:
+ * Struktura zdroje:
+ *   prehled.json         — obec, zdroj, licence, seznam cyklů, kde je geometrie
+ *   cykly/{cyklus}.json  — jeden volební cyklus; uvnitř `volby[]` (kola)
+ *   okrsky_geo/{rok}.json— hranice okrsků platné k roku (GeoJSON, WGS-84)
+ *   zastupitele.json     — zvolení zastupitelé napříč komunálními volbami
+ *   okrsky.json          — co o okrscích víme a co ne
  *
- *   – **Účast se nedopočítává potichu.** Když ji zdroj neuvádí a dá se spočítat
- *     z vydaných obálek a zapsaných voličů, spočítá se — ale záznam si nese
- *     příznak `ucastDopocitana` a stránka to napíše.
- *   – **Absolutní počty jsou povinné** (web/DESIGN.md §3.6). Procenta bez
- *     počtu voličů z volební mapy dělají lháře: velká plocha nemusí znamenat
- *     mnoho hlasů.
- *   – Chybějící údaj je `null`, nikdy nula.
+ * Dvě věci, které zdroj výslovně říká a web je musí přenést:
+ *   – **Shodné číslo okrsku ve dvou volbách NEZNAMENÁ shodné území.** ČSÚ
+ *     hranice k jednotlivým volbám nepublikuje; geometrie existuje jen jako
+ *     vrstva k roku.
+ *   – **Okrsková data u komunálních voleb počítají hlasy pro kandidáty**, ne
+ *     pro voliče. Proto je „platných hlasů" mnohonásobně víc než voličů —
+ *     každý volič má tolik hlasů, kolik se volí zastupitelů.
  */
-import { nactiAdresarSoubory, slug, type Nacteno } from './data';
+import { nactiAdresarSoubory, nactiJson, slug, type Nacteno } from './data';
 import { sestavRegistr, type RegistrBarev } from './barvy';
 import { cisloOkrsku, type GeoSoubor, type PrvekZdroje } from './geodata';
-import { cis, isoDatum, jeObjekt, objekty, podil as podilZ, rokZ, txt, type Zaznam } from './tolerantni';
-
-type PrvekVrstvy = PrvekZdroje;
+import { tvaryZGeometrie } from './mapy';
+import { cis, jeObjekt, objekty, txt, type Zaznam } from './tolerantni';
 
 export interface StranaVOkrsku {
   nazev: string;
@@ -29,11 +32,9 @@ export interface StranaVOkrsku {
 
 export interface Okrsek {
   cislo: string;
-  nazev: string | null;
-  /** Kde se volí — škola, dům s pečovatelskou službou apod. */
-  sidlo: string | null;
   volicu: number | null;
   obalky: number | null;
+  odevzdane: number | null;
   platne: number | null;
   ucast: number | null;
   ucastDopocitana: boolean;
@@ -45,261 +46,308 @@ export interface Zvoleny {
   jmeno: string;
   strana: string | null;
   hlasy: number | null;
-  poradi: number | null;
+  hlasyProc: number | null;
+  poradiMandatu: number | null;
   osoba_id: string | null;
-  nahradnik: boolean;
+  povolani: string | null;
 }
 
 export interface VysledekStrany {
   nazev: string;
+  zkratka: string | null;
   klic: string;
   hlasy: number | null;
   podil: number | null;
   mandaty: number | null;
 }
 
-export type TypVoleb = 'komunalni' | 'parlamentni' | 'jine';
+export type TypVoleb =
+  | 'komunalni'
+  | 'snemovni'
+  | 'krajske'
+  | 'senatni'
+  | 'prezidentske'
+  | 'evropske'
+  | 'jine';
+
+/** Jedno hlasování — u dvoukolových voleb je kolo samostatná položka. */
+export interface Volba {
+  id: string;
+  kolo: number | null;
+  datum: string | null;
+  mandatu: number | null;
+  celkem: {
+    volicu: number | null;
+    obalky: number | null;
+    odevzdane: number | null;
+    platne: number | null;
+    ucast: number | null;
+  };
+  okrsky: Okrsek[];
+  strany: VysledekStrany[];
+  zvoleni: Zvoleny[];
+  kandidatu: number | null;
+}
 
 export interface VolebniCyklus {
   id: string;
   typ: TypVoleb;
   typNazev: string;
   rok: number;
-  datum: string | null;
   nazev: string;
-  okrsky: Okrsek[];
-  celkem: {
-    volicu: number | null;
-    obalky: number | null;
-    platne: number | null;
-    ucast: number | null;
-    ucastDopocitana: boolean;
-  };
-  strany: VysledekStrany[];
-  zvoleni: Zvoleny[];
+  /** `ok`, `neucastnila_se` apod. — přebírá se ze zdroje beze změny. */
+  stav: string | null;
+  volby: Volba[];
   zdroj: string | null;
   cesta: string;
 }
 
-/* ─────────────────────────  Rozbor jednoho cyklu  ──────────────────── */
-
-function typVoleb(hodnota: string | null, cesta: string): { typ: TypVoleb; nazev: string } {
-  const s = `${hodnota ?? ''} ${cesta}`.toLowerCase();
-  if (s.includes('komunal') || s.includes('komunál') || s.includes('zastupitel') || s.includes('obecn')) {
-    return { typ: 'komunalni', nazev: 'komunální volby' };
-  }
-  if (s.includes('snemov') || s.includes('sněmov') || s.includes('parlament') || s.includes('ps20') || s.includes('poslane')) {
-    return { typ: 'parlamentni', nazev: 'volby do Poslanecké sněmovny' };
-  }
-  if (s.includes('senat') || s.includes('senát')) return { typ: 'jine', nazev: 'volby do Senátu' };
-  if (s.includes('prezident')) return { typ: 'jine', nazev: 'volba prezidenta' };
-  if (s.includes('evrop') || s.includes('ep20')) return { typ: 'jine', nazev: 'volby do Evropského parlamentu' };
-  if (s.includes('kraj')) return { typ: 'jine', nazev: 'krajské volby' };
-  return { typ: 'jine', nazev: 'volby' };
+export interface PrehledVoleb {
+  obec: string | null;
+  zdroj: string | null;
+  licence: string | null;
+  /** Ke kterým rokům zdroj publikuje hranice okrsků. */
+  geometrieK: { platiK: string; soubor: string | null; okrsku: number | null }[];
 }
 
-const KLICE_STRAN = ['strany', 'vysledky', 'výsledky', 'kandidatky', 'kandidátky', 'subjekty', 'hlasy_stran', 'results'];
+/* ────────────────────────────  Typ voleb  ──────────────────────────── */
 
-function stranyZe(z: Zaznam | null | undefined): StranaVOkrsku[] {
-  if (!z) return [];
-  for (const k of KLICE_STRAN) {
-    const v = z[k];
-    if (Array.isArray(v)) {
-      return v
-        .filter(jeObjekt)
-        .map((s) => {
-          const nazev = txt(s, 'nazev', 'název', 'strana', 'kandidatka', 'kandidátka', 'nazev_strany', 'subjekt', 'name');
-          if (!nazev) return null;
-          return {
-            nazev,
-            klic: slug(nazev) || nazev,
-            hlasy: cis(s, 'hlasy', 'pocet_hlasu', 'počet_hlasů', 'votes', 'platne_hlasy'),
-            podil: podilZ(s, 'podil', 'podíl', 'procenta', 'proc_hlasu', 'share', 'pct'),
-          };
-        })
-        .filter((s): s is StranaVOkrsku => s !== null);
-    }
-    // `{ "ANO 2011": 412, "ODS": 210 }`
-    if (jeObjekt(v)) {
-      return Object.entries(v)
-        .map(([nazev, hlasy]) => ({
-          nazev,
-          klic: slug(nazev) || nazev,
-          hlasy: typeof hlasy === 'number' && Number.isFinite(hlasy) ? hlasy : null,
-          podil: null,
-        }))
-        .filter((s) => s.hlasy !== null);
-    }
-  }
-  return [];
+const TYPY: Record<string, { typ: TypVoleb; nazev: string }> = {
+  komunalni: { typ: 'komunalni', nazev: 'komunální volby' },
+  snemovni: { typ: 'snemovni', nazev: 'volby do Poslanecké sněmovny' },
+  krajske: { typ: 'krajske', nazev: 'krajské volby' },
+  senatni: { typ: 'senatni', nazev: 'volby do Senátu' },
+  prezidentske: { typ: 'prezidentske', nazev: 'volba prezidenta' },
+  evropske: { typ: 'evropske', nazev: 'volby do Evropského parlamentu' },
+};
+
+export const NAZVY_TYPU: { klic: TypVoleb; nazev: string; kratky: string }[] = [
+  { klic: 'komunalni', nazev: 'komunální volby', kratky: 'Komunální' },
+  { klic: 'snemovni', nazev: 'volby do Poslanecké sněmovny', kratky: 'Sněmovní' },
+  { klic: 'krajske', nazev: 'krajské volby', kratky: 'Krajské' },
+  { klic: 'prezidentske', nazev: 'volba prezidenta', kratky: 'Prezidentské' },
+  { klic: 'evropske', nazev: 'volby do Evropského parlamentu', kratky: 'Evropské' },
+  { klic: 'senatni', nazev: 'volby do Senátu', kratky: 'Senátní' },
+  { klic: 'jine', nazev: 'volby', kratky: 'Ostatní' },
+];
+
+function typVoleb(druh: string | null): { typ: TypVoleb; nazev: string } {
+  const s = (druh ?? '').trim().toLowerCase();
+  return TYPY[s] ?? { typ: 'jine', nazev: 'volby' };
 }
 
-function dopocitejPodily(strany: StranaVOkrsku[], platne: number | null): StranaVOkrsku[] {
-  const soucet = platne ?? strany.reduce((s, x) => s + (x.hlasy ?? 0), 0);
-  if (!(soucet > 0)) return strany;
-  return strany.map((s) => ({ ...s, podil: s.podil ?? (s.hlasy === null ? null : s.hlasy / soucet) }));
+/* ────────────────────────────  Rozbor cyklu  ───────────────────────── */
+
+function stranyCelkem(v: Zaznam): VysledekStrany[] {
+  return objekty(v, 'strany')
+    .map((s) => {
+      const nazev = txt(s, 'nazev', 'kandidat', 'jmeno');
+      if (!nazev) return null;
+      const podil = cis(s, 'hlasy_proc');
+      return {
+        nazev,
+        zkratka: txt(s, 'zkratka'),
+        klic: slug(nazev) || nazev,
+        hlasy: cis(s, 'hlasy'),
+        podil: podil === null ? null : podil / 100,
+        mandaty: cis(s, 'mandaty'),
+      };
+    })
+    .filter((s): s is VysledekStrany => s !== null);
 }
 
-function vitezZe(strany: StranaVOkrsku[]): StranaVOkrsku | null {
-  const sHlasy = strany.filter((s) => s.hlasy !== null);
-  if (sHlasy.length === 0) return null;
-  return sHlasy.reduce((a, b) => ((b.hlasy ?? 0) > (a.hlasy ?? 0) ? b : a));
-}
+/**
+ * Okrsek. Hlasy stran jsou ve zdroji jako `hlasy_stran: { "1": 1723, … }`,
+ * kde klíč je POŘADÍ strany v poli `strany` téhož hlasování — ne její název.
+ * Bez převodu přes `poradi` by se v okrsku ukázala čísla bez jmen.
+ */
+function okrsekZe(z: Zaznam, poradiNaStranu: Map<string, VysledekStrany>): Okrsek | null {
+  const cislo = cisloOkrsku(z);
+  if (!cislo) return null;
 
-function okrsekZe(z: Zaznam, poradi: number): Okrsek | null {
-  const cislo = cisloOkrsku(z) ?? String(poradi + 1);
-  const volicu = cis(z, 'volicu', 'voličů', 'zapsani_volici', 'zapsaní_voliči', 'zapsanych', 'zapsaných', 'volici_seznam', 'volici', 'voliči', 'registered');
-  const obalky = cis(z, 'obalky', 'obálky', 'vydane_obalky', 'vydané_obálky', 'vydanych_obalek', 'odevzdane_obalky', 'ballots');
-  const platne = cis(z, 'platne', 'platné', 'platne_hlasy', 'platné_hlasy', 'platnych_hlasu', 'valid');
+  const volicu = cis(z, 'volicu_v_seznamu');
+  const obalky = cis(z, 'vydane_obalky');
+  const odevzdane = cis(z, 'odevzdane_obalky');
+  const platne = cis(z, 'platne_hlasy');
+  const ucastProc = cis(z, 'ucast_proc');
 
-  let ucast = podilZ(z, 'ucast', 'účast', 'ucast_pct', 'volebni_ucast', 'volební_účast', 'turnout');
+  let ucast = ucastProc === null ? null : ucastProc / 100;
   let dopocitana = false;
   if (ucast === null && volicu !== null && volicu > 0 && obalky !== null) {
     ucast = obalky / volicu;
     dopocitana = true;
   }
 
-  const strany = dopocitejPodily(stranyZe(z), platne);
-
-  return {
-    cislo,
-    nazev: txt(z, 'nazev', 'název', 'popis', 'oblast', 'cast', 'část'),
-    sidlo: txt(z, 'sidlo', 'sídlo', 'misto', 'místo', 'adresa', 'volebni_mistnost', 'volební_místnost'),
-    volicu,
-    obalky,
-    platne,
-    ucast,
-    ucastDopocitana: dopocitana,
-    strany,
-    vitez: vitezZe(strany),
-  };
-}
-
-function cyklusZe(z: Zaznam, cesta: string, jmeno: string, poradi: number): VolebniCyklus | null {
-  const surove = objekty(z, 'okrsky', 'okrsek', 'districts', 'obvody', 'volebni_okrsky');
-  const rok = rokZ(z, 'rok', 'year') ?? rokZ({ x: `${cesta} ${jmeno}` }, 'x');
-  if (surove.length === 0 && rok === null) return null;
-
-  const { typ, nazev: typNazev } = typVoleb(txt(z, 'typ', 'druh', 'volby', 'type'), `${cesta} ${jmeno}`);
-  const okrsky = surove.map(okrsekZe).filter((o): o is Okrsek => o !== null);
-  okrsky.sort((a, b) => (Number(a.cislo) || 0) - (Number(b.cislo) || 0) || a.cislo.localeCompare(b.cislo, 'cs-CZ'));
-
-  const celkemZ = jeObjekt(z.celkem) ? z.celkem : jeObjekt(z.souhrn) ? z.souhrn : null;
-  const soucet = (vyber: (o: Okrsek) => number | null): number | null => {
-    const hodnoty = okrsky.map(vyber).filter((v): v is number => v !== null);
-    return hodnoty.length > 0 ? hodnoty.reduce((s, v) => s + v, 0) : null;
-  };
-
-  const volicu = cis(celkemZ, 'volicu', 'zapsani_volici', 'zapsanych', 'volici') ?? soucet((o) => o.volicu);
-  const obalky = cis(celkemZ, 'obalky', 'vydane_obalky', 'vydanych_obalek') ?? soucet((o) => o.obalky);
-  const platne = cis(celkemZ, 'platne', 'platne_hlasy', 'platnych_hlasu') ?? soucet((o) => o.platne);
-  let ucast = podilZ(celkemZ, 'ucast', 'ucast_pct', 'volebni_ucast') ?? podilZ(z, 'ucast', 'volebni_ucast');
-  let ucastDopocitana = false;
-  if (ucast === null && volicu !== null && volicu > 0 && obalky !== null) {
-    ucast = obalky / volicu;
-    ucastDopocitana = true;
-  }
-
-  // Celkové výsledky stran: buď je zdroj uvádí, nebo se sečtou z okrsků.
-  let strany: VysledekStrany[] = [];
-  const zeZdroje = stranyZe(celkemZ ?? {}).length > 0 ? stranyZe(celkemZ ?? {}) : stranyZe(z);
-  if (zeZdroje.length > 0) {
-    strany = zeZdroje.map((s) => ({
-      nazev: s.nazev,
-      klic: s.klic,
-      hlasy: s.hlasy,
-      podil: s.podil,
-      mandaty: null,
-    }));
-  } else {
-    const podleKlice = new Map<string, VysledekStrany>();
-    for (const o of okrsky) {
-      for (const s of o.strany) {
-        const stav = podleKlice.get(s.klic) ?? { nazev: s.nazev, klic: s.klic, hlasy: null, podil: null, mandaty: null };
-        if (s.hlasy !== null) stav.hlasy = (stav.hlasy ?? 0) + s.hlasy;
-        podleKlice.set(s.klic, stav);
-      }
+  const hlasyStran = jeObjekt(z.hlasy_stran) ? z.hlasy_stran : null;
+  const strany: StranaVOkrsku[] = [];
+  if (hlasyStran) {
+    const soucet = Object.values(hlasyStran).reduce<number>(
+      (s, v) => s + (typeof v === 'number' && Number.isFinite(v) ? v : 0),
+      0,
+    );
+    for (const [poradi, hlasy] of Object.entries(hlasyStran)) {
+      const info = poradiNaStranu.get(poradi);
+      const h = typeof hlasy === 'number' && Number.isFinite(hlasy) ? hlasy : null;
+      strany.push({
+        nazev: info?.nazev ?? `Kandidátka č. ${poradi}`,
+        klic: info?.klic ?? `poradi-${poradi}`,
+        hlasy: h,
+        podil: h === null || !(soucet > 0) ? null : h / soucet,
+      });
     }
-    strany = [...podleKlice.values()];
-  }
-  const soucetHlasu = strany.reduce((s, x) => s + (x.hlasy ?? 0), 0);
-  if (soucetHlasu > 0) {
-    strany = strany.map((s) => ({ ...s, podil: s.podil ?? (s.hlasy === null ? null : s.hlasy / soucetHlasu) }));
   }
 
-  // Mandáty a zvolení zastupitelé.
-  const zvoleniZ = objekty(z, 'zvoleni', 'zvolení', 'zastupitele', 'zastupitelé', 'mandaty', 'mandáty', 'elected');
-  const zvoleni: Zvoleny[] = zvoleniZ
-    .map((k) => {
-      const jmeno = txt(k, 'jmeno', 'jméno', 'nazev', 'name', 'kandidat', 'kandidát');
-      if (!jmeno) return null;
-      return {
-        jmeno,
-        strana: txt(k, 'strana', 'kandidatka', 'kandidátka', 'subjekt', 'party'),
-        hlasy: cis(k, 'hlasy', 'pocet_hlasu', 'votes'),
-        poradi: cis(k, 'poradi', 'pořadí', 'mandat_poradi', 'rank'),
-        osoba_id: txt(k, 'osoba_id', 'osoba', 'id_osoby'),
-        nahradnik: /nahrad|náhrad/i.test(txt(k, 'stav', 'role', 'poznamka') ?? ''),
-      };
-    })
-    .filter((k): k is Zvoleny => k !== null);
+  const sHlasy = strany.filter((s) => s.hlasy !== null);
+  const vitez = sHlasy.length > 0 ? sHlasy.reduce((a, b) => ((b.hlasy ?? 0) > (a.hlasy ?? 0) ? b : a)) : null;
 
-  const mandatyPodleStran = new Map<string, number>();
-  for (const zv of zvoleni) {
-    if (!zv.strana || zv.nahradnik) continue;
-    const k = slug(zv.strana) || zv.strana;
-    mandatyPodleStran.set(k, (mandatyPodleStran.get(k) ?? 0) + 1);
-  }
-  strany = strany.map((s) => ({ ...s, mandaty: s.mandaty ?? mandatyPodleStran.get(s.klic) ?? null }));
-  strany.sort((a, b) => (b.hlasy ?? 0) - (a.hlasy ?? 0));
+  return { cislo, volicu, obalky, odevzdane, platne, ucast, ucastDopocitana: dopocitana, strany, vitez };
+}
 
-  const rokFinal = rok ?? 0;
-  const nazev = txt(z, 'nazev', 'název', 'title') ?? `${typNazev.charAt(0).toUpperCase()}${typNazev.slice(1)} ${rokFinal || ''}`.trim();
-
+function zvolenyZe(z: Zaznam): Zvoleny | null {
+  const jmeno = txt(z, 'cele_jmeno') ?? [txt(z, 'jmeno'), txt(z, 'prijmeni')].filter(Boolean).join(' ');
+  if (!jmeno) return null;
+  const proc = cis(z, 'hlasy_proc');
   return {
-    id: `${typ}-${rokFinal || `x${poradi}`}`,
-    typ,
-    typNazev,
-    rok: rokFinal,
-    datum: isoDatum(z, 'datum', 'date', 'datum_konani', 'konani'),
-    nazev,
-    okrsky,
-    celkem: { volicu, obalky, platne, ucast, ucastDopocitana },
-    strany,
-    zvoleni,
-    zdroj: txt(z, 'zdroj', 'source', 'url', 'zdroj_dat'),
-    cesta,
+    jmeno,
+    strana: txt(z, 'strana'),
+    hlasy: cis(z, 'hlasy'),
+    hlasyProc: proc === null ? null : proc / 100,
+    poradiMandatu: cis(z, 'poradi_mandatu'),
+    osoba_id: txt(z, 'osoba_id'),
+    povolani: txt(z, 'povolani'),
   };
 }
 
-/** Všechny volební cykly z `opendata/volby/`, od nejnovějšího. */
+function volbaZe(z: Zaznam, idCyklu: string, poradi: number): Volba {
+  const strany = stranyCelkem(z);
+  const poradiNaStranu = new Map<string, VysledekStrany>();
+  objekty(z, 'strany').forEach((s, i) => {
+    const p = cis(s, 'poradi');
+    const nazev = txt(s, 'nazev', 'kandidat', 'jmeno');
+    const cil = strany.find((x) => x.nazev === nazev) ?? strany[i];
+    if (cil) poradiNaStranu.set(String(p ?? i + 1), cil);
+  });
+
+  const ucast = jeObjekt(z.ucast) ? z.ucast : null;
+  const volicu = cis(ucast, 'volicu_v_seznamu');
+  const obalky = cis(ucast, 'vydane_obalky');
+  const ucastProc = cis(ucast, 'ucast_proc');
+
+  const okrsky = objekty(z, 'okrsky')
+    .map((o) => okrsekZe(o, poradiNaStranu))
+    .filter((o): o is Okrsek => o !== null)
+    .sort((a, b) => (Number(a.cislo) || 0) - (Number(b.cislo) || 0));
+
+  const kolo = cis(z, 'kolo');
+
+  return {
+    id: `${idCyklu}${kolo === null ? (poradi > 0 ? `-${poradi + 1}` : '') : `-kolo${kolo}`}`,
+    kolo,
+    datum: txt(z, 'datum'),
+    mandatu: cis(z, 'mandatu'),
+    celkem: {
+      volicu,
+      obalky,
+      odevzdane: cis(ucast, 'odevzdane_obalky'),
+      platne: cis(ucast, 'platne_hlasy'),
+      ucast:
+        ucastProc !== null
+          ? ucastProc / 100
+          : volicu !== null && volicu > 0 && obalky !== null
+            ? obalky / volicu
+            : null,
+    },
+    okrsky,
+    strany,
+    zvoleni: objekty(z, 'zvoleni')
+      .map(zvolenyZe)
+      .filter((x): x is Zvoleny => x !== null)
+      .sort((a, b) => (a.poradiMandatu ?? 999) - (b.poradiMandatu ?? 999)),
+    kandidatu: objekty(z, 'kandidati').length || null,
+  };
+}
+
+/** Všechny volební cykly z `opendata/volby/cykly/`, od nejnovějšího. */
 export function nactiVolby(): Nacteno<VolebniCyklus[]> {
-  const v = nactiAdresarSoubory<unknown>('opendata/volby', ['.json']);
+  const v = nactiAdresarSoubory<unknown>('opendata/volby/cykly', ['.json']);
   const ven: VolebniCyklus[] = [];
-  const videna = new Set<string>();
 
   for (const s of v.data) {
-    const kandidati: Zaznam[] = Array.isArray(s.data)
-      ? s.data.filter(jeObjekt)
-      : jeObjekt(s.data)
-        ? (() => {
-            const vnorene = objekty(s.data, 'volby', 'cykly', 'cyklus', 'elections');
-            return vnorene.length > 0 ? vnorene : [s.data];
-          })()
-        : [];
+    if (!jeObjekt(s.data)) continue;
+    const z = s.data;
+    const { typ, nazev: typNazev } = typVoleb(txt(z, 'druh'));
+    const rok = cis(z, 'rok') ?? 0;
+    const id = txt(z, 'cyklus') ?? s.jmeno;
 
-    kandidati.forEach((k, i) => {
-      const c = cyklusZe(k, s.cesta, s.jmeno, i);
-      if (!c) return;
-      let id = c.id;
-      for (let n = 2; videna.has(id); n++) id = `${c.id}-${n}`;
-      videna.add(id);
-      ven.push({ ...c, id });
+    ven.push({
+      id,
+      typ,
+      typNazev,
+      rok,
+      nazev: txt(z, 'nazev') ?? typNazev,
+      stav: txt(z, 'stav'),
+      volby: objekty(z, 'volby').map((x, i) => volbaZe(x, id, i)),
+      zdroj: txt(z, 'zdroj'),
+      cesta: s.cesta,
     });
   }
 
   ven.sort((a, b) => b.rok - a.rok || a.typ.localeCompare(b.typ));
   return { stav: v.stav, zdroj: v.zdroj, poznamka: v.poznamka, data: ven };
+}
+
+export function nactiPrehledVoleb(): Nacteno<PrehledVoleb> {
+  const v = nactiJson<unknown>('opendata/volby/prehled.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  return {
+    ...v,
+    data: {
+      obec: jeObjekt(k.obec) ? txt(k.obec, 'nazev') : null,
+      zdroj: txt(k, 'zdroj'),
+      licence: txt(k, 'licence'),
+      geometrieK: objekty(k, 'geometrie_okrsku').map((g) => ({
+        platiK: txt(g, 'plati_k') ?? '',
+        soubor: txt(g, 'soubor'),
+        okrsku: cis(g, 'okrsku'),
+      })),
+    },
+  };
+}
+
+/** Výhrada zdroje k porovnávání okrsků mezi lety — přebírá se doslova. */
+export function nactiVyhraduOkrsku(): Nacteno<{ poznamka: string | null; coVime: string | null; coNevime: string | null }> {
+  const v = nactiJson<unknown>('opendata/volby/okrsky.json', null);
+  const k = jeObjekt(v.data) ? v.data : {};
+  return {
+    ...v,
+    data: {
+      poznamka: txt(k, 'poznamka'),
+      coVime: txt(k, 'co_vime'),
+      coNevime: txt(k, 'co_nevime'),
+    },
+  };
+}
+
+/** Zvolení zastupitelé napříč komunálními volbami. */
+export interface ZastupitelZaznam extends Zvoleny {
+  cyklus: string;
+  rok: number | null;
+  datum: string | null;
+}
+
+export function nactiZastupitele(): Nacteno<ZastupitelZaznam[]> {
+  const v = nactiJson<unknown>('opendata/volby/zastupitele.json', null);
+  const surove = Array.isArray(v.data) ? v.data.filter(jeObjekt) : [];
+  return {
+    ...v,
+    data: surove
+      .map((z) => {
+        const zaklad = zvolenyZe(z);
+        if (!zaklad) return null;
+        return { ...zaklad, cyklus: txt(z, 'cyklus') ?? '', rok: cis(z, 'rok'), datum: txt(z, 'datum') };
+      })
+      .filter((x): x is ZastupitelZaznam => x !== null),
+  };
 }
 
 /* ────────────────────────────  Pomocníci  ──────────────────────────── */
@@ -309,36 +357,33 @@ export function nactiVolby(): Nacteno<VolebniCyklus[]> {
  * výsledku — když se přepne rok nebo okrsek, strana si barvu podrží
  * (web/DESIGN.md §2 bod 2, §3.6).
  */
-export function registrStran(cykly: VolebniCyklus[]): RegistrBarev {
+export function registrStran(volby: Volba[]): RegistrBarev {
   const soucty = new Map<string, number>();
-  for (const c of cykly) {
-    for (const s of c.strany) {
-      soucty.set(s.klic, (soucty.get(s.klic) ?? 0) + (s.hlasy ?? 0));
-    }
+  for (const v of volby) {
+    for (const s of v.strany) soucty.set(s.klic, (soucty.get(s.klic) ?? 0) + (s.hlasy ?? 0));
   }
   return sestavRegistr([...soucty.entries()].map(([ico, celkem_czk]) => ({ ico, celkem_czk })));
 }
 
-/** Názvy stran podle klíče — pro legendu, když se v okrsku objeví jiný zápis. */
-export function nazvyStran(cykly: VolebniCyklus[]): Map<string, string> {
-  const m = new Map<string, string>();
-  for (const c of cykly) for (const s of c.strany) if (!m.has(s.klic)) m.set(s.klic, s.nazev);
-  return m;
+/** Hlavní hlasování cyklu — u dvoukolových voleb první kolo. */
+export function hlavniVolba(c: VolebniCyklus): Volba | null {
+  if (c.volby.length === 0) return null;
+  return c.volby.find((v) => v.kolo === null || v.kolo === 1) ?? c.volby[0];
 }
 
 /**
- * Najde geometrickou vrstvu, která sedí na okrsky daného cyklu. Vrací i to,
- * kolik okrsků se spárovat nepodařilo — mapa má povinnost to napsat.
+ * Najde geometrickou vrstvu, která sedí na okrsky daného hlasování, a vrátí
+ * i to, kolik okrsků se spárovat nepodařilo — mapa má povinnost to napsat.
  */
 export function geometrieOkrsku(
   geo: GeoSoubor[],
   cisla: string[],
-): { vrstva: GeoSoubor | null; podleCisla: Map<string, PrvekVrstvy>; nesparovano: string[] } {
+): { vrstva: GeoSoubor | null; podleCisla: Map<string, PrvekZdroje>; nesparovano: string[] } {
   const hledana = new Set(cisla);
-  let nejlepsi: { vrstva: GeoSoubor; mapa: Map<string, PrvekVrstvy> } | null = null;
+  let nejlepsi: { vrstva: GeoSoubor; mapa: Map<string, PrvekZdroje> } | null = null;
 
   for (const g of geo) {
-    const mapa = new Map<string, PrvekVrstvy>();
+    const mapa = new Map<string, PrvekZdroje>();
     for (const p of g.prvky) {
       const c = cisloOkrsku(p.vlastnosti);
       if (c && hledana.has(c) && !mapa.has(c) && p.tvary.length > 0) mapa.set(c, p);
@@ -348,9 +393,69 @@ export function geometrieOkrsku(
 
   if (!nejlepsi) return { vrstva: null, podleCisla: new Map(), nesparovano: cisla };
   const nalezene = nejlepsi.mapa;
-  return {
-    vrstva: nejlepsi.vrstva,
-    podleCisla: nalezene,
-    nesparovano: cisla.filter((c) => !nalezene.has(c)),
-  };
+  return { vrstva: nejlepsi.vrstva, podleCisla: nalezene, nesparovano: cisla.filter((c) => !nalezene.has(c)) };
+}
+
+/**
+ * Hranice okrsků — `opendata/volby/okrsky_geo/{rok}.json`. Zdroj u každé vrstvy
+ * uvádí, ke kterému roku platí; jiné roky se z ní odvozovat nesmí, protože
+ * hranice se mezi volbami mění.
+ */
+export interface VrstvaOkrsku {
+  platiK: string;
+  rok: number | null;
+  vrstva: GeoSoubor;
+  poznamka: string | null;
+}
+
+export function nactiGeometrieOkrsku(): Nacteno<VrstvaOkrsku[]> {
+  const v = nactiAdresarSoubory<unknown>('opendata/volby/okrsky_geo', ['.json', '.geojson']);
+  const ven: VrstvaOkrsku[] = [];
+
+  for (const s of v.data) {
+    if (!jeObjekt(s.data)) continue;
+    const features = Array.isArray(s.data.features) ? s.data.features.filter(jeObjekt) : [];
+    const platiK = txt(s.data, 'plati_k') ?? s.jmeno;
+    ven.push({
+      platiK,
+      rok: cis({ x: platiK }, 'x'),
+      poznamka: txt(s.data, 'poznamka'),
+      vrstva: {
+        klic: `okrsky-${slug(platiK) || s.jmeno}`,
+        nazev: `Volební okrsky platné k roku ${platiK}`,
+        popis: txt(s.data, 'poznamka'),
+        cesta: s.cesta,
+        prvky: features.map((f, i) => {
+          const p = jeObjekt(f.properties) ? f.properties : {};
+          const c = cisloOkrsku(p);
+          return {
+            id: c ?? String(i + 1),
+            nazev: c ? `Okrsek ${c}` : `Prvek ${i + 1}`,
+            tvary: tvaryZGeometrie(f.geometry),
+            vlastnosti: p,
+          };
+        }),
+        zdroj: txt(s.data, 'zdroj'),
+        licence: txt(s.data, 'licence'),
+        bezGeometrie: 0,
+      },
+    });
+  }
+
+  ven.sort((a, b) => (b.rok ?? 0) - (a.rok ?? 0));
+  return { stav: v.stav, zdroj: v.zdroj, poznamka: v.poznamka, data: ven };
+}
+
+/**
+ * Vybere vrstvu okrsků pro dané volby. Vrací i to, jestli rok geometrie sedí
+ * na rok voleb — pokud ne, mapa to musí napsat: hranice se mezi volbami mění
+ * a zdroj o starších letech geometrii nemá.
+ */
+export function vrstvaProRok(vrstvy: VrstvaOkrsku[], rok: number): { vrstva: VrstvaOkrsku; sedi: boolean } | null {
+  if (vrstvy.length === 0) return null;
+  const presna = vrstvy.find((v) => v.rok === rok);
+  if (presna) return { vrstva: presna, sedi: true };
+  // Nejbližší nižší rok; když žádný takový není, nejstarší dostupný.
+  const nizsi = vrstvy.filter((v) => (v.rok ?? 0) <= rok).sort((a, b) => (b.rok ?? 0) - (a.rok ?? 0))[0];
+  return { vrstva: nizsi ?? vrstvy[vrstvy.length - 1], sedi: false };
 }

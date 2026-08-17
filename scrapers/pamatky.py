@@ -36,6 +36,21 @@ uložená i původní S-JTSK souřadnice.
 BEZ SOUŘADNIC: památka, ke které geoportál nemá definiční bod, se
 nezahazuje ani nedostane vymyšlenou polohu — jde do `pamatky_bez_bodu.json`
 a je vidět, že o její poloze nevíme.
+
+VÝSTUPY do `data/opendata/pamatky/`
+
+| soubor | co v něm je |
+|---|---|
+| `pamatky.geojson` | body 46 kulturních a 2 národních kulturních památek |
+| `pamatky_plochy.geojson` | plošná vymezení jednotlivých památek |
+| `ochranna_uzemi.geojson` | rezervace, zóny, statek UNESCO a jeho zóna |
+| `pamatky_bez_bodu.json` | jen když nějaká památka souřadnice nemá |
+| `zdroje.json` | zdroje, licence, doložka NPÚ, počty |
+
+Modul potřebuje `scrapers/geodata.py` (sdílený převod souřadnic) a pro
+prostorové dohledání chráněných území i jeho výstup `hranice_obce.geojson`.
+Bez něj proběhne taky, jen se plošná ochrana omezí na to, co uvádí ÚSKP,
+a napíše se to do logu.
 """
 from __future__ import annotations
 
