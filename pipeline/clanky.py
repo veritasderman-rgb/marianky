@@ -898,6 +898,13 @@ def hlavni(argv: list[str] | None = None) -> int:
         prum = sum(len(c["text"]) for c in clanky) // max(n, 1)
         log.info(f"[{i}/{len(vyber)}] {z['id']}: {n} článků, průměr {prum} znaků")
 
+    # Do indexu čísel se propíše, kolik z kterého vzniklo článků — je to
+    # nejrychlejší způsob, jak poznat číslo, které se rozebrat nepodařilo.
+    for z in index:
+        adresar = CLANKY_DIR / z["id"]
+        z["clanku"] = len(list(adresar.glob("*.json"))) if adresar.exists() else 0
+    uloz(INDEX, index)
+
     log.info(f"hotovo: {zpracovano}/{len(vyber)} čísel, {celkem} článků")
     log.uzavri()
     return 0

@@ -59,15 +59,19 @@ _lock = threading.Lock()
 # HTTP a HTML pomocníci
 # --------------------------------------------------------------------------
 
-def _stahni(url: str, *, max_age: int = CACHE_LISTING) -> str:
+def _stahni(url: str, *, max_age: int = CACHE_LISTING, pokusy: int = 4) -> str:
     """Stáhne stránku přes sdílenou cache a po *síťovém* dotazu chvíli počká.
 
     Pauza se dělá jen když se opravdu sahalo na server — poznáme to podle toho,
     že volání trvalo déle než pár milisekund. Opakovaný běh nad plnou cache tak
     není zbytečně pomalý.
+
+    U hromadného stahování detailů se dává ``pokusy=2``: když je na druhém konci
+    mrtvý odkaz nebo nás server odstřihl, nemá smysl u každé adresy odsedět
+    plný exponenciální backoff.
     """
     t0 = time.monotonic()
-    html = core.fetch(url, max_age=max_age)
+    html = core.fetch(url, max_age=max_age, retries=pokusy)
     if time.monotonic() - t0 > 0.05:
         time.sleep(PRODLEVA_S)
     if not isinstance(html, str):  # pragma: no cover — binary=False vrací str
