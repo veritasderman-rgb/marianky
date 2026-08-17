@@ -42,17 +42,27 @@ const HLAVICKA_PAMATEK = [
   { nazev: 'Typ ochrany' },
   { nazev: 'Kde' },
   { nazev: 'Rejstřík ÚSKP' },
-  { nazev: 'Stav ochrany' },
+  { nazev: 'Chráněno od', cislo: true },
+  { nazev: 'Leží ve statku UNESCO' },
   { nazev: 'V mapě' },
 ];
+
+function unescoText(p: Pamatka): string {
+  if (p.jeStatekUnesco) return 'je to sám statek';
+  if (p.jeNarazkovaZona) return 'nárazníková zóna kolem statku';
+  if (p.unesco === true) return 'ano — leží uvnitř';
+  if (p.unesco === false) return 'ne';
+  return 'v datech není';
+}
 
 function radkyPamatek(seznam: Pamatka[]): string[][] {
   return seznam.map((p) => [
     p.nazev,
-    p.typOchrany ?? 'v datech není',
-    p.adresa ?? '—',
+    p.ochrana ?? 'v datech není',
+    p.adresa ?? (p.vUzemich.length > 0 ? p.vUzemich.join(', ') : '—'),
     p.rejstrik ?? '—',
-    p.fazeOchrany ?? (p.chraneno === true ? 'chráněno' : p.chraneno === false ? 'nechráněno' : 'v datech není'),
+    p.rokZapisu === null ? '—' : String(p.rokZapisu),
+    unescoText(p),
     p.maPolohu ? 'ano' : 'ne — chybí souřadnice',
   ]);
 }
@@ -64,13 +74,14 @@ function prvkyPamatek(seznam: Pamatka[], barva: string): PrvekMapy[] {
     tvary: p.tvary,
     barva,
     tip: [
-      { l: 'Typ ochrany', v: p.typOchrany ?? 'v datech není' },
+      { l: 'Typ ochrany', v: p.ochrana ?? 'v datech není' },
       ...(p.kategorie ? [{ l: 'Kategorie', v: p.kategorie }] : []),
       ...(p.adresa ? [{ l: 'Kde', v: p.adresa }] : []),
       ...(p.rejstrik ? [{ l: 'Rejstřík ÚSKP', v: p.rejstrik }] : []),
-      ...(p.fazeOchrany ? [{ l: 'Stav', v: p.fazeOchrany }] : []),
+      ...(p.rokZapisu !== null ? [{ l: 'Chráněno od', v: String(p.rokZapisu) }] : []),
+      { l: 'Statek UNESCO', v: unescoText(p) },
     ],
-    popis: `${p.nazev}${p.typOchrany ? ` — ${p.typOchrany}` : ''}${p.adresa ? `, ${p.adresa}` : ''}`,
+    popis: `${p.nazev}${p.ochrana ? ` — ${p.ochrana}` : ''}${p.adresa ? `, ${p.adresa}` : ''}`,
   }));
 }
 
@@ -81,26 +92,31 @@ interface SkupinaPamatek {
   filtr: (p: Pamatka) => boolean;
 }
 
+/**
+ * Pořadí je zároveň pořadím vykreslení a přidělování barev. „Leží uvnitř
+ * statku UNESCO" NENÍ totéž co „je to památka UNESCO" — zdroj to u pole
+ * `unesco` výslovně vysvětluje a vrstvy ten rozdíl drží.
+ */
 const SKUPINY: SkupinaPamatek[] = [
   {
     klic: 'unesco',
-    nazev: 'UNESCO — světové dědictví',
+    nazev: 'UNESCO — statek světového dědictví',
     popis:
-      'Území zapsané na seznam světového dědictví UNESCO. Označení se bere z kódu ochrany, který uvádí Národní památkový ústav (SD), ne z názvu.',
-    filtr: (p) => p.unesco,
+      'Území zapsané na seznam světového dědictví UNESCO. Bere se z kódu ochrany, který uvádí Národní památkový ústav (SD), ne z názvu.',
+    filtr: (p) => p.jeStatekUnesco,
   },
   {
     klic: 'unesco-zona',
     nazev: 'UNESCO — nárazníková zóna',
     popis:
       'Nárazníková zóna kolem statku světového dědictví (kód ochrany NZ). Není součástí zápisu, ale chrání jeho okolí.',
-    filtr: (p) => p.unescoZona,
+    filtr: (p) => p.jeNarazkovaZona,
   },
   {
     klic: 'rezervace',
     nazev: 'Památkové rezervace a zóny',
-    popis: 'Plošná památková ochrana — rezervace a zóny (kódy PR, PZ).',
-    filtr: (p) => p.typOchranyKod === 'PR' || p.typOchranyKod === 'PZ',
+    popis: 'Plošná památková ochrana — rezervace a zóny (kódy ochrany PR a PZ).',
+    filtr: (p) => p.ochranaKod === 'PR' || p.ochranaKod === 'PZ',
   },
   {
     klic: 'pamatky-plochy',
@@ -109,9 +125,16 @@ const SKUPINY: SkupinaPamatek[] = [
     filtr: (p) => p.sada === 'plochy památek',
   },
   {
+    klic: 'pamatky-v-unesco',
+    nazev: 'Památky uvnitř statku UNESCO',
+    popis:
+      'Definiční body památek, které leží uvnitř statku světového dědictví. Že tam leží, neznamená, že jsou samy zapsané na seznamu UNESCO — je to údaj o poloze.',
+    filtr: (p) => p.sada === 'body památek' && p.unesco === true,
+  },
+  {
     klic: 'pamatky-body',
-    nazev: 'Kulturní památky — body',
-    popis: 'Jednotlivé kulturní a národní kulturní památky, definiční bod.',
+    nazev: 'Kulturní památky — ostatní body',
+    popis: 'Definiční body památek mimo statek světového dědictví.',
     filtr: (p) => p.sada === 'body památek',
   },
 ];
@@ -268,7 +291,8 @@ const zdrojeMapy = [
 
 const sPolohou = vrstvy.reduce((s, v) => s + v.prvky.filter((p) => p.tvary.length > 0).length, 0);
 const maData = vrstvy.length > 0;
-const unesco = pamatky.filter((p) => p.unesco);
+const unesco = pamatky.filter((p) => p.jeStatekUnesco || p.jeNarazkovaZona);
+const vStatku = pamatky.filter((p) => p.unesco === true && !p.jeStatekUnesco);
 const zkraceneTabulky = vrstvy.filter((v) => v.prvky.length > v.tabulka.radky.length);
 const nalehko = vrstvy.filter((v) => v.bezTooltipu);
 

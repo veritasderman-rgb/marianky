@@ -235,9 +235,10 @@ export function nactiPamatky(): Nacteno<Pamatky> {
         if (b) tvary = [{ druh: 'bod', prstence: [[b]] }];
       }
 
-      const kod = txt(p, 'typ_ochrany_kod');
-      const typ = txt(p, 'typ_ochrany');
-      const rejstrik = txt(p, 'rejstrikove_cislo_uskp', 'rejstrik', 'cislo_rejstriku');
+      // Zdroj přejmenoval pole (`typ_ochrany_kod` → `ochrana_kod`); čte se obojí.
+      const kod = txt(p, 'ochrana_kod', 'typ_ochrany_kod');
+      const ochrana = txt(p, 'ochrana', 'typ_ochrany');
+      const rejstrik = txt(p, 'rejstrik', 'rejstrikove_cislo_uskp', 'cislo_rejstriku');
       const zaklad = txt(p, 'katalogove_cislo', 'prstav_id') ?? rejstrik ?? `${s.jmeno}-${i + 1}`;
       let id = `${s.jmeno}-${zaklad}`;
       for (let k = 2; videna.has(id); k++) id = `${s.jmeno}-${zaklad}-${k}`;
@@ -248,14 +249,19 @@ export function nactiPamatky(): Nacteno<Pamatky> {
         nazev: nazevPrvku(p, i),
         sada: SADY[s.jmeno] ?? s.jmeno,
         kategorie: txt(p, 'kategorie', 'sada'),
-        typOchrany: typ,
-        typOchranyKod: kod,
+        ochrana,
+        ochranaKod: kod,
         adresa: txt(p, 'adresa', 'ulice', 'lokalita'),
         rejstrik,
-        unesco: kod === 'SD',
-        unescoZona: kod === 'NZ',
+        unesco: typeof p.unesco === 'boolean' ? p.unesco : null,
+        jeStatekUnesco: kod === 'SD',
+        jeNarazkovaZona: kod === 'NZ',
         chraneno: typeof p.chraneno === 'boolean' ? p.chraneno : null,
         fazeOchrany: txt(p, 'faze_ochrany'),
+        rokZapisu: cis(p, 'rok_zapisu'),
+        vUzemich: Array.isArray(p.v_uzemich)
+          ? p.v_uzemich.filter((x): x is string => typeof x === 'string')
+          : [],
         url: txt(p, 'url', 'odkaz'),
         anotace: txt(p, 'anotace', 'popis', 'upresneni_ochrany'),
         tvary,
