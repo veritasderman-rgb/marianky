@@ -2,13 +2,41 @@
 /**
  * Vykreslení jednoho týdenního vydání.
  *
- * Formát vydání není v docs/PLAN.md zafixovaný a zatím ho žádný modul
- * negeneruje. Čteme ho proto tolerantně: sekce se vykreslí, i když má jen
- * poznámku o chybějícím zdroji — podle zásady, že výpadek se přizná,
- * nezamlčí. Neznámá pole se ignorují, nikdy neshodí build.
+ * Vydání otevírá tím, co se stalo, ne tím, co se nestalo:
+ *
+ *   1. Nahoře stojí varování — sekce, které se nepodařilo načíst nebo stojí
+ *      na starých datech. To je jediná věc, která má přednost před obsahem:
+ *      „nic se nedělo" a „nevíme, co se dělo" jsou dvě různé zprávy.
+ *   2. Pak čísla týdne a sekce, ve kterých něco je.
+ *   3. Prázdné sekce zůstávají viditelné, ale dole a jedním řádkem. Mizet
+ *      nesmějí — jinak by nešlo poznat ticho od výpadku.
+ *
+ * Rutinní papírování se shlukuje: pět velkých karet „Uložení písemnosti –
+ * jméno" zabere víc místa než celý zbytek týdne a nic nesdělí. Zhuštěné řádky
+ * se dají rozbalit, žádná položka se nezahazuje.
+ *
+ * Formát vydání není nikde zafixovaný, čte se proto tolerantně: neznámá pole
+ * se ignorují a nikdy neshodí stránku.
  */
-import type { Vydani } from '../lib/data';
-import { datum as fmtDatum } from '../lib/format';
+import Dlazdice from './Dlazdice.astro';
+import VydaniRadek from './VydaniRadek.astro';
+import type { Polozka as PolozkaDlazdice } from './Dlazdice.astro';
+import type { Radek } from './VydaniRadek.astro';
+import type { SekceVydani, Vydani } from '../lib/data';
+import {
+  bezDiakritiky,
+  cislo,
+  datum as fmtDatum,
+  datumVolne,
+  datumVolneKratke,
+  kc,
+  kcZkraceno,
+  nazevOrganu,
+  nazevVysledku,
+  obdobiText,
+  polidstiData,
+  sklonuj,
+} from '../lib/format';
 
 export interface Props {
   vydani: Vydani;
@@ -18,86 +46,421 @@ export interface Props {
 
 const { vydani: v, uroven = 'h2' } = Astro.props;
 const Nadpis = uroven;
+const NadpisSekce = uroven === 'h1' ? 'h2' : 'h3';
 
-function jakoText(x: unknown): string | null {
-  if (typeof x === 'string') return x;
-  if (x && typeof x === 'object') {
-    const o = x as Record<string, unknown>;
-    const t = o.nazev ?? o.nadpis ?? o.titulek ?? o.text ?? o.popis;
-    if (typeof t === 'string') return t;
+/** Kolik položek sekce ukáže rovnou; zbytek je pod rozbalením. */
+const RADKU_ROVNOU = 6;
+/** Od kolika stejně pojmenovaných položek se dělá jeden zhuštěný řádek. */
+const SHLUK_OD = 3;
+
+/* ──────────────────────────  Čtení položek  ───────────────────────────── */
+
+function pole(x: unknown): Record<string, unknown> | null {
+  return x && typeof x === 'object' && !Array.isArray(x) ? (x as Record<string, unknown>) : null;
+}
+
+function txt(o: Record<string, unknown>, klice: string[]): { klic: string; hodnota: string } | null {
+  for (const k of klice) {
+    const h = o[k];
+    if (typeof h === 'string' && h.trim().length > 0) return { klic: k, hodnota: h.trim() };
   }
   return null;
 }
 
-function odkaz(x: unknown): string | null {
-  if (x && typeof x === 'object') {
-    const o = x as Record<string, unknown>;
-    for (const k of ['url', 'odkaz', 'zdroj']) {
-      if (typeof o[k] === 'string') return o[k] as string;
+function cis(o: Record<string, unknown>, klic: string): number | null {
+  const h = o[klic];
+  return typeof h === 'number' && Number.isFinite(h) ? h : null;
+}
+
+function jeOdkaz(s: string): boolean {
+  return /^https?:\/\//.test(s);
+}
+
+function radekZPolozky(p: unknown): Radek | null {
+  if (typeof p === 'string') {
+    return { nazev: p, url: null, meta: [], popis: null, pocet: 1, castka: null, detaily: [] };
+  }
+  const o = pole(p);
+  if (!o) return null;
+
+  const nadpis = txt(o, ['nazev', 'nadpis', 'titulek', 'predmet', 'jmeno', 'popis', 'text']);
+  if (!nadpis) return null;
+
+  const url = txt(o, ['url', 'odkaz']);
+  const zdroj = txt(o, ['zdroj']);
+  const castka = cis(o, 'castka_czk');
+  const meta: string[] = [];
+
+  const organ = txt(o, ['organ']);
+  if (organ) meta.push(nazevOrganu(organ.hodnota));
+
+  const kdy = txt(o, ['datum', 'kdy']);
+  const cas = txt(o, ['cas']);
+  if (kdy) meta.push(datumVolneKratke(kdy.hodnota) + (cas ? ` v ${cas.hodnota}` : ''));
+
+  const od = txt(o, ['od']);
+  const doKdy = txt(o, ['do']);
+  if (!kdy && (od || doKdy)) {
+    meta.push(
+      od && doKdy
+        ? `vyvěšeno ${datumVolneKratke(od.hodnota)}, sundá se ${datumVolneKratke(doKdy.hodnota)}`
+        : od
+          ? `vyvěšeno ${datumVolneKratke(od.hodnota)}`
+          : `do ${datumVolneKratke(doKdy!.hodnota)}`,
+    );
+  }
+
+  const misto = txt(o, ['misto']);
+  if (misto) meta.push(misto.hodnota);
+
+  const zarazeni = txt(o, ['kategorie', 'typ', 'rubrika']);
+  if (zarazeni) meta.push(zarazeni.hodnota);
+
+  if (zdroj && !jeOdkaz(zdroj.hodnota)) meta.push(zdroj.hodnota);
+
+  const protistrana = txt(o, ['protistrana']);
+  if (protistrana) meta.push(protistrana.hodnota);
+
+  const subjekt = txt(o, ['subjekt']);
+  if (subjekt) meta.push(`za ${subjekt.hodnota}`);
+
+  if (castka !== null) meta.push(kc(castka));
+
+  const vysledek = txt(o, ['vysledek']);
+  if (vysledek) meta.push(nazevVysledku(vysledek.hodnota));
+
+  const h = pole(o.hlasovani);
+  if (h) {
+    const pro = cis(h, 'pro');
+    const proti = cis(h, 'proti');
+    const zdrzel = cis(h, 'zdrzel');
+    if (pro !== null || proti !== null || zdrzel !== null) {
+      meta.push(`pro ${pro ?? 0}, proti ${proti ?? 0}, zdrželo se ${zdrzel ?? 0}`);
     }
   }
-  return null;
+
+  const stran = cis(o, 'stran');
+  const clanku = cis(o, 'clanku');
+  if (stran !== null) meta.push(`${cislo(stran)} ${sklonuj(stran, 'strana', 'strany', 'stran')}`);
+  if (clanku !== null) meta.push(`${cislo(clanku)} ${sklonuj(clanku, 'článek', 'články', 'článků')}`);
+
+  if (o.vada === true) meta.push('Hlídač státu u smlouvy hlásí vadu');
+
+  const popis = txt(
+    o,
+    ['perex', 'shrnuti', 'popis', 'text'].filter((k) => k !== nadpis.klic),
+  );
+
+  return {
+    nazev: nadpis.hodnota,
+    url: url ? url.hodnota : zdroj && jeOdkaz(zdroj.hodnota) ? zdroj.hodnota : null,
+    meta,
+    popis: popis ? polidstiData(popis.hodnota) : null,
+    pocet: 1,
+    castka,
+    detaily: [],
+  };
 }
 
-function popis(x: unknown): string | null {
-  if (x && typeof x === 'object') {
-    const o = x as Record<string, unknown>;
-    for (const k of ['perex', 'shrnuti', 'popis', 'text']) {
-      const h = o[k];
-      if (typeof h === 'string' && h !== jakoText(x)) return h;
+/* ─────────────────────  Shlukování rutinních položek  ──────────────────── */
+
+/** Společný začátek názvu — „Uložení písemnosti – I. Pištová" → „Uložení písemnosti". */
+function zacatekNazvu(nazev: string): string {
+  const rez = nazev.split(/\s[–—-]\s|:\s/)[0].trim();
+  return rez.length >= 6 ? rez : nazev.trim();
+}
+
+function shlukni(radky: Radek[]): Radek[] {
+  const skupiny = new Map<string, Radek[]>();
+  const poradi: string[] = [];
+  for (const r of radky) {
+    const klic = bezDiakritiky(zacatekNazvu(r.nazev)).replace(/\s+/g, ' ');
+    const stavajici = skupiny.get(klic);
+    if (stavajici) stavajici.push(r);
+    else {
+      skupiny.set(klic, [r]);
+      poradi.push(klic);
     }
   }
-  return null;
+
+  const vysledek: Radek[] = [];
+  for (const klic of poradi) {
+    const clenove = skupiny.get(klic) ?? [];
+    if (clenove.length < SHLUK_OD) {
+      vysledek.push(...clenove);
+      continue;
+    }
+    const castky = clenove.map((c) => c.castka).filter((c): c is number => c !== null);
+    const soucet = castky.length === clenove.length && castky.length > 0
+      ? castky.reduce((s, c) => s + c, 0)
+      : null;
+    const meta = [`${cislo(clenove.length)} ${sklonuj(clenove.length, 'záznam', 'záznamy', 'záznamů')}`];
+    if (soucet !== null) meta.push(`celkem ${kc(soucet)}`);
+    vysledek.push({
+      nazev: zacatekNazvu(clenove[0].nazev),
+      url: null,
+      meta,
+      popis: null,
+      pocet: clenove.length,
+      castka: soucet,
+      detaily: clenove,
+    });
+  }
+  return vysledek;
 }
 
-const obdobi =
-  v.obdobi ??
-  (v.obdobi_od && v.obdobi_do ? `období ${fmtDatum(v.obdobi_od)} – ${fmtDatum(v.obdobi_do)}` : null);
+/* ────────────────────────  Rozdělení sekcí  ───────────────────────────── */
+
+interface Pripravena {
+  s: SekceVydani;
+  /** Sekce hlásí výpadek nebo zastaralý zdroj — patří nahoru jako varování. */
+  varovna: boolean;
+  /** Sekce má co ukázat. Varovná sekce může mít obojí: výstrahu i obsah. */
+  plna: boolean;
+  radky: Radek[];
+  polozek: number;
+  /** Součet částek u položek, které je mají. */
+  objem: number | null;
+  /** Kolik položek částku v datech nemá. */
+  bezCastky: number;
+  /** Rozpis podle kategorie nebo typu, když je sekce dlouhá. */
+  zarazeni: { nazev: string; pocet: number }[];
+}
+
+function pripravSekci(s: SekceVydani): Pripravena {
+  const polozky = Array.isArray(s.polozky) ? s.polozky : [];
+  const radkyVse = polozky.map(radekZPolozky).filter((r): r is Radek => r !== null);
+  const stav = String(s.stav ?? '').toLowerCase();
+
+  /* Součet se počítá jen tam, kde částky znamenají skutečný tok peněz, tedy
+     u smluv a plateb. Schválené částky v usneseních se nesčítají: úvěrový rámec
+     a příspěvek spolku nejsou totéž a jejich součet by tvrdil, že město tolik
+     zaplatilo. Kolik položek částku nemá, se píše k číslu — chybějící částka
+     není nula. */
+  const jsouPlatby = polozky.some((p) => {
+    const o = pole(p);
+    return o !== null && ('protistrana' in o || 'smer' in o);
+  });
+  const castky = radkyVse.map((r) => r.castka).filter((c): c is number => c !== null);
+  const objem = jsouPlatby && castky.length > 0 ? castky.reduce((a, b) => a + b, 0) : null;
+  const bezCastky = objem === null ? 0 : radkyVse.length - castky.length;
+
+  const pocty = new Map<string, number>();
+  for (const p of polozky) {
+    const o = pole(p);
+    const k = o ? txt(o, ['kategorie', 'typ', 'rubrika']) : null;
+    if (k) pocty.set(k.hodnota, (pocty.get(k.hodnota) ?? 0) + 1);
+  }
+  const zarazeni = [...pocty.entries()]
+    .map(([nazev, pocet]) => ({ nazev, pocet }))
+    .sort((a, b) => b.pocet - a.pocet);
+
+  /* Výpadek zdroje je varování bez ohledu na to, jestli něco přinesl. Sekce se
+     pak ukáže dvakrát: nahoře výstraha, dole to málo, co v ní je. */
+  const plna = radkyVse.length > 0 || Boolean(s.text);
+  const varovna =
+    stav === 'chybi' ||
+    stav === 'chyba' ||
+    stav === 'zastarale' ||
+    (!plna && Boolean(s.poznamka));
+
+  return {
+    s,
+    varovna,
+    plna,
+    radky: shlukni(radkyVse),
+    polozek: radkyVse.length,
+    objem,
+    bezCastky,
+    zarazeni: zarazeni.length > 1 ? zarazeni : [],
+  };
+}
+
+const sekce = (v.sekce ?? []).map(pripravSekci);
+const varovne = sekce.filter((x) => x.varovna);
+const plne = sekce.filter((x) => x.plna);
+const prazdne = sekce.filter((x) => !x.plna && !x.varovna);
+
+/* ─────────────────────────  Čísla týdne  ──────────────────────────────── */
+
+const dlazdice: PolozkaDlazdice[] = [];
+for (const x of plne) {
+  if (dlazdice.length >= 4) break;
+  if (x.objem !== null && x.objem > 0) {
+    const sCastkou = x.polozek - x.bezCastky;
+    dlazdice.push({
+      popisek: x.s.nadpis,
+      hodnota: kcZkraceno(x.objem, true),
+      doplnek:
+        x.bezCastky > 0
+          ? `součet za ${cislo(sCastkou)} z ${cislo(x.polozek)} záznamů; u ${cislo(x.bezCastky)} částka v datech není`
+          : `součet za ${cislo(x.polozek)} ${sklonuj(x.polozek, 'záznam', 'záznamy', 'záznamů')}`,
+    });
+  } else {
+    dlazdice.push({
+      popisek: x.s.nadpis,
+      hodnota: cislo(x.polozek),
+      doplnek: x.s.popis ? polidstiData(x.s.popis) : undefined,
+    });
+  }
+}
+
+/* ────────────────────────  Hlavička vydání  ───────────────────────────── */
+
+const obdobi = v.obdobi ?? obdobiText(v.obdobi_od ?? null, v.obdobi_do ?? null);
+
+/* Vydání se jmenuje po webu, takže nadpis karty nese to, co čtenáře zajímá —
+   za jaké období přehled je. Kdyby vydání dostalo vlastní název, ukáže se. */
+const nazevWebu = /^naše mariánky/i.test(v.nazev ?? '');
+const nadpisKarty = obdobi
+  ? `Přehled za období ${obdobi}`
+  : (v.nazev ?? `Vydání ${v.id}`);
+const vlastniNazev = v.nazev && !nazevWebu ? v.nazev : null;
+
+/**
+ * Perex ze zdroje je strojová věta složená z počtů — ty už stojí v dlaždicích
+ * nad ním. Vypisuje se proto jen tehdy, když do něj někdo napsal něco navíc.
+ */
+const perexJeStrojovy = /^(Přehled za období|Za období)/.test((v.perex ?? '').trim());
+const perex = v.perex && !perexJeStrojovy ? polidstiData(v.perex) : null;
+
+const celkemPolozek = plne.reduce((s, x) => s + x.polozek, 0);
 ---
 
-<article class="karta">
-  <Nadpis class="karta__nadpis">{v.nazev ?? `Vydání ${v.id}`}</Nadpis>
+<article class="karta vydani">
+  <Nadpis class="karta__nadpis">{nadpisKarty}</Nadpis>
   <p class="karta__podnadpis">
-    {v.cislo ? `Číslo ${v.cislo} · ` : ''}
-    {v.datum ? fmtDatum(v.datum) : v.id}
-    {obdobi ? ` · ${obdobi}` : ''}
+    {`${vlastniNazev ? `${vlastniNazev} · ` : ''}${v.cislo ? `číslo ${v.cislo} · ` : ''}${
+      v.datum ? `vydáno ${fmtDatum(v.datum)}` : v.id
+    }`}
   </p>
 
-  {v.perex && <p>{v.perex}</p>}
+  {perex && <p>{perex}</p>}
+
+  {/* Varování mají přednost před obsahem: chybějící a zastaralý zdroj se
+      nesmí splést s klidným týdnem. */}
+  {
+    varovne.map((x) => {
+      const stav = String(x.s.stav ?? '').toLowerCase();
+      const druh = stav === 'chyba' ? 'chyba' : 'chybi';
+      const potize =
+        stav === 'zastarale'
+          ? 'data končí dřív než sledované období'
+          : stav === 'chyba'
+            ? 'zdroj se nepodařilo přečíst'
+            : stav === 'chybi'
+              ? 'data se za tohle období nepodařilo získat'
+              : 'zdroj tenhle týden nedal data';
+      return (
+        <div class={`stav-dat stav-dat--${druh}`} role="alert">
+          <strong class="stav-dat__nadpis">{`${x.s.nadpis} — ${potize}`}</strong>
+          <span>
+            {x.s.poznamka
+              ? polidstiData(x.s.poznamka)
+              : 'O téhle části dění za sledované období nic nevíme. Prázdno tu neznamená, že se nic nestalo.'}
+          </span>
+        </div>
+      );
+    })
+  }
+
+  {plne.length > 0 && <Dlazdice polozky={dlazdice} />}
 
   {
-    (v.sekce ?? []).map((s) => (
-      <section>
-        <h3>{s.nadpis}</h3>
-        {s.text && <p>{s.text}</p>}
-        {s.poznamka && (
-          <p class="stav-dat stav-dat--chybi">
-            <strong class="stav-dat__nadpis">Zdroj v tomhle týdnu nedal data</strong>
-            <span>{s.poznamka}</span>
-          </p>
-        )}
-        {Array.isArray(s.polozky) && s.polozky.length > 0 && (
-          <ul class="seznam">
-            {s.polozky.map((p) => {
-              const nazev = jakoText(p);
-              const url = odkaz(p);
-              const detail = popis(p);
-              return nazev ? (
-                <li class="polozka">
-                  <h4 class="polozka__nazev">{url ? <a href={url} rel="noreferrer noopener">{nazev}</a> : nazev}</h4>
-                  {detail && <p>{detail}</p>}
-                </li>
-              ) : null;
-            })}
+    plne.length > 0 && (
+      <p class="vydani__souhrn">
+        {`Za období ${obdobi ?? 'tohoto vydání'} přibylo ${cislo(celkemPolozek)} ${sklonuj(
+          celkemPolozek,
+          'záznam',
+          'záznamy',
+          'záznamů',
+        )} v ${cislo(plne.length)} ${sklonuj(plne.length, 'sekci', 'sekcích', 'sekcích')}.`}
+      </p>
+    )
+  }
+
+  {
+    plne.map((x) => {
+      const rovnou = x.radky.slice(0, RADKU_ROVNOU);
+      const zbytek = x.radky.slice(RADKU_ROVNOU);
+      return (
+        <section class="vydani-sekce">
+          <NadpisSekce class="vydani-sekce__nadpis">
+            {x.s.nadpis}
+            <span class="vydani-sekce__pocet">
+              {`${cislo(x.polozek)} ${sklonuj(x.polozek, 'záznam', 'záznamy', 'záznamů')}${
+                x.objem !== null && x.objem > 0 ? ` · ${kcZkraceno(x.objem, true)}` : ''
+              }`}
+            </span>
+          </NadpisSekce>
+
+          {x.s.popis && <p class="vydani-sekce__popis">{polidstiData(x.s.popis)}</p>}
+          {x.s.text && <p>{polidstiData(x.s.text)}</p>}
+          {x.s.poznamka && <p class="graf-poznamka">{polidstiData(x.s.poznamka)}</p>}
+
+          {x.zarazeni.length > 0 && x.polozek > RADKU_ROVNOU && (
+            <p class="vydani-sekce__rozpis">
+              {`Z toho ${x.zarazeni
+                .slice(0, 6)
+                .map((z) => `${z.nazev} ${cislo(z.pocet)}`)
+                .join(' · ')}${x.zarazeni.length > 6 ? ' a další' : ''}.`}
+            </p>
+          )}
+
+          <ul class="vydani-radky">
+            {rovnou.map((r) => (
+              <VydaniRadek radek={r} />
+            ))}
           </ul>
-        )}
-        {Array.isArray(s.polozky) && s.polozky.length === 0 && !s.text && !s.poznamka && (
-          <p class="stav-dat stav-dat--prazdno">
-            <strong class="stav-dat__nadpis">Nic k hlášení</strong>
-            <span>Zdroj se podařilo načíst, ale v tomhle období v něm nic nového nebylo.</span>
-          </p>
-        )}
-      </section>
-    ))
+
+          {zbytek.length > 0 && (
+            <details class="tabulkovy-pohled">
+              <summary>
+                {`Zobrazit zbývajících ${cislo(zbytek.reduce((s, r) => s + r.pocet, 0))} ${sklonuj(
+                  zbytek.reduce((s, r) => s + r.pocet, 0),
+                  'záznam',
+                  'záznamy',
+                  'záznamů',
+                )}`}
+              </summary>
+              <ul class="vydani-radky">
+                {zbytek.map((r) => (
+                  <VydaniRadek radek={r} />
+                ))}
+              </ul>
+            </details>
+          )}
+        </section>
+      );
+    })
+  }
+
+  {
+    plne.length === 0 && varovne.length === 0 && sekce.length > 0 && (
+      <div class="stav-dat stav-dat--prazdno">
+        <strong class="stav-dat__nadpis">V tomhle období nepřibylo nic</strong>
+        <span>
+          Všechny sledované zdroje se načetly, ale ani v jednom nebyl nový záznam. Není to
+          výpadek — je to klidný týden.
+        </span>
+      </div>
+    )
+  }
+
+  {/* Prázdné sekce zůstávají vidět, jen nezabírají místo obsahu. */}
+  {
+    prazdne.length > 0 && (
+      <p class="vydani-ticho">
+        <strong>Beze změny:</strong>{' '}
+        {`${prazdne
+          .map(
+            (x) =>
+              `${x.s.nadpis}${
+                x.s.nejnovejsi_ve_zdroji ? ` (naposled ${datumVolne(x.s.nejnovejsi_ve_zdroji)})` : ''
+              }`,
+          )
+          .join(' · ')}. Zdroje se načetly, jen v nich za tohle období nic nového nebylo.`}
+      </p>
+    )
   }
 </article>

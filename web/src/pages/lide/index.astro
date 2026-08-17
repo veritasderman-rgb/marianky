@@ -88,8 +88,8 @@ const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.
       <div class="stav-dat stav-dat--chybi">
         <strong class="stav-dat__nadpis">Chybějící profily</strong>
         <span>
-          V hlasování se objevuje {cislo(chybejici.length)} osob, které zatím nemají profil v
-          <span class="stav-dat__zdroj"> lide/osobnosti.json</span>: {chybejici.slice(0, 12).join(', ')}
+          V hlasování se objevuje {cislo(chybejici.length)} osob, které zatím nemají vlastní
+          profil: {chybejici.slice(0, 12).join(', ')}
           {chybejici.length > 12 ? ' a další' : ''}.
         </span>
       </div>

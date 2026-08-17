@@ -13,10 +13,11 @@
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
+import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiProtistrany } from '../lib/data';
 import { nactiNespojene, nactiRetezy, popisJistoty, type Jistota, type Retez } from '../lib/vazby';
-import { cislo, datumKratke, kc, kcZkraceno, nazevOrganu, orez, sklonuj } from '../lib/format';
+import { cislo, datumKratke, kc, kcZkraceno, nazevOrganu, orez, polidstiData, sklonuj } from '../lib/format';
 
 const zRetezu = nactiRetezy();
 const zNespojenych = nactiNespojene();
@@ -475,21 +476,20 @@ function popisOdstupu(r: Retez): string | null {
 
   {
     zRetezu.data.metodika.length > 0 && (
-      <section class="karta">
-        <h2 class="karta__nadpis">Jak se párovalo</h2>
-        <p class="karta__podnadpis">
-          Popis metody pochází přímo ze zdrojového souboru — na webu tak stojí přesně to, podle
-          čeho se spojení skládala.
+      <JakPocitame nadpis="Jak to počítáme — podle čeho se usnesení a smlouvy párují">
+        <p>
+          Popis metody je převzatý ze zdroje spojení — na webu tak stojí přesně to, podle čeho
+          se dvojice usnesení a smlouvy skládaly.
         </p>
         <dl class="metodika">
           {zRetezu.data.metodika.map((m) => (
             <>
               <dt>{m.klic.replace(/_/g, ' ')}</dt>
-              <dd>{m.text}</dd>
+              <dd>{polidstiData(m.text)}</dd>
             </>
           ))}
         </dl>
-      </section>
+      </JakPocitame>
     )
   }
 </Zaklad>

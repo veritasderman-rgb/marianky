@@ -16,6 +16,7 @@ import Dlazdice from '../components/Dlazdice.astro';
 import GrafKarta from '../components/GrafKarta.astro';
 import MapaKarta from '../components/MapaKarta.astro';
 import CasovaOsa from '../components/CasovaOsa.astro';
+import JakPocitame from '../components/JakPocitame.astro';
 import type { Varianta } from '../components/GrafKarta.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiLidi, spojStavy } from '../lib/data';
@@ -39,7 +40,7 @@ import { cssKrokRampy } from '../lib/barvy';
 import { grafVodorovny, type BodVodorovny } from '../lib/grafy';
 import { grafRadaPoLetech, grafSpojnice, type SerieRady } from '../lib/grafy_rady';
 import { nactiOsuMesta, slucUdalosti, udalost, type UdalostOsy } from '../lib/osa';
-import { cislo, sklonuj } from '../lib/format';
+import { cislo, datumVolne, sklonuj } from '../lib/format';
 
 const zVoleb = nactiVolby();
 const zPrehledu = nactiPrehledVoleb();
@@ -375,7 +376,7 @@ const variantyOkrsku: Varianta[] = konane
       ],
       radky: v.okrsky.map((o) => [o.cislo, pct(o.ucast), pocet(o.volicu), pocet(o.obalky)]),
     };
-    graf.poznamky.push('Procenta bez počtu voličů klamou — absolutní počty jsou v tooltipu i v tabulce.');
+    graf.poznamky.push('Procenta bez počtu voličů klamou — po najetí na sloupec i v tabulce jsou proto absolutní počty.');
     return { klic: v.id, popisek: `${c.rok} ${NAZVY_TYPU.find((t) => t.klic === c.typ)?.kratky ?? ''}`.trim(), graf };
   });
 
@@ -431,7 +432,7 @@ const dlazdice: Polozka[] = maData
       {
         popisek: 'Poslední komunální volby',
         hodnota: posledniKomunalni ? String(posledniKomunalni.rok) : '—',
-        doplnek: posledniVolba?.datum ?? undefined,
+        doplnek: posledniVolba?.datum ? `konaly se ${datumVolne(posledniVolba.datum)}` : undefined,
       },
       {
         popisek: 'Účast v posledních komunálních',
@@ -455,7 +456,7 @@ const rozsahLet = roky.length > 0 ? `${Math.min(...roky)}–${Math.max(...roky)}
 
 /* Popisy map jsou tady, ne v atributu — obsahují uvozovky. */
 const popisMapyUcasti =
-  'Sytost plochy roste s volební účastí. Okrsek, u kterého účast v datech není, má jinou výplň i přerušovaný obrys — „nezjištěno" se nesmí splést s „málo".';
+  'Sytost plochy roste s volební účastí. Okrsek, u kterého účast v datech není, má jinou výplň i přerušovaný obrys — „nezjištěno" znamená něco jiného než „málo".';
 const popisMapyViteze =
   'Barva patří kandidátce, ne pořadí ve výsledku — stejná kandidátka má stejnou barvu ve všech pohledech. „Nejvíc hlasů" není totéž co většina: při deseti kandidátkách stačí k prvnímu místu i pětina hlasů.';
 ---
@@ -464,7 +465,7 @@ const popisMapyViteze =
   titulek="Volby"
   aktivni="volby"
   nadpis="Jak se ve městě volilo"
-  uvod="Výsledky po volebních okrscích, účast a proměna voličské podpory v čase. Všechno se počítá při buildu z otevřených dat ČSÚ; mapa je SVG, ne dlaždice z cizího serveru."
+  uvod="Výsledky po volebních okrscích, účast a proměna voličské podpory v čase. Čísla jsou z otevřených dat ČSÚ tak, jak je zdroj uvádí."
 >
   <StavDat
     stav={zVoleb.stav}
@@ -496,9 +497,9 @@ const popisMapyViteze =
           <>
             <h2>Mapa okrsků — {popisCyklu(proMapu.c, proMapu.v)}</h2>
             <p class="uvod">
-              Mapa barví plochu, ale volí lidé. Vedle každé mapy proto stojí graf s absolutními
-              počty: bez něj by rozlehlý okrsek s hrstkou voličů vypadal důležitěji než hustě
-              obydlený panelák.
+              Mapa barví plochu, ale volí lidé. Vedle každé mapy proto stojí graf s počty voličů:
+              rozlehlý okrsek s hrstkou voličů zabere na mapě víc místa než hustě obydlený
+              panelák.
             </p>
 
             <MapaKarta
@@ -572,10 +573,8 @@ const popisMapyViteze =
           <div class="stav-dat stav-dat--chybi">
             <strong class="stav-dat__nadpis">Mapa okrsků zatím není</strong>
             <span>
-              Výsledky po okrscích máme, ale geometrii okrsků se nepodařilo najít nebo spárovat
-              podle čísla okrsku.{' '}
-              <span class="stav-dat__zdroj">Očekávaný zdroj: opendata/volby/okrsky_geo/</span>.
-              Grafy a tabulky níže fungují i bez mapy.
+              Výsledky po okrscích máme, ale hranice okrsků se nepodařilo najít nebo přiřadit
+              k číslům okrsků. Grafy a tabulky níže fungují i bez mapy.
             </span>
           </div>
         )}
@@ -604,8 +603,8 @@ const popisMapyViteze =
             nadpis="Časová osa voleb"
             udalosti={udalostiVoleb}
             zdroje={[
-              `výsledky voleb ČSÚ — ${zPrehledu.data.zdroj ?? 'opendata/volby/'}`,
-              ...(zOsy.data.udalosti.length > 0 ? ['jednotná časová osa (casova_osa/mesto.json)'] : []),
+              `výsledky voleb ČSÚ${zPrehledu.data.zdroj ? ` (${zPrehledu.data.zdroj})` : ''}`,
+              ...(zOsy.data.udalosti.length > 0 ? ['jednotná časová osa města'] : []),
             ]}
             popis="Volby tak, jak po sobě šly. Na rozdíl od sloupcových grafů výše je tahle osa lineární v čase — je z ní vidět, že mezi volbami leží roky, ve kterých se nevolilo."
             neuplnost="Osa obsahuje jen volby, které jsou v otevřených datech ČSÚ."
@@ -616,7 +615,7 @@ const popisMapyViteze =
           <GrafKarta
             id="ucast-okrsky"
             nadpis="Účast po okrscích"
-            popis="Rozdíly mezi okrsky uvnitř jednoho města. U každého okrsku je v tooltipu i v tabulce počet zapsaných voličů — bez něj by procenta klamala."
+            popis="Rozdíly mezi okrsky uvnitř jednoho města. U každého okrsku je i počet zapsaných voličů — bez něj by procenta klamala."
             varianty={variantyOkrsku}
           />
         )}
@@ -649,7 +648,7 @@ const popisMapyViteze =
             <section class="karta" id={`volba-${v.id}`}>
               <h3 class="karta__nadpis">{popisCyklu(c, v)}</h3>
               <p class="karta__podnadpis">
-                {v.datum ? `Konání: ${v.datum}. ` : 'Datum konání zdroj u těchto voleb neuvádí. '}
+                {v.datum ? `Konání: ${datumVolne(v.datum)}. ` : 'Datum konání zdroj u těchto voleb neuvádí. '}
                 Zapsaných voličů {pocet(v.celkem.volicu)}, vydaných obálek {pocet(v.celkem.obalky)},
                 účast {pct(v.celkem.ucast)}. Okrsků: {cislo(v.okrsky.length)}.
                 {v.mandatu !== null && ` Rozdělovalo se ${cislo(v.mandatu)} mandátů.`}
@@ -758,6 +757,37 @@ const popisMapyViteze =
             <a href={zPrehledu.data.licence} rel="noreferrer noopener">{zPrehledu.data.licence}</a>
           </p>
         )}
+
+        <JakPocitame>
+          <p>
+            Výsledky, počty voličů i hranice okrsků pocházejí z otevřených dat ČSÚ. Přehled je
+            nepřepočítává; když zdroj údaj nemá, je na jeho místě napsané „v datech není“.
+          </p>
+          <ul>
+            <li>
+              <strong>U komunálních voleb se hlasy nesrovnávají s účastí.</strong> Volič má
+              tolik hlasů, kolik se volí zastupitelů, takže platných hlasů je mnohonásobně víc
+              než voličů. Postavit ta dvě čísla vedle sebe by dalo nesmysl.
+            </li>
+            <li>
+              <strong>Mapa nikdy nestojí sama.</strong> Vedle barvené plochy patří počty voličů,
+              jinak by rozlehlý okrsek vypadal důležitěji, než podle výsledků je.
+            </li>
+            <li>
+              <strong>Hranice okrsků se mění.</strong> Používá se vrstva platná k roku voleb;
+              když ji zdroj pro daný rok nemá, je to u mapy napsané. Shodné číslo okrsku
+              neznamená shodné území.
+            </li>
+            <li>
+              <strong>Graf účasti má sloupec na jedny volby, ne na každý rok.</strong> Rok bez
+              voleb není nulová účast — kdy se volilo a kdy ne, ukazuje časová osa.
+            </li>
+            <li>
+              <strong>U dvoukolových voleb se zobrazuje první kolo</strong>, pokud není u grafu
+              uvedeno jinak.
+            </li>
+          </ul>
+        </JakPocitame>
       </>
     )
   }

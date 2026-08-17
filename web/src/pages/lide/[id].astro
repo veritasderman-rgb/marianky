@@ -256,7 +256,7 @@ if (zJednotneOsy.length === 0) {
         nadpis: f.nazev,
         jistota: 'fakt',
         detail: f.do ? `do ${f.do}` : 'v datech bez konce — nemusí to znamenat, že funkce trvá',
-        zdroj: 'data/lide/osobnosti.json',
+        zdroj: 'přehled osobností města',
         osoby: [osoba.id],
       }),
     );
@@ -283,7 +283,7 @@ if (zJednotneOsy.length === 0) {
         detail: Object.entries(j.hlasy)
           .map(([h, p]) => `${nazevHlasu(h)} ${cislo(p)}×`)
           .join(', '),
-        zdroj: 'data/hlasovani/ (jmenovitá hlasování, sloučeno po jednáních)',
+        zdroj: 'jmenovitá hlasování, sloučená po jednáních',
         osoby: [osoba.id],
       }),
     );
@@ -296,7 +296,7 @@ const zdrojeOsy =
   moduly.length > 0
     ? moduly
     : [
-        ...(nahradniOsa.some((u) => u.druh === 'funkce') ? ['funkce z data/lide/osobnosti.json'] : []),
+        ...(nahradniOsa.some((u) => u.druh === 'funkce') ? ['funkce z přehledu osobností města'] : []),
         ...(nahradniOsa.some((u) => u.druh === 'hlasovani') ? ['jmenovitá hlasování'] : []),
       ];
 
@@ -311,8 +311,7 @@ const hlasovaniMimoOsu =
         <strong class="stav-dat__nadpis">Profil zatím není</strong>
         <span>
           Tahle osoba se objevuje ve jmenovitých hlasováních, ale popis, funkce ani zdroje
-          zatím v <span class="stav-dat__zdroj">lide/osobnosti.json</span> nejsou. Níže je jen to,
-          co plyne přímo z dat.
+          k ní zatím nemáme. Níže je jen to, co plyne přímo z dat.
         </span>
       </div>
     )
@@ -423,7 +422,7 @@ const hlasovaniMimoOsu =
           <GrafKarta
             id="temata-osoby"
             nadpis="Aktivita podle témat"
-            popis="U kolika hlasování se objevilo které téma. Téma se bere z tagů usnesení, ne z posouzení obsahu."
+            popis="U kolika hlasování se objevilo které téma. Témata jsou přiřazená k usnesení, nevznikají posouzením obsahu hlasování."
             varianty={variantyTemat}
           />
         )}

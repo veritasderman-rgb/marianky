@@ -1,0 +1,22 @@
+---
+/**
+ * Rozbalovací blok s metodikou.
+ *
+ * Podrobnosti o tom, odkud se čísla berou a co se do nich nepočítá, patří pod
+ * obsah, ne nad něj: čtenář přišel kvůli tomu, co se ve městě děje. Zároveň se
+ * nesmějí ztratit — kdo chce vědět, jak přehled vznikl, to tady najde celé.
+ */
+export interface Props {
+  /** Popisek rozbalení. Výchozí zní „Jak to počítáme". */
+  nadpis?: string;
+}
+
+const { nadpis = 'Jak to počítáme' } = Astro.props;
+---
+
+<details class="metodika-blok">
+  <summary>{nadpis}</summary>
+  <div class="metodika-blok__obsah">
+    <slot />
+  </div>
+</details>

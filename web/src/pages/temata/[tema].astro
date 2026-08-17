@@ -150,10 +150,10 @@ const zdrojeOsy =
 
   <StavDat
     stav={zUsneseni.stav}
-    zdroj="usneseni/, hlasovani/, zpravodaj/clanky/"
+    zdroj="usnesení, hlasování a články zpravodaje"
     co={`Časová osa tématu ${tag.nazev}`}
     prazdno={zUsneseni.stav === 'ok' && udalosti.length === 0}
-    modul="A1 a A2"
+    modul="usnesení, hlasování a zpravodaj"
   />
 
   {
@@ -163,7 +163,7 @@ const zdrojeOsy =
         nadpis={`Časová osa tématu ${tag.nazev}`}
         udalosti={naOse}
         popis="Kdy se k tématu co dělo. Každý pruh je jeden druh záznamu; osa je lineární v čase, takže delší mezera znamená, že se k tématu opravdu dlouho nic neobjevilo."
-        zdroje={zdrojeOsy.length > 0 ? zdrojeOsy : ['jednotná časová osa (casova_osa/tagy/)']}
+        zdroje={zdrojeOsy.length > 0 ? zdrojeOsy : ['jednotná časová osa tématu']}
         neuplnost="Do osy se dostane jen to, co má v datech téma přiřazené. Záznam bez tagu tu chybí, i kdyby o téma šlo."
       />
     )

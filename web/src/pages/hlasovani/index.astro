@@ -44,7 +44,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
     poznamky={zHlasovani.stav === 'chyba' && zHlasovani.poznamka ? [zHlasovani.poznamka] : []}
   />
 
-  {zTagu.stav !== 'ok' && <StavDat stav={zTagu.stav} zdroj={zTagu.zdroj} co="Číselník tagů" />}
+  {zTagu.stav !== 'ok' && <StavDat stav={zTagu.stav} zdroj={zTagu.zdroj} co="Seznam témat" />}
 
   {
     zVazeb.stav !== 'ok' && (
@@ -54,7 +54,7 @@ const skupiny = zTagu.data?.skupiny ?? [];
         co="Označení vazeb hlasujících na dotčené firmy"
         modul="propojení dat"
         poznamky={[
-          'Dokud soubor nevznikne, u hlasování žádné vazby vidět nejsou. Neznamená to, že žádné neexistují — jen se zatím nepárovaly.',
+          'Dokud tahle data nejsou, u hlasování žádné vazby vidět nejsou. Neznamená to, že žádné neexistují — jen se zatím nedohledaly.',
         ]}
       />
     )

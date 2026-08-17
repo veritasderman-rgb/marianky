@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -97,6 +98,26 @@ class Sekce:
 
 def _v_obdobi(datum: str | None, od: str, do: str) -> bool:
     return bool(datum) and od <= datum[:10] <= do
+
+
+def _otisk_smlouvy(sml: dict) -> tuple:
+    """Otisk pro rozpoznání téže smlouvy vložené do registru dvakrát.
+
+    Text předmětu se normalizuje, protože dvojí vložení bývá i s překlepem.
+    Ověřený případ: dodatek ke smlouvě F000123 ze 14. 8. 2026 je v registru
+    pod dvěma identifikátory a jeho předmět se liší JEDINOU ČÁRKOU —
+    „sběru, svozu" proti „sběru svozu". Přesná shoda textu takový pár
+    nenajde, a ve vydání pak stojí dvakrát vedle sebe jako chyba webu.
+
+    Proto se z předmětu vyhodí všechno kromě písmen a číslic. Zbývající
+    tři údaje — datum, protistrana a částka na haléře — jsou samy o sobě
+    dost úzké; text je jen pojistka, aby se neslily dvě opravdu různé
+    smlouvy stejné hodnoty z téhož dne.
+    """
+    predmet = re.sub(r"[^0-9a-záčďéěíňóřšťúůýž]", "",
+                     (sml.get("predmet") or "").lower())
+    return (sml.get("datum"), sml.get("protistrana_ico"),
+            sml.get("castka_czk"), predmet)
 
 
 # --------------------------------------------------------------------------
@@ -172,7 +193,23 @@ def sekce_penize(od: str, do: str) -> Sekce:
     if not soubory:
         return s.chybi("Nepodařilo se načíst registr smluv — o smlouvách za toto období nevíme nic.")
 
+    # Odstranění duplicit má DVĚ úrovně, protože jedna nestačí.
+    #
+    # Podle identifikátoru: tatáž smlouva je v datech dvakrát, když ji
+    # vedou oba sledované subjekty (257 takových případů).
+    #
+    # Podle obsahu: registr smluv obsahuje tutéž smlouvu i pod DVĚMA
+    # RŮZNÝMI identifikátory — zveřejňovatel ji vložil dvakrát. Ověřeno
+    # na dodatku ke smlouvě F000123 z 14. 8. 2026, který má id 36778734
+    # i 36777210, shodné datum, částku i předmět. Podle id se nepozná,
+    # ale ve vydání vedle sebe vypadá jako chyba webu.
+    #
+    # Shoda ve všech čtyřech údajích naráz je u dvou skutečně různých
+    # smluv nepravděpodobná; kolik se jich slilo, se hlásí v poznámce,
+    # takže se to neděje potichu.
     videne: set[str] = set()
+    obsahove: set[tuple] = set()
+    slito = 0
     polozky = []
     for f in soubory:
         try:
@@ -182,6 +219,11 @@ def sekce_penize(od: str, do: str) -> Sekce:
         for sml in d.get("smlouvy", []):
             if not _v_obdobi(sml.get("datum"), od, do) or sml["id"] in videne:
                 continue
+            otisk = _otisk_smlouvy(sml)
+            if otisk in obsahove:
+                slito += 1
+                continue
+            obsahove.add(otisk)
             videne.add(sml["id"])
             polozky.append({
                 "subjekt": d.get("nazev"),
@@ -197,7 +239,13 @@ def sekce_penize(od: str, do: str) -> Sekce:
             })
 
     polozky.sort(key=lambda p: -(p["castka_czk"] or 0))
-    return s.dopln(polozky)
+    s.dopln(polozky)
+    if slito:
+        # Čeština skloňuje podle počtu: 1 smlouva, 2-4 smlouvy, 5+ smluv.
+        tvar = "smlouva byla" if slito == 1 else ("smlouvy byly" if slito < 5 else "smluv bylo")
+        s.poznamka = (f"{slito} {tvar} v registru zveřejněna dvakrát pod různými "
+                      f"identifikátory; ve výpisu je jednou.")
+    return s
 
 
 def sekce_deska(od: str, do: str) -> Sekce:

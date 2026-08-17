@@ -12,6 +12,7 @@ import StavDat from '../../components/StavDat.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
 import GrafKarta from '../../components/GrafKarta.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
+import JakPocitame from '../../components/JakPocitame.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
 import { jednou } from '../../lib/cache';
@@ -28,7 +29,7 @@ import {
 import { grafVodorovny } from '../../lib/grafy';
 import { grafSpojnice } from '../../lib/grafy_rady';
 import { udalost, type UdalostOsy } from '../../lib/osa';
-import { cislo, kc, kcZkraceno, sklonuj } from '../../lib/format';
+import { cislo, datumVolneKratke, kc, kcZkraceno, polidstiData, sklonuj } from '../../lib/format';
 import { spojStavy } from '../../lib/data';
 
 const zSubjektu = jednou('firmy-subjekty', nactiSubjektyFirem);
@@ -141,9 +142,9 @@ const udalostiFirem: UdalostOsy[] = naOse.map((f) =>
     druh: 'firma',
     nadpis: f.nazev,
     odkaz: `/firmy/${f.klic}`,
-    zdroj: 'ARES — data/firmy/subjekty.json',
+    zdroj: 'rejstřík ARES',
     jistota: 'fakt',
-    detail: `${f.kriteria.map((k) => k.nazev).join(', ')}${f.zanik ? ` · výmaz ${f.zanik}` : ''}`,
+    detail: `${f.kriteria.map((k) => k.nazev).join(', ')}${f.zanik ? ` · výmaz ${datumVolneKratke(f.zanik)}` : ''}`,
     firmy: f.ico ? [f.ico] : [],
   }),
 );
@@ -224,7 +225,7 @@ const klicoveDulezitych = new Set(dulezite.map((f) => f.klic));
           <GrafKarta
             id="vzniky"
             nadpis="Vzniky a zániky v čase"
-            popis="Kdy dnes existující subjekty vznikly a kdy končily. Obojí je v počtu subjektů, proto jeden graf s jednou osou."
+            popis="Kdy dnes existující subjekty vznikly a kdy končily. Vznik i zánik se počítají ve stejné jednotce, dají se proto číst vedle sebe."
             varianty={variantyCasu}
           />
         )}
@@ -235,7 +236,7 @@ const klicoveDulezitych = new Set(dulezite.map((f) => f.klic));
             nadpis="Časová osa firem s vazbou na město"
             udalosti={udalostiFirem}
             popis="Vodorovný pruh je doba mezi zápisem a výmazem v rejstříku. Firma bez zapsaného výmazu končí značkou u data vzniku, ne čárou do dneška — že v rejstříku pořád je, neznamená, že funguje."
-            zdroje={['ARES — data/firmy/subjekty.json', 'registr smluv města (kritérium obchodu)']}
+            zdroje={['rejstřík ARES', 'registr smluv města (podle něj se pozná obchod s městem)']}
             neuplnost={`Datum výmazu má jen obchodní rejstřík a jen u subjektů vedených jako zaniklé; ${
               zRady.data.dohledanoZaniku === null ? 'většinu zániků' : `mimo ${cislo(zRady.data.dohledanoZaniku)} dohledaných zániků`
             } tedy v datech nemáme. Prázdné pole „zánik" znamená NEVÍME, ne „trvá".${
@@ -312,12 +313,12 @@ const klicoveDulezitych = new Set(dulezite.map((f) => f.klic));
 
           {zDulezitych.data.metodika.length > 0 && (
             <details class="tabulkovy-pohled">
-              <summary>Metodika výběru podle zdroje</summary>
+              <summary>Jak to počítáme — podle čeho se firma označí za důležitou</summary>
               <dl class="metodika">
                 {zDulezitych.data.metodika.map((m) => (
                   <>
                     <dt>{m.klic.replace(/_/g, ' ')}</dt>
-                    <dd>{m.text}</dd>
+                    <dd>{polidstiData(m.text)}</dd>
                   </>
                 ))}
               </dl>
@@ -421,7 +422,7 @@ const klicoveDulezitych = new Set(dulezite.map((f) => f.klic));
                       <td class="mono">{f.ico ?? '—'}</td>
                       <td>{f.obor ?? 'v datech není'}</td>
                       <td>{f.pravniForma ?? '—'}</td>
-                      <td class="cislo">{f.vznik ?? '—'}</td>
+                      <td class="cislo">{datumVolneKratke(f.vznik)}</td>
                       <td>{f.stav ?? 'v datech není'}</td>
                     </tr>
                   ))}
@@ -432,17 +433,20 @@ const klicoveDulezitych = new Set(dulezite.map((f) => f.klic));
         )}
 
         {zSubjektu.data.metodika.length > 0 && (
-          <section class="karta">
-            <h2 class="karta__nadpis">Co data o firmách neříkají</h2>
+          <JakPocitame nadpis="Jak to počítáme — a co data o firmách neříkají">
+            <p>
+              Podklad je rejstřík ARES doplněný registrem smluv města. Popis níže je převzatý ze
+              zdroje, aby na webu stálo přesně to, podle čeho data vznikla.
+            </p>
             <dl class="metodika">
               {zSubjektu.data.metodika.map((m) => (
                 <>
                   <dt>{m.klic.replace(/_/g, ' ')}</dt>
-                  <dd>{m.text}</dd>
+                  <dd>{polidstiData(m.text)}</dd>
                 </>
               ))}
             </dl>
-          </section>
+          </JakPocitame>
         )}
       </>
     )

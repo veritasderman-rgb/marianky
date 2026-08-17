@@ -368,6 +368,26 @@ export interface SmlouvySubjektu {
   smlouvy: Smlouva[];
 }
 
+/**
+ * Sekce týdenního vydání. `stav` rozlišuje čtyři různé věci, které se nesmí
+ * slít dohromady: sebralo se něco (`ok`), sebralo se a nic tam nebylo
+ * (`prazdno`), zdroj se nepodařilo přečíst (`chyba` / `chybi`) a zdroj se sice
+ * načetl, ale je zjevně starý (`zastarale`). Neznámý stav se nechává být.
+ */
+export interface SekceVydani {
+  id?: string;
+  nadpis: string;
+  popis?: string;
+  text?: string;
+  poznamka?: string;
+  stav?: string;
+  pocet?: number;
+  /** Datum posledního záznamu ve zdroji — u prázdné sekce říká, odkdy je ticho. */
+  nejnovejsi_ve_zdroji?: string | null;
+  polozky?: unknown[];
+  [k: string]: unknown;
+}
+
 /** Týdenní vydání — formát PLAN.md nedefinuje, čteme tolerantně. */
 export interface Vydani {
   id: string;
@@ -378,7 +398,13 @@ export interface Vydani {
   obdobi_do?: string;
   obdobi?: string;
   perex?: string;
-  sekce?: { nadpis: string; text?: string; poznamka?: string; polozky?: unknown[] }[];
+  souhrn?: {
+    sekci_ok?: number;
+    sekci_prazdnych?: number;
+    sekci_chybejicich?: number;
+    polozek?: number;
+  };
+  sekce?: SekceVydani[];
   [k: string]: unknown;
 }
 

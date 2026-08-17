@@ -18,7 +18,7 @@ import { nactiProtistrany, type Protistrana } from '../../lib/data';
 import { jednou } from '../../lib/cache';
 import { nactiDulezite, nactiMestoAFirmy, seradDulezite, type DuleziaFirma } from '../../lib/firmy';
 import { nactiOsuFirmy, popisModulu, udalost, slucUdalosti, type UdalostOsy } from '../../lib/osa';
-import { cislo, kc, kcZkraceno, sklonuj } from '../../lib/format';
+import { cislo, datumVolneKratke, kc, kcZkraceno, nazevZdroje, sklonuj } from '../../lib/format';
 
 export async function getStaticPaths() {
   const zDulezitych = jednou('firmy-dulezite', () => nactiDulezite(kc, cislo));
@@ -56,7 +56,7 @@ if (firma.vznik) {
       druh: 'firma',
       nadpis: 'Zápis do rejstříku',
       detail: firma.pravniForma,
-      zdroj: 'ARES — data/firmy/subjekty.json',
+      zdroj: 'rejstřík ARES',
       jistota: 'fakt',
     }),
   );
@@ -104,9 +104,9 @@ const dlazdice: Polozka[] = [
     popisek: 'Existuje',
     hodnota: firma.stav ?? (firma.zanik ? 'zaniklá' : 'v datech není'),
     doplnek: firma.zanik
-      ? `výmaz ${firma.zanik}, zápis ${firma.vznik ?? 'v datech není'}`
+      ? `výmaz ${datumVolneKratke(firma.zanik)}, zápis ${firma.vznik ? datumVolneKratke(firma.vznik) : 'v datech není'}`
       : firma.vznik
-        ? `zápis ${firma.vznik}; datum výmazu zdroj nemá — není to „trvá"`
+        ? `zápis ${datumVolneKratke(firma.vznik)}; datum výmazu zdroj nemá — není to „trvá"`
         : 'datum vzniku v datech není',
   },
   {
@@ -150,7 +150,7 @@ const poLetech = vRegistru ? [...vRegistru.poLetech.entries()].sort((a, b) => a[
         <li>
           <span class="duvod__nazev">{k.nazev}</span>
           {k.detail && <span class="duvod__detail"> — {k.detail}</span>}
-          {k.zdroj && <span class="stav-dat__zdroj"> (zdroj: {k.zdroj})</span>}
+          {k.zdroj && <span class="stav-dat__zdroj"> (zdroj: {nazevZdroje(k.zdroj)})</span>}
         </li>
       ))}
     </ul>

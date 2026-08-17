@@ -22,7 +22,7 @@
 import { nactiJson, type Nacteno } from './data';
 import { escSvg, tipAtribut, type LegendaPolozka, type Tabulka, type TipRadek } from './grafy';
 import { cssBarvaSlotu, MAX_KATEGORII } from './barvy';
-import { cislo, datumKratke, kc, orez } from './format';
+import { cislo, datumKratke, kc, nazevZdroje, orez } from './format';
 import { cis, jeObjekt, texty, txt, type Zaznam } from './tolerantni';
 
 /* ─────────────────────────────  Událost  ───────────────────────────── */
@@ -211,13 +211,17 @@ function popisVztahu(v: string): string {
   return m[v] ?? v.replace(/_/g, ' ');
 }
 
+/* Zdroj se v datech označuje cestou k souboru. Do textu pro čtenáře se překládá
+   na název zdroje — „historie/udalosti.json" nikomu neřekne, odkud údaj je. */
 function zdrojUdalosti(z: Zaznam): string | null {
   if (jeObjekt(z.zdroj)) {
     const modul = txt(z.zdroj, 'modul');
     const soubor = txt(z.zdroj, 'soubor');
-    return soubor ? (modul ? `${modul} — ${soubor}` : soubor) : modul;
+    const spojene = soubor ? (modul ? `${modul} — ${soubor}` : soubor) : modul;
+    return spojene ? nazevZdroje(spojene) : null;
   }
-  return txt(z, 'zdroj_soubor', 'zdroj', 'soubor');
+  const primy = txt(z, 'zdroj_soubor', 'zdroj', 'soubor');
+  return primy ? nazevZdroje(primy) : null;
 }
 
 function udalostZe(z: Zaznam, poradi: number): UdalostOsy | null {
@@ -727,7 +731,7 @@ export function slucUdalosti(...skupiny: UdalostOsy[][]): UdalostOsy[] {
 /** Lidsky čitelný seznam modulů, ze kterých se osa skládá. */
 export function popisModulu(moduly: string[]): string[] {
   const nazvy: Record<string, string> = {
-    historie: 'dějiny města (historie/)',
+    historie: 'dějiny města',
     usneseni: 'usnesení rady a zastupitelstva',
     hlasovani: 'jmenovitá hlasování',
     smlouvy: 'registr smluv (peníze)',

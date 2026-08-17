@@ -66,6 +66,8 @@
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --stin: 0 1px 2px rgb(20 26 22 / 6%), 0 4px 14px rgb(20 26 22 / 4%);
+  /* Vysunutá nabídka leží nad obsahem a potřebuje výraznější stín než karta. */
+  --stin-nabidka: 0 8px 24px rgb(20 26 22 / 14%);
   --radius: 10px;
 }
 
@@ -111,6 +113,7 @@
     --stav-neznamo: #7c8880;
 
     --stin: 0 1px 2px rgb(0 0 0 / 40%), 0 4px 14px rgb(0 0 0 / 26%);
+    --stin-nabidka: 0 8px 24px rgb(0 0 0 / 46%);
   }
 }
 
@@ -155,6 +158,7 @@
   --stav-neznamo: #7c8880;
 
   --stin: 0 1px 2px rgb(0 0 0 / 40%), 0 4px 14px rgb(0 0 0 / 26%);
+  --stin-nabidka: 0 8px 24px rgb(0 0 0 / 46%);
 }
 
 /* ════════════════════════════  Základ  ══════════════════════════════ */
@@ -290,29 +294,141 @@ kbd,
   font-weight: 400;
 }
 
+/* ── Navigace ─────────────────────────────────────────────────────────
+   Skupiny jsou <details>, takže fungují i bez JavaScriptu. Na širokém
+   displeji se nabídka vysouvá pod záhlaví, na úzkém se rozbaluje pod
+   položkou jako klasické skládací menu. */
+
 .navigace {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.15rem 0.25rem;
   margin-inline-start: auto;
 }
 
-.navigace a {
-  display: inline-block;
-  padding: 0.3rem 0.6rem;
+.navigace__odkaz,
+.navigace__nazev {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.navigace__odkaz:hover,
+.navigace__nazev:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.navigace__odkaz[aria-current="page"] {
+  background: var(--surface-2);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.navigace__skupina {
+  position: relative;
+}
+.navigace__skupina > summary {
+  list-style: none;
+}
+.navigace__skupina > summary::-webkit-details-marker {
+  display: none;
+}
+.navigace__skupina[data-aktivni] > summary {
+  color: var(--ink);
+  font-weight: 600;
+}
+.navigace__skupina[open] > summary {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.navigace__sipka {
+  width: 0;
+  height: 0;
+  border-inline: 0.28rem solid transparent;
+  border-top: 0.3rem solid currentColor;
+  opacity: 0.7;
+}
+.navigace__skupina[open] .navigace__sipka {
+  transform: rotate(180deg);
+}
+
+.navigace__nabidka {
+  list-style: none;
+  margin: 0.25rem 0 0.5rem;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.navigace__nabidka a {
+  display: block;
+  padding: 0.4rem 0.55rem;
   border-radius: 6px;
   color: var(--ink-soft);
   text-decoration: none;
   font-size: 0.92rem;
 }
-.navigace a:hover {
+.navigace__nabidka a:hover {
   background: var(--surface-2);
   color: var(--ink);
 }
-.navigace a[aria-current="page"] {
+.navigace__nabidka a[aria-current="page"] {
   background: var(--surface-2);
   color: var(--ink);
+}
+
+.navigace__polozka-nazev {
+  display: block;
+}
+.navigace__nabidka a[aria-current="page"] .navigace__polozka-nazev {
   font-weight: 600;
+}
+.navigace__polozka-popis {
+  display: block;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 52rem) {
+  .navigace__nabidka {
+    position: absolute;
+    z-index: 20;
+    inset-inline-start: 0;
+    top: calc(100% + 0.3rem);
+    min-width: 15rem;
+    margin: 0;
+    box-shadow: var(--stin-nabidka);
+  }
+}
+
+/* Na úzkém displeji zůstávají skupiny v řádku jako štítky; otevřená skupina
+   zabere celý řádek a její odkazy se rozbalí pod ní. Žádné skryté menu —
+   všechno je dosažitelné palcem i klávesnicí. */
+@media (max-width: 51.99rem) {
+  .navigace {
+    width: 100%;
+    margin-inline-start: 0;
+    gap: 0.25rem;
+  }
+  .navigace__skupina[open] {
+    flex: 1 1 100%;
+  }
+  .navigace__nabidka {
+    margin-inline-start: 0.4rem;
+  }
 }
 
 .prepinac-motivu {
@@ -346,6 +462,25 @@ main {
 }
 .paticka-webu a {
   color: var(--ink-soft);
+}
+
+.paticka-webu__odkazy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 1.1rem 0;
+}
+.paticka-webu__odkazy strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.paticka-webu__odkazy a {
+  display: block;
+  padding: 0.1rem 0;
 }
 
 .uvod {
@@ -1451,6 +1586,136 @@ th.cislo {
   color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
+}
+
+/* ══════════════════════════  Týdenní vydání  ════════════════════════ */
+
+.vydani .dlazdice {
+  margin: 1.1rem 0 0.4rem;
+}
+
+.vydani__souhrn {
+  color: var(--ink-soft);
+  margin: 0.2rem 0 1.4rem;
+}
+
+.vydani-sekce {
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 1.1rem;
+  margin-top: 1.3rem;
+}
+
+.vydani-sekce__nadpis {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0 0 0.2rem;
+}
+
+.vydani-sekce__pocet {
+  color: var(--ink-faint);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.vydani-sekce__popis,
+.vydani-sekce__rozpis {
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  margin: 0 0 0.6rem;
+}
+
+.vydani-radky {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.vydani-radky--vnorene {
+  margin: 0.5rem 0 0.2rem;
+  padding-inline-start: 0.9rem;
+  border-inline-start: 2px solid var(--rule-soft);
+}
+
+.vydani-radek {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.vydani-radek__nazev {
+  font-weight: 500;
+}
+
+.vydani-radek__meta {
+  color: var(--ink-faint);
+  font-size: 0.84rem;
+}
+
+.vydani-radek__popis {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.vydani-radek__detaily > summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  padding: 0.15rem 0;
+}
+.vydani-radek__detaily > summary:hover {
+  color: var(--ink);
+}
+
+.vydani-ticho {
+  border-top: 1px solid var(--rule-soft);
+  margin-top: 1.4rem;
+  padding-top: 0.9rem;
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+}
+.vydani-ticho strong {
+  color: var(--ink-soft);
+}
+
+/* ══════════════════  Rozbalovací metodika „Jak to počítáme"  ═════════ */
+
+.metodika-blok {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin: 2rem 0 1rem;
+  padding: 0 1.1rem;
+}
+.metodika-blok > summary {
+  cursor: pointer;
+  padding: 0.8rem 0;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.metodika-blok > summary:hover {
+  color: var(--ink);
+}
+.metodika-blok[open] > summary {
+  border-bottom: 1px solid var(--rule-soft);
+}
+.metodika-blok__obsah {
+  padding: 0.8rem 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 46rem;
+}
+.metodika-blok__obsah > :first-child {
+  margin-top: 0;
+}
+.metodika-blok__obsah > :last-child {
+  margin-bottom: 0;
 }
 
 /* ════════════════════════════  Tisk  ════════════════════════════════ */

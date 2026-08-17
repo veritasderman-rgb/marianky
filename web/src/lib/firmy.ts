@@ -17,6 +17,7 @@
  */
 import { nactiJson, slug, type Nacteno } from './data';
 import { cis, ico as icoZ, jeObjekt, objekty, texty, txt, type Zaznam } from './tolerantni';
+import { datumVolneKratke } from './format';
 
 export interface Firma {
   ico: string | null;
@@ -172,7 +173,8 @@ function kriteriumZe(z: Zaznam, kcFormat: (v: number | null) => string, cisloFor
     if (z.vnitromestsky_prevod === true) cast.push('jde o přesun uvnitř města, ne platbu cizí firmě');
     if (cast.length > 0) kusy.push(cast.join(', '));
   } else if (hodnotaText) {
-    kusy.push(hodnotaText);
+    // Hodnota kritéria bývá datum (zápis do rejstříku) — do textu patří česky.
+    kusy.push(datumVolneKratke(hodnotaText));
   } else if (hodnotaCislo !== null) {
     kusy.push(jednotka === 'Kč' ? kcFormat(hodnotaCislo) : `${cisloFormat(hodnotaCislo)}${jednotka ? ` ${jednotka}` : ''}`);
   }

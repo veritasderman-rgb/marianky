@@ -1,0 +1,54 @@
+---
+/**
+ * Jeden řádek týdenního vydání.
+ *
+ * Řádek může zastupovat víc položek najednou — rutinní papírování se shlukuje,
+ * aby deset skoro stejných dokumentů nezabralo víc místa než zbytek týdne.
+ * Zhuštěné položky se pak vypíšou po rozbalení; nic se nezahazuje.
+ */
+export interface Radek {
+  nazev: string;
+  url: string | null;
+  meta: string[];
+  popis: string | null;
+  /** Kolik původních položek řádek zastupuje. */
+  pocet: number;
+  castka: number | null;
+  /** Zhuštěné položky — vypíšou se až po rozbalení. */
+  detaily: Radek[];
+}
+
+export interface Props {
+  radek: Radek;
+  /** Vnořený řádek se už dál nerozbaluje. */
+  vnoreny?: boolean;
+}
+
+const { radek: r, vnoreny = false } = Astro.props;
+---
+
+<li class="vydani-radek">
+  <span class="vydani-radek__nazev">
+    {r.url ? <a href={r.url} rel="noreferrer noopener">{r.nazev}</a> : r.nazev}
+  </span>
+  {r.meta.length > 0 && <span class="vydani-radek__meta">{r.meta.join(' · ')}</span>}
+  {r.popis && <span class="vydani-radek__popis">{r.popis}</span>}
+
+  {
+    !vnoreny && r.detaily.length > 0 && (
+      <details class="vydani-radek__detaily">
+        <summary>Vypsat jednotlivé záznamy</summary>
+        <ul class="vydani-radky vydani-radky--vnorene">
+          {r.detaily.map((d) => (
+            <li class="vydani-radek">
+              <span class="vydani-radek__nazev">
+                {d.url ? <a href={d.url} rel="noreferrer noopener">{d.nazev}</a> : d.nazev}
+              </span>
+              {d.meta.length > 0 && <span class="vydani-radek__meta">{d.meta.join(' · ')}</span>}
+            </li>
+          ))}
+        </ul>
+      </details>
+    )
+  }
+</li>

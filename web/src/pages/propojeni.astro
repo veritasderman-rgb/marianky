@@ -14,6 +14,7 @@
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
+import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiLidi, nactiProtistrany } from '../lib/data';
 import {
@@ -27,7 +28,7 @@ import {
   type FirmaOsoby,
   type OsobaFirmy,
 } from '../lib/vazby';
-import { cislo, kc, kcZkraceno, orderCs, sklonuj } from '../lib/format';
+import { cislo, kc, kcZkraceno, orderCs, polidstiData, sklonuj } from '../lib/format';
 
 const zOsob = nactiOsobyFirmy();
 const zDodavatelu = nactiDodavatelePolitiky();
@@ -249,9 +250,9 @@ function castkaFirmy(f: FirmaOsoby): string {
     <h2 class="karta__nadpis">Firmy s vazbou na politiky, které dostávají od města peníze</h2>
     <p class="karta__podnadpis">
       {zeSouboru
-        ? 'Zdroj: propojeni/dodavatele_politici.json.'
-        : 'Soubor propojeni/dodavatele_politici.json zatím není — seznam je poskládaný z propojeni/osoby_firmy.json.'}
-      {' '}Objem po letech je na stránce <a href="/penize#dodavatele-vazby">Peníze</a>.
+        ? 'Seznam pochází z propojení osob, firem a registru smluv.'
+        : 'Hotový seznam dodavatelů s vazbou zatím není — tenhle je poskládaný z přehledu osob a jejich firem.'}
+      {' '}Objem po letech je na stránce <a href="/penize#dodavatele-vazby">Peníze města</a>.
     </p>
 
     <StavDat
@@ -378,21 +379,20 @@ function castkaFirmy(f: FirmaOsoby): string {
 
   {
     propojeni.metodika.length > 0 && (
-      <section class="karta">
-        <h2 class="karta__nadpis">Jak přehled vznikl</h2>
-        <p class="karta__podnadpis">
-          Popis metody pochází přímo ze zdrojového souboru — na webu tak stojí přesně to, podle
-          čeho se data skládala.
+      <JakPocitame>
+        <p>
+          Popis metody je převzatý ze zdroje propojení — na webu tak stojí přesně to, podle čeho
+          data vznikla.
         </p>
         <dl class="metodika">
           {propojeni.metodika.map((m) => (
             <>
               <dt>{m.klic.replace(/_/g, ' ')}</dt>
-              <dd>{m.text}</dd>
+              <dd>{polidstiData(m.text)}</dd>
             </>
           ))}
         </dl>
-      </section>
+      </JakPocitame>
     )
   }
 

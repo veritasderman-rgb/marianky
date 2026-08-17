@@ -30,7 +30,8 @@ import {
   type Ukazatel,
 } from '../lib/csu';
 import { grafSpojnice, type SerieRady } from '../lib/grafy_rady';
-import { cislo, sklonuj } from '../lib/format';
+import JakPocitame from '../components/JakPocitame.astro';
+import { cislo, datumVolneKratke, sklonuj } from '../lib/format';
 
 const zCsu = nactiCsu();
 const rady = zCsu.data.rady ?? [];
@@ -149,7 +150,7 @@ const variantaIndexu: Varianta | null =
           `Každá řada je přepočtená na index, kde rok ${zakladniRok} = 100. Jde o srovnání SMĚRU a rychlosti změny, ne velikosti — index 120 u obyvatel a u přenocování znamená stejný růst, ne stejný počet.`,
         );
         graf.poznamky.push(
-          'Tenhle graf existuje proto, aby nemusely být dvě osy Y. Absolutní hodnoty jsou v grafech jednotlivých ukazatelů níže a v jejich tabulkách.',
+          'Skutečné počty tenhle graf neukazuje — jsou v grafech jednotlivých ukazatelů níže a v jejich tabulkách.',
         );
         graf.poznamky.push(
           'Že dvě křivky jdou stejným směrem, neznamená, že spolu souvisejí. Přehled o žádné souvislosti mezi řadami nic netvrdí.',
@@ -201,7 +202,7 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
   titulek="Statistika města"
   aktivni="statistika"
   nadpis="Časové řady o městě"
-  uvod="Obyvatelstvo, nezaměstnanost, cestovní ruch a bydlení z otevřených dat ČSÚ. Každý ukazatel má vlastní graf s jednou osou — veličiny v různých jednotkách se nesmí míchat do jednoho obrázku. Společné srovnání se dělá indexem."
+  uvod="Obyvatelstvo, nezaměstnanost, cestovní ruch a bydlení z otevřených dat ČSÚ. Každý ukazatel má vlastní graf; společné srovnání ukazuje graf indexů, protože počet obyvatel a počet nocí v hotelu se přímo srovnat nedají."
 >
   <StavDat
     stav={zCsu.stav}
@@ -222,7 +223,7 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
           <GrafKarta
             id="index"
             nadpis="Srovnání vývoje jedním pohledem"
-            popis="Různě velké veličiny jde srovnat jen indexem ke společnému základu. Dvě osy Y jsou zakázané — vypadaly by jako souvislost, kterou v datech nic nedokládá."
+            popis="Různě velké veličiny jde srovnat jen indexem ke společnému základu: každá řada začíná na sto a další roky ukazují, o kolik procent se od té doby posunula. Dvě různá měřítka v jednom obrázku by naznačovala souvislost, kterou data nedokládají."
             varianty={[variantaIndexu]}
           />
         )}
@@ -237,7 +238,7 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
               <h2 id={`sada-${s.kod}`}>{s.nazev}</h2>
               <p class="graf-poznamka">
                 Periodicita: {NAZVY_PERIODY[s.perioda]}
-                {s.od && s.do && ` · období ${s.od}–${s.do}`}
+                {s.od && s.do && ` · období ${datumVolneKratke(s.od)} – ${datumVolneKratke(s.do)}`}
                 {s.zaznamu !== null && ` · ${cislo(s.zaznamu)} záznamů`}
                 {s.ukazatelu !== null && ` · ${cislo(s.ukazatelu)} ${sklonuj(s.ukazatelu, 'ukazatel', 'ukazatele', 'ukazatelů')}`}
                 {s.stav && s.stav !== 'ok' && ` · stav zdroje: ${s.stav}`}
@@ -246,7 +247,7 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
                 <GrafKarta
                   id={`ukazatel-${v.klic}`}
                   nadpis={v.popisek}
-                  popis="Čáry v jednom grafu jsou členění téhož ukazatele, takže osa Y platí pro všechny. Přerušená čára znamená období bez údaje — není to pokles na nulu."
+                  popis="Čáry v jednom grafu jsou členění téhož ukazatele, svislá osa proto platí pro všechny. Přerušená čára znamená období bez údaje — není to pokles na nulu."
                   varianty={[v]}
                 />
               ))}
@@ -277,7 +278,7 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
                     <tr>
                       <td>{r.nazev}</td>
                       <td>{popisCleneni(r)}</td>
-                      <td>{r.od && r.do ? `${r.od}–${r.do}` : '—'}</td>
+                      <td>{r.od && r.do ? `${datumVolneKratke(r.od)} – ${datumVolneKratke(r.do)}` : '—'}</td>
                       <td class="cislo">{cislo(r.body.size)}</td>
                     </tr>
                   ))}
@@ -288,9 +289,32 @@ const bezSady = rady.filter((r) => !sady.some((s) => s.kod === r.sada));
         )}
 
         <p class="graf-poznamka">
-          Čísla pocházejí ze zdrojových souborů beze změny — přehled je nepřepočítává,
-          nevyhlazuje ani nedopočítává chybějící období.
+          Čísla pocházejí ze zdroje beze změny — přehled je nepřepočítává, nevyhlazuje ani
+          nedopočítává chybějící období.
         </p>
+
+        <JakPocitame>
+          <p>
+            Řady vede Český statistický úřad. Přehled je jen zobrazuje: nic se nedopočítává,
+            neprůměruje ani neprodlužuje za poslední známý údaj.
+          </p>
+          <ul>
+            <li>
+              <strong>Chybějící hodnota není nula.</strong> Zdroj rozlišuje „údaj nemáme" a
+              „údaj se kvůli malému počtu subjektů nezveřejňuje". Obojí je v grafu mezera, ne
+              pokles na nulu.
+            </li>
+            <li>
+              <strong>V jednom grafu je vždy jedna veličina.</strong> Počet obyvatel a počet
+              přenocování mají jiné jednotky i řády; kdyby stály v jednom obrázku vedle sebe,
+              vypadaly by jako spojité nádoby.
+            </li>
+            <li>
+              <strong>Srovnání dělá index.</strong> Každá řada se vztáhne ke společnému
+              základnímu roku (sto procent) a dál se sleduje jen její změna.
+            </li>
+          </ul>
+        </JakPocitame>
         {zCsu.data.zdroj && (
           <p class="graf-poznamka">
             Zdroj dat: <a href={zCsu.data.zdroj} rel="noreferrer noopener">{zCsu.data.zdroj}</a>

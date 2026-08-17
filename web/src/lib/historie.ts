@@ -195,7 +195,7 @@ export function historieNaOsu(udalosti: UdalostHistorie[], obdobi: Obdobi[]): Ud
         nadpis: o.nazev,
         popis: o.text,
         odkaz: `#obdobi-${o.id}`,
-        zdroj: 'historie/prehled.json',
+        zdroj: 'přehled dějin města',
         detail:
           o.presnostRozsahu === 'priblizna'
             ? 'období dějin města — hranice let jsou podle zdroje přibližné'
@@ -221,7 +221,7 @@ export function historieNaOsu(udalosti: UdalostHistorie[], obdobi: Obdobi[]): Ud
       odkaz: u.odkaz,
       jistota: u.jistota,
       jistotaDuvod: u.poznamka,
-      zdroj: 'historie/udalosti.json',
+      zdroj: 'soupis historických událostí',
       detail: u.obdobi ? (nazvyObdobi.get(u.obdobi) ?? u.obdobi) : u.kategorie,
       osoby: u.osoby,
       tagy: u.tagy,

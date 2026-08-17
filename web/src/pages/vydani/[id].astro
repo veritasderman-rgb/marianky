@@ -2,7 +2,7 @@
 import Zaklad from '../../layouts/Zaklad.astro';
 import VydaniKarta from '../../components/Vydani.astro';
 import { nactiVydani, type Vydani } from '../../lib/data';
-import { datum } from '../../lib/format';
+import { datum, obdobiText } from '../../lib/format';
 
 export async function getStaticPaths() {
   const { data } = nactiVydani();
@@ -21,16 +21,27 @@ interface Props {
 }
 
 const { vydani: v, novejsi, starsi } = Astro.props as Props;
+
+/** Popisek sousedního vydání — datum říká víc než pořadové číslo. */
+function popisek(x: Vydani): string {
+  return x.datum ? datum(x.datum) : (x.nazev ?? `Vydání ${x.id}`);
+}
 ---
 
-<Zaklad titulek={v.nazev ?? `Vydání ${v.id}`} aktivni="vydani" bezNadpisu>
-  <h1>{v.nazev ?? `Vydání ${v.id}`}</h1>
+<Zaklad
+  titulek={v.datum ? `Přehled z ${datum(v.datum)}` : `Vydání ${v.id}`}
+  aktivni="vydani"
+  nadpis="Týdenní přehled"
+  uvod={obdobiText(v.obdobi_od ?? null, v.obdobi_do ?? null)
+    ? `Starší vydání z archivu. ${obdobiText(v.obdobi_od ?? null, v.obdobi_do ?? null)}.`
+    : 'Starší vydání z archivu.'}
+>
   <VydaniKarta vydani={v} uroven="h2" />
 
   <p>
-    {starsi && <a href={`/vydani/${starsi.id}`}>← {starsi.nazev ?? datum(starsi.datum ?? starsi.id)}</a>}
+    {starsi && <a href={`/vydani/${starsi.id}`}>← {popisek(starsi)}</a>}
     {starsi && novejsi ? ' · ' : ''}
-    {novejsi && <a href={`/vydani/${novejsi.id}`}>{novejsi.nazev ?? datum(novejsi.datum ?? novejsi.id)} →</a>}
+    {novejsi && <a href={`/vydani/${novejsi.id}`}>{popisek(novejsi)} →</a>}
   </p>
   <p><a href="/">← Poslední vydání</a></p>
 </Zaklad>

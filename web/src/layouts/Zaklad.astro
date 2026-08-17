@@ -15,22 +15,65 @@ export interface Props {
 
 const { titulek, uvod, aktivni, nadpis, bezNadpisu = false } = Astro.props;
 
-const polozkyNavigace = [
-  { klic: 'vydani', cesta: '/', nazev: 'Vydání' },
-  { klic: 'usneseni', cesta: '/usneseni', nazev: 'Usnesení' },
-  { klic: 'hlasovani', cesta: '/hlasovani', nazev: 'Hlasování' },
-  { klic: 'penize', cesta: '/penize', nazev: 'Peníze' },
-  { klic: 'firmy', cesta: '/firmy', nazev: 'Firmy' },
-  { klic: 'propojeni', cesta: '/propojeni', nazev: 'Propojení' },
-  { klic: 'retez', cesta: '/retez', nazev: 'Řetěz' },
-  { klic: 'lide', cesta: '/lide', nazev: 'Lidé' },
-  { klic: 'volby', cesta: '/volby', nazev: 'Volby' },
-  { klic: 'mapa', cesta: '/mapa', nazev: 'Mapa' },
-  { klic: 'historie', cesta: '/historie', nazev: 'Historie' },
-  { klic: 'statistika', cesta: '/statistika', nazev: 'Statistika' },
-  { klic: 'zpravodaj', cesta: '/zpravodaj', nazev: 'Zpravodaj' },
-  { klic: 'hledat', cesta: '/hledat', nazev: 'Hledat' },
+/* ── Navigace ─────────────────────────────────────────────────────────────
+   Odkazy jsou seskupené podle toho, čeho se týkají — čtrnáct rovnocenných
+   položek v jedné řadě se nedalo přečíst. Popisky mluví o obsahu, ne
+   o názvu souboru: „/retez" je pro čtenáře „Od usnesení k penězům".
+   ADRESY SE NEMĚNÍ, mění se jen to, co je na nich napsané. */
+
+interface Odkaz {
+  klic: string;
+  cesta: string;
+  nazev: string;
+  /** Jednou větou, co za odkazem je. Ukazuje se v rozbalené skupině. */
+  popis?: string;
+}
+
+const odkazUvod: Odkaz = { klic: 'vydani', cesta: '/', nazev: 'Týdenní přehled' };
+const odkazHledat: Odkaz = { klic: 'hledat', cesta: '/hledat', nazev: 'Hledat' };
+
+const skupinyNavigace: { nazev: string; odkazy: Odkaz[] }[] = [
+  {
+    nazev: 'Radnice',
+    odkazy: [
+      { klic: 'usneseni', cesta: '/usneseni', nazev: 'Usnesení', popis: 'Co rada a zastupitelstvo schválily' },
+      { klic: 'hlasovani', cesta: '/hlasovani', nazev: 'Hlasování', popis: 'Kdo jak hlasoval' },
+    ],
+  },
+  {
+    nazev: 'Peníze',
+    odkazy: [
+      { klic: 'penize', cesta: '/penize', nazev: 'Peníze města', popis: 'Komu město platí a kolik' },
+      { klic: 'retez', cesta: '/retez', nazev: 'Od usnesení k penězům', popis: 'Co se schválilo, co se podepsalo, co se zaplatilo' },
+    ],
+  },
+  {
+    nazev: 'Lidé a firmy',
+    odkazy: [
+      { klic: 'lide', cesta: '/lide', nazev: 'Lidé', popis: 'Kdo ve městě rozhoduje' },
+      { klic: 'firmy', cesta: '/firmy', nazev: 'Firmy', popis: 'Firmy ve městě podle rejstříku' },
+      { klic: 'propojeni', cesta: '/propojeni', nazev: 'Kdo sedí v jakých firmách', popis: 'Vazby samosprávy na firmy' },
+    ],
+  },
+  {
+    nazev: 'Město',
+    odkazy: [
+      { klic: 'volby', cesta: '/volby', nazev: 'Volby', popis: 'Výsledky a účast po okrscích' },
+      { klic: 'mapa', cesta: '/mapa', nazev: 'Mapa', popis: 'Památky, prameny a další vrstvy' },
+      { klic: 'statistika', cesta: '/statistika', nazev: 'Čísla o městě', popis: 'Obyvatelé, práce, cestovní ruch' },
+    ],
+  },
+  {
+    nazev: 'Archiv',
+    odkazy: [
+      { klic: 'zpravodaj', cesta: '/zpravodaj', nazev: 'Zpravodaj', popis: 'Archiv čísel a článků' },
+      { klic: 'historie', cesta: '/historie', nazev: 'Historie města', popis: 'Dějiny po obdobích' },
+    ],
+  },
 ];
+
+/** Ve které skupině leží právě otevřená stránka — ta se označí. */
+const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic === aktivni))?.nazev;
 ---
 
 <!doctype html>
@@ -71,13 +114,42 @@ const polozkyNavigace = [
       <div class="obal hlavicka-webu__radek">
         <a href="/" class="znacka-webu">Naše Mariánky <span>v přehledech</span></a>
         <nav class="navigace" aria-label="Hlavní navigace">
+          <a
+            class="navigace__odkaz"
+            href={odkazUvod.cesta}
+            aria-current={aktivni === odkazUvod.klic ? 'page' : undefined}
+          >
+            {odkazUvod.nazev}
+          </a>
+
           {
-            polozkyNavigace.map((p) => (
-              <a href={p.cesta} aria-current={aktivni === p.klic ? 'page' : undefined}>
-                {p.nazev}
-              </a>
+            skupinyNavigace.map((s) => (
+              <details class="navigace__skupina" data-nav-skupina data-aktivni={aktivniSkupina === s.nazev ? '1' : undefined}>
+                <summary class="navigace__nazev">
+                  {s.nazev}
+                  <span class="navigace__sipka" aria-hidden="true" />
+                </summary>
+                <ul class="navigace__nabidka">
+                  {s.odkazy.map((o) => (
+                    <li>
+                      <a href={o.cesta} aria-current={aktivni === o.klic ? 'page' : undefined}>
+                        <span class="navigace__polozka-nazev">{o.nazev}</span>
+                        {o.popis && <span class="navigace__polozka-popis">{o.popis}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             ))
           }
+
+          <a
+            class="navigace__odkaz"
+            href={odkazHledat.cesta}
+            aria-current={aktivni === odkazHledat.klic ? 'page' : undefined}
+          >
+            {odkazHledat.nazev}
+          </a>
         </nav>
         <button
           type="button"
@@ -105,23 +177,69 @@ const polozkyNavigace = [
           Hlídače státu, rejstříku ARES, volebních výsledků a otevřených dat
           o městě. Čísla a jména se propisují z dat, ne z generovaného textu.
         </p>
+        <nav class="paticka-webu__odkazy" aria-label="Přehled sekcí">
+          <div>
+            <strong>Týdenní přehled</strong>
+            <a href="/">Poslední vydání</a>
+          </div>
+          {
+            skupinyNavigace.map((s) => (
+              <div>
+                <strong>{s.nazev}</strong>
+                {s.odkazy.map((o) => (
+                  <a href={o.cesta}>{o.nazev}</a>
+                ))}
+              </div>
+            ))
+          }
+          <div>
+            <strong>Hledání</strong>
+            <a href="/hledat">Hledat v přehledech</a>
+          </div>
+        </nav>
         <p>
-          <a href="/usneseni">Usnesení</a> · <a href="/hlasovani">Hlasování</a> ·
-          <a href="/penize">Peníze</a> · <a href="/firmy">Firmy</a> ·
-          <a href="/propojeni">Propojení</a> · <a href="/retez">Řetěz</a> ·
-          <a href="/lide">Lidé</a> · <a href="/volby">Volby</a> ·
-          <a href="/mapa">Mapa</a> · <a href="/historie">Historie</a> ·
-          <a href="/statistika">Statistika</a> · <a href="/zpravodaj">Zpravodaj</a> ·
-          <a href="/hledat">Hledat</a>
-        </p>
-        <p>
-          Mapy jsou vykreslené při buildu z otevřených geodat ve WGS-84; zdroj a licenci
-          uvádí každá mapa u sebe. Nenačítá se nic z cizích serverů.
+          Mapy se kreslí z otevřených geodat; zdroj a licenci uvádí každá mapa u sebe.
+          Nenačítá se nic z cizích serverů a o čtenáři se nic nesbírá.
         </p>
       </div>
     </footer>
 
     <script>
+      /* ── Skupiny v navigaci ───────────────────────────────────────────
+         Skupiny jsou <details>, takže fungují i bez JavaScriptu — rozbalí se
+         klepnutím i klávesnicí. Skript jen přidává chování, které se od
+         nabídky čeká: otevřená je vždy jen jedna, Escape a klepnutí vedle
+         ji zavře. */
+      {
+        const skupiny = Array.from(
+          document.querySelectorAll<HTMLDetailsElement>('[data-nav-skupina]'),
+        );
+
+        function zavriVse(krome?: HTMLDetailsElement) {
+          for (const s of skupiny) if (s !== krome) s.open = false;
+        }
+
+        for (const s of skupiny) {
+          s.addEventListener('toggle', () => {
+            if (s.open) zavriVse(s);
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          const cil = e.target;
+          if (cil instanceof Element && cil.closest('[data-nav-skupina]')) return;
+          zavriVse();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key !== 'Escape') return;
+          const otevrena = skupiny.find((s) => s.open);
+          if (!otevrena) return;
+          otevrena.open = false;
+          otevrena.querySelector('summary')?.focus();
+        });
+      }
+
       /* ── Přepínač motivu: system → světlý → tmavý → system ───────────── */
       {
         const koren = document.documentElement;

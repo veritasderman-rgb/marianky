@@ -14,11 +14,12 @@ import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import MapaKarta from '../components/MapaKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiGeo, nactiPamatky, type GeoSoubor, type Pamatka } from '../lib/geodata';
 import { mapaSvg, type PrvekMapy, type VrstvaMapy } from '../lib/mapy';
 import { cssBarvaSlotu, MAX_KATEGORII } from '../lib/barvy';
-import { cislo, sklonuj } from '../lib/format';
+import { cislo, datumVolneKratke, sklonuj } from '../lib/format';
 import { spojStavy } from '../lib/data';
 import { txt } from '../lib/tolerantni';
 
@@ -202,6 +203,9 @@ function vrstvyZeSouboru(g: GeoSoubor, prvniSlot: number): VrstvaMapy[] {
 
     const sloupce = ZAJIMAVE.filter((k) => s.prvky.some((p) => typeof p.vlastnosti[k] !== 'undefined' && p.vlastnosti[k] !== null));
 
+    /* Data ve zdroji jsou v ISO tvaru; do tabulky i do bublinky patří česky. */
+    const hodnota = (v: unknown): string => (v === undefined || v === null ? '' : datumVolneKratke(String(v)));
+
     return {
       klic: s.klic,
       nazev: s.nazev,
@@ -213,7 +217,7 @@ function vrstvyZeSouboru(g: GeoSoubor, prvniSlot: number): VrstvaMapy[] {
         tvary: p.tvary,
         barva,
         tip: sloupce
-          .map((k) => ({ l: popisekPole(k), v: String(p.vlastnosti[k] ?? '') }))
+          .map((k) => ({ l: popisekPole(k), v: hodnota(p.vlastnosti[k]) }))
           .filter((r) => r.v.length > 0)
           .slice(0, 5),
         popis: `${s.nazev}: ${p.nazev}`,
@@ -230,7 +234,7 @@ function vrstvyZeSouboru(g: GeoSoubor, prvniSlot: number): VrstvaMapy[] {
           .slice(0, MAX_RADKU_VRSTVY)
           .map((p) => [
             p.nazev,
-            ...sloupce.map((k) => String(p.vlastnosti[k] ?? '—')),
+            ...sloupce.map((k) => hodnota(p.vlastnosti[k]) || '—'),
             p.tvary.length > 0 ? 'ano' : 'ne',
           ]),
       },
@@ -337,11 +341,11 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
   titulek="Mapa města"
   aktivni="mapa"
   nadpis="Město v mapě"
-  uvod="Památky, ochranná území, prameny a další vrstvy z otevřených dat. Mapa je SVG vykreslené při buildu — nenačítá se z cizího serveru a nepotřebuje mapovou knihovnu."
+  uvod="Památky, ochranná území, prameny a další vrstvy z otevřených dat. Mapa ukazuje jen to, co je v datech — chybějící objekt neznamená, že ve městě není."
 >
   <StavDat
     stav={zGeo.stav === 'ok' && vrstvy.length === 0 ? zPamatek.stav : zGeo.stav}
-    zdroj="opendata/geo/, opendata/pamatky/"
+    zdroj="otevřená geodata města a seznam památek"
     co="Geometrie a památky"
     prazdno={zGeo.stav === 'ok' && zPamatek.stav === 'ok' && vrstvy.length === 0}
     modul="otevřená data — geo a památky"
@@ -356,7 +360,7 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
         <MapaKarta
           id="mapa-mesta"
           nadpis="Vrstvy města"
-          popis="Každá vrstva se dá vypnout. Výřez mapy se počítá ze všech vrstev včetně vypnutých, aby zapnutí vrstvy mapou neposunulo. Vrstvy s velkým počtem bodů jsou vypnuté hned na začátku — jinak by mapa byla jeden souvislý flek."
+          popis="Každá vrstva se dá vypnout a zapnout; mapa se přitom neposune. Vrstvy s velkým počtem bodů jsou na začátku vypnuté — jinak by mapa byla jeden souvislý flek."
           mapa={mapa}
           vrstvy={vrstvy}
           zdroje={zdrojeMapy}
@@ -461,12 +465,30 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
           </section>
         )}
 
-        <p class="graf-poznamka">
-          Souřadnice zdroj převádí ze systému S-JTSK (EPSG:5514) do WGS-84 a web je pak při buildu
-          promítá do Web Mercatoru (EPSG:3857). V měřítku města je zkreslení projekce zanedbatelné;
-          měřítko u mapy přesto platí pro střed výřezu, ne pro jeho okraje.
-        </p>
         {zPamatek.data.dolozka && <p class="graf-poznamka">{zPamatek.data.dolozka}</p>}
+
+        <JakPocitame>
+          <p>
+            Vrstvy pocházejí z otevřených dat města, Národního památkového ústavu a dalších
+            veřejných sad; zdroj a licenci uvádí každá mapa přímo u sebe. Nic se nedokresluje —
+            když objekt v datech nemá souřadnice, v mapě chybí a v tabulce zůstává.
+          </p>
+          <ul>
+            <li>
+              <strong>Zápis na seznam UNESCO se bere z kódu ochrany</strong>, který u záznamu
+              uvádí památkový úřad — ne z názvu a ne z toho, co se o městě obecně ví.
+            </li>
+            <li>
+              <strong>Měřítko platí pro střed výřezu</strong>, ne pro jeho okraje. Souřadnice
+              zdroj vede v systému S-JTSK a do mapy se promítají do obvyklé webové projekce;
+              v měřítku města je zkreslení zanedbatelné.
+            </li>
+            <li>
+              <strong>Ke každé vrstvě patří tabulka.</strong> Barevná plocha je pro část
+              čtenářů nečitelná, seznam pod mapou proto není doplněk, ale rovnocenný obsah.
+            </li>
+          </ul>
+        </JakPocitame>
       </>
     )
   }

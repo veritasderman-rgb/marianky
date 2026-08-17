@@ -14,16 +14,29 @@ import {
   nactiVydani,
   type Nacteno,
 } from '../lib/data';
+import JakPocitame from '../components/JakPocitame.astro';
 import { zplostiHlasovani, zplostiUsneseni } from '../lib/prehledy';
-import { cislo, datum, datumKratke, nazevOrganu, nazevVysledku, orderCs, orez } from '../lib/format';
+import {
+  cislo,
+  datum,
+  datumKratke,
+  nazevOrganu,
+  nazevVysledku,
+  nazevZdroje,
+  obdobiText,
+  orderCs,
+  orez,
+  sklonuj,
+} from '../lib/format';
 
 const zVydani = nactiVydani();
 const vydani = zVydani.data ?? [];
 const posledni = vydani[0] ?? null;
 const starsi = vydani.slice(1, 9);
 
-/* Rozcestník stavu: co už v přehledu je a co se ještě plní. Prázdná sekce
-   bez vysvětlení je horší než žádná sekce, takže se to napíše natvrdo. */
+/* Rozcestník stavu: co už v přehledu je a co se ještě sbírá. Prázdná sekce
+   bez vysvětlení je horší než žádná sekce, takže se to napíše natvrdo.
+   Stojí až pod obsahem — čtenář přišel kvůli tomu, co se ve městě děje. */
 const zUsneseni = nactiUsneseni();
 const zHlasovani = nactiHlasovani();
 const zPenez = nactiProtistrany();
@@ -145,7 +158,7 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
   titulek="Poslední vydání"
   aktivni="vydani"
   nadpis="Naše Mariánky v přehledech"
-  uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když zdroj v daném týdnu selže, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
+  uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když se zdroj v daném týdnu nepodaří přečíst, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
 >
   {
     posledni ? (
@@ -158,10 +171,24 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
               {starsi.map((v) => (
                 <li class="polozka">
                   <h3 class="polozka__nazev">
-                    <a href={`/vydani/${v.id}`}>{v.nazev ?? `Vydání ${v.id}`}</a>
+                    <a href={`/vydani/${v.id}`}>
+                      {v.datum ? datum(v.datum) : (v.nazev ?? `Vydání ${v.id}`)}
+                    </a>
                   </h3>
                   <div class="polozka__hlava">
-                    <span>{v.datum ? datum(v.datum) : v.id}</span>
+                    <span>
+                      {obdobiText(v.obdobi_od ?? null, v.obdobi_do ?? null) ?? v.id}
+                    </span>
+                    {typeof v.souhrn?.polozek === 'number' && (
+                      <span>
+                        {`${cislo(v.souhrn.polozek)} ${sklonuj(
+                          v.souhrn.polozek,
+                          'záznam',
+                          'záznamy',
+                          'záznamů',
+                        )}`}
+                      </span>
+                    )}
                   </div>
                 </li>
               ))}
@@ -172,11 +199,11 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
     ) : (
       <StavDat
         stav={zVydani.stav}
-        zdroj="vydani/"
+        zdroj="týdenní vydání"
         co="Týdenní vydání"
         prazdno={zVydani.stav === 'ok' && vydani.length === 0}
         poznamky={[
-          'Formát týdenního vydání zatím není v docs/PLAN.md popsaný a žádný modul ho negeneruje. Web ho umí zobrazit, jakmile soubory vzniknou.',
+          'Týdenní přehled se skládá z ostatních sekcí. Jakmile budou hotové, objeví se tady.',
         ]}
       />
     )
@@ -186,8 +213,8 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
     <h2>Vaše sledovaná témata</h2>
     <p class="uvod">
       Témata si můžete označit na stránce tématu nebo v seznamu níže. Výběr zůstává jen ve vašem
-      prohlížeči — web je statický, nic se neodesílá a nikam se nepřihlašujete. Když prohlížeč
-      vyčistíte, výběr zmizí.
+      prohlížeči — nic se neodesílá a nikam se nepřihlašujete. Když prohlížeč vyčistíte, výběr
+      zmizí.
     </p>
 
     <div id="sledovana-obsah">
@@ -226,8 +253,9 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
   <section>
     <h2>Co v přehledu už je</h2>
     <p class="uvod">
-      Jednotlivé sekce plní samostatné sběrače. Tabulka rozlišuje „ještě se nesbíralo",
-      „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou tři různé věci.
+      Každou sekci plní vlastní sběr dat. Tabulka rozlišuje „ještě se nesbíralo",
+      „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou tři různé věci a nesmějí
+      vypadat stejně.
     </p>
     <div class="tabulka-obal">
       <table>
@@ -236,7 +264,7 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
             <th scope="col">Sekce</th>
             <th scope="col" class="cislo">Záznamů</th>
             <th scope="col">Stav</th>
-            <th scope="col">Zdroj</th>
+            <th scope="col">Zdrojová data</th>
           </tr>
         </thead>
         <tbody>
@@ -250,13 +278,42 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
                   <span>{stavText(r)}</span>
                 </span>
               </td>
-              <td class="mono">{r.zdroj.zdroj}</td>
+              <td>{nazevZdroje(r.zdroj.zdroj)}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   </section>
+
+  <JakPocitame>
+    <p>
+      Týdenní přehled se skládá jednou týdně z veřejných zdrojů: portálu usnesení města,
+      úřední desky, registru smluv, kalendáře akcí, mediálního monitoringu a Městského
+      zpravodaje. Období je vždy uvedené v záhlaví vydání a zahrnuje sedm dní.
+    </p>
+    <p>
+      Každá sekce nese vlastní stav a ten se na stránce neschovává. Rozlišují se čtyři
+      různé situace, které vypadají podobně, ale znamenají něco jiného:
+    </p>
+    <ul>
+      <li><strong>Přibylo</strong> — zdroj se načetl a nové záznamy jsou vypsané.</li>
+      <li><strong>Beze změny</strong> — zdroj se načetl, ale nic nového v něm nebylo.</li>
+      <li>
+        <strong>Data končí dřív</strong> — zdroj sice odpověděl, ale poslední záznam v něm je
+        starší než sledované období. Pak o té části dění nevíme nic a je to napsané nahoře.
+      </li>
+      <li>
+        <strong>Nepodařilo se načíst</strong> — porucha zdroje. Také se hlásí nahoře, protože
+        se nesmí splést s klidným týdnem.
+      </li>
+    </ul>
+    <p>
+      Rutinní papírování se v sekcích shlukuje do jednoho řádku (například desítky
+      dokumentů „Uložení písemnosti"), aby nezatlačilo zbytek týdne. Nic se přitom
+      nezahazuje — zhuštěný řádek se dá rozbalit a vypsat celý.
+    </p>
+  </JakPocitame>
 </Zaklad>
 
 <script>

@@ -16,11 +16,12 @@ import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import CasovaOsa from '../components/CasovaOsa.astro';
+import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiLidi, spojStavy } from '../lib/data';
 import { historieNaOsu, nactiPrehledHistorie, nactiUdalostiHistorie, type Zdroj } from '../lib/historie';
 import { jeSporne, nactiOsuMesta, popisDatumu, popisekJistoty, slucUdalosti } from '../lib/osa';
-import { cislo, sklonuj } from '../lib/format';
+import { cislo, polidstiData, sklonuj } from '../lib/format';
 
 const zPrehledu = nactiPrehledHistorie();
 const zUdalosti = nactiUdalostiHistorie();
@@ -103,7 +104,7 @@ function odkazyZdroju(ids: string[]) {
 >
   <StavDat
     stav={zPrehledu.stav === 'ok' ? zUdalosti.stav : zPrehledu.stav}
-    zdroj="historie/prehled.json, historie/udalosti.json"
+    zdroj="přehled dějin města a soupis událostí"
     co="Dějiny města po obdobích"
     prazdno={zPrehledu.stav === 'ok' && zUdalosti.stav === 'ok' && !maData}
     modul="historie města"
@@ -123,7 +124,7 @@ function odkazyZdroju(ids: string[]) {
             nadpis="Časová osa dějin města"
             udalosti={naOse}
             popis="Období jsou vodorovné pruhy, jednotlivé události značky. Osa je lineární v čase, takže staletí bez záznamu jsou vidět jako prázdná plocha — mezera v našich datech je taky informace."
-            zdroje={['historie/prehled.json', 'historie/udalosti.json', 'jednotná časová osa (casova_osa/mesto.json)']}
+            zdroje={['přehled dějin města', 'soupis historických událostí', 'jednotná časová osa města']}
             neuplnost="Osa neobsahuje dějiny města, ale záznamy, které o nich máme. Řídké období nemusí znamenat, že se nic nedělo."
           />
         )}
@@ -272,17 +273,20 @@ function odkazyZdroju(ids: string[]) {
         )}
 
         {zPrehledu.data.metodika.length > 0 && (
-          <section class="karta">
-            <h2 class="karta__nadpis">Jak přehled vznikl</h2>
+          <JakPocitame>
+            <p>
+              Popis metody pochází přímo ze zdroje dějin města — na webu tak stojí přesně to,
+              podle čeho data vznikla.
+            </p>
             <dl class="metodika">
               {zPrehledu.data.metodika.map((m) => (
                 <>
                   <dt>{m.klic.replace(/_/g, ' ')}</dt>
-                  <dd>{m.text}</dd>
+                  <dd>{polidstiData(m.text)}</dd>
                 </>
               ))}
             </dl>
-          </section>
+          </JakPocitame>
         )}
 
         {zdroje.size > 0 && (

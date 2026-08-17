@@ -6,24 +6,32 @@
  * vypadat stejně. Prázdná sekce bez vysvětlení je horší než žádná sekce.
  */
 import type { Stav } from '../lib/data';
+import { nazevZdroje } from '../lib/format';
 
 export interface Props {
   stav: Stav;
-  /** Cesta k očekávanému souboru — čtenář vidí, na co se čeká. */
+  /** Zdroj, na který se čeká. Cesta k souboru se překládá na jeho název. */
   zdroj?: string;
   /** Popis sekce v 1. pádě, např. „Usnesení rady a zastupitelstva". */
   co: string;
   /** `true`, když se data načetla, ale nic v nich není. */
   prazdno?: boolean;
   poznamky?: string[];
-  /** Kdo data plní — pro hlášku „čeká se na modul A3". */
+  /** Odkud se data berou. Interní označení sběru se do textu nepropisuje. */
   modul?: string;
 }
 
 const { stav, zdroj, co, prazdno = false, poznamky = [], modul } = Astro.props;
 
+/* Vnitřní kódy sběrů (A1, A3, B1…) čtenáři nic neříkají — zůstane jen název. */
+const zdrojDat = modul ? modul.replace(/^[A-Z]\d+\s+/, '') : null;
+
 const zobrazit = stav !== 'ok' || prazdno;
 const druh = stav === 'chyba' ? 'chyba' : stav === 'chybi' ? 'chybi' : 'prazdno';
+
+/* Odkud se čeká na data, má smysl psát jen u výpadku. U prázdné sekce se
+   nečeká na nic — data dorazila, jen v nich nic nebylo. */
+const cekaSeNaZdroj = druh !== 'prazdno' ? nazevZdroje(zdroj) : '';
 
 const nadpisy: Record<string, string> = {
   chybi: 'Data zatím nejsou',
@@ -32,7 +40,7 @@ const nadpisy: Record<string, string> = {
 };
 
 const texty: Record<string, string> = {
-  chybi: `${co} se zatím nepodařilo do přehledu dostat — zdrojový soubor ještě nevznikl. Není to tím, že by se nic nedělo; data prostě ještě nejsou sebraná.`,
+  chybi: `${co} se zatím nepodařilo do přehledu dostat — data ještě nejsou sebraná. Není to tím, že by se nic nedělo.`,
   chyba: `${co} — zdroj existuje, ale nešel přečíst. To je porucha, ne prázdný týden. Než se opraví, tahle sekce nic neukazuje.`,
   prazdno: `${co} — data se načetla v pořádku, ale neobsahují žádný záznam. Tohle skutečně znamená, že se nic nestalo.`,
 };
@@ -43,13 +51,15 @@ const texty: Record<string, string> = {
     <div class={`stav-dat stav-dat--${druh}`} role={druh === 'chyba' ? 'alert' : undefined}>
       <strong class="stav-dat__nadpis">{nadpisy[druh]}</strong>
       <span>{texty[druh]}</span>
-      {zdroj && (
+      {/* Který zdroj vypadl, se říct musí — jinak by nešlo poznat, čeho se
+          výpadek týká. Píše se ale jménem zdroje, ne cestou k souboru. */}
+      {cekaSeNaZdroj && (
         <>
           {' '}
-          <span class="stav-dat__zdroj">Očekávaný zdroj: {zdroj}</span>
+          <span class="stav-dat__zdroj">Čeká se na zdroj: {cekaSeNaZdroj}</span>
         </>
       )}
-      {modul && <> · <span class="stav-dat__zdroj">plní modul {modul}</span></>}
+      {zdrojDat && <> · <span class="stav-dat__zdroj">sbírá se z: {zdrojDat}</span></>}
       {poznamky.length > 0 && (
         <ul>
           {poznamky.map((p) => (

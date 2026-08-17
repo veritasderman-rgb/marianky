@@ -80,7 +80,7 @@ const zeSmluv: UdalostOsy[] =
             castka_czk: s.castka_czk,
             odkaz: s.url ?? null,
             jistota: 'fakt',
-            zdroj: 'registr smluv — data/penize/smlouvy/',
+            zdroj: 'registr smluv',
             detail: `${s.smer === 'prijem' ? 'město inkasuje' : 'město platí'} ${kc(s.castka_czk)} · ${s.odKoho}${s.vada ? ' · Hlídač označuje smlouvu za vadnou' : ''}`,
             firmy: protistrana.ico ? [protistrana.ico] : [],
           }),
@@ -88,7 +88,7 @@ const zeSmluv: UdalostOsy[] =
 
 const naOse = slucUdalosti(zJednotneOsy, zeSmluv);
 const moduly = popisModulu(zOsy?.data.moduly ?? []);
-const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv — data/penize/smlouvy/'];
+const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv'];
 ---
 
 <Zaklad titulek={protistrana.nazev} aktivni="penize" nadpis={protistrana.nazev}>
@@ -135,7 +135,7 @@ const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv — data/penize/s
   <GrafKarta
     id="detail-objem"
     nadpis="Platby po letech"
-    popis="Roky bez jediné platby se v grafu zobrazí jako nulový sloupec — nepřeskakují se, aby časová osa nelhala o tom, kdy vztah začal a skončil."
+    popis="Rok bez jediné platby je nulový sloupec, ne vynechané místo — jinak by nebylo poznat, kdy spolupráce začala a kdy skončila."
     varianty={varianty}
   />
 
@@ -171,7 +171,7 @@ const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv — data/penize/s
     <h2 class="karta__nadpis">Jednotlivé smlouvy</h2>
     <StavDat
       stav={zSmluv.stav}
-      zdroj="penize/smlouvy/"
+      zdroj="jednotlivé smlouvy z registru smluv"
       co="Rozpis jednotlivých smluv"
       prazdno={zSmluv.stav === 'ok' && smlouvy.length === 0}
       modul="A3 Peníze"

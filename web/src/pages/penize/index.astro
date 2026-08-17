@@ -3,6 +3,7 @@ import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
 import GrafKarta from '../../components/GrafKarta.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
+import JakPocitame from '../../components/JakPocitame.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
 import { nactiProtistrany, nactiSouhrn, nactiSmlouvy, posledniKindex, spojStavy } from '../../lib/data';
@@ -122,7 +123,7 @@ function variantaSkladana(smer: Smer, popisek: string): Varianta {
   const graf = grafSkladany(roky, serie, popisek);
   if (pocetOstatnich > 0) {
     graf.poznamky.push(
-      `Šest největších protistran má vlastní barvu. Zbylých ${cislo(pocetOstatnich)} je sloučeno do „Ostatní" — sedmá barva by se už nedala spolehlivě rozlišit.`,
+      `Šest největších protistran má vlastní barvu. Zbylých ${cislo(pocetOstatnich)} je sloučeno do „Ostatní"; jejich částky jsou v tabulce pod grafem.`,
     );
   }
   return { klic: smer, popisek, graf };
@@ -143,7 +144,7 @@ function variantaHeatmapy(smer: Smer, popisek: string): Varianta | null {
   const graf = grafHeatmapa(roky, radky);
 
   if (!indexSmluv.dostupny || !indexSmluv.smery.has(smer)) {
-    graf.poznamky.push('Počet smluv za jednotlivé roky pro tenhle směr zatím v datech není — tooltip ukazuje jen částku.');
+    graf.poznamky.push('Počet smluv za jednotlivé roky tady v datech není — po najetí na buňku se ukáže jen částka.');
   }
   if (vynechano > 0) {
     graf.poznamky.push(
@@ -151,7 +152,7 @@ function variantaHeatmapy(smer: Smer, popisek: string): Varianta | null {
     );
   }
   graf.poznamky.push(
-    'Prázdná buňka s rámečkem znamená rok bez jediné platby. Nejsvětlejší odstín rampy je naopak malá, ale skutečná částka — proto se nedají zaměnit.',
+    'Prázdná buňka s rámečkem znamená rok bez jediné platby. Nejsvětlejší odstín naopak znamená malou, ale skutečnou částku — jsou to dvě různé věci a nesmějí splynout.',
   );
   return { klic: smer, popisek, graf, rampa: { od: graf.rampaOd, doo: graf.rampaDo } };
 }
@@ -214,7 +215,7 @@ function variantaVazeb(
   );
   g.poznamky.push(poznamka);
   g.poznamky.push(
-    `Součet za ${cislo(vyber.length)} ${sklonuj(vyber.length, 'firmu', 'firmy', 'firem')} spárovaných s registrem smluv podle IČO. Jedna série, proto bez legendy — graf neříká, která firma kolik dostala; to je v tabulce pod ním. Počet smluv za rok se u tohohle pohledu nepočítá.`,
+    `Součet za ${cislo(vyber.length)} ${sklonuj(vyber.length, 'firmu', 'firmy', 'firem')} spárovaných s registrem smluv podle IČO. Graf ukazuje jen celkový součet, ne to, která firma kolik dostala — rozpis je v tabulce pod ním. Počet smluv za rok u tohohle pohledu v datech není.`,
   );
   return { klic, popisek, graf: g };
 }
@@ -245,7 +246,7 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
   titulek="Peníze města"
   aktivni="penize"
   nadpis="Peníze města"
-  uvod="Kdo od města a jeho organizací dostává peníze, kolik a v jakých letech. Podklad je registr smluv přes Hlídače státu. Grafy se počítají při buildu — nic se nedopočítává v prohlížeči a nic se nedohaduje."
+  uvod="Kdo od města a jeho organizací dostává peníze, kolik a v jakých letech. Podklad je registr smluv přes Hlídače státu — čísla jsou z něj, nic se nedopočítává ani neodhaduje."
 >
   <StavDat
     stav={zProtistran.stav}
@@ -281,14 +282,14 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
         <GrafKarta
           id="objem"
           nadpis="Objem plateb po letech"
-          popis="Součet všech částek za rok. Jedna série, takže legenda není potřeba — název grafu ji pojmenuje. Chybějící roky jsou doplněné jako nula, aby se časová osa nescvrkla."
+          popis="Součet všech částek za rok. Rok, ve kterém město nic nezaplatilo, je v grafu jako nula — z osy se nevypouští, aby nevypadala kratší, než ve skutečnosti je."
           varianty={variantyObjem}
         />
 
         <GrafKarta
           id="dodavatele"
           nadpis="Kdo od města dostává peníze"
-          popis="Šest největších protistran plus „Ostatní“, po letech. Barva patří konkrétnímu IČO, ne pořadí v grafu — přepnutí mezi dodavateli a odběrateli tedy nikomu barvu nepřehodí."
+          popis="Šest největších protistran plus „Ostatní“, po letech. Stejná firma má stejnou barvu ve všech pohledech — po přepnutí mezi dodavateli a odběrateli si barvy nevymění."
           varianty={variantySkladany}
         />
 
@@ -337,8 +338,8 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
                 )}
                 {!zeSouboruVazeb && (
                   <>
-                    {' '}Soubor <span class="stav-dat__zdroj">propojeni/dodavatele_politici.json</span>{' '}
-                    zatím není — seznam je poskládaný z propojení osob a firem.
+                    {' '}Hotový seznam dodavatelů s vazbou zatím není — tenhle je poskládaný
+                    z přehledu osob a jejich firem.
                   </>
                 )}
               </p>
@@ -446,6 +447,37 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
             </table>
           </div>
         </section>
+
+        <JakPocitame>
+          <p>
+            Zdrojem je registr smluv ve zpracování Hlídače státu. Do součtů vstupují smlouvy
+            města i jeho organizací; částka je ta, kterou u smlouvy uvádí registr, nikde se
+            nedopočítává ani nepřepočítává na dnešní ceny.
+          </p>
+          <ul>
+            <li>
+              <strong>Smlouva bez uvedené ceny se nesčítá.</strong> Chybějící cena není nula,
+              takže do objemu nevstupuje — kolik takových smluv je, stojí u grafu.
+            </li>
+            <li>
+              <strong>Protistrany se spojují podle IČO.</strong> Kde IČO v registru chybí,
+              slučují se podle názvu a nejde je ověřit proti rejstříku.
+            </li>
+            <li>
+              <strong>Rok bez plateb je v grafech nula, ne vynechané místo.</strong> Jinak by
+              časová řada vypadala kratší a začátek spolupráce by se posunul.
+            </li>
+            <li>
+              <strong>Vlastnictví protistrany se uvádí u každého pohledu.</strong> Platba
+              vlastní příspěvkové organizaci není totéž co platba cizí firmě a součet, který to
+              nerozlišuje, tvrdí opak pravdy.
+            </li>
+            <li>
+              <strong>Ke každému grafu je tabulka.</strong> Barvy nestačí — čísla musí být
+              dostupná i bez nich.
+            </li>
+          </ul>
+        </JakPocitame>
       </>
     )
   }

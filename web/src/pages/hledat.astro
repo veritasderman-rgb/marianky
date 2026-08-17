@@ -6,18 +6,17 @@ import Zaklad from '../layouts/Zaklad.astro';
   titulek="Hledat"
   aktivni="hledat"
   nadpis="Hledat"
-  uvod="Fulltext přes celý přehled — usnesení, hlasování, protistrany, profily lidí i archiv zpravodaje. Index se staví při buildu z vygenerovaných stránek, hledá se v prohlížeči. Diakritika funguje, dotaz bez háčků najde i slova s háčky."
+  uvod="Hledání v celém přehledu — usnesení, hlasování, protistrany, profily lidí i archiv zpravodaje. Hledá se přímo ve vašem prohlížeči, dotaz se nikam neodesílá. Diakritika funguje: dotaz bez háčků najde i slova s háčky."
 >
   <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
 
   <div id="hledani" data-pagefind-ignore></div>
 
   <div class="stav-dat stav-dat--chybi" id="hledani-chyba" hidden data-pagefind-ignore>
-    <strong class="stav-dat__nadpis">Vyhledávací index není k dispozici</strong>
+    <strong class="stav-dat__nadpis">Hledání se nepodařilo spustit</strong>
     <span>
-      Index vzniká až v kroku <span class="stav-dat__zdroj">pagefind --site dist</span> po sestavení webu.
-      Ve vývojovém režimu (<span class="stav-dat__zdroj">npm run dev</span>) proto hledání nefunguje —
-      spusťte <span class="stav-dat__zdroj">npm run build</span> a <span class="stav-dat__zdroj">npm run preview</span>.
+      Rejstřík stránek se nepodařilo načíst, takže hledání teď nefunguje. Procházet přehled
+      se dá i bez něj — všechny sekce jsou v horní navigaci.
     </span>
   </div>
 
