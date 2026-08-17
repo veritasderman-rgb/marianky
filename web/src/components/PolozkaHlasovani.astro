@@ -1,16 +1,22 @@
 ---
 import Znacky from './Znacky.astro';
+import Vazby from './Vazby.astro';
 import type { Tag } from '../lib/data';
 import type { PolozkaHlasovani } from '../lib/prehledy';
+import type { VazbaHlasovani } from '../lib/vazby';
 import { souhrnHlasu, tridaVysledku } from '../lib/prehledy';
 import { bezDiakritiky, datumKratke, nazevOrganu, nazevVysledku } from '../lib/format';
 
 export interface Props {
   h: PolozkaHlasovani;
   ciselnik: Map<string, Tag>;
+  /** Hlasující, kteří mají vazbu na firmu dotčenou tímhle bodem. */
+  vazby?: VazbaHlasovani[];
+  /** Klíče protistran, na které vede stránka `/penize/[ico]`. */
+  zname?: Set<string>;
 }
 
-const { h, ciselnik } = Astro.props;
+const { h, ciselnik, vazby = [], zname } = Astro.props;
 const skupiny = souhrnHlasu(h);
 const nazvyTagu = h.tagy.map((t) => ciselnik.get(t)?.nazev ?? t).join(' ');
 const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.organ)}`);

@@ -1,0 +1,1930 @@
+{
+  "zdroj": "Hlídač státu (hlidacstatu.cz), MCP nástroje",
+  "nastroje": [
+    "find_persons_by_name",
+    "find_politicians_by_name",
+    "get_person_detail",
+    "get_legal_entity_business_info",
+    "find_party_sponsoring_by_person"
+  ],
+  "sklizeno": "2026-08-17",
+  "licence": "(c) 2026 Hlídač Státu z.ú., https://texty.hlidacstatu.cz/licence/",
+  "poznamka": "MCP nástroje nejsou volatelné z Pythonu, proto je sklizeň uložená jako vstupní soubor. REST API v2 tato data nevrací: /osoby/{id} neobsahuje seznam firem a /osoby/hledatFtx vrací jen osoby vedené jako politik nebo sponzor strany (ostatní jsou za komerční licencí). Obnovu sklizně dělá operátor s přístupem k MCP, viz docstring scrapers/osoby_firmy.py.",
+  "hledani": {
+    "Luboš Borka": [
+      {
+        "id": "lubos-borka",
+        "jmeno": "Luboš",
+        "prijmeni": "Borka",
+        "narozen": "1962",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 2
+      }
+    ],
+    "Jan Budka": [
+      {
+        "id": "jan-budka-1",
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": "1952",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 3
+      },
+      {
+        "id": "jan-budka",
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": "1977",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "jan-budka-4",
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": "1964",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "jan-budka-3",
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": "1964",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 2
+      },
+      {
+        "id": "jan-budka-2",
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": "1944",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Jan",
+        "prijmeni": "Budka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      }
+    ],
+    "Miloslav Chadim": [
+      {
+        "id": "miloslav-chadim",
+        "jmeno": "Miloslav",
+        "prijmeni": "Chadim",
+        "narozen": "1966",
+        "angazovanost": "Politik",
+        "strana": "ANO",
+        "firem": 10
+      }
+    ],
+    "Dušan Drexler": [
+      {
+        "id": "dusan-drexler",
+        "jmeno": "Dušan",
+        "prijmeni": "Drexler",
+        "narozen": "1977",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 2
+      }
+    ],
+    "Roman Dubnický": [
+      {
+        "id": "roman-dubnicky",
+        "jmeno": "Roman",
+        "prijmeni": "Dubnický",
+        "narozen": "1981",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 2
+      }
+    ],
+    "Vojtěch Franta": [
+      {
+        "id": "vojtech-franta-1",
+        "jmeno": "Vojtěch",
+        "prijmeni": "Franta",
+        "narozen": "1985",
+        "angazovanost": "Politik",
+        "strana": "Česká pirátská strana",
+        "firem": 0
+      }
+    ],
+    "Petr Hála": [
+      {
+        "id": "petr-halada-4",
+        "jmeno": "Petr",
+        "prijmeni": "Halada",
+        "narozen": "1962",
+        "angazovanost": "Politik",
+        "strana": null,
+        "firem": 4
+      }
+    ],
+    "Alena Hálová": [
+      {
+        "id": "alena-halova",
+        "jmeno": "Alena",
+        "prijmeni": "Halová",
+        "narozen": "1981",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "alena-halova-6",
+        "jmeno": "Alena",
+        "prijmeni": "Hálová",
+        "narozen": "1979",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "alena-halova-10",
+        "jmeno": "Alena",
+        "prijmeni": "Halová",
+        "narozen": "1978",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "alena-halova-8",
+        "jmeno": "Alena",
+        "prijmeni": "Hálová",
+        "narozen": "1957",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 2
+      },
+      {
+        "id": "alena-halova-7",
+        "jmeno": "Alena",
+        "prijmeni": "Halová",
+        "narozen": "1951",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "alena-halova-9",
+        "jmeno": "Alena",
+        "prijmeni": "Hálová",
+        "narozen": "1951",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      }
+    ],
+    "Martin Hladík": [
+      {
+        "id": "martin-hladik",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1979",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "martin-hladik-12",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1994",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-10",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1988",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "martin-hladik-16",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1985",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-19",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1977",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-17",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1977",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "martin-hladik-15",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1976",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-5",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1976",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-11",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1976",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "martin-hladik-1",
+        "jmeno": "Martin",
+        "prijmeni": "Hladík",
+        "narozen": "1976",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 3
+      }
+    ],
+    "Martin Hurajčík": [
+      {
+        "id": "martin-hurajcik-1",
+        "jmeno": "Martin",
+        "prijmeni": "Hurajčík",
+        "narozen": "1977",
+        "angazovanost": "Politik",
+        "strana": "ANO",
+        "firem": 3
+      }
+    ],
+    "Vladimír Kafka": [
+      {
+        "id": "vladimir-kafka-7",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1988",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 2
+      },
+      {
+        "id": "vladimir-kafka-5",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1982",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "vladimir-kafka-3",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1980",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "vladimir-kafka-4",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1969",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "vladimir-kafka-8",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1967",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "vladimir-kafka-6",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1963",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "vladimir-kafka",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1958",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "vladimir-kafka-2",
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": "1941",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": null,
+        "jmeno": "Vladimír",
+        "prijmeni": "Kafka",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      }
+    ],
+    "Martin Kalina": [
+      {
+        "id": "martin-kalina-5",
+        "jmeno": "Martin",
+        "prijmeni": "Kalina",
+        "narozen": "1984",
+        "angazovanost": "Politik",
+        "strana": null,
+        "firem": 2
+      }
+    ],
+    "Zdeněk Král": [
+      {
+        "id": "zdenek-kral-75",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": null,
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "zdenek-kral-32",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1954",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-76",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1997",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 6
+      },
+      {
+        "id": "zdenek-kral-74",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1996",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-70",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1991",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-29",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1989",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-13",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1987",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-20",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1984",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-2",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1980",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "zdenek-kral-27",
+        "jmeno": "Zdeněk",
+        "prijmeni": "Král",
+        "narozen": "1960",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      }
+    ],
+    "Ludmila Míková": [
+      {
+        "id": "mikova-ludmila",
+        "jmeno": "Míková",
+        "prijmeni": "Ludmila",
+        "narozen": "1964",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "ludmila-mikova-3",
+        "jmeno": "Ludmila",
+        "prijmeni": "Miková",
+        "narozen": "1975",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "ludmila-mikova-1",
+        "jmeno": "Ludmila",
+        "prijmeni": "Miková",
+        "narozen": "1966",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "ludmila-mikova-2",
+        "jmeno": "Ludmila",
+        "prijmeni": "Míková",
+        "narozen": "1964",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "ludmila-mikova",
+        "jmeno": "Ludmila",
+        "prijmeni": "Míková",
+        "narozen": "1964",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 3
+      },
+      {
+        "id": null,
+        "jmeno": "Ludmila",
+        "prijmeni": "Miková",
+        "narozen": null,
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      }
+    ],
+    "Ivana Mottlová": [
+      {
+        "id": "ivana-mottlova",
+        "jmeno": "Ivana",
+        "prijmeni": "Mottlová",
+        "narozen": "1974",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "ivana-mottlova-3",
+        "jmeno": "Ivana",
+        "prijmeni": "Mottlová",
+        "narozen": "1973",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "ivana-mottlova-1",
+        "jmeno": "Ivana",
+        "prijmeni": "Mottlová",
+        "narozen": "1963",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      },
+      {
+        "id": "ivana-mottlova-2",
+        "jmeno": "Ivana",
+        "prijmeni": "Mottlová",
+        "narozen": "1958",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      }
+    ],
+    "Josef Pavlovic": [
+      {
+        "id": "josef-pavlovic-3",
+        "jmeno": "Josef",
+        "prijmeni": "Pavlovič",
+        "narozen": "1984",
+        "angazovanost": "Duplicita",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "josef-pavlovic-2",
+        "jmeno": "Josef",
+        "prijmeni": "Pavlovic",
+        "narozen": "1984",
+        "angazovanost": "Vysoký státní úředník",
+        "strana": null,
+        "firem": 4
+      },
+      {
+        "id": "josef-pavlovic-4",
+        "jmeno": "Josef",
+        "prijmeni": "Pavlovic",
+        "narozen": "1984",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "josef-pavlovic",
+        "jmeno": "Josef",
+        "prijmeni": "Pavlovic",
+        "narozen": "1957",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      },
+      {
+        "id": "josef-pavlovic-1",
+        "jmeno": "Josef",
+        "prijmeni": "Pavlovic",
+        "narozen": "1952",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 0
+      }
+    ],
+    "Miloslav Pelc": [
+      {
+        "id": "miloslav-pelc",
+        "jmeno": "Miloslav",
+        "prijmeni": "Pelc",
+        "narozen": "1944",
+        "angazovanost": "Politik",
+        "strana": null,
+        "firem": 0
+      }
+    ],
+    "Jana Roubalová": [
+      {
+        "id": "jana-roubalova-5",
+        "jmeno": "Jana",
+        "prijmeni": "Roubalová",
+        "narozen": "1971",
+        "angazovanost": "Politik",
+        "strana": null,
+        "firem": 5
+      }
+    ],
+    "Kamil Špindler": [
+      {
+        "id": "kamil-spindler",
+        "jmeno": "Kamil",
+        "prijmeni": "Špindler",
+        "narozen": "1982",
+        "angazovanost": "Sponzor polit. strany",
+        "strana": null,
+        "firem": 2
+      }
+    ],
+    "Štěpán Stráník": [
+      {
+        "id": "stepan-stranik",
+        "jmeno": "Štěpán",
+        "prijmeni": "Stráník",
+        "narozen": null,
+        "angazovanost": "Politik",
+        "strana": "SPD",
+        "firem": 0
+      }
+    ],
+    "Samuel Zabolotný": [
+      {
+        "id": "samuel-zabolotny",
+        "jmeno": "Samuel",
+        "prijmeni": "Zabolotný",
+        "narozen": "2000",
+        "angazovanost": "Bez vazby na politiku",
+        "strana": null,
+        "firem": 1
+      }
+    ]
+  },
+  "osoby": {
+    "lubos-borka": {
+      "jmeno": "Luboš",
+      "prijmeni": "Borka",
+      "narozen": "1962",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "Ředitel (od 2020)  - Základní škola Vítězství Mariánské Lázně, příspěvková organizace",
+      "firmy": [
+        {
+          "ico": "18234861",
+          "nazev": "LIONS CLUB Mariánské Lázně - MARIENBAD"
+        },
+        {
+          "ico": "47724978",
+          "nazev": "Základní škola Vítězství Mariánské Lázně, příspěvková organizace"
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "miloslav-chadim": {
+      "jmeno": "Miloslav",
+      "prijmeni": "Chadim",
+      "narozen": "1966",
+      "angazovanost": "Politik",
+      "strana": "ANO",
+      "aktivity": "zastupitel (od 2020)  - Zastupitelstvo Karlovarského kraje, zastupitel (od 2017 do 2018)  - Zastupitelstvo města Mariánské Lázně, kandidát (2020)  - kandidát ANO ve volbách do zastupitelstva Karlovarského kraje, radní (od 2017 do 2018)  - Rada města Mariánské Lázně, kandidát (2017)  - kandidát ANO ve volbách do Poslanecké sněmovny PČR",
+      "firmy": [
+        {
+          "ico": "04413695",
+          "nazev": "Asseta Group s.r.o."
+        },
+        {
+          "ico": "09701991",
+          "nazev": "Trade world group s.r.o."
+        },
+        {
+          "ico": "10698540",
+          "nazev": "Spolek pro krásnou a zdravou Prahu, z.s."
+        },
+        {
+          "ico": "19610858",
+          "nazev": "4K - Agentura pro kulturní a kreativní průmysly Karlovarského kraje, z. ú. v likvidaci"
+        },
+        {
+          "ico": "25208438",
+          "nazev": "Infocentrum Mariánské Lázně s.r.o."
+        },
+        {
+          "ico": "49787977",
+          "nazev": "CHEVAK Cheb, a.s."
+        },
+        {
+          "ico": "26367858",
+          "nazev": "Letiště Karlovy Vary s.r.o."
+        },
+        {
+          "ico": "04262972",
+          "nazev": "SDRUŽENÍ KARLOVARSKÉHO KRAJE PRO ROZVOJ LETECKÝCH LINEK, z. s."
+        },
+        {
+          "ico": "61776068",
+          "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o."
+        },
+        {
+          "ico": "06377459",
+          "nazev": "Lorawelt s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": [
+        {
+          "rok": 2018,
+          "smluv": 2,
+          "castka_czk": 72600.0
+        },
+        {
+          "rok": 2019,
+          "smluv": 3,
+          "castka_czk": 274801.2
+        }
+      ]
+    },
+    "dusan-drexler": {
+      "jmeno": "Dušan",
+      "prijmeni": "Drexler",
+      "narozen": "1977",
+      "angazovanost": "Sponzor polit. strany",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "01546864",
+          "nazev": "Mariánskolázeňská asociace cestovního ruchu z.s."
+        },
+        {
+          "ico": "68784732",
+          "nazev": "Plavecký klub Mariánské Lázně, z. s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "roman-dubnicky": {
+      "jmeno": "Roman",
+      "prijmeni": "Dubnický",
+      "narozen": "1981",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "13967509",
+          "nazev": "Amalfi Fashion s.r.o."
+        },
+        {
+          "ico": "25213261",
+          "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "vojtech-franta-1": {
+      "jmeno": "Vojtěch",
+      "prijmeni": "Franta",
+      "narozen": "1985",
+      "angazovanost": "Politik",
+      "strana": "Česká pirátská strana",
+      "aktivity": "zastupitel (od 2016)  - Zastupitelstvo Karlovarského kraje, zastupitel (od 2014 do 2018)  - Zastupitelstvo města Mariánské Lázně, radní (od 2014 do 2018)  - Rada města Mariánské Lázně, radní (od 2020)  - Rada Karlovarského kraje, náměstek hejtmana (od 2020)  - Karlovarský kraj",
+      "firmy": [],
+      "smlouvy_se_statem": []
+    },
+    "petr-hala-3": {
+      "jmeno": "Petr",
+      "prijmeni": "Hála",
+      "narozen": "1957",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "71236716",
+          "nazev": "Společenství vlastníků CHRUDOŠ č.p. 266, Křižíkova 266, 353 01 Mariánské Lázně"
+        },
+        {
+          "ico": "25208438",
+          "nazev": "Infocentrum Mariánské Lázně s.r.o."
+        },
+        {
+          "ico": "47725532",
+          "nazev": "Divadlo lidové tvorby Mariánské Lázně z.s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "martin-hurajcik-1": {
+      "jmeno": "Martin",
+      "prijmeni": "Hurajčík",
+      "narozen": "1977",
+      "angazovanost": "Politik",
+      "strana": "ANO",
+      "aktivity": "zastupitel (od 2016)  - Karlovarský kraj, radní (od 2016 do 2020)  - Karlovarský kraj, zastupitel (od 2014)  - Mariánské Lázně, pověřen řízením (od 2025 do 2025)  - Karlovarský kraj, náměstek hejtmana (od 2024)  - Karlovarský kraj",
+      "firmy": [
+        {
+          "ico": "05266190",
+          "nazev": "Whisky&Kilt Golf Club, z.s."
+        },
+        {
+          "ico": "86771531",
+          "nazev": "Společenství vlastníků jednotek Podhorská 685, 686"
+        },
+        {
+          "ico": "48364282",
+          "nazev": "Dopravní podnik Karlovy Vary, a.s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "martin-kalina-5": {
+      "jmeno": "Martin",
+      "prijmeni": "Kalina",
+      "narozen": "1984",
+      "angazovanost": "Politik",
+      "strana": null,
+      "aktivity": "zastupitel (od 2020 do 2024)  - Zastupitelstvo Karlovarského kraje, radní (od 2018)  - Rada města Mariánské Lázně, zastupitel (od 2014)  - Zastupitelstvo města Mariánské Lázně, starosta (od 2018 do 2022)  - Město Mariánské Lázně, kandidát (2020)  - kandidát Pirátů ve volbách do zastupitelstva Karlovarského kraje",
+      "firmy": [
+        {
+          "ico": "26365804",
+          "nazev": "Karlovarská krajská nemocnice a.s."
+        },
+        {
+          "ico": "25206281",
+          "nazev": "Onkologická ambulance s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": [
+        {
+          "rok": 2024,
+          "smluv": 2,
+          "castka_czk": 399300.0
+        },
+        {
+          "rok": 2025,
+          "smluv": 6,
+          "castka_czk": 996000.0
+        }
+      ]
+    },
+    "ludmila-mikova": {
+      "jmeno": "Ludmila",
+      "prijmeni": "Míková",
+      "narozen": "1964",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "47725184",
+          "nazev": "Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s."
+        },
+        {
+          "ico": "26320053",
+          "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s."
+        },
+        {
+          "ico": "08056196",
+          "nazev": "Spolek Mariánský z.s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "ivana-mottlova-2": {
+      "jmeno": "Ivana",
+      "prijmeni": "Mottlová",
+      "narozen": "1958",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "25208438",
+          "nazev": "Infocentrum Mariánské Lázně s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "josef-pavlovic-2": {
+      "jmeno": "Josef",
+      "prijmeni": "Pavlovic",
+      "narozen": "1984",
+      "angazovanost": "Vysoký státní úředník",
+      "strana": null,
+      "aktivity": "člen   - Česká pirátská strana, náměstek ministra (od 2022)  - Ministerstvo zdravotnictví ČR",
+      "firmy": [
+        {
+          "ico": "26523043",
+          "nazev": "AIKIDO Mariánské Lázně z.s."
+        },
+        {
+          "ico": "26365804",
+          "nazev": "Karlovarská krajská nemocnice a.s."
+        },
+        {
+          "ico": "49787977",
+          "nazev": "CHEVAK Cheb, a.s."
+        },
+        {
+          "ico": "26320053",
+          "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "miloslav-pelc": {
+      "jmeno": "Miloslav",
+      "prijmeni": "Pelc",
+      "narozen": "1944",
+      "angazovanost": "Politik",
+      "strana": null,
+      "aktivity": "ODS (od 1991)  - ODS, Bývalý senátor (ODS).. senator 2002-2004, senator 2004-2006, senator 2006-2008",
+      "firmy": [],
+      "smlouvy_se_statem": []
+    },
+    "jana-roubalova-5": {
+      "jmeno": "Jana",
+      "prijmeni": "Roubalová",
+      "narozen": "1971",
+      "angazovanost": "Politik",
+      "strana": null,
+      "aktivity": "zastupitel (od 2024)  - Karlovarský kraj",
+      "firmy": [
+        {
+          "ico": "00575143",
+          "nazev": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně, příspěvková organizace"
+        },
+        {
+          "ico": "75005310",
+          "nazev": "Společenství vlastníků jednotek Kubelíkova 535-536, Mariánské Lázně"
+        },
+        {
+          "ico": "26376709",
+          "nazev": "Nemocnice Mariánské Lázně s.r.o."
+        },
+        {
+          "ico": "19880324",
+          "nazev": "Laboratoř NML s.r.o."
+        },
+        {
+          "ico": "26320053",
+          "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s."
+        }
+      ],
+      "smlouvy_se_statem": [
+        {
+          "rok": 2017,
+          "smluv": 5,
+          "castka_czk": 5745040.0
+        },
+        {
+          "rok": 2018,
+          "smluv": 1,
+          "castka_czk": 8300690.75
+        },
+        {
+          "rok": 2019,
+          "smluv": 2,
+          "castka_czk": 10828600.0
+        },
+        {
+          "rok": 2020,
+          "smluv": 5,
+          "castka_czk": 4428600.0
+        },
+        {
+          "rok": 2021,
+          "smluv": 3,
+          "castka_czk": 7096184.0
+        },
+        {
+          "rok": 2022,
+          "smluv": 3,
+          "castka_czk": 9085700.0
+        },
+        {
+          "rok": 2023,
+          "smluv": 4,
+          "castka_czk": 8404601.2
+        },
+        {
+          "rok": 2024,
+          "smluv": 3,
+          "castka_czk": 7746910.0
+        },
+        {
+          "rok": 2025,
+          "smluv": 4,
+          "castka_czk": 11525700.0
+        },
+        {
+          "rok": 2026,
+          "smluv": 2,
+          "castka_czk": 10650000.0
+        }
+      ]
+    },
+    "kamil-spindler": {
+      "jmeno": "Kamil",
+      "prijmeni": "Špindler",
+      "narozen": "1982",
+      "angazovanost": "Sponzor polit. strany",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "49787977",
+          "nazev": "CHEVAK Cheb, a.s."
+        },
+        {
+          "ico": "25963643",
+          "nazev": "Bytové družstvo Mariánské Lázně v likvidaci"
+        }
+      ],
+      "smlouvy_se_statem": [
+        {
+          "rok": 2025,
+          "smluv": 1,
+          "castka_czk": 4654285.0
+        }
+      ]
+    },
+    "stepan-stranik": {
+      "jmeno": "Štěpán",
+      "prijmeni": "Stráník",
+      "narozen": null,
+      "angazovanost": "Politik",
+      "strana": "SPD",
+      "aktivity": "kandidát (2021)  - kandidát SPD ve volbách do Poslanecké sněmovny PČR, člen strany (od 2021)  - SPD",
+      "firmy": [],
+      "smlouvy_se_statem": []
+    },
+    "samuel-zabolotny": {
+      "jmeno": "Samuel",
+      "prijmeni": "Zabolotný",
+      "narozen": "2000",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "26320053",
+          "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "zdenek-kral-27": {
+      "jmeno": "Zdeněk",
+      "prijmeni": "Král",
+      "narozen": "1960",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "61776068",
+          "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "eva-fedosejevova": {
+      "jmeno": "Eva",
+      "prijmeni": "Fedosejevová",
+      "narozen": "1980",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "03813100",
+          "nazev": "SULFED s.r.o."
+        },
+        {
+          "ico": "25213261",
+          "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "jan-hamar": {
+      "jmeno": "Jan",
+      "prijmeni": "Hamar",
+      "narozen": "1994",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "07652305",
+          "nazev": "Komunitní centrum Chebsko z.s."
+        },
+        {
+          "ico": "25213261",
+          "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "pavel-roznicek-2": {
+      "jmeno": "Pavel",
+      "prijmeni": "Rozníček",
+      "narozen": "1977",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "24161918",
+          "nazev": "MASSA NEW CLEAN a.s."
+        },
+        {
+          "ico": "24262366",
+          "nazev": "Marionbella s.r.o."
+        },
+        {
+          "ico": "27961346",
+          "nazev": "SVIK-ML s.r.o."
+        },
+        {
+          "ico": "28861485",
+          "nazev": "ALUA group -CZ s.r.o."
+        },
+        {
+          "ico": "29107784",
+          "nazev": "MASSA INVEST GROUP s.r.o."
+        },
+        {
+          "ico": "00029041",
+          "nazev": "Družstvo OSSA INVEST GROUP"
+        },
+        {
+          "ico": "29114471",
+          "nazev": "H&H koncept s.r.o."
+        },
+        {
+          "ico": "29303001",
+          "nazev": "KPS servis SE"
+        },
+        {
+          "ico": "25213261",
+          "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o."
+        }
+      ],
+      "smlouvy_se_statem": [
+        {
+          "rok": 2017,
+          "smluv": 3,
+          "castka_czk": 859015.03
+        },
+        {
+          "rok": 2019,
+          "smluv": 3,
+          "castka_czk": 3583317.4
+        },
+        {
+          "rok": 2020,
+          "smluv": 1,
+          "castka_czk": 0.0
+        },
+        {
+          "rok": 2021,
+          "smluv": 4,
+          "castka_czk": 337000.0
+        },
+        {
+          "rok": 2022,
+          "smluv": 2,
+          "castka_czk": 2541000.0
+        },
+        {
+          "rok": 2023,
+          "smluv": 3,
+          "castka_czk": 9801000.0
+        },
+        {
+          "rok": 2024,
+          "smluv": 3,
+          "castka_czk": 664565.0
+        },
+        {
+          "rok": 2025,
+          "smluv": 2,
+          "castka_czk": 3630000.0
+        },
+        {
+          "rok": 2026,
+          "smluv": 1,
+          "castka_czk": 302500.0
+        }
+      ]
+    },
+    "barbora-tinterova": {
+      "jmeno": "Barbora",
+      "prijmeni": "Tintěrová",
+      "narozen": "1976",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "01546864",
+          "nazev": "Mariánskolázeňská asociace cestovního ruchu z.s."
+        },
+        {
+          "ico": "25208438",
+          "nazev": "Infocentrum Mariánské Lázně s.r.o."
+        },
+        {
+          "ico": "47720301",
+          "nazev": "Spolek rodičů a přátel školy při ZŠ JIH Mariánské Lázně"
+        }
+      ],
+      "smlouvy_se_statem": []
+    },
+    "martin-slehofer-1": {
+      "jmeno": "Martin",
+      "prijmeni": "Šlehofer",
+      "narozen": "1981",
+      "angazovanost": "Bez vazby na politiku",
+      "strana": null,
+      "aktivity": "",
+      "firmy": [
+        {
+          "ico": "64831086",
+          "nazev": "Lázeňské lesy, spol. s r.o."
+        }
+      ],
+      "smlouvy_se_statem": []
+    }
+  },
+  "subjekty": {
+    "25213261": {
+      "nazev": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o.",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "50–99 zaměstnanců",
+      "obrat": "30–60 mil. Kč",
+      "osoby": [
+        {
+          "id": "roman-dubnicky",
+          "jmeno": "Roman",
+          "prijmeni": "Dubnický",
+          "narozen": "1981"
+        },
+        {
+          "id": "eva-fedosejevova",
+          "jmeno": "Eva",
+          "prijmeni": "Fedosejevová",
+          "narozen": "1980"
+        },
+        {
+          "id": "jan-hamar",
+          "jmeno": "Jan",
+          "prijmeni": "Hamar",
+          "narozen": "1994"
+        },
+        {
+          "id": "pavel-roznicek-2",
+          "jmeno": "Pavel",
+          "prijmeni": "Rozníček",
+          "narozen": "1977"
+        }
+      ]
+    },
+    "25208438": {
+      "nazev": "Infocentrum Mariánské Lázně s.r.o.",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "20–24 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "petr-hala-3",
+          "jmeno": "Petr",
+          "prijmeni": "Hála",
+          "narozen": "1957"
+        },
+        {
+          "id": "miloslav-chadim",
+          "jmeno": "Miloslav",
+          "prijmeni": "Chadim",
+          "narozen": "1966"
+        },
+        {
+          "id": "ivana-mottlova-2",
+          "jmeno": "Ivana",
+          "prijmeni": "Mottlová",
+          "narozen": "1958"
+        },
+        {
+          "id": "barbora-tinterova",
+          "jmeno": "Barbora",
+          "prijmeni": "Tintěrová",
+          "narozen": "1976"
+        }
+      ]
+    },
+    "61776068": {
+      "nazev": "DEVELOP CENTRUM Mariánské Lázně s. r. o.",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "10–19 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "karel-henych",
+          "jmeno": "Karel",
+          "prijmeni": "Henych",
+          "narozen": "1979"
+        },
+        {
+          "id": "miloslav-chadim",
+          "jmeno": "Miloslav",
+          "prijmeni": "Chadim",
+          "narozen": "1966"
+        },
+        {
+          "id": "zdenek-kral-27",
+          "jmeno": "Zdeněk",
+          "prijmeni": "Král",
+          "narozen": "1960"
+        },
+        {
+          "id": "pavel-poc",
+          "jmeno": "Pavel",
+          "prijmeni": "Poc",
+          "narozen": "1964"
+        },
+        {
+          "id": "ladislav-spelina",
+          "jmeno": "Ladislav",
+          "prijmeni": "Špelina",
+          "narozen": "1988"
+        }
+      ]
+    },
+    "64831086": {
+      "nazev": "Lázeňské lesy, spol. s r.o.",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "6–9 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "martin-slehofer-1",
+          "jmeno": "Martin",
+          "prijmeni": "Šlehofer",
+          "narozen": "1981"
+        }
+      ]
+    },
+    "26412501": {
+      "nazev": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o.",
+      "typ": "PrivateCompany",
+      "zamestnancu": "25–49 zaměstnanců",
+      "obrat": "30–60 mil. Kč",
+      "osoby": [
+        {
+          "id": "vladimir-nedved-1",
+          "jmeno": "Vladimír",
+          "prijmeni": "Nedvěd",
+          "narozen": "1963"
+        },
+        {
+          "id": "zdenek-suchan-2",
+          "jmeno": "Zdeněk",
+          "prijmeni": "Suchan",
+          "narozen": "1956"
+        }
+      ]
+    },
+    "26376709": {
+      "nazev": "Nemocnice Mariánské Lázně s.r.o.",
+      "typ": "PrivateCompany",
+      "zamestnancu": "100–200 zaměstnanců",
+      "obrat": "100–200 mil. Kč",
+      "osoby": [
+        {
+          "id": "vladislav-blaha-3",
+          "jmeno": "Vladislav",
+          "prijmeni": "Bláha",
+          "narozen": "1955"
+        },
+        {
+          "id": "jana-buchlovska",
+          "jmeno": "Jana",
+          "prijmeni": "Buchlovská",
+          "narozen": "1979"
+        },
+        {
+          "id": "vladimir-kadlec-30",
+          "jmeno": "Vladimír",
+          "prijmeni": "Kadlec",
+          "narozen": "1966"
+        },
+        {
+          "id": "jana-roubalova-5",
+          "jmeno": "Jana",
+          "prijmeni": "Roubalová",
+          "narozen": "1971"
+        },
+        {
+          "id": "vaclav-smelik",
+          "jmeno": "Václav",
+          "prijmeni": "Smělík",
+          "narozen": "1988"
+        },
+        {
+          "id": "barbora-zavoralova-smelikova",
+          "jmeno": "Barbora",
+          "prijmeni": "Zavoralová Smělíková",
+          "narozen": "1991"
+        }
+      ]
+    },
+    "26320053": {
+      "nazev": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s.",
+      "typ": "NonProfitOrganization",
+      "zamestnancu": "50–99 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "jaromir-bartos-8",
+          "jmeno": "Jaromír",
+          "prijmeni": "Bartoš",
+          "narozen": "1969"
+        },
+        {
+          "id": "ivan-klansky",
+          "jmeno": "Ivan",
+          "prijmeni": "Klánský",
+          "narozen": "1948"
+        },
+        {
+          "id": "ludmila-mikova",
+          "jmeno": "Ludmila",
+          "prijmeni": "Míková",
+          "narozen": "1964"
+        },
+        {
+          "id": "josef-pavlovic-2",
+          "jmeno": "Josef",
+          "prijmeni": "Pavlovic",
+          "narozen": "1984"
+        },
+        {
+          "id": "bohumila-petrikova",
+          "jmeno": "Bohumila",
+          "prijmeni": "Petříková",
+          "narozen": "1952"
+        },
+        {
+          "id": "michael-rohac",
+          "jmeno": "Michael",
+          "prijmeni": "Roháč",
+          "narozen": "1974"
+        },
+        {
+          "id": "jana-roubalova-5",
+          "jmeno": "Jana",
+          "prijmeni": "Roubalová",
+          "narozen": "1971"
+        },
+        {
+          "id": "vladimir-smutny-7",
+          "jmeno": "Vladimír",
+          "prijmeni": "Smutný",
+          "narozen": "1974"
+        },
+        {
+          "id": "milan-uxa-1",
+          "jmeno": "Milan",
+          "prijmeni": "Uxa",
+          "narozen": "1977"
+        },
+        {
+          "id": "samuel-zabolotny",
+          "jmeno": "Samuel",
+          "prijmeni": "Zabolotný",
+          "narozen": "2000"
+        }
+      ]
+    },
+    "00074071": {
+      "nazev": "Technické služby Mariánské Lázně",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "1–5 zaměstnanců",
+      "obrat": "500 tis. – 1 mil. Kč",
+      "poznamka": "zaniklý subjekt",
+      "osoby": []
+    },
+    "00575143": {
+      "nazev": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně, příspěvková organizace",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "100–200 zaměstnanců",
+      "obrat": "60–100 mil. Kč",
+      "osoby": [
+        {
+          "id": "jana-roubalova-5",
+          "jmeno": "Jana",
+          "prijmeni": "Roubalová",
+          "narozen": "1971"
+        }
+      ]
+    },
+    "19882629": {
+      "nazev": "Městské divadlo Mariánské Lázně, příspěvková organizace",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "20–24 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "alena-havrdova-3",
+          "jmeno": "Alena",
+          "prijmeni": "Havrdová",
+          "narozen": "1966"
+        }
+      ]
+    },
+    "00368997": {
+      "nazev": "Městské muzeum a galerie Mariánské Lázně, příspěvková organizace",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "10–19 zaměstnanců",
+      "obrat": "5–10 mil. Kč",
+      "osoby": [
+        {
+          "id": "jaromir-bartos-8",
+          "jmeno": "Jaromír",
+          "prijmeni": "Bartoš",
+          "narozen": "1969"
+        }
+      ]
+    },
+    "47720654": {
+      "nazev": "Městská knihovna Mariánské Lázně, příspěvková organizace",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "6–9 zaměstnanců",
+      "obrat": "5–10 mil. Kč",
+      "osoby": [
+        {
+          "id": "tatana-batkova",
+          "jmeno": "Taťána",
+          "prijmeni": "Baťková",
+          "narozen": "1967"
+        }
+      ]
+    },
+    "72559772": {
+      "nazev": "SPRÁVA MĚSTSKÝCH SPORTOVIŠŤ příspěvková organizace",
+      "typ": "StateOwnedCompany",
+      "zamestnancu": "25–49 zaměstnanců",
+      "obrat": "30–60 mil. Kč",
+      "osoby": [
+        {
+          "id": "viktor-borsik",
+          "jmeno": "Viktor",
+          "prijmeni": "Borsik",
+          "narozen": "1964"
+        }
+      ]
+    },
+    "47724978": {
+      "nazev": "Základní škola Vítězství Mariánské Lázně, příspěvková organizace",
+      "typ": "StateAuthority",
+      "zamestnancu": "25–49 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "lubos-borka",
+          "jmeno": "Luboš",
+          "prijmeni": "Borka",
+          "narozen": "1962"
+        }
+      ]
+    },
+    "47721472": {
+      "nazev": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně, příspěvková organizace",
+      "typ": "StateAuthority",
+      "zamestnancu": "25–49 zaměstnanců",
+      "obrat": "10–30 mil. Kč",
+      "osoby": [
+        {
+          "id": "david-tomanek-7",
+          "jmeno": "David",
+          "prijmeni": "Tománek",
+          "narozen": "1991"
+        }
+      ]
+    }
+  },
+  "sponzoring": {
+    "dusan-drexler": {
+      "zaznamu": 1,
+      "celkem_czk": 200.0,
+      "zaznamy_uplne": true,
+      "strany": [
+        "STAN"
+      ],
+      "zaznamy": [
+        {
+          "datum": "2024-01-01",
+          "castka_czk": 200.0,
+          "druh": "NefinancniDar",
+          "popis": "plachta",
+          "strana": "STAN",
+          "strana_ico": "26673908"
+        }
+      ]
+    },
+    "kamil-spindler": {
+      "zaznamu": 5,
+      "celkem_czk": 2400.0,
+      "zaznamy_uplne": true,
+      "strany": [
+        "STAN",
+        "Česká pirátská strana"
+      ],
+      "zaznamy": [
+        {
+          "datum": "2024-01-01",
+          "castka_czk": 800.0,
+          "druh": "NefinancniDar",
+          "popis": "plachta 4x",
+          "strana": "STAN",
+          "strana_ico": "26673908"
+        },
+        {
+          "datum": "2024-01-01",
+          "castka_czk": 400.0,
+          "druh": "NefinancniDar",
+          "popis": "plachta",
+          "strana": "STAN",
+          "strana_ico": "26673908"
+        },
+        {
+          "datum": "2021-09-02",
+          "castka_czk": 0.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-09-02",
+          "castka_czk": 200.0,
+          "druh": "NefinancniDar",
+          "popis": "vyvěšení banneru",
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-01-01",
+          "castka_czk": 1000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "STAN",
+          "strana_ico": "26673908"
+        }
+      ]
+    },
+    "miloslav-chadim": {
+      "zaznamu": 2,
+      "celkem_czk": 325000.0,
+      "zaznamy_uplne": true,
+      "strany": [
+        "ANO"
+      ],
+      "zaznamy": [
+        {
+          "datum": "2018-01-01",
+          "castka_czk": 200000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        },
+        {
+          "datum": "2017-01-01",
+          "castka_czk": 125000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        }
+      ]
+    },
+    "martin-hurajcik-1": {
+      "zaznamu": 5,
+      "celkem_czk": 94100.0,
+      "zaznamy_uplne": true,
+      "strany": [
+        "ANO"
+      ],
+      "zaznamy": [
+        {
+          "datum": "2025-01-01",
+          "castka_czk": 38200.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        },
+        {
+          "datum": "2024-01-01",
+          "castka_czk": 10000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        },
+        {
+          "datum": "2018-01-01",
+          "castka_czk": 19700.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        },
+        {
+          "datum": "2017-01-01",
+          "castka_czk": 19700.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        },
+        {
+          "datum": "2016-01-01",
+          "castka_czk": 6500.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "ANO",
+          "strana_ico": "71443339"
+        }
+      ]
+    },
+    "martin-kalina-5": {
+      "zaznamu": 5,
+      "celkem_czk": 14000.0,
+      "zaznamy_uplne": true,
+      "strany": [
+        "Česká pirátská strana"
+      ],
+      "zaznamy": [
+        {
+          "datum": "2024-07-10",
+          "castka_czk": 10000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-06-25",
+          "castka_czk": 1000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-05-27",
+          "castka_czk": 1000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-04-27",
+          "castka_czk": 1000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        },
+        {
+          "datum": "2021-03-29",
+          "castka_czk": 1000.0,
+          "druh": "FinancniDar",
+          "popis": null,
+          "strana": "Česká pirátská strana",
+          "strana_ico": "71339698"
+        }
+      ]
+    },
+    "vojtech-franta-1": {
+      "zaznamu": 35,
+      "celkem_czk": 22600.0,
+      "zaznamy_uplne": false,
+      "strany": [
+        "Česká pirátská strana"
+      ],
+      "zaznamy": []
+    },
+    "jana-roubalova-5": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "lubos-borka": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "roman-dubnicky": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "petr-hala-3": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "ludmila-mikova": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "ivana-mottlova-2": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "josef-pavlovic-2": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    },
+    "samuel-zabolotny": {
+      "zaznamu": 0,
+      "celkem_czk": 0.0,
+      "zaznamy_uplne": true,
+      "strany": [],
+      "zaznamy": []
+    }
+  }
+}

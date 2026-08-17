@@ -1,0 +1,89 @@
+---
+/**
+ * Označení vazby hlasujícího na firmu, které se hlasování týká.
+ *
+ * Zásada projektu: fakt a interpretace se nesmí smíchat. Tenhle blok proto
+ * uvádí jen to, co je ve zdrojích — kdo hlasoval, jak hlasoval, jakou má ve
+ * firmě roli a kolik firma od města dostala. Žádný závěr z toho nevyvozuje
+ * a neúčast při hlasování nijak nezvýrazňuje.
+ */
+import type { VazbaHlasovani } from '../lib/vazby';
+import { kc, nazevHlasu } from '../lib/format';
+
+export interface Props {
+  vazby: VazbaHlasovani[];
+  /** Rozbalit rovnou — na profilu osoby, kde je vazeb málo. */
+  otevreno?: boolean;
+  /** Vynechá sloupec s osobou (na profilu je zbytečný). */
+  bezOsoby?: boolean;
+  /**
+   * Klíče protistran, pro které existuje stránka `/penize/[ico]`.
+   * Bez toho by odkaz na firmu, která s městem neobchoduje, vedl na 404.
+   */
+  zname?: Set<string>;
+}
+
+const { vazby, otevreno = false, bezOsoby = false, zname } = Astro.props;
+const maStranku = (ico: string | null): boolean => Boolean(ico && zname?.has(ico));
+---
+
+{
+  vazby.length > 0 && (
+    <details class="vazby" open={otevreno}>
+      <summary>
+        <span class="znacka znacka--vazba">vazba na dotčenou firmu</span>
+        <span>
+          {vazby.length === 1
+            ? 'Jeden z hlasujících je uveden ve firmě, které se bod týká'
+            : `Hlasujících s uvedenou vazbou na dotčenou firmu: ${vazby.length}`}
+        </span>
+      </summary>
+
+      <p class="vazby__popis">
+        Údaje níže jsou věcný výpis ze zdrojů: kdo hlasoval, jak hlasoval, v jaké roli je ve firmě
+        uveden a kolik firma od města a jeho organizací dostala. Přehled z toho nevyvozuje žádný
+        závěr a nehodnotí, jestli měl někdo hlasovat jinak.
+      </p>
+
+      <div class="tabulka-obal">
+        <table>
+          <thead>
+            <tr>
+              {!bezOsoby && <th scope="col">Osoba</th>}
+              <th scope="col">Hlas</th>
+              <th scope="col">Firma</th>
+              <th scope="col">Role ve firmě</th>
+              <th scope="col" class="cislo">Od města celkem</th>
+            </tr>
+          </thead>
+          <tbody>
+            {vazby.map((v) => (
+              <tr>
+                {!bezOsoby && (
+                  <td>
+                    {v.osoba_id ? (
+                      <a href={`/lide/${v.osoba_id}`}>{v.jmeno ?? v.osoba_id}</a>
+                    ) : (
+                      (v.jmeno ?? 'neuvedena')
+                    )}
+                  </td>
+                )}
+                <td>{v.hlas ? nazevHlasu(v.hlas) : 'v datech není'}</td>
+                <td>
+                  {maStranku(v.ico) ? (
+                    <a href={`/penize/${v.ico}`}>{v.firma ?? v.ico}</a>
+                  ) : (
+                    (v.firma ?? v.ico ?? 'neuvedena')
+                  )}
+                  {v.ico && <span class="mono"> ({v.ico})</span>}
+                </td>
+                <td>{v.role.length > 0 ? v.role.join(', ') : 'v datech není'}</td>
+                <td class="cislo">{v.celkem_czk === null ? 'v datech není' : kc(v.celkem_czk)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  )
+}

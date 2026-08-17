@@ -733,6 +733,11 @@ def zkontroluj(vysledek: dict, log: Log) -> None:
         od = p["odchylky_od_strany"]
         if od["odchylek"] > od["porovnatelnych"]:
             log.chyba(f"{p['id']}: odchylek > porovnatelných")
+        shodne = {s["id"] for s in p["nejcasteji_shodne"]}
+        odlisne = {s["id"] for s in p["nejcasteji_odlisne"]}
+        if shodne & odlisne:
+            log.chyba(f"{p['id']}: tentýž člověk v nejshodnějších i nejodlišnějších "
+                      f"({sorted(shodne & odlisne)})")
         if p["kontrola"] and not p["kontrola"]["sedi"]:
             log.chyba(f"{p['id']}: příležitosti nesedí s rejstříkem hlasujících "
                       f"{p['kontrola']}")

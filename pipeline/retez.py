@@ -104,8 +104,13 @@ PRAH_VYSOKA = 98
 MAX_KANDIDATU = 3
 
 # Jméno rozeseté po stovkách usnesení je slabší identita než jméno, které
-# padne na hrstku bodů. Hranice je odhad, ne měření.
-PRAH_DISTINKTIVNI = 60
+# padne na hrstku bodů — a jméno, které je shodou okolností i běžné české
+# slovo („Střecha s.r.o."), je skoro bezcenné. Body za shodu názvu se proto
+# odstupňují podle toho, na kolik bodů usnesení to jméno vůbec padlo.
+# Hranice jsou odhad, ne měření.
+NAZEV_DISTINKTIVNI = (60, 38)   # padne na hrstku bodů — silná identita
+NAZEV_BEZNY = (300, 24)         # opakuje se, sám o sobě nestačí
+NAZEV_VSUDYPRITOMNY = 14        # nad 300 bodů: bez další indicie neunese nic
 
 # Bezobsažná slova — do překryvu předmětu smlouvy a názvu bodu nevstupují.
 STOPSLOVA = {
@@ -202,7 +207,7 @@ def _vzor_nazvu(jadro: str) -> re.Pattern | None:
     Tokeny musí v textu stát za sebou — rozeseté shody („Servis" na jednom
     místě, „Dopravní" na druhém) by nebyly zmínkou o firmě.
     """
-    tokeny = [t for t in jadro.split() if len(t) >= 2]
+    tokeny = jadro.split()
     if not tokeny:
         return None
     casti = [re.escape(_kmen(t)) + r"\w*" for t in tokeny]
@@ -478,8 +483,8 @@ def _ohodnot(bod: dict, smlouva: dict, *, ma_ico: bool, ma_nazev: bool,
 
     # --- číslo smlouvy z předmětu ---
     for cislo in smlouva["_cisla"]:
-        holé = re.sub(r"\D", "", cislo)
-        if holé and holé in bod["_norm"]:
+        holé_cislo = re.sub(r"\D", "", cislo)
+        if holé_cislo and holé_cislo in bod["_norm"]:
             skore += 40
             signaly.append("cislo_smlouvy")
             duvody.append(f"číslo {cislo} z předmětu smlouvy je i v usnesení")
