@@ -239,6 +239,8 @@ def roztrid_bloky(stranky: list[Stranka], telo: float) -> None:
                 zahlavi.append(b)
             elif (v_zahlavi or v_zapati) and _CISLO_STRANY.match(b.text):
                 pass  # číslo strany do článku nepatří
+            elif v_zapati and tiraz and b.slov <= 12:
+                pass  # "červen 2025 | zpravodaj města Mariánské Lázně | 27"
             else:
                 obsah.append(b)
         st.bloky, st.zahlavi = obsah, zahlavi
@@ -283,7 +285,9 @@ def poradi_cteni(bloky: list[Blok], hloubka: int = 0) -> list[Blok]:
     if len(bloky) <= 1 or hloubka > 20:
         return sorted(bloky, key=lambda b: (b.y0, b.x0))
 
-    bezne = [b for b in bloky if not b.je_nadpis] or bloky
+    bez_nadpisu = [b for b in bloky if not b.je_nadpis]
+    # Pro měření mezer; když jsou v oblasti samé nadpisy, měří se přes ně.
+    bezne = bez_nadpisu or bloky
     mx, rez_x = _nejvetsi_mezera([(b.x0, b.x1) for b in bezne])
     my, rez_y = _nejvetsi_mezera([(b.y0, b.y1) for b in bezne])
 
@@ -295,8 +299,10 @@ def poradi_cteni(bloky: list[Blok], hloubka: int = 0) -> list[Blok]:
         return poradi_cteni(levy, hloubka + 1) + poradi_cteni(pravy, hloubka + 1)
 
     def vodorovne() -> list[Blok] | None:
-        horni = [b for b in bezne if b.y1 <= rez_y]
-        dolni = [b for b in bezne if b.y1 > rez_y]
+        # Dělí se jen běžné bloky; nadpisy se doplní níž, aby se žádný
+        # blok nedostal do obou polovin naráz.
+        horni = [b for b in bez_nadpisu if b.y1 <= rez_y]
+        dolni = [b for b in bez_nadpisu if b.y1 > rez_y]
         if not horni or not dolni:
             return None
         # Nadpis patří k textu, který pod ním následuje. Bere se nejbližší
@@ -778,6 +784,12 @@ def clanky_z_cisla(zaznam: dict, log: Log) -> list[dict]:
 
     for st in stranky:
         serazene = poradi_cteni(st.bloky)
+        if len(serazene) != len(st.bloky):
+            # Pojistka: XY-řez musí bloky jen přeskládat, ne ztratit ani
+            # zdvojit. Kdyby se to někdy stalo, radši prosté pořadí
+            # shora dolů než rozsypaný nebo zdvojený text.
+            log.chyba(f"{zaznam['id']}/str. {st.cislo}: XY-řez vrátil jiný počet bloků, beru prosté pořadí")
+            serazene = sorted(st.bloky, key=lambda b: (b.y0, b.x0))
         for b in serazene:
             if b.je_nadpis:
                 akt = {

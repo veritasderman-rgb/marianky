@@ -44,13 +44,25 @@ BASE = "https://www.muml.cz"
 KALENDAR = "https://www.marianskelazne.cz"
 
 # Kolik souběžných stahování a jak dlouhá pauza po každém síťovém dotazu.
-# Web města běží na malém serveru — držíme se pod ~3 dotazy za sekundu.
-VLAKEN = 3
-PRODLEVA_S = 0.35
+#
+# POZOR, tohle je draze zaplacená zkušenost: 17. 8. 2026 při stahování archivu
+# novinek (2 847 článků) běžely 3 vlákna s pauzou 0,35 s, tedy zhruba 2,5 dotazu
+# za sekundu — a muml.cz nás po několika tisících dotazů odstřihl a začal
+# resetovat spojení. Blokace byla na úrovni celého webu, ne jednotlivých adres.
+# Od té doby 2 vlákna a delší pauza (~1,3 dotazu/s) plus pojistka ve třídě
+# `Nezdary`. Kdo to bude chtít zrychlit, ať počítá s tím, že si tím zavře dveře
+# i ostatním sběračům, které na muml.cz sahají.
+VLAKEN = 2
+PRODLEVA_S = 1.2
 
 # Cache: listingy se mění často, detaily dokumentů skoro nikdy.
 CACHE_LISTING = 3_600
 CACHE_DETAIL = 30 * 86_400
+
+# Dolní mez stáří cache pro celý běh. Nastavuje se z CLI (`--cache-min`) a
+# hodí se, když je zdroj nedostupný nebo nás odstřihl: běh pak dojede z toho,
+# co už je stažené, místo aby spadl na první nedosažitelné stránce.
+MIN_CACHE_S = 0
 
 _lock = threading.Lock()
 
@@ -71,7 +83,7 @@ def _stahni(url: str, *, max_age: int = CACHE_LISTING, pokusy: int = 4) -> str:
     plný exponenciální backoff.
     """
     t0 = time.monotonic()
-    html = core.fetch(url, max_age=max_age, retries=pokusy)
+    html = core.fetch(url, max_age=max(max_age, MIN_CACHE_S), retries=pokusy)
     if time.monotonic() - t0 > 0.05:
         time.sleep(PRODLEVA_S)
     if not isinstance(html, str):  # pragma: no cover — binary=False vrací str
@@ -155,30 +167,59 @@ def _soubory(node, base: str = BASE) -> list[dict]:
 
 
 class Nezdary:
-    """Sbírá výpadky jednotlivých detailů a rozhoduje, kdy jde o selhání zdroje.
+    """Sbírá výpadky jednotlivých detailů — a včas přestane bušit do zdroje.
 
-    Jeden mrtvý odkaz ze dvou set není rozbitý web — to se stává. Teprve když
-    výpadků přeroste určitý podíl, je zdroj opravdu v háji a log to musí hlásit
-    jako chybu. Bez toho by běh hlásil SELHALO donekonečna kvůli jedné mrtvé
-    stránce a operátor by hlášení přestal číst.
+    Dvě věci v jednom, protože spolu souvisejí:
+
+    1. **Rozlišení mrtvého odkazu od rozbitého zdroje.** Jeden nedostupný
+       dokument ze dvou set je normální; teprve když výpadků přeroste určitý
+       podíl, je zdroj opravdu v háji a log to hlásí jako chybu. Bez toho by
+       běh hlásil SELHALO donekonečna kvůli jednomu mrtvému odkazu a operátor
+       by hlášení přestal číst.
+
+    2. **Pojistka proti bušení.** Ověřeno 17. 8. 2026 na vlastní kůži: při
+       hromadném stahování archivu novinek nás muml.cz po pár tisících dotazů
+       odstřihl a začal resetovat spojení. Když spadne ``PRAH_SOUVISLE`` pokusů
+       za sebou, další se už nezkoušejí — sběrač uloží, co má, a poctivě
+       zaznamená, že zbytek nedojel. Pokračovat by zdroji jen škodilo.
     """
+
+    PRAH_SOUVISLE = 25
 
     def __init__(self, log: core.Log, co: str, celkem: int, prah: float = 0.1):
         self.log, self.co, self.celkem, self.prah = log, co, celkem, prah
         self.polozky: list[str] = []
+        self.souvisle = 0
+        self.pojistka = False
+
+    def uspech(self) -> None:
+        with _lock:
+            self.souvisle = 0
 
     def zapis(self, url: str, duvod: str) -> None:
         with _lock:
             self.polozky.append(f"{url}: {duvod}")
+            self.souvisle += 1
+            if self.souvisle >= self.PRAH_SOUVISLE and not self.pojistka:
+                self.pojistka = True
+                self.log.chyba(
+                    f"{self.co}: {self.souvisle} nezdarů za sebou — zdroj nás nejspíš "
+                    "odstřihl, přerušuji stahování detailů a ukládám, co je hotové"
+                )
+
+    def preskocit(self) -> bool:
+        """Sepnutá pojistka — další dotazy se už neposílají."""
+        return self.pojistka
 
     def vyhodnot(self) -> None:
         if not self.polozky:
             return
         self.log.info(
             f"{self.co} — nedostupné detaily",
-            pocet=len(self.polozky), z=self.celkem, ukazky=self.polozky[:3],
+            pocet=len(self.polozky), z=self.celkem,
+            pojistka=self.pojistka, ukazky=self.polozky[:3],
         )
-        if len(self.polozky) > self.prah * max(self.celkem, 1):
+        if not self.pojistka and len(self.polozky) > self.prah * max(self.celkem, 1):
             self.log.chyba(
                 f"{self.co}: nepodařilo se načíst {len(self.polozky)} z {self.celkem} detailů "
                 f"(přes {self.prah:.0%}) — zdroj je nejspíš rozbitý"
@@ -315,8 +356,10 @@ def _ud_roky(log: core.Log) -> list[int]:
 
 
 def _ud_detail(z: dict, nezdary: Nezdary) -> None:
+    if nezdary.preskocit():
+        return
     try:
-        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL), z["url"])
+        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:
         nezdary.zapis(z["url"], str(e)[:120])
         return
@@ -329,9 +372,10 @@ def _ud_detail(z: dict, nezdary: Nezdary) -> None:
     zod = d.css_first(".responsible-person span")
     z["cislo_jednaci"] = _txt(cj) or None
     z["zodpovida"] = _txt(zod) or None
-    z["text"] = core.cistit(obsah.text()) if obsah is not None else None
+    z["text"] = (core.cistit(obsah.text()) or None) if obsah is not None else None
     z["prilohy"] = _soubory(obsah if obsah is not None else d)
     z["detail_nacten"] = True
+    nezdary.uspech()
 
 
 def uredni_deska(*, detaily_roky: int = 2, jen_aktualni: bool = False) -> dict:
@@ -360,9 +404,12 @@ def uredni_deska(*, detaily_roky: int = 2, jen_aktualni: bool = False) -> dict:
         vse.setdefault(z["id"], z)
 
     roky = [] if jen_aktualni else _ud_roky(log)
+    letos = date.today().year
     for rok in sorted(roky, reverse=True):
         url = f"{UD_URL}?show=1&archiv_rok={rok}"
-        polozky = _ud_listing(_stahni(url), url, rok, "archiv")
+        # Uzavřený ročník archivu se už nemění — není důvod ho tahat znovu.
+        stari = CACHE_LISTING if rok >= letos else CACHE_DETAIL
+        polozky = _ud_listing(_stahni(url, max_age=stari), url, rok, "archiv")
         if not polozky:
             log.chyba(f"archivní ročník {rok} nevrátil žádné položky")
             continue
@@ -456,8 +503,10 @@ def _novinky_pocet_stran(html: str) -> tuple[int, int]:
 
 
 def _novinka_detail(z: dict, nezdary: Nezdary) -> None:
+    if nezdary.preskocit():
+        return
     try:
-        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL), z["url"])
+        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:
         nezdary.zapis(z["url"], str(e)[:120])
         return
@@ -467,11 +516,14 @@ def _novinka_detail(z: dict, nezdary: Nezdary) -> None:
         return
     text = d.css_first(".event-text")
     perex = d.css_first("#action-detail")
-    z["text"] = core.cistit(text.text()) if text is not None else None
+    # `text: null` při `detail_nacten: true` znamená „článek nemá vlastní tělo",
+    # ne „nestáhli jsme ho" — spousta starších novinek je jen perex a plakát.
+    z["text"] = (core.cistit(text.text()) or None) if text is not None else None
     if _txt(perex):
         z["perex"] = _txt(perex)
     z["prilohy"] = _soubory(d)
     z["detail_nacten"] = True
+    nezdary.uspech()
 
 
 def novinky(*, max_stran: int | None = None, plny_text: bool = True) -> dict:
@@ -519,6 +571,7 @@ def novinky(*, max_stran: int | None = None, plny_text: bool = True) -> dict:
         **_hlavicka(NOVINKY_URL),
         "celkem": len(polozky),
         "web_hlasi": hlaseno or None,
+        "s_nactenym_detailem": sum(1 for z in polozky if z["detail_nacten"]),
         "s_plnym_textem": sum(1 for z in polozky if z["text"]),
         "novinky": polozky,
     }
@@ -615,8 +668,10 @@ def _akce_listing(html: str, url: str) -> tuple[list[dict], int]:
 
 
 def _akce_detail(z: dict, nezdary: Nezdary) -> None:
+    if nezdary.preskocit():
+        return
     try:
-        html = _stahni(z["url"], max_age=CACHE_DETAIL)
+        html = _stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2)
     except ZdrojSelhal as e:
         nezdary.zapis(z["url"], str(e)[:120])
         return
@@ -630,7 +685,7 @@ def _akce_detail(z: dict, nezdary: Nezdary) -> None:
 
     text = d.css_first(".body-text .wsw")
     if text is not None:
-        z["text"] = core.cistit(text.text())
+        z["text"] = core.cistit(text.text()) or None
 
     for it in d.css(".aside-info .item"):
         ikona = it.css_first("span[class*=icon-]")
@@ -656,6 +711,7 @@ def _akce_detail(z: dict, nezdary: Nezdary) -> None:
             ]
             z["kontakt"] = kontakt or None
     z["detail_nacten"] = True
+    nezdary.uspech()
 
 
 def akce(*, dni_dopredu: int = 730, dni_zpet: int = 30, detaily: bool = True) -> dict:
@@ -1070,8 +1126,10 @@ SPOLECNOSTI_URL = f"{BASE}/urad/povinne-informace/subjekt-obchodni-spolecnosti-8
 
 
 def _spolecnost_detail(z: dict, nezdary: Nezdary) -> None:
+    if nezdary.preskocit():
+        return
     try:
-        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL), z["url"])
+        node = _hlavni(_stahni(z["url"], max_age=CACHE_DETAIL, pokusy=2), z["url"])
     except ZdrojSelhal as e:
         nezdary.zapis(z["url"], str(e)[:120])
         return
@@ -1099,6 +1157,7 @@ def _spolecnost_detail(z: dict, nezdary: Nezdary) -> None:
     blok = node.css_first(".contacts-block.persons")
     z["osoby"] = _osoby_bloku(blok) if blok is not None else []
     z["detail_nacten"] = True
+    nezdary.uspech()
 
 
 def spolecnosti() -> dict:
@@ -1187,7 +1246,13 @@ def main(argv: list[str] | None = None) -> int:
                     help="u kolika nejnovějších archivních ročníků úřední desky stáhnout detaily")
     ap.add_argument("--novinky-stran", type=int, default=None,
                     help="omezit počet stránek novinek (pro rychlý zkušební běh)")
+    ap.add_argument("--cache-min", type=int, default=0, metavar="SEKUND",
+                    help="brát z cache vše, co není starší než SEKUND — pro dojetí "
+                         "běhu, když je zdroj nedostupný (např. 86400 = den)")
     args = ap.parse_args(argv)
+
+    global MIN_CACHE_S
+    MIN_CACHE_S = args.cache_min
 
     co = args.co or ["vse"]
     nezname = [c for c in co if c not in SBERACE and c != "vse"]

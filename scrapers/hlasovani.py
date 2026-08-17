@@ -239,7 +239,9 @@ def zpracuj_organ(organ: str, log: core.Log) -> dict:
         pocty = {nazev: int(s.get(sloupec) or 0) for sloupec, nazev in POCTY_MAPA.items()}
 
         hlasy = []
-        for cid, typ in sorted(jmenovite.get(uid, []), key=lambda x: jmena.get(x[0], "")):
+        # Řadíme podle osoba_id, tedy podle příjmení — jména z portálu začínají
+        # tituly a řadit podle nich by dalo pořadí "Bc., Ing., JUDr., Mgr.".
+        for cid, typ in sorted(jmenovite.get(uid, []), key=lambda x: osoba_id(jmena[x[0]])):
             if typ not in HLAS_MAPA:
                 raise core.ZdrojSelhal(f"{organ}: neznámý typ hlasu {typ!r}")
             jmeno = jmena[cid]
