@@ -1,0 +1,34 @@
+{
+  "datum": "2026-08-17",
+  "obdobi_od": "2026-08-10",
+  "obdobi_do": "2026-08-17",
+  "trvani_s": 0.0,
+  "kroky": [
+    {
+      "modul": "pipeline.tagovani",
+      "popis": "Otagování usnesení",
+      "povinny": true,
+      "stav": "chybi_modul"
+    },
+    {
+      "modul": "pipeline.clanky",
+      "popis": "Rozbor článků",
+      "povinny": false,
+      "stav": "chybi_modul"
+    },
+    {
+      "modul": "pipeline.agregace_penez",
+      "popis": "Agregace peněz po letech",
+      "povinny": true,
+      "stav": "chybi_modul"
+    },
+    {
+      "modul": "pipeline.prepis",
+      "popis": "Přepisy jednání",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "SystemExit 2"
+    }
+  ],
+  "uspech": true
+}
