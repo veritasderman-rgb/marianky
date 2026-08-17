@@ -1,0 +1,329 @@
+# Inventář datových zdrojů
+
+Technická příloha k [`ZADANI.md`](../ZADANI.md). Všechny údaje ověřeny **17. 8. 2026**.
+
+Účel dokumentu: než někdo začne psát sběrač, ať ví, co ho čeká — kde je JavaScript, kde je potřeba hlavička, kde je PDF sken a kde ne.
+
+---
+
+## 1. usneseni.muml.cz — portál usnesení
+
+**Priorita: nejvyšší.** Nejhodnotnější a nejlépe strukturovaný zdroj projektu.
+
+### Endpointy
+
+| URL | Obsah |
+|---|---|
+| `https://usneseni.muml.cz/rada/usneseni` | Usnesení rady |
+| `https://usneseni.muml.cz/rada/podklady` | Podklady k jednání rady |
+| `https://usneseni.muml.cz/rada/hlasovani/usneseni` | Hlasování — dále členěno na *Strany* a *Členy* |
+| `https://usneseni.muml.cz/zastupitelstvo/usneseni` | Usnesení zastupitelstva |
+| `https://usneseni.muml.cz/zastupitelstvo/podklady` | Podklady k jednání zastupitelstva |
+
+### Technické poznámky
+
+- **Serverové HTML.** Obsah je přímo v odpovědi, žádný client-side rendering. Nepotřebuje headless browser.
+- **Vyžaduje `User-Agent`.** Bez hlavičky server vrací **503**. S `Mozilla/5.0` vrací 200.
+  ```
+  curl "https://usneseni.muml.cz/rada/usneseni"                  → 503
+  curl -A "Mozilla/5.0" "https://usneseni.muml.cz/rada/usneseni" → 200, 92 853 B
+  ```
+- Tabulky renderované přes **DataTables** (`cdn.datatables.net`) + Select2 + Fancybox. Data jsou ale v HTML, ne dotahovaná AJAXem.
+- Jednání jsou identifikována dvojicí **datum + č. j.**, což je vhodný primární klíč.
+
+### Rozsah archivu
+
+**Rada města** — aktuálně č. j. 124 (7. 8. 2026). Jednání zhruba jednou za 2 týdny. Výpis sahá minimálně k č. j. 41 (9. 1. 2024) a pokračuje dál do minulosti.
+
+**Zastupitelstvo** — aktuálně č. j. 28 (20. 7. 2026). Zasedání zhruba 6× ročně. Výpis sahá minimálně k roku **2019** (č. j. 8, 2019). Číslování se resetuje s volebním obdobím — pozor při návrhu klíče, `č. j. 28` samo o sobě není unikátní.
+
+### Proč je hlasování klíčové
+
+Sekce *Hlasování → Členové* dává **jmenovitá hlasování**. To umožňuje postavit hlasovací historii jednotlivých zastupitelů — funkci, kterou pro Mariánské Lázně jinde nenajdete. Je to nejsilnější věc, kterou celý portál nabídne.
+
+---
+
+## 2. muml.cz — oficiální web města
+
+### Endpointy
+
+| URL | Obsah |
+|---|---|
+| `/urad/uredni-deska-archiv/` | Úřední deska včetně archivu |
+| `/aktualne/zpravodaj-mesta/` | Archiv PDF zpravodaje (stránkovaný) |
+| `/aktualne/novinky/` | Novinky |
+| `/aktualne/kalendar-akci/` | Kalendář akcí |
+| `/samosprava/zastupitelstvo/clenove-1/` | Seznam zastupitelů |
+| `/samosprava/zastupitelstvo/terminy-zasedani/` | Termíny zasedání |
+| `/samosprava/zastupitelstvo/online-prenos-jednani/` | Online přenos jednání |
+| `/samosprava/vedeni-mesta/` | Vedení města |
+| `/urad/povinne-informace/subjekt-obchodni-spolecnosti-81.html` | Obchodní společnosti města |
+| `/kontakty/telefonni-seznam/` | Telefonní seznam úřadu |
+| `/urad/dokumenty/strategicke-dokumenty/` | Strategické dokumenty |
+
+### RSS neexistuje
+
+Ověřeno, všechny varianty vracejí **404**:
+
+```
+https://www.muml.cz/rss              → 404
+https://www.muml.cz/rss.xml          → 404
+https://www.muml.cz/aktualne/novinky/rss → 404
+```
+
+**Důsledek:** vše se musí scrapovat z HTML a hlídat přes snapshoty (diff-monitoring). Zároveň je to argument pro vlastní RSS feed portálu — město ho nemá a lidem by se hodil.
+
+### Stahování souborů
+
+Přílohy a PDF jdou přes redirect skript:
+
+```
+/modules/file_storage/download.php?file=<HASH>%7C<ID>
+```
+
+`HASH` je 8 znaků hex, `ID` je číslo souboru, oddělovač je URL-enkódovaná svislice (`%7C`). **Ani jedno nelze odvodit** — seznam odkazů se musí pokaždé sesbírat z příslušné stránky.
+
+Server vrací korektní `Content-Disposition` s původním názvem souboru, což je použitelné pro pojmenování:
+```
+Content-Disposition: attachment; filename="ml zpravodaj - 2026 - srpen.pdf"
+Content-Type: application/pdf
+```
+
+---
+
+## 3. Městský zpravodaj — PDF
+
+### Základní parametry
+
+- Měsíčník, aktuálně **ročník 11**
+- V archivu **122 čísel** (stránkovaný výpis)
+- Velikost kolísá extrémně: **2,5 MB až 117 MB**
+
+### Ověřeno na čísle 8/2026
+
+```
+Pages:        32
+Page size:    595.276 x 841.89 pts (A4)
+Creator:      Adobe InDesign 19.5 (Macintosh)
+Producer:     Adobe PDF Library 17.0
+CreationDate: Fri Jul 24 10:50:50 2026 UTC
+Encrypted:    no
+Velikost:     2 882 692 B
+```
+
+**Generováno z InDesignu → plná textová vrstva. OCR není potřeba.**
+
+### Extrakce textu
+
+Výtěžnost z jednoho čísla: **151 428 znaků / 14 192 slov**.
+
+**Zásadní zjištění: `pdftotext` použít BEZ přepínače `-layout`.**
+
+| Režim | Chování |
+|---|---|
+| `pdftotext -layout` | Zachová vizuální rozložení → **sloupce se prolínají**, text nelze číst souvisle |
+| `pdftotext` (výchozí) | **Správné pořadí čtení** napříč dvousloupcovou sazbou + **automatické spojení slov rozdělených na konci řádku** |
+
+Ukázka výstupu ve výchozím režimu — všimněte si, že „mykologický" je správně spojeno z „mykologic-" + „ký":
+
+```
+Město získalo dotaci na další
+přípravy záchrany vily LIL
+Mariánské Lázně získaly od Karlovarského kraje dotaci na další
+přípravné práce směřující k záchraně vily LIL. V posledních dvou
+letech už bylo provedeno digitální zaměření objektu, mykologický
+průzkum a odborné posouzení jeho stavebně-technického
+a statického stavu.
+```
+
+Čeština s diakritikou i uvozovky „…" vycházejí správně.
+
+### Detekce hranic článků
+
+`pdftotext -bbox-layout` vrací souřadnice každého slova:
+
+```xml
+<word xMin="28.346400" yMin="34.182000" xMax="55.513400" yMax="43.156000">Městský</word>
+```
+
+Z výšky boxu (`yMax - yMin`) lze odvodit **velikost písma** → detekce nadpisů.
+Z `xMin` lze odvodit **příslušnost ke sloupci**.
+
+Navržený postup: heuristika nad bboxy najde kandidáty na nadpisy a hranice, jazykový model pak výsledek ověří, vyčistí a doplní metadata (rubrika, osoby, témata).
+
+### OCR fallback
+
+I když aktuální čísla textovou vrstvu mají, **starší mohou být skenovaná**. Pipeline musí měřit hustotu extrahovaného textu a při poklesu pod práh (návrh: **< 200 znaků na stranu**) spustit `tesseract` s českým jazykovým modelem (`ces`).
+
+### Prostředí
+
+`poppler-utils` nemusí být v kontejneru přítomen. Ověřeno, že instalace funguje, ale **až po `apt-get update`** — bez něj selže stažení balíčku na 404 kvůli zastaralému indexu.
+
+---
+
+## 4. Hlídač státu
+
+Dostupný jako **MCP server** → strukturovaná data, žádný scraping. Ověřeno funkčně.
+
+### Město Mariánské Lázně, IČO 00254061
+
+| Ukazatel | Město | Celý holding |
+|---|---|---|
+| Smluv v registru | 4 349 | 6 502 |
+| Objem smluv | 3,98 mld. Kč | 6,28 mld. Kč |
+| Smlouvy s vážnými nedostatky | 41 | 111 |
+| Smlouvy bez uvedené ceny | 248 | 581 |
+| Smlouvy blízko limitu zakázky | 53 | 76 |
+| Dotací | 505 | 691 |
+| Objem dotací | 1,09 mld. Kč | 1,26 mld. Kč |
+
+**K-index:** stupeň **B** za roky 2022, 2023, 2024 i 2025 — „chování s malou mírou rizikových faktorů".
+
+Hlavní kategorie smluv: Stavebnictví, Technické služby, Dary a dotace.
+
+### Užitečné metriky, které Hlídač počítá sám
+
+- Meziroční změny objemu zakázek
+- Smlouvy s firmami, jejichž majitelé sponzorovali politické strany (31 smluv v roce 2023, 25 v roce 2022)
+- Podíl smluv bez uvedené ceny
+
+### Dostupné nástroje
+
+Registr smluv, veřejné zakázky, dotace, sponzoring politických stran, platy politiků, insolvence, rejstřík trestů právnických osob, rozhodnutí ÚOHS, K-index, legislativa v přípravě (VeKLEP).
+
+**Poznámka:** data jsou v češtině, dotazy je nutné psát česky.
+
+---
+
+## 5. Městský holding — subjekty k monitoringu
+
+Každý subjekt má vlastní IČO a tedy vlastní stopu v registru smluv, dotacích a zakázkách. **Monitoring musí pokrývat všechny, ne jen město.**
+
+### Obchodní společnosti
+
+| Společnost | Podíl města | IČO |
+|---|---|---|
+| Infocentrum Mariánské Lázně s.r.o. | 100 % | *dohledat* |
+| TDS spol. s r.o. | 100 % | *dohledat* |
+| Lázeňské lesy spol. s r.o. | 100 % | *dohledat* |
+| DEVELOP CENTRUM Mariánské Lázně s.r.o. | 100 % | *dohledat* |
+| MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. | částečný | *dohledat* |
+| Nemocnice Mariánské Lázně s.r.o. | částečný | *dohledat* |
+
+> Web města neuvádí IČO ani přesné podíly u částečně vlastněných firem. Dohledat v obchodním rejstříku (justice.cz) při stavbě sběračů.
+
+### Příspěvkové organizace a navázané subjekty
+
+| IČO | Název |
+|---|---|
+| 00074071 | Technické služby Mariánské Lázně |
+| 00368997 | Městské muzeum a galerie Mariánské Lázně |
+| 00575143 | Domov pro seniory a dům s pečovatelskou službou |
+| 19882629 | Městské divadlo Mariánské Lázně |
+| 47720654 | Městská knihovna Mariánské Lázně |
+| 72559772 | Správa městských sportovišť |
+| 26320053 | Západočeský symfonický orchestr Mariánské Lázně o.p.s. |
+| 47721472 | ZUŠ Fryderyka Chopina |
+| 69979430 | Městský dům dětí a mládeže |
+| 47723505 | ZŠ JIH, Komenského 459 |
+| 47724978 | ZŠ Vítězství |
+| 70997543 | ZŠ Úšovice, Školní náměstí 472 |
+| 47723483 | MŠ Vora, Za Tratí 687 |
+| 70997560 | MŠ Křižíkova 555 |
+| 70997578 | MŠ Hlavní 440 |
+| 70997586 | MŠ Úšovice, Skalníkova 518 |
+| 70997594 | MŠ Na Třešňovce 603 |
+| 72073993 | Společenství pro dům Danzer, Hlavní třída 131/50 |
+
+Celkem **24 subjektů** k monitoringu včetně města a obchodních společností.
+
+---
+
+## 6. Zastupitelstvo — složení
+
+21 členů, volební období od roku 2022.
+
+| Jméno | Uskupení | Funkce |
+|---|---|---|
+| Martin Hurajčík | ANO 2011 | **starosta** |
+| Mgr. Miloslav Pelc | Změna pro ML | **místostarosta** |
+| Mgr. Luboš Borka | Město sobě | zastupitel |
+| Ing. Jan Budka | ANO 2011 | zastupitel |
+| MUDr. Roman Dubnický | ANO 2011 | zastupitel |
+| Mgr. Dušan Drexler | STAN | zastupitel |
+| Ing. arch. Vojtěch Franta | Piráti | zastupitel |
+| Mgr. Petr Hála | Změna pro ML | zastupitel |
+| PaedDr. Alena Hálová | Změna pro ML | zastupitelka |
+| Martin Hladík | SPD | zastupitel |
+| JUDr. Miloslav Chadim | ANO 2011 | zastupitel |
+| Mgr. Vladimír Kafka | ANO 2011 | zastupitel |
+| Ing. Martin Kalina | Piráti | zastupitel |
+| Zdeněk Král | ODS Plus | zastupitel |
+| Ing. arch. Ludmila Míková | ODS Plus | zastupitelka |
+| Ivana Mottlová | ANO 2011 | zastupitelka |
+| Bc. Josef Pavlovic | Piráti | zastupitel |
+| Mgr. Jana Roubalová | ANO 2011 | zastupitelka |
+| Štěpán Stráník | SPD | zastupitel |
+| Ing. Kamil Špindler | STAN | zastupitel |
+| Samuel Zabolotný | ANO 2011 | zastupitel |
+
+**Koalice:** ANO 2011 + Změna pro Mariánské Lázně + ODS Plus + Město sobě — **14 z 21 mandátů**.
+
+**Změna 2026:** v červnu 2026 rezignoval na funkci 1. místostarosty **Samuel Zabolotný** (ANO); v zastupitelstvu zůstává. Sběrač musí počítat s tím, že se funkce v průběhu období mění — proto **ukládat funkce s platností od–do**, ne jako aktuální stav.
+
+---
+
+## 7. Média a regionální zpravodajství
+
+| Zdroj | URL | Poznámka |
+|---|---|---|
+| Český rozhlas Karlovy Vary | `vary.rozhlas.cz` | Regionální zpravodajství |
+| Zprávy Karlovarsko | `zpravykarlovarsko.cz` | Sleduje komunální politiku ML detailně |
+| Chebský deník | `denik.cz` | Okresní zpravodajství |
+| Karlovarský kraj | `kr-karlovarsky.cz` | Tiskové zprávy kraje |
+
+**Sledované výrazy:** „Mariánské Lázně", „mariánskolázeňsk*", jména vedení města, názvy městských firem, „vila LIL", „UNESCO Mariánské Lázně".
+
+**Co se ukládá:** titulek, zdroj, datum, URL, vlastní dvouvětné shrnutí. **Nikdy plný text.**
+
+---
+
+## 8. Počasí a výstrahy
+
+| Data | Zdroj | Poznámka |
+|---|---|---|
+| Předpověď | Open-Meteo API | Zdarma, bez klíče, bez registrace |
+| Výstrahy | ČHMÚ (SIVS) | Okres Cheb |
+| Kvalita ovzduší | ČHMÚ | Nejbližší měřicí stanice |
+
+Souřadnice Mariánských Lázní: **49,9646° N, 12,7010° E**.
+
+---
+
+## 9. Facebook — proč to nejde
+
+| Cesta | Stav |
+|---|---|
+| Skupiny přes API | **Neexistuje** — Meta nenabízí veřejné API pro čtení skupin |
+| Scraping skupin | **Porušuje podmínky užití** + technicky nestabilní |
+| Graph API pro stránky | Funguje **jen pro stránky, které sám spravujete** |
+| Meta MCP konektor | Zaměřen na **reklamu**, ne na obsah skupin |
+
+**Řešení:** ruční vstup provozovatele, 3–5 vět týdně o tom, co ve skupinách rezonovalo. Souhrn témat, **nikdy jmenovité citace občanů**.
+
+---
+
+## 10. Shrnutí dostupnosti
+
+| Zdroj | Formát | Náročnost | Stav |
+|---|---|---|---|
+| Usnesení a hlasování | HTML | nízká *(nutný UA)* | ✅ ověřeno |
+| Zpravodaj PDF | PDF s textovou vrstvou | střední *(segmentace článků)* | ✅ ověřeno |
+| Hlídač státu | MCP, strukturovaná data | nízká | ✅ ověřeno |
+| Zastupitelé | HTML | nízká | ✅ ověřeno |
+| Městské firmy | HTML | nízká *(chybí IČO)* | ⚠️ částečně |
+| Úřední deska | HTML | střední *(bez RSS)* | ✅ dostupné |
+| Novinky a kalendář | HTML | střední *(bez RSS)* | ✅ dostupné |
+| Počasí | JSON API | nízká | ✅ dostupné |
+| Média | web search | střední | ✅ dostupné |
+| Facebook | — | **neproveditelné** | ❌ ruční režim |
