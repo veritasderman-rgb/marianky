@@ -12,7 +12,7 @@ ZDROJE (ověřeno 17. 8. 2026)
 | `…/uzemne-planovaci-dokumentace-a-studie/marianske-lazne/` | vlastní dokumentace ML, po kategoriích |
 | `/urad/uzemni-planovani/novy-uzemni-plan-marianske-lazne/` | průběh pořizování nového ÚP — datované kroky |
 | `/urad/uzemni-planovani/uzemne-analyticke-podklady/` | ÚAP ORP Mariánské Lázně |
-| `/urad/uzemni-planovani/urad-uzemniho-planovani/` | „na čem zrovna pracujeme" — rozpracované věci |
+| `/urad/uzemni-planovani/urad-uzemniho-planovani/` | „na čem zrovna pracujeme“ — rozpracované věci |
 | `data/usneseni/**` | usnesení s tagem `uzemni-plan` (číselník `config/tagy.json`) |
 
 Mariánské Lázně jsou obec s rozšířenou působností a vedou úřad územního
@@ -31,10 +31,10 @@ dokumentace se nestahuje.
    Přepínač `--overit` obojí porovná; ověřeno, že množina souborů je
    shodná (234 = 234), liší se jen přiřazení kategorie.
 
-2. **„Vloženo" není datum vydání.** U souboru je datum nahrání do
+2. **„Vloženo“ není datum vydání.** U souboru je datum nahrání do
    úložiště webu (celý archiv změn ÚP má 25. 4. 2018 — den migrace webu).
    Datum vydání a účinnosti se bere odjinud: z popisku kategorie na
-   rozcestníku, z usnesení zastupitelstva („Vydání změny č. 27 …") nebo
+   rozcestníku, z usnesení zastupitelstva („Vydání změny č. 27 …“) nebo
    z čísla opatření obecné povahy v názvu. Každý údaj nese `datum_zdroj`
    a odvozené údaje mají `odvozeno: true`.
 
@@ -44,7 +44,7 @@ dokumentace se nestahuje.
    datum zůstane `null`, dokud ho nedoloží usnesení.
 
 4. **Starší PDF mají rozbité kódování diakritiky.** V textových částech
-   změn z roku 2012 vychází „Zm ny .23" místo „Změny č.23"; od roku 2014
+   změn z roku 2012 vychází „Zm ny .23“ místo „Změny č.23“; od roku 2014
    je to v pořádku. Je to vlastnost zdrojových PDF, ne chyba extrakce —
    text se ukládá tak, jak vyjde, a soubor nese `diakritika_poskozena`.
 
@@ -92,7 +92,7 @@ ROZCESTNIK = BASE + "/urad/uzemni-planovani/uzemne-planovaci-dokumentace-a-studi
 NOVY_PLAN = BASE + "/urad/uzemni-planovani/novy-uzemni-plan-marianske-lazne/"
 UAP = BASE + "/urad/uzemni-planovani/uzemne-analyticke-podklady/"
 URAD_UP = BASE + "/urad/uzemni-planovani/urad-uzemniho-planovani/"
-# Tatáž stránka jako rozcestník, jen pod jinou adresou v sekci „město".
+# Tatáž stránka jako rozcestník, jen pod jinou adresou v sekci „město“.
 ZRCADLO = BASE + "/mesto/investice-a-rozvoj/uzemni-planovani/"
 
 OBEC_ML = "marianske-lazne"
@@ -171,7 +171,7 @@ def _iso(rok: int, mesic: int = 1, den: int = 1) -> str | None:
 def datum_z_textu(text: str) -> tuple[str | None, str | None, str | None]:
     """Vrátí (ISO datum, přesnost, doslovný zápis) prvního data v textu.
 
-    Přesnost je `den`, `mesic` nebo `rok` — bez ní by se z „(2002)" stalo
+    Přesnost je `den`, `mesic` nebo `rok` — bez ní by se z „(2002)“ stalo
     1. ledna 2002 a graf by tvrdil něco, co ve zdroji není.
     """
     t = (text or "").replace("\xa0", " ")
@@ -214,8 +214,8 @@ def _razeni(iso: str | None) -> str:
 def _popisek(a) -> str:
     """Celý popisek odkazu i s tím, co za odkaz vyteklo mimo `<a>`.
 
-    Editor webu odkazy uzavírá nedbale: „…po změnách 1-2</a>7" nebo
-    „…náves (2022</a>)". Kdo by četl jen text `<a>`, přišel by o číslo
+    Editor webu odkazy uzavírá nedbale: „…po změnách 1-2</a>7“ nebo
+    „…náves (2022</a>)“. Kdo by četl jen text `<a>`, přišel by o číslo
     poslední změny i o závorku s rokem.
     """
     casti = [a.text() or ""]
@@ -283,7 +283,7 @@ JEDNOTKY = {"b": 1, "kb": 1000, "mb": 1000 ** 2, "gb": 1000 ** 3}
 
 
 def _velikost_b(text: str | None) -> int | None:
-    """„29,64 MB" → bajty. Web sází desetinnou čárku a mezerový tisíc."""
+    """„29,64 MB“ → bajty. Web sází desetinnou čárku a mezerový tisíc."""
     if not text:
         return None
     m = re.match(r"\s*([\d .,]+?)\s*([kKMG]?B)\s*$", text)
@@ -417,7 +417,7 @@ RE_OOP = re.compile(r"OOP\s*č\.\s*(\d+)\s*/\s*ÚP\s*/\s*(\d{4})", re.I)
 
 
 def cisla_zmen(text: str) -> list[int]:
-    """„Změna č. 08-11" → [8,9,10,11], „Změna č. 20,22" → [20,22].
+    """„Změna č. 08-11“ → [8,9,10,11], „Změna č. 20,22“ → [20,22].
 
     Rozsah `N-M` se rozvíjí, `N/M` je podvarianta jedné změny (03/3 = 3).
     Odvozeno z názvu dokumentu — proto to výstup označuje `odvozeno`.
@@ -541,21 +541,32 @@ def _overit_proti_korenu(url_obce: str, dokumenty: list[dict], log: Log) -> dict
 # Usnesení k územnímu plánu
 # ==========================================================================
 
-# Klasifikace usnesení podle názvu bodu. Pořadí rozhoduje.
+# Klasifikace usnesení podle názvu bodu. Pořadí rozhoduje — první shoda vyhrává.
+#
+# Město rozlišuje dva plány názvem a drží se toho důsledně:
+#   „Územní plán města Mariánské Lázně“ = platný plán z roku 2002
+#   „Územní plán Mariánské Lázně“       = nový, pořizovaný od roku 2015
+# Rozlišit je podle názvu proto jde, ale spolehlivější jsou návěští jako
+# „právní stav“ nebo „úplné znění“, která se u nového plánu nevyskytují.
 PROCESY = [
-    (re.compile(r"vydání změn|změn[ay]?\s*č\.?\s*\d+.{0,30}(ÚP|územní|úz\.)|"
-                r"ÚPD změn|změny ÚP|(ÚP|územní(ho)? plán\w*)[^.]{0,20}změn", re.I),
+    (re.compile(r"vydání\s+změn|změn\w*\s*(č\.)?\s*\d+.{0,30}(ÚP|územní|úz\.)|"
+                r"ÚPD\s+změn|změny\s+ÚP|změn\w*\s+\d+\s*(a\s*\d+\s*)?ÚP", re.I),
      "zmeny-stavajiciho-up"),
-    (re.compile(r"regulační plán", re.I), "regulacni-plan"),
-    (re.compile(r"územní(ch)? stud|zastav\w* studi|urbanistické řešení", re.I), "uzemni-studie"),
-    (re.compile(r"nov[ýéáou]\w*\s+(územní|ÚP)|urbanistick\w+ soutěž|soutěž.{0,25}ideov|"
-                r"zadání\s+(pro\s+)?územní|územní plán mariánské lázně|"
-                r"návrh\s+zadání|návrh\s+územního\s+plánu|úprav\w*\s+návrhu\s+územního\s+plánu|"
-                r"standardizace územního plánu|ÚP ML|územní plán ML|"
-                r"územní plán mariánské lázně|zpracování n\w* územního plánu", re.I),
+    (re.compile(r"regulační\s+plán", re.I), "regulacni-plan"),
+    (re.compile(r"územní(ch)?\s+stud|zastav\w*\s+studi|urbanistické\s+řešení", re.I),
+     "uzemni-studie"),
+    (re.compile(r"právní\s+stav|úplné\s+znění|stávajícího\s+územního\s+plánu|"
+                r"vyhotovení\s+stávajícího", re.I), "stavajici-up"),
+    (re.compile(r"nov[ýéáou]\w*\s+(územní|ÚP)|urbanistick\w+\s+soutěž|soutěž\w*\s+o\s+návrh|"
+                r"soutěžní\w*\s+podmín|ideov\w+\s+návrh|"
+                r"zadání\s+(pro\s+)?územní|návrh\s+zadání|návrh\w*\s+územního\s+plánu|"
+                r"úprav\w*\s+(návrhu\s+)?územního\s+plánu|standardizace\s+územního\s+plánu|"
+                r"zpracování\s+(nového\s+)?[Úú]zemního\s+plánu|"
+                r"územní\w*\s+plán\w*\s+(mariánsk|ML\b)|ÚP\s*ML\b|"
+                r"na\s+územní\s+plán", re.I),
      "novy-up"),
-    (re.compile(r"pořizování územně plánovací dokumentace|určený zastupitel|"
-                r"určení člena zastupitelstva.{0,40}územní", re.I), "porizovani-obecne"),
+    (re.compile(r"pořizování\s+územně\s+plánovací\s+dokumentace|určený\s+zastupitel|"
+                r"určení\s+člena\s+zastupitelstva.{0,40}územní", re.I), "porizovani-obecne"),
 ]
 RE_VYDANI_ZMENY = re.compile(r"[Vv]ydání\s+změn[ay]?\s*č\.?\s*([\d,\s.a]+)")
 
@@ -568,7 +579,7 @@ def _proces(nazev: str) -> str:
 
 
 def _vydane_zmeny(nazev: str) -> list[int]:
-    """Z „Vydání změn č.23, 24, 25, 26 ÚP …" vytáhne čísla vydaných změn."""
+    """Z „Vydání změn č.23, 24, 25, 26 ÚP …“ vytáhne čísla vydaných změn."""
     m = RE_VYDANI_ZMENY.search(nazev or "")
     if not m:
         return []
@@ -621,7 +632,7 @@ def usneseni(log: Log) -> list[dict]:
 def zmeny_up(dokumenty: list[dict], usn: list[dict], log: Log) -> dict:
     """Shrne změny platného ÚP: kolik jich je, čím jsou doložené a kdy vyšly.
 
-    Datum vydání se bere z usnesení zastupitelstva („Vydání změny č. …"),
+    Datum vydání se bere z usnesení zastupitelstva („Vydání změny č. …“),
     protože oznámení o vydání OOP jsou skeny bez textové vrstvy. Kde
     usnesení není (archiv usnesení sahá k roku 2012, změny 1–19 jsou
     starší), zůstává datum `null` a je uvedený jen rok z čísla OOP —
@@ -661,7 +672,7 @@ def zmeny_up(dokumenty: list[dict], usn: list[dict], log: Log) -> dict:
     log.info("změny platného ÚP", celkem=len(radky), s_datem_vydani=s_datem)
     return {
         "vysvetlivky": {
-            "cislo": "Číslo změny odvozené z názvu dokumentu (např. „Změna č. 08-11").",
+            "cislo": "Číslo změny odvozené z názvu dokumentu (např. „Změna č. 08-11“).",
             "datum_vydani": "Datum jednání zastupitelstva, které změnu vydalo. "
                             "null znamená, že usnesení nemáme — archiv usnesení "
                             "sahá k roku 2012, změny 1–19 jsou starší.",
@@ -683,29 +694,45 @@ RE_ODDELOVAC = re.compile(r"^_{5,}$")
 # Etapy pořizování územního plánu podle stavebního zákona. Přiřazují se
 # podle klíčových slov v textu kroku; pořadí rozhoduje o tom, co vyhraje.
 ETAPY = [
+    ("schvaleni-stavajiciho-up", "Schválení platného územního plánu (2002)",
+     re.compile(r"stávající\s+územní\s+plán|schválen\w*\s+zastupitelstvem\s+města\s+dne", re.I)),
     ("verejne-projednani", "Veřejné projednání",
-     re.compile(r"veřejné(ho|m)? projednání|veřejné projednání|opakované veřejné", re.I)),
+     re.compile(r"veřejné\w*\s+projednání|opakovan\w+\s+veřejn", re.I)),
     ("uprava-po-spolecnem-jednani", "Úprava návrhu po společném jednání",
-     re.compile(r"pokyny k úpravě|úprav\w* návrhu|vyhodnocení projednané etapy|"
-                r"vyhodnocení stanovisek|stanovisk\w+|dohodování", re.I)),
+     re.compile(r"pokyny\s+k\s+úpravě|úprav\w*\s+(návrhu|po\s+společném)|"
+                r"vyhodnocení\s+projednané\s+etapy|vyhodnocení\s+stanovisek|"
+                r"stanovisk\w+|dohodování", re.I)),
     ("spolecne-jednani", "Společné jednání o návrhu",
-     re.compile(r"společné(ho|mu)? jednání|společném projednání|připomínkovat", re.I)),
+     re.compile(r"společn\w+\s+jednání|společném\s+projednání|připomínkovat", re.I)),
     ("navrh-pred-spolecnym-jednanim", "Pracovní návrh před společným jednáním",
-     re.compile(r"před společným jednáním|beseda s veřejností|diskuze nad návrhem|"
-                r"dotazník|vlastní podnět", re.I)),
+     re.compile(r"před\s+společným\s+jednáním|beseda\s+s\s+veřejností|"
+                r"diskuze\s+nad\s+návrhem|dotazník|vlastní\s+podnět", re.I)),
+    ("vydani-noveho-up", "Vydání nového územního plánu",
+     re.compile(r"vydání\s+(nového\s+)?[Úú]zemního\s+plánu", re.I)),
     ("zadani", "Zadání územního plánu",
      re.compile(r"zadání", re.I)),
+    # Web má v nadpisu překlep „průzlumy“ — zdroj se opravuje, ne obchází.
     ("pruzkumy-rozbory", "Doplňující průzkumy a rozbory",
-     re.compile(r"průzkumy a rozbory|veřejné setkání", re.I)),
+     re.compile(r"pr[uů]z[kl]um\w*\s+a\s+rozbor|veřejné\s+setkání", re.I)),
     ("urbanisticka-soutez", "Urbanistická soutěž o návrh",
-     re.compile(r"urbanistick\w+ soutěž|soutěž o návrh|soutěžní|ideový návrh", re.I)),
+     re.compile(r"urbanistick\w+\s+soutěž|soutěž\w*\s+o\s+návrh|soutěžní|ideov\w+\s+návrh", re.I)),
 ]
 
 
-def _etapa(text: str) -> tuple[str, str]:
-    for kod, nazev, vzor in ETAPY:
-        if vzor.search(text or ""):
-            return kod, nazev
+def _etapa(text: str, zaloha: str = "") -> tuple[str, str]:
+    """Zařadí text do etapy pořizování. Vlastní text kroku má přednost.
+
+    Kdyby rozhodoval text celého bloku, přebila by jedna zmínka o
+    průzkumech a rozborech všechny kroky v něm — na stránce nového ÚP
+    stojí zpráva o soutěži z roku 2016 ve stejném bloku jako zpráva
+    o průzkumech z roku 2017, protože je úřad neoddělil.
+    """
+    for text_kandidat in (text, zaloha):
+        if not text_kandidat:
+            continue
+        for kod, nazev, vzor in ETAPY:
+            if vzor.search(text_kandidat):
+                return kod, nazev
     return "prubeh", "Průběh pořizování"
 
 
@@ -749,14 +776,31 @@ def _odkazy_na_kategorie(node) -> list[str]:
     return out
 
 
-def _kroky_z_odstavce(text: str) -> list[tuple[str, str, str]]:
+HRANICE_VETY = (". ", "! ", "? ", ": ", "; ", "\n", ":")
+
+
+def _zacatek_vety(text: str, pozice: int, nejdrive: int) -> int:
+    """Najde začátek věty, ve které leží datum na dané pozici."""
+    zac = nejdrive
+    for hranice in HRANICE_VETY:
+        i = text.rfind(hranice, nejdrive, pozice)
+        if i != -1:
+            zac = max(zac, i + len(hranice))
+    return zac
+
+
+def _kroky_z_odstavce(text: str) -> list[dict]:
     """Rozseká odstavec na kroky podle dat v něm.
 
     Úřad píše do jednoho odstavce celý řetěz jednání:
     „dne 22.4.2024 - zahájeno jednání …, 16.7.2024 - jednání …,
-    31.7.2024 - rozeslán zápis …". Každé datum tak začíná vlastní krok;
+    31.7.2024 - rozeslán zápis …“. Každé datum tak začíná vlastní krok;
     text kroku sahá k dalšímu datu. Bez tohohle řezu by z pěti kroků byl
     jeden a osa by lhala o tom, kdy se co dělo.
+
+    Popis kroku začíná na začátku věty, ve které datum stojí — jinak by
+    z „Projednání návrhu Zadání proběhlo v termínu od 16. 5. 2018 do“
+    zbylo jen „od 16. 5. 2018 do“ a nebylo by poznat, o co šlo.
     """
     if not text:
         return []
@@ -765,16 +809,48 @@ def _kroky_z_odstavce(text: str) -> list[tuple[str, str, str]]:
     nalezy.sort()
     if not nalezy:
         return []
+    # Odstavec, který cituje paragraf zákona, nepopisuje krok pořizování,
+    # ale právní rámec — a data v něm jsou lhůty, ne události.
+    pravni = "§" in text
     out = []
     for i, (zac, konec, doslova) in enumerate(nalezy):
-        dalsi = nalezy[i + 1][0] if i + 1 < len(nalezy) else len(text)
         iso, presnost, _ = datum_z_textu(doslova)
-        # Předchozí slovo („dne", „do", „od") mění smysl kroku, proto se bere s sebou.
-        pred = text[max(0, zac - 14):zac].strip().split()
-        popis = (" ".join(pred[-1:]) + " " + text[zac:dalsi]).strip(" ,.;-–—")
-        if iso:
-            out.append((iso, presnost, re.sub(r"\s+", " ", popis).strip()))
+        if not iso:
+            continue
+        dalsi = nalezy[i + 1][0] if i + 1 < len(nalezy) else len(text)
+        zacatek = _zacatek_vety(text, zac, nalezy[i - 1][1] if i else 0)
+        popis = re.sub(r"\s+", " ", text[zacatek:dalsi]).strip(" ,.;-–—")
+        out.append({"datum": iso, "presnost": presnost, "popis": popis,
+                    "pravni_odkaz": pravni})
     return out
+
+
+def _druh_kroku(krok: dict) -> str:
+    """Krok, lhůta, nebo odkaz na předpis?
+
+    Bez tohohle rozlišení by se stav pořizování určil podle 31. 12. 2028 —
+    což není krok, který proběhl, ale zákonný termín, do kterého starý
+    územní plán pozbude platnosti.
+    """
+    if krok.get("pravni_odkaz"):
+        return "pravni-ramec"
+    if krok["datum"] > datetime.now(timezone.utc).strftime("%Y-%m-%d"):
+        return "lhuta"
+    return "krok"
+
+
+def _bez_duplicit(kroky: list[dict]) -> list[dict]:
+    """Jedno datum uvnitř zprávy = jeden krok; zůstane nejdelší popis.
+
+    Úřad tutéž událost v jedné zprávě zmíní víckrát (v textu a znovu
+    v názvu přiloženého zápisu z jednání). Na ose by z toho byly dvě.
+    """
+    nejlepsi: dict[str, dict] = {}
+    for k in kroky:
+        stavajici = nejlepsi.get(k["datum"])
+        if stavajici is None or len(k["popis"]) > len(stavajici["popis"]):
+            nejlepsi[k["datum"]] = k
+    return sorted(nejlepsi.values(), key=lambda k: k["datum"])
 
 
 def novy_plan(popisky: dict[str, dict], log: Log) -> dict:
@@ -806,12 +882,19 @@ def novy_plan(popisky: dict[str, dict], log: Log) -> dict:
         text = cistit("\n".join(o for o in odstavce if o))
         if not text:
             continue
-        kroky = []
+        kroky: list[dict] = []
         for u in blok:
-            for iso, presnost, popis in _kroky_z_odstavce(_txt(u)):
-                kod, nazev = _etapa(popis + " " + text[:200])
-                kroky.append({"datum": iso, "presnost": presnost, "popis": popis,
-                              "etapa": kod, "etapa_nazev": nazev})
+            odstavec = _txt(u)
+            for krok in _kroky_z_odstavce(odstavec):
+                kod, nazev = _etapa(krok["popis"], text[:400])
+                kroky.append({
+                    **krok,
+                    "etapa": kod if not krok["pravni_odkaz"] else "pravni-ramec",
+                    "etapa_nazev": nazev if not krok["pravni_odkaz"] else "Právní rámec",
+                    "druh": _druh_kroku(krok),
+                    "kontext": odstavec[:600],
+                })
+        kroky = _bez_duplicit(kroky)
         soubory = []
         for u in blok:
             soubory += [s for s in _soubory_v_uzlu(u)
@@ -834,34 +917,45 @@ def novy_plan(popisky: dict[str, dict], log: Log) -> dict:
         raise ZdrojSelhal("Na stránce nového ÚP se nenašel ani jeden datovaný krok")
 
     # Etapy z popisků kategorií na rozcestníku — dávají měsíční přesnost
-    # tam, kde stránka procesu mluví jen obecně („v roce 2016").
+    # tam, kde stránka procesu mluví jen obecně („v roce 2016“).
     milniky = []
     for p in popisky.values():
         if p["obec"] != OBEC_ML or not p["datum"]:
             continue
         kod, nazev = _etapa(p["popisek"])
+        druh, druh_nazev = druh_kategorie([p["popisek"]])
         milniky.append({"datum": p["datum"], "presnost": p["presnost"],
                         "popis": p["popisek"], "etapa": kod, "etapa_nazev": nazev,
+                        "druh": druh, "druh_nazev": druh_nazev,
                         "kateg": p["kateg"], "datum_doslova": p["datum_doslova"]})
     milniky.sort(key=lambda m: _razeni(m["datum"]))
 
     kontakt = None
-    m = re.search(r"kontaktní osoba:\s*([^,]+),\s*([\d ]{9,}),\s*(\S+@\S+)", obsah.text())
+    cely_text = re.sub(r"\s+", " ", obsah.text().replace("\xa0", " "))
+    m = re.search(r"kontaktní osoba:\s*([^,]+?),\s*([\d ]{9,}?),\s*(\S+@[\w.]+)", cely_text, re.I)
     if m:
         kontakt = {"jmeno": m.group(1).strip(), "telefon": m.group(2).strip(),
                    "email": m.group(3).strip().rstrip(".")}
 
-    posledni = max(kroky, key=lambda k: _razeni(k["datum"]))
+    probehle = [k for k in kroky if k["druh"] == "krok"]
+    lhuty = sorted((k for k in kroky if k["druh"] in ("lhuta", "pravni-ramec")
+                    and k["datum"] > datetime.now(timezone.utc).strftime("%Y-%m-%d")),
+                   key=lambda k: k["datum"])
+    posledni = max(probehle or kroky, key=lambda k: _razeni(k["datum"]))
     stav = {
+        # Poslední krok, který podle stránky opravdu proběhl. Budoucí termíny
+        # a citace zákona se sem nepočítají, jinak by fáze vyšla z roku 2028.
         "posledni_krok": posledni,
         "etapa": posledni["etapa"],
         "etapa_nazev": posledni["etapa_nazev"],
+        "nejblizsi_lhuta": lhuty[0] if lhuty else None,
         # Nejnovější zpráva na stránce je to, co úřad sám uvádí jako stav.
         "text_nahore": zpravy[0]["text"] if zpravy else None,
         "zjisteno": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
     }
     log.info("nový územní plán", zprav=len(zpravy), kroku=len(kroky),
-             milniku=len(milniky), etapa=stav["etapa"])
+             milniku=len(milniky), etapa=stav["etapa"],
+             posledni=posledni["datum"])
     return {
         "url": NOVY_PLAN,
         "vysvetlivky": {
@@ -894,39 +988,60 @@ def uap(log: Log) -> dict:
         raise ZdrojSelhal(f"Na {UAP} chybí blok editor_content")
     obsah = obsahy[-1]
 
-    dokumenty, sekce = [], None
+    # Stránka je členěná dvakrát: h2/h3 drží aktualizaci („6. úplná
+    # aktualizace 2024“), h4/h5 druh výkresu. Bez obojího by u souboru
+    # nebylo poznat, ke které aktualizaci patří.
+    dokumenty, sekce, aktualizace_sekce = [], None, None
     for uzel in obsah.iter():
-        if uzel.tag in ("h2", "h3", "h4", "h5"):
+        if uzel.tag in ("h1", "h2", "h3"):
+            nadpis = _txt(uzel)
+            if nadpis:
+                aktualizace_sekce = nadpis
+                sekce = None
+        elif uzel.tag in ("h4", "h5", "h6"):
             nadpis = _txt(uzel)
             if nadpis:
                 sekce = nadpis
         for s in _soubory_v_uzlu(uzel):
             if s["url"] in {d["url"] for d in dokumenty}:
                 continue
-            dokumenty.append({**s, "sekce": sekce})
+            rok = re.search(r"(20\d{2})", aktualizace_sekce or "")
+            dokumenty.append({**s, "sekce": sekce, "aktualizace": aktualizace_sekce,
+                              "rok_aktualizace": int(rok.group(1)) if rok else None})
 
     text = cistit(obsah.text())
     if not dokumenty:
         raise ZdrojSelhal("Na stránce ÚAP není ani jeden dokument")
 
-    # Nadpis „6. úplná aktualizace 2024" je strukturovaný údaj, prózu pod ním
+    # Nadpis „6. úplná aktualizace 2024“ je strukturovaný údaj, prózu pod ním
     # nerozebíráme — ukládá se doslova, ať si ji přečte člověk.
-    aktualizace = []
+    aktualizace: dict[int, dict] = {}
     for m in re.finditer(r"(\d+)\.\s*úplná aktualizace\s*(\d{4})?", text, re.I):
-        aktualizace.append({"poradi": int(m.group(1)),
-                            "rok": int(m.group(2)) if m.group(2) else None,
-                            "doslova": m.group(0).strip()})
+        poradi, rok = int(m.group(1)), int(m.group(2)) if m.group(2) else None
+        stavajici = aktualizace.get(poradi)
+        if stavajici is None or (rok and not stavajici["rok"]):
+            aktualizace[poradi] = {"poradi": poradi, "rok": rok,
+                                   "doslova": m.group(0).strip(),
+                                   "dokumentu": sum(1 for d in dokumenty
+                                                    if d["rok_aktualizace"] == rok) if rok else 0}
+    aktualizace_list = [aktualizace[k] for k in sorted(aktualizace)]
     porizovatel = None
     m = re.search(r"Pořizovatel:\s*(.+?)(?:\s{2,}|Územně analytické)", text)
     if m:
         porizovatel = m.group(1).strip()
 
-    log.info("ÚAP", dokumentu=len(dokumenty), aktualizaci=len(aktualizace))
+    log.info("ÚAP", dokumentu=len(dokumenty), aktualizaci=len(aktualizace_list))
     return {
         "url": UAP,
         "nazev": "Územně analytické podklady ORP Mariánské Lázně",
         "porizovatel": porizovatel,
-        "aktualizace": aktualizace,
+        "aktualizace": aktualizace_list,
+        "vysvetlivky": {
+            "aktualizace": "Pořadí a rok úplné aktualizace ÚAP. Vytaženo z nadpisů "
+                           "a z textu stránky; prózu o historii ÚAP modul nerozebírá "
+                           "a nechává ji v text_stranky tak, jak ji město napsalo.",
+            "rok_aktualizace": "Rok z nadpisu sekce, pod kterou soubor na stránce leží.",
+        },
         "text_stranky": text,
         "dokumenty": dokumenty,
         "pocty": {"dokumentu": len(dokumenty)},
@@ -970,7 +1085,7 @@ def obce_orp(obce: dict[str, dict], log: Log) -> dict:
             "dokumentu": "Počet souborů v kořenovém výpisu obce, ne počet "
                          "územních plánů. Jeden územní plán je desítky výkresů.",
             "rozpracovano": "Věty ze stránky úřadu územního plánování „na čem "
-                            "zrovna pracujeme". Obec je k nim přiřazená podle "
+                            "zrovna pracujeme“. Obec je k nim přiřazená podle "
                             "názvu v textu — je to odhad, ne údaj ze zdroje.",
         },
         "obci": len(out),
@@ -1101,26 +1216,37 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
     """
     udalosti: list[dict] = []
 
+    # Tutéž událost úřad zmiňuje v několika zprávách pod sebou (beseda
+    # 24. 6. 2019 je na stránce třikrát). Na ose má být jednou, s tím
+    # nejpodrobnějším popisem, jaký o ní web má.
+    z_webu: dict[str, dict] = {}
     for zprava in plan["zpravy"]:
-        for i, krok in enumerate(zprava["kroky"]):
-            udalosti.append({
-                "id": f"uzemni-plan:web:{krok['datum']}-{zprava['poradi']}-{i}",
+        for krok in zprava["kroky"]:
+            stavajici = z_webu.get(krok["datum"])
+            if stavajici and len(stavajici["nadpis"]) >= len(krok["popis"]):
+                stavajici["zmineno_krat"] += 1
+                continue
+            z_webu[krok["datum"]] = {
+                "id": f"uzemni-plan:web:{krok['datum']}",
                 "datum": krok["datum"],
                 "presnost": krok["presnost"],
                 "razeni": _razeni(krok["datum"]),
                 "rok": int(krok["datum"][:4]),
                 "typ": "uzemni-plan",
-                "nadpis": krok["popis"][:180],
-                "popis": None,
+                "nadpis": krok["popis"],
+                "popis": krok.get("kontext"),
                 "etapa": krok["etapa"],
                 "etapa_nazev": krok["etapa_nazev"],
+                "druh": krok["druh"],
+                "zmineno_krat": (stavajici or {}).get("zmineno_krat", 0) + 1,
                 "jistota": "fakt",
                 "jistota_duvod": None,
                 "castka_czk": None,
                 "url": NOVY_PLAN,
                 "zdroj": "web-mesta",
                 "zdroj_soubor": f"data/{CIL}/novy_plan.json",
-            })
+            }
+    udalosti += list(z_webu.values())
 
     for m in plan["milniky_dokumentace"]:
         udalosti.append({
@@ -1128,8 +1254,9 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
             "datum": m["datum"], "presnost": m["presnost"], "razeni": _razeni(m["datum"]),
             "rok": int(m["datum"][:4]), "typ": "uzemni-plan",
             "nadpis": m["popis"][:180],
-            "popis": f"Etapa dokumentace na webu města, datováno „{m['datum_doslova']}".",
+            "popis": f"{m['druh_nazev']} na webu města, datováno „{m['datum_doslova']}“.",
             "etapa": m["etapa"], "etapa_nazev": m["etapa_nazev"],
+            "druh": "dokumentace", "dokumentace_druh": m["druh"],
             "jistota": "fakt", "jistota_duvod": None, "castka_czk": None,
             "url": ROZCESTNIK + OBEC_ML + f"/?search=&kateg={m['kateg']}",
             "zdroj": "web-mesta", "zdroj_soubor": f"data/{CIL}/dokumentace.json",
@@ -1146,6 +1273,7 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
             "nadpis": u["nazev"],
             "popis": f"{'Zastupitelstvo' if u['organ'] == 'zastupitelstvo' else 'Rada'} města, bod {u['bod']}.",
             "etapa": etapa, "etapa_nazev": etapa_nazev,
+            "druh": "usneseni",
             "jistota": "fakt", "jistota_duvod": None, "castka_czk": u["castka_czk"],
             "url": u["url"], "zdroj": "usneseni", "zdroj_soubor": u["zdroj_soubor"],
             "vazba": "primy" if u["proces"] == "novy-up" else "organizacni",
@@ -1162,6 +1290,7 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
             "popis": f"Doloženo usnesením zastupitelstva. Dokumentů ve výpisu: {z['dokumentu']}."
                      + (f" Opatření obecné povahy č. {z['oop_cislo']}." if z["oop_cislo"] else ""),
             "etapa": "zmena-stavajiciho-up", "etapa_nazev": "Změna platného územního plánu",
+            "druh": "zmena",
             "jistota": "fakt", "jistota_duvod": None, "castka_czk": None,
             "url": z["usneseni"][0]["url"] if z["usneseni"] else None,
             "zdroj": "usneseni", "zdroj_soubor": f"data/{CIL}/zmeny.json",
@@ -1170,9 +1299,11 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
     udalosti.sort(key=lambda u: (u["razeni"], u["id"]))
     podle_typu: dict[str, int] = {}
     podle_etapy: dict[str, int] = {}
+    podle_druhu: dict[str, int] = {}
     for u in udalosti:
         podle_typu[u["zdroj"]] = podle_typu.get(u["zdroj"], 0) + 1
         podle_etapy[u["etapa"]] = podle_etapy.get(u["etapa"], 0) + 1
+        podle_druhu[u["druh"]] = podle_druhu.get(u["druh"], 0) + 1
 
     return {
         "entita": {"typ": "tema", "id": "uzemni-plan", "nazev": "Územní plánování Mariánské Lázně"},
@@ -1185,18 +1316,24 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
                         "řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
             "etapa": "Etapa pořizování odvozená z klíčových slov v textu. Je to "
                      "zařazení pro filtrování, ne údaj ze zdroje.",
+            "druh": "krok = událost, která proběhla. lhuta = termín v budoucnu. "
+                    "pravni-ramec = datum z citace stavebního zákona, ne krok "
+                    "pořizování (například 31. 12. 2028, kdy platný plán pozbude "
+                    "platnosti). usneseni / zmena / dokumentace = původ záznamu. "
+                    "Fáze pořizování se určuje jen z druhu krok.",
             "usneseni": "Zařazená jsou usnesení s tagem uzemni-plan, jejichž název "
                         "mluví o novém územním plánu (vazba primy) nebo o pořizování "
                         "ÚPD obecně (vazba organizacni). Usnesení o změnách platného "
                         "ÚP, územních studiích a jednotlivých pozemcích jsou celá "
                         "v usneseni.json.",
-            "cislovani": "Web města cituje usnesení jako „ZM/753/18", portál usnesení "
+            "cislovani": "Web města cituje usnesení jako „ZM/753/18“, portál usnesení "
                          "jako bod 39/4 z 11. 9. 2018. Je to totéž jednání, ale jiné "
                          "číslování — páruje se datum a téma, ne číslo.",
         },
         "rozsah": {"od": udalosti[0]["datum"] if udalosti else None,
                    "do": udalosti[-1]["datum"] if udalosti else None},
-        "pocty": {"celkem": len(udalosti), "dle_zdroje": podle_typu, "dle_etapy": podle_etapy},
+        "pocty": {"celkem": len(udalosti), "dle_zdroje": podle_typu,
+                  "dle_etapy": podle_etapy, "dle_druhu": podle_druhu},
         "udalosti": udalosti,
     }
 
@@ -1265,7 +1402,7 @@ def main() -> None:
             "proces": "Zařazení podle názvu bodu: novy-up, zmeny-stavajiciho-up, "
                       "uzemni-studie, regulacni-plan, porizovani-obecne, jine. "
                       "Je to zařazení kódem, ne údaj ze zdroje.",
-            "vydane_zmeny": "Čísla změn ÚP z názvu usnesení „Vydání změny č. …".",
+            "vydane_zmeny": "Čísla změn ÚP z názvu usnesení „Vydání změny č. …“.",
         },
         "pocty": {"celkem": len(usn),
                   "dle_procesu": {p: sum(1 for u in usn if u["proces"] == p)
@@ -1300,7 +1437,7 @@ def main() -> None:
         "usneseni": {"celkem": len(usn),
                      "na_ose": sum(1 for u in cesta["udalosti"] if u["zdroj"] == "usneseni")},
         "upozorneni": [
-            "Datum „Vloženo" u souboru je datum nahrání na web, ne datum vydání.",
+            "Datum „Vloženo“ u souboru je datum nahrání na web, ne datum vydání.",
             "Oznámení o vydání opatření obecné povahy jsou skeny bez textové vrstvy; "
             "data vydání změn 1–19 proto nemáme — archiv usnesení sahá k roku 2012.",
             "Ostatní obce ORP se jen evidují, jejich dokumentace se nestahuje.",

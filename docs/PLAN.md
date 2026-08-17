@@ -34,12 +34,24 @@ Každý modul vlastní své soubory. **Nikdo nesahá do cizích.**
 |---|---|---|
 | A1 Usnesení a hlasování | `scrapers/usneseni.py`, `scrapers/hlasovani.py`, `pipeline/tagovani.py` | `data/usneseni/`, `data/hlasovani/` |
 | A2 Zpravodaj | `scrapers/zpravodaj.py`, `pipeline/clanky.py` | `data/zpravodaj/` |
-| A3 Peníze | `scrapers/hlidac.py`, `pipeline/agregace_penez.py` | `data/penize/` |
+| A3 Peníze | `scrapers/hlidac.py`, `scrapers/hlidac_api.py`, `pipeline/agregace_penez.py` | `data/penize/` |
 | A4 Web města | `scrapers/muml.py`, `scrapers/snapshoty.py` | `data/mesto/` |
 | B1 Kdo je kdo | `data/lide/osobnosti.json`, `scrapers/lide.py` | `data/lide/` |
-| B2 Web | `web/**` | — |
+| B2/O5 Web | `web/**` | — |
 | B3 Média | `scrapers/media.py` | `data/media/` |
 | C1 Zastupitelstvo video | `scrapers/zaznamy.py`, `pipeline/prepis.py` | `data/zaznamy/` |
+| P1 Propojení lidí a firem | `scrapers/osoby_firmy.py`, `pipeline/propojeni.py` | `data/propojeni/` |
+| P2 Řetěz usnesení→smlouva | `pipeline/retez.py` | `data/retez/` |
+| P3 Hlasovací profily | `pipeline/profily.py` | `data/lide/profily.json` |
+| O1 Volby a statistiky | `scrapers/volby.py`, `scrapers/csu.py` | `data/opendata/volby/`, `data/opendata/csu/` |
+| O2 Firmy ve městě | `scrapers/firmy.py`, `pipeline/firmy_prehled.py` | `data/firmy/` |
+| O3 Památky a geodata | `scrapers/pamatky.py`, `scrapers/geodata.py` | `data/opendata/pamatky/`, `data/opendata/geo/` |
+| O4 Historie a časová osa | `pipeline/casova_osa.py` | `data/historie/`, `data/casova_osa/`, `data/osy/` |
+| Rozpočet | `scrapers/monitor.py`, `pipeline/rozpocet.py` | `data/rozpocet/` |
+| Územní plánování | `scrapers/uzemni_plan.py` | `data/uzemni_plan/` |
+| Vydání | `pipeline/vydani.py` | `data/vydani/` |
+
+**Formáty novějších modulů jsou zdokumentované v docstringu příslušného modulu**, ne tady — dokument by se jinak rozešel se skutečností rychleji, než by se dal udržovat. Níže zůstávají formáty základních sad, na kterých stojí zbytek.
 
 ---
 
@@ -197,14 +209,26 @@ Tohle je podklad pro grafy „kdo kolik a kdy od města dostal".
 
 ---
 
+## Konvence, na kterých stojí propojení dat
+
+Tohle jsou dohody, jejichž porušení se projeví až tím, že se data nespárují.
+
+**`osoba_id` = `prijmeni-jmeno`**, bez titulů a s jedním křestním jménem (`goethe-johann`, ne `goethe-johann-wolfgang`). Používá se v hlasování, v článcích zpravodaje, v médiích, v profilech i v osobnostech — jakmile se dva moduly rozejdou, vznikne z jednoho člověka dvojice. Zdroje se v přepisu jmen liší (ČSÚ píše *Zabolotnij*, web města *Zabolotný*); rozhoduje tvar z hlasování.
+
+**Protistrany se slučují podle IČO, ne podle názvu.** Firmy se přejmenovávají — IČO 25208438 vystupuje jako KIS i jako Infocentrum. Kde IČO chybí, slučuje se podle normalizovaného názvu a záznam to přizná polem `klic_dle`.
+
+**Tagy se vybírají z `config/tagy.json`, nikdy nevymýšlejí.** Jinak každý běh vytvoří jiné názvy a filtrování po půl roce přestane fungovat.
+
 ## Fáze
 
-| Fáze | Obsah | Moduly |
+| Fáze | Obsah | Stav |
 |---|---|---|
-| 1 | Usnesení, hlasování, tagy, peníze, web města, statický web | A1, A3, A4, B2 |
-| 2 | Archiv 122 čísel zpravodaje, fulltext | A2 |
-| 3 | Kdo je kdo (150–200 osobností), grafy peněz, časové osy | B1, B2 |
-| 4 | Mediální monitoring 12 let, diff-monitoring, přepisy zastupitelstva | B3, C1 |
+| 1 | Usnesení, hlasování, tagy, peníze, web města, statický web | hotovo |
+| 2 | Archiv 122 čísel zpravodaje, fulltext | hotovo |
+| 3 | Kdo je kdo, grafy peněz, propojení, profily, řetěz | hotovo |
+| 4 | Mediální monitoring, diff-monitoring, přepisy zastupitelstva | hotovo mimo přepisy — čekají na síť, viz PROVOZ.md |
+| 5 | Volby, statistiky, firmy, památky, mapy, historie, časové osy | hotovo |
+| 6 | Rozpočet z Monitoru státní pokladny, územní plánování | rozpracováno |
 
 ## Hosting
 

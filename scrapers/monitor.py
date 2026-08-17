@@ -118,8 +118,12 @@ class Vykaz:
     # 2025 je má a některé kódy má s prefixem /BIC/), pořadí sloupců ne.
     klice: dict[str, str] = field(default_factory=dict)
     hodnoty: dict[str, str] = field(default_factory=dict)
-    # Tabulky výkazu, které nás zajímají: {kód tabulky: náš oddíl}
-    tabulky: dict[str, str] = field(default_factory=dict)
+    # Tabulky, které nás zajímají: {(kód výkazu, kód tabulky): náš oddíl}.
+    # Klíčem musí být dvojice, ne samotná tabulka — od roku 2026 nese FIN
+    # 2-12 M kód výkazu 063 místo 051 a tabulka `000200` v něm znamená něco
+    # úplně jiného než dřív (bankovní účty místo výdajů). Kdo by mapoval jen
+    # podle čísla tabulky, uložil by si stavy účtů jako výdaje města.
+    tabulky: dict[tuple[str, str], str] = field(default_factory=dict)
 
 
 VYKAZY: dict[str, Vykaz] = {
@@ -144,17 +148,25 @@ VYKAZY: dict[str, Vykaz] = {
             "ZU_ROZSCH": "schvaleny",
             "ZU_ROZPZM": "upraveny",
             "ZU_ROZKZ": "skutecnost",
-            # Tabulka bankovních účtů má jinou trojici sloupců.
+            # Tabulka bankovních účtů má jinou trojici sloupců; sloupec se
+            # změnou stavu se od roku 2026 jmenuje ZU_ZMSTAV místo ZU_ZMEST.
             "ZU_PZ": "pocatecni_stav",
             "ZU_AKTZ": "koncovy_stav",
             "ZU_ZMEST": "zmena",
+            "ZU_ZMSTAV": "zmena",
         },
         tabulky={
-            "000100": "prijmy",
-            "000200": "vydaje",
-            "000300": "financovani",
-            "000400": "rekapitulace",
-            "000600": "bankovni_ucty",
+            # Výkaz 051 — podoba platná do roku 2025 včetně.
+            ("051", "000100"): "prijmy",
+            ("051", "000200"): "vydaje",
+            ("051", "000300"): "financovani",
+            ("051", "000400"): "rekapitulace",
+            ("051", "000600"): "bankovni_ucty",
+            # Výkaz 063 — od roku 2026. Příjmy i výdaje jsou v jedné tabulce
+            # a rozlišuje je sloupec 0CI_TYPE (2 = příjmy, 3 = výdaje);
+            # souhrnná tabulka (rekapitulace) v extraktu úplně chybí.
+            ("063", "000100"): "rozpocet",
+            ("063", "000200"): "bankovni_ucty",
         },
     ),
     "rozvaha": Vykaz(
@@ -169,7 +181,7 @@ VYKAZY: dict[str, Vykaz] = {
             "ZU_AONET": "netto",
             "ZU_MONET": "netto_minule",
         },
-        tabulky={"000100": "rozvaha"},
+        tabulky={("001", "000100"): "rozvaha"},
     ),
     "vyzz": Vykaz(
         kod="vyzz",
@@ -183,7 +195,7 @@ VYKAZY: dict[str, Vykaz] = {
             "ZU_HLCIN": "hlavni_cinnost_minule",
             "ZU_HOSCIN": "hospodarska_cinnost_minule",
         },
-        tabulky={"000100": "vyzz"},
+        tabulky={("002", "000100"): "vyzz"},
     ),
 }
 
@@ -385,14 +397,20 @@ def _kody_sloupcu(hlavicka: str) -> list[str]:
     return [c.rsplit(":", 1)[-1].strip().strip('"') for c in hlavicka.split(";")]
 
 
-def cti_extrakt(zip_path: Path, vykaz: Vykaz, ica: set[str], log: Log) -> dict[str, list[dict]]:
+def cti_extrakt(zip_path: Path, vykaz: Vykaz, ica: set[str],
+                log: Log) -> tuple[dict[str, list[dict]], dict]:
     """Projde ZIP a vybere řádky sledovaných subjektů.
 
     Čte **proudově** — největší soubor (FINM201) má rozbalený 126 MB
     a v paměti nemá co dělat.
+
+    Vrací dvojici (oddíly, popis toho, co se v extraktu potkalo). Druhá
+    část se ukládá k datům, aby bylo vidět, které tabulky se vynechaly —
+    mlčky zahozený řádek se od neexistujícího řádku jinak nepozná.
     """
     vysledek: dict[str, list[dict]] = {}
     nezname_tabulky: set[str] = set()
+    kody_vykazu: set[str] = set()
 
     with zipfile.ZipFile(zip_path) as z:
         for clen in z.namelist():
@@ -409,8 +427,12 @@ def cti_extrakt(zip_path: Path, vykaz: Vykaz, ica: set[str], log: Log) -> dict[s
                 try:
                     i_ico = kody.index("ZC_ICO")
                     i_tab = kody.index("ZC_VTAB")
+                    i_vyk = kody.index("ZC_VYKAZ")
                 except ValueError:
-                    log.info(f"{zip_path.name}/{clen}: hlavička bez ZC_ICO/ZC_VTAB, přeskakuji")
+                    # Extrakt od roku 2026 vozí i souhrny za kraj a za celou
+                    # republiku — ty IČO nemají a nás nezajímají.
+                    log.info(f"{zip_path.name}/{clen}: hlavička bez IČO nebo výkazu, "
+                             "přeskakuji (nejspíš celostátní souhrn)")
                     continue
 
                 # Předpočítat pozice sloupců, ať se to nedělá pro každý řádek.
@@ -424,9 +446,11 @@ def cti_extrakt(zip_path: Path, vykaz: Vykaz, ica: set[str], log: Log) -> dict[s
                     if ico not in ica:
                         continue
                     tab = (radek[i_tab] or "").strip()
-                    oddil = vykaz.tabulky.get(tab)
+                    kod_vykazu = (radek[i_vyk] or "").strip()
+                    kody_vykazu.add(kod_vykazu)
+                    oddil = vykaz.tabulky.get((kod_vykazu, tab))
                     if oddil is None:
-                        nezname_tabulky.add(tab)
+                        nezname_tabulky.add(f"{kod_vykazu}/{tab}")
                         continue
                     zaznam = {"ico": ico}
                     for i, jmeno in pozice_klice:
@@ -443,7 +467,10 @@ def cti_extrakt(zip_path: Path, vykaz: Vykaz, ica: set[str], log: Log) -> dict[s
         # Není to chyba — extrakt vozí i tabulky, které nesbíráme (účelové
         # znaky, EDS/SMVS…). Zapisuje se, ať je vidět, co se vynechalo.
         log.info(f"{zip_path.name}: nesbírané tabulky {sorted(nezname_tabulky)}")
-    return vysledek
+    return vysledek, {
+        "kody_vykazu": sorted(kody_vykazu),
+        "nesbirane_tabulky": sorted(nezname_tabulky),
+    }
 
 
 # --------------------------------------------------------------------------
@@ -567,7 +594,7 @@ def zpracuj_vykaz(vykaz: Vykaz, katalog: list[str], subjekty: dict[str, dict],
             continue
 
         cesta = _stahni(url, f"{nazev_sady}.zip", log)
-        oddily = cti_extrakt(cesta, vykaz, ica, log)
+        oddily, meta = cti_extrakt(cesta, vykaz, ica, log)
 
         nalezena_ica = sorted({z["ico"] for radky in oddily.values() for z in radky})
         radku = sum(len(v) for v in oddily.values())
@@ -604,6 +631,11 @@ def zpracuj_vykaz(vykaz: Vykaz, katalog: list[str], subjekty: dict[str, dict],
                 for i, s in sorted(subjekty.items()) if i not in set(nalezena_ica)
             ],
             "radku": radku,
+            # Kód výkazu ve zdroji. Od roku 2026 se u FIN 2-12 M změnil
+            # z 051 na 063 a s ním i členění tabulek — přehledy podle toho
+            # musí poznat, že souhrnná tabulka v novějších datech není.
+            "kody_vykazu": meta["kody_vykazu"],
+            "nesbirane_tabulky": meta["nesbirane_tabulky"],
             "oddily": oddily,
         }
         uloz(f"{VYSTUP}/{vykaz.kod}/{rok}-{mesic:02d}.json", obsah)
