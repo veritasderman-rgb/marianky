@@ -538,13 +538,7 @@ const spolehliveOmluvy = zProfilu.data.omluvySpolehliveOd;
                     )}
                   </td>
                   <td>{popisVztahu(f.vztah)}</td>
-                  <td>
-                    {f.role.length > 0
-                      ? f.role.join(', ')
-                      : zaznamOsoby?.role.length
-                        ? `${zaznamOsoby.role.join(', ')} (role u firmy zdroj neuvádí)`
-                        : 'v datech není'}
-                  </td>
+                  <td>{f.role.length > 0 ? f.role.join(', ') : 'zdroj ji u firmy neuvádí'}</td>
                   <td class="cislo">
                     {f.vztah === 'bez-vazby-na-mesto'
                       ? '—'

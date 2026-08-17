@@ -298,7 +298,9 @@ function popisOdstupu(r: Retez): string | null {
       <section>
         <h2>Smlouva podepsaná před usnesením ({cislo(varovani.length)})</h2>
         <p class="uvod">
-          {popisJistoty('varovani', jistotyZdroje).vysvetleni} Zdroj tyhle případy vede zvlášť
+          {/* Zdrojová metodika u „varování" popisuje jen umístění v souboru, ne věc samu —
+              proto se tady drží vlastní vysvětlení. */}
+          {popisJistoty('varovani').vysvetleni} Zdroj tyhle případy vede zvlášť
           a nepočítá je mezi spojení. Důvodů může být víc — od chyby v datech přes dodatek
           k dřívější smlouvě až po dodatečné schválení. Přehled žádný z nich netvrdí.
         </p>

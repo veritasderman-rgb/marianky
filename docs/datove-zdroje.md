@@ -318,12 +318,35 @@ Celkem **24 subjektů** k monitoringu včetně města a obchodních společnost�
 
 ## 7. Média a regionální zpravodajství
 
-| Zdroj | URL | Poznámka |
-|---|---|---|
-| Český rozhlas Karlovy Vary | `vary.rozhlas.cz` | Regionální zpravodajství |
-| Zprávy Karlovarsko | `zpravykarlovarsko.cz` | Sleduje komunální politiku ML detailně |
-| Chebský deník | `denik.cz` | Okresní zpravodajství |
-| Karlovarský kraj | `kr-karlovarsky.cz` | Tiskové zprávy kraje |
+> **Doplněno po sklizni.** Otázka zněla, jestli jde jít 12 let zpět. Odpověď: **jde, ale jen u dvou zdrojů ze čtyř** — a u zbylých dvou to není technická překážka, nýbrž fakt, že ty weby dřív neexistovaly.
+
+| Zdroj | URL | Staženo | Rozsah | Poznámka |
+|---|---|---|---|---|
+| Český rozhlas Karlovy Vary | `vary.rozhlas.cz` | 369 | **2011–2026 (15 let)** | Nejlepší zdroj. Sitemapa 14 057 URL bez stránkování. `Crawl-delay: 10` — dávka trvá přes hodinu. |
+| Karlovarský kraj | `kr-karlovarsky.cz` | 125 | **2004–2026 (22 let)** | Sahá nejdál, ale je to tiskový servis kraje, ne zpravodajství o městě. |
+| Karlovarská Drbna | `karlovarska.drbna.cz` | 134 | 2020–2026 | Web vznikl 03/2020 — strop je daný realitou, ne technikou. |
+| Zprávy Karlovarsko | `zpravykarlovarsko.cz` | 82 | 2020–2026 | Web vznikl 11/2020. |
+| Chebský deník / Deník.cz | `denik.cz` | **0** | — | **Zakázáno v robots.txt, viz níže.** |
+
+**Celkem 713 článků, 2004–2026, každý s ověřeným datem.** Souvislé pokrytí od roku 2011.
+
+#### Deník je pro nás zavřený
+
+`denik.cz` i `chebsky.denik.cz` mají v robots.txt sekci „AI bots protection", která jmenovitě zakazuje `ClaudeBot`, `Claude-Web` a `anthropic-ai` přes `Disallow: /`.
+
+Sběrač to respektuje a **zákaz se neobchází přepnutím User-Agenta** — kontrola se ptá na naši skutečnou identitu, ne na hlavičku, kterou bychom si mohli vymyslet. Zdroj má natvrdo `povoleno=False`.
+
+Je to citelná ztráta: podle vyhledávání je Deník nejpodrobnější zdroj o komunální politice Mariánských Lázní. Cesta ven je ruční režim `--rucne`, který uloží odkaz a vlastní shrnutí, aniž by cokoliv stahoval.
+
+Rozlišuj hosty: **`irozhlas.cz` ClaudeBota blokuje, ale regionální `vary.rozhlas.cz` ne** — jsou to jiné weby s jiným robots.txt, a ten náš nejcennější je povolený.
+
+#### Datum se nesmí brát ze sitemapy
+
+U všech tří velkých zdrojů je `lastmod` **razítko migrace CMS, ne datum vydání**. Článek rozhlasu s `lastmod` 2014 má ve skutečnosti `article:published_time` 2011-05-16; u kraje je 90 % `lastmod` z roku 2024. Kdo by datoval podle sitemapy, dostal by nesmysl. Datum se bere výhradně z metadat stránky.
+
+#### Past na název
+
+„Lázeňské lesy" **není** jednoznačný výraz — Karlovy Vary mají vlastní firmu téhož jména a do dat se přes něj dostalo 19 článků o karlovarské firmě. Z ostré kontroly byl vyřazen.
 
 **Sledované výrazy:** „Mariánské Lázně", „mariánskolázeňsk*", jména vedení města, názvy městských firem, „vila LIL", „UNESCO Mariánské Lázně".
 
