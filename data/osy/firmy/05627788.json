@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05627788",
+    "nazev": "POTS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-04-04",
+    "do": "2025-03-17",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "smlouva": 3,
+      "retez": 2,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:26387715",
+      "datum": "2024-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "nákup mobilních nádob - květináče POTS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana POTS s.r.o..",
+      "castka_czk": 480705.17,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28240667",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/17__28666276",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "nákup mobilních nádob",
+      "popis": "Odhadované spojení smlouvy z 2024-10-15 s bodem 68/17 z 2024-10-15 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru nákupu 23 ks mobil",
+      "castka_czk": 317583.86,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05627788 je uvedeno v textu usnesení; smlouva podepsána 0 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/30639360",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28666276",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "nákup mobilních nádob",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana POTS s.r.o..",
+      "castka_czk": 317583.86,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30639360",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/17",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru nákupu 23 ks mobilní nádoby ERA",
+      "popis": "Rada města, bod 68/17, usnesení 703/24. Schvaleno.",
+      "castka_czk": 322000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3264454",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/17__30565900",
+      "datum": "2025-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-17",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "nákup mobilních nádob - květináče ERA Chebská křižovatka",
+      "popis": "Odhadované spojení smlouvy z 2025-03-17 s bodem 68/17 z 2024-10-15 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru nákupu 23 ks mobil",
+      "castka_czk": 83001.16,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05627788 je uvedeno v textu usnesení; smlouva podepsána 153 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/32636404",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30565900",
+      "datum": "2025-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-17",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "nákup mobilních nádob - květináče ERA Chebská křižovatka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana POTS s.r.o..",
+      "castka_czk": 83001.16,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32636404",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

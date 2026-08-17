@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06341454",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-03",
+    "do": "2024-09-17",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-64-64/14",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "VITREUS z.s.-projekt Bytový dům ORAVA",
+      "popis": "Rada města, bod 64/14, usnesení 600/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3243885",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-16-16/7",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "VITREUS z.s.-projekt Bytový dům ORAVA",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 341/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3247979",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

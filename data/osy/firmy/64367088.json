@@ -1,0 +1,156 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64367088",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-07-01",
+    "do": "2024-04-16",
+    "prvni_rok": 1996,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64367088:vznik",
+      "datum": "1996-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-07-01",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Martin Špaček",
+      "popis": "Vznik subjektu Martin Špaček (IČO 64367088), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-91-91/5",
+      "datum": "2020-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-01",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 718 - postoupení smlouvy - Mes Amis - Mariánské Lázně, s.r.o. x Martin Špaček",
+      "popis": "Rada města, bod 91/5, usnesení 597/20. Schvaleno.",
+      "castka_czk": 188472,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2610101",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-125-125/7",
+      "datum": "2021-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-19",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 - Martin Špaček - sleva na nájemném",
+      "popis": "Rada města, bod 125/7, usnesení 464/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2757503",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/125.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/15",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 - Martin Špaček - sleva na nájemném",
+      "popis": "Rada města, bod 135/15, usnesení 27/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2796962",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/22",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 48/22, usnesení 182/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166815",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/15",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 51/15, usnesení 263/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180179",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

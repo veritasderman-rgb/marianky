@@ -1,0 +1,117 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09782966",
+    "nazev": "SUAS Real Estate s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-02-29",
+    "do": "2025-04-30",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 2,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "vysoka": 2,
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2023-12/29__26020167",
+      "datum": "2024-02-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-29",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Poz. parcela č. 1014/184 o výměře 16550 m2 k. ú. Úšovice, oddělená GP č. 2690-334/2023",
+      "popis": "Odhadované spojení smlouvy z 2024-02-29 s bodem 12/29 z 2023-12-12 (Prodej parcely č. 1014/184 k. ú. Úšovice lokalita U PILY). Jistota vysoka.",
+      "castka_czk": 12015300.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 09782966 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 79 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27854835",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26020167",
+      "datum": "2024-02-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Poz. parcela č. 1014/184 o výměře 16550 m2 k. ú. Úšovice, oddělená GP č. 2690-334/2023",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SUAS Real Estate s. r. o..",
+      "castka_czk": 12015300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27854835",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-20/10__31023860",
+      "datum": "2025-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-30",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Souhlasné prohlášení",
+      "popis": "Odhadované spojení smlouvy z 2025-04-30 s bodem 20/10 z 2025-04-15 (SUAS Real Estate s. r. o. - \"Souhlasné prohlášení\" - odstoupení od kupní smlouvy na lokalitu",
+      "castka_czk": 12015300.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 09782966 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/33117372",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31023860",
+      "datum": "2025-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Souhlasné prohlášení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SUAS Real Estate s.r.o..",
+      "castka_czk": 12015300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33117372",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

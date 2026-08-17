@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70963452",
+    "nazev": "České dědictví UNESCO"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-12-14",
+    "do": "2026-06-23",
+    "prvni_rok": 2021,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 9,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 8,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/20",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Dobrovolný svazek obcí „České dědictví UNESCO“ – vstup ML",
+      "popis": "Zastupitelstvo města, bod 23/20, usnesení 521/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2779728",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/8",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "DSO České dědictví UNESCO - vstup ML a úhrada členských příspěvků",
+      "popis": "Zastupitelstvo města, bod 25/8, usnesení 536/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792603",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/29",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Členský příspěvek do DSO České dědictví UNESCO",
+      "popis": "Rada města, bod 145/29, usnesení 196/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2838779",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-145/29__18735691",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o vstupu do dobrovolného svazku obcí České dědictví UNESCO",
+      "popis": "Odhadované spojení smlouvy z 2022-04-22 s bodem 145/29 z 2022-04-19 (Členský příspěvek do DSO České dědictví UNESCO). Jistota vysoka.",
+      "castka_czk": 100000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 70963452 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova d",
+      "url": "https://smlouvy.gov.cz/smlouva/20136091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18735691",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vstupu do dobrovolného svazku obcí České dědictví UNESCO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana České dědictví UNESCO.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20136091",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-28-28/5",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Dobrovolný svazek obcí České dědictví UNESCO",
+      "popis": "Zastupitelstvo města, bod 28/5, usnesení 608/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2859559",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-8-8/5",
+      "datum": "2023-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-20",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "DSO České dědictví UNESCO - závěrečný účet a zpráva o hospodaření 2022",
+      "popis": "Zastupitelstvo města, bod 8/5, usnesení 120/23. Schvaleno.",
+      "castka_czk": 150000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3027123",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-15-15/32",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dobrovolný svazek obcí České dědictví UNESCO - závěrečný účet a zpráva o hospodaření 2023",
+      "popis": "Zastupitelstvo města, bod 15/32, usnesení 331/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3211467",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-23-23/15",
+      "datum": "2025-11-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dobrovolný svazek obcí České dědictví UNESCO – závěrečný účet a zpráva o hospodaření 2024; aktualizované stanovy 2025",
+      "popis": "Zastupitelstvo města, bod 23/15, usnesení 538/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/214572896",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-27-27/20",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dobrovolný svazek obcí České dědictví UNESCO – závěrečný účet a zpráva o hospodaření za rok 2025",
+      "popis": "Zastupitelstvo města, bod 27/20, usnesení 607/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/107780525",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

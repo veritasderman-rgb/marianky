@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47052121",
+    "nazev": "Linhart spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-10-31",
+    "do": "2024-09-20",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-36-36/14",
+      "datum": "2023-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-31",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "VZ Víceúčelové hřiště Hamrníky, Mariánské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 36/14, usnesení 674/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3101027",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/36.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-62-62/35",
+      "datum": "2024-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a méněprací, uzavření dodatku ke smlouvě o dílo s Linhart spol. s r.o. „Víceúčelové hřiště Hamrníky, Mariánské Lázně“",
+      "popis": "Rada města, bod 62/35, usnesení 579/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3238877",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-36/14__28305516",
+      "datum": "2024-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla. Dále nebyla správně stanovena výše DPH a toto bude dodatkem napraveno.",
+      "popis": "Odhadované spojení smlouvy z 2024-09-20 s bodem 36/14 z 2023-10-31 (VZ Víceúčelové hřiště Hamrníky, Mariánské Lázně - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 3652381.35,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47052121 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 325 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30246908",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-62/35__28305516",
+      "datum": "2024-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla. Dále nebyla správně stanovena výše DPH a toto bude dodatkem napraveno.",
+      "popis": "Odhadované spojení smlouvy z 2024-09-20 s bodem 62/35 z 2024-08-20 (Schválení víceprací a méněprací, uzavření dodatku ke smlouvě o dílo s Linhart spol. s r.o. „",
+      "castka_czk": 3652381.35,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47052121 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30246908",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28305516",
+      "datum": "2024-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla. Dále nebyla správně stanovena výše DPH a toto bude dodatkem napraveno.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Linhart spol. s r.o..",
+      "castka_czk": 3652381.35,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30246908",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

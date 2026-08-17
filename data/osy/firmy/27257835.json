@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27257835",
+    "nazev": "Jihočeská textilní s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-10-23",
+    "do": "2025-04-29",
+    "prvni_rok": 2018,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-171-171/3",
+      "datum": "2018-10-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-23",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 332, postoupení nájemní smlouvy",
+      "popis": "Rada města, bod 171/3, usnesení 556/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2125771",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/171.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-171/3__6739735",
+      "datum": "2018-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dohoda o podstoupení - Poštovní 332",
+      "popis": "Odhadované spojení smlouvy z 2018-11-01 s bodem 171/3 z 2018-10-23 (Hlavní 332, postoupení nájemní smlouvy). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27257835 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří",
+      "url": "https://smlouvy.gov.cz/smlouva/7278947",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6739735",
+      "datum": "2018-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o podstoupení - Poštovní 332",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jihočeská textilní s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7278947",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-38-38/11",
+      "datum": "2019-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-24",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP - ul. Poštovní 332 - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 38/11, usnesení 481/19. Schvaleno.",
+      "castka_czk": 93280,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2412444",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-58-58/14",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 332 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 58/14, usnesení 445/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3213495",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-60-60/7",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 322 – prodloužení nájemního vztahu – společnost Jihočeská textilní s.r.o.",
+      "popis": "Rada města, bod 60/7, usnesení 508/24. Schvaleno.",
+      "castka_czk": 93280,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3226438",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/14__27789504",
+      "datum": "2024-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2024-07-25 s bodem 58/14 z 2024-06-25 (NP Poštovní, č.p. 332 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 564344.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27257835 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29704176",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-60/7__27789504",
+      "datum": "2024-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2024-07-25 s bodem 60/7 z 2024-07-23 (NP Poštovní, č.p. 322 – prodloužení nájemního vztahu – společnost Jihočeská textilní s.r.o.).",
+      "castka_czk": 564344.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27257835 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29704176",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27789504",
+      "datum": "2024-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-25",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jihočeská textilní s.r.o..",
+      "castka_czk": 564344.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29704176",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-87-87/13",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 332 – výpověď ze Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 87/13, usnesení 323/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3361052",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

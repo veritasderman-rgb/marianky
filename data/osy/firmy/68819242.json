@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68819242",
+    "nazev": "Petr Janota"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1999-05-01",
+    "do": "2026-05-20",
+    "prvni_rok": 1999,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:68819242:vznik",
+      "datum": "1999-05-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1999-05-01",
+      "rok": 1999,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petr Janota",
+      "popis": "Vznik subjektu Petr Janota (IČO 68819242), Fyzická osoba podnikající dle živnostenského zákona, obor: Silniční nákladní doprava.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:36418860",
+      "datum": "2026-05-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-20",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o užívání parkovacích stání",
+      "popis": "DEVELOP CENTRUM Mariánské Lázně s. r. o. — výdaj, protistrana Petr Janota.",
+      "castka_czk": 14520.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38753184",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/61776068.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

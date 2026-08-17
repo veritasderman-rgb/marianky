@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08894892",
+    "nazev": "Flex Digital Agency, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-01-12",
+    "do": "2026-05-26",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:34264033",
+      "datum": "2026-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-12",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka foto a video produkce - Zimní Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Flex Digital Agency, s.r.o..",
+      "castka_czk": 64995.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36508561",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35952022",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka fotografické práce - Flex Digital Agency, s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Flex Digital Agency, s.r.o..",
+      "castka_czk": 114400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38268622",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-118-118/51",
+      "datum": "2026-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-26",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky - Foto a video databáze města Mariánské Lázně",
+      "popis": "Rada města, bod 118/51, usnesení 1208/26. Schvaleno.",
+      "castka_czk": 114400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2790864091",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

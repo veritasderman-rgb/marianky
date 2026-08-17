@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08459240",
+    "nazev": "Milan Směšný Obnova památek s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-04-01",
+    "do": "2025-09-26",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-83-83/15",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo - restaurování zdobných prvků Kaple Panny Marie Bolestné v M.L.",
+      "popis": "Rada města, bod 83/15, usnesení 238/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3345075",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/15__30786972",
+      "datum": "2025-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-02",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Restaurování zdobných prvků kaple Panny Marie Bolestné M.L.",
+      "popis": "Odhadované spojení smlouvy z 2025-04-02 s bodem 83/15 z 2025-04-01 (Smlouva o dílo - restaurování zdobných prvků Kaple Panny Marie Bolestné v M.L.). Jistota niz",
+      "castka_czk": 368900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08459240 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova bolestne, kaple, marie, panny; k témuž usnese",
+      "url": "https://smlouvy.gov.cz/smlouva/32870500",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30786972",
+      "datum": "2025-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-02",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Restaurování zdobných prvků kaple Panny Marie Bolestné M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Směšný Obnova památek s.r.o..",
+      "castka_czk": 368900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32870500",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-97-97/10",
+      "datum": "2025-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-02",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo-Restaurování zdobných prvků kaple Panny Marie Bolestné, M.L.",
+      "popis": "Rada města, bod 97/10, usnesení 601/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2097763146",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/15__33741801",
+      "datum": "2025-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Restaurování zdobných prvků kaple Panny Marie Bolestné M.L.",
+      "popis": "Odhadované spojení smlouvy z 2025-09-26 s bodem 83/15 z 2025-04-01 (Smlouva o dílo - restaurování zdobných prvků Kaple Panny Marie Bolestné v M.L.). Jistota niz",
+      "castka_czk": 6630.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08459240 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 178 dní po usnesení; název bodu a předmět smlouvy sdílí slova bolestne, kaple, marie, panny; stejně dobře",
+      "url": "https://smlouvy.gov.cz/smlouva/35960961",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-97/10__33741801",
+      "datum": "2025-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Restaurování zdobných prvků kaple Panny Marie Bolestné M.L.",
+      "popis": "Odhadované spojení smlouvy z 2025-09-26 s bodem 97/10 z 2025-09-02 (Dodatek č. 1 ke smlouvě o dílo-Restaurování zdobných prvků kaple Panny Marie Bolestné, M.L.)",
+      "castka_czk": 6630.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08459240 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova bolestne, kaple, marie, panny; usnesení mluv",
+      "url": "https://smlouvy.gov.cz/smlouva/35960961",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33741801",
+      "datum": "2025-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Restaurování zdobných prvků kaple Panny Marie Bolestné M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Směšný Obnova památek s.r.o..",
+      "castka_czk": 6630.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35960961",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

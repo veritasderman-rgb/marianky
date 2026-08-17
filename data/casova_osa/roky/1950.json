@@ -1,0 +1,93 @@
+{
+  "rok": 1950,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "historie:1950-roh-rekreace",
+      "datum": "1950",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1950-01-01",
+      "rok": 1950,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Nástup odborové rekreace ROH",
+      "popis": "Od roku 1950 přicházeli do města ve velkém dělníci na rekreaci ROH. Nová koncepce lázeňství se řídila heslem „Lázně patří pracujícím“ a týkala se především pobytů dělníků, horníků a jejich rodin.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "lazenstvi"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1950-roh-rekreace",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "lazenstvi",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1950-scitani",
+      "datum": "1950",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1950-01-01",
+      "rok": 1950,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Sčítání 1950: 9 261 obyvatel proti 11 794 v roce 1930",
+      "popis": "Podle historického lexikonu obcí, přepočteného na dnešní území města, žilo v Mariánských Lázních roku 1930 celkem 11 794 obyvatel a roku 1950 už jen 9 261. Samotný rozdíl podceňuje rozsah proměny: německé obyvatelstvo, které tvořilo drtivou většinu, bylo odsunuto a nahradili je čeští osídlenci.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1950-scitani",
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "detail": {
+        "kategorie": "obyvatelstvo",
+        "obdobi": "odsun-a-vymena",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+        ]
+      }
+    }
+  ]
+}

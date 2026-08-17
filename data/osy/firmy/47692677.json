@@ -1,0 +1,499 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47692677",
+    "nazev": "Miloslav Halada"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-01-27",
+    "do": "2025-11-25",
+    "prvni_rok": 2015,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 23,
+    "dolozenych": 18,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 13,
+      "retez": 5,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 18,
+      "nizka": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-9-9/7",
+      "datum": "2015-01-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-01-27",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Žádost o slevu z nájemného NP Poštovní 96",
+      "popis": "Rada města, bod 9/7, usnesení 40/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1343977",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-111-111/10",
+      "datum": "2017-04-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-18",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - snížení minimální ceny nájemného - Miloslav Halada",
+      "popis": "Rada města, bod 111/10, usnesení 250/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1745528",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-116-116/17",
+      "datum": "2017-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-30",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - prodloužení nájmu - Miloslav Halada",
+      "popis": "Rada města, bod 116/17, usnesení 329/17. Schvaleno.",
+      "castka_czk": 2100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1767186",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-111/10__2287830",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 96, Mar. Lázně - Miloslav Halada",
+      "popis": "Odhadované spojení smlouvy z 2017-06-07 s bodem 111/10 z 2017-04-18 (NP Poštovní 96 - snížení minimální ceny nájemného - Miloslav Halada). Jistota nizka.",
+      "castka_czk": 1525870.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47692677 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova halada, miloslav, postovni; stejně dobře sed",
+      "url": "https://smlouvy.gov.cz/smlouva/2467250",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-116/17__2287830",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 96, Mar. Lázně - Miloslav Halada",
+      "popis": "Odhadované spojení smlouvy z 2017-06-07 s bodem 116/17 z 2017-05-30 (NP Poštovní 96 - prodloužení nájmu - Miloslav Halada). Jistota nizka.",
+      "castka_czk": 1525870.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47692677 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova halada, miloslav, postovni; stejně dobře sedí",
+      "url": "https://smlouvy.gov.cz/smlouva/2467250",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2287830",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 96, Mar. Lázně - Miloslav Halada",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miloslav Halada.",
+      "castka_czk": 1525870.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2467250",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-122-122/5",
+      "datum": "2017-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-08",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - úprava nájemného dle Sazebníku nájemného - Miloslav Halada",
+      "popis": "Rada města, bod 122/5, usnesení 445/17. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1800087",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-129-129/6",
+      "datum": "2017-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-03",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - žádost o snížení nájemného - Miloslav Halada",
+      "popis": "Rada města, bod 129/6, usnesení 559/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1834257",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-129-129/7",
+      "datum": "2017-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-03",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní č.p. 96 - Miloslav Halada - nesouhlas poskytnutí fin. kompenzace",
+      "popis": "Rada města, bod 129/7, usnesení 560/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1837407",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-133-133/4",
+      "datum": "2017-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-31",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - Dodatek č. 2 ke Smlouvě o nájmu - Miloslav Halada",
+      "popis": "Rada města, bod 133/4, usnesení 618/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1848224",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/133.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:3778420",
+      "datum": "2017-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-11",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 96, Mar. Lázně - Miloslav Halada",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miloslav Halada.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4074968",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3778424",
+      "datum": "2017-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-11",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Poštovní, č.p. 96, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miloslav Halada.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4074972",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-154-154/7",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56 - věrnostní sleva na nájemném - Miloslav Halada",
+      "popis": "Rada města, bod 154/7, usnesení 246/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1940335",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-154/7__5370475",
+      "datum": "2018-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o nájmu nebytového prostoru(věrnostní sleva 10%) -",
+      "popis": "Odhadované spojení smlouvy z 2018-06-01 s bodem 154/7 z 2018-05-09 (NP Poštovní 56 - věrnostní sleva na nájemném - Miloslav Halada). Jistota stredni.",
+      "castka_czk": 532956.6,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 47692677 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova sleva, vernostni",
+      "url": "https://smlouvy.gov.cz/smlouva/5781211",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5370475",
+      "datum": "2018-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o nájmu nebytového prostoru(věrnostní sleva 10%) -",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miloslav Halada.",
+      "castka_czk": 532956.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5781211",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-41-41/12",
+      "datum": "2019-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-15",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - p. Halada",
+      "popis": "Rada města, bod 41/12, usnesení 510/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2420678",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/41.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-140-140/18",
+      "datum": "2022-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p.96 - Miloslav Halada",
+      "popis": "Rada města, bod 140/18, usnesení 106/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2818307",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/140.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-144-144/5",
+      "datum": "2022-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-05",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p.96 - prodloužení Smlouvy o nájmu nebytového prostoru - Miloslav Halada",
+      "popis": "Rada města, bod 144/5, usnesení 162/22. Schvaleno.",
+      "castka_czk": 110115,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2832152",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/144.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-140/18__18699847",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Miloslav Halada",
+      "popis": "Odhadované spojení smlouvy z 2022-04-22 s bodem 140/18 z 2022-03-08 (NP Poštovní, č.p.96 - Miloslav Halada). Jistota nizka.",
+      "castka_czk": 662646.82,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47692677 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; název bodu a předmět smlouvy sdílí slova halada, miloslav; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/20098587",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-144/5__18699847",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Miloslav Halada",
+      "popis": "Odhadované spojení smlouvy z 2022-04-22 s bodem 144/5 z 2022-04-05 (NP Poštovní, č.p.96 - prodloužení Smlouvy o nájmu nebytového prostoru - Miloslav Halada). Ji",
+      "castka_czk": 662646.82,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47692677 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova halada, miloslav, najmu, nebytoveho; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/20098587",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18699847",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Miloslav Halada",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miloslav Halada.",
+      "castka_czk": 662646.82,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20098587",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/2",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu části poz. parcely č. 177 k. ú. Mariánské Lázně – umístění reklamy v ul. Poštovní",
+      "popis": "Rada města, bod 93/2, usnesení 506/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3398071",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-105-105/15",
+      "datum": "2025-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Reklamní zařízení p.p.č. 177 - ul. Poštovní -Restaurace Irish Pub",
+      "popis": "Rada města, bod 105/15, usnesení 797/25. Schvaleno.",
+      "castka_czk": 3500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1058757317",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

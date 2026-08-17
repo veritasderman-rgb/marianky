@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "13890450",
+    "nazev": "Ing. Daniela Škubalová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-03-05",
+    "do": "2025-03-07",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-47-47/39",
+      "datum": "2024-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-05",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 2. etapa - PD\" - výběr dodavatele",
+      "popis": "Rada města, bod 47/39, usnesení 159/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3163309",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/47.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-47/39__26354031",
+      "datum": "2024-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-26",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 2.etapa, PD",
+      "popis": "Odhadované spojení smlouvy z 2024-03-26 s bodem 47/39 z 2024-03-05 (Veřejná zakázka \"Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 2. etapa - PD\"",
+      "castka_czk": 523567.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 13890450 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova ceska, etapa, hlavni, krizovatka",
+      "url": "https://smlouvy.gov.cz/smlouva/28205487",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26354031",
+      "datum": "2024-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-26",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 2.etapa, PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Daniela Škubalová.",
+      "castka_czk": 523567.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28205487",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-76-76/22",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o dílo \"Rekonstukce ul. Hlavní - světelná křižovatka - Česká pošta, 2. etapa, PD\"",
+      "popis": "Rada města, bod 76/22, usnesení 50/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3310622",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-76/22__30380784",
+      "datum": "2025-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-07",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce Hlavní třídy - 2. etapa - PD",
+      "popis": "Odhadované spojení smlouvy z 2025-03-07 s bodem 76/22 z 2025-01-21 (Dodatek č. 1 ke Smlouvě o dílo \"Rekonstukce ul. Hlavní - světelná křižovatka - Česká pošta, ",
+      "castka_czk": 211217.6,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 13890450 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, etapa, hlavni; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/32441864",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30380784",
+      "datum": "2025-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce Hlavní třídy - 2. etapa - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Daniela Škubalová.",
+      "castka_czk": 211217.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32441864",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

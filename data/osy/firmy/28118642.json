@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28118642",
+    "nazev": "LED MULTIMEDIA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-06-27",
+    "do": "2026-04-14",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-91-91/30",
+      "datum": "2025-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Prezentace města - LED obrazovky PRAHA",
+      "popis": "Rada města, bod 91/30, usnesení 476/25. Schvaleno.",
+      "castka_czk": 260000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3389974",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/27",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání kampaně zima na LED obrazovkách lokalita „PRAHA“ u společnosti LED MULTIMEDIA s.r.o.",
+      "popis": "Rada města, bod 99/27, usnesení 664/25. Schvaleno.",
+      "castka_czk": 325000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2691755579",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/30__32936617",
+      "datum": "2025-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka zimní kampaň na LED obrazovky v Praze 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-10-01 s bodem 91/30 z 2025-06-27 (Prezentace města - LED obrazovky PRAHA). Jistota nizka.",
+      "castka_czk": 324089.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28118642 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 96 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35119157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-99/27__32936617",
+      "datum": "2025-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka zimní kampaň na LED obrazovky v Praze 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-10-01 s bodem 99/27 z 2025-09-30 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání kampaně z",
+      "castka_czk": 324089.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28118642 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35119157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32936617",
+      "datum": "2025-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka zimní kampaň na LED obrazovky v Praze 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana LED MULTIMEDIA s.r.o..",
+      "castka_czk": 324089.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35119157",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/24",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání kampaně na LED obrazovkách v lokalitě „PLZEŇ“ pro Zahájení lázeňské sezóny 2026 u společnosti LED MULTIMEDIA s.r.o.",
+      "popis": "Rada města, bod 115/24, usnesení 1087/26. Schvaleno.",
+      "castka_czk": 186000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2038265717",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

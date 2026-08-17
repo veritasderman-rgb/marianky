@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25225049",
+    "nazev": "ICS - systémy s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-17",
+    "do": "2019-12-18",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-50-50/47",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Informační výsledková tabule do sportovní haly v Mariánských Lázních - vyloučení dodavatele, výběr dodavatele",
+      "popis": "Rada města, bod 50/47, usnesení 669/19.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2454068",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/47__10371624",
+      "datum": "2019-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-18",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Informační výsledková tabule do sportovní haly v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-12-18 s bodem 50/47 z 2019-12-17 (Informační výsledková tabule do sportovní haly v Mariánských Lázních - vyloučení dodavatele,",
+      "castka_czk": 361232.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25225049 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova haly, informacni, laznich, marianskych",
+      "url": "https://smlouvy.gov.cz/smlouva/11154264",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10371624",
+      "datum": "2019-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-18",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Informační výsledková tabule do sportovní haly v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ICS - systémy s.r.o..",
+      "castka_czk": 361232.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11154264",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

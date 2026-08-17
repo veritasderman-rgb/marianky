@@ -1,0 +1,1840 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04552229",
+    "nazev": "Marienbad Film z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-03-15",
+    "do": "2026-05-14",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 90,
+    "dolozenych": 58,
+    "odhadu": 32,
+    "dle_typu": {
+      "usneseni": 36,
+      "retez": 32,
+      "smlouva": 22
+    },
+    "dle_jistoty": {
+      "fakt": 58,
+      "vysoka": 1,
+      "nizka": 25,
+      "stredni": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-60-60/2",
+      "datum": "2016-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 60/2, usnesení 136/16. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1546906",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-16-16/7",
+      "datum": "2016-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 293/16.",
+      "castka_czk": 1200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1561386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-108/18__2195482",
+      "datum": "2017-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-19",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-19 s bodem 108/18 z 2017-03-28 (Fond kultury města Mariánské Lázně). Jistota vysoka.",
+      "castka_czk": 100000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 83 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2366422",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2195482",
+      "datum": "2017-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-19",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film, z.s..",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2366422",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/4",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2018",
+      "popis": "Zastupitelstvo města, bod 32/4, usnesení 630/17. Schvaleno.",
+      "castka_czk": 350001200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1861378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/4__5541979",
+      "datum": "2018-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-25",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - MARIENBAD FILM FESTIVAL 2018",
+      "popis": "Odhadované spojení smlouvy z 2018-06-25 s bodem 32/4 z 2017-12-12 (Rozpočet města Mariánské Lázně na rok 2018). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 195 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5969011",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__5541979",
+      "datum": "2018-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-25",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - MARIENBAD FILM FESTIVAL 2018",
+      "popis": "Odhadované spojení smlouvy z 2018-06-25 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 74 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5969011",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5541979",
+      "datum": "2018-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-25",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - MARIENBAD FILM FESTIVAL 2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5969011",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-164-164/24",
+      "datum": "2018-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-28",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2018",
+      "popis": "Rada města, bod 164/24, usnesení 469/18. Schvaleno.",
+      "castka_czk": 1600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2085646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-39-39/30",
+      "datum": "2018-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení žádostí podaných do 2. kola Fondu kultury 2018",
+      "popis": "Zastupitelstvo města, bod 39/30, usnesení 779/18. Schvaleno.",
+      "castka_czk": 125000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2089707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-164/24__6947827",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva FK.2 kolo 2018",
+      "popis": "Odhadované spojení smlouvy z 2018-10-08 s bodem 164/24 z 2018-08-28 (Fond kultury 2.kolo 2018). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7502403",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-39/30__6947827",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva FK.2 kolo 2018",
+      "popis": "Odhadované spojení smlouvy z 2018-10-08 s bodem 39/30 z 2018-09-11 (Schválení žádostí podaných do 2. kola Fondu kultury 2018). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7502403",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6947827",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva FK.2 kolo 2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7502403",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/4",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2019",
+      "popis": "Zastupitelstvo města, bod 2/4, usnesení 12/18. Schvaleno.",
+      "castka_czk": 397951000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145448",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:7967587",
+      "datum": "2019-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Poskytnutí neinvestiční dotace z rozpočtu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 150000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8602591",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/7",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Marienbad Film z.s. - Phill Niblock",
+      "popis": "Zastupitelstvo města, bod 5/7, usnesení 82/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319264",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:8647551",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9323311",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/4",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2020",
+      "popis": "Zastupitelstvo města, bod 10/4, usnesení 197/19. Schvaleno.",
+      "castka_czk": 383624720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2433453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:11308200",
+      "datum": "2020-04-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Poskytnutí neinvestiční dotace z rozpočtu města Mariánské Lázně 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 150000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12162448",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12130664",
+      "datum": "2020-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 76000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13020292",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-82-82/13",
+      "datum": "2020-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Zápis z jednání Komise kultury ze dne 7.9.2020",
+      "popis": "Rada města, bod 82/13, usnesení 467/20. Schvaleno.",
+      "castka_czk": 24000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2577467",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/82.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-16-16/6",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu kultury 2020 - 2. kolo",
+      "popis": "Zastupitelstvo města, bod 16/6, usnesení 343/20. Schvaleno.",
+      "castka_czk": 24000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2588255",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-17-17/3",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2021",
+      "popis": "Zastupitelstvo města, bod 17/3, usnesení 361/20. Schvaleno.",
+      "castka_czk": 415455400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2605014",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-82/13__15094671",
+      "datum": "2021-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Marienbad Film Festival 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-12 s bodem 82/13 z 2020-09-15 (Zápis z jednání Komise kultury ze dne 7.9.2020). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 209 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16248735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-16/6__15094671",
+      "datum": "2021-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Marienbad Film Festival 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-12 s bodem 16/6 z 2020-11-03 (Poskytnutí dotace z Fondu kultury 2020 - 2. kolo). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 160 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16248735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-17/3__15094671",
+      "datum": "2021-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Marienbad Film Festival 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-12 s bodem 17/3 z 2020-12-15 (Rozpočet města Mariánské Lázně na rok 2021). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 118 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16248735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15094671",
+      "datum": "2021-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-12",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Marienbad Film Festival 2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16248735",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/6",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2022",
+      "popis": "Zastupitelstvo města, bod 23/6, usnesení 507/21. Schvaleno.",
+      "castka_czk": 427652900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__18832831",
+      "datum": "2022-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-05",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-05-05 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 107 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20238087",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-23/6__18832831",
+      "datum": "2022-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-05",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-05-05 s bodem 23/6 z 2021-12-14 (Rozpočet města Mariánské Lázně na rok 2022). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 142 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20238087",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/6__18832831",
+      "datum": "2022-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-05",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-05-05 s bodem 25/6 z 2022-03-01 (Fond kultury - 1. výzva 2022). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 65 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20238087",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18832831",
+      "datum": "2022-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-05",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20238087",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-148-148/9",
+      "datum": "2022-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-24",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2022",
+      "popis": "Rada města, bod 148/9, usnesení 241/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2852931",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-28-28/3",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo",
+      "popis": "Zastupitelstvo města, bod 28/3, usnesení 606/22. Schvaleno.",
+      "castka_czk": 445000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2853699",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__19702831",
+      "datum": "2022-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-27",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022 - 2 kolo",
+      "popis": "Odhadované spojení smlouvy z 2022-07-27 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 190 dní po usnesení; název bodu a předmět smlouvy sdílí slova",
+      "url": "https://smlouvy.gov.cz/smlouva/21176811",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-148/9__19702831",
+      "datum": "2022-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-27",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022 - 2 kolo",
+      "popis": "Odhadované spojení smlouvy z 2022-07-27 s bodem 148/9 z 2022-05-24 (Fond kultury 2.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 64 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/21176811",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19702831",
+      "datum": "2022-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-27",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022 - 2 kolo",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21176811",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-157-157/17",
+      "datum": "2022-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Memoranda o vzájemné spolupráci k projektu „Kulturní a kreativní centrum LIL“.",
+      "popis": "Rada města, bod 157/17, usnesení 447/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2906676",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/157.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-3-3/6",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2023",
+      "popis": "Zastupitelstvo města, bod 3/6, usnesení 33/22. Schvaleno.",
+      "castka_czk": 526578820,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2938538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/3",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2023 - 1. kolo",
+      "popis": "Rada města, bod 11/3, usnesení 57/23. Schvaleno.",
+      "castka_czk": 95000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:22304721",
+      "datum": "2023-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2023 - Marienbad Film z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23921665",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__22471789",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Odhadované spojení smlouvy z 2023-04-14 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána až 451 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24097209",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-148/9__22471789",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Odhadované spojení smlouvy z 2023-04-14 s bodem 148/9 z 2022-05-24 (Fond kultury 2.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 325 dní po usnesení; stejně dobře sedí i 1 další usnesení; k ",
+      "url": "https://smlouvy.gov.cz/smlouva/24097209",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22471789",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Marienbad Film z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24097209",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23298171",
+      "datum": "2023-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 73500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24965431",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-12-12/23",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s. na kulturní akci Marienbad Film Festival 2024",
+      "popis": "Zastupitelstvo města, bod 12/23, usnesení 236/23. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3119362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/19",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2024",
+      "popis": "Rada města, bod 44/19, usnesení 68/24. Schvaleno.",
+      "castka_czk": 92000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3148072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-13-13/18",
+      "datum": "2024-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo",
+      "popis": "Zastupitelstvo města, bod 13/18, usnesení 265/24. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3138457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/23__26014871",
+      "datum": "2024-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-04",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Marienbad Film Festival 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-03-04 s bodem 12/23 z 2023-12-12 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s. na kult",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 83 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/27849207",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26014871",
+      "datum": "2024-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Marienbad Film Festival 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27849207",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/2",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Žádost o změnu termínu konání akce Marienbad Film Festival 2024",
+      "popis": "Rada města, bod 51/2, usnesení 250/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3176841",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-14-14/7",
+      "datum": "2024-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Žádost o změnu termínu konání akce Marienbad Film Festival 2024",
+      "popis": "Zastupitelstvo města, bod 14/7, usnesení 278/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3167928",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-44/19__26773839",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 44/19 z 2024-02-06 (Fond kultury 2024). Jistota nizka.",
+      "castka_czk": 77000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/28643579",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/23__26773839",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 12/23 z 2023-12-12 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s. na kult",
+      "castka_czk": 77000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 150 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/28643579",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/23__26876774",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě o neinvestiční dotaci z rozpočtu města Mariánské Lázně uzavřená dle zákona č. 89/2012 Sb., občanský zákoník a zákon č. 250/200 Sb., o rozpočtových pravidel územních rozpočtů",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 12/23 z 2023-12-12 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s. na kult",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 150 dní po usnesení; k témuž usnesen",
+      "url": "https://smlouvy.gov.cz/smlouva/28750602",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-13/18__26773839",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 13/18 z 2024-02-27 (Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo). Jistota nizka.",
+      "castka_czk": 77000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 73 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/28643579",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26773839",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 77000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28643579",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26876774",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě o neinvestiční dotaci z rozpočtu města Mariánské Lázně uzavřená dle zákona č. 89/2012 Sb., občanský zákoník a zákon č. 250/200 Sb., o rozpočtových pravidel územních rozpočtů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28750602",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27073144",
+      "datum": "2024-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 98600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28955288",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-18-18/17",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s.na kulturní akci Marienbad Film Festival",
+      "popis": "Zastupitelstvo města, bod 18/17, usnesení 420/24. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3290841",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/17__29649036",
+      "datum": "2025-01-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-08",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Marienbad Film Festival 2025/2026/2027",
+      "popis": "Odhadované spojení smlouvy z 2025-01-08 s bodem 18/17 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s.na kultu",
+      "castka_czk": 300000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova festival, film, marienbad; k témuž usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/31675608",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29649036",
+      "datum": "2025-01-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-08",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Marienbad Film Festival 2025/2026/2027",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 300000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31675608",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/20",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Rada města, bod 77/20, usnesení 92/25. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317945",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/20__30797096",
+      "datum": "2025-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "\"Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně \"",
+      "popis": "Odhadované spojení smlouvy z 2025-03-03 s bodem 77/20 z 2025-02-04 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 55000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32881196",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/17__30797096",
+      "datum": "2025-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "\"Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně \"",
+      "popis": "Odhadované spojení smlouvy z 2025-03-03 s bodem 18/17 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s.na kultu",
+      "castka_czk": 55000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32881196",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-19/20__30797096",
+      "datum": "2025-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "\"Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně \"",
+      "popis": "Odhadované spojení smlouvy z 2025-03-03 s bodem 19/20 z 2025-02-11 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 55000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32881196",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30797096",
+      "datum": "2025-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "\"Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně \"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 55000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32881196",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/20__31423812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2025-05-28 s bodem 77/20 z 2025-02-04 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 110300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 113 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/33535364",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/17__31423812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2025-05-28 s bodem 18/17 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s.na kultu",
+      "castka_czk": 110300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 169 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/33535364",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-19/20__31423812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2025-05-28 s bodem 19/20 z 2025-02-11 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 110300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 106 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/33535364",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31423812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o podnájmu nebytových prostor",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 110300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33535364",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/5__35027877",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Marienbad Film z.s. - Dojetí /Ergriffenheit - doprovodný hudební program 11.ročníku Marienbad Film Festivalu",
+      "popis": "Odhadované spojení smlouvy z 2026-03-24 s bodem 109/5 z 2026-01-20 (Fond kultury 2026). Jistota nizka.",
+      "castka_czk": 56000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 63 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/37305541",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/17__35027877",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Marienbad Film z.s. - Dojetí /Ergriffenheit - doprovodný hudební program 11.ročníku Marienbad Film Festivalu",
+      "popis": "Odhadované spojení smlouvy z 2026-03-24 s bodem 18/17 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Marienbad Film z.s.na kultu",
+      "castka_czk": 56000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 469 dní po usnesení; název bodu a předmět smlouvy sdílí slova film, marienbad; stejně dobře sedí i 2 d",
+      "url": "https://smlouvy.gov.cz/smlouva/37305541",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2026-25/6__35027877",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Marienbad Film z.s. - Dojetí /Ergriffenheit - doprovodný hudební program 11.ročníku Marienbad Film Festivalu",
+      "popis": "Odhadované spojení smlouvy z 2026-03-24 s bodem 25/6 z 2026-02-10 (Fond kultury 2026 - 1.výzva). Jistota nizka.",
+      "castka_czk": 56000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/37305541",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35027877",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Marienbad Film z.s. - Dojetí /Ergriffenheit - doprovodný hudební program 11.ročníku Marienbad Film Festivalu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 56000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37305541",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/5__35762113",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o pronájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2026-05-14 s bodem 109/5 z 2026-01-20 (Fond kultury 2026). Jistota nizka.",
+      "castka_czk": 59600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/38071469",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2026-25/6__35762113",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o pronájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2026-05-14 s bodem 25/6 z 2026-02-10 (Fond kultury 2026 - 1.výzva). Jistota nizka.",
+      "castka_czk": 59600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04552229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 93 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/38071469",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35762113",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o pronájmu nebytových prostor",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Marienbad Film z.s..",
+      "castka_czk": 59600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38071469",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

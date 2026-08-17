@@ -1,0 +1,401 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "43270557",
+    "nazev": "Procházka Miroslav"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-09-23",
+    "do": "2025-11-01",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 18,
+    "dolozenych": 12,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 6,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "nizka": 3,
+      "vysoka": 1,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:43270557:vznik",
+      "datum": "1992-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-09-23",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Miroslav Procházka",
+      "popis": "Vznik subjektu Miroslav Procházka (IČO 43270557), Fyzická osoba podnikající dle živnostenského zákona, obor: Výroba elektrických motorů, generátorů a transformá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-36-36/2",
+      "datum": "2015-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-01",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 834 - prodloužení doby nájmu - Miroslav Procházka",
+      "popis": "Rada města, bod 36/2, usnesení 403/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1453658",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/36.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-160-160/4",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74",
+      "popis": "Rada města, bod 160/4, usnesení 346/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1967949",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-160/4__5757107",
+      "datum": "2018-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74“ v Mariánských Lázních.",
+      "popis": "Odhadované spojení smlouvy z 2018-07-16 s bodem 160/4 z 2018-07-03 (Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74). Jistota nizk",
+      "castka_czk": 1193951.77,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova datovych, elektro, objektu, posileni; k tému",
+      "url": "https://smlouvy.gov.cz/smlouva/6201647",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5757107",
+      "datum": "2018-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74“ v Mariánských Lázních.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miroslav Procházka.",
+      "castka_czk": 1193951.77,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6201647",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/18",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74",
+      "popis": "Rada města, bod 162/18, usnesení 420/18. Schvaleno.",
+      "castka_czk": 354675,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1985317",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/18__6106691",
+      "datum": "2018-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-15",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74 (č. smlouvy objednatele: S251/18) uzavřené dne 16.7.2018",
+      "popis": "Odhadované spojení smlouvy z 2018-08-15 s bodem 162/18 z 2018-07-31 (Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74). Jistota vys",
+      "castka_czk": 354675.2,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/6582639",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6106691",
+      "datum": "2018-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-15",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74 (č. smlouvy objednatele: S251/18) uzavřené dne 16.7.2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miroslav Procházka.",
+      "castka_czk": 354675.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6582639",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-160/4__8557167",
+      "datum": "2019-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-09",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Objednávka - elektroinstalace kanceláře v KISu",
+      "popis": "Odhadované spojení smlouvy z 2019-05-09 s bodem 160/4 z 2018-07-03 (Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74). Jistota nizk",
+      "castka_czk": 56131.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 310 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/9227907",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/18__8557167",
+      "datum": "2019-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-09",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Objednávka - elektroinstalace kanceláře v KISu",
+      "popis": "Odhadované spojení smlouvy z 2019-05-09 s bodem 162/18 z 2018-07-31 (Posílení rozvodů elektro a vybudování datových rozvodů v objektu Ruská č.p.74). Jistota niz",
+      "castka_czk": 56131.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 282 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/9227907",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8557167",
+      "datum": "2019-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-09",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - elektroinstalace kanceláře v KISu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miroslav Procházka.",
+      "castka_czk": 56131.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9227907",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-86-86/7",
+      "datum": "2020-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-13",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 834 - prodloužení nájemního vztahu - Miroslav Procházka",
+      "popis": "Rada města, bod 86/7, usnesení 513/20. Schvaleno.",
+      "castka_czk": 54150,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2589272",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/86.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-86/7__13322012",
+      "datum": "2020-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-29",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Franze Kafky - p. Procházka",
+      "popis": "Odhadované spojení smlouvy z 2020-10-29 s bodem 86/7 z 2020-10-13 (NP Franze Kafky 834 - prodloužení nájemního vztahu - Miroslav Procházka). Jistota stredni.",
+      "castka_czk": 327607.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova franze, kafky, prochazka",
+      "url": "https://smlouvy.gov.cz/smlouva/14280192",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13322012",
+      "datum": "2020-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-29",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Franze Kafky - p. Procházka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Miroslav Procházka.",
+      "castka_czk": 327607.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14280192",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/17",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Franze Kafky, č.p. 834, nebytová jednotka č. 834/10 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 99/17, usnesení 654/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/26249922",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/8",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor č. 834/10, ul. Franze Kafky č. p. 834 – Miroslav Procházka - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 102/8, usnesení 736/25. Schvaleno.",
+      "castka_czk": 54150,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3688019192",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/8__33378437",
+      "datum": "2025-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení nájemního vztahu",
+      "popis": "Odhadované spojení smlouvy z 2025-11-01 s bodem 102/8 z 2025-10-29 (Nebytový prostor č. 834/10, ul. Franze Kafky č. p. 834 – Miroslav Procházka - prodloužení ná",
+      "castka_czk": 270750.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 43270557 je uvedeno v textu usnesení; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova najemniho, prodlouzeni, vztahu",
+      "url": "https://smlouvy.gov.cz/smlouva/35580225",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33378437",
+      "datum": "2025-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení nájemního vztahu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Procházka Miroslav.",
+      "castka_czk": 270750.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35580225",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

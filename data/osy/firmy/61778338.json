@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "61778338",
+    "nazev": "Ing. Richard Stoklasa"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-11-04",
+    "do": "2024-06-13",
+    "prvni_rok": 1994,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:61778338:vznik",
+      "datum": "1994-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-11-04",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Hotel servis Mariánské Lázně s.r.o.",
+      "popis": "Vznik subjektu Hotel servis Mariánské Lázně s.r.o. (IČO 61778338), Společnost s ručením omezeným, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:22419085",
+      "datum": "2023-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Výkon technického dozoru investora při provádění stavby \"Rekonstrukce veřejného osvětlení, datová infrastruktura, I.etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hotel servis Mariánské Lázně s.r.o..",
+      "castka_czk": 387200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24041849",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27271536",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "TDI - Zastávka MHD Sídliště, ul. Skalníkova, M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 83490.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29161992",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,758 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29107750",
+    "nazev": "KLEPONA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-09-20",
+    "do": "2026-02-19",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 36,
+    "dolozenych": 33,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 31
+    },
+    "dle_jistoty": {
+      "fakt": 33,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-84-84/2",
+      "datum": "2016-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-20",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o dílo na opravu střechy MěÚ Mariánské Lázně",
+      "popis": "Rada města, bod 84/2, usnesení 450/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1635257",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/84.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-84/2__350589",
+      "datum": "2016-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-04",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - oprava a nátěr střech MěÚ Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-10-04 s bodem 84/2 z 2016-09-20 (Uzavření smlouvy o dílo na opravu střechy MěÚ Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 534850.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29107750 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/373745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:350589",
+      "datum": "2016-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-04",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - oprava a nátěr střech MěÚ Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 534850.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/373745",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2016-84/2__1317694",
+      "datum": "2017-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-07",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka-oprava štítových stěn a okapnic pod všemi okny na Zimním stadionu Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-03-07 s bodem 84/2 z 2016-09-20 (Uzavření smlouvy o dílo na opravu střechy MěÚ Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 227225.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29107750 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 168 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/1417902",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1317694",
+      "datum": "2017-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-oprava štítových stěn a okapnic pod všemi okny na Zimním stadionu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 227225.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1417902",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2016-84/2__2669366",
+      "datum": "2017-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-15",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava střech a výměna střešních krytin nad jídelnou, pergolou a chatky na uskladnění stanů MěDDM Pavlovice",
+      "popis": "Odhadované spojení smlouvy z 2017-08-15 s bodem 84/2 z 2016-09-20 (Uzavření smlouvy o dílo na opravu střechy MěÚ Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 364458.05,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29107750 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 329 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/2872034",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2669366",
+      "datum": "2017-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-15",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střech a výměna střešních krytin nad jídelnou, pergolou a chatky na uskladnění stanů MěDDM Pavlovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 364458.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2872034",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-126-126/1",
+      "datum": "2017-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Oprava Anglikánské kaple",
+      "popis": "Rada města, bod 126/1, usnesení 516/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1816896",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/126.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:2920190",
+      "datum": "2017-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Oprava klempířských prvků, odstranění mechu ze střechy, umytí a ošetření střechy ochranným nátěrem na Anglikánské kapli, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 72480.21,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3144726",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3138118",
+      "datum": "2017-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-05",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava štítové stěny oplechováním, očištění a nátěr dřevěných prvků na Zimním stadionu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 472924.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3382402",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3249466",
+      "datum": "2017-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-18",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Radnice města-rekonstrukce radnice-areál Chebská 252, Mariánské Lázně-rekonstrukce části střechy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 202197.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3504874",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5381867",
+      "datum": "2018-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka- Oprava zadní štítové stěny oplechováním, očištění a nátěr dřevěných prvků na Zimním stadionu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 472924.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5793755",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5455895",
+      "datum": "2018-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-11",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava dešťových žlabů a svodů na sportovní hale Slovan v Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Klepona s.r.o..",
+      "castka_czk": 63394.32,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5873911",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6278231",
+      "datum": "2018-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střechy nad tělocvičnou - Sportovní hala Slovan Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 395869.65,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6770343",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8000603",
+      "datum": "2019-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava nátěru střechy nad Malou scénou objektu Chopin, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 68970.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8638223",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8101807",
+      "datum": "2019-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava a doplnění sněhových zábran na střeše objektu Slovan, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 71728.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8746455",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8324099",
+      "datum": "2019-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-03",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havarijního stavu střešní krytiny na Městském bazénu, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 112929.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8981967",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9017643",
+      "datum": "2019-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-23",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava poškozených částí střešní krytiny a nátěr na objektu Zimního stadionu, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 115869.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9714659",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9344106",
+      "datum": "2019-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-02",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havarijního stavu střešní krytiny, svodů a žlabů na objektu LIL, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 100272.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10061874",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10536284",
+      "datum": "2020-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava zabezpečení oken proti vniknutí v objektu LIL, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 62315.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11339944",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11281524",
+      "datum": "2020-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-02",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava poškozené střešní krytiny na objektu Zimního stadionu, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 68352.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12134576",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11692912",
+      "datum": "2020-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava nátěru střešní kratiny hlavní budovy domu Chopin, Hlavní tř. 47, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 228913.85,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12561524",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12437884",
+      "datum": "2020-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-21",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava části střešní krytiny výměnou na tenisové hale objektu Slovan, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 120352.65,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13345852",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12971876",
+      "datum": "2020-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-25",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střechy na sociálního zařízení WC Ferdinandův pramen, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 85314.68,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13909072",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14900351",
+      "datum": "2021-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-18",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava části podlahy terasy výměnou v objektu Mateřské školy Skalníkova, Úšovice, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 176708.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16032607",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15671071",
+      "datum": "2021-06-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-09",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava a nátěr střešní krytiny objektu Mateřské školy Hlavní, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 499246.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16870011",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16322679",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava a nátěr střešní krytiny objektu kuchyně ZŠ Jih, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 349387.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17571963",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16588279",
+      "datum": "2021-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-17",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střechy skladu zahradní techniky v areálu Miniaturparku, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 68334.75,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17866631",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18120491",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava roštu a podlahy terasy výměnou v objektu Mateřské školy Skalníkova",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 290726.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19487351",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18120579",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střechy nad tenisovou halou výměnou - Sportovní hala Slovan",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 473037.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19487443",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18133491",
+      "datum": "2022-02-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-24",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havárie střechy po vichřici veřejných WC Hlavní st.p.č. 620",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 176033.22,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19501347",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18461103",
+      "datum": "2022-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střešní krytiny výměnou NP Hlavní 703 - Galerie Taťána",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 239096.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19848375",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:19918119",
+      "datum": "2022-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-05",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střešní krytiny a klempířských prvků na kapličce Lasky, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 99583.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21403615",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23266663",
+      "datum": "2023-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava výměnou uhnilého ukotvení střešní krytiny hlavní budovy objektu ZŠ Úšovice, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 250705.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24932075",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29733100",
+      "datum": "2025-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava střešních krytin nad vchody budovy LIL, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 70466.77,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31763672",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34891893",
+      "datum": "2026-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-19",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA - Oprava dožilé střešní krytiny, kterou zatéká do NP Skalníkova 471, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KLEPONA s.r.o..",
+      "castka_czk": 303717.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37163713",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

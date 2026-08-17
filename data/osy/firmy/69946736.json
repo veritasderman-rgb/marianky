@@ -1,0 +1,479 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "69946736",
+    "nazev": "Petra Vavříková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-07-27",
+    "do": "2025-12-29",
+    "prvni_rok": 2021,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 13,
+    "odhadu": 9,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 9,
+      "smlouva": 7
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "stredni": 5,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-117-117/5",
+      "datum": "2021-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-27",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejního stánku 8 - Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 117/5, usnesení 330/21. Schvaleno.",
+      "castka_czk": 400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2708427",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-117/5__16201623",
+      "datum": "2021-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-30",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.8",
+      "popis": "Odhadované spojení smlouvy z 2021-07-30 s bodem 117/5 z 2021-07-27 (Pronájem prodejního stánku 8 - Promenáda města Bad Homburgu). Jistota stredni.",
+      "castka_czk": 61200.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17438711",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16201623",
+      "datum": "2021-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.8",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 61200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17438711",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-132-132/14",
+      "datum": "2021-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 132/14, usnesení 584/21. Schvaleno.",
+      "castka_czk": 400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2785454",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-117/5__17656875",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 9 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 117/5 z 2021-07-27 (Pronájem prodejního stánku 8 - Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 157 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18995479",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17656875",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 9 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/18995479",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17656875",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva stánek č. 9 - BH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 146000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18995479",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-117/5__17835291",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 117/5 z 2021-07-27 (Pronájem prodejního stánku 8 - Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 178 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19184803",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17835291",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/19184803",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17835291",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19184803",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-7-7/10",
+      "datum": "2022-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-20",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023",
+      "popis": "Rada města, bod 7/10, usnesení 607/22. Schvaleno.",
+      "castka_czk": 400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2949023",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/7.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__21371161",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Odhadované spojení smlouvy z 2022-12-30 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota stredni.",
+      "castka_czk": 154880.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/22935401",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21371161",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 154880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22935401",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-38-38/25",
+      "datum": "2023-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-28",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 38/25, usnesení 749/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3116493",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__25430207",
+      "datum": "2023-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-29",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Odhadované spojení smlouvy z 2023-12-29 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota stredni.",
+      "castka_czk": 126000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27231983",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25430207",
+      "datum": "2023-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27231983",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/11",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 73/11, usnesení 836/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3292647",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__29534820",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota stredni",
+      "castka_czk": 126000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31555512",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29534820",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.9",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31555512",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/16",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026",
+      "popis": "Rada města, bod 106/16, usnesení 821/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/132170100",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/16__34066213",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 9. - ul. Promenáda Bad Homburg na rok 2026 - p. Vavříková",
+      "popis": "Odhadované spojení smlouvy z 2025-12-29 s bodem 106/16 z 2025-12-09 (Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026). Jistota stredn",
+      "castka_czk": 126000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69946736 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova promenada, stanku",
+      "url": "https://smlouvy.gov.cz/smlouva/36301605",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34066213",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 9. - ul. Promenáda Bad Homburg na rok 2026 - p. Vavříková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Vavříková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36301605",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00545911",
+    "nazev": "outdoor akzent s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-02-09",
+    "do": "2023-02-09",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "vysoka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2023-9/17__22034345",
+      "datum": "2023-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 974/1 k. ú. Úšovice - část na níž je umístěna protihluková zeď",
+      "popis": "Odhadované spojení smlouvy z 2023-02-09 s bodem 9/17 z 2023-01-10 (Reklama na ul. Plzeňská - revokace a dohoda). Jistota vysoka.",
+      "castka_czk": 48960.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 00545911 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 30 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23637749",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22034345",
+      "datum": "2023-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-09",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 974/1 k. ú. Úšovice - část na níž je umístěna protihluková zeď",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana outdoor akzent s.r.o..",
+      "castka_czk": 48960.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23637749",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

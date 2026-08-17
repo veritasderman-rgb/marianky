@@ -1,0 +1,218 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26033810",
+    "nazev": "Atelier BAMBAS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-01-30",
+    "do": "2024-06-25",
+    "prvni_rok": 2018,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 7,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-143-143/3",
+      "datum": "2018-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-30",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - pronájem nebytového prostoru",
+      "popis": "Rada města, bod 143/3, usnesení 52/18. Schvaleno.",
+      "castka_czk": 612000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1895129",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-143/3__4431148",
+      "datum": "2018-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-20",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 228 - Atelier BAMBAS s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-02-20 s bodem 143/3 z 2018-01-30 (NP Hlavní 228 - pronájem nebytového prostoru). Jistota stredni.",
+      "castka_czk": 3702600.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26033810 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, pronajem",
+      "url": "https://smlouvy.gov.cz/smlouva/4777560",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4431148",
+      "datum": "2018-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-20",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 228 - Atelier BAMBAS s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Atelier BAMBAS s.r.o..",
+      "castka_czk": 3702600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4777560",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-113-113/7",
+      "datum": "2021-06-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-15",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - Atelier BAMBAS s.r.o. - úprava Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 113/7, usnesení 262/21. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2693603",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-156-156/14",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 228 - ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 156/14, usnesení 429/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2898375",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/14__20012683",
+      "datum": "2022-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Atelier BAMBAS s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-08-30 s bodem 156/14 z 2022-08-23 (NP Hlavní, č.p. 228 - ukončení Smlouvy o nájmu nebytového prostoru dohodou). Jistota stredn",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26033810 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni",
+      "url": "https://smlouvy.gov.cz/smlouva/21502915",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20012683",
+      "datum": "2022-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Atelier BAMBAS s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Atelier BAMBAS s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21502915",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-9-9/8",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Dykova, č.p. 152 - podnájemní smlouva",
+      "popis": "Rada města, bod 9/8, usnesení 8/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2958396",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-58-58/7",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Dykova, č.p. 152 – prodloužení nájemního vztahu – společnost dioptra optik s.r.o.",
+      "popis": "Rada města, bod 58/7, usnesení 438/24. Schvaleno.",
+      "castka_czk": 806589,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3212920",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

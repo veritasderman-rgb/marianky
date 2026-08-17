@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "62615505",
+    "nazev": "Ladislav Mlejnek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1995-04-19",
+    "do": "2026-07-08",
+    "prvni_rok": 1995,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 7,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:62615505:vznik",
+      "datum": "1995-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1995-04-19",
+      "rok": 1995,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ladislav Mlejnek",
+      "popis": "Vznik subjektu Ladislav Mlejnek (IČO 62615505), Fyzická osoba podnikající dle živnostenského zákona, obor: Účetnické a auditorské činnosti; daňové poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-62-62/5",
+      "datum": "2016-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Fr. Kafky 834, jednotka B2-III - prodloužení nájmu - Ladislav Mlejnek",
+      "popis": "Rada města, bod 62/5, usnesení 155/16. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1554171",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-65-65/13",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Fr. Kafky 834 - změna účelu užívání - Ladislav Mlejnek",
+      "popis": "Rada města, bod 65/13, usnesení 191/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1565244",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-86-86/8",
+      "datum": "2020-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-13",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 834 - prodloužení nájemního vztahu - Ladislav Mlejnek",
+      "popis": "Rada města, bod 86/8, usnesení 514/20. Schvaleno.",
+      "castka_czk": 1600,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2589333",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/86.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-118-118/16",
+      "datum": "2026-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-26",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Franze Kafky, č.p. 834, nebytová jednotka č. 834/9 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 118/16, usnesení 1173/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3875959402",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/13",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP v ul. Franze Kafky 834 – prodloužení nájemního vztahu – Ladislav Mlejnek",
+      "popis": "Rada města, bod 120/13, usnesení 1281/26. Schvaleno.",
+      "castka_czk": 96480,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2450306926",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-118/16__36348912",
+      "datum": "2026-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-08",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - p. Mlejnek",
+      "popis": "Odhadované spojení smlouvy z 2026-07-08 s bodem 118/16 z 2026-05-26 (Nebytový prostor v ul. Franze Kafky, č.p. 834, nebytová jednotka č. 834/9 – zveřejnění zámě",
+      "castka_czk": 482400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62615505 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 43 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38680772",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-120/13__36348912",
+      "datum": "2026-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-08",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - p. Mlejnek",
+      "popis": "Odhadované spojení smlouvy z 2026-07-08 s bodem 120/13 z 2026-06-23 (NP v ul. Franze Kafky 834 – prodloužení nájemního vztahu – Ladislav Mlejnek). Jistota nizka",
+      "castka_czk": 482400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62615505 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova mlejnek, prodlouzeni; stejně dobře sedí i 1 ",
+      "url": "https://smlouvy.gov.cz/smlouva/38680772",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36348912",
+      "datum": "2026-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-08",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - p. Mlejnek",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ladislav Mlejnek.",
+      "castka_czk": 482400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38680772",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

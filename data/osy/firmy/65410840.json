@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "65410840",
+    "nazev": "REINVEST spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-02-26",
+    "do": "2026-04-14",
+    "prvni_rok": 2019,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 9,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 4,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-13-13/5",
+      "datum": "2019-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-26",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "VZ Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD",
+      "popis": "Rada města, bod 13/5, usnesení 104/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2303660",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-13/5__7958971",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Komplexní projektová dokumentace Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD",
+      "popis": "Odhadované spojení smlouvy z 2019-03-25 s bodem 13/5 z 2019-02-26 (VZ Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD). Jistota stredni.",
+      "castka_czk": 907500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 65410840 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, rekonstrukce",
+      "url": "https://smlouvy.gov.cz/smlouva/8593511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7958971",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Komplexní projektová dokumentace Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana REINVEST spol. s r.o., Ing. Marek Raška.",
+      "castka_czk": 907500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8593511",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-56-56/19",
+      "datum": "2020-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-04",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Hlavní – II. etapa PD – dodatek k SoD č. 1",
+      "popis": "Rada města, bod 56/19, usnesení 86/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2474555",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-56/19__11053552",
+      "datum": "2020-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-05",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 1 Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD - změna ceny díla",
+      "popis": "Odhadované spojení smlouvy z 2020-03-05 s bodem 56/19 z 2020-02-04 (Rekonstrukce ul. Hlavní – II. etapa PD – dodatek k SoD č. 1). Jistota stredni.",
+      "castka_czk": 1082950.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 65410840 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, rekonstrukce",
+      "url": "https://smlouvy.gov.cz/smlouva/11894660",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11053552",
+      "datum": "2020-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-05",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 1 Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD - změna ceny díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana REINVEST spol. s r.o., Ing. Marek Raška.",
+      "castka_czk": 1082950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11894660",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-79-79/5",
+      "datum": "2020-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-11",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Hlavní – II. etapa PD – dodatek k SoD č. 2",
+      "popis": "Rada města, bod 79/5, usnesení 404/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2560474",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-56/19__12965192",
+      "datum": "2020-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 2 Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD - , společné územní a stavební řízení, změna termínů",
+      "popis": "Odhadované spojení smlouvy z 2020-09-22 s bodem 56/19 z 2020-02-04 (Rekonstrukce ul. Hlavní – II. etapa PD – dodatek k SoD č. 1). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 65410840 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 231 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, rekonstrukce; stejně dobře s",
+      "url": "https://smlouvy.gov.cz/smlouva/13902000",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-79/5__12965192",
+      "datum": "2020-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 2 Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD - , společné územní a stavební řízení, změna termínů",
+      "popis": "Odhadované spojení smlouvy z 2020-09-22 s bodem 79/5 z 2020-08-11 (Rekonstrukce ul. Hlavní – II. etapa PD – dodatek k SoD č. 2). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 65410840 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, rekonstrukce; stejně dobře se",
+      "url": "https://smlouvy.gov.cz/smlouva/13902000",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12965192",
+      "datum": "2020-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-22",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 2 Rekonstrukce Hlavní tř., Mariánské Lázně - II. etapa - PD - , společné územní a stavební řízení, změna termínů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana REINVEST spol. s r.o., Ing. Marek Raška.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13902000",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24456531",
+      "datum": "2023-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-25",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Studie dopravně technického řešení přemístění kruhového objezdu v centru Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana REINVEST, spol. s r.o. \t.",
+      "castka_czk": 114950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26183639",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34180617",
+      "datum": "2026-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-15",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Úprava PD – rekonstrukce ul. Hlavní, Mar. Lázně II. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana REINVEST spol. s r.o..",
+      "castka_czk": 89419.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36421613",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/9",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Hlavní, Mariánské Lázně – II. etapa",
+      "popis": "Rada města, bod 115/9, usnesení 1072/26. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2394866041",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

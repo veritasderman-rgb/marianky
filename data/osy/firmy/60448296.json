@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "60448296",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-08-10",
+    "do": "2022-03-01",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-118-118/4",
+      "datum": "2021-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-10",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2.kolo",
+      "popis": "Rada města, bod 118/4, usnesení 348/21. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2714720",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

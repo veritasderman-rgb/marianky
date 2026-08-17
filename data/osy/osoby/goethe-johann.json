@@ -1,0 +1,289 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "goethe-johann",
+    "jmeno": "Johann Wolfgang von Goethe",
+    "role": [
+      "návštěvník",
+      "básník"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1820",
+    "do": "2026-08",
+    "prvni_rok": 1820,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 12,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 4,
+      "media": 4,
+      "zpravodaj": 4
+    },
+    "dle_jistoty": {
+      "fakt": 12
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1820-goethe-prvni-navsteva",
+      "datum": "1820",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1820-01-01",
+      "rok": 1820,
+      "typ": "historie",
+      "nadpis": "První návštěva Johanna Wolfganga Goetha",
+      "popis": "Německý básník Johann Wolfgang von Goethe navštívil Mariánské Lázně poprvé roku 1820 a zavítal sem ještě dvakrát. Podle přehledu města povzbuzoval opata Reitenb",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1823-goethe-levetzow",
+      "datum": "1823",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1823-01-01",
+      "rok": 1823,
+      "typ": "historie",
+      "nadpis": "Goethe a Ulrika von Levetzow",
+      "popis": "Při pobytu roku 1823 se Johann Wolfgang von Goethe setkal s Ulrikou von Levetzow; šlo o jeho pozdní milostný vztah, který patří k nejčastěji připomínaným epizod",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1932-pomnik-goethe",
+      "datum": "1932",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1932-01-01",
+      "rok": 1932,
+      "typ": "historie",
+      "nadpis": "Odhalen pomník J. W. Goetha",
+      "popis": "V roce 1932 byl ve městě odhalen pomník Johanna Wolfganga Goetha. V roce 1943 byl pomník odvezen.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1943-odvoz-pomniku-goethe",
+      "datum": "1943",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1943-01-01",
+      "rok": 1943,
+      "typ": "historie",
+      "nadpis": "Odvezen pomník J. W. Goetha",
+      "popis": "V roce 1943 byl z města odvezen pomník Johanna Wolfganga Goetha, odhalený roku 1932.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "datum": "2017-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-21",
+      "rok": 2017,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně vzdají hold spisovatelům. Turistickou stezkou",
+      "popis": "Základní kámen nové stezky věnované spisovatelům symbolicky položil Vladimír Páral. Mezi autory, kteří si Mariánské Lázně oblíbili, patří Goethe, Kafka, Neruda ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-004",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ VZDAJÍ HOLD SPISOVATELŮM",
+      "popis": "Johann Wolfgang Goethe, Mark Twain, Ivan Alexandrovič Gončarov, Franz Kafka, Rudyard Kipling, Jan Neruda, Ivan Olbracht, Alexej Nikolajevič Tolstoj, Václav Bene",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:kkr-aktuality-v-marianskych-laznich-slavnostne-otevrou-stezku-spisovatelu",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "V Mariánských Lázních slavnostně otevřou Stezku spisovatelů",
+      "popis": "Naučná Stezka spisovatelů se měla slavnostně otevřít na kolonádě v neděli 11. srpna odpoledne. Projekt připomínající autory spjaté s městem, mezi nimi Goetha, F",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.kr-karlovarsky.cz/aktuality/v-marianskych-laznich-slavnostne-otevrou-stezku-spisovatelu",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych",
+      "datum": "2019-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-13",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "Turisté mají další výletní cíl. Je jím Stezka spisovatelů v Mariánských Lázních",
+      "popis": "Stezka spisovatelů nabídla turistům jedenáct panelů rozmístěných po Mariánských Lázních. Připomínají autory jako Goethe, Marka Twaina, Maxima Gorkého, Jaroslava",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych-laznich-8037423",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "media",
+      "nadpis": "Stezka spisovatelů provádí zajímavými místy Mariánských Lázní a osudy slavných literátů",
+      "popis": "Jedenáct panelů rozmístěných po Mariánských Lázních připomíná literáty, kteří do města zavítali. Mezi jmény jsou Goethe, Mark Twain, Maxim Gorkij, básník Jarosl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-slavnych-8206044",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-002",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "SVĚTOVÉ DĚDICTVÍ UNESCO",
+      "popis": "Mariánské Lázně patří mezi jedenáct výjimečných lázeňských měst ze sedmi zemí, které v rámci mezinárodní sériové nominace „Slavné lázně Evropy“ získalo zápis na",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-011",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Osobnosti Mariánských Lázní v obrazech: Johann Wolfgang Goethe (1749–1832)",
+      "popis": "Ponořte se s námi do (ne)dávné historie města a poznejte osobnosti, bez kterých by Mariánské Lázně nebyly takové, jaké jsou. V jednotlivých vydáních zpravodaje ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-012",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Johann Wolfgang Goethe (1749–1832)",
+      "popis": "Johann Wolfgang Goethe byl německý básník, prozaik a politik. Byl dvorním radou a ministrem Sasko-výmarského vévodství. Johann Wolfgang Goethe navštívil Mariáns",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

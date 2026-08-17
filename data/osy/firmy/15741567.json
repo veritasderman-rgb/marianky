@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "15741567",
+    "nazev": "MVDr. Mirko Pyskatý"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1991-12-14",
+    "do": "2021-12-21",
+    "prvni_rok": 1991,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:15741567:vznik",
+      "datum": "1991-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1991-12-14",
+      "rok": 1991,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MVDr. Mirko Pyskatý",
+      "popis": "Vznik subjektu MVDr. Mirko Pyskatý (IČO 15741567), Fyzická osoba podnikající dle živnostenského zákona, obor: Ostatní ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-91-91/3",
+      "datum": "2016-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-08",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova 804 - prodloužení nájmu - MVDR. Mirko Pyskatý, MVDR. Markéta Janochová",
+      "popis": "Rada města, bod 91/3, usnesení 538/16. Schvaleno.",
+      "castka_czk": 600,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1660308",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-91/3__691841",
+      "datum": "2016-11-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-23",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Kubelíkova 804, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-11-23 s bodem 91/3 z 2016-11-08 (NP Kubelíkova 804 - prodloužení nájmu - MVDR. Mirko Pyskatý, MVDR. Markéta Janochová). Jistot",
+      "castka_czk": 140844.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 15741567 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova kubelikova, najmu",
+      "url": "https://smlouvy.gov.cz/smlouva/735149",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:691841",
+      "datum": "2016-11-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-23",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Kubelíkova 804, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MVDr. Mirko Pyskatý.",
+      "castka_czk": 140844.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/735149",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-132-132/4",
+      "datum": "2021-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova, č.p.804 - prodloužení smlouvy o nájmu nebytového prostoru - MVDr. Markéta Janochová, MVDr. Mirko Pyskatý",
+      "popis": "Rada města, bod 132/4, usnesení 574/21. Schvaleno.",
+      "castka_czk": 31760,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2782976",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

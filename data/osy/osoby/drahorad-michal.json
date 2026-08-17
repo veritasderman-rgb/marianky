@@ -1,0 +1,182 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "drahorad-michal",
+    "jmeno": "Michal Drahorád",
+    "role": [
+      "fotbalista"
+    ],
+    "kategorie": "sport",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2014-10-10",
+    "do": "2018-04",
+    "prvni_rok": 2014,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "volby": 1,
+      "hlasovani": 3,
+      "zpravodaj": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    },
+    "hlasovani_celkem": 410,
+    "hlasovani_v_ose": 3,
+    "hlasovani_v_souhrnu": 407
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2014,
+      "celkem": 39,
+      "pro": 39
+    },
+    {
+      "rok": 2015,
+      "celkem": 190,
+      "nepritomen": 18,
+      "pro": 172
+    },
+    {
+      "rok": 2016,
+      "celkem": 176,
+      "pro": 121,
+      "nepritomen": 52,
+      "zdrzel": 2,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2017,
+      "celkem": 5,
+      "nepritomen": 5
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "volby:zvolen:kv2014:drahorad-michal",
+      "datum": "2014-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-10-10",
+      "rok": 2014,
+      "typ": "volby",
+      "nadpis": "Michal Drahorád zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za ANO 2011 s 467 hlasy (5.92 %), 3. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2016-17-11",
+      "datum": "2016-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-17",
+      "rok": 2016,
+      "typ": "hlasovani",
+      "nadpis": "Změna části textu usn. č. ZM/270/16 ze dne 22.3.2016 - Kadala",
+      "popis": "Zastupitelstvo města, bod 17/11. Pro 11, proti 1, zdrželo se 4, nepřítomno 5.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2016/17.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2016-21-4",
+      "datum": "2016-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-15",
+      "rok": 2016,
+      "typ": "hlasovani",
+      "nadpis": "Prodej podílu st. p. č. 1141, k. ú. a obec Mariánské Lázně (pod BD Dřevěná, č.p. 640)",
+      "popis": "Zastupitelstvo města, bod 21/4. Pro 15, proti 0, zdrželo se 0, nepřítomno 4.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2016/21.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2016-22-18",
+      "datum": "2016-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-13",
+      "rok": 2016,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění odměn zastupitelů",
+      "popis": "Zastupitelstvo města, bod 22/18. Pro 12, proti 2, zdrželo se 6, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2016/22.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2018-04-026",
+      "datum": "2018-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-04-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "FOTBALISTÉ CHTĚJÍ BOJOVAT O KAŽDÝ BOD",
+      "popis": "Mariánskolázeňští fotbalisté nezaháleli ani v zimě a mají za sebou náročnou přípravu. Věří proto, že se jim podaří udržet soutěž a jsou připraveni bojovat o kaž",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d8b2c4c7%7C1460#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-04/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

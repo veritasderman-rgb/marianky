@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08744076",
+    "nazev": "Julie Torská"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-04",
+    "do": "2026-06-19",
+    "prvni_rok": 2019,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08744076:vznik",
+      "datum": "2019-12-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-04",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Julie Torská",
+      "popis": "Vznik subjektu Julie Torská (IČO 08744076), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/11",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Chebská, č.p. 251",
+      "popis": "Rada města, bod 115/11, usnesení 1074/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3109993282",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/26",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nebytového prostoru, Chebská, č.p. 251, Mariánské Lázně",
+      "popis": "Rada města, bod 119/26, usnesení 1234/26. Schvaleno.",
+      "castka_czk": 15000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2590332366",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-115/11__36276104",
+      "datum": "2026-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-19",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Julie Torská",
+      "popis": "Odhadované spojení smlouvy z 2026-06-19 s bodem 115/11 z 2026-04-14 (Nebytový prostor v ul. Chebská, č.p. 251). Jistota nizka.",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08744076 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 66 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38604892",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/26__36276104",
+      "datum": "2026-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-19",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Julie Torská",
+      "popis": "Odhadované spojení smlouvy z 2026-06-19 s bodem 119/26 z 2026-06-12 (Pronájem nebytového prostoru, Chebská, č.p. 251, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08744076 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova nebytoveho, prostoru; stejně dobře sedí i 1 d",
+      "url": "https://smlouvy.gov.cz/smlouva/38604892",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36276104",
+      "datum": "2026-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-19",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Julie Torská",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Torská.",
+      "castka_czk": 75000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38604892",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

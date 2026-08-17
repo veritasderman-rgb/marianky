@@ -1,0 +1,479 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "60838744",
+    "nazev": "STRABAG a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-07-25",
+    "do": "2024-10-21",
+    "prvni_rok": 2017,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 15,
+    "odhadu": 7,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 7,
+      "smlouva": 9
+    },
+    "dle_jistoty": {
+      "fakt": 15,
+      "stredni": 1,
+      "nizka": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-121-121/4",
+      "datum": "2017-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Opravy místních komunikací v Mariánských Lázních",
+      "popis": "Rada města, bod 121/4, usnesení 416/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1792640",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/121.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-121/4__2668234",
+      "datum": "2017-08-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-03",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2017-08-03 s bodem 121/4 z 2017-07-25 (Opravy místních komunikací v Mariánských Lázních). Jistota stredni.",
+      "castka_czk": 3870460.275,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikaci, laznich, marianskych, mistnich",
+      "url": "https://smlouvy.gov.cz/smlouva/2870846",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2668234",
+      "datum": "2017-08-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-03",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG, a.s..",
+      "castka_czk": 3870460.275,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2870846",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/22",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy s vybraným dodavatelem na \"Slovan – vybudování přístupového chodníku na tribunu\"",
+      "popis": "Rada města, bod 51/22, usnesení 270/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3181558",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/22__26636215",
+      "datum": "2024-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Slovan-vybudování přístupového chodníku na tribunu",
+      "popis": "Odhadované spojení smlouvy z 2024-04-25 s bodem 51/22 z 2024-04-16 (Uzavření smlouvy s vybraným dodavatelem na \"Slovan – vybudování přístupového chodníku na tri",
+      "castka_czk": 180760.22,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, pristupoveho, slovan, tribunu; k té",
+      "url": "https://smlouvy.gov.cz/smlouva/28499927",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26636215",
+      "datum": "2024-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-25",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Slovan-vybudování přístupového chodníku na tribunu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 180760.22,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28499927",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/31",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka Dopravní hřiště-oprava povrchu, ZŠ Úšovice - výběr dodavatele",
+      "popis": "Rada města, bod 54/31, usnesení 367/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3199218",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/22__27270884",
+      "datum": "2024-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-07",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Odstraněné středového ostrůvku za radnicí",
+      "popis": "Odhadované spojení smlouvy z 2024-06-07 s bodem 51/22 z 2024-04-16 (Uzavření smlouvy s vybraným dodavatelem na \"Slovan – vybudování přístupového chodníku na tri",
+      "castka_czk": 71876.38,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 52 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/29161304",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27270884",
+      "datum": "2024-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-07",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Odstraněné středového ostrůvku za radnicí",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 71876.38,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29161304",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27189732",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dopravní hřiště - oprava povrchu ZŠ Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 952657.89,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29076856",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/22__27479996",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka-oprava Slovanu-přístupový chodník, obruba",
+      "popis": "Odhadované spojení smlouvy z 2024-06-13 s bodem 51/22 z 2024-04-16 (Uzavření smlouvy s vybraným dodavatelem na \"Slovan – vybudování přístupového chodníku na tri",
+      "castka_czk": 96533.88,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 58 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/29378104",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27479996",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-oprava Slovanu-přístupový chodník, obruba",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 96533.88,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29378104",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/22__27439124",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Slovan-vybudování přístupového chodníku na tribunu",
+      "popis": "Odhadované spojení smlouvy z 2024-07-01 s bodem 51/22 z 2024-04-16 (Uzavření smlouvy s vybraným dodavatelem na \"Slovan – vybudování přístupového chodníku na tri",
+      "castka_czk": 220965.18,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 76 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, pristupoveho, slovan, tribunu; k t",
+      "url": "https://smlouvy.gov.cz/smlouva/29334924",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27439124",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Slovan-vybudování přístupového chodníku na tribunu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 220965.18,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29334924",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-62-62/29",
+      "datum": "2024-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo – Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Rada města, bod 62/29, usnesení 573/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3238116",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-65-65/17",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo - Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Rada města, bod 65/17, usnesení 631/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3251843",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28507024",
+      "datum": "2024-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-chodníku u kolumbária na hřbitově (křišťálový strom)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 490127.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30460560",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-62/29__28342080",
+      "datum": "2024-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2024-09-23 s bodem 62/29 z 2024-08-20 (Dodatek č. 1 ke smlouvě o dílo – Dopravní hřiště-oprava povrchu, ZŠ Úšovice). Jistota nizka.",
+      "castka_czk": 1715393.95,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova dopravni, hriste, oprava, povrchu; usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/30285464",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/17__28342080",
+      "datum": "2024-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2024-09-23 s bodem 65/17 z 2024-09-17 (Dodatek č. 2 ke smlouvě o dílo - Dopravní hřiště-oprava povrchu, ZŠ Úšovice). Jistota nizka.",
+      "castka_czk": 1715393.95,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 60838744 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova dopravni, hriste, oprava, povrchu; usnesení m",
+      "url": "https://smlouvy.gov.cz/smlouva/30285464",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28342080",
+      "datum": "2024-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-23",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 1715393.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30285464",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/28",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.3 ke smlouvě o dílo - oprava povrchu dopravní hřiště ZŠ Úšovice",
+      "popis": "Rada města, bod 68/28, usnesení 714/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3265546",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28716992",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dopravní hřiště-oprava povrchu, ZŠ Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STRABAG a.s..",
+      "castka_czk": 1944195.89,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30695136",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

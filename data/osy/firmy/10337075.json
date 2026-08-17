@@ -1,0 +1,420 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10337075",
+    "nazev": "Ing.arch. Miroslav Míka"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-16",
+    "do": "2026-04-07",
+    "prvni_rok": 1992,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 19,
+    "dolozenych": 13,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 7,
+      "retez": 6,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:10337075:vznik",
+      "datum": "1992-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-16",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ing.arch. MÍKA MIROSLAV",
+      "popis": "Vznik subjektu Ing.arch. MÍKA MIROSLAV (IČO 10337075), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Architektoni",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-61-61/3",
+      "datum": "2012-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-03",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo č. 380/10 (stáčírna)",
+      "popis": "Rada města, bod 61/3, usnesení 160/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/747404",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-65-65/4",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP v ul. Fr. Kafky, č.p. 835, jednotka B2 I",
+      "popis": "Rada města, bod 65/4, usnesení 182/16. Schvaleno.",
+      "castka_czk": 1152,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1564111",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-103-103/10",
+      "datum": "2017-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-14",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Městské muzeum – rozvoj objektu - PD",
+      "popis": "Rada města, bod 103/10, usnesení 106/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1713551",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-105-105/10",
+      "datum": "2021-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-20",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 835 - prodloužení nájemního vztahu - Ing. arch. Miroslav Míka",
+      "popis": "Rada města, bod 105/10, usnesení 131/21. Schvaleno.",
+      "castka_czk": 90600,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2666946",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-105/10__15262183",
+      "datum": "2021-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-29",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení Ing. Arch. Míka",
+      "popis": "Odhadované spojení smlouvy z 2021-04-29 s bodem 105/10 z 2021-04-20 (NP Franze Kafky 835 - prodloužení nájemního vztahu - Ing. arch. Miroslav Míka). Jistota niz",
+      "castka_czk": 548130.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova arch, mika, prodlouzeni; k témuž usnesení se hlásí i 2 další smlouvy téže protis",
+      "url": "https://smlouvy.gov.cz/smlouva/16433747",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15262183",
+      "datum": "2021-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-29",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení Ing. Arch. Míka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing.arch. MÍKA MIROSLAV.",
+      "castka_czk": 548130.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16433747",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-105/10__17970943",
+      "datum": "2022-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-28",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Projektová dokumentace pro provedení stavby Sklad a depozitář Městské muzeum Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2022-01-28 s bodem 105/10 z 2021-04-20 (NP Franze Kafky 835 - prodloužení nájemního vztahu - Ing. arch. Miroslav Míka). Jistota niz",
+      "castka_czk": 61710.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; smlouva podepsána 283 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/19328731",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17970943",
+      "datum": "2022-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-28",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Projektová dokumentace pro provedení stavby Sklad a depozitář Městské muzeum Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Miroslav Míka - MARKANT.",
+      "castka_czk": 61710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19328731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-143-143/3",
+      "datum": "2022-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-29",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Zahrádkářská kolonie Hamrníky – Za zámečkem PD – 1. etapa",
+      "popis": "Rada města, bod 143/3, usnesení 145/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2827912",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-105/10__19571447",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka – Zpracování projektové dokumentace pro akci „Zahrádkářská kolonie – Rybízovna 2“",
+      "popis": "Odhadované spojení smlouvy z 2022-06-21 s bodem 105/10 z 2021-04-20 (NP Franze Kafky 835 - prodloužení nájemního vztahu - Ing. arch. Miroslav Míka). Jistota str",
+      "castka_czk": 101485.12,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 12 % DPH (rozdíl 13 Kč); smlouva podepsána až 427 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21037275",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-143/3__19571447",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka – Zpracování projektové dokumentace pro akci „Zahrádkářská kolonie – Rybízovna 2“",
+      "popis": "Odhadované spojení smlouvy z 2022-06-21 s bodem 143/3 z 2022-03-29 (Zahrádkářská kolonie Hamrníky – Za zámečkem PD – 1. etapa). Jistota nizka.",
+      "castka_czk": 101485.12,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 84 dní po usnesení; název bodu a předmět smlouvy sdílí slova kolonie, zahradkarska; stejně dobře sedí i 1",
+      "url": "https://smlouvy.gov.cz/smlouva/21037275",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19571447",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Zpracování projektové dokumentace pro akci „Zahrádkářská kolonie – Rybízovna 2“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing.arch. Miroslav Míka.",
+      "castka_czk": 101485.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21037275",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25074191",
+      "datum": "2023-11-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-07",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Zpracování PD na Zaměření a studii restaurace na koupališti LIDO – objekt č.parc. 1952 k.ú. Úšovice,\n č. popisné 56.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing.arch. Miroslav Míka, Miroslav Míka.",
+      "castka_czk": 152712.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26841827",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-112-112/14",
+      "datum": "2026-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-02",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Franze Kafky, č.p. 835, nebytová jednotka č. 835/11 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 112/14, usnesení 971/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3978184396",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/12",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Franze Kafky 835 – prodloužení nájemního vztahu – Ing. arch. Miroslav Míka",
+      "popis": "Rada města, bod 114/12, usnesení 1034/26. Schvaleno.",
+      "castka_czk": 90600,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1144169092",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-112/14__35210417",
+      "datum": "2026-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Franze Kafky 835 - Ing. arch. Miroslav Míka",
+      "popis": "Odhadované spojení smlouvy z 2026-04-07 s bodem 112/14 z 2026-03-02 (Nebytový prostor v ul. Franze Kafky, č.p. 835, nebytová jednotka č. 835/11 – zveřejnění zám",
+      "castka_czk": 453000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova franze, kafky; stejně dobře sedí i 1 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/37495985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/12__35210417",
+      "datum": "2026-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Franze Kafky 835 - Ing. arch. Miroslav Míka",
+      "popis": "Odhadované spojení smlouvy z 2026-04-07 s bodem 114/12 z 2026-03-30 (Nebytový prostor v ul. Franze Kafky 835 – prodloužení nájemního vztahu – Ing. arch. Mirosla",
+      "castka_czk": 453000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10337075 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova arch, franze, kafky, mika; stejně dobře sedí ",
+      "url": "https://smlouvy.gov.cz/smlouva/37495985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35210417",
+      "datum": "2026-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Franze Kafky 835 - Ing. arch. Miroslav Míka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing.arch. Miroslav Míka.",
+      "castka_czk": 453000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37495985",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

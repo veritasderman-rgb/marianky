@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01618148",
+    "nazev": "BORABELA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-02-04",
+    "do": "2025-02-27",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-77-77/29",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce",
+      "popis": "Rada města, bod 77/29, usnesení 101/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3318996",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/28",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "VZ Konektivita na ZŠ Vítězství Mariánské Lázně - stavební práce - montáž stropních nosníků - výběr dodavatele",
+      "popis": "Rada města, bod 78/28, usnesení 131/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3326225",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/29__30262456",
+      "datum": "2025-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-27",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce – montáž stropních nosníků",
+      "popis": "Odhadované spojení smlouvy z 2025-02-27 s bodem 77/29 z 2025-02-04 (Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce). Jistota nizka.",
+      "castka_czk": 1384278.72,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01618148 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova konektivita, prace, stavebni, vitezstvi; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/32318912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/28__30262456",
+      "datum": "2025-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-27",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce – montáž stropních nosníků",
+      "popis": "Odhadované spojení smlouvy z 2025-02-27 s bodem 78/28 z 2025-02-25 (VZ Konektivita na ZŠ Vítězství Mariánské Lázně - stavební práce - montáž stropních nosníků -",
+      "castka_czk": 1384278.72,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01618148 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova konektivita, montaz, nosniku, prace; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/32318912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30262456",
+      "datum": "2025-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce – montáž stropních nosníků",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BORABELA s.r.o..",
+      "castka_czk": 1384278.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32318912",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

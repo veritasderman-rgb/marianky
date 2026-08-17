@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "88035191",
+    "nazev": "Patrik Kraus"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-08-01",
+    "do": "2022-06-28",
+    "prvni_rok": 2011,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:88035191:vznik",
+      "datum": "2011-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-08-01",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Patrik Kraus",
+      "popis": "Vznik subjektu Patrik Kraus (IČO 88035191), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-102-102/4",
+      "datum": "2021-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 251 - pronájem nebytového prostoru",
+      "popis": "Rada města, bod 102/4, usnesení 90/21. Schvaleno.",
+      "castka_czk": 112500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2653567",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-102/4__14967951",
+      "datum": "2021-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-26",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Chebská 251 - Kraus",
+      "popis": "Odhadované spojení smlouvy z 2021-03-26 s bodem 102/4 z 2021-03-16 (NP Chebská 251 - pronájem nebytového prostoru). Jistota stredni.",
+      "castka_czk": 680625.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 88035191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, nebytoveho, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/16108259",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14967951",
+      "datum": "2021-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-26",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Chebská 251 - Kraus",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Patrik Kraus.",
+      "castka_czk": 680625.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16108259",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-146-146/11",
+      "datum": "2022-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-03",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 251- výpověď z nebytového prostoru - Patrik Kraus",
+      "popis": "Rada města, bod 146/11, usnesení 212/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2844366",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/146.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-152-152/14",
+      "datum": "2022-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-28",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 251 - postoupení Smlouvy o nájmu nebytového prostoru - Patrik Kraus x Van Thanh Tran",
+      "popis": "Rada města, bod 152/14, usnesení 335/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2872423",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47239581",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-11-13",
+    "do": "2013-03-12",
+    "prvni_rok": 2012,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-87-87/4",
+      "datum": "2012-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-11-13",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Podnájem NP Máchova 269 (dm drogerie)",
+      "popis": "Rada města, bod 87/4, usnesení 546/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/840435",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-102-102/7",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Ukončení Smlouvy o nájmu NP - NP Hlavní 269",
+      "popis": "Rada města, bod 102/7, usnesení 97/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/912077",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

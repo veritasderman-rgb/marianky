@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05803322",
+    "nazev": "Café Bar Modrá   s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-02-12",
+    "do": "2026-06-22",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:05803322:vznik",
+      "datum": "2017-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-12",
+      "rok": 2017,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Café Bar Modrá   s.r.o.",
+      "popis": "Vznik subjektu Café Bar Modrá   s.r.o. (IČO 05803322), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-117-117/7",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 45 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 117/7, usnesení 1153/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4119891891",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/25",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Hlavní třída, č.p. 45 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 119/25, usnesení 1233/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2464573058",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/25__36144854",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvaě o nájmu nebytového prostoru - Dododa o postoupení smlouvy o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 119/25 z 2026-06-12 (Nebytový prostor v ul. Hlavní třída, č.p. 45 – postoupení Smlouvy o nájmu nebytového prosto",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 05803322 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, postoupeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/38468562",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36144854",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvaě o nájmu nebytového prostoru - Dododa o postoupení smlouvy o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Café Bar Modrá   s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38468562",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

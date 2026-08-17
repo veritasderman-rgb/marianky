@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "21343411",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-03-06",
+    "do": "2026-02-10",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:21343411:vznik",
+      "datum": "2024-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-06",
+      "rok": 2024,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Lukáš Dostál",
+      "popis": "Vznik subjektu Lukáš Dostál (IČO 21343411), Fyzická osoba podnikající dle živnostenského zákona, obor: Příprava staveniště.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/22",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně - Lukáš Dostál",
+      "popis": "Rada města, bod 102/22, usnesení 750/25. Schvaleno.",
+      "castka_czk": 20000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1388405104",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

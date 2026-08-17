@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26737043",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-03-26",
+    "do": "2015-10-13",
+    "prvni_rok": 2013,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-104-104/6",
+      "datum": "2013-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-26",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 k NS - Snowhill a.s.",
+      "popis": "Rada města, bod 104/6, usnesení 130/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/925444",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-39-39/13",
+      "datum": "2015-09-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-29",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Snowhill Mariánské Lázně s.r.o. - Dodatek č. 1 k nájemní a podnájemní smlouvě",
+      "popis": "Rada města, bod 39/13, usnesení 461/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1467390",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-10-10/6",
+      "datum": "2015-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-13",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Pořízení sněžného vozidla",
+      "popis": "Zastupitelstvo města, bod 10/6, usnesení 186/15. Schvaleno.",
+      "castka_czk": 1754500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1468836",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

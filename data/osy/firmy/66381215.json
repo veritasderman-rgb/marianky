@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66381215",
+    "nazev": "Pavel Rozníček"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-07-28",
+    "do": "2026-02-10",
+    "prvni_rok": 1997,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:66381215:vznik",
+      "datum": "1997-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-07-28",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Pavel Rozníček",
+      "popis": "Vznik subjektu Pavel Rozníček (IČO 66381215), Fyzická osoba podnikající dle živnostenského zákona, obor: Truhlářské práce.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:21336905",
+      "datum": "2022-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-23",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O DÍLO - Zhotovení 92 ks uzamykatelných skříněk",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Pavel Rozníček.",
+      "castka_czk": 578864.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22899145",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34551697",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - Opláštění stropu školící místnosti vč. přístupové chodby v budově Domova pro seniory a domu s pečovatelskou službou ML, p.o.",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Pavel Rozníček.",
+      "castka_czk": 140844.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36809313",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

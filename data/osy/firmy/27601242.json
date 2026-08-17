@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27601242",
+    "nazev": "EUROTEC Medical, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-09-17",
+    "do": "2019-09-17",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:9456294",
+      "datum": "2019-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-17",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva na zvedák do centrální koupeny v Domově pro seniory Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EUROTEC Medical, s.r.o..",
+      "castka_czk": 130266.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10180702",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9460846",
+      "datum": "2019-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-17",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva na ošetřovatelskou vanu do Domova pro seniory a domu s pečovatelskou službou p.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EUROTEC Medical, s.r.o..",
+      "castka_czk": 205160.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10185426",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

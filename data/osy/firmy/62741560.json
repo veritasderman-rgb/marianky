@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "62741560",
+    "nazev": "SLOT Group, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-03-12",
+    "do": "2020-02-04",
+    "prvni_rok": 2013,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-102-102/5",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Převod práv a závazků - Chebská 256",
+      "popis": "Rada města, bod 102/5, usnesení 95/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/910419",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-95-95/3",
+      "datum": "2016-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 256 - prodloužení nájmu - SLOT Group, a.s.",
+      "popis": "Rada města, bod 95/3, usnesení 622/16. Schvaleno.",
+      "castka_czk": 2173,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1683017",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-134/11__3995936",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Chebská 256 SLOT Group, a.s.",
+      "popis": "Odhadované spojení smlouvy z 2017-12-27 s bodem 134/11 z 2017-11-07 (NP Chebská 256 - prodloužení nájemního vztahu - SLOT Group, a.s.). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 62741560 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, group, slot",
+      "url": "https://smlouvy.gov.cz/smlouva/4300336",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3995936",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Chebská 256 SLOT Group, a.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SLOT Group, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4300336",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-56-56/14",
+      "datum": "2020-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-04",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 256 - SLOT Group - výpověď Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 56/14, usnesení 81/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2473851",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

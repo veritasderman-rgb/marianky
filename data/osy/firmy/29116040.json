@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29116040",
+    "nazev": "Inplan CZ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-07-16",
+    "do": "2025-10-29",
+    "prvni_rok": 2018,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 6,
+    "odhadu": 2,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 3,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:5742763",
+      "datum": "2018-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Mariánské Lázně, zpracování technické studie pro přestavbu průsečné křižovatky ulic Plzeňská-Polní-Ke Kasárnům na kruhovou křižovatku",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Inplan CZ s.r.o..",
+      "castka_czk": 75020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6186055",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-2-2/9",
+      "datum": "2018-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele - VZ Napojení obchodní zóny na ul. Husova, Mariánské Lázně - PD",
+      "popis": "Rada města, bod 2/9, usnesení 621/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2140741",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-2/9__7406135",
+      "datum": "2019-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-24",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Napojení obchodní zóny na ul. Husova, Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2019-01-24 s bodem 2/9 z 2018-11-27 (Výběr dodavatele - VZ Napojení obchodní zóny na ul. Husova, Mariánské Lázně - PD). Jistota str",
+      "castka_czk": 367000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29116040 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 58 dní po usnesení; název bodu a předmět smlouvy sdílí slova husova, napojeni, obchodni, zony",
+      "url": "https://smlouvy.gov.cz/smlouva/7996031",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7406135",
+      "datum": "2019-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Napojení obchodní zóny na ul. Husova, Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Inplan CZ s.r.o..",
+      "castka_czk": 367000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7996031",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/27",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o dílo na PD-Chodník ul. Tepelská u Penny",
+      "popis": "Rada města, bod 78/27, usnesení 130/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3326179",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/27__30373380",
+      "datum": "2025-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-07",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Chodník ul. Tepelská u Penny, Mariánské Lázně - PD",
+      "popis": "Odhadované spojení smlouvy z 2025-03-07 s bodem 78/27 z 2025-02-25 (Uzavření smlouvy o dílo na PD-Chodník ul. Tepelská u Penny). Jistota stredni.",
+      "castka_czk": 187550.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29116040 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, penny, tepelska",
+      "url": "https://smlouvy.gov.cz/smlouva/32434264",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30373380",
+      "datum": "2025-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Chodník ul. Tepelská u Penny, Mariánské Lázně - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Inplan CZ s.r.o..",
+      "castka_czk": 187550.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32434264",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/5",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Chodník ul. Tepelská u Penny, Mariánské Lázně – PD – dodatek č.1",
+      "popis": "Rada města, bod 102/5, usnesení 733/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2760348193",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

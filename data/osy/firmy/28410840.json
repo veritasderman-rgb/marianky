@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28410840",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-06-06",
+    "do": "2017-10-24",
+    "prvni_rok": 2008,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28410840:vznik",
+      "datum": "2008-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-06-06",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Západní zdravotní s.r.o.",
+      "popis": "Vznik subjektu Západní zdravotní s.r.o. (IČO 28410840), Společnost s ručením omezeným, obor: Pronájem a správa vlastních nebo pronajatých nemovitostí.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-132-132/12",
+      "datum": "2017-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-24",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Nemocnice Mariánské Lázně - Investiční příležitost",
+      "popis": "Rada města, bod 132/12, usnesení 611/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1845737",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

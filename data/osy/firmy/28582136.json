@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28582136",
+    "nazev": "ENSYTRA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-11",
+    "do": "2025-10-15",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-27-27/5",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Zavedení systému hospodaření s energií v podobě energetického managementu města Maránské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 27/5, usnesení 439/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3045626",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-27/5__23605187",
+      "datum": "2023-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-28",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Zavedení systému hospodaření s energií v podobě energetického managementu města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-07-28 s bodem 27/5 z 2023-07-11 (Zavedení systému hospodaření s energií v podobě energetického managementu města Maránské Lázn",
+      "castka_czk": 277090.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28582136 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova energetickeho, energii, hospodareni, managem",
+      "url": "https://smlouvy.gov.cz/smlouva/25291023",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23605187",
+      "datum": "2023-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-28",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Zavedení systému hospodaření s energií v podobě energetického managementu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ENSYTRA s.r.o..",
+      "castka_czk": 277090.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25291023",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-96-96/13",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy se společností Ensytra o poskytnutí přístupu k informačnímu systému EnergyBroker",
+      "popis": "Rada města, bod 96/13, usnesení 577/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2090771794",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-96/13__33220185",
+      "datum": "2025-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-15",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Přístup k informačnímu systému EnergyBroker",
+      "popis": "Odhadované spojení smlouvy z 2025-10-15 s bodem 96/13 z 2025-08-26 (Uzavření smlouvy se společností Ensytra o poskytnutí přístupu k informačnímu systému EnergyB",
+      "castka_czk": 136488.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28582136 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova energybroker, informacnimu, systemu",
+      "url": "https://smlouvy.gov.cz/smlouva/35414945",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33220185",
+      "datum": "2025-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-15",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Přístup k informačnímu systému EnergyBroker",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ENSYTRA s.r.o..",
+      "castka_czk": 136488.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35414945",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

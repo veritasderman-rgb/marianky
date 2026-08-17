@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08861234",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-01-17",
+    "do": "2026-04-14",
+    "prvni_rok": 2020,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08861234:vznik",
+      "datum": "2020-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-17",
+      "rok": 2020,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Fashion Maniačky s.r.o.",
+      "popis": "Vznik subjektu Fashion Maniačky s.r.o. (IČO 08861234), Společnost s ručením omezeným, obor: Silniční nákladní doprava.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/9",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – společnost JAZUU s.r.o. – Smlouva o podnájmu",
+      "popis": "Rada města, bod 56/9, usnesení 394/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3204462",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/12",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 233 – prodloužení nájemního vztahu – společnost JAZUU s.r.o.",
+      "popis": "Rada města, bod 115/12, usnesení 1075/26. Schvaleno.",
+      "castka_czk": 288900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3527171322",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

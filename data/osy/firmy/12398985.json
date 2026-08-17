@@ -1,0 +1,420 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "12398985",
+    "nazev": "Kroupa Jiří"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-09-08",
+    "do": "2025-04-24",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 19,
+    "dolozenych": 13,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "smlouva": 7,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:12398985:vznik",
+      "datum": "1992-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-09-08",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jiří Kroupa",
+      "popis": "Vznik subjektu Jiří Kroupa (IČO 12398985), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-78-78/2",
+      "datum": "2012-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-11",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova 471 - prodloužení nájmu",
+      "popis": "Rada města, bod 78/2, usnesení 435/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/813261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:2046806",
+      "datum": "2016-01-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-01-29",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - zboží dle vlastního výběru-celoročně",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana Jiří Kroupa.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2206210",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2048338",
+      "datum": "2017-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-30",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - zboží dle vlastního výběru-celoročně",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana Jiří Kroupa.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2207810",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-113-113/6",
+      "datum": "2017-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-02",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa",
+      "popis": "Rada města, bod 113/6, usnesení 267/17. Schvaleno.",
+      "castka_czk": 1400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1753508",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-127-127/3",
+      "datum": "2017-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa",
+      "popis": "Rada města, bod 127/3, usnesení 528/17. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1826281",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-113/6__3608252",
+      "datum": "2017-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-31",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Skalníkova 471, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-10-31 s bodem 113/6 z 2017-05-02 (NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa). Jistota nizka.",
+      "castka_czk": 1168860.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 182 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3892176",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-127/3__3608252",
+      "datum": "2017-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-31",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Skalníkova 471, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-10-31 s bodem 127/3 z 2017-09-19 (NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa). Jistota nizka.",
+      "castka_czk": 1168860.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3892176",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3608252",
+      "datum": "2017-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-31",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Skalníkova 471, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Kroupa.",
+      "castka_czk": 1168860.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3892176",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-151-151/7",
+      "datum": "2018-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova 471 - věrnostní sleva na nájemném - Jiří Kroupa",
+      "popis": "Rada města, bod 151/7, usnesení 192/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1925525",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-113/6__5081763",
+      "datum": "2018-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Skalníkova, č.p. 471",
+      "popis": "Odhadované spojení smlouvy z 2018-04-16 s bodem 113/6 z 2017-05-02 (NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa). Jistota nizka.",
+      "castka_czk": 929243.7,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 349 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5476551",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-127/3__5081763",
+      "datum": "2018-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Skalníkova, č.p. 471",
+      "popis": "Odhadované spojení smlouvy z 2018-04-16 s bodem 127/3 z 2017-09-19 (NP Skalníkova 471 - prodloužení nájemního vztahu - Jiří Kroupa). Jistota nizka.",
+      "castka_czk": 929243.7,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 209 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5476551",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-151/7__5081763",
+      "datum": "2018-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Skalníkova, č.p. 471",
+      "popis": "Odhadované spojení smlouvy z 2018-04-16 s bodem 151/7 z 2018-04-03 (NP Skalníkova 471 - věrnostní sleva na nájemném - Jiří Kroupa). Jistota nizka.",
+      "castka_czk": 929243.7,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5476551",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5081763",
+      "datum": "2018-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Skalníkova, č.p. 471",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Kroupa.",
+      "castka_czk": 929243.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5476551",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9063351",
+      "datum": "2019-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-31",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Rámcová kupní smlouva \"Dodávka komodity - maso, uzeniny, ryby\"",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Kroupa Jiří.",
+      "castka_czk": 1210000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33275392",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-156-156/3",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova ul., objekt bez č.p. - prodloužení Smlouvy o nájmu nebytového prostoru - Jiří Kroupa",
+      "popis": "Rada města, bod 156/3, usnesení 418/22. Schvaleno.",
+      "castka_czk": 173880,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2895866",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/3__20238069",
+      "datum": "2022-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Jiří Kroupa",
+      "popis": "Odhadované spojení smlouvy z 2022-09-21 s bodem 156/3 z 2022-08-23 (NP Skalníkova ul., objekt bez č.p. - prodloužení Smlouvy o nájmu nebytového prostoru - Jiří ",
+      "castka_czk": 1051974.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12398985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova jiri, kroupa, najmu, nebytoveho",
+      "url": "https://smlouvy.gov.cz/smlouva/21862593",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20238069",
+      "datum": "2022-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Jiří Kroupa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Kroupa.",
+      "castka_czk": 1051974.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21862593",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31177140",
+      "datum": "2025-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-24",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Rámcová kupní smlouva č. 8/2025 - dodávka komodity - Maso, uzeniny, ryby",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Kroupa Jiří.",
+      "castka_czk": 605000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37284829",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

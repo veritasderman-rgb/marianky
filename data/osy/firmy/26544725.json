@@ -1,0 +1,679 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26544725",
+    "nazev": "HC Mariánské Lázně z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2001-10-18",
+    "do": "2026-03-13",
+    "prvni_rok": 2001,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 32,
+    "dolozenych": 30,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 9,
+      "retez": 2,
+      "smlouva": 20
+    },
+    "dle_jistoty": {
+      "fakt": 30,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26544725:vznik",
+      "datum": "2001-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-10-18",
+      "rok": 2001,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — HC Mariánské Lázně z.s.",
+      "popis": "Vznik subjektu HC Mariánské Lázně z.s. (IČO 26544725), Spolek, obor: Provozování sportovních zařízení.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-61-61/5",
+      "datum": "2012-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-03",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Žádosti o dotaci z Fondu sportu města M.L.",
+      "popis": "Rada města, bod 61/5, usnesení 162/12.",
+      "castka_czk": 54000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/746846",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/29",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu města M.L.",
+      "popis": "Zastupitelstvo města, bod 11/29, usnesení 342/12.",
+      "castka_czk": 645000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/753855",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/6",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu Města M. L.",
+      "popis": "Rada města, bod 143/6, usnesení 58/14. Schvaleno.",
+      "castka_czk": 2538708,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079436",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/7",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu na činnost",
+      "popis": "Rada města, bod 143/7, usnesení 59/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079475",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/28",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na činnost z FS",
+      "popis": "Zastupitelstvo města, bod 21/28, usnesení 687/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082917",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/29",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na akce,investice a opravy z FS",
+      "popis": "Zastupitelstvo města, bod 21/29, usnesení 688/14. Schvaleno.",
+      "castka_czk": 1787900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082932",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-24-24/47",
+      "datum": "2014-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o poskytnutí dotace z Fs - Hc Mariánské Lázně.cz",
+      "popis": "Zastupitelstvo města, bod 24/47, usnesení 824/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1255012",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-5-5/17",
+      "datum": "2015-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-10",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z FS",
+      "popis": "Zastupitelstvo města, bod 5/17, usnesení 65/15. Schvaleno.",
+      "castka_czk": 2130000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1350215",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2015-5/17__158417",
+      "datum": "2016-07-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-12",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace na sportovní aktivitu z rozpočtu města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-07-12 s bodem 5/17 z 2015-02-10 (Schválení dotací z FS). Jistota nizka.",
+      "castka_czk": 83000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26544725 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 518 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/167285",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:158417",
+      "datum": "2016-07-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-12",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace na sportovní aktivitu z rozpočtu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně.cz.",
+      "castka_czk": 83000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/167285",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/6",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z Fondu sportu - činnost",
+      "popis": "Zastupitelstvo města, bod 35/6, usnesení 687/18. Schvaleno.",
+      "castka_czk": 1917500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1921286",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:14685127",
+      "datum": "2021-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-08",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 252890.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15780047",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14685131",
+      "datum": "2021-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-08",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 145200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15780051",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-101/3__15920799",
+      "datum": "2021-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-07",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2021-07-07 s bodem 101/3 z 2021-03-09 (Uzavření smlouvy o nájmu NP - HC Mariánské Lázně, z. s.). Jistota nizka.",
+      "castka_czk": 96800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26544725 je uvedeno v textu usnesení; smlouva podepsána 120 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17133875",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15920799",
+      "datum": "2021-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-07",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17133875",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18385687",
+      "datum": "2022-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 145200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19769075",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:19603839",
+      "datum": "2022-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s. - 1.liga dorostu - příprava a účast",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 78650.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21071471",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20469905",
+      "datum": "2022-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-13",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 102850.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21983921",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22238833",
+      "datum": "2023-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 203280.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23852445",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22238837",
+      "datum": "2023-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 151250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23852449",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24386635",
+      "datum": "2023-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26110219",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26253235",
+      "datum": "2024-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 157300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28100255",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26259651",
+      "datum": "2024-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 263780.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28106987",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27674224",
+      "datum": "2024-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 108900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29582856",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28496072",
+      "datum": "2024-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 102850.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30448304",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30315552",
+      "datum": "2025-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 272250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32374176",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30315584",
+      "datum": "2025-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "HC Mariánské Lázně z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně. cz.",
+      "castka_czk": 157300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32374208",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32317037",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Užívání sportovního areálu Zimní stadion Mariánské Lázně",
+      "popis": "Správa městských sportovišť — výdaj, protistrana HC Mariánské Lázně z.s..",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34471833",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32947973",
+      "datum": "2025-10-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-02",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace na sportovní akce II. kola",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35131057",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35027889",
+      "datum": "2026-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-12",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva - Uspořádání 4 velikonočních turnajů - HC",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37305553",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35027917",
+      "datum": "2026-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-13",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinv. dot. na činnost - HC ML",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HC Mariánské Lázně z.s..",
+      "castka_czk": 265000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37305581",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47916923",
+    "nazev": "ANeT-Advanced  Network Technology, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-06-25",
+    "do": "2026-02-18",
+    "prvni_rok": 2018,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 3,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:5700483",
+      "datum": "2018-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-25",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "obj. docházkový systém ANet",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANeT - Advanced Network Technology, s.r.o..",
+      "castka_czk": 65534.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6140047",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-172/2__7023871",
+      "datum": "2018-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-28",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Servisní smlouva ANeT",
+      "popis": "Odhadované spojení smlouvy z 2018-11-28 s bodem 172/2 z 2018-10-30 (Servisní smlouva ANeT). Jistota stredni.",
+      "castka_czk": 197980.2,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 47916923 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova anet, servisni",
+      "url": "https://smlouvy.gov.cz/smlouva/7584491",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7023871",
+      "datum": "2018-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-28",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Servisní smlouva ANeT",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANeT - Advanced Network Technology, s.r.o..",
+      "castka_czk": 197980.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7584491",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34615741",
+      "datum": "2026-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-18",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o Servisní činnosti",
+      "popis": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o. (TDS) — výdaj, protistrana ANeT-Advanced  Network Technology, s.r.o..",
+      "castka_czk": 16141.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36876333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25213261.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05212618",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-03",
+    "do": "2019-12-17",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-48-48/7",
+      "datum": "2019-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-03",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Informační tabule do městské sportovní haly v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 48/7, usnesení 603/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2444125",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-50-50/47",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Informační výsledková tabule do sportovní haly v Mariánských Lázních - vyloučení dodavatele, výběr dodavatele",
+      "popis": "Rada města, bod 50/47, usnesení 669/19.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2454068",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

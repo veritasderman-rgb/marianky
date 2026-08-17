@@ -1,0 +1,326 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "necas-pavel",
+    "jmeno": "Pavel Nečas",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-04",
+    "do": "2024-10",
+    "prvni_rok": 2016,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 14,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 14
+    },
+    "dle_jistoty": {
+      "fakt": 14
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-04-022",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM KIS Mariánské Lázně – duben 2016 - MĚSTSKÉ DIVADLO",
+      "popis": "3.4. neděle ČERTŮV ŠVAGR 15.00 hodin Přízemí 80,-/60,balkon 50,- 40,- Hrají: Julie Jurištová, Dana Bartůňková, Aneta Krejčíková, Libor Jeník, Radovan Snítil, Da",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-05-005",
+      "datum": "2016-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-05-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Reakce na článek",
+      "popis": "V dubnovém čísle Zpravodaje města Mariánské Lázně v rubrice Příspěvky čtenářů pan Ing. Ladislav Trávníček v článku Nemocnice s.r.o., se kromě jiného i v závěru ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2d946870%7C968#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-05/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-011",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "PÁD STROMU NA MĚSTSKÉM HŘBITOVĚ",
+      "popis": "Dne 8.6.2017 došlo k poškození několika hrobů na městském hřbitově. Hroby byly poškozeny z důvodu pádu části vzrostlého cypřiše na cca 9 hrobových míst v levé č",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-08-007",
+      "datum": "2017-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "POŠKOZENÍ A ZNIČENÍ JAVORŮ V ALEJI U PLOCHÉ DRÁHY",
+      "popis": "Dne 16.7.2017 došlo k poškození 1 ks a zničení 3 ks javorů v aleji podél chodníku vedoucího jižně podél areálu ploché dráhy k ZŠ Úšovice. Ze stromů byla vandale",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821cdd68%7C1164#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-08/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-12-004",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "NAPADENÉ STROMY MUSELY BÝT POKÁCENY",
+      "popis": "Buková alej nedaleko Lesního pramene musela být prokácena. Říjnový orkán upozornil na špatný stav stromů. Čtyři vzrostlé buky spadly na oplocení nedalekého hote",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-011",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTO USILUJE O OBNOVENÍ ALEJE U LESNÍHO PRAMENE",
+      "popis": "Proč došlo k vykácení bukové aleje nedaleko Lesního pramene? To je otázka, na kterou musí představitelé města Mariánské Lázně opakovaně odpovídat. Stromy vykáce",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-08-005",
+      "datum": "2018-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Do boje proti kůrovci museli vyrazit i v Mariánských Lázních",
+      "popis": "Kůrovec, strašák snad všech majitelů lesů, letos řádí ve velkém. Kvůli teplu a suchu hrozí kalamita v celé zemi. A kácení dřevin, které tento brouk napadl, se n",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=23d97bbc%7C1639#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-08/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-050",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla – ČERVen 2019",
+      "popis": "4.6. úterý od 14.00 v češtině, od 15.00 v němčině  PROHLÍDKA DIVADLA S PRŮVODCEM  VSTUPNÉ: zdarma  5.6. středa 19.30 hodin  ŠPANĚLSKÝ VEČER S CARMEN  VSTUPNÉ: 2",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/050.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-006",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Odstranění nebezpečných dřevin u Lesního mlýna",
+      "popis": "Vážení spoluobčané a návštěvníci města Mariánské Lázně, již uplynuly téměř 2 roky od nezbytného kácení části bukového porostu v parku u Lesního pramene, který b",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-010",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PARK U LESNÍHO PRAMENE (MARTÍNKŮV PARK), POHLED Z HISTORIE PO SOUČASNOST",
+      "popis": "Tento nádherný lesopark se nachází v severní lázeňské části města. Je pojmenován po Lesním prameni, který zde vyvěrá. Minerální pramen můžete okusit buď v pavil",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-07-001",
+      "datum": "2023-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-07-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "ING. PAVEL NEČAS, VEDOUCÍ ODBORU ŽIVOTNÍHO PROSTŘEDÍ",
+      "popis": "Kolik irem zde pečuje o zeleň, co vše dělají a kolik to město stojí? Péči o zeleň zajišťují v Mariánských Lázních celkem 3 irmy na 4 obvodech údržby. O dva obvo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13322300%7C3869#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-07/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-010",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Cesty v lesích už jsou zase jako nové",
+      "popis": "Některé lesní cesty byly v uplynulých týdnech poškozené těžkou technikou, která v prováděla těžbu stromů. Týkalo se to například lokality v okolí Karkulky. Tam,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-018",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Město se umístilo na 2. místě v soutěži obcí EZ-LIGA za rok 2023",
+      "popis": "Cenu převzal vedoucí Odboru životního prostředí Pavel Nečas (uprostřed). Dne 17. 5. 2024 proběhlo v Císařských Lázních v Karlových Varech vyhlášení výsledků sou",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-10-011",
+      "datum": "2024-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně obnovily tři ikonické vyhlídky",
+      "popis": "Město Mariánské Lázně dokončilo rozsáhlou opravu tří významných vyhlídek, které patří mezi oblíbené výletní cíle. Odbor životního  prostředí (OŽP) vybral spolu ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=070bd08b%7C4302#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-10/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70994234",
+    "nazev": "Správa železnic, státní organizace"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-03-12",
+    "do": "2026-04-20",
+    "prvni_rok": 2013,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 21,
+    "dolozenych": 13,
+    "odhadu": 8,
+    "dle_typu": {
+      "usneseni": 8,
+      "retez": 8,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "stredni": 1,
+      "nizka": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-102-102/2",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 8 ke Smlouvě o dílo č.j. 3675/04 - vlečka",
+      "popis": "Rada města, bod 102/2, usnesení 92/13. Schvaleno.",
+      "castka_czk": 8919,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/910917",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-14-14/3",
+      "datum": "2016-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-16",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Majetkoprávní vypořádání p.p.č. 1116/27 k.ú. Úšovice",
+      "popis": "Zastupitelstvo města, bod 14/3, usnesení 249/16. Schvaleno.",
+      "castka_czk": 88000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1528905",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-57-57/5",
+      "datum": "2016-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-23",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti p.p.č. 1116/25 a 1116/26 k.ú. Úšovice - dálkový kabel ČD",
+      "popis": "Rada města, bod 57/5, usnesení 93/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1537517",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2016-14/3__1652410",
+      "datum": "2017-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-06",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva o prodeji nemovité věci , pozemek parcelní číslo 1116/27",
+      "popis": "Odhadované spojení smlouvy z 2017-02-06 s bodem 14/3 z 2016-02-16 (Majetkoprávní vypořádání p.p.č. 1116/27 k.ú. Úšovice). Jistota stredni.",
+      "castka_czk": 106480.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 356 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1783510",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1652410",
+      "datum": "2017-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-06",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva o prodeji nemovité věci , pozemek parcelní číslo 1116/27",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Správa železniční dopravní cesty, státní organizace.",
+      "castka_czk": 106480.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1783510",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-104/4__9645782",
+      "datum": "2017-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-05",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem pozemku k.ú. Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2017-05-05 s bodem 104/4 z 2017-02-28 (Dodatek č. 2 k Nájemní smlouvě - SŽDC vlečka). Jistota nizka.",
+      "castka_czk": 20697.05,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 66 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/10381018",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-113/2__9645782",
+      "datum": "2017-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-05",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem pozemku k.ú. Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2017-05-05 s bodem 113/2 z 2017-05-02 (Smlouva o nájmu částí p.p.č. 229/2 a č. 229/23 k.ú. Úšovice z majetku ČD ( výstavba chodníku",
+      "castka_czk": 20697.05,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; smlouva podepsána 3 dny po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/10381018",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9645782",
+      "datum": "2017-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-05",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem pozemku k.ú. Úšovice",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Správa železniční dopravní cesty, státní organizace.",
+      "castka_czk": 20697.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10381018",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-20-20/19",
+      "datum": "2021-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-22",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Bezúplatný převod p.p.č. 229/23 a části p.p.č. 229/2 v k.ú. Úšovice (křižovatka Na Voře)",
+      "popis": "Zastupitelstvo města, bod 20/19, usnesení 437/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2686420",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/20.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-28-28/19",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Podmínky Správy Železnic k bezúplatnému převodu pozemků - křižovatka Na Voře",
+      "popis": "Zastupitelstvo města, bod 28/19, usnesení 622/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2863362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/13",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o nájmu pozemku se Správou železnic, s.o. na stavbě opatření dle diagnostiky mostu ul. Husova,",
+      "popis": "Rada města, bod 44/13, usnesení 62/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3147173",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-44/13__26155435",
+      "datum": "2024-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu pozemku č. 6508007023",
+      "popis": "Odhadované spojení smlouvy z 2024-03-12 s bodem 44/13 z 2024-02-06 (Uzavření smlouvy o nájmu pozemku se Správou železnic, s.o. na stavbě opatření dle diagnostik",
+      "castka_czk": 99310.75,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, pozemku; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/27997503",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-13/13__26155435",
+      "datum": "2024-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu pozemku č. 6508007023",
+      "popis": "Odhadované spojení smlouvy z 2024-03-12 s bodem 13/13 z 2024-02-27 (Podání žádosti o bezúplatný převod parcely v k. ú. Úšovice na ČR - Správa železnic (u OC BIL",
+      "castka_czk": 99310.75,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27997503",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26155435",
+      "datum": "2024-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu pozemku č. 6508007023",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Správa železnic, státní organizace.",
+      "castka_czk": 99310.75,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27997503",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-15-15/16",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Bezúplatný převod p.p.č. 229/23 a části p.p.č. 229/2 v k.ú. Úšovice – křižovatka Na Voře",
+      "popis": "Zastupitelstvo města, bod 15/16, usnesení 315/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3199020",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-44/13__27850284",
+      "datum": "2024-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o bezúplatném převodu vlastnického práva",
+      "popis": "Odhadované spojení smlouvy z 2024-08-05 s bodem 44/13 z 2024-02-06 (Uzavření smlouvy o nájmu pozemku se Správou železnic, s.o. na stavbě opatření dle diagnostik",
+      "castka_czk": 100853.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 181 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29768740",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-13/13__27850284",
+      "datum": "2024-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o bezúplatném převodu vlastnického práva",
+      "popis": "Odhadované spojení smlouvy z 2024-08-05 s bodem 13/13 z 2024-02-27 (Podání žádosti o bezúplatný převod parcely v k. ú. Úšovice na ČR - Správa železnic (u OC BIL",
+      "castka_czk": 100853.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 160 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29768740",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-15/16__27850284",
+      "datum": "2024-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o bezúplatném převodu vlastnického práva",
+      "popis": "Odhadované spojení smlouvy z 2024-08-05 s bodem 15/16 z 2024-06-25 (Bezúplatný převod p.p.č. 229/23 a části p.p.č. 229/2 v k.ú. Úšovice – křižovatka Na Voře). J",
+      "castka_czk": 100853.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70994234 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/29768740",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27850284",
+      "datum": "2024-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o bezúplatném převodu vlastnického práva",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Správa železnic, státní organizace.",
+      "castka_czk": 100853.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29768740",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/29",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce mostu ul. Husova, smlouvy o smlouvě budoucí na věcná břemena pro GasNet, s.r.o.",
+      "popis": "Rada města, bod 85/29, usnesení 301/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3354919",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:35390109",
+      "datum": "2026-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-20",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o bezúplatném převodu vlastnického práva",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Správa železnic, státní organizace.",
+      "castka_czk": 27094.32,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37683709",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

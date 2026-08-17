@@ -1,0 +1,316 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26330326",
+    "nazev": "KETNET s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-02-14",
+    "do": "2026-06-12",
+    "prvni_rok": 2012,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 14,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 4,
+      "smlouva": 10
+    },
+    "dle_jistoty": {
+      "fakt": 14
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-55-55/14",
+      "datum": "2012-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-14",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "On-line přenosy ZM 2012",
+      "popis": "Rada města, bod 55/14, usnesení 83/12.",
+      "castka_czk": 50000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/705630",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/55.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:3474876",
+      "datum": "2017-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-08",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Kompletace datové sítě pro MěÚ v budově bývalý BYTOV (objekt Chebská 252), Městský úřad Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 161966.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3745468",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3474976",
+      "datum": "2017-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-08",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Datové propojení  Vltava - MěÚ, Městský úřad Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 61559.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3745572",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3475044",
+      "datum": "2017-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-15",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Vybudování datové sítě pro MěÚ v budově DPS (objekt Tepelská 752, Domov pro seniory), Městský úřad Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 114835.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3745648",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3957048",
+      "datum": "2017-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-22",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Ketnet - IP telefony, switche",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 65244.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4259364",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6103031",
+      "datum": "2018-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-30",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodávka a montáž prvků a přístrojů pro IP telefonii v objektu Terezian Ruská 74, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 343806.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6578743",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9718486",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. S600/19 - Pořízení a instalace kamerového systému v lokalitě parkoviště Kladská",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 84505.19,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10457570",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10726664",
+      "datum": "2020-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodávka a montáž aktivních prvků a dalších komponent pro datovou síť v objektu Příčná 647/3, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 92894.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11542720",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10996424",
+      "datum": "2020-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 114835.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11834204",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11091180",
+      "datum": "2020-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků vyplývajících ze smlouvy (objednávky) č. IaD/17/1706/SP ze dne 15.11.2017",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 114835.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11934356",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11636744",
+      "datum": "2020-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-04",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "objednávka telefony Příčná 647 (TUZEX)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KETNET s.r.o..",
+      "castka_czk": 108115.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12503036",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-156-156/9",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - ČEZNET s.r.o. - telekomunikační vedení",
+      "popis": "Rada města, bod 156/9, usnesení 424/22. Schvaleno.",
+      "castka_czk": 1865,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2897780",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-72-72/5",
+      "datum": "2024-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-26",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti uložení, provozu a údržby optického kabelu v k.ú. Úšovice – sídliště Vora.",
+      "popis": "Rada města, bod 72/5, usnesení 800/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3283283",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/47",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o zachování mlčenlivosti - KETNET s.r.o.",
+      "popis": "Rada města, bod 119/47, usnesení 1256/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2285792591",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1110 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "hala-petr",
+    "jmeno": "Petr Hála",
+    "role": [
+      "zastupitel",
+      "člen dozorčí rady"
+    ],
+    "kategorie": "politika",
+    "strana": "Změna pro ML",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-04",
+    "do": "2026-06",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 48,
+    "dolozenych": 48,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 31,
+      "volby": 2,
+      "hlasovani": 14,
+      "funkce": 1
+    },
+    "dle_jistoty": {
+      "fakt": 48
+    },
+    "hlasovani_celkem": 1261,
+    "hlasovani_v_ose": 14,
+    "hlasovani_v_souhrnu": 1247
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2018,
+      "celkem": 38,
+      "pro": 38
+    },
+    {
+      "rok": 2019,
+      "celkem": 181,
+      "pro": 166,
+      "nepritomen": 12,
+      "zdrzel": 3
+    },
+    {
+      "rok": 2020,
+      "celkem": 156,
+      "pro": 154,
+      "proti": 1,
+      "zdrzel": 1
+    },
+    {
+      "rok": 2021,
+      "celkem": 143,
+      "pro": 140,
+      "zdrzel": 1,
+      "nehlasoval": 2
+    },
+    {
+      "rok": 2022,
+      "celkem": 169,
+      "pro": 169
+    },
+    {
+      "rok": 2023,
+      "celkem": 209,
+      "pro": 168,
+      "proti": 1,
+      "zdrzel": 2,
+      "nepritomen": 37,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2024,
+      "celkem": 184,
+      "pro": 183,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2025,
+      "celkem": 129,
+      "pro": 129
+    },
+    {
+      "rok": 2026,
+      "celkem": 52,
+      "proti": 1,
+      "pro": 51
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-04-022",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM KIS Mariánské Lázně – duben 2016 - MĚSTSKÉ DIVADLO",
+      "popis": "3.4. neděle ČERTŮV ŠVAGR 15.00 hodin Přízemí 80,-/60,balkon 50,- 40,- Hrají: Julie Jurištová, Dana Bartůňková, Aneta Krejčíková, Libor Jeník, Radovan Snítil, Da",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-08-017",
+      "datum": "2016-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-08-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "„Parfém v podezření“ - 185. premiéra Divadla lidové tvorby Mariánské Lázně",
+      "popis": "Pravidelným návštěvníkům našich představení nemohlo uniknout, že již druhou sezónu se náš repertoár obrací na autory, v jejichž hrách převládají ženské role. V ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9acbe55%7C981#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-08/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-10-025",
+      "datum": "2016-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-10-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÉ DIVADLO - ŘÍJEN",
+      "popis": "PROHLÍDKA DIVADLA S PRŮVODCEM úterý, 4.10.2016, 14:30 hodin Městské divadlo vstupné: vstup volný jen v češtině  VIVAT VERDI středa, 5.10.2016, 19:30 hodin Městs",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ff5042e5%7C984#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-10/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-06-041",
+      "datum": "2017-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-06-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÉ DIVADLO",
+      "popis": "■ ANI ZA MILION!",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=58241ca3%7C1140#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-06/041.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-10-001",
+      "datum": "2017-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-10-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "PRAVÝ LÁZEŇSKÝ PODZIM ZAČAL",
+      "popis": "Vážení obyvatelé,  začínat úvodní slovo starosty informací z odpadového hospodářství by se nemuselo zdát jako to pravé, mám k tomu však dobrý důvod. Příjemně mě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=17c8a1e8%7C1275#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-10/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-043",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„PŘEDVÁNOČNÍ POHLAZENÍ“",
+      "popis": "Takovýto název mělo vystoupení Divadla lidové tvorby Mariánské Lázně. Šlo o pohlazení slovem, a to poezií i prózou. Členové DLT přišli ve čtvrtek 14. 12. 2017 p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-044",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„ODJEZD NEJISTÝ“",
+      "popis": "… je název nové divadelní hry francouzského autora Jean – Marie Chevreta, kterou uvedlo téměř v předvečer 72. výročí založení souboru Divadlo lidové tvorby jako",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/044.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-026",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "JARNÍ KONCERT DOM A MAŽORETEK 2018",
+      "popis": "V sobotu 24. března se konal již tradiční Jarní koncert DOM a mažoretek. Zcela zaplněné divadlo pořadem provázeli moderátoři Michaela Turková a Michael Plzák. P",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-044",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÉ DIVADLO",
+      "popis": "■ ■ DOSTAVENÍČKO S OPERETOU  středa, 2.5.2018, 19.30 Městské divadlo vstupné: 260,-240,-180,- Kč  Komponovaný večer s krásnými áriemi z operet a muzikálů  ■ ■ M",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/044.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2018:hala-petr",
+      "datum": "2018-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-05",
+      "rok": 2018,
+      "typ": "volby",
+      "nadpis": "Petr Hála zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Změna pro Mariánské Lázně s 599 hlasy (7.75 %), 2. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-11-051",
+      "datum": "2018-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM KIS Mariánské Lázně – listopad 2018",
+      "popis": "OPERETNÍ GALAKONCERT  Jan Prokeš a Yvonna Kršková PIRÁTSKÁ POHÁDKA  Lázeňský pokoj možná nevypadá jako vhodné místo pro komedii, ale opak je pravdou. Tři ženy, ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=604cf2d3%7C1759#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-11/051.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-007",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKUJI VÁM",
+      "popis": "Ing. Zbyněk Martinek (VPL) Zvolen za Volba pro lidi. Povoláním zahradník, stáří 67 let. Celoživotní zájem o politiku s naivní představou o prospěšnosti pro cele",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-02-007",
+      "datum": "2019-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-02-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "z okénka místostarostů",
+      "popis": "byly evidovány tři přihlášky do výběrového řízení na pracovní pozici veřejného opatrovníka. Bude se starat o opatrovance dle zákona č. 89/2012 Sb., občanského z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d321405a%7C1852#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-02/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-052",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla – duben 2019",
+      "popis": "Vstupné: 320,- 280,- Marian Vojtko, Pavel Vítek, Jan Kříž, Michal Bragagnolo 25.4. čtvrtek 19.30 hodin  4.4. pondělí 19.30 hodin  ně, režie: Petr Hála. Hrají: A",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/052.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-8-21",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru prodat část p.p.č. 116/2 v k.ú. Chotěnov u Mariánských Lázní",
+      "popis": "Zastupitelstvo města, bod 8/21. Pro 13, proti 4, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-8-23",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru prodeje poz. parcely č. 8/1 zahrada k.ú. Úšovice",
+      "popis": "Zastupitelstvo města, bod 8/23. Pro 15, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-005",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Územní plán Mariánské Lázně – etapa NÁVRH",
+      "popis": "Jak již z nadpisu vyplývá, máme hotovou další etapu Územního plánu Mariánské Lázně (dále jen ÚP ML) a to je NÁVRH. V následujících řádcích vám stručně přiblížím",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-042",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla listopad 2019",
+      "popis": "1.11. pátek, 19.30 hodin  BESÍDKA ROKU 2019  Vstupné: 350,- 320,-  Divadlo Sklep Praha. Účinkují: David Vávra, Milan Šteindler, Jiří Fero Burda, František Váša,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/042.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-10-27",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Člen Kontrolního výboru",
+      "popis": "Zastupitelstvo města, bod 10/27. Pro 16, proti 0, zdrželo se 5, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-14-4",
+      "datum": "2020-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-23",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Neinvestiční dotace -Parkáč Fest -Mariánky",
+      "popis": "Zastupitelstvo města, bod 14/4. Pro 11, proti 3, zdrželo se 5, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/14.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-16-2",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Narovnání zápisu z 15. zasedání ZM",
+      "popis": "Zastupitelstvo města, bod 16/2. Pro 13, proti 1, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-18-12",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury 1.kolo - 2021",
+      "popis": "Zastupitelstvo města, bod 18/12. Pro 14, proti 0, zdrželo se 5, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-20-6",
+      "datum": "2021-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-22",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření - odstranění stavebních buněk, odpadu",
+      "popis": "Zastupitelstvo města, bod 20/6. Pro 16, proti 0, zdrželo se 1, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/20.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-21-20",
+      "datum": "2021-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-14",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Městské muzeum – nástavba nové budovy",
+      "popis": "Zastupitelstvo města, bod 21/20. Pro 16, proti 0, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/21.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2022:hala-petr",
+      "datum": "2022-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-23",
+      "rok": 2022,
+      "typ": "volby",
+      "nadpis": "Petr Hála zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Změna pro Mariánské Lázně s 721 hlasy (7.4 %), 2. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:hala-petr:0",
+      "datum": "2022-10",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2022-10-01",
+      "rok": 2022,
+      "typ": "funkce",
+      "nadpis": "Petr Hála — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2022-10 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-25",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Bezúplatný převod poz. parcely č. 292/2 k.ú. Úšovice ul. Ke Kasárnům",
+      "popis": "Zastupitelstvo města, bod 4/25. Pro 11, proti 7, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-32",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Aktuální soudní spory",
+      "popis": "Zastupitelstvo města, bod 4/32. Pro 11, proti 3, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-6-19",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury města Mariánské Lázně - Club Na Dvorku s.r.o.",
+      "popis": "Zastupitelstvo města, bod 6/19. Pro 13, proti 2, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-026",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OHLÉDNUTÍ SE ZA OSLAVAMI 100 LET ŠKOLY JIH",
+      "popis": "Česká menšinová škola, jak se původně nazývala dnešní škola JIH, byla založena v roce 1919 učitelem Josefem Hořejším. Vlastní budovu získala v roce 1923 a právě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-12-27",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Dohoda o narovnání majetkoprávního vztahu a převod parcel v k. ú. Úšovice - Panská Pole",
+      "popis": "Zastupitelstvo města, bod 12/27. Pro 19, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-037",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – duben – Mariánské Lázně",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního servisu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to ve formátu použ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=23",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-05-029",
+      "datum": "2024-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-05-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled - květen - Mariánské Lázně",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního servisu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to ve formátu použ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50faa71a%7C4171#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-05/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-041",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – červen",
+      "popis": "29. 6. 9:30 až 22:00 Den s Novou 30. 6. 15:15 Promenádní odpoledne s dechovkou MĚSTSKÉ DIVADLO 4. 6. 14:00 Prohlídka divadla s průvodcem 5. 6. 19.30 Noc plná sw",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/041.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2024-15-28",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "hlasovani",
+      "nadpis": "Aktualizace programu rozvoje města Mariánské Lázně na období 2024 -2026",
+      "popis": "Zastupitelstvo města, bod 15/28. Pro 15, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2024/15.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-029",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – září",
+      "popis": "EVANGELICKÝ KOSTEL 18. 9. 19:00 Mariánský festival duchovní hudby. Smíšený pěvecký sbor Fontána organizuje Mariánský festival duchovní hudby, letos je to již 23",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-10-032",
+      "datum": "2024-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – říjen",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=070bd08b%7C4302#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-10/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-03-022",
+      "datum": "2025-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-03-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – březen",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=67be0247%7C4497#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-03/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-046",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – květen",
+      "popis": "a koncertů pro návštěvníky s platnou vstupenkou. 13. 5. 14.00 Prohlídka městského divadla s průvodcem. Sraz u divadelní pokladny. 14. 5. 19.30 Nejen na krásném ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/046.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-06-039",
+      "datum": "2025-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-06-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – červen",
+      "popis": "líkové a Zdeňky Hranáčové. Hudební doprovodný program – žáci ZUŠ F. Chopina Mariánské Lázně. Výstava je přístupná pondělí – čtvrtek 14–16 hodin a v době divadel",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=492e199e%7C4550#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-06/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-09-025",
+      "datum": "2025-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-09-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – září",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f06bb416%7C4646#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-09/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-032",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – říjen",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-030",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – prosinec",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2026-25-1",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "hlasovani",
+      "nadpis": "Volba ověřovatelů",
+      "popis": "Zastupitelstvo města, bod 25/1. Pro 19, proti 1, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2026-03-038",
+      "datum": "2026-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-03-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – březen",
+      "popis": "novely R. Kiplinga. Představení pro MŠ a 1.stupeň ZŠ, doprodej volných míst pro veřejnost v divadelní pokladně před představením. Představení je finančně podpor",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=59a41668%7C4833#page=29",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-03/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-04-035",
+      "datum": "2026-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-04-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Dubnový kulturní přehled",
+      "popis": "MĚSTSKÁ KNIHOVNA  9. 4. 18:00  Přednáška plk. Mgr. Rudolfa Flašky s názvem Vraždy na západě očima kriminalisty, 3. díl. Návštěvníci si vyslechnou vyprávění o sk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13e2aedc%7C4927#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-04/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-041",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Květnový kulturní přehled",
+      "popis": "MĚSTSKÁ KNIHOVNA  14. 5. 17:00 Četnictvo a četnické humoresky s plk. v. v. JUDr. Michalem Dlouhým, Ph. D. Autor desítek knih o četnících a autor námětu televizn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/041.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-040",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Červnový kulturní přehled",
+      "popis": "INFOCENTRUM  4.6. 15:30 Slavná milostná setkání - komentovaná prohlídka 6. 6. 15:30 Prohlídka centra města - komentovaná prohlídka 11.6. 15:30 Královská tematic",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/040.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

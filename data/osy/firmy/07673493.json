@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07673493",
+    "nazev": "ELEKTROBOSS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-08-05",
+    "do": "2025-11-25",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-95-95/28",
+      "datum": "2025-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-05",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Osvětlení na dopravním hřišti ZŠ Úšovice - výběr dodavatele",
+      "popis": "Rada města, bod 95/28, usnesení 562/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3379430886",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-95/28__32535497",
+      "datum": "2025-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - osvětlení na dopravním hřišti ZŠ Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2025-09-04 s bodem 95/28 z 2025-08-05 (Veřejná zakázka - Osvětlení na dopravním hřišti ZŠ Úšovice - výběr dodavatele). Jistota stre",
+      "castka_czk": 756250.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07673493 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; název bodu a předmět smlouvy sdílí slova dopravnim, hristi, osvetleni, usovice",
+      "url": "https://smlouvy.gov.cz/smlouva/34700761",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32535497",
+      "datum": "2025-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - osvětlení na dopravním hřišti ZŠ Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ELEKTROBOSS s.r.o..",
+      "castka_czk": 756250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34700761",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-104-104/8",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Osvětlení na dopravním hřišti ZŠ Úšovice – dodatek č.1",
+      "popis": "Rada města, bod 104/8, usnesení 766/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3951668121",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-104/8__33547977",
+      "datum": "2025-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-25",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - osvětlení na dopravním hřišti ZŠ Úšovice dodatek č.1",
+      "popis": "Odhadované spojení smlouvy z 2025-11-25 s bodem 104/8 z 2025-11-18 (Osvětlení na dopravním hřišti ZŠ Úšovice – dodatek č.1). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07673493 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova dopravnim, hristi, osvetleni, usovice; obojí ",
+      "url": "https://smlouvy.gov.cz/smlouva/35758441",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33547977",
+      "datum": "2025-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-25",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - osvětlení na dopravním hřišti ZŠ Úšovice dodatek č.1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ELEKTROBOSS s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35758441",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

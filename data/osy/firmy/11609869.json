@@ -1,0 +1,300 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11609869",
+    "nazev": "Jaroslav Hrdlička"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2023-10-25",
+    "prvni_rok": 1992,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 9,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 4,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "nizka": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:11609869:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jaroslav Hrdlička",
+      "popis": "Vznik subjektu Jaroslav Hrdlička (IČO 11609869), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-30-30/6",
+      "datum": "2015-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-21",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Žádost o slevu z nájemného - NP Husova 156",
+      "popis": "Rada města, bod 30/6, usnesení 337/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1432289",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-159-159/21",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Husova 156 - věrnostní sleva - Jaroslav Hrdlička",
+      "popis": "Rada města, bod 159/21, usnesení 331/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1961781",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-159/21__5774583",
+      "datum": "2018-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.9 - věrnostní sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-07-01 s bodem 159/21 z 2018-06-12 (NP Husova 156 - věrnostní sleva - Jaroslav Hrdlička). Jistota nizka.",
+      "castka_czk": 21144.024,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 11609869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 19 dní po usnesení; název bodu a předmět smlouvy sdílí slova sleva, vernostni; k témuž usnesení se hlásí ",
+      "url": "https://smlouvy.gov.cz/smlouva/6220555",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5774583",
+      "datum": "2018-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.9 - věrnostní sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslav Hrdlička.",
+      "castka_czk": 21144.024,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6220555",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-159/21__5774587",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Husova 156/12",
+      "popis": "Odhadované spojení smlouvy z 2018-07-23 s bodem 159/21 z 2018-06-12 (NP Husova 156 - věrnostní sleva - Jaroslav Hrdlička). Jistota nizka.",
+      "castka_czk": 68988.15,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 11609869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6220559",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-159/21__5779107",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Husova 156/11",
+      "popis": "Odhadované spojení smlouvy z 2018-07-23 s bodem 159/21 z 2018-06-12 (NP Husova 156 - věrnostní sleva - Jaroslav Hrdlička). Jistota nizka.",
+      "castka_czk": 1045688.05,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 11609869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6225287",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5774587",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Husova 156/12",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslav Hrdlička.",
+      "castka_czk": 68988.15,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6220559",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5779107",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Husova 156/11",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslav Hrdlička.",
+      "castka_czk": 1045688.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6225287",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/21",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Husova, č.p. 156 - Jaroslav Hrdlička",
+      "popis": "Rada města, bod 145/21, usnesení 188/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2837509",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-34-34/13",
+      "datum": "2023-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-03",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Husova č.p. 156 - prodloužení nájemního vztahu a úprava nájemného - Jaroslav Hrdlička",
+      "popis": "Rada města, bod 34/13, usnesení 598/23. Schvaleno.",
+      "castka_czk": 172840,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3086270",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/34.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-34/13__24501155",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Jaroslav Hrdlička",
+      "popis": "Odhadované spojení smlouvy z 2023-10-25 s bodem 34/13 z 2023-10-03 (NP Husova č.p. 156 - prodloužení nájemního vztahu a úprava nájemného - Jaroslav Hrdlička). J",
+      "castka_czk": 68988.15,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11609869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova hrdlicka, jaroslav, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/26231031",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24501155",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Jaroslav Hrdlička",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslav Hrdlička.",
+      "castka_czk": 68988.15,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26231031",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

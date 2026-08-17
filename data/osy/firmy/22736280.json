@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "22736280",
+    "nazev": "CZECH SPITFIRE CLUB spolek letecké historie"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-04-01",
+    "do": "2026-03-25",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-83-83/35",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zajištění expozice věnované památce čs. letců RAF",
+      "popis": "Rada města, bod 83/35, usnesení 258/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3346960",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/35__31102920",
+      "datum": "2025-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Czech Spitfire Club spolek letecké historie",
+      "popis": "Odhadované spojení smlouvy z 2025-04-03 s bodem 83/35 z 2025-04-01 (Smlouva o zajištění expozice věnované památce čs. letců RAF). Jistota stredni.",
+      "castka_czk": 50000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 22736280 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33199428",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31102920",
+      "datum": "2025-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Czech Spitfire Club spolek letecké historie",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CZECH SPITFIRE CLUB spolek letecké historie.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33199428",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-111-111/18",
+      "datum": "2026-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zajištění expozice věnované památce čs. letců v RAF - 8.5. 2026",
+      "popis": "Rada města, bod 111/18, usnesení 955/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/636099784",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/35__35244357",
+      "datum": "2026-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-25",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Czech Spitfire Club, spolek letecké historie - Smlouva o zajištění expozice věnované památce čs. letců v RAF",
+      "popis": "Odhadované spojení smlouvy z 2026-03-25 s bodem 83/35 z 2025-04-01 (Smlouva o zajištění expozice věnované památce čs. letců RAF). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 22736280 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 358 dní po usnesení; název bodu a předmět smlouvy sdílí slova expozice, letcu, pamatce, venovane; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/37531253",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-111/18__35244357",
+      "datum": "2026-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-25",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Czech Spitfire Club, spolek letecké historie - Smlouva o zajištění expozice věnované památce čs. letců v RAF",
+      "popis": "Odhadované spojení smlouvy z 2026-03-25 s bodem 111/18 z 2026-02-17 (Smlouva o zajištění expozice věnované památce čs. letců v RAF - 8.5. 2026). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 22736280 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova expozice, letcu, pamatce, venovane; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/37531253",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35244357",
+      "datum": "2026-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-25",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Czech Spitfire Club, spolek letecké historie - Smlouva o zajištění expozice věnované památce čs. letců v RAF",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CZECH SPITFIRE CLUB spolek letecké historie.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37531253",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

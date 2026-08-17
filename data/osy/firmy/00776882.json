@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00776882",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-08-03",
+    "do": "2015-04-21",
+    "prvni_rok": 2011,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:00776882:vznik",
+      "datum": "2011-08-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-08-03",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Irena Helisová",
+      "popis": "Vznik subjektu Irena Helisová (IČO 00776882), Fyzická osoba podnikající dle živnostenského zákona, obor: Všechny ostatní odborné, vědecké a technické činnosti j",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-140-140/2",
+      "datum": "2014-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-01-28",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Tepelská 752 - pronájem části NP",
+      "popis": "Rada města, bod 140/2, usnesení 29/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1072812",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/140.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-19-19/11",
+      "datum": "2015-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-21",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Snížení nájemného - NP ul. Tepelská 752 (DSML)",
+      "popis": "Rada města, bod 19/11, usnesení 173/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1381639",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

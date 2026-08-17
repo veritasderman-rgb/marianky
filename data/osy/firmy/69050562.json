@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "69050562",
+    "nazev": "Ruslan Mytrovka"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-06-12",
+    "do": "2025-02-25",
+    "prvni_rok": 2018,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 8,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "nizka": 2,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-159-159/24",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 277",
+      "popis": "Rada města, bod 159/24, usnesení 334/18. Schvaleno.",
+      "castka_czk": 237500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1962596",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-160-160/17",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 277",
+      "popis": "Rada města, bod 160/17, usnesení 359/18. Schvaleno.",
+      "castka_czk": 237500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1969288",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-159/24__5830575",
+      "datum": "2018-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-30",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Hlavní 277",
+      "popis": "Odhadované spojení smlouvy z 2018-07-30 s bodem 159/24 z 2018-06-12 (Pronájem NP Hlavní 277). Jistota nizka.",
+      "castka_czk": 1436875.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69050562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 48 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6281491",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-160/17__5830575",
+      "datum": "2018-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-30",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Hlavní 277",
+      "popis": "Odhadované spojení smlouvy z 2018-07-30 s bodem 160/17 z 2018-07-03 (Pronájem NP Hlavní 277). Jistota nizka.",
+      "castka_czk": 1436875.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69050562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6281491",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5830575",
+      "datum": "2018-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-30",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Hlavní 277",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ruslan Mytrovka.",
+      "castka_czk": 1436875.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6281491",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-19-19/8",
+      "datum": "2019-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-16",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o právu k provedení stavby - NP Hlavní 277, p. Mytrovka",
+      "popis": "Rada města, bod 19/8, usnesení 178/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2325442",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-19/8__8303387",
+      "datum": "2019-04-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-26",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o právu k provedení stavby Hlavní 277",
+      "popis": "Odhadované spojení smlouvy z 2019-04-26 s bodem 19/8 z 2019-04-16 (Smlouva o právu k provedení stavby - NP Hlavní 277, p. Mytrovka). Jistota stredni.",
+      "castka_czk": 202128.08,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69050562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, pravu, provedeni, stavby",
+      "url": "https://smlouvy.gov.cz/smlouva/8960103",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8303387",
+      "datum": "2019-04-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-26",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o právu k provedení stavby Hlavní 277",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ruslan Mytrovka.",
+      "castka_czk": 202128.08,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8960103",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-3-3/2",
+      "datum": "2022-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 277 - Ruslan Mytrovka - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 3/2, usnesení 514/22. Schvaleno.",
+      "castka_czk": 237500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2924878",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-3/2__20883517",
+      "datum": "2022-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Ruslan Mytrovka",
+      "popis": "Odhadované spojení smlouvy z 2022-11-21 s bodem 3/2 z 2022-11-08 (NP Hlavní, č.p. 277 - Ruslan Mytrovka - prodloužení nájemního vztahu). Jistota stredni.",
+      "castka_czk": 1436875.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69050562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova mytrovka, prodlouzeni, ruslan",
+      "url": "https://smlouvy.gov.cz/smlouva/22418553",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20883517",
+      "datum": "2022-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Ruslan Mytrovka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ruslan Mytrovka.",
+      "castka_czk": 1436875.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22418553",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/6",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "CAFE ORIS – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 78/6, usnesení 109/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3323294",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

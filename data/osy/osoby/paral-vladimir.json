@@ -1,0 +1,667 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "paral-vladimir",
+    "jmeno": "Vladimír Páral",
+    "role": [
+      "spisovatel"
+    ],
+    "kategorie": "kultura",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-10",
+    "do": "2026-08-10",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 31,
+    "dolozenych": 31,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 22,
+      "media": 9
+    },
+    "dle_jistoty": {
+      "fakt": 31
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-10-026",
+      "datum": "2016-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-10-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Hlavní Program",
+      "popis": "8. října 19:30 Zahájení festivalu, Městské muzeum, vstupné zdarma, křest tří básnických Stanislava Sedláka. 10. října 16:00 Petra Braunová - Nejsem žádná lvice,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ff5042e5%7C984#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-10/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "datum": "2017-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-21",
+      "rok": 2017,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně vzdají hold spisovatelům. Turistickou stezkou",
+      "popis": "Základní kámen nové stezky věnované spisovatelům symbolicky položil Vladimír Páral. Mezi autory, kteří si Mariánské Lázně oblíbili, patří Goethe, Kafka, Neruda ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-004",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ VZDAJÍ HOLD SPISOVATELŮM",
+      "popis": "Johann Wolfgang Goethe, Mark Twain, Ivan Alexandrovič Gončarov, Franz Kafka, Rudyard Kipling, Jan Neruda, Ivan Olbracht, Alexej Nikolajevič Tolstoj, Václav Bene",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-11-045",
+      "datum": "2018-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Akce v městském muzeu v listopadu 2018",
+      "popis": "V úterý 6. listopadu se bude konat vernisáž výstavy „Miluju – Maluju Mariánské Lázně“ fotografa Pavla Scheuflera. Jedná se již o druhou výstavu projektu Městské",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=604cf2d3%7C1759#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-11/045.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-016",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Stezka spisovatelů",
+      "popis": "Autorka kresby: Ing. arch. Ludmila Míková  Vznik očekávané „stezky spisovatelů“ připravuje Infocentrum města Mariánské Lázně za významné spolupráce Městské knih",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-letos-dokonci-novou-stezku-spisovatelu-7765246",
+      "datum": "2019-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-19",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně letos dokončí novou Stezku spisovatelů",
+      "popis": "Město mělo ještě týž rok dokončit novou stezku připomínající spisovatele. Se jménem Mariánských Lázní jsou spojení například Vladimír Páral, Mark Twain nebo Fra",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-letos-dokonci-novou-stezku-spisovatelu-7765246",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-03-003",
+      "datum": "2019-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-03-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Příroda se probouzí Město nespalo!",
+      "popis": "dokončení. ze str. 1 Předběžně stanovený termín odhalení je 10. srpna 2019 – p. Vladimír Páral má narozeniny a zároveň si připomeneme 270. výročí narození J.W. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=30aa1a4c%7C1863#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-03/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych",
+      "datum": "2019-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-13",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "Turisté mají další výletní cíl. Je jím Stezka spisovatelů v Mariánských Lázních",
+      "popis": "Stezka spisovatelů nabídla turistům jedenáct panelů rozmístěných po Mariánských Lázních. Připomínají autory jako Goethe, Marka Twaina, Maxima Gorkého, Jaroslava",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych-laznich-8037423",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-09-010",
+      "datum": "2019-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-09-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Turisté v Mariánských Lázních mají nový výletní cíl",
+      "popis": "11. srpna 2019 byla v Mariánských Lázních za účasti starosty města slavnostně otevřena Stezka spisovatelů. Jedenáct panelů rozmístěných po městě připomíná slavn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1903aa03%7C2032#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-09/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "media",
+      "nadpis": "Stezka spisovatelů provádí zajímavými místy Mariánských Lázní a osudy slavných literátů",
+      "popis": "Jedenáct panelů rozmístěných po Mariánských Lázních připomíná literáty, kteří do města zavítali. Mezi jmény jsou Goethe, Mark Twain, Maxim Gorkij, básník Jarosl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-slavnych-8206044",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-10-020",
+      "datum": "2020-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-10-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "káva se starostou",
+      "popis": "První Káva po prázdninách se konala 7. září 2020. Kromě starosty pana Kaliny a ředitele TDS pana Javůrka se jí zúčastnilo 12 občanů, mezi nimiž byl tentokrát i ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f3fa18aa%7C2369#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-10/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-002",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "SVĚTOVÉ DĚDICTVÍ UNESCO",
+      "popis": "Mariánské Lázně patří mezi jedenáct výjimečných lázeňských měst ze sedmi zemí, které v rámci mezinárodní sériové nominace „Slavné lázně Evropy“ získalo zápis na",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-12-015",
+      "datum": "2021-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-12-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "Kaplička s modelem mariánského sloupu",
+      "popis": "Za účasti více než sedmdesáti hostů jubilejního Svatomartinského večera byla v sobotu 13. listopadu 2021 v Lázeňské restauraci Hotelové školy Mariánské Lázně sl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1b742efa%7C3057#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-12/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-001",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "BLÍŽÍ SE NÁM LÉTO – ČAS ODPOČINKU, KULTURY A SPORTU",
+      "popis": "Vážení spoluobčané, květen roku 2022 je již minulostí. Byl to měsíc, kterému bezpochyby dominovala jedna nejdůležitější událost – zahájení lázeňské sezóny v Mar",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-022",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "KNIŽNÍ LÁZNĚ ZVOU NA LETNÍ POHODU S KNIHOU NA HLAVNÍ LÁZEŇSKÉ KOLONÁDĚ!",
+      "popis": "Knižní lázně opět nabídnou setkání malých nakladatelů a čtenářů a bohatý kulturní program, tentokrát na Hlavní kolonádě a ve třech dnech od 29. do 31. 7. 2022. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:drbna-kultura-6101-cestne-obcanstvi-marianskych-lazni-ziska-spisovatel-vladi",
+      "datum": "2022-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-08",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Čestné občanství Mariánských Lázní získá spisovatel Vladimír Páral",
+      "popis": "Zastupitelé rozhodli, že čestným občanem Mariánských Lázní se stane spisovatel Vladimír Páral. Souviselo to s jeho srpnovým životním jubileem.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://karlovarska.drbna.cz/kultura/6101-cestne-obcanstvi-marianskych-lazni-ziska-spisovatel-vladimir-paral.html",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-knizni-lazne-nabidnou-v-marianskych-laznich-jarmark-i-setkani-se-spiso",
+      "datum": "2022-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-21",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Knižní lázně nabídnou v Mariánských Lázních jarmark i setkání se spisovatelem Páralem",
+      "popis": "Poslední červencový týden patřil ve městě festivalu Knižní lázně s jarmarkem, čtením autorů a diskusemi. Své tituly tam představilo přes třicet malých nakladate",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/knizni-lazne-nabidnou-v-marianskych-laznich-jarmark-i-setkani-se-spisovatelem-8792515",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:drbna-kultura-6171-knizni-lazne-nabidnou-v-marianskych-laznich-jarmark-i-set",
+      "datum": "2022-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-23",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Knižní lázně nabídnou v Mariánských Lázních jarmark i setkání se spisovatelem Páralem",
+      "popis": "Festival Knižní lázně připadl na poslední červencový týden a nabídl knižní jarmark, autorská čtení i odborné diskuse. Součástí programu bylo setkání se spisovat",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://karlovarska.drbna.cz/kultura/6171-knizni-lazne-nabidnou-v-marianskych-laznich-jarmark-i-setkani-se-spisovatelem-paralem.html",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-vladimir-paral-oslavi-90-narozeniny-marianske-lazne-mu-k-jubileu-udeli",
+      "datum": "2022-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-28",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Vladimír Páral oslaví 90. narozeniny. Mariánské Lázně mu k jubileu udělí čestné občaství",
+      "popis": "Spisovateli Vladimíru Páralovi se blížily devadesáté narozeniny. Mariánské Lázně, které si oblíbil natolik, že se mu staly druhým domovem, mu k jubileu chtěly u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/vladimir-paral-oslavi-90-narozeniny-marianske-lazne-mu-k-jubileu-udeli-cestne-8796865",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-022",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "VRAŽDY NA ZÁPADĚ OČIMA KRIMINALISTY",
+      "popis": "Studovna Městské knihovny praskala v úterý 14. dubna ve švech. Všechny židle byly obsazené, spousta lidí stála, někteří seděli na zemi. Takový byl zájem o předn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-027",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "VL. PÁRAL – ČESTNÝ ČLEN SPOLKU LÉČEBNÉ LÁZNĚ – PARTNER SPOLKU",
+      "popis": "13. březen 2023 byl pro Spolek Mariánský, z. s., slavnostním dnem. Členové spolku se v Café Imperial hotelu Hvězda sešli ke dvěma, pro spolek velmi důležitým kr",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-07-002",
+      "datum": "2023-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-07-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "MUDR. PAVEL KNÁRA, MARIÁNSKOLÁZEŇSKÝ PRAMEN VĚDOMOSTÍ",
+      "popis": "Název tiskové zprávy Ensany \"MUDr. Pavel Knára, mariánskolázeňský pramen vědomostí\" pana doktora natolik vystihuje, že si jej dovoluji použít pro článek, ve kte",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13322300%7C3869#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-07/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-09-020",
+      "datum": "2023-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-09-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "MYTÍ ODPADOVÝCH NÁDOB",
+      "popis": "V Mariánských Lázních pro- a odpadkových košů prováběhlo před prázdninami dí TDS průběžně, především pravidelné mytí odpado- v letní sezóně. vých nádob na směsn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2a007f32%7C3886#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-09/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-12-023",
+      "datum": "2023-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DEN PROTI MELANOMU V MARIÁNSKÝCH LÁZNÍCH",
+      "popis": "Na pondělí 13. listopadu 2023 připravila Komise sociální a zdravotní města Mariánské Lázně ve spolupráci s Nemocnicí Mariánské Lázně, s. r. o., pro občany Mariá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e90d08e5%7C4019#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-12/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-001",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Vladimír Páral: Květiny místo aplikací",
+      "popis": "7  19  26  28  Obsah  Město vstoupilo do 206.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-013",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Vladimír Páral o Seznamovací kolonádě: Odpadá jakýkoliv klam i zklamání z odlišných očekávání",
+      "popis": "Jak navázat vztah bez internetu a aplikací? S odpovědí už před dvaadvaceti lety přišel uznávaný český spisovatel Vladimír Páral. Vymyslel takzvanou Seznamovací ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-07-013",
+      "datum": "2024-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Autorský večer Alenky Vránové v Městské knihovně",
+      "popis": "Alena Vránová, která žije a tvoří ve Františkových Lázních, přijela 21. května do Městské knihovny představit při autorském večeru svou novou knihu poezie „OHNI",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50df7f3e%7C4236#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-07/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-08-014",
+      "datum": "2024-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Autorský večer Alenky Vávrové v Městské knihovně",
+      "popis": "Alena Vávrová, která žije a tvoří ve Františkových Lázních, přijela 21. května do Městské knihovny představit při autorském večeru svou novou knihu poezie „OHNI",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0c3aa834%7C4244#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-08/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-012",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Knižní pramen je literární oázou v parku",
+      "popis": "Zatím asi spíše jen zasvěcení či kolemjdoucí vědí, že v červnu byl v parku pod Anglickou ulicí, nedaleko stáčírny minerálních vod (pamětníci ji stále nazývají S",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-010",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánky jsou lázně pěti hvězd, říká emeritní primář Pavel Knára",
+      "popis": "Emeritní primář Pavel Knára spojil s Mariánskými Lázněmi bezmála půl století života. Za tu dobu léčil desetitisíce pacientů, do detailu se ponořil do zdejších m",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-zemrel-vladimir-paral-spisovatel-byl-po-desetileti-spjaty-s-marianskym",
+      "datum": "2026-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-10",
+      "rok": 2026,
+      "typ": "media",
+      "nadpis": "Zemřel Vladimír Páral. Spisovatel byl po desetiletí spjatý s Mariánskými Lázněmi",
+      "popis": "Spisovatel Vladimír Páral zemřel v den, kdy se dožil čtyřiadevadesáti let. S Mariánskými Lázněmi ho pojilo několik desetiletí, střídavě ve městě žil.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/zemrel-vladimir-paral-spisovatel-byl-po-desetileti-spjaty-s-marianskymi-laznemi-9635638",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

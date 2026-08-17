@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26397552",
+    "nazev": "MADRUZZO a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-08-26",
+    "do": "2022-06-07",
+    "prvni_rok": 2005,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 1,
+      "smlouva": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26397552:vznik",
+      "datum": "2005-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-08-26",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MADRUZZO a.s.",
+      "popis": "Vznik subjektu MADRUZZO a.s. (IČO 26397552), Akciová společnost, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-7/5__10773352",
+      "datum": "2020-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-04",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Poz. parcely č.997/42, 997/43 oddělené GP a parcela č. 1234/5 všechny v k. ú. a obci Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2020-02-04 s bodem 7/5 z 2019-06-25 (Prodej parcel v k.ú. Mariánské Lázně na ul. Husova - MADRUZZO a.s.). Jistota vysoka.",
+      "castka_czk": 3101000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26397552 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 224 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11594376",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10773352",
+      "datum": "2020-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-04",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Poz. parcely č.997/42, 997/43 oddělené GP a parcela č. 1234/5 všechny v k. ú. a obci Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MADRUZZO a.s..",
+      "castka_czk": 3101000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11594376",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/2",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - Novostavba BD - ul. Husova, přeložka plynu p.p.č. 1221/1 k.ú. ML",
+      "popis": "Rada města, bod 135/2, usnesení 14/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-142-142/4",
+      "datum": "2022-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - vodovodní a kanalizační přípojka p.p.č. 1221/1 v k.ú. ML - BD Husova",
+      "popis": "Rada města, bod 142/4, usnesení 137/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2824394",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/142.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-150-150/10",
+      "datum": "2022-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-07",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - Novostavba BD - ul. Husova, přeložka plynu p.p.č. 1221/1 k.ú. ML",
+      "popis": "Rada města, bod 150/10, usnesení 293/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2860177",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "87517027",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-03-28",
+    "do": "2017-04-25",
+    "prvni_rok": 2017,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

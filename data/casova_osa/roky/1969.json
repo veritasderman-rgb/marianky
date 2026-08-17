@@ -1,0 +1,96 @@
+{
+  "rok": 1969,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "funkce:prihoda-jan:0",
+      "datum": "1969",
+      "datum_do": "1981",
+      "presnost": "obdobi",
+      "razeni": "1969-01-01",
+      "rok": 1969,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Jan Příhoda — předseda MNV",
+      "popis": "předseda MNV (1969 – 1981).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "prihoda-jan"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "prihoda-jan#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "předseda MNV",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1981"
+      }
+    },
+    {
+      "id": "historie:1969-prihoda-mnv",
+      "datum": "1969",
+      "datum_do": "1981",
+      "presnost": "obdobi",
+      "razeni": "1969-01-01",
+      "rok": 1969,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Jan Příhoda předsedou MNV",
+      "popis": "Inženýr Jan Příhoda byl v letech 1969–1981 předsedou Městského národního výboru v Mariánských Lázních. Jde o nejdelší období ve vedení města v době socialistického Československa.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "prihoda-jan"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1969-prihoda-mnv",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,360 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26954770",
+    "nazev": "AQE advisors, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-11-26",
+    "do": "2025-04-15",
+    "prvni_rok": 2013,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 16,
+    "dolozenych": 12,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 4,
+      "smlouva": 9
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "stredni": 1,
+      "vysoka": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-131-131/16",
+      "datum": "2013-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-26",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Servisní smlouva FISO",
+      "popis": "Rada města, bod 131/16, usnesení 591/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1047689",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2013-131/16__25191331",
+      "datum": "2013-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-17",
+      "rok": 2013,
+      "typ": "retez",
+      "nadpis": "Servisní smlouva č. 2013034 programového vybavení FISO",
+      "popis": "Odhadované spojení smlouvy z 2013-12-17 s bodem 131/16 z 2013-11-26 (Servisní smlouva FISO). Jistota stredni.",
+      "castka_czk": 240790.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26954770 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova fiso, servisni",
+      "url": "https://smlouvy.gov.cz/smlouva/26978607",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25191331",
+      "datum": "2013-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-17",
+      "rok": 2013,
+      "typ": "smlouva",
+      "nadpis": "Servisní smlouva č. 2013034 programového vybavení FISO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 240790.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26978607",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22824543",
+      "datum": "2023-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-15",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA-Zpracování žádosti o dotaci - Obnovitelné zdroje energie ve veřejných budovách ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 196020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24468019",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23476091",
+      "datum": "2023-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Zpracování žádosti o dotaci – Obnovitelné zdroje energie ve veřejných budovách ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 130680.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25155947",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25142175",
+      "datum": "2023-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Zpracování žádosti o dotaci do výzvy: 51. výzvy IROP - Památky k projektu \"Stavební úpravy Městské muzeum Mariánské Lázně\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 114950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26924227",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-39-39/3",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 k Servisní smlouvě č. 2013034 – aplikace FISO",
+      "popis": "Rada města, bod 39/3, usnesení 756/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3119559",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-39/3__25198647",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 k Servisní smlouvě č. 2013034 - FISO",
+      "popis": "Odhadované spojení smlouvy z 2023-12-13 s bodem 39/3 z 2023-12-12 (Dodatek č. 1 k Servisní smlouvě č. 2013034 – aplikace FISO). Jistota vysoka.",
+      "castka_czk": 86757.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26954770 je uvedeno v textu usnesení; v usnesení je i název protistrany; číslo 2013034 z předmětu smlouvy je i v usnesení; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí s",
+      "url": "https://smlouvy.gov.cz/smlouva/26986795",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25198647",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 k Servisní smlouvě č. 2013034 - FISO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 86757.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26986795",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-39/3__28638252",
+      "datum": "2024-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-09",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka – vypracování žádosti a potřebných dokumentů pro čerpání dotace z výzvy Výzva ENERGov č. 2/2023 — Energetické úspory památkově chráněných budov pro akci Radnice města ML – Ruská 155",
+      "popis": "Odhadované spojení smlouvy z 2024-08-09 s bodem 39/3 z 2023-12-12 (Dodatek č. 1 k Servisní smlouvě č. 2013034 – aplikace FISO). Jistota nizka.",
+      "castka_czk": 84700.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26954770 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 241 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/30607632",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28638252",
+      "datum": "2024-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – vypracování žádosti a potřebných dokumentů pro čerpání dotace z výzvy Výzva ENERGov č. 2/2023 — Energetické úspory památkově chráněných budov pro akci Radnice města ML – Ruská 155",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 84700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30607632",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-39/3__29186088",
+      "datum": "2024-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Zpracování žádosti o dotaci do 6. výzva MAS 21 - IROP \"Rekonstrukce expozice muzea a kinosálu Městského muzea - část foyer\"",
+      "popis": "Odhadované spojení smlouvy z 2024-11-20 s bodem 39/3 z 2023-12-12 (Dodatek č. 1 k Servisní smlouvě č. 2013034 – aplikace FISO). Jistota nizka.",
+      "castka_czk": 84700.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26954770 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 344 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/31189592",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29186088",
+      "datum": "2024-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Zpracování žádosti o dotaci do 6. výzva MAS 21 - IROP \"Rekonstrukce expozice muzea a kinosálu Městského muzea - část foyer\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 84700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31189592",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29466840",
+      "datum": "2024-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Zpracování žádosti o dotaci do výzvy NSA k projektu \"Technické zhodnocení fotbalového hřiště s přírodním trávníkem a atletického oválu, areál Viktoria, Mariánské Lázně\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 89540.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31483896",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32729169",
+      "datum": "2025-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-24",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Zpracování žádosti o dotaci do výzvy: 73 výzva OŽP - &amp;quot;Revitalizace rybníka Velký Knížecí&amp;quot;",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AQE advisors, a.s..",
+      "castka_czk": 114950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34902333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/21",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Výpověď ze smluv v souvislosti s přechodem na spisovou službu GINIS",
+      "popis": "Rada města, bod 85/21, usnesení 293/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3354209",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

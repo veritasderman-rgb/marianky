@@ -1,0 +1,343 @@
+---
+/**
+ * Karta mapy (web/DESIGN.md §3.6).
+ *
+ * Mapa je SVG složené při buildu z GeoJSON — žádná mapová knihovna a žádné
+ * dlaždice z cizího serveru. Karta k ní přidává tři věci, které DESIGN žádá:
+ *
+ *   1. **Zdroj a licenci dat.** Bez nich se mapa nevykreslí — je to podmínka
+ *      použití OpenStreetMap i většiny otevřených sad.
+ *   2. **Tabulkový pohled ke každé vrstvě.** Barevná plocha je nečitelná pro
+ *      část čtenářů; tabulka není volitelná úleva.
+ *   3. **Doprovod u barvené mapy.** Barví se plocha, ale volí a bydlí lidé.
+ *      Rozlehlý okrsek s hrstkou voličů zabere na mapě víc místa než hustě
+ *      obydlený panelák. Když karta barví plochu podle hodnoty (`barviPlochu`),
+ *      MUSÍ dostat `doprovod` s absolutními počty — jinak mapu nevykreslí
+ *      a napíše proč. Pravidlo tak není jen v dokumentaci, ale v kódu.
+ */
+import type { Mapa, VrstvaMapy } from '../lib/mapy';
+import type { Graf } from '../lib/grafy';
+import { cislo } from '../lib/format';
+
+export interface Props {
+  id: string;
+  nadpis: string;
+  popis?: string;
+  mapa: Mapa;
+  vrstvy: VrstvaMapy[];
+  /** Zdroj a licence dat — bez nich se mapa nevykreslí. */
+  zdroje: { nazev: string; licence: string | null; url?: string | null }[];
+  /** Mapa barví plochu podle hodnoty. Pak je `doprovod` povinný. */
+  barviPlochu?: boolean;
+  doprovod?: { nadpis: string; popis?: string; graf: Graf } | null;
+  poznamky?: string[];
+}
+
+const {
+  id,
+  nadpis,
+  popis,
+  mapa,
+  vrstvy,
+  zdroje,
+  barviPlochu = false,
+  doprovod = null,
+  poznamky = [],
+} = Astro.props;
+
+const zdrojeUvedene = zdroje.filter((z) => z.nazev && z.nazev.trim().length > 0);
+const chybiZdroj = zdrojeUvedene.length === 0;
+const chybiDoprovod = barviPlochu && !doprovod;
+const vykreslit = !mapa.prazdna && !chybiZdroj && !chybiDoprovod;
+const prepinatelne = vrstvy.filter((v) => v.prvky.some((p) => p.tvary.length > 0));
+
+/* Legenda vrstvy. Kroky sekvenční škály se vykreslují jako souvislý pás, ne
+   jako rozházené čtverečky — jinak se z rampy nedá vyčíst směr. */
+const legendy = prepinatelne
+  .map((v) => {
+    const kroky = v.legenda.filter((p) => p.tvar === 'ramp');
+    const polozky = v.legenda.filter((p) => p.tvar !== 'ramp');
+    const bezDat = polozky.find((p) => p.tvar === 'prazdno');
+    return {
+      klic: v.klic,
+      zapnuta: v.zapnuta,
+      polozky: kroky.length > 0 ? polozky.filter((p) => p.tvar !== 'prazdno') : polozky,
+      rampa:
+        kroky.length > 0
+          ? {
+              kroky: kroky.map((k) => k.barva),
+              od: kroky[0]?.nazev || '',
+              doo: kroky[kroky.length - 1]?.nazev || '',
+              bezDat: bezDat?.nazev ?? 'bez údaje',
+            }
+          : null,
+    };
+  })
+  .filter((l) => l.rampa !== null || l.polozky.length > 0);
+---
+
+<section class="graf-karta mapa-karta" aria-labelledby={`${id}-nadpis`}>
+  <div class="graf-karta__hlava">
+    <h2 class="graf-karta__nadpis" id={`${id}-nadpis`}>{nadpis}</h2>
+  </div>
+
+  {popis && <p class="graf-karta__popis">{popis}</p>}
+
+  {
+    chybiZdroj && (
+      <div class="stav-dat stav-dat--chyba" role="alert">
+        <strong class="stav-dat__nadpis">Mapa se nevykreslila — chybí zdroj dat</strong>
+        <span>
+          U mapy se musí uvést, odkud geometrie pochází a pod jakou licencí se smí použít.
+          Dokud to zdrojová data neuvádějí, mapa se nezobrazí. Data v tabulkách níže tím
+          dotčená nejsou.
+        </span>
+      </div>
+    )
+  }
+
+  {
+    chybiDoprovod && (
+      <div class="stav-dat stav-dat--chyba" role="alert">
+        <strong class="stav-dat__nadpis">Mapa se nevykreslila — chybí doprovodná čísla</strong>
+        <span>
+          Tahle mapa barví plochu podle hodnoty. Plocha ale nevolí a nebydlí — volí a bydlí
+          lidé. Rozlehlý okrsek s hrstkou voličů by zabral víc místa než hustě obydlený
+          panelák a mapa by tvrdila opak toho, co je v datech. Proto se nevykresluje bez
+          grafu nebo tabulky s absolutními počty.
+        </span>
+      </div>
+    )
+  }
+
+  {
+    mapa.prazdna && !chybiZdroj && !chybiDoprovod && (
+      <div class="stav-dat stav-dat--chybi">
+        <strong class="stav-dat__nadpis">Žádná geometrie</strong>
+        <span>
+          Data pro tuhle mapu existují, ale ani jeden prvek nemá použitelné souřadnice.
+          Seznam níže je proto bez mapy.
+        </span>
+      </div>
+    )
+  }
+
+  {
+    vykreslit && prepinatelne.length > 1 && (
+      <fieldset class="mapa-vrstvy" data-mapa-vrstvy={id}>
+        <legend class="filtr__popisek">Vrstvy</legend>
+        {prepinatelne.map((v) => (
+          <label class="filtr__zaskrtnuti">
+            <input type="checkbox" data-vrstva-prepinac={v.klic} checked={v.zapnuta} />
+            <span>
+              {v.nazev} <span class="stav-dat__zdroj">({cislo(v.prvky.filter((p) => p.tvary.length > 0).length)})</span>
+            </span>
+          </label>
+        ))}
+      </fieldset>
+    )
+  }
+
+  <div class={doprovod ? 'mapa-rozvrzeni' : undefined}>
+    {
+      vykreslit && (
+        <div class="mapa-sloupec">
+          {
+            legendy.map((l) => (
+              <div data-vrstva-legenda={l.klic} data-vypnuta={l.zapnuta ? undefined : '1'}>
+                {l.rampa && (
+                  <div class="legenda-rampa">
+                    <span class="legenda-rampa__pas">
+                      <span class="legenda__vzorek legenda__vzorek--prazdno" aria-hidden="true" />
+                      <span>{l.rampa.bezDat}</span>
+                    </span>
+                    <span class="legenda-rampa__pas">
+                      <span>{l.rampa.od}</span>
+                      <span class="legenda-rampa__kroky" aria-hidden="true">
+                        {l.rampa.kroky.map((b) => (
+                          <span class="legenda-rampa__krok" style={`background:${b}`} />
+                        ))}
+                      </span>
+                      <span>{l.rampa.doo}</span>
+                    </span>
+                    <span class="vizualne-skryto">
+                      Sytost plochy roste s hodnotou od {l.rampa.od} do {l.rampa.doo}. Plocha bez
+                      údaje má jinou výplň i přerušovaný obrys, aby se nedala splést s nejnižším
+                      krokem škály.
+                    </span>
+                  </div>
+                )}
+                {l.polozky.length > 0 && (
+                  <ul class="legenda">
+                    {l.polozky.map((p) => (
+                      <li class="legenda__polozka">
+                        <span
+                          class={`legenda__vzorek${p.tvar === 'prazdno' ? ' legenda__vzorek--prazdno' : ''}`}
+                          style={`background:${p.barva}`}
+                          aria-hidden="true"
+                        />
+                        <span>{p.nazev}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))
+          }
+
+          <div class="graf-plocha mapa-plocha-obal">
+            <Fragment set:html={mapa.svg} />
+          </div>
+
+          <p class="graf-poznamka">
+            Mapa je vykreslená při buildu z geometrie ve WGS-84, převedené do Web Mercatoru
+            (EPSG:3857). Měřítko vlevo dole platí pro střed výřezu. Značky v mapě nejsou
+            v pořadí tabulátoru — úplný obsah včetně odkazů nesou tabulky pod mapou.
+          </p>
+        </div>
+      )
+    }
+
+    {
+      doprovod && (
+        <div class="mapa-doprovod">
+          <h3 class="karta__nadpis">{doprovod.nadpis}</h3>
+          {doprovod.popis && <p class="karta__podnadpis">{doprovod.popis}</p>}
+          {doprovod.graf.legenda && doprovod.graf.legenda.length > 1 && (
+            <ul class="legenda">
+              {doprovod.graf.legenda.map((p) => (
+                <li class="legenda__polozka">
+                  <span class="legenda__vzorek" style={`background:${p.barva}`} aria-hidden="true" />
+                  <span>{p.nazev}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div class="graf-plocha">
+            <Fragment set:html={doprovod.graf.svg} />
+          </div>
+          {doprovod.graf.poznamky.map((p) => (
+            <p class="graf-poznamka">{p}</p>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  {mapa.bezGeometrie > 0 && (
+    <p class="graf-poznamka">
+      {cislo(mapa.bezGeometrie)} {mapa.bezGeometrie === 1 ? 'prvek nemá' : 'prvků nemá'} v datech
+      souřadnice — v mapě chybí, v tabulce jsou.
+    </p>
+  )}
+
+  {poznamky.map((p) => <p class="graf-poznamka">{p}</p>)}
+
+  {
+    prepinatelne.length === 0 && vrstvy.length > 0 && !mapa.prazdna && (
+      <p class="graf-poznamka">Žádná vrstva nemá vykreslitelnou geometrii.</p>
+    )
+  }
+
+  {
+    vrstvy.map((v) => (
+      <details class="tabulkovy-pohled">
+        <summary>Zobrazit jako tabulku ({v.nazev.toLowerCase()})</summary>
+        {v.popis && <p class="graf-poznamka">{v.popis}</p>}
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                {v.tabulka.hlavicka.map((s) => (
+                  <th scope="col" class={s.cislo ? 'cislo' : undefined}>{s.nazev}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {v.tabulka.radky.map((r) => (
+                <tr>
+                  {r.map((bunka, ci) => (
+                    <td class={v.tabulka.hlavicka[ci]?.cislo ? 'cislo' : undefined}>{bunka}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    ))
+  }
+
+  {
+    doprovod && (
+      <details class="tabulkovy-pohled">
+        <summary>Zobrazit jako tabulku ({doprovod.nadpis.toLowerCase()})</summary>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                {doprovod.graf.tabulka.hlavicka.map((s) => (
+                  <th scope="col" class={s.cislo ? 'cislo' : undefined}>{s.nazev}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {doprovod.graf.tabulka.radky.map((r) => (
+                <tr>
+                  {r.map((bunka, ci) => (
+                    <td class={doprovod.graf.tabulka.hlavicka[ci]?.cislo ? 'cislo' : undefined}>{bunka}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    )
+  }
+
+  <p class="graf-poznamka mapa-zdroje">
+    <strong>Zdroj a licence dat:</strong>{' '}
+    {
+      zdrojeUvedene.length === 0
+        ? 'zdrojová data zdroj ani licenci neuvádějí.'
+        : zdrojeUvedene.map((z, i) => (
+            <>
+              {i > 0 && ' · '}
+              {z.url ? <a href={z.url} rel="noreferrer noopener">{z.nazev}</a> : z.nazev}
+              {z.licence ? `, licence: ${z.licence}` : ', licence v datech není uvedená'}
+            </>
+          ))
+    }
+  </p>
+</section>
+
+<script>
+  /* Přepínání vrstev. Bez JS jsou vidět všechny zapnuté vrstvy — přepínač jen
+     mění viditelnost už vykreslené skupiny, nic se nepřepočítává. */
+  document.querySelectorAll<HTMLElement>('[data-mapa-vrstvy]').forEach((skupina) => {
+    const id = skupina.dataset.mapaVrstvy;
+    if (!id) return;
+    const karta = skupina.closest('section');
+    if (!karta) return;
+
+    skupina.querySelectorAll<HTMLInputElement>('input[data-vrstva-prepinac]').forEach((prepinac) => {
+      const klic = prepinac.dataset.vrstvaPrepinac;
+      if (!klic) return;
+      const skupinaSvg = karta.querySelector<SVGGElement>(`[data-vrstva="${CSS.escape(klic)}"]`);
+      const legenda = karta.querySelectorAll<HTMLElement>(`[data-vrstva-legenda="${CSS.escape(klic)}"]`);
+
+      const uplatni = () => {
+        if (prepinac.checked) skupinaSvg?.removeAttribute('data-vypnuta');
+        else skupinaSvg?.setAttribute('data-vypnuta', '1');
+        legenda.forEach((l) => {
+          if (prepinac.checked) l.removeAttribute('data-vypnuta');
+          else l.setAttribute('data-vypnuta', '1');
+        });
+      };
+
+      prepinac.addEventListener('change', uplatni);
+      uplatni();
+    });
+  });
+</script>

@@ -1,0 +1,258 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03361985",
+    "nazev": "ANTISTAV  s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-03-17",
+    "do": "2026-06-22",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 6,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-113-113/15",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Odstranění objektu č.p. 205/3 v areálu bývalé pily\" - výběr dodavatele",
+      "popis": "Rada města, bod 113/15, usnesení 999/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3638344164",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/15__35280229",
+      "datum": "2026-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-10",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Odhadované spojení smlouvy z 2026-04-10 s bodem 113/15 z 2026-03-17 (Veřejná zakázka \"Odstranění objektu č.p. 205/3 v areálu bývalé pily\" - výběr dodavatele). J",
+      "castka_czk": 2272077.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03361985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, byvale, objektu, odstraneni; k témuž",
+      "url": "https://smlouvy.gov.cz/smlouva/37568645",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35280229",
+      "datum": "2026-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-10",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANTISTAV  s.r.o..",
+      "castka_czk": 2272077.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37568645",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/15__36204888",
+      "datum": "2026-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-03",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka – Odstranění objektu v areálu TDS",
+      "popis": "Odhadované spojení smlouvy z 2026-06-03 s bodem 113/15 z 2026-03-17 (Veřejná zakázka \"Odstranění objektu č.p. 205/3 v areálu bývalé pily\" - výběr dodavatele). J",
+      "castka_czk": 151250.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03361985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 78 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, objektu, odstraneni; k témuž usnesen",
+      "url": "https://smlouvy.gov.cz/smlouva/38531088",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36204888",
+      "datum": "2026-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-03",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Odstranění objektu v areálu TDS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANTISTAV  s.r.o..",
+      "castka_czk": 151250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38531088",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/19",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Odstranění objektu v areálu TDS, Mariánské Lázně",
+      "popis": "Rada města, bod 119/19, usnesení 1227/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3220812260",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/20",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily – dodatek č.1",
+      "popis": "Rada města, bod 119/20, usnesení 1228/26. Schvaleno.",
+      "castka_czk": 359,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3063894968",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/15__36271316",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 113/15 z 2026-03-17 (Veřejná zakázka \"Odstranění objektu č.p. 205/3 v areálu bývalé pily\" - výběr dodavatele). J",
+      "castka_czk": -359.37,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03361985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 97 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, byvale, objektu, odstraneni; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/38599816",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/19__36271316",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 119/19 z 2026-06-12 (Odstranění objektu v areálu TDS, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": -359.37,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03361985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, objektu, odstraneni; stejně dobře se",
+      "url": "https://smlouvy.gov.cz/smlouva/38599816",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/20__36271316",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 119/20 z 2026-06-12 (Odstranění objektu č.p. 205/3 v areálu bývalé pily – dodatek č.1). Jistota nizka.",
+      "castka_czk": -359.37,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03361985 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, byvale, objektu, odstraneni; usnesen",
+      "url": "https://smlouvy.gov.cz/smlouva/38599816",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36271316",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Odstranění objektu č.p. 205/3 v areálu bývalé pily",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANTISTAV  s.r.o..",
+      "castka_czk": -359.37,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38599816",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

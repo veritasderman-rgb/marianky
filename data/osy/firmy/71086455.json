@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "71086455",
+    "nazev": "Visingerová Anita"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-04-15",
+    "do": "2026-05-12",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "vysoka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-85-85/32",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem stánku č. 11 umístěného na ul. Promenáda města Bad Homburg",
+      "popis": "Rada města, bod 85/32, usnesení 304/25. Schvaleno.",
+      "castka_czk": 126000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3355118",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-85/32__31220012",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva - stánek č. 11",
+      "popis": "Odhadované spojení smlouvy z 2025-05-16 s bodem 85/32 z 2025-04-15 (Pronájem stánku č. 11 umístěného na ul. Promenáda města Bad Homburg). Jistota vysoka.",
+      "castka_czk": 126000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 71086455 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 31 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33321236",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31220012",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva - stánek č. 11",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Visingerová Anita.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33321236",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/35",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o ukončení nájmu prodejního stánku č. 11 umístěného na p. p. č. 170/1 v k. ú. Mariánské Lázně- ul. Promenáda města Bad Homburg",
+      "popis": "Rada města, bod 116/35, usnesení 1128/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4025791861",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/35__35638113",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu prodejního stánku č. 11",
+      "popis": "Odhadované spojení smlouvy z 2026-05-12 s bodem 116/35 z 2026-05-05 (Dohoda o ukončení nájmu prodejního stánku č. 11 umístěného na p. p. č. 170/1 v k. ú. Marián",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 71086455 je uvedeno v textu usnesení; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova dohoda, najmu, prodejniho, stanku",
+      "url": "https://smlouvy.gov.cz/smlouva/37941805",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35638113",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu prodejního stánku č. 11",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Visingerová Anita.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37941805",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

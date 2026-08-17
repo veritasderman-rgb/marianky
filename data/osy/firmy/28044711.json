@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28044711",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-05-24",
+    "do": "2017-09-26",
+    "prvni_rok": 2016,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-70-70/1",
+      "datum": "2016-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-24",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti- kabel 0,4 kV k.ú. Úšovice stavba\" Mariánské Lázně CH,pč.1014-2,kNN\"",
+      "popis": "Rada města, bod 70/1, usnesení 259/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1578771",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/70.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-128-128/4",
+      "datum": "2017-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-26",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti kabelu NN p.p.č. 1175/5 a 970/8 v k.ú. Mariánské Lázně",
+      "popis": "Rada města, bod 128/4, usnesení 546/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1831678",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

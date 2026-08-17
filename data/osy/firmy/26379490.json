@@ -1,0 +1,339 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26379490",
+    "nazev": "PRIMO CAR Cheb s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-06-01",
+    "do": "2026-05-05",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 10,
+    "odhadu": 5,
+    "dle_typu": {
+      "smlouva": 6,
+      "usneseni": 4,
+      "retez": 5
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "stredni": 1,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2239458",
+      "datum": "2017-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva - Dokker Van.pdf",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o..",
+      "castka_czk": 273056.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2415062",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2239550",
+      "datum": "2017-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva - Dokker.pdf",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o..",
+      "castka_czk": 268200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2415162",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-138-138/11",
+      "datum": "2017-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Nákup 2 kusů elektromobilů pro město Mariánské Lázně",
+      "popis": "Rada města, bod 138/11, usnesení 716/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1874445",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/11__4306624",
+      "datum": "2018-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pořízení 2 kusů nových elektromobilů kategorie M1 pro město Mariánské Lázně (jedno z vozidel bude sloužit městské policii).",
+      "popis": "Odhadované spojení smlouvy z 2018-02-01 s bodem 138/11 z 2017-12-19 (Nákup 2 kusů elektromobilů pro město Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 1597323.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26379490 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; název bodu a předmět smlouvy sdílí slova elektromobilu, kusu",
+      "url": "https://smlouvy.gov.cz/smlouva/4640932",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4306624",
+      "datum": "2018-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pořízení 2 kusů nových elektromobilů kategorie M1 pro město Mariánské Lázně (jedno z vozidel bude sloužit městské policii).",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o..",
+      "castka_czk": 1597323.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4640932",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-149-149/4",
+      "datum": "2018-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Projekt „Senior-taxi v Mariánských Lázních“ – výběr dodavatele",
+      "popis": "Rada města, bod 149/4, usnesení 151/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1918410",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/149.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/11__4847256",
+      "datum": "2018-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Nákup nového automobilu v rámci projektu \"Senior-taxi v Mariánských Lázních\"",
+      "popis": "Odhadované spojení smlouvy z 2018-04-09 s bodem 138/11 z 2017-12-19 (Nákup 2 kusů elektromobilů pro město Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 282970.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26379490 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 111 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5226632",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-149/4__4847256",
+      "datum": "2018-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Nákup nového automobilu v rámci projektu \"Senior-taxi v Mariánských Lázních\"",
+      "popis": "Odhadované spojení smlouvy z 2018-04-09 s bodem 149/4 z 2018-03-20 (Projekt „Senior-taxi v Mariánských Lázních“ – výběr dodavatele). Jistota nizka.",
+      "castka_czk": 282970.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26379490 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych, senior, taxi; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/5226632",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4847256",
+      "datum": "2018-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Nákup nového automobilu v rámci projektu \"Senior-taxi v Mariánských Lázních\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o..",
+      "castka_czk": 282970.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5226632",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-14-14/24",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Nákup tří nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně - výběr dodavatele, rozpočtové opatření",
+      "popis": "Rada města, bod 14/24, usnesení 114/23. Schvaleno.",
+      "castka_czk": 3760000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2981893",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-66-66/3",
+      "datum": "2024-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Nákup vozidla pro potřeby Domova s pečovatelskou službou Mariánské Lázně, příspěvková organizace",
+      "popis": "Rada města, bod 66/3, usnesení 646/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3259915",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/66.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-66/3__29384888",
+      "datum": "2024-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-13",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "objednávka vozu Renault Kangoo - senior Taxi",
+      "popis": "Odhadované spojení smlouvy z 2024-11-13 s bodem 66/3 z 2024-09-27 (Nákup vozidla pro potřeby Domova s pečovatelskou službou Mariánské Lázně, příspěvková organiz",
+      "castka_czk": 565575.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26379490 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 47 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31521092",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29384888",
+      "datum": "2024-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "objednávka vozu Renault Kangoo - senior Taxi",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o. - pobočka Mariánské Lázně.",
+      "castka_czk": 565575.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31521092",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-66/3__35564765",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace - PRIMO CAR Cheb s.r.o. - ZLS 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-05-05 s bodem 66/3 z 2024-09-27 (Nákup vozidla pro potřeby Domova s pečovatelskou službou Mariánské Lázně, příspěvková organiz",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26379490 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 585 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/37865641",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35564765",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace - PRIMO CAR Cheb s.r.o. - ZLS 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRIMO CAR Cheb s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37865641",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

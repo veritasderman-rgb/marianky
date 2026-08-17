@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73713775",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-11-10",
+    "do": "2023-12-12",
+    "prvni_rok": 2005,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73713775:vznik",
+      "datum": "2005-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-11-10",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků jednotek Poštovní 332, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků jednotek Poštovní 332, Mariánské Lázně (IČO 73713775), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-39-39/18",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Nájem části pozemkové parcely č. 50/2 v k. ú. Mariánské Lázně – ul. Poštovní",
+      "popis": "Rada města, bod 39/18, usnesení 771/23. Schvaleno.",
+      "castka_czk": 10560,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3122773",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

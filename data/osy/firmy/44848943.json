@@ -1,0 +1,259 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44848943",
+    "nazev": "Národní rozvojová banka, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-01-21",
+    "do": "2025-09-23",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 6,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-76-76/38",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Optimalizace řešení projektů s využitím nástroje NOVÁ ELENA",
+      "popis": "Rada města, bod 76/38, usnesení 66/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3312039",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/48",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Optimalizace řešení projektů s využitím nástroje ELENA",
+      "popis": "Rada města, bod 78/48, usnesení 151/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3331074",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-76/38__30531352",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování poradenství v oblasti energ. služeb se zaruč.výsledkem (EPC)",
+      "popis": "Odhadované spojení smlouvy z 2025-03-19 s bodem 76/38 z 2025-01-21 (Optimalizace řešení projektů s využitím nástroje NOVÁ ELENA). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44848943 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32600424",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/48__30531352",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování poradenství v oblasti energ. služeb se zaruč.výsledkem (EPC)",
+      "popis": "Odhadované spojení smlouvy z 2025-03-19 s bodem 78/48 z 2025-02-25 (Optimalizace řešení projektů s využitím nástroje ELENA). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44848943 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32600424",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30531352",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování poradenství v oblasti energ. služeb se zaruč.výsledkem (EPC)",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Národní rozvojová banka, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32600424",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-84-84/9",
+      "datum": "2025-04-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-08",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 týkající se optimalizace řešení projektů s využitím nástroje ELENA",
+      "popis": "Rada města, bod 84/9, usnesení 272/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3352922",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/84.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-84/9__31007208",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě poskytování poradenství v oblasti energ.služeb se zaruč.výsledkem",
+      "popis": "Odhadované spojení smlouvy z 2025-04-28 s bodem 84/9 z 2025-04-08 (Dodatek č. 1 týkající se optimalizace řešení projektů s využitím nástroje ELENA). Jistota str",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44848943 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/33099988",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31007208",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě poskytování poradenství v oblasti energ.služeb se zaruč.výsledkem",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Národní rozvojová banka, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33099988",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-76/38__32785957",
+      "datum": "2025-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-23",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek  č.2 ke smlouvě poskytování poradenství EPC_20250923_134110",
+      "popis": "Odhadované spojení smlouvy z 2025-09-23 s bodem 76/38 z 2025-01-21 (Optimalizace řešení projektů s využitím nástroje NOVÁ ELENA). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44848943 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 245 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/34961537",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/48__32785957",
+      "datum": "2025-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-23",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek  č.2 ke smlouvě poskytování poradenství EPC_20250923_134110",
+      "popis": "Odhadované spojení smlouvy z 2025-09-23 s bodem 78/48 z 2025-02-25 (Optimalizace řešení projektů s využitím nástroje ELENA). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44848943 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 210 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/34961537",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32785957",
+      "datum": "2025-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek  č.2 ke smlouvě poskytování poradenství EPC_20250923_134110",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Národní rozvojová banka, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34961537",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

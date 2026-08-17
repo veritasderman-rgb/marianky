@@ -1,0 +1,480 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04637551",
+    "nazev": "Cafe Classic ML s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-12-13",
+    "do": "2025-05-13",
+    "prvni_rok": 2015,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 18,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 14,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 18,
+      "nizka": 2,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:04637551:vznik",
+      "datum": "2015-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-13",
+      "rok": 2015,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Cafe Classic ML s.r.o.",
+      "popis": "Vznik subjektu Cafe Classic ML s.r.o. (IČO 04637551), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-54-54/15",
+      "datum": "2016-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Změna nájemce NP Hlavní 131",
+      "popis": "Rada města, bod 54/15, usnesení 64/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1531506",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-54-54/16",
+      "datum": "2016-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru - prodloužení nájmu NP 131",
+      "popis": "Rada města, bod 54/16, usnesení 65/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1531593",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-59-59/5",
+      "datum": "2016-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-08",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 131 - Smlouva o nájmu nebytového prostoru - Cafe Classic ML s.r.o.",
+      "popis": "Rada města, bod 59/5, usnesení 122/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1545227",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-59-59/6",
+      "datum": "2016-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-08",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Cafe Classic - smlouva o právu k provedení stavby",
+      "popis": "Rada města, bod 59/6, usnesení 123/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1545274",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-59/5__7387327",
+      "datum": "2016-06-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-08",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Cafe Classic- Hlavní 131",
+      "popis": "Odhadované spojení smlouvy z 2016-06-08 s bodem 59/5 z 2016-03-08 (NP Hlavní 131 - Smlouva o nájmu nebytového prostoru - Cafe Classic ML s.r.o.). Jistota nizka.",
+      "castka_czk": 8245167.48,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04637551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; název bodu a předmět smlouvy sdílí slova cafe, classic, hlavni; stejně dobře sedí i 1",
+      "url": "https://smlouvy.gov.cz/smlouva/7975407",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-59/6__7387327",
+      "datum": "2016-06-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-08",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Cafe Classic- Hlavní 131",
+      "popis": "Odhadované spojení smlouvy z 2016-06-08 s bodem 59/6 z 2016-03-08 (Cafe Classic - smlouva o právu k provedení stavby). Jistota nizka.",
+      "castka_czk": 8245167.48,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04637551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; název bodu a předmět smlouvy sdílí slova cafe, classic; stejně dobře sedí i 1 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/7975407",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7387327",
+      "datum": "2016-06-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-08",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Cafe Classic- Hlavní 131",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Cafe Classic ML s.r.o..",
+      "castka_czk": 8245167.48,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7975407",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-134-134/8",
+      "datum": "2017-11-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-07",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 131 - úprava nájemní smlouvy - Cafe Classic ML s.r.o.",
+      "popis": "Rada města, bod 134/8, usnesení 634/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1852359",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/134.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-161-161/12",
+      "datum": "2018-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-17",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 703 (garáž)",
+      "popis": "Rada města, bod 161/12, usnesení 387/18.",
+      "castka_czk": 18000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1978780",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-163-163/11",
+      "datum": "2018-08-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-14",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Cafe Classic - žádost o schválení podnájmu",
+      "popis": "Rada města, bod 163/11, usnesení 439/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1992274",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/163.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-8-8/2",
+      "datum": "2019-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-15",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 131 Café Classic - opakovaná žádost o úpravu nájemní smlouvy",
+      "popis": "Rada města, bod 8/2, usnesení 16/19. Schvaleno.",
+      "castka_czk": 2700,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2167456",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-8/2__7359307",
+      "datum": "2019-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-18",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 131 Classic",
+      "popis": "Odhadované spojení smlouvy z 2019-01-18 s bodem 8/2 z 2019-01-15 (Hlavní 131 Café Classic - opakovaná žádost o úpravu nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 5589837.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04637551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova classic, hlavni",
+      "url": "https://smlouvy.gov.cz/smlouva/7945555",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7359307",
+      "datum": "2019-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-18",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 131 Classic",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Cafe Classic ML s.r.o..",
+      "castka_czk": 5589837.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7945555",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-103-103/5",
+      "datum": "2021-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-23",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 131, Cafe Classic - úprava nájemní smlouvy",
+      "popis": "Rada města, bod 103/5, usnesení 104/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2657231",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-118-118/6",
+      "datum": "2021-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-10",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 131 - Café Classic ML s.r.o. - úprava Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 118/6, usnesení 350/21. Schvaleno.",
+      "castka_czk": 2700,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2716063",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-118/6__16307655",
+      "datum": "2021-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-25",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - Café  Classic ML s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2021-08-25 s bodem 118/6 z 2021-08-10 (NP Hlavní, č.p. 131 - Café Classic ML s.r.o. - úprava Smlouvy o nájmu nebytového prostoru). ",
+      "castka_czk": 2246884.09,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04637551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova cafe, classic, najmu, nebytoveho",
+      "url": "https://smlouvy.gov.cz/smlouva/17556271",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16307655",
+      "datum": "2021-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-25",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - Café  Classic ML s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Cafe Classic ML s.r.o..",
+      "castka_czk": 2246884.09,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17556271",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-22-22/8",
+      "datum": "2023-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 131 - věrnostní sleva – Café Classic ML s.r.o.",
+      "popis": "Rada města, bod 22/8, usnesení 271/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3012792",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-40-40/19",
+      "datum": "2023-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-19",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 131 – úprava nájemného",
+      "popis": "Rada města, bod 40/19, usnesení 804/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3128601",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/40.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-40-40/20",
+      "datum": "2023-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-19",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 131 – umístění sídla společnosti",
+      "popis": "Rada města, bod 40/20, usnesení 805/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3128616",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/40.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/18",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "CAFÉ CLASSIC ML s.r.o. – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 88/18, usnesení 356/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3366960",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

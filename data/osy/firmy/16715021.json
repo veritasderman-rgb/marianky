@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "16715021",
+    "nazev": "MgA. David Kurc"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2021-12-14",
+    "prvni_rok": 1992,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:16715021:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MgA. David Kurc",
+      "popis": "Vznik subjektu MgA. David Kurc (IČO 16715021), Fyzická osoba podnikající dle živnostenského zákona, obor: Fotografické činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-95-95/2",
+      "datum": "2016-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova 805 - prodloužení nájmu - MgA. David Kurc",
+      "popis": "Rada města, bod 95/2, usnesení 621/16. Schvaleno.",
+      "castka_czk": 600,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1683002",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-95/2__938981",
+      "datum": "2017-01-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-04",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytového prostoru Kubelíkova 805, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-01-04 s bodem 95/2 z 2016-12-21 (NP Kubelíkova 805 - prodloužení nájmu - MgA. David Kurc). Jistota stredni.",
+      "castka_czk": 140844.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16715021 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1000125",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:938981",
+      "datum": "2017-01-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-04",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem nebytového prostoru Kubelíkova 805, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MgA. David Kurc.",
+      "castka_czk": 140844.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1000125",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-148-148/3",
+      "datum": "2018-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-13",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova 805 - úprava nájemní smlouvy - MgA. David Kurc",
+      "popis": "Rada města, bod 148/3, usnesení 128/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1915284",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-148/3__5189339",
+      "datum": "2018-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-21",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Kubelíkova 805, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-05-21 s bodem 148/3 z 2018-03-13 (NP Kubelíkova 805 - úprava nájemní smlouvy - MgA. David Kurc). Jistota stredni.",
+      "castka_czk": 92957.04,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16715021 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 69 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5590039",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5189339",
+      "datum": "2018-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-21",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Kubelíkova 805, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MgA. David Kurc.",
+      "castka_czk": 92957.04,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5590039",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-131-131/5",
+      "datum": "2021-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova, č.p. 805 - prodloužení nájmu - MgA. David Kurc",
+      "popis": "Rada města, bod 131/5, usnesení 556/21. Schvaleno.",
+      "castka_czk": 25935,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2778916",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-131/5__17462359",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení  - p. MgA. Kurc",
+      "popis": "Odhadované spojení smlouvy z 2021-12-14 s bodem 131/5 z 2021-12-07 (NP Kubelíkova, č.p. 805 - prodloužení nájmu - MgA. David Kurc). Jistota stredni.",
+      "castka_czk": 158172.41,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16715021 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova kurc, najmu, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/18787331",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17462359",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení  - p. MgA. Kurc",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MgA. David Kurc.",
+      "castka_czk": 158172.41,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18787331",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

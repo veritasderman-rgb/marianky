@@ -1,0 +1,168 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "seifert-jaroslav",
+    "jmeno": "Jaroslav Seifert",
+    "role": [
+      "návštěvník",
+      "básník"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-01",
+    "do": "2023-09",
+    "prvni_rok": 2018,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 4,
+      "media": 2
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2018-01-043",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„PŘEDVÁNOČNÍ POHLAZENÍ“",
+      "popis": "Takovýto název mělo vystoupení Divadla lidové tvorby Mariánské Lázně. Šlo o pohlazení slovem, a to poezií i prózou. Členové DLT přišli ve čtvrtek 14. 12. 2017 p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych",
+      "datum": "2019-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-13",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "Turisté mají další výletní cíl. Je jím Stezka spisovatelů v Mariánských Lázních",
+      "popis": "Stezka spisovatelů nabídla turistům jedenáct panelů rozmístěných po Mariánských Lázních. Připomínají autory jako Goethe, Marka Twaina, Maxima Gorkého, Jaroslava",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/turiste-maji-dalsi-vyletni-cil-je-jim-stezka-spisovatelu-v-marianskych-laznich-8037423",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-09-010",
+      "datum": "2019-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-09-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Turisté v Mariánských Lázních mají nový výletní cíl",
+      "popis": "11. srpna 2019 byla v Mariánských Lázních za účasti starosty města slavnostně otevřena Stezka spisovatelů. Jedenáct panelů rozmístěných po městě připomíná slavn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1903aa03%7C2032#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-09/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "media",
+      "nadpis": "Stezka spisovatelů provádí zajímavými místy Mariánských Lázní a osudy slavných literátů",
+      "popis": "Jedenáct panelů rozmístěných po Mariánských Lázních připomíná literáty, kteří do města zavítali. Mezi jmény jsou Goethe, Mark Twain, Maxim Gorkij, básník Jarosl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/stezka-spisovatelu-provadi-zajimavymi-misty-marianskych-lazni-a-osudy-slavnych-8206044",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-002",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "SVĚTOVÉ DĚDICTVÍ UNESCO",
+      "popis": "Mariánské Lázně patří mezi jedenáct výjimečných lázeňských měst ze sedmi zemí, které v rámci mezinárodní sériové nominace „Slavné lázně Evropy“ získalo zápis na",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-09-026",
+      "datum": "2023-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-09-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "VÝSTAVA V MĚSTSKÉ KNIHOVNĚ",
+      "popis": "Výstava Alfred Nobel v Mari- Vernisáž k výstavě, která poánských Lázních a známí hos- trvá do 30. září, se konala té, laureáti Nobelovy ceny v pondělí 7. srpna ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2a007f32%7C3886#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-09/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

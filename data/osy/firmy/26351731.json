@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26351731",
+    "nazev": "Polypress s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-01-12",
+    "do": "2021-02-03",
+    "prvni_rok": 2016,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-51-51/17",
+      "datum": "2016-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-01-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Zpravodaj města Mariánské Lázně",
+      "popis": "Rada města, bod 51/17, usnesení 25/16. Schvaleno.",
+      "castka_czk": 300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1520250",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-51/17__2855490",
+      "datum": "2017-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-09",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Propagační materiál- Mapy",
+      "popis": "Odhadované spojení smlouvy z 2017-08-09 s bodem 51/17 z 2016-01-12 (Zpravodaj města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 60842.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26351731 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 575 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3074434",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2855490",
+      "datum": "2017-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-09",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Propagační materiál- Mapy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Polypress s.r.o..",
+      "castka_czk": 60842.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3074434",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14351883",
+      "datum": "2021-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-03",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Polypress s.r.o..",
+      "castka_czk": 71265.37,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15408923",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

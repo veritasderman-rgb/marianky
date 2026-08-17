@@ -1,0 +1,88 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "lessing-theodor",
+    "jmeno": "Theodor Lessing",
+    "role": [
+      "filozof",
+      "novinář"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1933-08-30",
+    "do": "2022-07-15",
+    "prvni_rok": 1933,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 1,
+      "media": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1933-lessing",
+      "datum": "1933-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1933-08-30",
+      "rok": 1933,
+      "typ": "historie",
+      "nadpis": "Vražda filozofa Theodora Lessinga",
+      "popis": "Německý filozof a novinář židovského původu Theodor Lessing uprchl v březnu 1933 před nacisty do Československa a usadil se v Mariánských Lázních. Dne 30. srpna",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Theodor_Lessing",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-knihovna-v-marianskych-laznich-predstavuje-slavne-spisovatele-zidovske",
+      "datum": "2022-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-15",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Knihovna v Mariánských Lázních představuje slavné spisovatele židovského původu",
+      "popis": "Městská knihovna připomněla spisovatele židovského původu, kteří Mariánské Lázně navštívili na počátku 20. století. Patří mezi ně Šolom Alejchem, Franz Kafka a ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/knihovna-v-marianskych-laznich-predstavuje-slavne-spisovatele-zidovskeho-puvodu-8788561",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

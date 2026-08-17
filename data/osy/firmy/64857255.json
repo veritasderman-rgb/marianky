@@ -1,0 +1,156 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64857255",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-04-01",
+    "do": "2024-03-19",
+    "prvni_rok": 1997,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64857255:vznik",
+      "datum": "1997-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-04-01",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Marek Štolba",
+      "popis": "Vznik subjektu Marek Štolba (IČO 64857255), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-159-159/12",
+      "datum": "2014-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-07-02",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Záměr pronájmu nebytového prostoru v ul. U Nemocnice č.p.604",
+      "popis": "Rada města, bod 159/12, usnesení 288/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1180208",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-163-163/4",
+      "datum": "2014-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-08-26",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nebytového prostoru v ul. U Nemocnice č.p. 604",
+      "popis": "Rada města, bod 163/4, usnesení 370/14. Schvaleno.",
+      "castka_czk": 144000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1252298",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/163.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-18-18/7",
+      "datum": "2019-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-02",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP U Nemocnice 604 - hostinské zařízení - stadion Viktoria",
+      "popis": "Rada města, bod 18/7, usnesení 166/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2321098",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-46-46/13",
+      "datum": "2024-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP U Nemocnice, č.p. 604 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 46/13, usnesení 97/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3153158",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/20",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP U Nemocnice, č.p. 604 – prodloužení nájemního vztahu - hostinské zařízení – stadion Viktoria",
+      "popis": "Rada města, bod 48/20, usnesení 180/24. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166785",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "75999005",
+    "nazev": "Projektová kancelář Beránek&Hradil"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-08-02",
+    "do": "2022-11-21",
+    "prvni_rok": 2022,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 2,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:19853643",
+      "datum": "2022-08-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-02",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Projektová dokumentace pro provedení stavby, výkaz výměr, kontrolní rozpočet Stavební úpravy, místní komunikace ulice U Zastávky, Mariánské Lázně, p.č. 1163/2, k.ú. Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Ondřej Beránek, Projekční kancelář Beránek&Hradil.",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21335015",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-154/13__21322321",
+      "datum": "2022-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Aktualizace projektové dokumentace na akci: \"Stavební úpravy Poštovní ulice k.ú. Mariánské Lázně, p.p.č. 177\"",
+      "popis": "Odhadované spojení smlouvy z 2022-11-21 s bodem 154/13 z 2022-07-26 (Projektová dokumentace Úprava ulice U Zastávky). Jistota nizka.",
+      "castka_czk": 66550.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Projektová kancelář Beránek&Hradil) je v textu usnesení; smlouva podepsána 118 dní po usnesení; název bodu a předmět smlouvy sdílí slova dokumentace, ulice",
+      "url": "https://smlouvy.gov.cz/smlouva/22881985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21322321",
+      "datum": "2022-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Aktualizace projektové dokumentace na akci: \"Stavební úpravy Poštovní ulice k.ú. Mariánské Lázně, p.p.č. 177\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Projektová kancelář Beránek&Hradil.",
+      "castka_czk": 66550.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22881985",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

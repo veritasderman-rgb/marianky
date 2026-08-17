@@ -1,0 +1,599 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26519011",
+    "nazev": "RAVÁNA GYM, z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2001-01-30",
+    "do": "2026-03-19",
+    "prvni_rok": 2001,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 28,
+    "dolozenych": 25,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 10,
+      "smlouva": 14,
+      "retez": 3
+    },
+    "dle_jistoty": {
+      "fakt": 25,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26519011:vznik",
+      "datum": "2001-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-01-30",
+      "rok": 2001,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — RAVÁNA GYM, z.s.",
+      "popis": "Vznik subjektu RAVÁNA GYM, z.s. (IČO 26519011), Spolek, obor: Činnosti sportovních klubů.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-61-61/5",
+      "datum": "2012-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-03",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Žádosti o dotaci z Fondu sportu města M.L.",
+      "popis": "Rada města, bod 61/5, usnesení 162/12.",
+      "castka_czk": 54000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/746846",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/29",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu města M.L.",
+      "popis": "Zastupitelstvo města, bod 11/29, usnesení 342/12.",
+      "castka_czk": 645000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/753855",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/6",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu Města M. L.",
+      "popis": "Rada města, bod 143/6, usnesení 58/14. Schvaleno.",
+      "castka_czk": 2538708,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079436",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/7",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu na činnost",
+      "popis": "Rada města, bod 143/7, usnesení 59/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079475",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/28",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na činnost z FS",
+      "popis": "Zastupitelstvo města, bod 21/28, usnesení 687/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082917",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/29",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na akce,investice a opravy z FS",
+      "popis": "Zastupitelstvo města, bod 21/29, usnesení 688/14. Schvaleno.",
+      "castka_czk": 1787900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082932",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-5-5/17",
+      "datum": "2015-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-10",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z FS",
+      "popis": "Zastupitelstvo města, bod 5/17, usnesení 65/15. Schvaleno.",
+      "castka_czk": 2130000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1350215",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:4688560",
+      "datum": "2018-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Workshop 2x, Bojová umění dětem, Noc Boje - RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 217800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5056200",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/6",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z Fondu sportu - činnost",
+      "popis": "Zastupitelstvo města, bod 35/6, usnesení 687/18. Schvaleno.",
+      "castka_czk": 1917500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1921286",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:5094799",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Činnost RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 86736.43,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5490351",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7908991",
+      "datum": "2019-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-19",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Workshop, Bojová umění dětem, Noc Boje - RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 226270.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8539803",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7908995",
+      "datum": "2019-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-19",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Činnost RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 109836.54,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8539807",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11240668",
+      "datum": "2020-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-27",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 236555.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12091096",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11255516",
+      "datum": "2020-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-27",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 107690.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12107172",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-76-76/14",
+      "datum": "2020-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-30",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Změny termínů konání schválených sportovních akcí",
+      "popis": "Rada města, bod 76/14, usnesení 346/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2544757",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-119-119/2",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Změna termínu konání schválené sportovní akce",
+      "popis": "Rada města, bod 119/2, usnesení 362/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2720253",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/2__18340807",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-03-18 s bodem 119/2 z 2021-08-24 (Změna termínu konání schválené sportovní akce). Jistota nizka.",
+      "castka_czk": 119790.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26519011 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 206 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/19721723",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/2__18340811",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-03-18 s bodem 119/2 z 2021-08-24 (Změna termínu konání schválené sportovní akce). Jistota nizka.",
+      "castka_czk": 30250.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26519011 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 206 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/19721727",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/2__18340815",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2022-03-18 s bodem 119/2 z 2021-08-24 (Změna termínu konání schválené sportovní akce). Jistota nizka.",
+      "castka_czk": 235950.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26519011 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 206 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/19721731",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18340807",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 119790.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19721723",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18340811",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 30250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19721727",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18340815",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 235950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19721731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22206089",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 205700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23818673",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22206093",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 140360.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23818677",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26259659",
+      "datum": "2024-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 106480.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28106995",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26253231",
+      "datum": "2024-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "RAVÁNA GYM, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28100251",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35027865",
+      "datum": "2026-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-19",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva - Noc Boje 13",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana RAVÁNA GYM, z.s..",
+      "castka_czk": 170000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37305529",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

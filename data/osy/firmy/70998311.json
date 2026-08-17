@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70998311",
+    "nazev": "Společenství vlastníků Husova 530"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-06-24",
+    "do": "2023-07-31",
+    "prvni_rok": 2003,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 2,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70998311:vznik",
+      "datum": "2003-06-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-06-24",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků Husova 530",
+      "popis": "Vznik subjektu Společenství vlastníků Husova 530 (IČO 70998311), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo pronajatých nemovitostí",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2023-25/23__23640255",
+      "datum": "2023-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-31",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 997/3 zahrada o výměře 430 m2 k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-07-31 s bodem 25/23 z 2023-06-13 (Zveřejnění záměru pronájmu p.p.č. 997/3 k. ú. ML za BD čp. 530 ul. Husova). Jistota nizka.",
+      "castka_czk": 15609.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70998311 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 48 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25327955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-27/22__23640255",
+      "datum": "2023-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-31",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 997/3 zahrada o výměře 430 m2 k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-07-31 s bodem 27/22 z 2023-07-11 (Pronájem poz. parcely č. 997/3 k. ú. Mariánské Lázně - ul. Husova). Jistota stredni.",
+      "castka_czk": 15609.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70998311 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 20 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25327955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23640255",
+      "datum": "2023-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-31",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 997/3 zahrada o výměře 430 m2 k. ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Společenství vlastníků Husova 530.",
+      "castka_czk": 15609.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25327955",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

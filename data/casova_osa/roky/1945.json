@@ -1,0 +1,303 @@
+{
+  "rok": 1945,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 8,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 6,
+      "funkce": 2
+    },
+    "dle_jistoty": {
+      "fakt": 8
+    }
+  },
+  "udalosti": [
+    {
+      "id": "historie:1945-stav-obyvatelstva",
+      "datum": "1945",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1945-01-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Přelidněné město: asi 40 000 lidí, z toho asi 80 Čechů a Slováků",
+      "popis": "Podle městské kroniky mělo město ke konci války se všemi vojenskými lazarety na 40 tisíc obyvatel a bylo zcela přelidněné. Mezi těmito desítkami tisíc lidí bylo pouze asi osmdesát Čechů a Slováků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-stav-obyvatelstva",
+      "url": "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
+      "detail": {
+        "kategorie": "obyvatelstvo",
+        "obdobi": "odsun-a-vymena",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html"
+        ]
+      }
+    },
+    {
+      "id": "historie:1945-04-lazaretni-mesto",
+      "datum": "1945-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "1945-04-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Město přeplněné raněnými a uprchlíky",
+      "popis": "V dubnu 1945 bylo z Mariánských Lázní lazaretní město. Kromě raněných německých vojáků a pacientů z berlínských nemocnic zde byli i lidé prchající před postupujícími spojeneckými armádami.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "zdravotnictvi"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-04-lazaretni-mesto",
+      "url": "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+      "detail": {
+        "kategorie": "valka",
+        "obdobi": "okupace-a-valka",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+          "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/"
+        ]
+      }
+    },
+    {
+      "id": "funkce:skacelik-frantisek:0",
+      "datum": "1945-05",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "František Skácelík — správní komisař města",
+      "popis": "správní komisař města (1945-05 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "skacelik-frantisek"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "skacelik-frantisek#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "správní komisař města",
+        "strana": null,
+        "kategorie": "historie",
+        "do": null
+      }
+    },
+    {
+      "id": "funkce:tesar-karel:0",
+      "datum": "1945-05",
+      "datum_do": "1945-05",
+      "presnost": "obdobi",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Karel Tesař — dočasný starosta",
+      "popis": "dočasný starosta (1945-05 – 1945-05).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "tesar-karel"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "tesar-karel#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "dočasný starosta",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1945-05"
+      }
+    },
+    {
+      "id": "historie:1945-05-tesar-starosta",
+      "datum": "1945-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Karel Tesař dočasným starostou",
+      "popis": "V květnu 1945 byl bezprostředně po konci války dočasným starostou města Karel Tesař, představitel české menšiny v Mariánských Lázních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "tesar-karel"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-05-tesar-starosta",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "odsun-a-vymena",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    },
+    {
+      "id": "historie:1945-osidlenci",
+      "datum": "1945-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Nástup českých osídlenců",
+      "popis": "Od května 1945 začali do Mariánských Lázní přicházet čeští osídlenci.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-osidlenci",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "obyvatelstvo",
+        "obdobi": "odsun-a-vymena",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1945-05-06-osvobozeni",
+      "datum": "1945-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1945-05-06",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Město osvobozeno americkou armádou",
+      "popis": "Dne 6. května 1945 vstoupily do Mariánských Lázní jednotky americké armády pod velením generála Pattona. Na rozdíl od jiných měst zde nedošlo k boji s ustupujícím wehrmachtem. Ve městě byly v té době jen desítky Čechů, takže se žádné oslavy nekonaly. Pomník vojákům americké armády byl ve Skalníkových sadech odhalen až v roce 1990.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-05-06-osvobozeni",
+      "url": "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
+      "detail": {
+        "kategorie": "valka",
+        "obdobi": "okupace-a-valka",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
+          "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1945-05-28-skacelik",
+      "datum": "1945-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1945-05-28",
+      "rok": 1945,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "František Skácelík správním komisařem města",
+      "popis": "Od 28. května 1945 přebíral z pověření vedení Mariánských Lázní jako správní komisař právník František Skácelík. Vedení města se v roce 1945 několikrát změnilo, než se ustavil Městský národní výbor.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "skacelik-frantisek"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1945-05-28-skacelik",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "odsun-a-vymena",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    }
+  ]
+}

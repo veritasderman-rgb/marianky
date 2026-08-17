@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03173631",
+    "nazev": "awin IT, s. r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-03-23",
+    "do": "2025-11-26",
+    "prvni_rok": 2021,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "smlouva": 6,
+      "usneseni": 1,
+      "retez": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:14858863",
+      "datum": "2021-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-23",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Výměna HW Firewall úřadu - objednávka HW Sophos XG 230",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 99480.15,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15985979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14858867",
+      "datum": "2021-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-23",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Výměna HW Firewall úřadu - objednávka 3 letélicence FullGuard Plus",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 215416.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15985983",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15451783",
+      "datum": "2021-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-17",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva - licence Sophos Central Intercept",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 497116.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16635731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/22",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "VZ Upgrade bezpečnostního řešení Next Generatíon Firewall - výběr dodavatele",
+      "popis": "Rada města, bod 79/22, usnesení 173/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3334374",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/22__30571576",
+      "datum": "2025-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-25",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "objednávka samostatného auditu",
+      "popis": "Odhadované spojení smlouvy z 2025-03-25 s bodem 79/22 z 2025-03-04 (VZ Upgrade bezpečnostního řešení Next Generatíon Firewall - výběr dodavatele). Jistota nizka",
+      "castka_czk": 78771.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03173631 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/32642412",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30571576",
+      "datum": "2025-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-25",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "objednávka samostatného auditu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 78771.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32642412",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/22__30667752",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Upgrade bezpečnostního řešení Next Generation Firewall",
+      "popis": "Odhadované spojení smlouvy z 2025-03-26 s bodem 79/22 z 2025-03-04 (VZ Upgrade bezpečnostního řešení Next Generatíon Firewall - výběr dodavatele). Jistota nizka",
+      "castka_czk": 1197870.96,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03173631 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova bezpecnostniho, firewall, generation, next; ",
+      "url": "https://smlouvy.gov.cz/smlouva/32744780",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30667752",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Upgrade bezpečnostního řešení Next Generation Firewall",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 1197870.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32744780",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/22__33552081",
+      "datum": "2025-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka profylaxe 1 x Sophos firewalu a 2 x auditní zpráva na období 12 měsíců.",
+      "popis": "Odhadované spojení smlouvy z 2025-11-26 s bodem 79/22 z 2025-03-04 (VZ Upgrade bezpečnostního řešení Next Generatíon Firewall - výběr dodavatele). Jistota nizka",
+      "castka_czk": 80400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03173631 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 267 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/35762645",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33552081",
+      "datum": "2025-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka profylaxe 1 x Sophos firewalu a 2 x auditní zpráva na období 12 měsíců.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana awin IT, s. r. o..",
+      "castka_czk": 80400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35762645",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

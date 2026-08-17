@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28009550",
+    "nazev": "SARA ML s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-04-19",
+    "do": "2021-02-03",
+    "prvni_rok": 2016,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-65-65/6",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP v ul. Hlavní, č.p. 133 - prodloužení nájmu - SARA ML s.r.o.",
+      "popis": "Rada města, bod 65/6, usnesení 184/16. Schvaleno.",
+      "castka_czk": 5342,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1564142",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-94-94/12",
+      "datum": "2021-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-12",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - SARA ML s.r.o. - prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 94/12, usnesení 12/21. Schvaleno.",
+      "castka_czk": 332244,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2628757",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/94.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-94/12__14347103",
+      "datum": "2021-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-03",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - SARA ML s.r.o.- prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2021-02-03 s bodem 94/12 z 2021-01-12 (NP Hlavní 133 - SARA ML s.r.o. - prodloužení nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 2010076.2,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28009550 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova prodlouzeni, sara",
+      "url": "https://smlouvy.gov.cz/smlouva/15403943",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14347103",
+      "datum": "2021-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-03",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - SARA ML s.r.o.- prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SARA ML s.r.o..",
+      "castka_czk": 2010076.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15403943",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

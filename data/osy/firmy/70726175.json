@@ -1,0 +1,259 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70726175",
+    "nazev": "Martina Novotná"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2002-10-07",
+    "do": "2023-10-30",
+    "prvni_rok": 2002,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 9,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70726175:vznik",
+      "datum": "2002-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2002-10-07",
+      "rok": 2002,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Martina Novotná",
+      "popis": "Vznik subjektu Martina Novotná (IČO 70726175), Fyzická osoba podnikající dle živnostenského zákona, obor: Kadeřnické a holičské činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-62-62/2",
+      "datum": "2012-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Ukončení nájmu - Hlavní 131",
+      "popis": "Rada města, bod 62/2, usnesení 174/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/749866",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-127-127/6",
+      "datum": "2013-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-29",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Fr. Kafky 835 - pronájem",
+      "popis": "Rada města, bod 127/6, usnesení 505/13. Schvaleno.",
+      "castka_czk": 66000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1034132",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-144-144/7",
+      "datum": "2014-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Fr.Kafky 835-podnájemní smlouva",
+      "popis": "Rada města, bod 144/7, usnesení 69/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1087798",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/144.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-171-171/4",
+      "datum": "2018-10-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-23",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "ul.Franze Kafky č.p.835, prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 171/4, usnesení 557/18. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2125812",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/171.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-171/4__6680023",
+      "datum": "2018-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-05",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Franze Kafky 835- Novotná",
+      "popis": "Odhadované spojení smlouvy z 2018-11-05 s bodem 171/4 z 2018-10-23 (ul.Franze Kafky č.p.835, prodloužení nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 646321.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70726175 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova franze, kafky",
+      "url": "https://smlouvy.gov.cz/smlouva/7214803",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6680023",
+      "datum": "2018-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-05",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Franze Kafky 835- Novotná",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Martina Novotná.",
+      "castka_czk": 646321.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7214803",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/10",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP ul. Franze Kafky č.p.835 - prodloužení nájemního vztahu - Martina Novotná",
+      "popis": "Rada města, bod 35/10, usnesení 626/23. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092270",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/11",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p.835 - podnájemní smlouva",
+      "popis": "Rada města, bod 35/11, usnesení 627/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092285",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-35/10__24550007",
+      "datum": "2023-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-30",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Martina Novotná",
+      "popis": "Odhadované spojení smlouvy z 2023-10-30 s bodem 35/10 z 2023-10-17 (NP ul. Franze Kafky č.p.835 - prodloužení nájemního vztahu - Martina Novotná). Jistota stred",
+      "castka_czk": 646321.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70726175 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova martina, novotna, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/26281875",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24550007",
+      "datum": "2023-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Martina Novotná",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Martina Novotná.",
+      "castka_czk": 646321.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26281875",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

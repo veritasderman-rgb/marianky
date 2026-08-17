@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45362106",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-07",
+    "do": "2025-12-09",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45362106:vznik",
+      "datum": "1992-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-07",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Zbyněk Martinek",
+      "popis": "Vznik subjektu Zbyněk Martinek (IČO 45362106), Zemědělský podnikatel - fyzická osoba, obor: Pěstování plodin jiných než trvalých.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-98-98/7",
+      "datum": "2013-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-02-05",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Mariánské Lázně – údržba městské zeleně“",
+      "popis": "Rada města, bod 98/7, usnesení 53/13. Schvaleno.",
+      "castka_czk": 14000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/898798",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/17",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Žádost o uzavření Dodatku č. 2 ke Smlouvě o nájmu nebytových prostor – společnost TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o. x Zbyněk Martinek",
+      "popis": "Rada města, bod 106/17, usnesení 822/25. Schvaleno.",
+      "castka_czk": 5000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/959029731",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

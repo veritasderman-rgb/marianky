@@ -58,7 +58,7 @@ export function nactiPrehledHistorie(): Nacteno<Prehled> {
     .map((z, i) => {
       const nazev = txt(z, 'nazev', 'název', 'obdobi', 'období', 'titul', 'title');
       if (!nazev) return null;
-      const zaklad = txt(z, 'id', 'klic') ?? slug(nazev) || `obdobi-${i + 1}`;
+      const zaklad = txt(z, 'id', 'klic') ?? (slug(nazev) || `obdobi-${i + 1}`);
       let id = zaklad;
       for (let k = 2; videna.has(id); k++) id = `${zaklad}-${k}`;
       videna.add(id);

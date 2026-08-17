@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25212079",
+    "nazev": "MARBES CONSULTING s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-05-09",
+    "do": "2019-02-04",
+    "prvni_rok": 2018,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-154-154/18",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele software",
+      "popis": "Rada města, bod 154/18, usnesení 257/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1943968",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-154/18__6476759",
+      "datum": "2018-09-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-28",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Implementace informačního systému",
+      "popis": "Odhadované spojení smlouvy z 2018-09-28 s bodem 154/18 z 2018-05-09 (Výběr dodavatele software). Jistota nizka.",
+      "castka_czk": 440440.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25212079 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 142 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6992207",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6476759",
+      "datum": "2018-09-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-28",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Implementace informačního systému",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARBES CONSULTING s.r.o..",
+      "castka_czk": 440440.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6992207",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-10-10/4",
+      "datum": "2019-01-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-29",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytování údržby (maintenance)",
+      "popis": "Rada města, bod 10/4, usnesení 54/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2174825",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-10/4__7736015",
+      "datum": "2019-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O POSKYTOVÁNÍ ÚDRŽBY (MAINTENANCE)\nA PROVOZNÍ PODPORY SYSTÉMU PROXIO",
+      "popis": "Odhadované spojení smlouvy z 2019-02-04 s bodem 10/4 z 2019-01-29 (Smlouva o poskytování údržby (maintenance)). Jistota stredni.",
+      "castka_czk": 244178.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25212079 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova maintenance, poskytovani, udrzby",
+      "url": "https://smlouvy.gov.cz/smlouva/8352971",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7736015",
+      "datum": "2019-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O POSKYTOVÁNÍ ÚDRŽBY (MAINTENANCE)\nA PROVOZNÍ PODPORY SYSTÉMU PROXIO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARBES CONSULTING s.r.o..",
+      "castka_czk": 244178.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8352971",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

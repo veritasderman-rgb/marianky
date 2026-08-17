@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25702050",
+    "nazev": "Opavia - LU, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-04-09",
+    "do": "2019-01-02",
+    "prvni_rok": 2013,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-105-105/5",
+      "datum": "2013-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-09",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní č.p. 122 - prodloužení doby nájmu",
+      "popis": "Rada města, bod 105/5, usnesení 143/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/927721",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-116-116/4",
+      "datum": "2013-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-07-23",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 122 - prodloužení podnájemní smlouvy",
+      "popis": "Rada města, bod 116/4, usnesení 322/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/989819",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-129-129/4",
+      "datum": "2013-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 122 - sleva z nájmu",
+      "popis": "Rada města, bod 129/4, usnesení 537/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1040083",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-6-6/10",
+      "datum": "2018-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-18",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 122-proudloužení nájemního vztahu a přistoupení k nájemní smlouvě",
+      "popis": "Rada města, bod 6/10, usnesení 698/18. Schvaleno.",
+      "castka_czk": 2500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2155502",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-6/10__7202699",
+      "datum": "2019-01-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-02",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 122 - přistoupení",
+      "popis": "Odhadované spojení smlouvy z 2019-01-02 s bodem 6/10 z 2018-12-18 (Hlavní 122-proudloužení nájemního vztahu a přistoupení k nájemní smlouvě). Jistota stredni.",
+      "castka_czk": 3311467.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25702050 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, pristoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/7776883",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7202699",
+      "datum": "2019-01-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-02",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 122 - přistoupení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Opavia - LU, s.r.o..",
+      "castka_czk": 3311467.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7776883",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

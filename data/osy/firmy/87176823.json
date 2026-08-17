@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "87176823",
+    "nazev": "Michal Hurajčík"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-06-27",
+    "do": "2025-04-15",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-26-26/3",
+      "datum": "2023-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-27",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájemní smlouvy k užívání prodejního stánku č. 21 - městská tržnice",
+      "popis": "Rada města, bod 26/3, usnesení 404/23. Schvaleno.",
+      "castka_czk": 100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3039069",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-26/3__23615371",
+      "datum": "2023-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-17",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - stánek č. 21",
+      "popis": "Odhadované spojení smlouvy z 2023-07-17 s bodem 26/3 z 2023-06-27 (Prodloužení nájemní smlouvy k užívání prodejního stánku č. 21 - městská tržnice). Jistota str",
+      "castka_czk": 121.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 87176823 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 20 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25301847",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23615371",
+      "datum": "2023-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-17",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - stánek č. 21",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Michal Hurajčík.",
+      "castka_czk": 121.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25301847",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-26/3__28344412",
+      "datum": "2024-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodávka komodity- Ovoce, zelenina",
+      "popis": "Odhadované spojení smlouvy z 2024-09-20 s bodem 26/3 z 2023-06-27 (Prodloužení nájemní smlouvy k užívání prodejního stánku č. 21 - městská tržnice). Jistota niz",
+      "castka_czk": 605000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87176823 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 451 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/33293888",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28344412",
+      "datum": "2024-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodávka komodity- Ovoce, zelenina",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Michal Hurajčík.",
+      "castka_czk": 605000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33293888",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-26/3__31193748",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Rámcová kupní smlouva č. 2/2025 - dodávka komodity - ovoce, zelenina",
+      "popis": "Odhadované spojení smlouvy z 2025-04-15 s bodem 26/3 z 2023-06-27 (Prodloužení nájemní smlouvy k užívání prodejního stánku č. 21 - městská tržnice). Jistota niz",
+      "castka_czk": 605000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87176823 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 658 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/37593157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31193748",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Rámcová kupní smlouva č. 2/2025 - dodávka komodity - ovoce, zelenina",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Michal Hurajčík.",
+      "castka_czk": 605000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37593157",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

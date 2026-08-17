@@ -1,0 +1,499 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08688192",
+    "nazev": "Studio Prokon s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-11",
+    "do": "2025-11-05",
+    "prvni_rok": 2019,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 23,
+    "dolozenych": 13,
+    "odhadu": 10,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 10,
+      "retez": 10,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 10
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08688192:vznik",
+      "datum": "2019-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-11",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Studio Prokon s.r.o.",
+      "popis": "Vznik subjektu Studio Prokon s.r.o. (IČO 08688192), Společnost s ručením omezeným, obor: Inženýrské činnosti a související technické poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:22190561",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Zpracování projektové dokumentace pro akci „Odborná učebna ZŠ Vítězství“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 372861.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23802229",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22190685",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Zpracování projektové dokumentace pro akci „Zateplení podkroví ZŠ Vítězství“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 65340.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23802353",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-21/3__23290659",
+      "datum": "2023-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-29",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce Zpívající fontány Mariánské Lázně (stavební část) - PD",
+      "popis": "Odhadované spojení smlouvy z 2023-05-29 s bodem 21/3 z 2023-04-25 (Rekonstrukce Zpívající fontány). Jistota nizka.",
+      "castka_czk": 484605.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Studio Prokon s.r.o.) je v textu usnesení; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici",
+      "url": "https://smlouvy.gov.cz/smlouva/24957547",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23290659",
+      "datum": "2023-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce Zpívající fontány Mariánské Lázně (stavební část) - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 484605.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24957547",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27006884",
+      "datum": "2024-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 96558.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28886272",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-59-59/4",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Odborná učebna ZŠ Vítězství, Zateplení podkroví ZŠ Vítězství",
+      "popis": "Rada města, bod 59/4, usnesení 469/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3218408",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/4__28481808",
+      "datum": "2024-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-04",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce“",
+      "popis": "Odhadované spojení smlouvy z 2024-10-04 s bodem 59/4 z 2024-07-16 (Odborná učebna ZŠ Vítězství, Zateplení podkroví ZŠ Vítězství). Jistota nizka.",
+      "castka_czk": 103576.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 80 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/30432124",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28481808",
+      "datum": "2024-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 103576.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30432124",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/4__30599528",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka-PD a inženýrské práce - rekonstrukce lanovky M.L.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 59/4 z 2024-07-16 (Odborná učebna ZŠ Vítězství, Zateplení podkroví ZŠ Vítězství). Jistota nizka.",
+      "castka_czk": 194646.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 238 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/32672784",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30599528",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-PD a inženýrské práce - rekonstrukce lanovky M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 194646.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32672784",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/31",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo - ZŠ Jih izolace proti vlhkosti (kanalizace) PD",
+      "popis": "Rada města, bod 81/31, usnesení 208/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3339214",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/4__30709116",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“ - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2025-03-26 s bodem 59/4 z 2024-07-16 (Odborná učebna ZŠ Vítězství, Zateplení podkroví ZŠ Vítězství). Jistota nizka.",
+      "castka_czk": 21457.3293,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 253 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/32788624",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/31__30709116",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“ - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2025-03-26 s bodem 81/31 z 2025-03-18 (Smlouva o dílo - ZŠ Jih izolace proti vlhkosti (kanalizace) PD). Jistota nizka.",
+      "castka_czk": 21457.3293,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva téže",
+      "url": "https://smlouvy.gov.cz/smlouva/32788624",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30709116",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Provádění autorského dozoru pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“ - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 21457.3293,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32788624",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/31__30702320",
+      "datum": "2025-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "ZŠ Jih - izolace proti vlhkosti (kanalizace) - PD",
+      "popis": "Odhadované spojení smlouvy z 2025-04-03 s bodem 81/31 z 2025-03-18 (Smlouva o dílo - ZŠ Jih izolace proti vlhkosti (kanalizace) PD). Jistota nizka.",
+      "castka_czk": 586850.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova izolace, kanalizace, proti, vlhkosti; k tému",
+      "url": "https://smlouvy.gov.cz/smlouva/32781496",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30702320",
+      "datum": "2025-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "ZŠ Jih - izolace proti vlhkosti (kanalizace) - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 586850.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32781496",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/31__33205949",
+      "datum": "2025-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo ZŠ Jih – izolace proti vlhkosti (kanalizace) – PD",
+      "popis": "Odhadované spojení smlouvy z 2025-08-06 s bodem 81/31 z 2025-03-18 (Smlouva o dílo - ZŠ Jih izolace proti vlhkosti (kanalizace) PD). Jistota nizka.",
+      "castka_czk": 686120.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 141 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, izolace, kanalizace, proti; stejně do",
+      "url": "https://smlouvy.gov.cz/smlouva/35399921",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/29__33205949",
+      "datum": "2025-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo ZŠ Jih – izolace proti vlhkosti (kanalizace) – PD",
+      "popis": "Odhadované spojení smlouvy z 2025-08-06 s bodem 91/29 z 2025-06-27 (ZŠ Jih – izolace proti vlhkosti (kanalizace) – PD). Jistota nizka.",
+      "castka_czk": 686120.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Studio Prokon s.r.o.) je v textu usnesení; smlouva podepsána 40 dní po usnesení; název bodu a předmět smlouvy sdílí slova izolace, kanalizace, proti, vlhkosti; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/35399921",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33205949",
+      "datum": "2025-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-06",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo ZŠ Jih – izolace proti vlhkosti (kanalizace) – PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": 686120.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35399921",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/18__33535829",
+      "datum": "2025-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-05",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "ZŠ Jih - izolace proti vlhkosti (kanalizace) - PD dodatek č.2",
+      "popis": "Odhadované spojení smlouvy z 2025-11-05 s bodem 102/18 z 2025-10-29 (ZŠ Jih – izolace proti vlhkosti (kanalizace) – PD). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Studio Prokon s.r.o.) je v textu usnesení; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova izolace, kanalizace, proti, vlhkosti; obojí je dodatek č. 2;",
+      "url": "https://smlouvy.gov.cz/smlouva/35745517",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/31__33535829",
+      "datum": "2025-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-05",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "ZŠ Jih - izolace proti vlhkosti (kanalizace) - PD dodatek č.2",
+      "popis": "Odhadované spojení smlouvy z 2025-11-05 s bodem 81/31 z 2025-03-18 (Smlouva o dílo - ZŠ Jih izolace proti vlhkosti (kanalizace) PD). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08688192 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 232 dní po usnesení; název bodu a předmět smlouvy sdílí slova izolace, kanalizace, proti, vlhkosti; stejn",
+      "url": "https://smlouvy.gov.cz/smlouva/35745517",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33535829",
+      "datum": "2025-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-05",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "ZŠ Jih - izolace proti vlhkosti (kanalizace) - PD dodatek č.2",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Studio Prokon s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35745517",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "18688209",
+    "nazev": "Marcela Kovačová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2022-03-21",
+    "prvni_rok": 1992,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 10,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "nizka": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:18688209:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Marcela Kovačová",
+      "popis": "Vznik subjektu Marcela Kovačová (IČO 18688209), Fyzická osoba podnikající dle živnostenského zákona, obor: Výroba pekařských, cukrářských a jiných moučných výro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-100-100/6",
+      "datum": "2013-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-02-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájmu - NP Hlavní 226 (M. Kováčová)",
+      "popis": "Rada města, bod 100/6, usnesení 76/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/904194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/100.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-120-120/15",
+      "datum": "2013-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-03",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - podnájemní smlouva",
+      "popis": "Rada města, bod 120/15, usnesení 408/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1010908",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-42-42/12",
+      "datum": "2015-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-20",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smlouvy o nájmu NP Hlavní 226",
+      "popis": "Rada města, bod 42/12, usnesení 490/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1474942",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/42.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-103-103/3",
+      "datum": "2017-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-14",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - prodloužení nájemního vztahu - Marcela Kovačová, Štefan Kovač",
+      "popis": "Rada města, bod 103/3, usnesení 99/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1711552",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-103/3__1392586",
+      "datum": "2017-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 226, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-03-20 s bodem 103/3 z 2017-02-14 (NP Hlavní 226 - prodloužení nájemního vztahu - Marcela Kovačová, Štefan Kovač). Jistota nizk",
+      "castka_czk": 377520.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 18688209 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/1505014",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1392586",
+      "datum": "2017-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 226, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcela Kovačová.",
+      "castka_czk": 377520.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1505014",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-137-137/15",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - ukončení nájmu dohodou - Marcela Kovačová",
+      "popis": "Rada města, bod 137/15, usnesení 697/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1867379",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-103/3__3887180",
+      "datum": "2017-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-18",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Ukončení nájmu k 31. 1. 2018 - NP Hlavní 226 - Marcela Kovačová",
+      "popis": "Odhadované spojení smlouvy z 2017-12-18 s bodem 103/3 z 2017-02-14 (NP Hlavní 226 - prodloužení nájemního vztahu - Marcela Kovačová, Štefan Kovač). Jistota nizk",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 18688209 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 307 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, kovacova, marcela; stejně dobře sed",
+      "url": "https://smlouvy.gov.cz/smlouva/4192532",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/15__3887180",
+      "datum": "2017-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-18",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Ukončení nájmu k 31. 1. 2018 - NP Hlavní 226 - Marcela Kovačová",
+      "popis": "Odhadované spojení smlouvy z 2017-12-18 s bodem 137/15 z 2017-12-05 (NP Hlavní 226 - ukončení nájmu dohodou - Marcela Kovačová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 18688209 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, kovacova, marcela, najmu; usnesení m",
+      "url": "https://smlouvy.gov.cz/smlouva/4192532",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3887180",
+      "datum": "2017-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-18",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Ukončení nájmu k 31. 1. 2018 - NP Hlavní 226 - Marcela Kovačová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcela Kovačová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4192532",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/7",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 226, 227 - prodloužení Smlouvy o nájmu nebytového prostoru - Štefan Kovač, Marcela Kovačová",
+      "popis": "Rada města, bod 139/7, usnesení 85/22. Schvaleno.",
+      "castka_czk": 62400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2812334",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-139/7__18360231",
+      "datum": "2022-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Marcela Kovačová, Štefan Kovač",
+      "popis": "Odhadované spojení smlouvy z 2022-03-21 s bodem 139/7 z 2022-02-22 (NP Hlavní, č.p. 226, 227 - prodloužení Smlouvy o nájmu nebytového prostoru - Štefan Kovač, M",
+      "castka_czk": 377520.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 18688209 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova kovac, kovacova, marcela, najmu",
+      "url": "https://smlouvy.gov.cz/smlouva/19742291",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18360231",
+      "datum": "2022-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Marcela Kovačová, Štefan Kovač",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcela Kovačová.",
+      "castka_czk": 377520.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19742291",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64366073",
+    "nazev": "Štrunc František"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-03-14",
+    "do": "2017-06-22",
+    "prvni_rok": 1996,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64366073:vznik",
+      "datum": "1996-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-03-14",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — František Štrunc",
+      "popis": "Vznik subjektu František Štrunc (IČO 64366073), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-118-118/14",
+      "datum": "2017-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-13",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP U Nemocnice 604 - hostinské zařízení stadion Viktoria",
+      "popis": "Rada města, bod 118/14, usnesení 366/17. Schvaleno.",
+      "castka_czk": 144000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1775333",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-118/14__2284150",
+      "datum": "2017-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-22",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2017-06-22 s bodem 118/14 z 2017-06-13 (Pronájem NP U Nemocnice 604 - hostinské zařízení stadion Viktoria). Jistota vysoka.",
+      "castka_czk": 144000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 64366073 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 9 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2463254",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2284150",
+      "datum": "2017-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-22",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Správa městských sportovišť — příjem, protistrana Štrunc František.",
+      "castka_czk": 144000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2463254",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

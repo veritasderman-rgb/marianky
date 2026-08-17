@@ -1,0 +1,379 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44615469",
+    "nazev": "Václav Kocourek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-05-02",
+    "do": "2023-07-11",
+    "prvni_rok": 2012,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 13,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 9,
+      "retez": 4,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 2,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-64-64/14",
+      "datum": "2012-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-05-02",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - snížení nájmu",
+      "popis": "Rada města, bod 64/14, usnesení 224/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/759903",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-72-72/12",
+      "datum": "2012-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-26",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - sleva z nájmu (V. Kocourek)",
+      "popis": "Rada města, bod 72/12, usnesení 319/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/783547",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-24-24/17",
+      "datum": "2015-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-05-26",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 24/17, usnesení 244/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1399984",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/8",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - sleva",
+      "popis": "Rada města, bod 162/8, usnesení 410/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1982881",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/8__6024487",
+      "datum": "2018-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č. 13, věrnostní sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-08-01 s bodem 162/8 z 2018-07-31 (NP Hlavní 142 - sleva). Jistota nizka.",
+      "castka_czk": 320502.864,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615469 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6494423",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/8__6024491",
+      "datum": "2018-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č. 14, dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-08-01 s bodem 162/8 z 2018-07-31 (NP Hlavní 142 - sleva). Jistota nizka.",
+      "castka_czk": 13735.92,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615469 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6494427",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6024487",
+      "datum": "2018-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě č. 13, věrnostní sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Kocourek.",
+      "castka_czk": 320502.864,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6494423",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6024491",
+      "datum": "2018-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě č. 14, dočasná sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Kocourek.",
+      "castka_czk": 13735.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6494427",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-163-163/10",
+      "datum": "2018-08-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-14",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení slevy nájemného, NP Hlavní 142",
+      "popis": "Rada města, bod 163/10, usnesení 438/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1992244",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/163.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-82-82/7",
+      "datum": "2020-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 82/7, usnesení 461/20. Schvaleno.",
+      "castka_czk": 113519,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2576900",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/82.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-103-103/4",
+      "datum": "2021-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-23",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - přistoupení 2. nájemce k nájmu",
+      "popis": "Rada města, bod 103/4, usnesení 103/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2657179",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-103/4__15105115",
+      "datum": "2021-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - přistoupení 2 nájemce",
+      "popis": "Odhadované spojení smlouvy z 2021-04-14 s bodem 103/4 z 2021-03-23 (NP Hlavní 142 - přistoupení 2. nájemce k nájmu). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615469 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, najmu, pristoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/16260447",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15105115",
+      "datum": "2021-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - přistoupení 2 nájemce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Kocourek.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16260447",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/9",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.142 - Václav Kocourek, Martina Prančlová",
+      "popis": "Rada města, bod 139/9, usnesení 87/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2812412",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-26-26/15",
+      "datum": "2023-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-27",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 - odstoupení nájemce od nájemní smlouvy",
+      "popis": "Rada města, bod 26/15, usnesení 416/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3042007",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-26/15__23410091",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce - Václav Kocourek",
+      "popis": "Odhadované spojení smlouvy z 2023-07-11 s bodem 26/15 z 2023-06-27 (NP Hlavní třída, č.p. 142 - odstoupení nájemce od nájemní smlouvy). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615469 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, odstoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/25084011",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23410091",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce - Václav Kocourek",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Kocourek.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25084011",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

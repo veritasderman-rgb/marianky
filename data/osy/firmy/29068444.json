@@ -1,0 +1,379 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29068444",
+    "nazev": "Hulák s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-05-21",
+    "do": "2025-09-17",
+    "prvni_rok": 2009,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 16,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 14
+    },
+    "dle_jistoty": {
+      "fakt": 16,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:29068444:vznik",
+      "datum": "2009-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-05-21",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Hulák s.r.o.",
+      "popis": "Vznik subjektu Hulák s.r.o. (IČO 29068444), Společnost s ručením omezeným, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-48-48/15",
+      "datum": "2015-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-08",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o právu provedení stavby - NP Chebská 495",
+      "popis": "Rada města, bod 48/15, usnesení 601/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1501568",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2015-48/15__1912990",
+      "datum": "2017-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-24",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava fasády na objektu koupaliště Lido, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-05-24 s bodem 48/15 z 2015-12-08 (Smlouva o právu provedení stavby - NP Chebská 495). Jistota nizka.",
+      "castka_czk": 153078.31,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29068444 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 533 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2063574",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1912990",
+      "datum": "2017-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-24",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava fasády na objektu koupaliště Lido, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 153078.31,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2063574",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:4422660",
+      "datum": "2018-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-21",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Oprava stropů, chodby k sociálnímu zařízení a pánského WC včetně vodoinstalace, elektroinstalace, sanitární keramiky, obkladů a dlažby v NP Chebská 399 – restaurace Švejk",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 201973.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4767844",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5381567",
+      "datum": "2018-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava fasády na objektu koupaliště Lido, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 222614.59,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5793435",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8890423",
+      "datum": "2019-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-09",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava umýváren v objektu koupaliště Lido, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 177876.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9580223",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13181896",
+      "datum": "2020-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-09",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava personálního WC a sprchy v objektu koupaliště Lido, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 63258.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14128000",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15446463",
+      "datum": "2021-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-17",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava umývárny MŠ Třešňovka Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 204465.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16629991",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16322687",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava koupaliště Lido-šatny",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 98621.0016,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17571971",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18772679",
+      "datum": "2022-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-28",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava fasády objektu šaten v areálu koupaliště Lido, ML",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 120641.84,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20174691",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18870575",
+      "datum": "2022-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-09",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava umývárny v MŠ Třešňovka Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 206643.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20277703",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20448409",
+      "datum": "2022-10-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-11",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava oplocení v havarijním stavu v areálu koupaliště Lido, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 183557.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21961189",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22966759",
+      "datum": "2023-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava personálního sociálního zařízení a šatny v objektu MŠ Třešňovka, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 268426.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24617739",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23431651",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava fasády na elektrostanici v areálu koupaliště LIDO, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HULÁK s.r.o..",
+      "castka_czk": 96635.44,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25106747",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31743609",
+      "datum": "2025-06-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-05",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 37/25-Oprava venkovního sociálního zařízení v MŠ Hlavní, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hulák s.r.o..",
+      "castka_czk": 138603.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33871557",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32672673",
+      "datum": "2025-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-17",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - LIDO oprava vodárny",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hulák s.r.o..",
+      "castka_czk": 64747.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34843605",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

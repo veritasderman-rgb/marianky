@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07537280",
+    "nazev": "FINAL ALFA - stavební, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-01-25",
+    "do": "2022-05-17",
+    "prvni_rok": 2022,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-136-136/10",
+      "datum": "2022-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-25",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "VZ Rekonstrukce skladovacích prostor v budově Ruská 74 - výběr dodavatele",
+      "popis": "Rada města, bod 136/10, usnesení 40/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2799693",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/136.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-136/10__18224027",
+      "datum": "2022-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Rekonstrukce skladovacích prostor budově Ruská 74“.",
+      "popis": "Odhadované spojení smlouvy z 2022-03-07 s bodem 136/10 z 2022-01-25 (VZ Rekonstrukce skladovacích prostor v budově Ruská 74 - výběr dodavatele). Jistota stredni",
+      "castka_czk": 807713.72,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07537280 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; název bodu a předmět smlouvy sdílí slova budove, prostor, rekonstrukce, ruska",
+      "url": "https://smlouvy.gov.cz/smlouva/19598203",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18224027",
+      "datum": "2022-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Rekonstrukce skladovacích prostor budově Ruská 74“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FINAL ALFA - stavební, s.r.o..",
+      "castka_czk": 807713.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19598203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-147-147/11",
+      "datum": "2022-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-10",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce skladovacích prostor budově Ruská 74",
+      "popis": "Rada města, bod 147/11, usnesení 228/22. Schvaleno.",
+      "castka_czk": 31623,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2848225",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/147.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-147/11__18954679",
+      "datum": "2022-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-17",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce skladovacích prostor budově Ruská 74\n(č. smlouvy objednatele: S59/22) uzavřené dne 7.3.2022",
+      "popis": "Odhadované spojení smlouvy z 2022-05-17 s bodem 147/11 z 2022-05-10 (Rekonstrukce skladovacích prostor budově Ruská 74). Jistota stredni.",
+      "castka_czk": 90342.7503,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07537280 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova budove, prostor, rekonstrukce, ruska; obojí j",
+      "url": "https://smlouvy.gov.cz/smlouva/20365979",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18954679",
+      "datum": "2022-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-17",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce skladovacích prostor budově Ruská 74\n(č. smlouvy objednatele: S59/22) uzavřené dne 7.3.2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FINAL ALFA - stavební, s.r.o..",
+      "castka_czk": 90342.7503,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20365979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "tomanek-david",
+    "jmeno": "David Tománek",
+    "role": [
+      "statutár"
+    ],
+    "kategorie": "mestske-firmy",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2025-09",
+    "do": "2026-06",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 5
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2025-09-011",
+      "datum": "2025-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-09-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Přejeme úspěšný start do nového školního roku",
+      "popis": "Začátek září je tradičně spojen s návratem dětí do školních lavic. Letos je navíc ve znamení změn ve vedení dvou mariánskolázeňských škol. „Všem dětem přeji, ab",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f06bb416%7C4646#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-09/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-011",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Je to životní sen, říká nový ředitel",
+      "popis": "Základní umělecká škola Fryderyka Chopina v Mariánských Lázních má nového ředitele. Stal se jím David Tománek, který má za sebou pestrou profesní cestu – působi",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-024",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Koncerty, či jiná forma umělecké propagace, je v „ZUŠkách“ denní chléb",
+      "popis": "To, co bylo k vidění 21. 4. v Městském divadle Mariánské Lázně bylo úžasné. Konala se zde akce Děti – dětem. Zde žáci Základní umělecké školy předvedli své uměn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-025",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "100 let školy aneb radost kam se podíváš",
+      "popis": "1. února 2026 Základní umělecká škola Fryderyka Chopina Mariánské Lázně oslavila 100 let svého působení. Za tuto dobu se v ní vystřídala řada skvělých učitelů a",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-032",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Koncert se Západočeským symfonickým orchestrem",
+      "popis": "Květnové akce završil 29. května přátelský koncert žáků ZUŠ Fryderyka Chopina Mariánské Lázně a ZUŠ Járy Cimrmana Františkovy Lázně se Západočeským symfonickým ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

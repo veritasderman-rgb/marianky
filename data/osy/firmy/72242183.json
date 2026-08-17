@@ -1,0 +1,259 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72242183",
+    "nazev": "Milan Uxa"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-04-19",
+    "do": "2026-05-14",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 7,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-65-65/17",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 256 - prodloužení nájmu, změna účelu užívání - Milan Uxa",
+      "popis": "Rada města, bod 65/17, usnesení 195/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1565454",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-65/17__7921",
+      "datum": "2016-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-27",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2016-04-27 s bodem 65/17 z 2016-04-19 (NP Chebská 256 - prodloužení nájmu, změna účelu užívání - Milan Uxa). Jistota stredni.",
+      "castka_czk": 427856.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 72242183 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/8145",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7921",
+      "datum": "2016-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-27",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Uxa.",
+      "castka_czk": 427856.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8145",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-110-110/19",
+      "datum": "2021-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-25",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p.256 - prodloužení nájemního vztahu - Uxa",
+      "popis": "Rada města, bod 110/19, usnesení 215/21. Schvaleno.",
+      "castka_czk": 70720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2683867",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-110/19__15571375",
+      "datum": "2021-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Milan Uxa - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2021-05-31 s bodem 110/19 z 2021-05-25 (NP Chebská, č.p.256 - prodloužení nájemního vztahu - Uxa). Jistota stredni.",
+      "castka_czk": 427856.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 72242183 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16763663",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15571375",
+      "datum": "2021-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Milan Uxa - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Uxa.",
+      "castka_czk": 427856.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16763663",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/11",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Chebská, č.p. 256 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 114/11, usnesení 1033/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4010474616",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/30",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Chebská 256 – prodloužení nájemního vztahu – Milan Uxa",
+      "popis": "Rada města, bod 116/30, usnesení 1123/26. Schvaleno.",
+      "castka_czk": 70720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3841593017",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/11__35666753",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Milan Uxa - prodloužení NS",
+      "popis": "Odhadované spojení smlouvy z 2026-05-14 s bodem 114/11 z 2026-03-30 (Nebytový prostor Chebská, č.p. 256 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 353600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 72242183 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37971589",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/30__35666753",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Milan Uxa - prodloužení NS",
+      "popis": "Odhadované spojení smlouvy z 2026-05-14 s bodem 116/30 z 2026-05-05 (Nebytový prostor Chebská 256 – prodloužení nájemního vztahu – Milan Uxa). Jistota nizka.",
+      "castka_czk": 353600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 72242183 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova milan, prodlouzeni; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/37971589",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35666753",
+      "datum": "2026-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Milan Uxa - prodloužení NS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Uxa.",
+      "castka_czk": 353600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37971589",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

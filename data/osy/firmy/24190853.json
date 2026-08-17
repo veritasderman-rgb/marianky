@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24190853",
+    "nazev": "ARTENDR s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-05-11",
+    "do": "2022-04-14",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 6,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 6,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "stredni": 1,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-108-108/2",
+      "datum": "2021-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-11",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Ulice Tomáškova a Šafaříkova ML – PD",
+      "popis": "Rada města, bod 108/2, usnesení 167/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2675830",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-108/2__15728519",
+      "datum": "2021-06-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-16",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Ulice Tomáškova a Šafaříkova Mariánské Lázně – PD“.",
+      "popis": "Odhadované spojení smlouvy z 2021-06-16 s bodem 108/2 z 2021-05-11 (Ulice Tomáškova a Šafaříkova ML – PD). Jistota stredni.",
+      "castka_czk": 217800.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova safarikova, tomaskova, ulice",
+      "url": "https://smlouvy.gov.cz/smlouva/16931067",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15728519",
+      "datum": "2021-06-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-16",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Ulice Tomáškova a Šafaříkova Mariánské Lázně – PD“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTENDR s.r.o..",
+      "castka_czk": 217800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16931067",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-125-125/13",
+      "datum": "2021-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-19",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Ulice Tomáškova a Šafaříkova, Mariánské Lázně - PD –",
+      "popis": "Rada města, bod 125/13, usnesení 470/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2758228",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/125.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-108/2__17179119",
+      "datum": "2021-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatkem se mění termín plnění díla a to z důvodu onemocnění projekčního týmu Zhotovitele, který tak nemůže v původně dohodnuté době reflektovat nové požadavky a skutečnosti nezbytně nutné pro pokračování projekčních prací.",
+      "popis": "Odhadované spojení smlouvy z 2021-11-12 s bodem 108/2 z 2021-05-11 (Ulice Tomáškova a Šafaříkova ML – PD). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 185 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18488563",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-125/13__17179119",
+      "datum": "2021-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatkem se mění termín plnění díla a to z důvodu onemocnění projekčního týmu Zhotovitele, který tak nemůže v původně dohodnuté době reflektovat nové požadavky a skutečnosti nezbytně nutné pro pokračování projekčních prací.",
+      "popis": "Odhadované spojení smlouvy z 2021-11-12 s bodem 125/13 z 2021-10-19 (Ulice Tomáškova a Šafaříkova, Mariánské Lázně - PD –). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18488563",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17179119",
+      "datum": "2021-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-12",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem se mění termín plnění díla a to z důvodu onemocnění projekčního týmu Zhotovitele, který tak nemůže v původně dohodnuté době reflektovat nové požadavky a skutečnosti nezbytně nutné pro pokračování projekčních prací.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTENDR s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18488563",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-143-143/12",
+      "datum": "2022-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-29",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Ulice Tomáškova a Šafaříkova, Mariánské Lázně - PD",
+      "popis": "Rada města, bod 143/12, usnesení 154/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2829376",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-108/2__18679299",
+      "datum": "2022-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatkem se mění termín plnění díla, a to z důvodu nutnosti přepracování způsobu likvidace dešťových vod z komunikace. Dle požadavku společnosti CHEVAK a.s. bude prověřena možnost zasakování dešťových vod na pozemku p.č. 168/6.",
+      "popis": "Odhadované spojení smlouvy z 2022-04-14 s bodem 108/2 z 2021-05-11 (Ulice Tomáškova a Šafaříkova ML – PD). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 338 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20077019",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-125/13__18679299",
+      "datum": "2022-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatkem se mění termín plnění díla, a to z důvodu nutnosti přepracování způsobu likvidace dešťových vod z komunikace. Dle požadavku společnosti CHEVAK a.s. bude prověřena možnost zasakování dešťových vod na pozemku p.č. 168/6.",
+      "popis": "Odhadované spojení smlouvy z 2022-04-14 s bodem 125/13 z 2021-10-19 (Ulice Tomáškova a Šafaříkova, Mariánské Lázně - PD –). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 177 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20077019",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-143/12__18679299",
+      "datum": "2022-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatkem se mění termín plnění díla, a to z důvodu nutnosti přepracování způsobu likvidace dešťových vod z komunikace. Dle požadavku společnosti CHEVAK a.s. bude prověřena možnost zasakování dešťových vod na pozemku p.č. 168/6.",
+      "popis": "Odhadované spojení smlouvy z 2022-04-14 s bodem 143/12 z 2022-03-29 (Ulice Tomáškova a Šafaříkova, Mariánské Lázně - PD). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24190853 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20077019",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18679299",
+      "datum": "2022-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem se mění termín plnění díla, a to z důvodu nutnosti přepracování způsobu likvidace dešťových vod z komunikace. Dle požadavku společnosti CHEVAK a.s. bude prověřena možnost zasakování dešťových vod na pozemku p.č. 168/6.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTENDR s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20077019",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "42818532",
+    "nazev": "Radek Zdvihal"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1991-09-11",
+    "do": "2019-08-20",
+    "prvni_rok": 1991,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:42818532:vznik",
+      "datum": "1991-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1991-09-11",
+      "rok": 1991,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Radek Zdvihal",
+      "popis": "Vznik subjektu Radek Zdvihal (IČO 42818532), Fyzická osoba podnikající dle živnostenského zákona, obor: Opravy a údržba výrobků pro osobní potřebu a převážně pr",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-130-130/5",
+      "datum": "2017-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 833 - pronájem NP - Radek Zdvihal",
+      "popis": "Rada města, bod 130/5, usnesení 571/17. Schvaleno.",
+      "castka_czk": 39080,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1838145",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/130.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-130/5__3388720",
+      "datum": "2017-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Franze Kafky 833, B2 VI - Radek Zdvihal",
+      "popis": "Odhadované spojení smlouvy z 2017-11-01 s bodem 130/5 z 2017-10-10 (NP Franze Kafky 833 - pronájem NP - Radek Zdvihal). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42818532 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova franze, kafky, pronajem, radek",
+      "url": "https://smlouvy.gov.cz/smlouva/3654484",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3388720",
+      "datum": "2017-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Franze Kafky 833, B2 VI - Radek Zdvihal",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Radek Zdvihal.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3654484",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-34-34/19",
+      "datum": "2019-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-20",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 833 - výpověď z nájmu nebytového prostoru",
+      "popis": "Rada města, bod 34/19, usnesení 430/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2389221",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/34.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "74675591",
+    "nazev": "MUDr. Jana Vydrová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-08-08",
+    "do": "2024-10-24",
+    "prvni_rok": 2007,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:74675591:vznik",
+      "datum": "2007-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-08-08",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MUDr. Jana Vydrová",
+      "popis": "Vznik subjektu MUDr. Jana Vydrová (IČO 74675591), Fyzická osoba podnikající dle živnostenského zákona, obor: Všeobecná ambulantní zdravotní péče.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-65-65/6",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 832, nebytová jednotka A3 - II – zveřejnění záměru obce",
+      "popis": "Rada města, bod 65/6, usnesení 620/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3251126",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/7",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 832, nebytová jednotka A3 - II – prodloužení nájemního vztahu – MUDr. Jana Vydrová",
+      "popis": "Rada města, bod 68/7, usnesení 693/24. Schvaleno.",
+      "castka_czk": 48000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3262981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/7__28716996",
+      "datum": "2024-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-24",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - MUDr. Jana Vydrová",
+      "popis": "Odhadované spojení smlouvy z 2024-10-24 s bodem 68/7 z 2024-10-15 (NP Franze Kafky, č.p. 832, nebytová jednotka A3 - II – prodloužení nájemního vztahu – MUDr. J",
+      "castka_czk": 290400.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 74675591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova jana, mudr, prodlouzeni, vydrova",
+      "url": "https://smlouvy.gov.cz/smlouva/30695140",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28716996",
+      "datum": "2024-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - MUDr. Jana Vydrová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MUDr. Jana Vydrová.",
+      "castka_czk": 290400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30695140",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

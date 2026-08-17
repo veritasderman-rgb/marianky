@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64949681",
+    "nazev": "T-Mobile Czech Republic a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-10-27",
+    "do": "2021-12-14",
+    "prvni_rok": 2015,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-43-43/6",
+      "datum": "2015-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-27",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "GTS – nový dodatek a specifikace služeb",
+      "popis": "Rada města, bod 43/6, usnesení 513/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1479917",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/43.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-65-65/8",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP v ul. Hlavní, č.p. 370 - aktualizace nájemní smlouvy - T-Mobile Czech Republic a.s.",
+      "popis": "Rada města, bod 65/8, usnesení 186/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1564172",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:6391107",
+      "datum": "2018-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-31",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o firemním řešení",
+      "popis": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně — příjem, protistrana T-Mobile Czech Republic a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6897847",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47721472.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17412291",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O FIREMNÍM ŘEŠENÍ",
+      "popis": "Nemocnice Mariánské Lázně s.r.o. — příjem, protistrana T-Mobile Czech Republic a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18734223",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26376709.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

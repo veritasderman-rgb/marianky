@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07774869",
+    "nazev": "Asociace poskytovatelů provozních úspor, z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-01-04",
+    "do": "2023-07-13",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 6,
+    "odhadu": 4,
+    "dle_typu": {
+      "smlouva": 4,
+      "usneseni": 2,
+      "retez": 4
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:21478833",
+      "datum": "2023-01-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-04",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - provedení úvodní studie využitelnosti střech objektů SMS Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Asociace poskytovatelů provozních úspor, z. s. (APPU).",
+      "castka_czk": 205700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23049709",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-9-9/20",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Instalace zdrojů obnov. energie - studie využitelnosti",
+      "popis": "Rada města, bod 9/20, usnesení 20/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2959324",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-18-18/2",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Výjimka z vnitřního předpisu pro zpracování stavebně-technických řešení instalace fotovoltaických elektráren",
+      "popis": "Rada města, bod 18/2, usnesení 186/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3001271",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/2__22762129",
+      "datum": "2023-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-27",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střechách níže vyjmenovaných veřejných budov ve vlastnictví města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-04-27 s bodem 18/2 z 2023-03-30 (Výjimka z vnitřního předpisu pro zpracování stavebně-technických řešení instalace fotovoltaic",
+      "castka_czk": 217800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07774869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení; název bodu a předmět smlouvy sdílí slova instalace, reseni, stavebne; stejně dobře se",
+      "url": "https://smlouvy.gov.cz/smlouva/24402369",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-9/20__22762129",
+      "datum": "2023-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-27",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střechách níže vyjmenovaných veřejných budov ve vlastnictví města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-04-27 s bodem 9/20 z 2023-01-10 (Instalace zdrojů obnov. energie - studie využitelnosti). Jistota nizka.",
+      "castka_czk": 217800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07774869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 107 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24402369",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22762129",
+      "datum": "2023-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-27",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střechách níže vyjmenovaných veřejných budov ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Asociace poskytovatelů provozních úspor, z.s..",
+      "castka_czk": 217800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24402369",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/2__23433407",
+      "datum": "2023-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-29",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střeše budovy DPS, která je ve vlastnictví města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-06-29 s bodem 18/2 z 2023-03-30 (Výjimka z vnitřního předpisu pro zpracování stavebně-technických řešení instalace fotovoltaic",
+      "castka_czk": 108900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07774869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 91 dní po usnesení; název bodu a předmět smlouvy sdílí slova instalace, reseni, stavebne; k témuž usnesen",
+      "url": "https://smlouvy.gov.cz/smlouva/25108627",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23433407",
+      "datum": "2023-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střeše budovy DPS, která je ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Asociace poskytovatelů provozních úspor, z.s..",
+      "castka_czk": 108900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25108627",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/2__23476367",
+      "datum": "2023-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-13",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střeše budovy Městského domu dětí a mládeže , která je ve vlastnictví města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-07-13 s bodem 18/2 z 2023-03-30 (Výjimka z vnitřního předpisu pro zpracování stavebně-technických řešení instalace fotovoltaic",
+      "castka_czk": 54450.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07774869 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 105 dní po usnesení; název bodu a předmět smlouvy sdílí slova instalace, reseni, stavebne; k témuž usnese",
+      "url": "https://smlouvy.gov.cz/smlouva/25156243",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23476367",
+      "datum": "2023-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Stavebně-technického řešení instalace fotovoltaické elektrárny na střeše budovy Městského domu dětí a mládeže , která je ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Asociace poskytovatelů provozních úspor, z.s..",
+      "castka_czk": 54450.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25156243",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

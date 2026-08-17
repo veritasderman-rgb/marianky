@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66227852",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-02-04",
+    "do": "2023-02-02",
+    "prvni_rok": 1992,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:66227852:vznik",
+      "datum": "1992-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-02-04",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — JUDr.Milan Veselý & Partner, advokát",
+      "popis": "Vznik subjektu JUDr.Milan Veselý & Partner, advokát (IČO 66227852), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor:",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-18-18/28",
+      "datum": "2016-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rozpočtové opatření - odvod za porušení rozpočtové kázně",
+      "popis": "Zastupitelstvo města, bod 18/28, usnesení 337/16. Schvaleno.",
+      "castka_czk": 6184180,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1593250",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/3",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočtové opatření - odvod za porušení rozpočtové kázně",
+      "popis": "Zastupitelstvo města, bod 35/3, usnesení 684/18. Schvaleno.",
+      "castka_czk": 6450850,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1927953",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/2",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Schválení změny právní formy spol. PARKING CENTRUM a.s. na s.r.o.",
+      "popis": "Rada města, bod 11/2, usnesení 56/23. Schvaleno.",
+      "castka_czk": 30000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965240",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45360898",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-09-02",
+    "do": "2014-10-07",
+    "prvni_rok": 1992,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45360898:vznik",
+      "datum": "1992-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-09-02",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ing. Ivan Vavřich",
+      "popis": "Vznik subjektu Ing. Ivan Vavřich (IČO 45360898), Fyzická osoba podnikající dle živnostenského zákona, obor: Pořizování zvukových nahrávek a hudební vydavatelské",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-163-163/18",
+      "datum": "2014-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-08-26",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Vydání Radničních listů",
+      "popis": "Rada města, bod 163/18, usnesení 384/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1255341",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/163.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-168-168/18",
+      "datum": "2014-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-10-07",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Radniční listy - vydání 2.čísla",
+      "popis": "Rada města, bod 168/18, usnesení 459/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1274233",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/168.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

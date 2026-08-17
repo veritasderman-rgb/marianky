@@ -4,13 +4,13 @@
     "co_to_je": "Přehled dějin Mariánských Lázní členěný na období a doprovodný seznam datovaných událostí. Slouží jako historická vrstva webu a jako zdroj pro jednotnou časovou osu (pipeline/casova_osa.py).",
     "fakt_a_hodnoceni": "Texty uvádějí jen doložitelná tvrzení. Hodnocení („zaslouženě“, „bohužel“, „vyvrcholení“) sem nepatří a v textech nejsou. Kde zdroj sám hodnotí, je to označeno formulací „podle přehledu města“ a podobně.",
     "zdroje": "Ke každému období i každé události je uveden seznam id do registru zdrojů. Zdroj bez id se nepoužívá.",
-    "nejistota": "Pole jistota nabývá hodnot fakt (údaj se v použitých pramenech shoduje) a sporne (prameny se rozcházejí). U sporných záznamů je rozpor popsán v poli poznamka. Web nesmí sporný údaj zobrazit jako fakt.",
+    "nejistota": "Pole jistota nabývá hodnot dolozeno (údaj se v použitých pramenech shoduje) a nejiste (prameny se rozcházejí). U nejistých záznamů je rozpor popsán v poli poznamka. Web nesmí nejistý údaj zobrazit jako doložený.",
     "presnost": "Pole presnost říká, jak přesně je událost datovaná: den, mesic, rok, obdobi. Pole datum drží ISO datum v odpovídající přesnosti (2021-07-24, 1946-01, 1929), u přesnosti obdobi je konec v poli datum_do.",
     "tagy": "Tagy se berou výhradně z config/tagy.json. Kde žádný tag číselníku nesedí, je seznam prázdný.",
     "osoby": "Odkazy do data/lide/osobnosti.json podle pole id. Osoby, které v souboru osobností nejsou, se neuvádějí.",
     "rozsah": "Přehled končí u současnosti. Období od roku 2012 dál je v tomto projektu pokryté primárními daty (usnesení, hlasování, smlouvy, zpravodaj), historická vrstva tam proto uvádí jen zlomové události."
   },
-  "zdroje": {
+  "zdroje_rejstrik": {
     "muml-historie": {
       "nazev": "Historie — oficiální stránky města Mariánské Lázně",
       "url": "https://www.muml.cz/mesto/o-meste/historie/",
@@ -113,8 +113,8 @@
     "od_roku": 1193,
     "do_roku": 2025,
     "dle_jistoty": {
-      "fakt": 97,
-      "sporne": 3
+      "dolozeno": 97,
+      "nejiste": 3
     }
   },
   "udalosti": [
@@ -131,9 +131,15 @@
         "hroznata"
       ],
       "tagy": [],
-      "jistota": "sporne",
+      "jistota": "nejiste",
       "poznamka": "Tradiční letopočet 1193 není potvrzen spolehlivým pramenem; jisté je jen to, že k založení došlo před rokem 1197. Záznam osobnosti hroznata v tomto projektu uvádí rok 1197.",
+      "odkaz": "https://cs.wikipedia.org/wiki/Kl%C3%A1%C5%A1ter_Tepl%C3%A1",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Kl%C3%A1%C5%A1ter_Tepl%C3%A1",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "wiki-tepla",
         "wiki-ml",
         "hamelika-analy"
@@ -152,9 +158,15 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "muml-osmicky",
         "ml-historie"
@@ -175,9 +187,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -192,9 +208,13 @@
       "popis": "Podle přehledu města se jméno Marienbad (Mariánské Lázně) poprvé objevuje roku 1788 u historika Jaroslava Schallera.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -214,9 +234,15 @@
         "lazenstvi",
         "investice"
       ],
-      "jistota": "sporne",
+      "jistota": "nejiste",
       "poznamka": "Prameny se v dataci liší: oficiální stránky města uvádějí rok 1805, turistický portál města roky 1805–1807, přehled „Osmičkové roky“ klade stavbu a první lázeňskou sezonu do roku 1808.",
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "ml-historie",
         "muml-osmicky"
@@ -235,9 +261,15 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "wiki-ml",
         "hamelika-analy"
@@ -259,9 +291,16 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "ml-historie",
         "wiki-ml",
@@ -283,9 +322,14 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "wiki-ml",
         "hamelika-analy"
       ]
@@ -306,9 +350,15 @@
         "zelen",
         "investice"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "ml-historie",
         "wiki-ml"
@@ -328,9 +378,15 @@
         "lazenstvi",
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "muml-osmicky",
         "ml-historie"
@@ -352,9 +408,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -373,9 +433,14 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Z%C3%A1pado%C4%8Desk%C3%BD_symfonick%C3%BD_orchestr",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Z%C3%A1pado%C4%8Desk%C3%BD_symfonick%C3%BD_orchestr",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-zso",
         "wiki-ml"
       ]
@@ -396,9 +461,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -417,9 +486,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -438,9 +511,14 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.marianskelazne.cz/o-meste/historie-mesta/",
       "zdroje": [
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "ml-historie",
         "wiki-ml"
       ]
@@ -460,9 +538,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -479,9 +561,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -500,9 +586,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -519,9 +609,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -540,9 +634,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -559,9 +657,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -580,9 +682,14 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.marianskelazne.cz/o-meste/historie-mesta/"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "ml-historie"
       ]
@@ -600,9 +707,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/"
+      ],
+      "zdroje_ids": [
         "muml-historie"
       ]
     },
@@ -619,9 +730,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -638,9 +753,14 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "wiki-ml"
       ]
@@ -660,9 +780,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -683,9 +807,13 @@
         "pamatky",
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -703,9 +831,13 @@
         "organizacni",
         "energetika"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-osmicky"
       ]
     },
@@ -724,9 +856,13 @@
       "tagy": [
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -743,9 +879,14 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "muml-osmicky"
       ]
@@ -764,9 +905,13 @@
         "kultura",
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -783,9 +928,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -802,9 +951,13 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -824,9 +977,14 @@
       "tagy": [
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "wiki-ml",
         "hamelika-analy"
       ]
@@ -845,9 +1003,13 @@
         "sport",
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -866,9 +1028,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -887,9 +1053,13 @@
       "tagy": [
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -906,9 +1076,13 @@
       "tagy": [
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -928,9 +1102,13 @@
         "lazenstvi",
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -947,9 +1125,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -968,9 +1150,14 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "hamelika-analy",
         "wiki-ml"
       ]
@@ -988,9 +1175,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1005,9 +1196,13 @@
       "popis": "Anály města uvádějí k roku 1922 celkem 6 909 obyvatel, z nichž 6 131 bylo Němců. Německé obyvatelstvo tvořilo drtivou většinu obyvatel města až do konce druhé světové války.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1024,9 +1219,13 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/"
+      ],
+      "zdroje_ids": [
         "muml-historie"
       ]
     },
@@ -1043,9 +1242,14 @@
       "tagy": [
         "skolstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "muml-osmicky",
         "hamelika-analy"
       ]
@@ -1064,9 +1268,13 @@
         "lazenstvi",
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1083,9 +1291,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1104,9 +1316,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1125,9 +1341,14 @@
       "tagy": [
         "bezpecnost"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": "Anály města uvádějí datum střelby 30. srpna 1933, Wikipedie datum úmrtí 31. srpna 1933.",
+      "odkaz": "https://cs.wikipedia.org/wiki/Theodor_Lessing",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Theodor_Lessing",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "wiki-lessing",
         "hamelika-analy"
       ]
@@ -1147,9 +1368,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -1164,9 +1389,14 @@
       "popis": "Na základě mnichovské dohody bylo v říjnu 1938 československé pohraničí včetně Mariánských Lázní připojeno k nacistickému Německu.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "hamelika-analy",
         "wiki-ml"
       ]
@@ -1184,9 +1414,15 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "muml-osmicky",
         "wiki-ml",
         "hamelika-analy"
@@ -1203,9 +1439,13 @@
       "popis": "Dne 1. září 1939 začala druhá světová válka. Mariánské Lázně byly v té době součástí nacistického Německa.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1222,9 +1462,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1241,9 +1485,13 @@
       "tagy": [
         "zdravotnictvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1262,9 +1510,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1281,9 +1533,13 @@
       "tagy": [
         "zdravotnictvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1298,9 +1554,13 @@
       "popis": "Podle městské kroniky mělo město ke konci války se všemi vojenskými lazarety na 40 tisíc obyvatel a bylo zcela přelidněné. Mezi těmito desítkami tisíc lidí bylo pouze asi osmdesát Čechů a Slováků.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
       "zdroje": [
+        "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html"
+      ],
+      "zdroje_ids": [
         "denik-odsun"
       ]
     },
@@ -1317,9 +1577,14 @@
       "tagy": [
         "zdravotnictvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
       "zdroje": [
+        "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+        "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/"
+      ],
+      "zdroje_ids": [
         "denik-osvobozeni",
         "ml-osvobozeni"
       ]
@@ -1339,9 +1604,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -1356,9 +1625,13 @@
       "popis": "Od května 1945 začali do Mariánských Lázní přicházet čeští osídlenci.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1373,9 +1646,15 @@
       "popis": "Dne 6. května 1945 vstoupily do Mariánských Lázní jednotky americké armády pod velením generála Pattona. Na rozdíl od jiných měst zde nedošlo k boji s ustupujícím wehrmachtem. Ve městě byly v té době jen desítky Čechů, takže se žádné oslavy nekonaly. Pomník vojákům americké armády byl ve Skalníkových sadech odhalen až v roce 1990.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
       "zdroje": [
+        "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
+        "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "ml-osvobozeni",
         "denik-osvobozeni",
         "hamelika-analy"
@@ -1396,9 +1675,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -1413,9 +1696,13 @@
       "popis": "Podle městské kroniky žilo začátkem roku 1946 v mariánskolázeňském okrese na 36 tisíc Němců.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
       "zdroje": [
+        "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html"
+      ],
+      "zdroje_ids": [
         "denik-odsun"
       ]
     },
@@ -1432,9 +1719,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1451,9 +1742,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1468,9 +1763,14 @@
       "popis": "Dne 25. ledna 1946 začal z Mariánských Lázní odsun osob německé národnosti. Za odpoledne bylo odsunuto ve čtyřiceti vozech 1 200 Němců. Od 25. ledna byl z různých míst pohraničí vypravován jeden transport denně.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
       "zdroje": [
+        "https://chebsky.denik.cz/zpravy_region/prelidnene-mesto-a-odsun-leden-1946-v-kronice-marianskych-lazni-20260131.html",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "denik-odsun",
         "hamelika-analy"
       ]
@@ -1486,9 +1786,13 @@
       "popis": "V roce 1947 navštívil Mariánské Lázně prezident Edvard Beneš.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1505,9 +1809,14 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
       "zdroje": [
+        "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "muml-osmicky",
         "hamelika-analy"
       ]
@@ -1523,9 +1832,13 @@
       "popis": "Podle historického lexikonu obcí, přepočteného na dnešní území města, žilo v Mariánských Lázních roku 1930 celkem 11 794 obyvatel a roku 1950 už jen 9 261. Samotný rozdíl podceňuje rozsah proměny: německé obyvatelstvo, které tvořilo drtivou většinu, bylo odsunuto a nahradili je čeští osídlenci.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -1542,9 +1855,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1562,9 +1879,13 @@
         "zdravotnictvi",
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1581,9 +1902,14 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.muml.cz/mesto/o-meste/historie/",
       "zdroje": [
+        "https://www.muml.cz/mesto/o-meste/historie/",
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "muml-historie",
         "hamelika-analy"
       ]
@@ -1601,9 +1927,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1620,9 +1950,13 @@
       "tagy": [
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1639,9 +1973,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1658,9 +1996,14 @@
         "gagarin-jurij"
       ],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "hamelika-analy",
         "wiki-ml"
       ]
@@ -1680,9 +2023,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -1699,9 +2046,13 @@
       "tagy": [
         "doprava"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1718,9 +2069,13 @@
       "tagy": [
         "energetika"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1738,9 +2093,13 @@
         "zivotni-prostredi",
         "zelen"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1757,9 +2116,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -1779,9 +2142,13 @@
         "pamatky",
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -1798,9 +2165,13 @@
       "tagy": [
         "sport"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1819,9 +2190,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+      ],
+      "zdroje_ids": [
         "wiki-predstavitele"
       ]
     },
@@ -1839,9 +2214,13 @@
         "pamatky",
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1861,9 +2240,14 @@
         "pamatky",
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "hamelika-analy",
         "wiki-ml"
       ]
@@ -1882,9 +2266,13 @@
         "organizacni",
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
       "zdroje": [
+        "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+      ],
+      "zdroje_ids": [
         "hamelika-analy"
       ]
     },
@@ -1901,9 +2289,14 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
       "zdroje": [
+        "https://www.marianskelazne.cz/o-meste/kazdorocni-akce/oslavy-osvobozeni/",
+        "https://chebsky.denik.cz/zpravy_region/americane-prijeli-od-velke-hledsebi-do-nemci-prelidnenych-marianskych-lazni-2023.html"
+      ],
+      "zdroje_ids": [
         "ml-osvobozeni",
         "denik-osvobozeni"
       ]
@@ -1921,9 +2314,13 @@
       "tagy": [
         "organizacni"
       ],
-      "jistota": "sporne",
+      "jistota": "nejiste",
       "poznamka": "Zdroj uvádí jen „po roce 1989“, přesný rok odtržení jednotlivých obcí není v použitých pramenech uveden.",
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -1938,9 +2335,13 @@
       "popis": "Sčítání lidu roku 1991 zaznamenalo v Mariánských Lázních 15 382 obyvatel. Jde o nejvyšší hodnotu v řadě historického lexikonu obcí od roku 1869. Následující sčítání ukazují pokles: 14 741 v roce 2001 a 12 906 v roce 2011.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -1958,9 +2359,13 @@
         "lazenstvi",
         "majetek-prodej"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.podnikatel.cz/rejstrik/lecebne-lazne-marianske-lazne-a-s-45359113/",
       "zdroje": [
+        "https://www.podnikatel.cz/rejstrik/lecebne-lazne-marianske-lazne-a-s-45359113/"
+      ],
+      "zdroje_ids": [
         "or-lecebne-lazne"
       ]
     },
@@ -1977,9 +2382,13 @@
       "tagy": [
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.zakonyprolidi.cz/cs/1992-476",
       "zdroje": [
+        "https://www.zakonyprolidi.cz/cs/1992-476"
+      ],
+      "zdroje_ids": [
         "vyhlaska-476-1992"
       ]
     },
@@ -1997,9 +2406,14 @@
         "unesco",
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy",
+        "https://mzv.gov.cz/jnp/cz/zahranicni_vztahy/cr_v_mezinarodnich_organizacich/unesco/aktualne/slavna_lazenska_mesta_evropy_jsou.html"
+      ],
+      "zdroje_ids": [
         "wiki-slavna-lazne",
         "mzv-unesco"
       ]
@@ -2018,9 +2432,13 @@
         "kultura",
         "cestovni-ruch"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -2038,9 +2456,13 @@
         "unesco",
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy"
+      ],
+      "zdroje_ids": [
         "wiki-slavna-lazne"
       ]
     },
@@ -2057,9 +2479,13 @@
       "tagy": [
         "kultura"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -2077,9 +2503,16 @@
         "unesco",
         "pamatky"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://mzv.gov.cz/jnp/cz/zahranicni_vztahy/cr_v_mezinarodnich_organizacich/unesco/aktualne/slavna_lazenska_mesta_evropy_jsou.html",
       "zdroje": [
+        "https://mzv.gov.cz/jnp/cz/zahranicni_vztahy/cr_v_mezinarodnich_organizacich/unesco/aktualne/slavna_lazenska_mesta_evropy_jsou.html",
+        "https://cs.wikipedia.org/wiki/Slavn%C3%A1_l%C3%A1ze%C5%88sk%C3%A1_m%C4%9Bsta_Evropy",
+        "https://whc.unesco.org/en/list/1613/",
+        "https://www.marianskelazne.cz/unesco/"
+      ],
+      "zdroje_ids": [
         "mzv-unesco",
         "wiki-slavna-lazne",
         "unesco-1613",
@@ -2097,9 +2530,13 @@
       "popis": "K roku 2025 uvádí Wikipedie na základě údajů ČSÚ 14 052 obyvatel města. Rozloha města je 51,79 km², nadmořská výška 578 m n. m.",
       "osoby": [],
       "tagy": [],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
       "zdroje": [
+        "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+      ],
+      "zdroje_ids": [
         "wiki-ml"
       ]
     },
@@ -2118,9 +2555,13 @@
         "pamatky",
         "lazenstvi"
       ],
-      "jistota": "fakt",
+      "jistota": "dolozeno",
       "poznamka": null,
+      "odkaz": "https://www.novinky.cz/clanek/domaci-zpravy-karlovarsky-kraj-kolonady-a-pavilony-se-po-privatizaci-vraci-do-majetku-mesta-marianske-lazne-je-vymenily-za-sluzebnost-mineralkovodu-40555189",
       "zdroje": [
+        "https://www.novinky.cz/clanek/domaci-zpravy-karlovarsky-kraj-kolonady-a-pavilony-se-po-privatizaci-vraci-do-majetku-mesta-marianske-lazne-je-vymenily-za-sluzebnost-mineralkovodu-40555189"
+      ],
+      "zdroje_ids": [
         "novinky-kolonady"
       ]
     }

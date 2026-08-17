@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "40144941",
+    "nazev": "Marcela Trnková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-22",
+    "do": "2026-03-31",
+    "prvni_rok": 1992,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 7,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:40144941:vznik",
+      "datum": "1992-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-22",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Marcela Trnková",
+      "popis": "Vznik subjektu Marcela Trnková (IČO 40144941), Fyzická osoba podnikající dle živnostenského zákona, obor: Pronájem a správa vlastních nebo pronajatých nemovitos",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-122-122/4",
+      "datum": "2013-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-17",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 131 - pronájem",
+      "popis": "Rada města, bod 122/4, usnesení 430/13. Schvaleno.",
+      "castka_czk": 12000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1018105",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-170-170/4",
+      "datum": "2018-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-16",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájemního vztahu, ul.Hlavní, č.p. 131",
+      "popis": "Rada města, bod 170/4, usnesení 542/18. Schvaleno.",
+      "castka_czk": 550,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2121726",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-170/4__6657575",
+      "datum": "2018-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Hlavní 131- Trnková",
+      "popis": "Odhadované spojení smlouvy z 2018-11-01 s bodem 170/4 z 2018-10-16 (Prodloužení nájemního vztahu, ul.Hlavní, č.p. 131). Jistota stredni.",
+      "castka_czk": 206305.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 40144941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7191095",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6657575",
+      "datum": "2018-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Hlavní 131- Trnková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcela Trnková.",
+      "castka_czk": 206305.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7191095",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-11-11/10",
+      "datum": "2019-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-05",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 131 - ukončení smlouvy o nájmu",
+      "popis": "Rada města, bod 11/10, usnesení 76/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2178990",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/35",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Poskytování úklidových služeb na pracovištích Městského úřadu Mariánské Lázně“ – vyloučení účastníka řízení, výběr dodavatele",
+      "popis": "Rada města, bod 113/35, usnesení 1019/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2409414313",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/35__35111085",
+      "datum": "2026-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-31",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování úklidových služeb",
+      "popis": "Odhadované spojení smlouvy z 2026-03-31 s bodem 113/35 z 2026-03-17 (Veřejná zakázka „Poskytování úklidových služeb na pracovištích Městského úřadu Mariánské Lá",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 40144941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova poskytovani, sluzeb, uklidovych",
+      "url": "https://smlouvy.gov.cz/smlouva/37392193",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35111085",
+      "datum": "2026-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-31",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování úklidových služeb",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcela Trnková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37392193",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

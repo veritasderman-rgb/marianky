@@ -1,0 +1,739 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25201204",
+    "nazev": "M.S.C. LASER CLINIC s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-06-27",
+    "do": "2025-03-11",
+    "prvni_rok": 1996,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 35,
+    "dolozenych": 19,
+    "odhadu": 16,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 12,
+      "retez": 16,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 19,
+      "nizka": 16
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25201204:vznik",
+      "datum": "1996-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-06-27",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Vznik subjektu M.S.C. LASER CLINIC s.r.o. (IČO 25201204), Společnost s ručením omezeným, obor: Specializovaná ambulantní zdravotní péče.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-22-22/5",
+      "datum": "2015-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-05-12",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Pronájem garáže v ul. Hlavní č.p. 703",
+      "popis": "Rada města, bod 22/5, usnesení 219/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1394347",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-54-54/10",
+      "datum": "2016-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 703 - postoupení smlouvy o nájmu",
+      "popis": "Rada města, bod 54/10, usnesení 59/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1527400",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-161-161/12",
+      "datum": "2018-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-17",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 703 (garáž)",
+      "popis": "Rada města, bod 161/12, usnesení 387/18.",
+      "castka_czk": 18000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1978780",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-59-59/9",
+      "datum": "2020-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 703 - pronájem nebytového prostoru - garáž",
+      "popis": "Rada města, bod 59/9, usnesení 120/20. Schvaleno.",
+      "castka_czk": 18000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2483868",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/9__11148524",
+      "datum": "2020-03-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-09",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703",
+      "popis": "Odhadované spojení smlouvy z 2020-03-09 s bodem 59/9 z 2020-02-25 (NP Hlavní 703 - pronájem nebytového prostoru - garáž). Jistota nizka.",
+      "castka_czk": 108900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, nebytoveho, prostoru; k témuž usnese",
+      "url": "https://smlouvy.gov.cz/smlouva/11994032",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11148524",
+      "datum": "2020-03-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-09",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 108900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11994032",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-69-69/5",
+      "datum": "2020-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-05",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 703 - garáž č. 1 - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 69/5, usnesení 235/20. Schvaleno.",
+      "castka_czk": 30000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2513063",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-69-69/6",
+      "datum": "2020-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-05",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 703 - garáž č. 3 - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 69/6, usnesení 236/20. Schvaleno.",
+      "castka_czk": 30000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2513102",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/9__11806952",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 1",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 59/9 z 2020-02-25 (NP Hlavní 703 - pronájem nebytového prostoru - garáž). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni, nebytoveho, prostoru; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/12680640",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/9__11806956",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 3",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 59/9 z 2020-02-25 (NP Hlavní 703 - pronájem nebytového prostoru - garáž). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni, nebytoveho, prostoru; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/12680644",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-69/5__11806952",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 1",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 69/5 z 2020-05-05 (NP Hlavní 703 - garáž č. 1 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/12680640",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-69/5__11806956",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 3",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 69/5 z 2020-05-05 (NP Hlavní 703 - garáž č. 1 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/12680644",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-69/6__11806952",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 1",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 69/6 z 2020-05-05 (NP Hlavní 703 - garáž č. 3 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/12680640",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-69/6__11806956",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 3",
+      "popis": "Odhadované spojení smlouvy z 2020-05-18 s bodem 69/6 z 2020-05-05 (NP Hlavní 703 - garáž č. 3 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova garaz, hlavni; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/12680644",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11806952",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12680640",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11806956",
+      "datum": "2020-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 703 - garáž č 3",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12680644",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/10",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703/3 (garáž) - zveřejnění záměru obce",
+      "popis": "Rada města, bod 77/10, usnesení 82/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3316481",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/8",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703/1(garáž) - zveřejnění záměru obce",
+      "popis": "Rada města, bod 77/8, usnesení 80/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3316451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/9",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703/2 (garáž) - zveřejnění záměru obce",
+      "popis": "Rada města, bod 77/9, usnesení 81/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3316466",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/16",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703 garáž č. 1 - prodloužení smlouvy",
+      "popis": "Rada města, bod 79/16, usnesení 167/25. Schvaleno.",
+      "castka_czk": 1667,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332734",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/17",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703 garáž č. 2 - prodloužení smlouvy",
+      "popis": "Rada města, bod 79/17, usnesení 168/25. Schvaleno.",
+      "castka_czk": 1091,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332751",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/18",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 703 garáž č. 3 - prodloužení smlouvy",
+      "popis": "Rada města, bod 79/18, usnesení 169/25. Schvaleno.",
+      "castka_czk": 1765,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332766",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/16__30393284",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/16 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 1 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454876",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/16__30393288",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/16 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 1 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 108900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454880",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/16__30393292",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/16 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 1 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/17__30393284",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/17 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 2 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454876",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/17__30393288",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/17 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 2 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 108900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454880",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/17__30393292",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/17 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 2 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/18__30393284",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/18 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 3 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454876",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/18__30393288",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/18 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 3 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 108900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454880",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/18__30393292",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-03-11 s bodem 79/18 z 2025-03-04 (NP Hlavní třída, č.p. 703 garáž č. 3 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25201204 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/32454884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30393284",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32454876",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30393288",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 108900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32454880",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30393292",
+      "datum": "2025-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - M.S.C. LASER CLINIC s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana M.S.C. LASER CLINIC s.r.o..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32454884",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

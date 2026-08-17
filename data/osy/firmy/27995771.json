@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27995771",
+    "nazev": "VIDEST s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-22",
+    "do": "2024-10-08",
+    "prvni_rok": 2017,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-124-124/5",
+      "datum": "2017-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-22",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Chodník ulice Na Voře, Mariánské Lázně",
+      "popis": "Rada města, bod 124/5, usnesení 485/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1808466",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/5",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Stavební úpravy místní komunikace ul. U Zastávky – výběr dodavatele",
+      "popis": "Rada města, bod 51/5, usnesení 253/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3179446",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/5__26817407",
+      "datum": "2024-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-03",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Stavební úpravy místní komunikace ul. U Zastávky, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-05-03 s bodem 51/5 z 2024-04-16 (Stavební úpravy místní komunikace ul. U Zastávky – výběr dodavatele). Jistota stredni.",
+      "castka_czk": 4225966.87,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27995771 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikace, mistni, stavebni, upravy",
+      "url": "https://smlouvy.gov.cz/smlouva/28688991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26817407",
+      "datum": "2024-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Stavební úpravy místní komunikace ul. U Zastávky, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VIDEST s.r.o..",
+      "castka_czk": 4225966.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28688991",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-59-59/33",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Stavební úpravy místní komunikace ul. U Zastávky, M.L.",
+      "popis": "Rada města, bod 59/33, usnesení 498/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3223516",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/33__28704200",
+      "datum": "2024-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 – Stavební úpravy místní komunikace ul. U Zastávky, M.L.",
+      "popis": "Odhadované spojení smlouvy z 2024-08-01 s bodem 59/33 z 2024-07-16 (Stavební úpravy místní komunikace ul. U Zastávky, M.L.). Jistota stredni.",
+      "castka_czk": 4225966.87,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27995771 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikace, mistni, stavebni, upravy; obojí ",
+      "url": "https://smlouvy.gov.cz/smlouva/30681244",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28704200",
+      "datum": "2024-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 – Stavební úpravy místní komunikace ul. U Zastávky, M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VIDEST s.r.o..",
+      "castka_czk": 4225966.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30681244",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/10",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke smlouvě č. 2 - Stavební úpravy místní komunikace ul. U Zastávky",
+      "popis": "Rada města, bod 67/10, usnesení 656/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3256823",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/10__28704208",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 – Stavební úpravy místní komunikace ul. U Zastávky, M.L.",
+      "popis": "Odhadované spojení smlouvy z 2024-10-08 s bodem 67/10 z 2024-10-01 (Dodatek ke smlouvě č. 2 - Stavební úpravy místní komunikace ul. U Zastávky). Jistota stredni",
+      "castka_czk": 3879268.03,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27995771 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikace, mistni, stavebni, upravy; obojí j",
+      "url": "https://smlouvy.gov.cz/smlouva/30681252",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28704208",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 – Stavební úpravy místní komunikace ul. U Zastávky, M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VIDEST s.r.o..",
+      "castka_czk": 3879268.03,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30681252",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

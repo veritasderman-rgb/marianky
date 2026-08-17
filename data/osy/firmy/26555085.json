@@ -1,0 +1,216 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26555085",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-06-15",
+    "do": "2017-06-20",
+    "prvni_rok": 2009,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 9,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8
+    },
+    "dle_jistoty": {
+      "fakt": 9
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26555085:vznik",
+      "datum": "2009-06-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-06-15",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Divadelní soubor GOA Mariánské Lázně, o. s.",
+      "popis": "Vznik subjektu Divadelní soubor GOA Mariánské Lázně, o. s. (IČO 26555085), Spolek, obor: Činnosti v oblasti scénických umění.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-59-59/10",
+      "datum": "2012-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-20",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 59/10, usnesení 139/12.",
+      "castka_czk": 82000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/741376",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/30",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 11/30, usnesení 343/12.",
+      "castka_czk": 593500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/754830",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-104-104/8",
+      "datum": "2013-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-26",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 104/8, usnesení 132/13. Schvaleno.",
+      "castka_czk": 50000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/925366",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-16-16/15",
+      "datum": "2013-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-23",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/15, usnesení 521/13. Schvaleno.",
+      "castka_czk": 400000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/932001",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-127-127/21",
+      "datum": "2013-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-29",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 127/21, usnesení 520/13. Schvaleno.",
+      "castka_czk": 70000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1034968",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-19-19/34",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 19/34, usnesení 649/13. Schvaleno.",
+      "castka_czk": 247000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1049562",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-117-117/8",
+      "datum": "2017-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-06",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 117/8, usnesení 349/17. Schvaleno.",
+      "castka_czk": 79000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1771105",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-27-27/15",
+      "datum": "2017-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-20",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 27/15, usnesení 521/17. Schvaleno.",
+      "castka_czk": 191000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1774184",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

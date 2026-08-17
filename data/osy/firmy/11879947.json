@@ -1,0 +1,300 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11879947",
+    "nazev": "ZKTV Production s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-09-24",
+    "do": "2026-03-04",
+    "prvni_rok": 2021,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 10,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 5,
+      "usneseni": 4,
+      "retez": 3
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "vysoka": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:11879947:vznik",
+      "datum": "2021-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-24",
+      "rok": 2021,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — ZKTV Production s.r.o.",
+      "popis": "Vznik subjektu ZKTV Production s.r.o. (IČO 11879947), Společnost s ručením omezeným, obor: Činnosti reklamních agentur.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:26518059",
+      "datum": "2024-04-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - ZKTV Production s.r.o. - video/fotografie k ZLS 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZKTV Production s.r.o..",
+      "castka_czk": 67500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28376923",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29954600",
+      "datum": "2025-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Výroba audiovizuálních děl pro Město Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZKTV Production s.r.o..",
+      "castka_czk": 726000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31996688",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/26",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání podcastového studia při zahájení lázeňské sezóny 2025 u společnosti ZKTV Production s.r.o.",
+      "popis": "Rada města, bod 78/26, usnesení 129/25. Schvaleno.",
+      "castka_czk": 264480,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3325740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/26__30325080",
+      "datum": "2025-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-05",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka - podcastové studio - Zahájení lázeňské sezóny 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-03-05 s bodem 78/26 z 2025-02-25 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání podcastov",
+      "castka_czk": 264480.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 11879947 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova s",
+      "url": "https://smlouvy.gov.cz/smlouva/32384096",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30325080",
+      "datum": "2025-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-05",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - podcastové studio - Zahájení lázeňské sezóny 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZKTV Production s.r.o..",
+      "castka_czk": 264480.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32384096",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-87-87/26",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "ZKTV Production s.r.o. - dokumentace akcí",
+      "popis": "Rada města, bod 87/26, usnesení 336/25. Schvaleno.",
+      "castka_czk": 67000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3362516",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/12",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "ZKTV Production s.r.o. - dodatek č. 1 ke smlouvě „Online produkce obsahu“ S35/25 ze dne 25.1.2025",
+      "popis": "Rada města, bod 109/12, usnesení 897/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3961745387",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/12__34517197",
+      "datum": "2026-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-11",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1ke smlouvě o dílo „Online produkce obsahu“ S35/25",
+      "popis": "Odhadované spojení smlouvy z 2026-02-11 s bodem 109/12 z 2026-01-20 (ZKTV Production s.r.o. - dodatek č. 1 ke smlouvě „Online produkce obsahu“ S35/25 ze dne 25.",
+      "castka_czk": 63000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11879947 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova obsahu, online, produkce",
+      "url": "https://smlouvy.gov.cz/smlouva/36773001",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34517197",
+      "datum": "2026-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-11",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1ke smlouvě o dílo „Online produkce obsahu“ S35/25",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZKTV Production s.r.o..",
+      "castka_czk": 63000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36773001",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-112-112/26",
+      "datum": "2026-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-02",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání podcastového studia při Zahájení lázeňské sezóny 2026 u společnosti ZKTV Production s.r.o.",
+      "popis": "Rada města, bod 112/26, usnesení 983/26. Schvaleno.",
+      "castka_czk": 339950,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2246735182",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-112/26__34781381",
+      "datum": "2026-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-04",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka ZKTV Production s.r.o. - podcastové studio při ZLS",
+      "popis": "Odhadované spojení smlouvy z 2026-03-04 s bodem 112/26 z 2026-03-02 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání podcasto",
+      "castka_czk": 339950.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 11879947 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova p",
+      "url": "https://smlouvy.gov.cz/smlouva/37048009",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34781381",
+      "datum": "2026-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-04",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka ZKTV Production s.r.o. - podcastové studio při ZLS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZKTV Production s.r.o..",
+      "castka_czk": 339950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37048009",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

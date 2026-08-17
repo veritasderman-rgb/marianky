@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "88055469",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-03-13",
+    "do": "2015-10-20",
+    "prvni_rok": 2012,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-58-58/2",
+      "datum": "2012-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-13",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 226",
+      "popis": "Rada města, bod 58/2, usnesení 116/12.",
+      "castka_czk": 62400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/714246",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-154-154/11",
+      "datum": "2014-05-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-20",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - žádost o slevu z nájemného",
+      "popis": "Rada města, bod 154/11, usnesení 222/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1124266",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-42-42/12",
+      "datum": "2015-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-20",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smlouvy o nájmu NP Hlavní 226",
+      "popis": "Rada města, bod 42/12, usnesení 490/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1474942",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/42.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

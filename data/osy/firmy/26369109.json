@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26369109",
+    "nazev": "Mix3Graf s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2004-03-15",
+    "do": "2023-10-30",
+    "prvni_rok": 2004,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26369109:vznik",
+      "datum": "2004-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2004-03-15",
+      "rok": 2004,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Mix3Graf s.r.o.",
+      "popis": "Vznik subjektu Mix3Graf s.r.o. (IČO 26369109), Společnost s ručením omezeným, obor: Ostatní odborné, vědecké a technické činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-99-99/9",
+      "datum": "2021-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-23",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Restaurování skleněné mozaiky u hrobky rodiny Halbmayrů",
+      "popis": "Rada města, bod 99/9, usnesení 69/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2646090",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-99/9__14753115",
+      "datum": "2021-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-10",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava a renovace skleněné mozaiky na hrobce rodiny Halbmayerů na hřbitově v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-03-10 s bodem 99/9 z 2021-02-23 (Restaurování skleněné mozaiky u hrobky rodiny Halbmayrů). Jistota stredni.",
+      "castka_czk": 199166.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26369109 je uvedeno v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova mozaiky, rodiny, sklenene",
+      "url": "https://smlouvy.gov.cz/smlouva/15860619",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14753115",
+      "datum": "2021-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-10",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Oprava a renovace skleněné mozaiky na hrobce rodiny Halbmayerů na hřbitově v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Michael Michajlov,Mix3Graf s.r.o..",
+      "castka_czk": 199166.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15860619",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24637799",
+      "datum": "2023-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava altánu Knižního pramene, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Mix3Graf s.r.o..",
+      "castka_czk": 112300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26373951",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

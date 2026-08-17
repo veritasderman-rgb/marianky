@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27127010",
+    "nazev": "Schindler CZ, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-05-29",
+    "do": "2018-12-18",
+    "prvni_rok": 2018,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-157-157/7",
+      "datum": "2018-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-29",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Výměna dvou osobních výtahů v Domově pro seniory",
+      "popis": "Rada města, bod 157/7, usnesení 299/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1954788",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/157.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-157/7__5668363",
+      "datum": "2018-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-10",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Výměna dvou osobních výtahů Domov pro seniory a dům s pečovatelskou službou, Tepelská ul. 752, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-07-10 s bodem 157/7 z 2018-05-29 (Výměna dvou osobních výtahů v Domově pro seniory). Jistota stredni.",
+      "castka_czk": 2521950.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27127010 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; název bodu a předmět smlouvy sdílí slova dvou, osobnich, seniory, vymena",
+      "url": "https://smlouvy.gov.cz/smlouva/6105511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5668363",
+      "datum": "2018-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-10",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Výměna dvou osobních výtahů Domov pro seniory a dům s pečovatelskou službou, Tepelská ul. 752, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Schindler CZ, a.s..",
+      "castka_czk": 2521950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6105511",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-173-173/17",
+      "datum": "2018-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-06",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Dodatek k SoD č. 1 Výměna dvou osobních výtahů v Domově pro seniory",
+      "popis": "Rada města, bod 173/17, usnesení 603/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2134222",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/173.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-173/17__7238783",
+      "datum": "2018-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-18",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 k SoD - změna termínu",
+      "popis": "Odhadované spojení smlouvy z 2018-12-18 s bodem 173/17 z 2018-11-06 (Dodatek k SoD č. 1 Výměna dvou osobních výtahů v Domově pro seniory). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27127010 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/7816047",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7238783",
+      "datum": "2018-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-18",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 k SoD - změna termínu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Schindler CZ, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7816047",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

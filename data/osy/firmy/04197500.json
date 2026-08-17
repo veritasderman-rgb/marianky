@@ -1,0 +1,480 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04197500",
+    "nazev": "Čajokrásno z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-07-15",
+    "do": "2024-02-27",
+    "prvni_rok": 2015,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 17,
+    "odhadu": 5,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 14,
+      "retez": 5,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 17,
+      "nizka": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:04197500:vznik",
+      "datum": "2015-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-15",
+      "rok": 2015,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Čajokrásno z.s.",
+      "popis": "Vznik subjektu Čajokrásno z.s. (IČO 04197500), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování společných a veřejných zájmů",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-40-40/3",
+      "datum": "2015-10-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-06",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 40/3, usnesení 468/15. Schvaleno.",
+      "castka_czk": 20000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1470016",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/40.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-10-10/15",
+      "datum": "2015-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-13",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 10/15, usnesení 195/15. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1473824",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-60-60/2",
+      "datum": "2016-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 60/2, usnesení 136/16. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1546906",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-16-16/7",
+      "datum": "2016-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 293/16.",
+      "castka_czk": 1200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1561386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-108/18__2195490",
+      "datum": "2017-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-23",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-23 s bodem 108/18 z 2017-03-28 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04197500 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 87 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2366430",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2015-10/15__2195490",
+      "datum": "2017-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-23",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-23 s bodem 10/15 z 2015-10-13 (Fond kultury města Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 90000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04197500 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána až 619 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2366430",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-25/14__2195490",
+      "datum": "2017-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-23",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-23 s bodem 25/14 z 2017-04-25 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04197500 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 59 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2366430",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2195490",
+      "datum": "2017-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-23",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Čajokrásno z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2366430",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/6",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - Čajokrásno",
+      "popis": "Zastupitelstvo města, bod 32/6, usnesení 632/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1863207",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/6__5676019",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Čajokrásno",
+      "popis": "Odhadované spojení smlouvy z 2018-07-04 s bodem 32/6 z 2017-12-12 (Fond kultury - Čajokrásno). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04197500 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 204 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6113731",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__5676019",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Čajokrásno",
+      "popis": "Odhadované spojení smlouvy z 2018-07-04 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04197500 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6113731",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5676019",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "FK neinvestiční dotace Čajokrásno",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Čajokrásno z.s..",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6113731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-39-39/30",
+      "datum": "2018-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení žádostí podaných do 2. kola Fondu kultury 2018",
+      "popis": "Zastupitelstvo města, bod 39/30, usnesení 779/18. Schvaleno.",
+      "castka_czk": 125000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2089707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/8",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Čajokrásno - zimní čajovna 2018",
+      "popis": "Zastupitelstvo města, bod 5/8, usnesení 83/19. Schvaleno.",
+      "castka_czk": 19000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319279",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/3",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2023 - 1. kolo",
+      "popis": "Rada města, bod 11/3, usnesení 57/23. Schvaleno.",
+      "castka_czk": 95000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/19",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2024",
+      "popis": "Rada města, bod 44/19, usnesení 68/24. Schvaleno.",
+      "castka_czk": 92000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3148072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-13-13/18",
+      "datum": "2024-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo",
+      "popis": "Zastupitelstvo města, bod 13/18, usnesení 265/24. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3138457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

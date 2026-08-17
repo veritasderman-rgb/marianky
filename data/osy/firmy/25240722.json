@@ -1,0 +1,821 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25240722",
+    "nazev": "AV-ELZO, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-01-05",
+    "do": "2026-03-30",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 39,
+    "dolozenych": 28,
+    "odhadu": 11,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 18,
+      "retez": 11,
+      "smlouva": 9
+    },
+    "dle_jistoty": {
+      "fakt": 28,
+      "stredni": 5,
+      "vysoka": 3,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25240722:vznik",
+      "datum": "2000-01-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-01-05",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — AV-ELZO, s.r.o.",
+      "popis": "Vznik subjektu AV-ELZO, s.r.o. (IČO 25240722), Společnost s ručením omezeným, obor: Provozování kulturních zařízení a areálů.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-14-14/8",
+      "datum": "2012-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-11",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2013",
+      "popis": "Zastupitelstvo města, bod 14/8, usnesení 444/12. Schvaleno.",
+      "castka_czk": 273070000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/842480",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-129-129/13",
+      "datum": "2013-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Silvelstr 2013",
+      "popis": "Rada města, bod 129/13, usnesení 546/13. Schvaleno.",
+      "castka_czk": 48400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1040723",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-131-131/19",
+      "datum": "2013-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-26",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Změna programu akce Silvestr 2013",
+      "popis": "Rada města, bod 131/19, usnesení 594/13. Schvaleno.",
+      "castka_czk": 36300,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1050236",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-19-19/2",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2014",
+      "popis": "Zastupitelstvo města, bod 19/2, usnesení 617/13. Schvaleno.",
+      "castka_czk": 292861500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1033936",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-3-3/2",
+      "datum": "2014-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2015",
+      "popis": "Zastupitelstvo města, bod 3/2, usnesení 24/14. Schvaleno.",
+      "castka_czk": 299652700,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1311842",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-12-12/2",
+      "datum": "2015-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-15",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2016",
+      "popis": "Zastupitelstvo města, bod 12/2, usnesení 214/15. Schvaleno.",
+      "castka_czk": 282638000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1495224",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-22-22/6",
+      "datum": "2016-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-13",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2017",
+      "popis": "Zastupitelstvo města, bod 22/6, usnesení 405/16. Schvaleno.",
+      "castka_czk": 328404900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1673740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2016-22/6__991753",
+      "datum": "2017-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-17",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Provozování kina Slavia",
+      "popis": "Odhadované spojení smlouvy z 2017-01-17 s bodem 22/6 z 2016-12-13 (Rozpočet města Mariánské Lázně na rok 2017). Jistota stredni.",
+      "castka_czk": 300000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1056501",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:991753",
+      "datum": "2017-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-17",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Provozování kina Slavia",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO s.r.o..",
+      "castka_czk": 300000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1056501",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/4",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2018",
+      "popis": "Zastupitelstvo města, bod 32/4, usnesení 630/17. Schvaleno.",
+      "castka_czk": 350001200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1861378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/4__4391060",
+      "datum": "2018-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-19",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dotace na rok 2018 na úhradu provozních nákladů",
+      "popis": "Odhadované spojení smlouvy z 2018-02-19 s bodem 32/4 z 2017-12-12 (Rozpočet města Mariánské Lázně na rok 2018). Jistota stredni.",
+      "castka_czk": 300000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 69 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4733840",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4391060",
+      "datum": "2018-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-19",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dotace na rok 2018 na úhradu provozních nákladů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO s.r.o..",
+      "castka_czk": 300000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4733840",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/4",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2019",
+      "popis": "Zastupitelstvo města, bod 2/4, usnesení 12/18. Schvaleno.",
+      "castka_czk": 397951000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145448",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-2/4__7620675",
+      "datum": "2019-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace AV-ELZO 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-02-14 s bodem 2/4 z 2018-12-20 (Rozpočet města Mariánské Lázně na rok 2019). Jistota stredni.",
+      "castka_czk": 423500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 56 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/8226171",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7620675",
+      "datum": "2019-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-14",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace AV-ELZO 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO s.r.o..",
+      "castka_czk": 423500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8226171",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/4",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2020",
+      "popis": "Zastupitelstvo města, bod 10/4, usnesení 197/19. Schvaleno.",
+      "castka_czk": 383624720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2433453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-10/4__10872684",
+      "datum": "2020-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace AV-ELZO 2020",
+      "popis": "Odhadované spojení smlouvy z 2020-02-11 s bodem 10/4 z 2019-12-09 (Rozpočet města Mariánské Lázně na rok 2020). Jistota stredni.",
+      "castka_czk": 423500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11701256",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10872684",
+      "datum": "2020-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-11",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace AV-ELZO 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO s.r.o..",
+      "castka_czk": 423500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11701256",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-17-17/3",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2021",
+      "popis": "Zastupitelstvo města, bod 17/3, usnesení 361/20. Schvaleno.",
+      "castka_czk": 415455400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2605014",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-17/3__14329563",
+      "datum": "2021-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-01",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO",
+      "popis": "Odhadované spojení smlouvy z 2021-02-01 s bodem 17/3 z 2020-12-15 (Rozpočet města Mariánské Lázně na rok 2021). Jistota stredni.",
+      "castka_czk": 350000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 48 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/15385535",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14329563",
+      "datum": "2021-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO, s.r.o..",
+      "castka_czk": 350000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15385535",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/6",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2022",
+      "popis": "Zastupitelstvo města, bod 23/6, usnesení 507/21. Schvaleno.",
+      "castka_czk": 427652900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-3-3/6",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2023",
+      "popis": "Zastupitelstvo města, bod 3/6, usnesení 33/22. Schvaleno.",
+      "castka_czk": 526578820,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2938538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-12-12/14",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti AV-ELZO s.r.o. na rok 2024",
+      "popis": "Zastupitelstvo města, bod 12/14, usnesení 227/23. Schvaleno.",
+      "castka_czk": 500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3117981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/14__25328087",
+      "datum": "2023-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-22",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO r. 2024",
+      "popis": "Odhadované spojení smlouvy z 2023-12-22 s bodem 12/14 z 2023-12-12 (Individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti AV-ELZO s.r.o.",
+      "castka_czk": 500000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/27124439",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25328087",
+      "datum": "2023-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO r. 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO, s.r.o..",
+      "castka_czk": 500000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27124439",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-18-18/13",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí individuální neinvestiční dotace z rozpočtu města M. Lázně společnosti AV-ELZO s.r.o. na rok 2025",
+      "popis": "Zastupitelstvo města, bod 18/13, usnesení 416/24. Schvaleno.",
+      "castka_czk": 600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3288824",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/13__29823520",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO r. 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-01-21 s bodem 18/13 z 2024-12-10 (Poskytnutí individuální neinvestiční dotace z rozpočtu města M. Lázně společnosti AV-ELZO s.",
+      "castka_czk": 600000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 42 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/31858672",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29823520",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinv. dotace AV-ELZO r. 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO, s.r.o..",
+      "castka_czk": 600000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31858672",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-24-24/13",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti AV - ELZO s.r.o.",
+      "popis": "Zastupitelstvo města, bod 24/13, usnesení 551/25. Schvaleno.",
+      "castka_czk": 600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2190466998",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-24/13__34491345",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Neinvestiční dotace na provoz kina Slavia M.L. na rok 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-02-03 s bodem 24/13 z 2025-12-09 (Poskytnutí individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti AV ",
+      "castka_czk": 600000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 56 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/36746157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34491345",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Neinvestiční dotace na provoz kina Slavia M.L. na rok 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO, s.r.o..",
+      "castka_czk": 600000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36746157",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-111-111/6",
+      "datum": "2026-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nerudova, č.p. 437 kino Slavia – zveřejnění záměru obce",
+      "popis": "Rada města, bod 111/6, usnesení 943/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/502590974",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/26",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nerudova ul., č.p. 437 – prodloužení nájemního vztahu – společnost AV-ELZO, s.r.o.",
+      "popis": "Rada města, bod 113/26, usnesení 1010/26. Schvaleno.",
+      "castka_czk": 10000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1744632277",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-111/6__35371505",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nemovitosti - dodatek č. 6",
+      "popis": "Odhadované spojení smlouvy z 2026-03-30 s bodem 111/6 z 2026-02-17 (Nerudova, č.p. 437 kino Slavia – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 290010.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37664201",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/26__35371505",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nemovitosti - dodatek č. 6",
+      "popis": "Odhadované spojení smlouvy z 2026-03-30 s bodem 113/26 z 2026-03-17 (Nerudova ul., č.p. 437 – prodloužení nájemního vztahu – společnost AV-ELZO, s.r.o.). Jistot",
+      "castka_czk": 290010.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37664201",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-24/13__35371505",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nemovitosti - dodatek č. 6",
+      "popis": "Odhadované spojení smlouvy z 2026-03-30 s bodem 24/13 z 2025-12-09 (Poskytnutí individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti AV ",
+      "castka_czk": 290010.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25240722 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 111 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/37664201",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35371505",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nemovitosti - dodatek č. 6",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV-ELZO, s.r.o..",
+      "castka_czk": 290010.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37664201",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

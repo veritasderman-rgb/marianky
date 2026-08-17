@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72228920",
+    "nazev": "Štěpán Kučera"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-03-20",
+    "do": "2021-02-01",
+    "prvni_rok": 2018,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-149-149/3",
+      "datum": "2018-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Program regenerace MPR a MPZ v roce 2018 - obnova Městské knihovny Mariánské Lázně - uzavření smluv se zhotoviteli",
+      "popis": "Rada města, bod 149/3, usnesení 150/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1918377",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/149.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:14338559",
+      "datum": "2021-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava poškozených částí omítky v objektu Městského divadla Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Štěpán Kučera.",
+      "castka_czk": 82280.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15394927",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "turba-hans",
+    "jmeno": "Hans Turba",
+    "role": [
+      "starosta",
+      "lékař"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1919",
+    "do": "2022-02-10",
+    "prvni_rok": 1919,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "media": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:turba-hans:0",
+      "datum": "1919",
+      "datum_do": "1933",
+      "presnost": "obdobi",
+      "razeni": "1919-01-01",
+      "rok": 1919,
+      "typ": "funkce",
+      "nadpis": "Hans Turba — starosta",
+      "popis": "starosta (1919 – 1933).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "media:cro-ve-vile-hanse-turby-v-marianskych-laznich-pobyval-i-slavny-psycholog-s",
+      "datum": "2022-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-10",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Ve vile Hanse Turby v Mariánských Lázních pobýval i slavný psycholog Sigmund Freud",
+      "popis": "Vila na Hlavní třídě v sousedství lázeňského parku vznikla pro muže, který se výrazně zapsal do dějin Mariánských Lázní. V domě Hanse Turby podle článku pobýval",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/ve-vile-hanse-turby-v-marianskych-laznich-pobyval-i-slavny-psycholog-sigmund-8678577",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

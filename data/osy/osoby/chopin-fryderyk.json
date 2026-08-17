@@ -1,0 +1,208 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "chopin-fryderyk",
+    "jmeno": "Fryderyk Chopin",
+    "role": [
+      "návštěvník",
+      "skladatel"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1836-02-22",
+    "do": "2021-09-24",
+    "prvni_rok": 1836,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 8,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 1,
+      "media": 7
+    },
+    "dle_jistoty": {
+      "fakt": 8
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1836-chopin",
+      "datum": "1836-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1836-02-22",
+      "rok": 1836,
+      "typ": "historie",
+      "nadpis": "Návštěva Fryderyka Chopina",
+      "popis": "Polský skladatel Fryderyk Chopin přijel podle turistického portálu města do Mariánských Lázní 22. února 1836. Jeho jméno dnes nese městská základní umělecká ško",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-opet-rozezni-basnik-klaviru-fryderyk-chopin-6808634",
+      "datum": "2016-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-12",
+      "rok": 2016,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně opět rozezní „básník klavíru\" Fryderyk Chopin",
+      "popis": "Sedmapadesátý ročník Chopinova festivalu byl v Mariánských Lázních zahájen ve čtvrtek 11. srpna. Přehlídka se svou tradicí řadí mezi deset nejstarších hudebních",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-opet-rozezni-basnik-klaviru-fryderyk-chopin-6808634",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-v-marianskych-laznich-dnes-zacina-jiz-58-rocnik-chopinova-festivalu-68",
+      "datum": "2017-08-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-17",
+      "rok": 2017,
+      "typ": "media",
+      "nadpis": "V Mariánských Lázních dnes začíná již 58. ročník Chopinova festivalu",
+      "popis": "Osmapadesátý ročník mezinárodně uznávaného festivalu Fryderyka Chopina začal v Mariánských Lázních. Přehlídka sem každoročně přivádí interprety z celého světa.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/v-marianskych-laznich-dnes-zacina-jiz-58-rocnik-chopinova-festivalu-6806231",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:kkr-aktuality-chopinuv-festival-rozezni-koncertni-saly-v-marianskych-lazni",
+      "datum": "2020-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-18",
+      "rok": 2020,
+      "typ": "media",
+      "nadpis": "Chopinův festival rozezní koncertní sály v Mariánských Lázních",
+      "popis": "Jednašedesátý ročník Chopinova festivalu se konal v náhradním termínu 19. a 20. srpna. Patřil mladým pianistům a Západočeskému symfonickému orchestru, který při",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.kr-karlovarsky.cz/aktuality/chopinuv-festival-rozezni-koncertni-saly-v-marianskych-laznich",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:drbna-kultura-4558-chopinuv-festival-od-soboty-rozezni-marianske-lazne-sklad",
+      "datum": "2021-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-12",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "Chopinův festival od soboty rozezní Mariánské Lázně skladbami světového klavíristy",
+      "popis": "Skladby Fryderyka Chopina zněly v Mariánských Lázních od 14. do 21. srpna. Dvaašedesátý ročník festivalu zahrnoval koncerty, výstavy a přednášky o životě sklada",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://karlovarska.drbna.cz/kultura/4558-chopinuv-festival-od-soboty-rozezni-marianske-lazne-skladbami-svetoveho-klaviristy.html",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:kkr-aktuality-v-marianskych-laznich-se-bude-konat-chopinuv-festival",
+      "datum": "2021-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-12",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "V Mariánských Lázních se bude konat Chopinův festival",
+      "popis": "Festival připomínající Fryderyka Chopina se konal od 14. do 21. srpna. Ve svém dvaašedesátém ročníku nabídl koncerty, výstavy i přednášky o skladatelově životě.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.kr-karlovarsky.cz/aktuality/v-marianskych-laznich-se-bude-konat-chopinuv-festival",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-budou-tyden-patrit-chopinovi-a-jeho-hudbe-8554558",
+      "datum": "2021-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-13",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně budou týden patřit Chopinovi a jeho hudbě",
+      "popis": "Dvaašedesátý ročník Chopinova festivalu začal v Mariánských Lázních v sobotu. Připomíná pobyt skladatele a klavírního virtuosa Fryderyka Chopina ve městě.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-budou-tyden-patrit-chopinovi-a-jeho-hudbe-8554558",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-slavna-minulost-marianskych-lazni-oziva-pri-komentovanych-prohlidkach-",
+      "datum": "2021-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-24",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "Slavná minulost Mariánských Lázní ožívá při komentovaných prohlídkách",
+      "popis": "Komentované prohlídky centra provádějí návštěvníky místy, kde pobývali Fryderyk Chopin, Johann Strauss nebo Franz Kafka. Zájemci se při nich dozvědí zajímavosti",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/slavna-minulost-marianskych-lazni-oziva-pri-komentovanych-prohlidkach-8583385",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

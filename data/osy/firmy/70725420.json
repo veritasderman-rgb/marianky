@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70725420",
+    "nazev": "Bronislava Müllerová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2002-01-23",
+    "do": "2023-11-03",
+    "prvni_rok": 2002,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 7,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70725420:vznik",
+      "datum": "2002-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2002-01-23",
+      "rok": 2002,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Bronislava Müllerová",
+      "popis": "Vznik subjektu Bronislava Müllerová (IČO 70725420), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-130-130/3",
+      "datum": "2013-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332 - pronájem",
+      "popis": "Rada města, bod 130/3, usnesení 559/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1043360",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/130.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-145-145/3",
+      "datum": "2014-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332-žádost o poskytnutí slevy z nájmu",
+      "popis": "Rada města, bod 145/3, usnesení 78/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1092378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-172-172/13",
+      "datum": "2018-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-30",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení smlouvy ul. Poštovní 332",
+      "popis": "Rada města, bod 172/13, usnesení 580/18. Schvaleno.",
+      "castka_czk": 2319,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2129279",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/172.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-172/13__6883431",
+      "datum": "2018-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-26",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Poštovní 332 - Müllerová",
+      "popis": "Odhadované spojení smlouvy z 2018-11-26 s bodem 172/13 z 2018-10-30 (Prodloužení smlouvy ul. Poštovní 332). Jistota stredni.",
+      "castka_czk": 484000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70725420 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7433987",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6883431",
+      "datum": "2018-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-26",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Poštovní 332 - Müllerová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bronislava Müllerová.",
+      "castka_czk": 484000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7433987",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/13",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 332 – prodloužení nájemního vztahu – Bronislava Müllerová",
+      "popis": "Rada města, bod 35/13, usnesení 629/23. Schvaleno.",
+      "castka_czk": 80000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-35/13__24615955",
+      "datum": "2023-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-03",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Bronislava Müllerová",
+      "popis": "Odhadované spojení smlouvy z 2023-11-03 s bodem 35/13 z 2023-10-17 (NP Poštovní, č.p. 332 – prodloužení nájemního vztahu – Bronislava Müllerová). Jistota stredn",
+      "castka_czk": 484000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70725420 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova bronislava, mullerova, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/26351387",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24615955",
+      "datum": "2023-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-03",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Bronislava Müllerová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bronislava Müllerová.",
+      "castka_czk": 484000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26351387",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

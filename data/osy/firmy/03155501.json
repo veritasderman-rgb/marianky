@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03155501",
+    "nazev": "FIEDLER AMS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-01-24",
+    "do": "2023-09-22",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-10-10/5",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "VZ Automatická meteorologická stanice pro vnitřní území města Mariánské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 10/5, usnesení 31/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2962592",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-10/5__22407449",
+      "datum": "2023-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-05",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Automatická meteorologická stanice pro vnitřní území města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-04-05 s bodem 10/5 z 2023-01-24 (VZ Automatická meteorologická stanice pro vnitřní území města Mariánské Lázně - výběr dodavat",
+      "castka_czk": 243422.96,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03155501 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 71 dní po usnesení; název bodu a předmět smlouvy sdílí slova automaticka, meteorologicka, stanice, uzemi",
+      "url": "https://smlouvy.gov.cz/smlouva/24029865",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22407449",
+      "datum": "2023-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-05",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Automatická meteorologická stanice pro vnitřní území města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FIEDLER AMS s.r.o..",
+      "castka_czk": 243422.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24029865",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-33-33/5",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí služeb na internetovém serveru",
+      "popis": "Rada města, bod 33/5, usnesení 573/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3077610",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-33/5__24585991",
+      "datum": "2023-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-22",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí služeb na internetovém serveru www.fiedler-magr.cz č. A23020080 s platností od 01.09.202023 do neurčito. V souvislosti s pořízení meteostanice.",
+      "popis": "Odhadované spojení smlouvy z 2023-09-22 s bodem 33/5 z 2023-09-19 (Smlouva o poskytnutí služeb na internetovém serveru). Jistota stredni.",
+      "castka_czk": 1452.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03155501 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova internetovem, serveru, sluzeb",
+      "url": "https://smlouvy.gov.cz/smlouva/26319963",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24585991",
+      "datum": "2023-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí služeb na internetovém serveru www.fiedler-magr.cz č. A23020080 s platností od 01.09.202023 do neurčito. V souvislosti s pořízení meteostanice.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FIEDLER AMS s.r.o..",
+      "castka_czk": 1452.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26319963",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

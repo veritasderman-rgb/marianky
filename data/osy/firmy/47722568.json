@@ -1,0 +1,220 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47722568",
+    "nazev": "Burianová Beáta, JUDr."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-01-01",
+    "do": "2021-09-07",
+    "prvni_rok": 1993,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 7,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 1,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:47722568:vznik",
+      "datum": "1993-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-01-01",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Burianová Beáta, JUDr.",
+      "popis": "Vznik subjektu Burianová Beáta, JUDr. (IČO 47722568), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Právní činnos",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-126-126/3",
+      "datum": "2013-10-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-22",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - prodloužení",
+      "popis": "Rada města, bod 126/3, usnesení 488/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1031961",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/126.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-171-171/7",
+      "datum": "2018-10-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-23",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP ul.Hlavní 161 - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 171/7, usnesení 560/18. Schvaleno.",
+      "castka_czk": 3000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2126336",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/171.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-171/7__6803867",
+      "datum": "2018-11-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Hlavní 161- JUDr. Burianová",
+      "popis": "Odhadované spojení smlouvy z 2018-11-16 s bodem 171/7 z 2018-10-23 (NP ul.Hlavní 161 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 762300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47722568 je uvedeno v textu usnesení; smlouva podepsána 24 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7348151",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6803867",
+      "datum": "2018-11-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru- Hlavní 161- JUDr. Burianová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Burianová Beáta, JUDr..",
+      "castka_czk": 762300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7348151",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-7-7/19",
+      "datum": "2019-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-25",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Odměna za poskytování právních služeb JUDr. Burianová",
+      "popis": "Zastupitelstvo města, bod 7/19, usnesení 144/19. Schvaleno.",
+      "castka_czk": 237000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2358717",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/7.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-7/19__8983271",
+      "datum": "2019-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-18",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Zastupování v právní věci žalobce, Davida Leitnera, vedené u Okresního soudu v Chebu pod sp. zn. 8 C 98/2004",
+      "popis": "Odhadované spojení smlouvy z 2019-07-18 s bodem 7/19 z 2019-06-25 (Odměna za poskytování právních služeb JUDr. Burianová). Jistota vysoka.",
+      "castka_czk": 236634.86,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 47722568 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (rozdíl 365 Kč); smlouva podepsána 23 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9678119",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8983271",
+      "datum": "2019-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-18",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Zastupování v právní věci žalobce, Davida Leitnera, vedené u Okresního soudu v Chebu pod sp. zn. 8 C 98/2004",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Burianová Beáta, JUDr..",
+      "castka_czk": 236634.86,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9678119",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-120-120/21",
+      "datum": "2021-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 161 - zadní trakt - ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 120/21, usnesení 399/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2740238",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09359508",
+    "nazev": "VDED s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-10-01",
+    "do": "2026-05-20",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-67-67/36",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka ZUŠ F. Chopina - venkovní učebna a galerie - výběr dodavatele",
+      "popis": "Rada města, bod 67/36, usnesení 682/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3259697",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/36__28728324",
+      "datum": "2024-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "ZUŠ F. Chopina – venkovní učebna a galerie",
+      "popis": "Odhadované spojení smlouvy z 2024-10-25 s bodem 67/36 z 2024-10-01 (Veřejná zakázka ZUŠ F. Chopina - venkovní učebna a galerie - výběr dodavatele). Jistota stre",
+      "castka_czk": 3018867.9499,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09359508 je uvedeno v textu usnesení; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova chopina, galerie, ucebna, venkovni",
+      "url": "https://smlouvy.gov.cz/smlouva/30707712",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28728324",
+      "datum": "2024-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-25",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "ZUŠ F. Chopina – venkovní učebna a galerie",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VDED s.r.o..",
+      "castka_czk": 3018867.9499,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30707712",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-83-83/29",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "ZUŠ F. Chopina – venkovní učebna a galerie – dodatek č.1",
+      "popis": "Rada města, bod 83/29, usnesení 252/25. Schvaleno.",
+      "castka_czk": 503139,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3346648",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/29__31142296",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo ZUŠ F. Chopina – venkovní učebna a galerie (č. smlouvy objednatele: S508/24) uzavřené dne 25.10.2024",
+      "popis": "Odhadované spojení smlouvy z 2025-04-04 s bodem 83/29 z 2025-04-01 (ZUŠ F. Chopina – venkovní učebna a galerie – dodatek č.1). Jistota stredni.",
+      "castka_czk": 3061904.16,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09359508 je uvedeno v textu usnesení; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova chopina, galerie, ucebna, venkovni; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/33240332",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31142296",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo ZUŠ F. Chopina – venkovní učebna a galerie (č. smlouvy objednatele: S508/24) uzavřené dne 25.10.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VDED s.r.o..",
+      "castka_czk": 3061904.16,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33240332",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35747037",
+      "datum": "2026-05-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-20",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Městské muzeum Mariánské Lázně – stavební úpravy pro expozici",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VDED s.r.o..",
+      "castka_czk": 11246540.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38225529",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

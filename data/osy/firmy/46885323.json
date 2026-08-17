@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46885323",
+    "nazev": "PNP FURNITURE, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-06-25",
+    "do": "2025-02-14",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 6,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-58-58/27",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Vybudování učebny přírodopisu na ZŠ Úšovice - vyloučení účastníka řízení, zrušení zadávacího řízení",
+      "popis": "Rada města, bod 58/27, usnesení 458/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3214899",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-61-61/26",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - \"Vybudování učebny přírodopisu na ZŠ Úšovice - výběr dodavatele",
+      "popis": "Rada města, bod 61/26, usnesení 542/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3234002",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/27__28165772",
+      "datum": "2024-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva Vybudování učebny přírodopisu na ZŠ Úšovice Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-09-05 s bodem 58/27 z 2024-06-25 (Veřejná zakázka \"Vybudování učebny přírodopisu na ZŠ Úšovice - vyloučení účastníka řízení, z",
+      "castka_czk": 3207471.8478,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46885323 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 72 dní po usnesení; název bodu a předmět smlouvy sdílí slova prirodopisu, ucebny, usovice, vybudovani; st",
+      "url": "https://smlouvy.gov.cz/smlouva/30100228",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-61/26__28165772",
+      "datum": "2024-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva Vybudování učebny přírodopisu na ZŠ Úšovice Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-09-05 s bodem 61/26 z 2024-08-06 (Veřejná zakázka - \"Vybudování učebny přírodopisu na ZŠ Úšovice - výběr dodavatele). Jistota ",
+      "castka_czk": 3207471.8478,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46885323 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; název bodu a předmět smlouvy sdílí slova prirodopisu, ucebny, usovice, vybudovani; st",
+      "url": "https://smlouvy.gov.cz/smlouva/30100228",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28165772",
+      "datum": "2024-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva Vybudování učebny přírodopisu na ZŠ Úšovice Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PNP FURNITURE, spol. s r.o..",
+      "castka_czk": 3207471.8478,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30100228",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-76-76/10",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Vybudování učebny přírodopisu ZŠ Úšovice“– dodatek č.1",
+      "popis": "Rada města, bod 76/10, usnesení 38/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3309603",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/23",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Vybudování učebny přírodopisu ZŠ Úšovice – dodatek č.2",
+      "popis": "Rada města, bod 77/23, usnesení 95/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3318540",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/23__30119384",
+      "datum": "2025-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-14",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke kupní smlouvě Vybudování učebny přírodopisu na ZŠ Úšovice Mariánské Lázně (č. smlouvy objednatele: S442/24) uzavřené dne 11.9.2024",
+      "popis": "Odhadované spojení smlouvy z 2025-02-14 s bodem 77/23 z 2025-02-04 (Vybudování učebny přírodopisu ZŠ Úšovice – dodatek č.2). Jistota stredni.",
+      "castka_czk": 42209.3133,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 46885323 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova prirodopisu, ucebny, usovice, vybudovani; ob",
+      "url": "https://smlouvy.gov.cz/smlouva/32168408",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30119384",
+      "datum": "2025-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke kupní smlouvě Vybudování učebny přírodopisu na ZŠ Úšovice Mariánské Lázně (č. smlouvy objednatele: S442/24) uzavřené dne 11.9.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PNP FURNITURE, spol. s r.o..",
+      "castka_czk": 42209.3133,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32168408",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

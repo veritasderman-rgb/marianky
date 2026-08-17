@@ -1,0 +1,319 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "12396761",
+    "nazev": "Jiří Filip"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2026-05-05",
+    "prvni_rok": 1992,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 12,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 9,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:12396761:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jiří Filip",
+      "popis": "Vznik subjektu Jiří Filip (IČO 12396761), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-7-7/8",
+      "datum": "2015-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-01-13",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 7/8, usnesení 11/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1330091",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/7.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-57-57/11",
+      "datum": "2020-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-11",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 96 - prodloužení smlouvy",
+      "popis": "Rada města, bod 57/11, usnesení 101/20. Schvaleno.",
+      "castka_czk": 1394,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2477966",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-57/11__11045512",
+      "datum": "2020-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-05",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytových prostor - Poštovní 96",
+      "popis": "Odhadované spojení smlouvy z 2020-03-05 s bodem 57/11 z 2020-02-11 (NP Poštovní 96 - prodloužení smlouvy). Jistota stredni.",
+      "castka_czk": 885792.6,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12396761 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11886024",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11045512",
+      "datum": "2020-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-05",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytových prostor - Poštovní 96",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Filip.",
+      "castka_czk": 885792.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11886024",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-76-76/19",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 96 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 76/19, usnesení 47/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3309978",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/10",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 96 - prodloužení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 78/10, usnesení 113/25. Schvaleno.",
+      "castka_czk": 1394,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3323385",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/10__30414540",
+      "datum": "2025-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-12",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - Filip Jiří",
+      "popis": "Odhadované spojení smlouvy z 2025-03-12 s bodem 78/10 z 2025-02-25 (NP Poštovní, č.p. 96 - prodloužení Smlouvy o nájmu nebytového prostoru). Jistota stredni.",
+      "castka_czk": 885792.6,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12396761 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru; obojí je dodate",
+      "url": "https://smlouvy.gov.cz/smlouva/32477292",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30414540",
+      "datum": "2025-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-12",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - Filip Jiří",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Filip.",
+      "castka_czk": 885792.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32477292",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-92-92/16",
+      "datum": "2025-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu části poz. parcely č. 180/1 k. ú. Mariánské Lázně – umístění reklamy v ul. Anglická",
+      "popis": "Rada města, bod 92/16, usnesení 499/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3395932",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-95-95/13",
+      "datum": "2025-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-05",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem části poz. parcely č. 180/1 k. ú. Mariánské Lázně – umístění reklamy v ul. Anglická",
+      "popis": "Rada města, bod 95/13, usnesení 547/25. Schvaleno.",
+      "castka_czk": 7000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3065950060",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/26",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Ukončení nájemní smlouvy na umístění reklamního zařízení",
+      "popis": "Rada města, bod 114/26, usnesení 1048/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3768018783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/27",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu části poz. parcely č. 180/1 k. ú. Mariánské Lázně – umístění reklamy v ul. Anglická",
+      "popis": "Rada města, bod 114/27, usnesení 1049/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/202891179",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/34",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Pronájem části p. p. č. 180/1 v k. ú. Mariánské Lázně o výměře 1 m2 pro umístění reklamního zařízení - Anglická ulice",
+      "popis": "Rada města, bod 116/34, usnesení 1127/26. Schvaleno.",
+      "castka_czk": 7000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2571833948",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

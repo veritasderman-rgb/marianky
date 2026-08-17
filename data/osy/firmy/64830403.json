@@ -1,0 +1,380 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64830403",
+    "nazev": "EC Engineering, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-02-14",
+    "do": "2026-03-20",
+    "prvni_rok": 1996,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 12,
+    "odhadu": 5,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 7,
+      "usneseni": 4,
+      "retez": 5
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "stredni": 1,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64830403:vznik",
+      "datum": "1996-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-02-14",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — EC Engineering, s.r.o.",
+      "popis": "Vznik subjektu EC Engineering, s.r.o. (IČO 64830403), Společnost s ručením omezeným, obor: Pátrací a bezpečnostní činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:3689836",
+      "datum": "2017-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-29",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "dodávka a instalace zabezpečovacího systému",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 70233.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3980548",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:4868112",
+      "datum": "2018-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 108900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5249240",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-150-150/1",
+      "datum": "2018-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva – ostraha objektu MěÚ Chebská 252",
+      "popis": "Rada města, bod 150/1, usnesení 167/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1921974",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-3-3/13",
+      "datum": "2018-12-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-04",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva – ostraha objektu Anglikánská kaple",
+      "popis": "Rada města, bod 3/13, usnesení 658/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2147786",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-3/13__7551311",
+      "datum": "2018-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-05",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany - Anglikánská kaple",
+      "popis": "Odhadované spojení smlouvy z 2018-12-05 s bodem 3/13 z 2018-12-04 (Smlouva – ostraha objektu Anglikánská kaple). Jistota stredni.",
+      "castka_czk": 68970.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 64830403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova anglikanska, kaple",
+      "url": "https://smlouvy.gov.cz/smlouva/8151955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7551311",
+      "datum": "2018-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-05",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany - Anglikánská kaple",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 68970.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8151955",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-59-59/20",
+      "datum": "2020-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva – ostraha objektu radnice, Příčná 647",
+      "popis": "Rada města, bod 59/20, usnesení 131/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2484964",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-3/13__11768128",
+      "datum": "2020-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-20",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany - Anglikánská kaple",
+      "popis": "Odhadované spojení smlouvy z 2020-04-20 s bodem 3/13 z 2018-12-04 (Smlouva – ostraha objektu Anglikánská kaple). Jistota nizka.",
+      "castka_czk": 94307.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 503 dní po usnesení; název bodu a předmět smlouvy sdílí slova anglikanska, kaple; stejně dobře sedí i ",
+      "url": "https://smlouvy.gov.cz/smlouva/12640244",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/20__11768128",
+      "datum": "2020-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-20",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany - Anglikánská kaple",
+      "popis": "Odhadované spojení smlouvy z 2020-04-20 s bodem 59/20 z 2020-02-25 (Smlouva – ostraha objektu radnice, Příčná 647). Jistota nizka.",
+      "castka_czk": 94307.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 55 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12640244",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11768128",
+      "datum": "2020-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-20",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o připojení na pult centralizované ochrany - Anglikánská kaple",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 94307.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12640244",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-43-43/17",
+      "datum": "2024-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Městské muzeum – modernizace kamerového systému a zabezpečovacího zařízení",
+      "popis": "Rada města, bod 43/17, usnesení 35/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3141289",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/43.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-43/17__25763339",
+      "datum": "2024-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Generační obměna kamerového systému v objektu Městské muzeum Mariánské Lázně,  Goethovo nám. 11",
+      "popis": "Odhadované spojení smlouvy z 2024-02-05 s bodem 43/17 z 2024-01-23 (Městské muzeum – modernizace kamerového systému a zabezpečovacího zařízení). Jistota nizka.",
+      "castka_czk": 76383.67,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova kameroveho, mestske, muzeum, systemu; k tému",
+      "url": "https://smlouvy.gov.cz/smlouva/27584119",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-43/17__25763423",
+      "datum": "2024-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-05",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Generační obměna a zvýšení kapacity zabezpečovacího zařízení v objektu Městského muzea Mariánské Lázně, Goethovo nám. 11",
+      "popis": "Odhadované spojení smlouvy z 2024-02-05 s bodem 43/17 z 2024-01-23 (Městské muzeum – modernizace kamerového systému a zabezpečovacího zařízení). Jistota nizka.",
+      "castka_czk": 145299.22,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova zabezpecovaciho, zarizeni; k témuž usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/27584207",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25763339",
+      "datum": "2024-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Generační obměna kamerového systému v objektu Městské muzeum Mariánské Lázně,  Goethovo nám. 11",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 76383.67,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27584119",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25763423",
+      "datum": "2024-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Generační obměna a zvýšení kapacity zabezpečovacího zařízení v objektu Městského muzea Mariánské Lázně, Goethovo nám. 11",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": 145299.22,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27584207",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35168545",
+      "datum": "2026-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-20",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služby převozu peněz",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana EC Engineering, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37452121",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

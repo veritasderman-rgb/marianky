@@ -1,0 +1,298 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25627775",
+    "nazev": "BETON-MAK s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-07-16",
+    "do": "2025-10-16",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 8,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 3,
+      "smlouva": 5,
+      "retez": 5
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-59-59/27",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o dílo - oprava fasády, Ruská 74 (Terezián)",
+      "popis": "Rada města, bod 59/27, usnesení 492/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3222919",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28046512",
+      "datum": "2024-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Oprava fasády, Ruská 74 (obj. Terezián)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BETON-MAK s.r.o..",
+      "castka_czk": 1674208.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29975196",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/33",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo -Oprava fasády-Ruská 74 (obj. Terezián)",
+      "popis": "Rada města, bod 67/33, usnesení 679/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3259585",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/33__29279068",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Oprava fasády - Ruská 74 (Terezián)",
+      "popis": "Odhadované spojení smlouvy z 2024-10-08 s bodem 67/33 z 2024-10-01 (Dodatek č. 1 ke smlouvě o dílo -Oprava fasády-Ruská 74 (obj. Terezián)). Jistota nizka.",
+      "castka_czk": 1674208.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25627775 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova fasady, oprava, ruska, terezian; usnesení mlu",
+      "url": "https://smlouvy.gov.cz/smlouva/31287352",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29279068",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Oprava fasády - Ruská 74 (Terezián)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BETON-MAK s.r.o..",
+      "castka_czk": 1674208.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31287352",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-69-69/8",
+      "datum": "2024-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-29",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo - oprava fasády-Ruská 74 (Terezián)",
+      "popis": "Rada města, bod 69/8, usnesení 740/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3271176",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/8__28850108",
+      "datum": "2024-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 - oprava fasády (Terezián)",
+      "popis": "Odhadované spojení smlouvy z 2024-11-01 s bodem 69/8 z 2024-10-29 (Dodatek č. 2 ke smlouvě o dílo - oprava fasády-Ruská 74 (Terezián)). Jistota nizka.",
+      "castka_czk": 1673478.87,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25627775 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova fasady, oprava, terezian; obojí je dodatek č.",
+      "url": "https://smlouvy.gov.cz/smlouva/30836228",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28850108",
+      "datum": "2024-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 - oprava fasády (Terezián)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BETON-MAK s.r.o..",
+      "castka_czk": 1673478.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30836228",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/33__32672669",
+      "datum": "2025-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-15",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka – Oprava dvou lávek – Úšovický potok",
+      "popis": "Odhadované spojení smlouvy z 2025-09-15 s bodem 67/33 z 2024-10-01 (Dodatek č. 1 ke smlouvě o dílo -Oprava fasády-Ruská 74 (obj. Terezián)). Jistota nizka.",
+      "castka_czk": 79273.15,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25627775 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 349 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/34843601",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/8__32672669",
+      "datum": "2025-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-15",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka – Oprava dvou lávek – Úšovický potok",
+      "popis": "Odhadované spojení smlouvy z 2025-09-15 s bodem 69/8 z 2024-10-29 (Dodatek č. 2 ke smlouvě o dílo - oprava fasády-Ruská 74 (Terezián)). Jistota nizka.",
+      "castka_czk": 79273.15,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25627775 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 321 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/34843601",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32672669",
+      "datum": "2025-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-15",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Oprava dvou lávek – Úšovický potok",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BETON-MAK s.r.o..",
+      "castka_czk": 79273.15,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34843601",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/8__33057745",
+      "datum": "2025-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka č. 25_153 - zhotovení protipožární příčky na 3.p budovy B",
+      "popis": "Odhadované spojení smlouvy z 2025-10-16 s bodem 69/8 z 2024-10-29 (Dodatek č. 2 ke smlouvě o dílo - oprava fasády-Ruská 74 (Terezián)). Jistota nizka.",
+      "castka_czk": 99174.94,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25627775 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 352 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/35245269",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33057745",
+      "datum": "2025-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_153 - zhotovení protipožární příčky na 3.p budovy B",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana BETON-MAK s.r.o..",
+      "castka_czk": 99174.94,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35245269",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

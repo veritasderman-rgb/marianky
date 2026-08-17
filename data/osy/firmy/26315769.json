@@ -1,0 +1,900 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26315769",
+    "nazev": "JAZUU s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-11-13",
+    "do": "2026-04-28",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 43,
+    "dolozenych": 28,
+    "odhadu": 15,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 18,
+      "retez": 15,
+      "smlouva": 9
+    },
+    "dle_jistoty": {
+      "fakt": 28,
+      "nizka": 14,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26315769:vznik",
+      "datum": "2000-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-11-13",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — JAZUU s.r.o.",
+      "popis": "Vznik subjektu JAZUU s.r.o. (IČO 26315769), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-57-57/12",
+      "datum": "2016-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-23",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 233 - prodloužení nájmu - NEW YORK ML, s.r.o.",
+      "popis": "Rada města, bod 57/12, usnesení 100/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1538589",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-57/12__7741",
+      "datum": "2016-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-31",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2016-05-31 s bodem 57/12 z 2016-02-23 (NP Hlavní, č.p. 233 - prodloužení nájmu - NEW YORK ML, s.r.o.). Jistota nizka.",
+      "castka_czk": 2480500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; smlouva podepsána 98 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7965",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7741",
+      "datum": "2016-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-31",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": 2480500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7965",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-117-117/3",
+      "datum": "2017-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-06",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - pronájem NP - NEW YORK ML., s.r.o.",
+      "popis": "Rada města, bod 117/3, usnesení 344/17. Schvaleno.",
+      "castka_czk": 500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1770446",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-117-117/5",
+      "datum": "2017-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-06",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 233 - dodatek k nájemní smlouvě - NEW YORK M.L., s.r.o.",
+      "popis": "Rada města, bod 117/5, usnesení 346/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1770493",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/3__2439410",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "NP Hlavní 319, k.ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-07-20 s bodem 117/3 z 2017-06-06 (NP Hlavní 319 - pronájem NP - NEW YORK ML., s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/2627734",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/3__2448970",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 233, k.ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-07-20 s bodem 117/3 z 2017-06-06 (NP Hlavní 319 - pronájem NP - NEW YORK ML., s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, pronajem; k témuž usnesení se hlásí ",
+      "url": "https://smlouvy.gov.cz/smlouva/2637662",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/5__2439410",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "NP Hlavní 319, k.ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-07-20 s bodem 117/5 z 2017-06-06 (NP Hlavní 233 - dodatek k nájemní smlouvě - NEW YORK M.L., s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/2627734",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2439410",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "NP Hlavní 319, k.ú. a obec Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2627734",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2448970",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 233, k.ú. a obec Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2637662",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-137-137/13",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 233 - úprava nájemní smlouvy dle Sazebníku - NEW YORK ML, s.r.o.",
+      "popis": "Rada města, bod 137/13, usnesení 695/17. Schvaleno.",
+      "castka_czk": 2200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1866897",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/3__3960452",
+      "datum": "2018-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - NP Hlavní 233 - NEW YORK ML, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-01-03 s bodem 117/3 z 2017-06-06 (NP Hlavní 319 - pronájem NP - NEW YORK ML., s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 211 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/4263072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/5__3960452",
+      "datum": "2018-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - NP Hlavní 233 - NEW YORK ML, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-01-03 s bodem 117/5 z 2017-06-06 (NP Hlavní 233 - dodatek k nájemní smlouvě - NEW YORK M.L., s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 211 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/4263072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/13__3960452",
+      "datum": "2018-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - NP Hlavní 233 - NEW YORK ML, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-01-03 s bodem 137/13 z 2017-12-05 (NP Hlavní 233 - úprava nájemní smlouvy dle Sazebníku - NEW YORK ML, s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4263072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3960452",
+      "datum": "2018-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-03",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - NP Hlavní 233 - NEW YORK ML, s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4263072",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-149-149/12",
+      "datum": "2018-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 233 - úprava nájemní smlouvy - NEW YORK M.L., s.r.o.",
+      "popis": "Rada města, bod 149/12, usnesení 159/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1919284",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/149.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/3__4934476",
+      "datum": "2018-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-20",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 k pronájmu NP Hlavní 233 - NEW YORK M.L., s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-04-20 s bodem 117/3 z 2017-06-06 (NP Hlavní 319 - pronájem NP - NEW YORK ML., s.r.o.). Jistota nizka.",
+      "castka_czk": 330620.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 318 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/5320008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-117/5__4934476",
+      "datum": "2018-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-20",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 k pronájmu NP Hlavní 233 - NEW YORK M.L., s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-04-20 s bodem 117/5 z 2017-06-06 (NP Hlavní 233 - dodatek k nájemní smlouvě - NEW YORK M.L., s.r.o.). Jistota nizka.",
+      "castka_czk": 330620.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 318 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/5320008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-149/12__4934476",
+      "datum": "2018-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-20",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 k pronájmu NP Hlavní 233 - NEW YORK M.L., s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-04-20 s bodem 149/12 z 2018-03-20 (NP Hlavní 233 - úprava nájemní smlouvy - NEW YORK M.L., s.r.o.). Jistota nizka.",
+      "castka_czk": 330620.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, york; stejně dobře sedí i 2 další us",
+      "url": "https://smlouvy.gov.cz/smlouva/5320008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4934476",
+      "datum": "2018-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-20",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 k pronájmu NP Hlavní 233 - NEW YORK M.L., s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": 330620.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5320008",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-160-160/14",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319, prodloužení nájmu-NEW YORK",
+      "popis": "Rada města, bod 160/14, usnesení 356/18. Schvaleno.",
+      "castka_czk": 500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1969222",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-160/14__6061323",
+      "datum": "2018-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu, Hlavní 319 - NEW YORK",
+      "popis": "Odhadované spojení smlouvy z 2018-08-29 s bodem 160/14 z 2018-07-03 (NP Hlavní 319, prodloužení nájmu-NEW YORK). Jistota stredni.",
+      "castka_czk": 62315.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu, york",
+      "url": "https://smlouvy.gov.cz/smlouva/6534079",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6061323",
+      "datum": "2018-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu, Hlavní 319 - NEW YORK",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": 62315.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6534079",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-105-105/11",
+      "datum": "2021-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-20",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 233 - prodloužení nájemního vztahu - New York M.L., s.r.o.",
+      "popis": "Rada města, bod 105/11, usnesení 132/21. Schvaleno.",
+      "castka_czk": 273240,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2667033",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-12-12/15",
+      "datum": "2023-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 233 - společnost NEW YORK M.L., s.r.o.",
+      "popis": "Rada města, bod 12/15, usnesení 75/23. Schvaleno.",
+      "castka_czk": 14000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2972790",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-25-25/4",
+      "datum": "2023-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-13",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 319 - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 25/4, usnesení 361/23. Schvaleno.",
+      "castka_czk": 10300,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3031656",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-12/15__23228671",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - New York ML, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2023-06-22 s bodem 12/15 z 2023-02-07 (NP Hlavní, č.p. 233 - společnost NEW YORK M.L., s.r.o.). Jistota nizka.",
+      "castka_czk": 62315.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 135 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24892483",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-25/4__23228671",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - New York ML, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2023-06-22 s bodem 25/4 z 2023-06-13 (NP Hlavní třída, č.p. 319 - prodloužení nájemního vztahu). Jistota nizka.",
+      "castka_czk": 62315.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24892483",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23228671",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - New York ML, s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEW YORK M.L., s.r.o..",
+      "castka_czk": 62315.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24892483",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-39-39/12",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Odklad splatnosti nájemného – ul. Hlavní třída, č.p. 233 – společnost NEW YORK M.L., s.r.o.",
+      "popis": "Rada města, bod 39/12, usnesení 765/23. Schvaleno.",
+      "castka_czk": 91080,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3120874",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/14",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 44/14, usnesení 63/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3147216",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-47-47/33",
+      "datum": "2024-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-05",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – změna účelu užívání",
+      "popis": "Rada města, bod 47/33, usnesení 153/24. Schvaleno.",
+      "castka_czk": 288900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3161431",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/47.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/23",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – změna názvu společnosti",
+      "popis": "Rada města, bod 48/23, usnesení 183/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166830",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:26315579",
+      "datum": "2024-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - změny předmětu činnosti, nová výše nájemného",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana JAZUU s.r.o..",
+      "castka_czk": 757399.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28165251",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/13",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – společnost JAZUU s.r.o.",
+      "popis": "Rada města, bod 51/13, usnesení 261/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180131",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/16",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – společnost JAZUU s.r.o.",
+      "popis": "Rada města, bod 54/16, usnesení 352/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3198349",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/9",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 233 – společnost JAZUU s.r.o. – Smlouva o podnájmu",
+      "popis": "Rada města, bod 56/9, usnesení 394/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3204462",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/28",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 233 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 113/28, usnesení 1012/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/739811784",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/12",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 233 – prodloužení nájemního vztahu – společnost JAZUU s.r.o.",
+      "popis": "Rada města, bod 115/12, usnesení 1075/26. Schvaleno.",
+      "castka_czk": 288900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3527171322",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/28__35451209",
+      "datum": "2026-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-28",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - JAZUU s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-04-28 s bodem 113/28 z 2026-03-17 (Nebytový prostor Hlavní třída, č.p. 233 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 1444500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37747417",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-115/12__35451209",
+      "datum": "2026-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-28",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - JAZUU s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-04-28 s bodem 115/12 z 2026-04-14 (Nebytový prostor Hlavní třída, č.p. 233 – prodloužení nájemního vztahu – společnost JAZUU s",
+      "castka_czk": 1444500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26315769 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37747417",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35451209",
+      "datum": "2026-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-28",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - JAZUU s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana JAZUU s.r.o..",
+      "castka_czk": 1444500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37747417",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

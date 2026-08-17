@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "14740419",
+    "nazev": "Vladimír Kučera"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-10-18",
+    "do": "2024-05-30",
+    "prvni_rok": 2018,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:6566575",
+      "datum": "2018-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-18",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka malování",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Vladimír Kučera - malíř.",
+      "castka_czk": 63829.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7092091",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24124079",
+      "datum": "2023-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "objednávka malířských prací",
+      "popis": "Mateřská škola Úšovice, Mariánské Lázně, Skalníkova 518 — výdaj, protistrana Vladimír Kučera.",
+      "castka_czk": 85090.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25835275",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997586.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27183036",
+      "datum": "2024-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-30",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "objednávka malířských prací",
+      "popis": "Mateřská škola Úšovice, Mariánské Lázně, Skalníkova 518 — výdaj, protistrana Vladimír Kučera.",
+      "castka_czk": 63200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29069792",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997586.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

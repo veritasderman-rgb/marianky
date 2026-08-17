@@ -1,0 +1,256 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06719996",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-12-30",
+    "do": "2026-02-10",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 11,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 10
+    },
+    "dle_jistoty": {
+      "fakt": 11
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:06719996:vznik",
+      "datum": "2017-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-30",
+      "rok": 2017,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Pivo Kronl    s.r.o.",
+      "popis": "Vznik subjektu Pivo Kronl    s.r.o. (IČO 06719996), Společnost s ručením omezeným, obor: Výroba piva.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/3",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2023 - 1. kolo",
+      "popis": "Rada města, bod 11/3, usnesení 57/23. Schvaleno.",
+      "castka_czk": 95000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/19",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2024",
+      "popis": "Rada města, bod 44/19, usnesení 68/24. Schvaleno.",
+      "castka_czk": 92000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3148072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-13-13/18",
+      "datum": "2024-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo",
+      "popis": "Zastupitelstvo města, bod 13/18, usnesení 265/24. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3138457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/20",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Rada města, bod 77/20, usnesení 92/25. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317945",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "69559112",
+    "nazev": "Ivana Plichtová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-12-23",
+    "do": "2019-08-01",
+    "prvni_rok": 2014,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-4-4/5",
+      "datum": "2014-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-23",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - žádost o prodloužení doby nájmu",
+      "popis": "Rada města, bod 4/5, usnesení 593/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1319834",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-53-53/5",
+      "datum": "2016-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-01-26",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - prodloužení nájmu",
+      "popis": "Rada města, bod 53/5, usnesení 35/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1522886",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:9061299",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Rámcová kupní smlouva \"Dodávka komodity - koloniál, nápoje\"",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Ivana Plichtová.",
+      "castka_czk": 1210000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13222300",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

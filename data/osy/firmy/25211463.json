@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25211463",
+    "nazev": "MANAŽER MODA, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-07-01",
+    "do": "2022-12-02",
+    "prvni_rok": 1997,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 10,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25211463:vznik",
+      "datum": "1997-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-07-01",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MANAŽER MODA, s.r.o.",
+      "popis": "Vznik subjektu MANAŽER MODA, s.r.o. (IČO 25211463), Společnost s ručením omezeným, obor: Ostatní nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-89-89/3",
+      "datum": "2012-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-11-27",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - prodloužení doby nájmu",
+      "popis": "Rada města, bod 89/3, usnesení 575/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/846234",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-123-123/8",
+      "datum": "2013-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-01",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 234 - podnájemní smlouva",
+      "popis": "Rada města, bod 123/8, usnesení 450/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1023704",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-1-1/2",
+      "datum": "2014-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-18",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 234 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 1/2, usnesení 506/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1300985",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/1.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-138-138/4",
+      "datum": "2017-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - prodloužení nájmu - MANAŽER MODA, s.r.o.",
+      "popis": "Rada města, bod 138/4, usnesení 709/17. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1873379",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/4__4159052",
+      "datum": "2018-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní, č.p. 161 - MANAŽER MODA, s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2018-01-24 s bodem 138/4 z 2017-12-19 (NP Hlavní 161 - prodloužení nájmu - MANAŽER MODA, s.r.o.). Jistota stredni.",
+      "castka_czk": 3057065.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25211463 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, manazer, moda",
+      "url": "https://smlouvy.gov.cz/smlouva/4481044",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4159052",
+      "datum": "2018-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní, č.p. 161 - MANAŽER MODA, s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MANAŽER MODA, s.r.o..",
+      "castka_czk": 3057065.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4481044",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-52-52/9",
+      "datum": "2020-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-07",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 234 - Manažer móda - prodloužení smlouvy",
+      "popis": "Rada města, bod 52/9, usnesení 9/20. Schvaleno.",
+      "castka_czk": 3005,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2460461",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/52.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-52/9__10631280",
+      "datum": "2020-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-16",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 234 - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2020-01-16 s bodem 52/9 z 2020-01-07 (NP Hlavní 234 - Manažer móda - prodloužení smlouvy). Jistota stredni.",
+      "castka_czk": 945373.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25211463 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/11441708",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10631280",
+      "datum": "2020-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-16",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 234 - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MANAŽER MODA, s.r.o..",
+      "castka_czk": 945373.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11441708",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-0-0/10",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 161 - Manažer moda, s.r.o. - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 0/10, usnesení 543/22. Schvaleno.",
+      "castka_czk": 505300,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2935297",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/0.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-0/10__21036325",
+      "datum": "2022-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-02",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - MANAŽER MODA s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-12-02 s bodem 0/10 z 2022-11-22 (NP Hlavní, č.p. 161 - Manažer moda, s.r.o. - prodloužení nájemního vztahu). Jistota stredni.",
+      "castka_czk": 3089923.76,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25211463 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova manazer, moda, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/22579249",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21036325",
+      "datum": "2022-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-02",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - MANAŽER MODA s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MANAŽER MODA, s.r.o..",
+      "castka_czk": 3089923.76,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22579249",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

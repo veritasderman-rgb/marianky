@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28738063",
+    "nazev": "Memory Crystal s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-06-25",
+    "do": "2025-08-11",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 6,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 4,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-58-58/34",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "„Křišťálový strom vzpomínek na městském hřbitově“ – uzavření smlouvy",
+      "popis": "Rada města, bod 58/34, usnesení 465/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3216902",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/34__27472564",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo",
+      "popis": "Odhadované spojení smlouvy z 2024-07-01 s bodem 58/34 z 2024-06-25 („Křišťálový strom vzpomínek na městském hřbitově“ – uzavření smlouvy). Jistota nizka.",
+      "castka_czk": 4311472.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28738063 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/29370400",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27472564",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Memory Crystal s.r.o..",
+      "castka_czk": 4311472.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29370400",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/34__29899224",
+      "datum": "2025-01-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka-obřadního tubusu, doplňky",
+      "popis": "Odhadované spojení smlouvy z 2025-01-06 s bodem 58/34 z 2024-06-25 („Křišťálový strom vzpomínek na městském hřbitově“ – uzavření smlouvy). Jistota nizka.",
+      "castka_czk": 74221.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28738063 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 195 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31938580",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29899224",
+      "datum": "2025-01-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-06",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-obřadního tubusu, doplňky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Memory Crystal s.r.o..",
+      "castka_czk": 74221.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31938580",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/34__30254240",
+      "datum": "2025-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-27",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka-separátory uren",
+      "popis": "Odhadované spojení smlouvy z 2025-02-27 s bodem 58/34 z 2024-06-25 („Křišťálový strom vzpomínek na městském hřbitově“ – uzavření smlouvy). Jistota nizka.",
+      "castka_czk": 206982.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28738063 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 247 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/32310312",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30254240",
+      "datum": "2025-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-separátory uren",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Memory Crystal s.r.o..",
+      "castka_czk": 206982.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32310312",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/21",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Dodatku č. 1 ke Smlouvě o dílo ke zhotovení Křišťálového stromu vzpomínek EIWA s podzemním kolumbáriem a skleněným altánem",
+      "popis": "Rada města, bod 93/21, usnesení 525/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3401942",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/21__32360405",
+      "datum": "2025-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-11",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě o dílo - EIWA",
+      "popis": "Odhadované spojení smlouvy z 2025-08-11 s bodem 93/21 z 2025-07-22 (Uzavření Dodatku č. 1 ke Smlouvě o dílo ke zhotovení Křišťálového stromu vzpomínek EIWA s po",
+      "castka_czk": 3000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28738063 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, eiwa",
+      "url": "https://smlouvy.gov.cz/smlouva/34517169",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32360405",
+      "datum": "2025-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě o dílo - EIWA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Memory Crystal s.r.o..",
+      "castka_czk": 3000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34517169",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

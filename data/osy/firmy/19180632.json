@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "19180632",
+    "nazev": "NEVAJGLUJ a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-04-09",
+    "do": "2024-04-09",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2024-49/4__26440987",
+      "datum": "2024-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-09",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Předmětem smlouvy je závazek společnosti hradit obci paušálně náklady vynaložené obcí na úklid odpadu z tabákových výrobků a závazek obce poskytovat společnosti pravdivé a úplné údaje o nákladech vynakládaných obcí na tento úklid",
+      "popis": "Odhadované spojení smlouvy z 2024-04-09 s bodem 49/4 z 2024-04-02 (Smlouva o úhradě nákladů na úklid a nakládání s odpady tabákových výrobků s KS NEVAJGLUJ a.s.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (NEVAJGLUJ a.s.) je v textu usnesení; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova tabakovych, uklid, vyrobku",
+      "url": "https://smlouvy.gov.cz/smlouva/28296403",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26440987",
+      "datum": "2024-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Předmětem smlouvy je závazek společnosti hradit obci paušálně náklady vynaložené obcí na úklid odpadu z tabákových výrobků a závazek obce poskytovat společnosti pravdivé a úplné údaje o nákladech vynakládaných obcí na tento úklid",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEVAJGLUJ a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28296403",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

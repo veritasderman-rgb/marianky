@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27232433",
+    "nazev": "ČEZ Prodej, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-02-14",
+    "do": "2025-08-27",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:33063765",
+      "datum": "2025-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "ČEZ, Smlouva o dodávce el. energie, Vrchlického ul., Arnika, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZ Prodej, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35251549",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:33062593",
+      "datum": "2025-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "ČEZ, Smlouva o dodávce elektřiny, č&gt; 204719692, Hlavní třída ,Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZ Prodej, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35250317",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

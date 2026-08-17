@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "15769852",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-03-08",
+    "do": "2013-03-12",
+    "prvni_rok": 1993,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:15769852:vznik",
+      "datum": "1993-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-03-08",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Štefan Tomič",
+      "popis": "Vznik subjektu Štefan Tomič (IČO 15769852), Fyzická osoba podnikající dle živnostenského zákona, obor: Zpracování a konzervování masa a výroba masných výrobků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-102-102/6",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Výpověď Smlouvy o nájmu NP - Chebská 495",
+      "popis": "Rada města, bod 102/6, usnesení 96/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/910479",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06013325",
+    "nazev": "Krak Stav s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-04-12",
+    "do": "2025-02-17",
+    "prvni_rok": 2017,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 11,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 6,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "stredni": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:06013325:vznik",
+      "datum": "2017-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-12",
+      "rok": 2017,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Krak Stav s.r.o.",
+      "popis": "Vznik subjektu Krak Stav s.r.o. (IČO 06013325), Společnost s ručením omezeným, obor: Příprava staveniště.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-32-32/19",
+      "datum": "2019-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Domov pro seniory Mariánské Lázně - centrální koupelna 5.NP a nová bytová jednotka 6.NP - výběr dodavatele",
+      "popis": "Rada města, bod 32/19, usnesení 373/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2376030",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-32/19__9220103",
+      "datum": "2019-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-19",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Zřízení centrální koupelny na 5. NP a nové bytové jednotky na 6. NP v objektu Domova pro seniory a domova s pečovatelskou službou p.o. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-08-19 s bodem 32/19 z 2019-07-23 (Domov pro seniory Mariánské Lázně - centrální koupelna 5.NP a nová bytová jednotka 6.NP - vý",
+      "castka_czk": 881641.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova centralni, seniory",
+      "url": "https://smlouvy.gov.cz/smlouva/9929975",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9220103",
+      "datum": "2019-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-19",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Zřízení centrální koupelny na 5. NP a nové bytové jednotky na 6. NP v objektu Domova pro seniory a domova s pečovatelskou službou p.o. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Krak Stav s.r.o..",
+      "castka_czk": 881641.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9929975",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-46-46/3",
+      "datum": "2019-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-19",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Domov pro seniory – centrální koupelna a nová b.j. - dodatek k SoD č. 1",
+      "popis": "Rada města, bod 46/3, usnesení 575/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2437018",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-32/19__10211432",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo na – „Domov pro seniory Mariánské Lázně – centrální koupelna 5. NP a nová bytová jednotka 6. NP“ (vícepráce, méněpráce, změna termínu dokončení)",
+      "popis": "Odhadované spojení smlouvy z 2019-12-05 s bodem 32/19 z 2019-07-23 (Domov pro seniory Mariánské Lázně - centrální koupelna 5.NP a nová bytová jednotka 6.NP - vý",
+      "castka_czk": 898880.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 135 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytova, centralni, domov, jednotka; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/10982896",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-46/3__10211432",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo na – „Domov pro seniory Mariánské Lázně – centrální koupelna 5. NP a nová bytová jednotka 6. NP“ (vícepráce, méněpráce, změna termínu dokončení)",
+      "popis": "Odhadované spojení smlouvy z 2019-12-05 s bodem 46/3 z 2019-11-19 (Domov pro seniory – centrální koupelna a nová b.j. - dodatek k SoD č. 1). Jistota nizka.",
+      "castka_czk": 898880.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova centralni, domov, koupelna, nova; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/10982896",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10211432",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo na – „Domov pro seniory Mariánské Lázně – centrální koupelna 5. NP a nová bytová jednotka 6. NP“ (vícepráce, méněpráce, změna termínu dokončení)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Krak Stav s.r.o..",
+      "castka_czk": 898880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10982896",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-59-59/25",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Městské divadlo Mariánské Lázně – oprava šatny pro diváky\" – výběr dodavatele",
+      "popis": "Rada města, bod 59/25, usnesení 490/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3222608",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/25__27922212",
+      "datum": "2024-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-16",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Městské divadlo – oprava šatny pro diváky",
+      "popis": "Odhadované spojení smlouvy z 2024-08-16 s bodem 59/25 z 2024-07-16 (Veřejná zakázka \"Městské divadlo Mariánské Lázně – oprava šatny pro diváky\" – výběr dodavate",
+      "castka_czk": 3572974.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova divadlo, divaky, mestske, oprava",
+      "url": "https://smlouvy.gov.cz/smlouva/29844768",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27922212",
+      "datum": "2024-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Městské divadlo – oprava šatny pro diváky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Krak Stav s.r.o..",
+      "castka_czk": 3572974.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29844768",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-70-70/10",
+      "datum": "2024-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-12",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "\"Městské divadlo Mariánské Lázně – oprava šatny pro diváky\" dodatek č. 1 ke smlouvě o dílo",
+      "popis": "Rada města, bod 70/10, usnesení 778/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3277731",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/70.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-70/10__29404668",
+      "datum": "2024-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-29",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Městské divadlo Mariánské Lázně – oprava šatny pro diváky",
+      "popis": "Odhadované spojení smlouvy z 2024-11-29 s bodem 70/10 z 2024-11-12 (\"Městské divadlo Mariánské Lázně – oprava šatny pro diváky\" dodatek č. 1 ke smlouvě o dílo).",
+      "castka_czk": 3555418.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, divadlo, divaky, mestske; obojí je dod",
+      "url": "https://smlouvy.gov.cz/smlouva/31419072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29404668",
+      "datum": "2024-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Městské divadlo Mariánské Lázně – oprava šatny pro diváky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Krak Stav s.r.o..",
+      "castka_czk": 3555418.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31419072",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-76-76/8",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo - Městské divadlo Mariánské Lázně - oprava šaten",
+      "popis": "Rada města, bod 76/8, usnesení 36/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3309474",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-76/8__30125272",
+      "datum": "2025-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-17",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Městské divadlo Mariánské Lázně – oprava šatny pro diváky",
+      "popis": "Odhadované spojení smlouvy z 2025-02-17 s bodem 76/8 z 2025-01-21 (Dodatek č. 2 ke smlouvě o dílo - Městské divadlo Mariánské Lázně - oprava šaten). Jistota str",
+      "castka_czk": 3783569.12,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06013325 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, divadlo, mestske, oprava; obojí je dod",
+      "url": "https://smlouvy.gov.cz/smlouva/32174800",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30125272",
+      "datum": "2025-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-17",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Městské divadlo Mariánské Lázně – oprava šatny pro diváky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Krak Stav s.r.o..",
+      "castka_czk": 3783569.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32174800",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

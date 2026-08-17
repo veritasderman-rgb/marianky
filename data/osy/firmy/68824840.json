@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68824840",
+    "nazev": "Pluto divadlo komedie"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-03-16",
+    "do": "2026-07-14",
+    "prvni_rok": 2023,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:22470517",
+      "datum": "2023-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení jednoho představení",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Mgr. Jindřiška Kikinčuková.",
+      "castka_czk": 92000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24095909",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28894940",
+      "datum": "2024-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení jednoho představení",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Pluto, divadlo komedie.",
+      "castka_czk": 79860.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30883132",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36417428",
+      "datum": "2026-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení jednoho představení",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Pluto divadlo komedie.",
+      "castka_czk": 63283.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38751700",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

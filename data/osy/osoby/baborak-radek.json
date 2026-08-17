@@ -1,0 +1,609 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "baborak-radek",
+    "jmeno": "Radek Baborák",
+    "role": [
+      "dirigent",
+      "hornista"
+    ],
+    "kategorie": "kultura",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-09",
+    "do": "2026-06",
+    "prvni_rok": 2018,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 28,
+    "dolozenych": 28,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 24,
+      "funkce": 1,
+      "media": 3
+    },
+    "dle_jistoty": {
+      "fakt": 28
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2018-09-038",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Komentované prohlídky pro skupiny i jednotlivce",
+      "popis": "Infocentrum města Mariánské Lázně nově pořádá od 16.8. každý čtvrtek a sobotu tematické komentované prohlídky. Vstupenky lze koupit v infocentru nebo si je obje",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-042",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Západočeský symfonický orchestr s hvězdami nejen na Chopinově festivalu",
+      "popis": "17. srpna 2018 jsme ve Společenském domě Casino v Mariánských Lázních mohli být opět po roce svědky skvělého uměleckého zážitku, když zdejší symfonický orchestr",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/042.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-046",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PŘEHLED KONCERTŮ - ČERVEN 2019",
+      "popis": "51. ROČNÍK MEZINÁRODNÍHO HUDEBNÍHO FESTIVALU DVO- ŘÁKOVA PŘÍBRAM",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/046.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-051",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "HROZNATOVA AKADEMIE KLÁŠTER TEPLÁ",
+      "popis": "Srdečně Vás zveme na prohlídku Život v barokním klášteře. Otevřeno od pondělí do soboty od 10.00 do 17.00 h, v neděli od 11.00 do 17.00h. Rodiče s dětmi zveme n",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/051.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-021",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "Marienbad Film Festival bude štědrý na předpremiéry",
+      "popis": "Ve druhém červencovém týdnu, od 8. do 11. 7. , proběhne 6. ročník Marienbad Film Festivalu. Ve dvou sálech bývalého hotelu Lesní mlýn nabídne vedle současné exp",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-022",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "léto se ZSO",
+      "popis": "V letošním roce uplyne 200 let od založení stálého orchestru v Mariánských Lázních. Je to až neuvěřitelné číslo. Náš orchestr je jeden z nejstarších ve střední ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-023",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "Nový šéfdirigent ZSO",
+      "popis": "Po deseti letech v čele Západočeského symfonického orchestru se s postem šéfdirigenta loučí Martin Peschík. Bude s orchestrem samozřejmě i nadále spolupracovat.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-024",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "pozdrav nového šéfdirigenta",
+      "popis": "Vážené dámy a pánové, abonenti ZSO, hudbymilovní přátelé, ač se zdá, že tato nelehká doba, která zasáhla veškerý normální život na celé planetě, nepřinesla nic ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "funkce:baborak-radek:0",
+      "datum": "2021-09",
+      "datum_do": "2025",
+      "presnost": "obdobi",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "funkce",
+      "nadpis": "Radek Baborák — šéfdirigent ZSO Mariánské Lázně",
+      "popis": "šéfdirigent ZSO Mariánské Lázně (2021-09 – 2025).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-021",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "TISKOVÁ ZPRÁVA",
+      "popis": "Ke svému významnému výročí – 200 let od založení odehrál Západočeský symfonický orchestr dva gala koncerty na kolonádě v Mariánských Lázních. Uskutečnily se 25.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-10-023",
+      "datum": "2021-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "ODHALENÍ SOCHY VIOLONCELLISTY",
+      "popis": "V pátek 10. září 2021 byla v lázeňském parku před budovou Casina odhalena socha „Violoncellista“. Autorem tohoto díla byl Josef Václav Schwarz, který vytvořil t",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fd74b073%7C2982#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-10/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-12-020",
+      "datum": "2021-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-12-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "ABONENTNÍ KONCERT – ABO 3",
+      "popis": "Georg Philipp Telemann: Koncert pro housle, 3 lesní rohy a smyčce Jaroslav Krček: Hudba Vánoc Georg Friedrich Händel: Hudba k ohňostroji (výběr) Antonio Vivaldi",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1b742efa%7C3057#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-12/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-09-025",
+      "datum": "2022-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ZÁŘÍ 2022",
+      "popis": "změna programu vyhrazena! Slavnostní večer s hudbou a mluveným slovem k životnímu jubileu českého houslového virtuóza Václava Hudečka. V křesle pro hosta vedle ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c13019ed%7C3593#page=22",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-09/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-zapadocesky-symfonicky-orchestr-zve-na-vanocni-koncerty-8891439",
+      "datum": "2022-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-14",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Západočeský symfonický orchestr zve na vánoční koncerty",
+      "popis": "Šéfdirigent Radek Baborák pozval na vánoční koncerty Západočeského symfonického orchestru. Konat se měly v Mariánských Lázních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/zapadocesky-symfonicky-orchestr-zve-na-vanocni-koncerty-8891439",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:kkr-aktuality-predvanocni-koncert-spoji-marianskolazenske-symfoniky-s-peve",
+      "datum": "2022-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-19",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Předvánoční koncert spojí mariánskolázeňské symfoniky s pěveckými sbory",
+      "popis": "Západočeský symfonický orchestr uzavřel rok koncertem nazvaným S hvězdami nad hlavou pod taktovkou Radka Baboráka. Zazněly skladby světových autorů i vánoční ko",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.kr-karlovarsky.cz/aktuality/predvanocni-koncert-spoji-marianskolazenske-symfoniky-s-peveckymi-sbory",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-11-040",
+      "datum": "2023-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "ZÁKLADNÍ UMĚLECKÁ ŠKOLA FRYDERYKA CHOPINA SE ZAPOJILA DO STIPENDIJNÍHO PROGRAMU MENART, ANEB ZA KAŽDÝM ÚSPĚŠNÝM UMĚLCEM STOJÍ OSVÍCENÝ PEDAGOG",
+      "popis": "MenART (spojení slov umělecký mentoring) je stipendijní program určený dětem a studentům, kteří projevují mimořádné nadání v uměleckých oborech a mají touhu se ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=df015e5b%7C3997#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-11/040.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-040",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – červen",
+      "popis": "INFOCENTRUM 1. 6. 15:30 Po pramenech - tematická komentovaná prohlídka 6. 6. 15:30 Dendrologická prohlídka aneb co sázel ještě Skalník - tematická komentovaná p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/040.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-028",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – září",
+      "popis": "Toto prosím vložit přes všechny tři sloupce na str. 20: Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete in",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-11-033",
+      "datum": "2024-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – listopad",
+      "popis": "20. 11. 19:30 Jiří Dědeček. Malá scéna. Koncert k příležitosti 35. výročí Sametové revoluce. Český písničkář, básník, textař, překladatel, spisovatel a autor če",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=eaa59ce0%7C4345#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-11/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-12-027",
+      "datum": "2024-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-12-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – prosinec",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=cf2df4a1%7C4413#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-12/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-04-034",
+      "datum": "2025-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – duben",
+      "popis": "HOTEL KRAKONOŠ 11. 4. 19.30 Beseda s Petrem Martinákem, známým hercem, moderátorem a imitátorem. Akce se uskuteční v kongresovém sále hotelu Krakonoš  MĚSTSKÉ D",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e3b47ab8%7C4524#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-04/034.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-046",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – květen",
+      "popis": "a koncertů pro návštěvníky s platnou vstupenkou. 13. 5. 14.00 Prohlídka městského divadla s průvodcem. Sraz u divadelní pokladny. 14. 5. 19.30 Nejen na krásném ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/046.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-06-038",
+      "datum": "2025-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-06-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – červen",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=492e199e%7C4550#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-06/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-mladi-soliste-vystoupi-v-marianskych-laznich-po-boku-zapadoceskeho-sym",
+      "datum": "2025-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-04",
+      "rok": 2025,
+      "typ": "media",
+      "nadpis": "Mladí sólisté vystoupí v Mariánských Lázních po boku Západočeského symfonického orchestru",
+      "popis": "Západočeský symfonický orchestr doprovodil 6. června mladé sólisty ze stipendijní Akademie MenART. Koncert řídil dirigent Radek Baborák a uzavřel mentoringový p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/mladi-soliste-vystoupi-v-marianskych-laznich-po-boku-zapadoceskeho-symfonickeho-9487495",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-09-025",
+      "datum": "2025-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-09-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – září",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f06bb416%7C4646#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-09/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-033",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – říjen",
+      "popis": "Účinkuje Trio Melodie a sólisté – Lydie Havláková – mezzosoprán, Jan Flégl – tenor, Vladimír Jelen – basbaryton 29. 10. 19.30 S hudbou kolem světa. S oblíbenými",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-013",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Vést nejstarší orchestr v zemi je čest, ale i velká zodpovědnost, říká Vladimír Smutný",
+      "popis": "Západočeský symfonický orchestr je nejstarším symfonickým orchestrem v České republice a příští rok si připomíná 205 let od svého vzniku. Do jeho čela na začátk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-023",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Zahájení prodeje abonmá Západočeského symfonického orchestru",
+      "popis": "Západočeský symfonický orchestr zahájil 1. června předprodej abonmá na sezonu 2026/2027. Novou sezonu otevře pod vedením šéfdirigentky Michaely Rózsa Růžičkové,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

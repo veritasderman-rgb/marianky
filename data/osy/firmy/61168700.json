@@ -1,0 +1,136 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "61168700",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-06-22",
+    "do": "2023-09-19",
+    "prvni_rok": 1994,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:61168700:vznik",
+      "datum": "1994-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-06-22",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — BYTOV Mariánské Lázně, s.r.o.",
+      "popis": "Vznik subjektu BYTOV Mariánské Lázně, s.r.o. (IČO 61168700), Společnost s ručením omezeným, obor: Ostatní činnosti v oblasti nemovitostí na základě smlouvy nebo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-55-55/5",
+      "datum": "2012-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-14",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "BYTOV - prodloužení smlouvy",
+      "popis": "Rada města, bod 55/5, usnesení 74/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/703538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/55.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-147-147/3",
+      "datum": "2014-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu areálu Chebská 252",
+      "popis": "Rada města, bod 147/3, usnesení 106/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1098772",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/147.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-18-18/19",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Prohlášení vlastníků bytového domu č.p. 804, st.p.č. 2869 a č.p. 805, st.p.č. 2868, ul. Kubelíkova, k.ú. Úšovice, obec Mariánské Lázně, založení SVJ",
+      "popis": "Zastupitelstvo města, bod 18/19, usnesení 396/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2639848",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-33-33/2",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Ukončení mandátní smlouvy na zajištění správy, údržby a oprav nemovitostí",
+      "popis": "Rada města, bod 33/2, usnesení 570/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3076865",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00253928",
+    "nazev": "Obec Drmoul"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-12-27",
+    "do": "2025-12-18",
+    "prvni_rok": 2018,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 13,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 10,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "nizka": 2,
+      "fakt": 13
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2017-32/14__7381979",
+      "datum": "2018-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-27",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o závazku veřejné služby",
+      "popis": "Odhadované spojení smlouvy z 2018-12-27 s bodem 32/14 z 2017-12-12 (Prodej poz. parcely č. 1291/3 k. ú. Úšovice – Obec Drmoul). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00253928 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 380 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7969911",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7381979",
+      "datum": "2018-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-27",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7969911",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10790144",
+      "datum": "2020-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby v osobní dopravě",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11612832",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15298483",
+      "datum": "2021-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-28",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby v osobní dopravě",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16472219",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-20-20/25",
+      "datum": "2021-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-22",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Záměr směny parcel v k. ú. Úšovice s obcí Drmoul v rámci odbahnění Knížecího rybníku",
+      "popis": "Zastupitelstvo města, bod 20/25, usnesení 443/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2690203",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/20.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-22-22/20",
+      "datum": "2021-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Směnné smlouvy s obcí Drmoul - odbahnění Knížecího rybníku",
+      "popis": "Zastupitelstvo města, bod 22/20, usnesení 496/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2756827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/13",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o smlouvě budoucí kupní s obcí Drmoul",
+      "popis": "Zastupitelstvo města, bod 23/13, usnesení 514/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2775869",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:17978671",
+      "datum": "2022-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Pozemkové parcely ve vlastnictví města Mariánské Lázně  č. 1292/9, č. 1292/10, 1292/11, č. 1292/12, č. 1292/14, 1292/15 , č. 1292/16 a č. 1292/24 všechny v k. ú. Úšovice za parcelu ve vlastnictví obce Drmoul č. 985/4 k. ú. Drmoul.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": 2302097.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19337067",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17978675",
+      "datum": "2022-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 985/4 k. ú. Drmoul",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": 2543904.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19337071",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18391627",
+      "datum": "2022-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Veřejná služba  ve veřejné osobní dopravě",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19775219",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-20/26__22269145",
+      "datum": "2023-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-27",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o závazku veřejné služby ve veřejné osobní dopravě",
+      "popis": "Odhadované spojení smlouvy z 2023-02-27 s bodem 20/26 z 2021-06-22 (Souhlasné prohlášení o uznání vlastnického práva - duplicitní vlastnictví p. p. č. 1292/23 k",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00253928 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 615 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/23884281",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22269145",
+      "datum": "2023-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-27",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby ve veřejné osobní dopravě",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23884281",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25435311",
+      "datum": "2024-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby ve veřejné  osobní dopravě k zajištění ostatní dopravní obslužnosti obce Drmoul",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": 329918.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27237311",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29670196",
+      "datum": "2024-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby ve veřejné  osobní dopravě k zajištění ostatní dopravní obslužnosti obce Drmoul",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": 343059.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31697720",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34174469",
+      "datum": "2025-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-18",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o závazku veřejné služby ve veřejné  osobní dopravě k zajištění ostatní dopravní obslužnosti obce Drmoul",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Obec Drmoul.",
+      "castka_czk": 350491.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36415093",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09238786",
+    "nazev": "New Czech Jewelry s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-06-10",
+    "do": "2024-07-25",
+    "prvni_rok": 2020,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:09238786:vznik",
+      "datum": "2020-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-10",
+      "rok": 2020,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — New Czech Jewelry  s.r.o.",
+      "popis": "Vznik subjektu New Czech Jewelry  s.r.o. (IČO 09238786), Společnost s ručením omezeným, obor: Velkoobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-60-60/8",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Franze Kafky, č.p. 833, nebyt. jednotka B2-VI",
+      "popis": "Rada města, bod 60/8, usnesení 509/24. Schvaleno.",
+      "castka_czk": 42000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3226453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-60/8__27700272",
+      "datum": "2024-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost New Czech Jewelry s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-07-25 s bodem 60/8 z 2024-07-23 (Pronájem NP Franze Kafky, č.p. 833, nebyt. jednotka B2-VI). Jistota stredni.",
+      "castka_czk": 254100.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09238786 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29610320",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27700272",
+      "datum": "2024-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-25",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost New Czech Jewelry s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana New Czech Jewelry s.r.o..",
+      "castka_czk": 254100.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29610320",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

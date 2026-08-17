@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44017553",
+    "nazev": "BRNOFROST spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-03-05",
+    "do": "2019-12-13",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-14-14/4",
+      "datum": "2019-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-05",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce chlazení zimního stadionu v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 14/4, usnesení 114/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2308445",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-14/4__7973111",
+      "datum": "2019-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-27",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Zimní stadion Mariánské Lázně – rekonstrukce chladící desky  a technologie chlazení“.",
+      "popis": "Odhadované spojení smlouvy z 2019-03-27 s bodem 14/4 z 2019-03-05 (Rekonstrukce chlazení zimního stadionu v Mariánských Lázních - výběr dodavatele). Jistota niz",
+      "castka_czk": 37425300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44017553 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova chlazeni, rekonstrukce; k témuž usnesení se ",
+      "url": "https://smlouvy.gov.cz/smlouva/8608371",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7973111",
+      "datum": "2019-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-27",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Zimní stadion Mariánské Lázně – rekonstrukce chladící desky  a technologie chlazení“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BRNOFROST spol. s r.o..",
+      "castka_czk": 37425300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8608371",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-14/4__9479202",
+      "datum": "2019-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-19",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Mění se rozsah plnění a zároveň cena díla. Mění se termín dokončení díla. Mění se způsob zajištění závazků zhotovitele.",
+      "popis": "Odhadované spojení smlouvy z 2019-09-19 s bodem 14/4 z 2019-03-05 (Rekonstrukce chlazení zimního stadionu v Mariánských Lázních - výběr dodavatele). Jistota niz",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44017553 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 198 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/10204646",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9479202",
+      "datum": "2019-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-19",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Mění se rozsah plnění a zároveň cena díla. Mění se termín dokončení díla. Mění se způsob zajištění závazků zhotovitele.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BRNOFROST spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10204646",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-14/4__10309220",
+      "datum": "2019-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-13",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Mění se rozsah plnění a zároveň cena díla",
+      "popis": "Odhadované spojení smlouvy z 2019-12-13 s bodem 14/4 z 2019-03-05 (Rekonstrukce chlazení zimního stadionu v Mariánských Lázních - výběr dodavatele). Jistota niz",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44017553 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 283 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/11087416",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10309220",
+      "datum": "2019-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-13",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Mění se rozsah plnění a zároveň cena díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BRNOFROST spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11087416",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

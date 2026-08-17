@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29161304",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-10-19",
+    "do": "2017-06-27",
+    "prvni_rok": 2012,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:29161304:vznik",
+      "datum": "2012-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-10-19",
+      "rok": 2012,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Russkij Dom M.L. s.r.o.",
+      "popis": "Vznik subjektu Russkij Dom M.L. s.r.o. (IČO 29161304), Společnost s ručením omezeným, obor: Výroba pryžových a plastových výrobků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-15-15/8",
+      "datum": "2013-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-05",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Pronájem a prodej objektu LIL - Anglická č.p. 336",
+      "popis": "Zastupitelstvo města, bod 15/8, usnesení 490/13. Schvaleno.",
+      "castka_czk": 20000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/905385",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-103-103/5",
+      "datum": "2013-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronajmout objekt LIL",
+      "popis": "Rada města, bod 103/5, usnesení 117/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/916230",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-119-119/8",
+      "datum": "2017-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-27",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o spolupráci",
+      "popis": "Rada města, bod 119/8, usnesení 379/17.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1781000",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "48108375",
+    "nazev": "AV MEDIA, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-04-21",
+    "do": "2025-06-10",
+    "prvni_rok": 2015,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-19-19/1",
+      "datum": "2015-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-21",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Vybavení ZUŠ – Interaktivní tabule",
+      "popis": "Rada města, bod 19/1, usnesení 163/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1378787",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-110-110/14",
+      "datum": "2021-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-25",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Modernizace multimediální učebny na ZŠ Vítězství Mariánské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 110/14, usnesení 210/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2683602",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-110/14__15909431",
+      "datum": "2021-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-02",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Předmětem této smlouvy je dodávka nábytku, pomůcek a vybavení učebny ZŠ Vítězství v Mariánských Lázních.",
+      "popis": "Odhadované spojení smlouvy z 2021-07-02 s bodem 110/14 z 2021-05-25 (Modernizace multimediální učebny na ZŠ Vítězství Mariánské Lázně - výběr dodavatele). Jisto",
+      "castka_czk": 1487472.36,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 48108375 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 38 dní po usnesení; název bodu a předmět smlouvy sdílí slova ucebny, vitezstvi",
+      "url": "https://smlouvy.gov.cz/smlouva/17121767",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15909431",
+      "datum": "2021-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-02",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Předmětem této smlouvy je dodávka nábytku, pomůcek a vybavení učebny ZŠ Vítězství v Mariánských Lázních.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV MEDIA SYSTEMS, a.s..",
+      "castka_czk": 1487472.36,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17121767",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31523753",
+      "datum": "2025-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Vybavení Domu Chopin dle nabídky č. 24AMNAB02111",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AV MEDIA, a.s..",
+      "castka_czk": 496414.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33640509",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

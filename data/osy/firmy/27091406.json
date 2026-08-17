@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27091406",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-06-03",
+    "do": "2017-02-21",
+    "prvni_rok": 2014,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-156-156/3",
+      "datum": "2014-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-06-03",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Plnění za příspěvek na fasádu hotelu Palace",
+      "popis": "Rada města, bod 156/3, usnesení 240/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1130316",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-24-24/19",
+      "datum": "2017-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-21",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Program regenerace městských památkových rezervací a městských památkových zón na rok 2017 – rozdělení státní finanční podpory",
+      "popis": "Zastupitelstvo města, bod 24/19, usnesení 441/17. Schvaleno.",
+      "castka_czk": 200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1709826",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

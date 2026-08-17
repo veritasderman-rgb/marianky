@@ -1,0 +1,126 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "flek-jakub",
+    "jmeno": "Jakub Flek",
+    "role": [
+      "hokejista"
+    ],
+    "kategorie": "sport",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2019-04",
+    "do": "2024-08",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 4
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2019-04-043",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "XV. ročník vyhlášení nejlepších sportovců města je minulostí",
+      "popis": "V sobotu 16. března 2019 se v reprezentačních prostorách hotelu Continental uskutečnil Společenský ples sportovců a XV. ročník Vyhlášení nejlepších sportovců mě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-014",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "27. ROČNÍK TURNAJE TENIS CUP A SLAVNOSTNÍ OTEVŘENÍ HOTELU QUEENS",
+      "popis": "Dne 14. 8. 2021 se v areálu nově zrekonstruovaných tenisových kurtů v Anglické ulici konal již 27. ročník Společenského tenisového turnaje za mezinárodní účasti",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-07-030",
+      "datum": "2024-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – červenec",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50df7f3e%7C4236#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-07/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-08-037",
+      "datum": "2024-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Zlatý Jakub Flek přivezl na kolonádu vítězný pohár",
+      "popis": "Na kolonádě v Mariánských Lázních se sešli sportovní nadšenci, aby se setkali s jedním z nejúspěšnějších českých hokejistů současnosti, Jakubem Flekem. Akce nab",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0c3aa834%7C4244#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-08/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

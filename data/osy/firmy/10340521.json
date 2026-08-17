@@ -1,0 +1,439 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10340521",
+    "nazev": "Ing. Ivan Hložek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-03-23",
+    "do": "2025-12-23",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 20,
+    "dolozenych": 14,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 6,
+      "usneseni": 7,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 14,
+      "nizka": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:10340521:vznik",
+      "datum": "1992-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-03-23",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Hložek Ivan, Ing.",
+      "popis": "Vznik subjektu Hložek Ivan, Ing. (IČO 10340521), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Architektonické či",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:11164108",
+      "datum": "2020-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Stavebně-staticko-technický průzkum objektu Hlavní 314, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Ivan Hložek.",
+      "castka_czk": 119790.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12010152",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-88-88/9",
+      "datum": "2020-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-27",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce bytového domu Hlavní 314, Mariánské Lázně – PD",
+      "popis": "Rada města, bod 88/9, usnesení 543/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2596373",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-93-93/7",
+      "datum": "2020-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-22",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "SOBS - zříz. služebnosti inž. sítí - PENZION EDISON",
+      "popis": "Rada města, bod 93/7, usnesení 637/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2617763",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-97-97/10",
+      "datum": "2021-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Služebnost cesty a stezky - sjezd z ul. Anglická - Tennis Agens",
+      "popis": "Rada města, bod 97/10, usnesení 49/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2637659",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:20948629",
+      "datum": "2022-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Ing. Ivan Hložek.",
+      "castka_czk": 95590.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22486333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-57-57/2",
+      "datum": "2024-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy s Ing. Ivanem Hložkem - Nemocnice Parkoviště",
+      "popis": "Rada města, bod 57/2, usnesení 430/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3211139",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-57/2__28624944",
+      "datum": "2024-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka - Přemístění okružní křižovatky v centru M.L.",
+      "popis": "Odhadované spojení smlouvy z 2024-06-17 s bodem 57/2 z 2024-06-14 (Uzavření smlouvy s Ing. Ivanem Hložkem - Nemocnice Parkoviště). Jistota nizka.",
+      "castka_czk": 209330.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/30593120",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28624944",
+      "datum": "2024-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Přemístění okružní křižovatky v centru M.L.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Ivan Hložek.",
+      "castka_czk": 209330.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30593120",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-57/2__27270512",
+      "datum": "2024-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Nemocnice M.L. - parkoviště PD aktualizace",
+      "popis": "Odhadované spojení smlouvy z 2024-06-19 s bodem 57/2 z 2024-06-14 (Uzavření smlouvy s Ing. Ivanem Hložkem - Nemocnice Parkoviště). Jistota nizka.",
+      "castka_czk": 134270.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; smlouva podepsána 5 dní po usnesení; název bodu a předmět smlouvy sdílí slova nemocnice, parkoviste; k témuž usnesení se hlásí i 1 další smlouva téže protistr",
+      "url": "https://smlouvy.gov.cz/smlouva/29160912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27270512",
+      "datum": "2024-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Nemocnice M.L. - parkoviště PD aktualizace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hložek Ivan, Ing..",
+      "castka_czk": 134270.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29160912",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/19",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smlouvy o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka",
+      "popis": "Rada města, bod 67/19, usnesení 665/24. Schvaleno.",
+      "castka_czk": 1026080,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3258381",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-74-74/14",
+      "datum": "2024-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-18",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka",
+      "popis": "Rada města, bod 74/14, usnesení 877/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3299910",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/74.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/19__29510480",
+      "datum": "2024-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - projektová dokumentace Třešňovka",
+      "popis": "Odhadované spojení smlouvy z 2024-12-19 s bodem 67/19 z 2024-10-01 (Postoupení smlouvy o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka). Jistot",
+      "castka_czk": 1393918.79,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; smlouva podepsána 79 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, dokumentace, projektova, tresnovka; usnesení mluví o dodatku, smlouva se ",
+      "url": "https://smlouvy.gov.cz/smlouva/31529888",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-74/14__29510480",
+      "datum": "2024-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - projektová dokumentace Třešňovka",
+      "popis": "Odhadované spojení smlouvy z 2024-12-19 s bodem 74/14 z 2024-12-18 (Smlouva o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka). Jistota nizka.",
+      "castka_czk": 1393918.79,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova dilo, dokumentace, projektova, tresnovka; stejně dobře sedí i 1 další usnesení; ",
+      "url": "https://smlouvy.gov.cz/smlouva/31529888",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29510480",
+      "datum": "2024-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - projektová dokumentace Třešňovka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hložek Ivan, Ing..",
+      "castka_czk": 1393918.79,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31529888",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/19__31700617",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka úprava projektové dokumentace Rekonstrukce BD Hlavní 314",
+      "popis": "Odhadované spojení smlouvy z 2025-06-19 s bodem 67/19 z 2024-10-01 (Postoupení smlouvy o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka). Jistot",
+      "castka_czk": 74294.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 261 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/33826313",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-74/14__31700617",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka úprava projektové dokumentace Rekonstrukce BD Hlavní 314",
+      "popis": "Odhadované spojení smlouvy z 2025-06-19 s bodem 74/14 z 2024-12-18 (Smlouva o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka). Jistota nizka.",
+      "castka_czk": 74294.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10340521 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 183 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/33826313",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31700617",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka úprava projektové dokumentace Rekonstrukce BD Hlavní 314",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Ivan Hložek.",
+      "castka_czk": 74294.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33826313",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-107-107/4",
+      "datum": "2025-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-23",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Informace o postupu prací projektu „Bytové domy Třešňovka“",
+      "popis": "Rada města, bod 107/4, usnesení 848/25. Schvaleno.",
+      "castka_czk": 78400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3612032391",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

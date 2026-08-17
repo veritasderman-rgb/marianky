@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24795780",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-01-24",
+    "do": "2025-04-15",
+    "prvni_rok": 2011,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:24795780:vznik",
+      "datum": "2011-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-01-24",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Tennis Agens Mariánské Lázně spol. s r.o.",
+      "popis": "Vznik subjektu Tennis Agens Mariánské Lázně spol. s r.o. (IČO 24795780), Společnost s ručením omezeným, obor: Poskytování ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-97-97/10",
+      "datum": "2021-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Služebnost cesty a stezky - sjezd z ul. Anglická - Tennis Agens",
+      "popis": "Rada města, bod 97/10, usnesení 49/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2637659",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-97-97/2",
+      "datum": "2021-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Služebnost cesty a stezky Tennis Agens",
+      "popis": "Rada města, bod 97/2, usnesení 41/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2636813",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/14",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti práva uložení, provozu a údržby dešťové kanalizace a sjezdu pro budovu Tenis clubu – ul. Anglická",
+      "popis": "Rada města, bod 85/14, usnesení 286/25. Schvaleno.",
+      "castka_czk": 43318,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3353444",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26385783",
+    "nazev": "GASEKO, plyn, topení, sanita s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-02-18",
+    "do": "2026-01-07",
+    "prvni_rok": 2005,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 22,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "smlouva": 19
+    },
+    "dle_jistoty": {
+      "fakt": 22
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26385783:vznik",
+      "datum": "2005-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-02-18",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — GASEKO, plyn, topení, sanita s.r.o.",
+      "popis": "Vznik subjektu GASEKO, plyn, topení, sanita s.r.o. (IČO 26385783), Společnost s ručením omezeným, obor: Instalace rozvodů vody, odpadu, topení a klimatizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-89-89/3",
+      "datum": "2016-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-25",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 831 - prodloužení nájmu - GASEKO, plyn, topení, sanita s.r.o.",
+      "popis": "Rada města, bod 89/3, usnesení 508/16. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1654069",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:692025",
+      "datum": "2016-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-09",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Franze Kafky 831, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO, plyn, topení, sanita s.r.o..",
+      "castka_czk": 557640.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/735333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1430254",
+      "datum": "2017-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-15",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Revize a kontroly plynových zařízení v NP ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 69043.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1544978",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1768238",
+      "datum": "2017-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-10",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava kotlové jednotky výměnou a oprava komínového tělesa převložkováním s odděleným sáním v NP Chebská 251, Mariánské Lázně – Tip sport",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 93157.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1907698",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3249554",
+      "datum": "2017-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-19",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava kotlové jednotky výměnou a oprava komínového tělesa převložkováním s odděleným sáním v BD Třída Vítězství 19/26, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 117612.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3504970",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:4421512",
+      "datum": "2018-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize plynových zařízení a tlakových nádob v BJ a NP ve vlastnictví města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 78105.9961,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4766560",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5790647",
+      "datum": "2018-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava plynového vytápění -  výměna 3ks podokenních topidel, oprava prostupů pro odkouření převrtáním a oprava vnitřních plynových rozvodů v NP Nerudova 250 – oční optika a bývalé masáže, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 93678.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6237639",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7581223",
+      "datum": "2019-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 80828.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8183767",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9048155",
+      "datum": "2019-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava dožilého přímotopného zásobníku vody a otopného tělesa včetně přívodů výměnou v NP Hlavní 233, Mariánské Lázně – restaurace New York",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 70073.52,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9746799",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10750440",
+      "datum": "2020-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-31",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 81554.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11569548",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14310179",
+      "datum": "2021-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-26",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 79618.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15365007",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15557963",
+      "datum": "2021-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-26",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilé kotlové jednotky výměnou v NP Máchova 269, Mariánské Lázně - drogerie TETA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 73108.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16749443",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-128-128/6",
+      "datum": "2021-11-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 831 - GASEKO, plyn, topení, sanita s.r.o. - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 128/6, usnesení 513/21. Schvaleno.",
+      "castka_czk": 92172,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2769990",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:17219415",
+      "datum": "2021-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-26",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - GASEKO, ply, topení, sanita s.r.o. - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO, plyn, topení, sanita s.r.o..",
+      "castka_czk": 557640.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18531187",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17728835",
+      "datum": "2022-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-13",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 90750.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19071611",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18658171",
+      "datum": "2022-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilého plynového kotle s příslušenstvím výměnou, oprava radiátorů vč. termostatických hlavic výměnou a oprava spalinové cesty v NP Družstevní 415, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 107559.32,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20054935",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:19666783",
+      "datum": "2022-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilého plynového kotle výměnou a oprava kouřovodu vyvložkováním v NP Chebská 495, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 112118.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21138535",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20285997",
+      "datum": "2022-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilých podokenních topidel v BJ Hlavní 314, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 74799.78,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21791609",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:21719657",
+      "datum": "2023-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 94259.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23305677",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26032435",
+      "datum": "2024-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO s.r.o..",
+      "castka_czk": 113014.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27867959",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34279893",
+      "datum": "2026-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 1/26 - Pravidelné roční revize a kontroly plynových zařízení v NP a BJ ve vlastnictví města a pravidelné roční revize tlakových nádob v BJ a NP Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASEKO, plyn, topení, sanita s.r.o..",
+      "castka_czk": 109626.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36524993",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

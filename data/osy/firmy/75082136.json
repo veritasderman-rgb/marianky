@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "75082136",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-01-21",
+    "do": "2014-05-20",
+    "prvni_rok": 2014,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-139-139/12",
+      "datum": "2014-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-01-21",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke smlouvě - dotace ROP PARKY",
+      "popis": "Rada města, bod 139/12, usnesení 25/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1070747",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-154-154/2",
+      "datum": "2014-05-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-20",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Projekt OA - Smlouva o poskytnutí dotace",
+      "popis": "Rada města, bod 154/2, usnesení 213/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1124777",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

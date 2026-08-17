@@ -1,0 +1,129 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "nehr-johann",
+    "jmeno": "Johann Josef Nehr",
+    "role": [
+      "zakladatel lázní",
+      "lékař"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1779",
+    "do": "2026-05",
+    "prvni_rok": 1779,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "historie": 2,
+      "zpravodaj": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 1
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1779-nehr-kura",
+      "datum": "1779",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1779-01-01",
+      "rok": 1779,
+      "typ": "historie",
+      "nadpis": "Klášterní lékař Nehr prosazuje léčebné využití pramenů",
+      "popis": "Klášterní lékař Johann Josef Nehr přesvědčil opata a několik řeholníků tepelského kláštera, aby vyzkoušeli lázeňskou kúru u zdejších minerálních pramenů. Nehr j",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1805-prvni-lazensky-dum",
+      "datum": "1805",
+      "datum_do": "1808",
+      "presnost": "obdobi",
+      "razeni": "1805-01-01",
+      "rok": 1805,
+      "typ": "historie",
+      "nadpis": "První zděný dům pro lázeňské hosty („Zlatá koule“)",
+      "popis": "U Křížového pramene byl postaven první zděný dům pro lázeňské hosty, nazvaný „Zlatá koule“. Postavil ho klášterní lékař Johann Josef Nehr.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "Prameny se v dataci liší: oficiální stránky města uvádějí rok 1805, turistický portál města roky 1805–1807, přehled „Osmičkové roky“ klade stavbu a první lázeňskou sezonu do roku 1808.",
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-010",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánky jsou lázně pěti hvězd, říká emeritní primář Pavel Knára",
+      "popis": "Emeritní primář Pavel Knára spojil s Mariánskými Lázněmi bezmála půl století života. Za tu dobu léčil desetitisíce pacientů, do detailu se ponořil do zdejších m",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-015",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Osobnosti Mariánských Lázní jinak: historie v obrazech",
+      "popis": "O Mariánských Lázních, jejich historii i slavných návštěvnících bylo napsáno mnoho knih. Ne každý čtenář má ale chuť procházet rozsáhlé publikace. Proto jsme zv",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

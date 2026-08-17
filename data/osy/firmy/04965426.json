@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04965426",
+    "nazev": "ALWE s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-04-05",
+    "do": "2026-04-09",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:04965426:vznik",
+      "datum": "2016-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-05",
+      "rok": 2016,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — ALWE s.r.o.",
+      "popis": "Vznik subjektu ALWE s.r.o. (IČO 04965426), Společnost s ručením omezeným, obor: Činnosti reklamních agentur.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:1068017",
+      "datum": "2017-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-13",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "7 kusů informačních stojanů s mapami lyžařských běžeckých v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALWE s.r.o .",
+      "castka_czk": 115827.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1136781",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26900876",
+      "datum": "2024-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka reklamních materiálů k Zahájení lázeňské sezóny 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALWE s.r.o..",
+      "castka_czk": 63148.69,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28775800",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35245833",
+      "datum": "2026-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-09",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana ALWE s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37532773",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01823167",
+    "nazev": "Radek Dymáček"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-01-10",
+    "do": "2022-01-14",
+    "prvni_rok": 2017,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-98-98/2",
+      "datum": "2017-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 122 - postoupení smlouvy o nájmu - Jan Linhart x Radek Dymáček",
+      "popis": "Rada města, bod 98/2, usnesení 13/17. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1694610",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-105-105/2",
+      "datum": "2017-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-07",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 122 - prodloužení nájmu - Radek Dymáček",
+      "popis": "Rada města, bod 105/2, usnesení 139/17. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1723071",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-105/2__5031991",
+      "datum": "2018-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-27",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Hlavní 122, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-04-27 s bodem 105/2 z 2017-03-07 (NP Hlavní 122 - prodloužení nájmu - Radek Dymáček). Jistota nizka.",
+      "castka_czk": 2606289.18,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01823167 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 416 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/5423307",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-98/2__5031991",
+      "datum": "2018-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-27",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Hlavní 122, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-04-27 s bodem 98/2 z 2017-01-10 (NP Hlavní 122 - postoupení smlouvy o nájmu - Jan Linhart x Radek Dymáček). Jistota nizka.",
+      "castka_czk": 2606289.18,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01823167 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 472 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/5423307",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5031991",
+      "datum": "2018-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-27",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Hlavní 122, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Radek Dymáček.",
+      "castka_czk": 2606289.18,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5423307",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-128-128/5",
+      "datum": "2021-11-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 122 - Radek Dymáček - prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 128/5, usnesení 512/21. Schvaleno.",
+      "castka_czk": 527500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2769956",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-128/5__17754315",
+      "datum": "2022-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Radek Dymáček",
+      "popis": "Odhadované spojení smlouvy z 2022-01-14 s bodem 128/5 z 2021-11-16 (NP Hlavní, č.p. 122 - Radek Dymáček - prodloužení nájemního vztahu). Jistota stredni.",
+      "castka_czk": 3191375.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 01823167 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 59 dní po usnesení; název bodu a předmět smlouvy sdílí slova dymacek, prodlouzeni, radek",
+      "url": "https://smlouvy.gov.cz/smlouva/19098427",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17754315",
+      "datum": "2022-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Radek Dymáček",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Radek Dymáček.",
+      "castka_czk": 3191375.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19098427",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

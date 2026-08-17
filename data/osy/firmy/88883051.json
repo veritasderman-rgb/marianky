@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "88883051",
+    "nazev": "Oldřich Tůma"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-06-27",
+    "do": "2023-11-14",
+    "prvni_rok": 2012,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:88883051:vznik",
+      "datum": "2012-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-27",
+      "rok": 2012,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Oldřich Tůma",
+      "popis": "Vznik subjektu Oldřich Tůma (IČO 88883051), Zemědělský podnikatel - fyzická osoba, obor: Smíšené hospodaření.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-85-85/6",
+      "datum": "2016-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-27",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Pacht p.p.č. 1080/22 a č. 1080/33 v k.ú. Úšovice - zemědělské účely",
+      "popis": "Rada města, bod 85/6, usnesení 469/16. Schvaleno.",
+      "castka_czk": 3998,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1640134",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-118/3__23640251",
+      "datum": "2023-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 213/1 trvalý travní porost o výměře 14.815 m2  k. ú. Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2023-08-01 s bodem 118/3 z 2021-08-10 (Uzavření pachtovní smlouvy na p. p. č. 266/1 k.ú. Úšovice - u Elektrometallu). Jistota nizka",
+      "castka_czk": 13543.53,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 88883051 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 721 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25327951",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-28/5__23640251",
+      "datum": "2023-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 213/1 trvalý travní porost o výměře 14.815 m2  k. ú. Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2023-08-01 s bodem 28/5 z 2023-07-25 (Pacht poz. parcely č. 213/1 k.ú. Stanoviště u Mar. Lázní - ul. Plzeňská). Jistota nizka.",
+      "castka_czk": 13543.53,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 88883051 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 další",
+      "url": "https://smlouvy.gov.cz/smlouva/25327951",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23640251",
+      "datum": "2023-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 213/1 trvalý travní porost o výměře 14.815 m2  k. ú. Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Oldřich Tůma.",
+      "castka_czk": 13543.53,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25327951",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/16",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pachtu p. p. č. 1044/1 v k. ú. Úšovice",
+      "popis": "Rada města, bod 35/16, usnesení 632/23. Schvaleno.",
+      "castka_czk": 7327,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092470",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-37-37/15",
+      "datum": "2023-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-14",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pachtu p. p. č. 1044/1 v k. ú. Úšovice",
+      "popis": "Rada města, bod 37/15, usnesení 704/23. Schvaleno.",
+      "castka_czk": 7327,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3108077",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

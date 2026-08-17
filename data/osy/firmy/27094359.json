@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27094359",
+    "nazev": "ACG-Real s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-03-29",
+    "do": "2016-04-25",
+    "prvni_rok": 2016,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-62-62/11",
+      "datum": "2016-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele - MŠ Křižíkova – vybudování nového vstupu",
+      "popis": "Rada města, bod 62/11, usnesení 161/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1556484",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-62/11__149617",
+      "datum": "2016-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-25",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - MŠ Křižíkova - vybudování nového vstupu",
+      "popis": "Odhadované spojení smlouvy z 2016-04-25 s bodem 62/11 z 2016-03-29 (Výběr dodavatele - MŠ Křižíkova – vybudování nového vstupu). Jistota stredni.",
+      "castka_czk": 2142026.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27094359 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova krizikova, noveho, vstupu, vybudovani",
+      "url": "https://smlouvy.gov.cz/smlouva/159277",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:149617",
+      "datum": "2016-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-25",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - MŠ Křižíkova - vybudování nového vstupu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ACG-Real s.r.o..",
+      "castka_czk": 2142026.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/159277",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "67129544",
+    "nazev": "Eva Hrubá"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-12-21",
+    "do": "2022-12-06",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-132-132/5",
+      "datum": "2021-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní, č.p. 161 - dvorní trakt",
+      "popis": "Rada města, bod 132/5, usnesení 575/21. Schvaleno.",
+      "castka_czk": 84000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2783443",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/5__17754311",
+      "datum": "2022-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-10",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Eva Hrubá",
+      "popis": "Odhadované spojení smlouvy z 2022-01-10 s bodem 132/5 z 2021-12-21 (Pronájem NP Hlavní, č.p. 161 - dvorní trakt). Jistota stredni.",
+      "castka_czk": 512298.27,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 67129544 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19098423",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17754311",
+      "datum": "2022-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-10",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Eva Hrubá",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Eva Hrubá.",
+      "castka_czk": 512298.27,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19098423",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-5-5/13",
+      "datum": "2022-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.161 (dvorní trakt)- výpověď ze Smlouvy o nájmu neb. prostoru - Eva Hrubá",
+      "popis": "Rada města, bod 5/13, usnesení 571/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2941962",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64839982",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-01-21",
+    "do": "2017-09-12",
+    "prvni_rok": 1997,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64839982:vznik",
+      "datum": "1997-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-01-21",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — PC JANEBA Mariánské Lázně, z.s.",
+      "popis": "Vznik subjektu PC JANEBA Mariánské Lázně, z.s. (IČO 64839982), Spolek, obor: Činnosti organizací na podporu rekreační a zájmové činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-60-60/2",
+      "datum": "2016-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 60/2, usnesení 136/16. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1546906",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-16-16/7",
+      "datum": "2016-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 293/16.",
+      "castka_czk": 1200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1561386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-29-29/31",
+      "datum": "2017-09-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury- PC Janeba Mariánské Lázně, z.s.",
+      "popis": "Zastupitelstvo města, bod 29/31, usnesení 575/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1816386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

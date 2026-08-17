@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26366673",
+    "nazev": "King's Entertainment a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-04-02",
+    "do": "2024-04-10",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-49-49/18",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výpůjčce – socha Over the Earth, 2014, bronz",
+      "popis": "Rada města, bod 49/18, usnesení 216/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3174993",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/49.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-49/18__26672707",
+      "datum": "2024-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o výpůjčce - socha Over the Earth, 2014, bronz, 175x76x285 cm, signovaná značkou Tony Cragga",
+      "popis": "Odhadované spojení smlouvy z 2024-04-10 s bodem 49/18 z 2024-04-02 (Smlouva o výpůjčce – socha Over the Earth, 2014, bronz). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26366673 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova bronz, earth, over, socha",
+      "url": "https://smlouvy.gov.cz/smlouva/28537791",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26672707",
+      "datum": "2024-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o výpůjčce - socha Over the Earth, 2014, bronz, 175x76x285 cm, signovaná značkou Tony Cragga",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana King's Entertainment a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28537791",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

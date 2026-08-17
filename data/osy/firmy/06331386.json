@@ -1,0 +1,680 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06331386",
+    "nazev": "Jakub Vohnout"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-07",
+    "do": "2026-05-26",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 32,
+    "dolozenych": 24,
+    "odhadu": 8,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 17,
+      "retez": 8,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 24,
+      "stredni": 5,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:06331386:vznik",
+      "datum": "2017-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-07",
+      "rok": 2017,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jakub Vohnout",
+      "popis": "Vznik subjektu Jakub Vohnout (IČO 06331386), Fyzická osoba podnikající dle živnostenského zákona, obor: Inženýrské činnosti a související technické poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/16",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Jazzové lázně 2018",
+      "popis": "Zastupitelstvo města, bod 35/16, usnesení 697/18. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1926749",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/16__5089223",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - JAZZOVÉ LÁZNĚ 2018",
+      "popis": "Odhadované spojení smlouvy z 2018-05-09 s bodem 35/16 z 2018-04-12 (Jazzové lázně 2018). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 27 dní po usnesení; k témuž usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5484379",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5089223",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - JAZZOVÉ LÁZNĚ 2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5484379",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/4",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2019",
+      "popis": "Zastupitelstvo města, bod 2/4, usnesení 12/18. Schvaleno.",
+      "castka_czk": 397951000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145448",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/16__7967579",
+      "datum": "2019-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace z rozpočtu města",
+      "popis": "Odhadované spojení smlouvy z 2019-01-28 s bodem 35/16 z 2018-04-12 (Jazzové lázně 2018). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 291 dní po usnesení; k témuž usnesení se hlásí i 1 další smlo",
+      "url": "https://smlouvy.gov.cz/smlouva/8602583",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7967579",
+      "datum": "2019-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace z rozpočtu města",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8602583",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/4",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2020",
+      "popis": "Zastupitelstvo města, bod 10/4, usnesení 197/19. Schvaleno.",
+      "castka_czk": 383624720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2433453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-17-17/3",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2021",
+      "popis": "Zastupitelstvo města, bod 17/3, usnesení 361/20. Schvaleno.",
+      "castka_czk": 415455400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2605014",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-110-110/15",
+      "datum": "2021-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-25",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Letní kino v ML 2021",
+      "popis": "Rada města, bod 110/15, usnesení 211/21. Schvaleno.",
+      "castka_czk": 25000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2683701",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/6",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2022",
+      "popis": "Zastupitelstvo města, bod 23/6, usnesení 507/21. Schvaleno.",
+      "castka_czk": 427652900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__18854239",
+      "datum": "2022-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-09",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Jakub Vohnout",
+      "popis": "Odhadované spojení smlouvy z 2022-05-09 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 111 dní po usnesení; k témuž usnesení se hlásí i 1 další smlo",
+      "url": "https://smlouvy.gov.cz/smlouva/20260423",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18854239",
+      "datum": "2022-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-09",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Jakub Vohnout",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20260423",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-3-3/6",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2023",
+      "popis": "Zastupitelstvo města, bod 3/6, usnesení 33/22. Schvaleno.",
+      "castka_czk": 526578820,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2938538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__22471785",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Jazzové Lázně 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-04-14 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána až 451 dní po usnesení; k témuž usnesení se hlásí i 1 další s",
+      "url": "https://smlouvy.gov.cz/smlouva/24097205",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22471785",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Jazzové Lázně 2023",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24097205",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-20-20/4",
+      "datum": "2023-04-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-18",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Letní kino 2023 - žádost o spolupořadatelství a finanční spoluúčast",
+      "popis": "Rada města, bod 20/4, usnesení 241/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3004715",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/20.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-110/15__22720769",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka - letní kino 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 110/15 z 2021-05-25 (Letní kino v ML 2021). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 714 dní po usnesení; název bodu a předmět smlouvy sdílí slova kino, letni; stejně dobře sedí i 2 další",
+      "url": "https://smlouvy.gov.cz/smlouva/24358529",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-20/4__22720769",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka - letní kino 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 20/4 z 2023-04-18 (Letní kino 2023 - žádost o spolupořadatelství a finanční spoluúčast). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova kino, letni; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24358529",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-3/6__22720769",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka - letní kino 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 3/6 z 2022-12-13 (Rozpočet města Mariánské Lázně na rok 2023). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 147 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24358529",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22720769",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - letní kino 2023",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24358529",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-12-12/22",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně pro pana Jakuba Vohnouta na kulturní akci Jazzové lázně 2024",
+      "popis": "Zastupitelstvo města, bod 12/22, usnesení 235/23. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3119347",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/19",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2024",
+      "popis": "Rada města, bod 44/19, usnesení 68/24. Schvaleno.",
+      "castka_czk": 92000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3148072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-13-13/18",
+      "datum": "2024-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo",
+      "popis": "Zastupitelstvo města, bod 13/18, usnesení 265/24. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3138457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-18-18/15",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně pro pana Jakuba Vohnouta na kulturní akci Jazzové lázně",
+      "popis": "Zastupitelstvo města, bod 18/15, usnesení 418/24. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3290795",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/15__29890036",
+      "datum": "2025-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Jakub Vohnout - Jazzové lázně 2025,2026,2027",
+      "popis": "Odhadované spojení smlouvy z 2025-01-28 s bodem 18/15 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně pro pana Jakuba Vohnouta na kulturní ak",
+      "castka_czk": 300000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06331386 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 49 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31928552",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29890036",
+      "datum": "2025-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Jakub Vohnout - Jazzové lázně 2025,2026,2027",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jakub Vohnout.",
+      "castka_czk": 300000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31928552",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/20",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Rada města, bod 77/20, usnesení 92/25. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317945",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-118-118/50",
+      "datum": "2026-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-26",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně - Slavnostní koncert k 25. výročí festivalu Jazzové lázně 2026",
+      "popis": "Rada města, bod 118/50, usnesení 1207/26. Schvaleno.",
+      "castka_czk": 20000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3749896635",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

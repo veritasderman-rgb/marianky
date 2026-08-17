@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49657259",
+    "nazev": "Ing.arch. Neřold Petr"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-17",
+    "do": "2022-11-08",
+    "prvni_rok": 2019,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-50-50/40",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Zástavba lokality U Pily rodinnými domy - PD - výběr dodavatele",
+      "popis": "Rada města, bod 50/40, usnesení 662/19.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2451963",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-50-50/41",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Zástavba lokality Hamrníky rodinnými domy - PD - výběr dodavatele",
+      "popis": "Rada města, bod 50/41, usnesení 663/19.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2451978",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/40__11041408",
+      "datum": "2020-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Zástavba lokality U Pily rodinnými domy“.",
+      "popis": "Odhadované spojení smlouvy z 2020-03-03 s bodem 50/40 z 2019-12-17 (Zástavba lokality U Pily rodinnými domy - PD - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 1452000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49657259 je uvedeno v textu usnesení; smlouva podepsána 77 dní po usnesení; název bodu a předmět smlouvy sdílí slova domy, lokality, pily, rodinnymi; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11881684",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/41__11041408",
+      "datum": "2020-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Zástavba lokality U Pily rodinnými domy“.",
+      "popis": "Odhadované spojení smlouvy z 2020-03-03 s bodem 50/41 z 2019-12-17 (Zástavba lokality Hamrníky rodinnými domy - PD - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 1452000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49657259 je uvedeno v textu usnesení; smlouva podepsána 77 dní po usnesení; název bodu a předmět smlouvy sdílí slova domy, lokality, rodinnymi, zastavba; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11881684",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11041408",
+      "datum": "2020-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Zástavba lokality U Pily rodinnými domy“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing.arch. Neřold Petr.",
+      "castka_czk": 1452000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11881684",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-3-3/8",
+      "datum": "2022-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Zástavba lokality Hamrníky rodinnými domy - PD",
+      "popis": "Rada města, bod 3/8, usnesení 520/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2929800",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-3-3/9",
+      "datum": "2022-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Zástavba lokality U Pily rodinnými domy - PD",
+      "popis": "Rada města, bod 3/9, usnesení 521/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2929815",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

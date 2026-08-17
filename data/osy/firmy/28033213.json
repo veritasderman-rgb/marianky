@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28033213",
+    "nazev": "EUROPE TOUR s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-09-09",
+    "do": "2023-04-14",
+    "prvni_rok": 2008,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28033213:vznik",
+      "datum": "2008-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-09-09",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — EUROPE TOUR s.r.o.",
+      "popis": "Vznik subjektu EUROPE TOUR s.r.o. (IČO 28033213), Společnost s ručením omezeným, obor: Činnosti cestovních agentur a cestovních kanceláří.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/12",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní třída, č.p.161 - dvorní trakt",
+      "popis": "Rada města, bod 19/12, usnesení 200/23. Schvaleno.",
+      "castka_czk": 96000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2997514",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/12__22476605",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - EUROPE TOUR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2023-04-14 s bodem 19/12 z 2023-04-04 (Pronájem NP Hlavní třída, č.p.161 - dvorní trakt). Jistota stredni.",
+      "castka_czk": 583027.61,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28033213 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24102221",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22476605",
+      "datum": "2023-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-14",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - EUROPE TOUR s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EUROPE TOUR s.r.o..",
+      "castka_czk": 583027.61,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24102221",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

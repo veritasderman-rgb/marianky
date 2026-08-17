@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08132551",
+    "nazev": "Three Systems a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-02-10",
+    "do": "2026-02-04",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 2,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:30125264",
+      "datum": "2025-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "objednávka licencí MS 365 na rok, ORID/25/173/KV",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Three Systems a.s..",
+      "castka_czk": 406316.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32174792",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-110-110/10",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Nákup licence CSP/NCE MS 365 včetně Teams\" - výběr dodavatele",
+      "popis": "Rada města, bod 110/10, usnesení 923/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1409103515",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-110/10__34458637",
+      "datum": "2026-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-04",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka licencí CSP/NCE MS 365 včetně Teams na jeden rok - na základě veřejné zakázky systémové číslo P25V00000070",
+      "popis": "Odhadované spojení smlouvy z 2026-02-04 s bodem 110/10 z 2026-02-03 (Veřejná zakázka \"Nákup licence CSP/NCE MS 365 včetně Teams\" - výběr dodavatele). Jistota st",
+      "castka_czk": 393771.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 08132551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova teams, vcetne",
+      "url": "https://smlouvy.gov.cz/smlouva/36712541",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34458637",
+      "datum": "2026-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-04",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka licencí CSP/NCE MS 365 včetně Teams na jeden rok - na základě veřejné zakázky systémové číslo P25V00000070",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Three Systems a.s..",
+      "castka_czk": 393771.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36712541",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

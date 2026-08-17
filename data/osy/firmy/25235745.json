@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25235745",
+    "nazev": "INKASTA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-03-04",
+    "do": "2025-03-05",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-79-79/9",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníku ul. Nehrova",
+      "popis": "Rada města, bod 79/9, usnesení 160/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332200",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/9__30342476",
+      "datum": "2025-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-05",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Oprava chodníku ul. Nehrova, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-03-05 s bodem 79/9 z 2025-03-04 (Oprava chodníku ul. Nehrova). Jistota stredni.",
+      "castka_czk": 796984.65,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25235745 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, nehrova, oprava",
+      "url": "https://smlouvy.gov.cz/smlouva/32402304",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30342476",
+      "datum": "2025-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-05",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníku ul. Nehrova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana INKASTA s.r.o..",
+      "castka_czk": 796984.65,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32402304",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03697517",
+    "nazev": "ZDR Retail MLP s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-11-13",
+    "do": "2019-11-13",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2019-9/6__9983176",
+      "datum": "2019-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-13",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 298/10 a stavba chodníku v k.ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-11-13 s bodem 9/6 z 2019-10-21 (Darovací smlouva p.p.č. 298/10 a stavba chodníku k.ú. Úšovice ( Plzeňská ul.)). Jistota nizka.",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (ZDR Retail MLP s.r.o.) je v textu usnesení; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, stavba, usovice",
+      "url": "https://smlouvy.gov.cz/smlouva/10737904",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9983176",
+      "datum": "2019-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-13",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 298/10 a stavba chodníku v k.ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZDR Retail MLP s.r.o..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10737904",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

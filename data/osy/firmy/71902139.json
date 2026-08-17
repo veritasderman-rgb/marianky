@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "71902139",
+    "nazev": "Jakub Kožíšek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2006-06-01",
+    "do": "2017-08-01",
+    "prvni_rok": 2006,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:71902139:vznik",
+      "datum": "2006-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-06-01",
+      "rok": 2006,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jakub Kožíšek",
+      "popis": "Vznik subjektu Jakub Kožíšek (IČO 71902139), Zemědělský podnikatel - fyzická osoba, obor: Rostlinná a živočišná výroba, myslivost a související činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:2577822",
+      "datum": "2017-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Rámcová smlouva o obchodní spolupráci",
+      "popis": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o. (TDS) — výdaj, protistrana Jakub Kožíšek.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2774894",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25213261.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

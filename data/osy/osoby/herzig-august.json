@@ -1,0 +1,129 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "herzig-august",
+    "jmeno": "August Herzig",
+    "role": [
+      "starosta",
+      "lázeňský lékař"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1873",
+    "do": "2022-03-31",
+    "prvni_rok": 1873,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 2,
+      "historie": 1,
+      "media": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:herzig-august:0",
+      "datum": "1873",
+      "datum_do": "1880",
+      "presnost": "obdobi",
+      "razeni": "1873-01-01",
+      "rok": 1873,
+      "typ": "funkce",
+      "nadpis": "August Herzig — starosta",
+      "popis": "starosta (1873 – 1880).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:herzig-august:1",
+      "datum": "1892",
+      "datum_do": "1899",
+      "presnost": "obdobi",
+      "razeni": "1892-01-01",
+      "rok": 1892,
+      "typ": "funkce",
+      "nadpis": "August Herzig — starosta",
+      "popis": "starosta (1892 – 1899).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "historie:1913-rekord-hostu",
+      "datum": "1913",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1913-01-01",
+      "rok": 1913,
+      "typ": "historie",
+      "nadpis": "Rekordní návštěvnost 34 509 hostů",
+      "popis": "Rok 1913 byl podle análů města rekordní předválečnou sezonou s 34 509 hosty. Téhož roku byl 18. května odhalen pomník lázeňskému lékaři a starostovi Augustu Her",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-august-herzig-se-zaslouzil-o-rozkvet-marianskych-lazni-jeho-vila-dnes-",
+      "datum": "2022-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-31",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "August Herzig se zasloužil o rozkvět Mariánských Lázní. Jeho vila dnes slouží jako hotel",
+      "popis": "Vila postavená v roce 1870 nedaleko lázeňské kolonády nesla jména Herzig, Kraus, Romano i Patriot. Dnes slouží jako hotel, jejího stavebníka Augusta Herziga člá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/august-herzig-se-zaslouzil-o-rozkvet-marianskych-lazni-jeho-vila-dnes-slouzi-8714140",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

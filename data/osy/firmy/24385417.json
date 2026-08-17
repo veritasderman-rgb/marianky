@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24385417",
+    "nazev": "Olga Forejtová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-01-19",
+    "do": "2026-03-31",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:24385417:vznik",
+      "datum": "2026-01-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-19",
+      "rok": 2026,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Olga Forejtová",
+      "popis": "Vznik subjektu Olga Forejtová (IČO 24385417), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-111-111/11",
+      "datum": "2026-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 111/11, usnesení 948/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/42880427",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/27",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 142 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 113/27, usnesení 1011/26. Schvaleno.",
+      "castka_czk": 212500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2287126192",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/27__35425613",
+      "datum": "2026-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-31",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 7 ke Smlouvě o nájmu nebytového prostoru - postoupení nájemní smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2026-03-31 s bodem 113/27 z 2026-03-17 (Nebytový prostor Hlavní třída, č.p. 142 – postoupení Smlouvy o nájmu nebytového prostoru). ",
+      "castka_czk": 991666.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24385417 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, postoupeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/37720673",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35425613",
+      "datum": "2026-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-31",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 7 ke Smlouvě o nájmu nebytového prostoru - postoupení nájemní smlouvy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Olga Forejtová.",
+      "castka_czk": 991666.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37720673",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "76351718",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-11-04",
+    "do": "2021-05-18",
+    "prvni_rok": 2014,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-170-170/9",
+      "datum": "2014-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228-žádost o uzavření podnájemní smlouvy",
+      "popis": "Rada města, bod 170/9, usnesení 491/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1295972",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-141-141/8",
+      "datum": "2018-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-16",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - prodloužení nájmu, přistoupení dalších nájemců k nájemní smlouvě - Petra Bečvářová, Vladimíra Hlaváčová",
+      "popis": "Rada města, bod 141/8, usnesení 9/18. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1885365",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/141.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-109-109/3",
+      "datum": "2021-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-18",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - odstoupení nájemce od smlouvy",
+      "popis": "Rada města, bod 109/3, usnesení 184/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2679052",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

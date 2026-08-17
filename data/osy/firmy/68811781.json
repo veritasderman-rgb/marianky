@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68811781",
+    "nazev": "HRON MILAN"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-08-11",
+    "do": "2017-08-01",
+    "prvni_rok": 2016,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2047030",
+      "datum": "2016-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-11",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - nátěry vstupních konstrukcí a únikového schodiště, nátěry zahradního náčiní, malířské opravy",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana HRON Milan.",
+      "castka_czk": 85000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2206442",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2047694",
+      "datum": "2016-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-20",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - malířské práce v budově MŠ",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana HRON Milan.",
+      "castka_czk": 32150.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2207126",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2651518",
+      "datum": "2017-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - nátěry zahradního náčiní a malířské opravy",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana HRON MILAN.",
+      "castka_czk": 62920.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2853254",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

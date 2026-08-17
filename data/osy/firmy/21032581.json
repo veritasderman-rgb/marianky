@@ -1,0 +1,180 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "21032581",
+    "nazev": "Lázeňské kočky z. s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-01-01",
+    "do": "2026-03-17",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 3,
+      "smlouva": 2,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:21032581:vznik",
+      "datum": "2024-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-01",
+      "rok": 2024,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Lázeňské kočky z.s.",
+      "popis": "Vznik subjektu Lázeňské kočky z.s. (IČO 21032581), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování společných a veřejných z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2024-44/23__25970027",
+      "datum": "2024-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-28",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "výpůjčka odchytových klecí a rukavic pro odchyt toulavých koček",
+      "popis": "Odhadované spojení smlouvy z 2024-02-28 s bodem 44/23 z 2024-02-06 (Poskytnutí neinvestiční dotace spolku Lázeňské kočky z. s.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 21032581 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27802099",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-44/24__25970027",
+      "datum": "2024-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-28",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "výpůjčka odchytových klecí a rukavic pro odchyt toulavých koček",
+      "popis": "Odhadované spojení smlouvy z 2024-02-28 s bodem 44/24 z 2024-02-06 (Smlouva o výpůjčce). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 21032581 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27802099",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25970027",
+      "datum": "2024-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-28",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "výpůjčka odchytových klecí a rukavic pro odchyt toulavých koček",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lázeňské kočky z. s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27802099",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/24__30084552",
+      "datum": "2025-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-12",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "dotace na činnost spolku, který se zabývá odchytem toulavých koček  a péčí o ně",
+      "popis": "Odhadované spojení smlouvy z 2025-02-12 s bodem 77/24 z 2025-02-04 (Poskytnutí neinvestiční dotace spolku Lázeňské kočky z. s.). Jistota vysoka.",
+      "castka_czk": 70000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 21032581 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova d",
+      "url": "https://smlouvy.gov.cz/smlouva/32132288",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30084552",
+      "datum": "2025-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-12",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "dotace na činnost spolku, který se zabývá odchytem toulavých koček  a péčí o ně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lázeňské kočky z. s..",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32132288",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/6",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Zapojení odvodů za odnětí zemědělské půdy ze zemědělského půdního fondu na poskytnutí neinvestiční účelové dotace spolku Lázeňské kočky z.s.",
+      "popis": "Rada města, bod 113/6, usnesení 990/26. Schvaleno.",
+      "castka_czk": 70000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2256669780",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

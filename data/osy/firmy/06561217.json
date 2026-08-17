@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06561217",
+    "nazev": "J&M Svoboda s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-07-22",
+    "do": "2025-10-29",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-93-93/23",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Konektivita na ZŠ Vítězství Mariánské Lázně - STAVEBNÍ PRÁCE - uzavření smlouvy s vybraným dodavatelem",
+      "popis": "Rada města, bod 93/23, usnesení 527/25. Schvaleno.",
+      "castka_czk": 584200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3402216",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/23__32204801",
+      "datum": "2025-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O DÍLO Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce",
+      "popis": "Odhadované spojení smlouvy z 2025-08-06 s bodem 93/23 z 2025-07-22 (Veřejná zakázka - Konektivita na ZŠ Vítězství Mariánské Lázně - STAVEBNÍ PRÁCE - uzavření sm",
+      "castka_czk": 1328217.76,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06561217 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova konektivita, prace, stavebni, vitezstvi",
+      "url": "https://smlouvy.gov.cz/smlouva/34354737",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32204801",
+      "datum": "2025-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-06",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O DÍLO Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana J&M Svoboda s.r.o..",
+      "castka_czk": 1328217.76,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34354737",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/13",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Konektivita na ZŠ Vítězství Mariánské Lázně – stavební práce",
+      "popis": "Rada města, bod 102/13, usnesení 741/25. Schvaleno.",
+      "castka_czk": 32711,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2427854416",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

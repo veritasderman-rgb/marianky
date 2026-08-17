@@ -1,0 +1,67 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "dietl-wenzel",
+    "jmeno": "Wenzel Dietl",
+    "role": [
+      "starosta",
+      "právník"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1905",
+    "do": "1905",
+    "prvni_rok": 1905,
+    "posledni_rok": 1905,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 1,
+    "dolozenych": 1,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1
+    },
+    "dle_jistoty": {
+      "fakt": 1
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:dietl-wenzel:0",
+      "datum": "1905",
+      "datum_do": "1907",
+      "presnost": "obdobi",
+      "razeni": "1905-01-01",
+      "rok": 1905,
+      "typ": "funkce",
+      "nadpis": "Wenzel Dietl — starosta",
+      "popis": "starosta (1905 – 1907).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    }
+  ]
+}

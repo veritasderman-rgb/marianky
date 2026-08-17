@@ -1,0 +1,339 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73438502",
+    "nazev": "Petra Bečvářová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2004-02-01",
+    "do": "2023-02-21",
+    "prvni_rok": 2004,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 12,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73438502:vznik",
+      "datum": "2004-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2004-02-01",
+      "rok": 2004,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petra Bečvářová",
+      "popis": "Vznik subjektu Petra Bečvářová (IČO 73438502), Fyzická osoba podnikající dle živnostenského zákona, obor: Kadeřnické a holičské činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-102-102/9",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 228",
+      "popis": "Rada města, bod 102/9, usnesení 99/13. Schvaleno.",
+      "castka_czk": 49200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/912139",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-112-112/6",
+      "datum": "2013-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-06-04",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - podnájem části NP",
+      "popis": "Rada města, bod 112/6, usnesení 241/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/962751",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-150-150/4",
+      "datum": "2014-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-04-15",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - podnájemní smlouva",
+      "popis": "Rada města, bod 150/4, usnesení 160/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1108644",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-170-170/9",
+      "datum": "2014-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228-žádost o uzavření podnájemní smlouvy",
+      "popis": "Rada města, bod 170/9, usnesení 491/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1295972",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-141-141/8",
+      "datum": "2018-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-16",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - prodloužení nájmu, přistoupení dalších nájemců k nájemní smlouvě - Petra Bečvářová, Vladimíra Hlaváčová",
+      "popis": "Rada města, bod 141/8, usnesení 9/18. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1885365",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/141.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-141/8__4823928",
+      "datum": "2018-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 228, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-03-29 s bodem 141/8 z 2018-01-16 (NP Hlavní 228 - prodloužení nájmu, přistoupení dalších nájemců k nájemní smlouvě - Petra Beč",
+      "castka_czk": 1107876.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 73438502 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 72 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5201672",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4823928",
+      "datum": "2018-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 228, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Bečvářová.",
+      "castka_czk": 1107876.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5201672",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-109-109/3",
+      "datum": "2021-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-18",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 228 - odstoupení nájemce od smlouvy",
+      "popis": "Rada města, bod 109/3, usnesení 184/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2679052",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-109/3__15571379",
+      "datum": "2021-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-24",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce - Lucie Odvárková",
+      "popis": "Odhadované spojení smlouvy z 2021-05-24 s bodem 109/3 z 2021-05-18 (NP Hlavní 228 - odstoupení nájemce od smlouvy). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 73438502 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, odstoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/16763667",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15571379",
+      "datum": "2021-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-24",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce - Lucie Odvárková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Bečvářová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16763667",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-116-116/7",
+      "datum": "2021-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-13",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní č.p. 228 - snížení nájemného",
+      "popis": "Rada města, bod 116/7, usnesení 316/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2704047",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-12-12/11",
+      "datum": "2023-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 228 - prodloužení Smlouvy o nájmu nebytového prostoru - Beauty wellness studio",
+      "popis": "Rada města, bod 12/11, usnesení 71/23. Schvaleno.",
+      "castka_czk": 183120,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2971924",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-12/11__22009657",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petra Bečvářová, Vladimíra Hlaváčová, Vlasta Šímová",
+      "popis": "Odhadované spojení smlouvy z 2023-02-21 s bodem 12/11 z 2023-02-07 (NP Hlavní, č.p. 228 - prodloužení Smlouvy o nájmu nebytového prostoru - Beauty wellness stud",
+      "castka_czk": 1107876.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 73438502 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prodlouzeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/23611505",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22009657",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petra Bečvářová, Vladimíra Hlaváčová, Vlasta Šímová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petra Bečvářová.",
+      "castka_czk": 1107876.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23611505",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

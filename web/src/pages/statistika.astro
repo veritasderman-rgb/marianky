@@ -1,0 +1,188 @@
+---
+/**
+ * Časové řady o městě z ČSÚ.
+ *
+ * Jedno pravidlo drží celou stránku pohromadě: **nikdy dvě osy Y**
+ * (web/DESIGN.md §2 bod 1). Obyvatelstvo se počítá v tisících, nezaměstnanost
+ * v procentech — do jednoho grafu nepatří. Každá řada má proto svůj graf
+ * s vlastní osou, a společné srovnání se dělá indexem k základnímu roku.
+ *
+ * Rok bez údaje se nekreslí jako nula. „Nezjištěno" a „nula" nejsou totéž.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { formatujHodnotu, nactiCsu, rozsahRady, type RadaCsu } from '../lib/csu';
+import { grafRadaPoLetech, grafSpojnice, type BodRady, type SerieRady } from '../lib/grafy_rady';
+import { souvisleRoky } from '../lib/grafy';
+import { cislo, sklonuj } from '../lib/format';
+
+const zCsu = nactiCsu();
+const rady = zCsu.data ?? [];
+const maData = rady.length > 0;
+
+/* Skupiny jen kvůli řazení a nadpisům — neslučují se do jednoho grafu. */
+const skupiny = [...new Set(rady.map((r) => r.skupina))];
+
+function bodyRady(r: RadaCsu): BodRady[] {
+  // Roky se doplní souvisle: mezera uvnitř řady musí být vidět jako mezera,
+  // ne se scvrknout tím, že chybějící rok osa přeskočí.
+  const roky = souvisleRoky([...r.hodnoty.keys()]);
+  return roky.map((rok) => ({ rok, hodnota: r.hodnoty.has(rok) ? (r.hodnoty.get(rok) as number) : null }));
+}
+
+function variantaRady(r: RadaCsu): Varianta {
+  const graf = grafRadaPoLetech(bodyRady(r), r.nazev, r.jednotka, formatujHodnotu(r.jednotka));
+  if (r.popis) graf.poznamky.push(r.popis);
+  graf.poznamky.push(
+    `Zdroj řady: ${r.zdroj ?? `soubor ${r.cesta}`}. Přehled hodnoty nepřepočítává ani nevyhlazuje — jsou tak, jak je zdroj publikuje.`,
+  );
+  return { klic: r.klic, popisek: r.nazev, graf };
+}
+
+/* ── Index ke společnému základu ────────────────────────────────────────
+   Jediný poctivý způsob, jak dát různě velké veličiny do jednoho obrázku.
+   Základ = první rok, ve kterém mají údaj VŠECHNY zobrazené řady; jinak by
+   se index každé řady počítal z jiného roku a graf by srovnával nesrovnatelné. */
+
+const proIndex = rady.filter((r) => r.hodnoty.size >= 3);
+const spolecneRoky = proIndex.length > 1
+  ? souvisleRoky([...new Set(proIndex.flatMap((r) => [...r.hodnoty.keys()]))])
+  : [];
+const zakladniRok = spolecneRoky.find((rok) => proIndex.every((r) => (r.hodnoty.get(rok) ?? 0) > 0)) ?? null;
+
+const NEJVYSE_V_INDEXU = 6;
+const doIndexu = proIndex.slice(0, NEJVYSE_V_INDEXU);
+
+const variantaIndexu: Varianta | null =
+  zakladniRok !== null && doIndexu.length > 1
+    ? (() => {
+        const serie: SerieRady[] = doIndexu.map((r) => {
+          const zaklad = r.hodnoty.get(zakladniRok) as number;
+          return {
+            klic: r.klic,
+            nazev: `${r.nazev}${r.jednotka ? ` (${r.jednotka})` : ''}`,
+            hodnoty: spolecneRoky.map((rok) => {
+              const v = r.hodnoty.get(rok);
+              return v === undefined ? null : (v / zaklad) * 100;
+            }),
+          };
+        });
+        const graf = grafSpojnice(
+          spolecneRoky,
+          serie,
+          'Srovnání vývoje — index',
+          `index, ${zakladniRok} = 100`,
+          (v) => v.toFixed(0),
+        );
+        graf.poznamky.push(
+          `Každá řada je přepočtená na index, kde rok ${zakladniRok} = 100. Jde o srovnání SMĚRU a rychlosti změny, ne velikosti — index 120 u obyvatelstva a u přenocování znamená stejný růst, ne stejný počet.`,
+        );
+        graf.poznamky.push(
+          'Tenhle graf existuje proto, aby nemusely být dvě osy Y. Absolutní hodnoty jsou v grafech jednotlivých řad výše a v tabulkách pod nimi.',
+        );
+        graf.poznamky.push('Přerušená čára znamená rok, za který zdroj údaj nemá — není to pokles na nulu.');
+        return { klic: 'index', popisek: `Index (${zakladniRok} = 100)`, graf };
+      })()
+    : null;
+
+/* ── Dlaždice ──────────────────────────────────────────────────────────── */
+
+const vsechnyRoky = rady.flatMap((r) => [...r.hodnoty.keys()]);
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Časových řad',
+        hodnota: cislo(rady.length),
+        doplnek: `v ${cislo(skupiny.length)} ${sklonuj(skupiny.length, 'skupině', 'skupinách', 'skupinách')}`,
+      },
+      {
+        popisek: 'Rozsah dat',
+        hodnota: vsechnyRoky.length > 0 ? `${Math.min(...vsechnyRoky)}–${Math.max(...vsechnyRoky)}` : '—',
+        doplnek: 'nejstarší a nejnovější rok napříč řadami',
+      },
+      {
+        popisek: 'Datových bodů',
+        hodnota: cislo(vsechnyRoky.length),
+        doplnek: 'jednotlivých ročních hodnot',
+      },
+      {
+        popisek: 'Společný základ indexu',
+        hodnota: zakladniRok === null ? '—' : String(zakladniRok),
+        doplnek:
+          zakladniRok === null
+            ? 'řady nemají společný rok s údajem u všech'
+            : 'rok, ve kterém mají údaj všechny srovnávané řady',
+      },
+    ]
+  : [];
+---
+
+<Zaklad
+  titulek="Statistika města"
+  aktivni="statistika"
+  nadpis="Časové řady o městě"
+  uvod="Obyvatelstvo, nezaměstnanost, cestovní ruch. Každá řada má vlastní graf s jednou osou — veličiny v různých jednotkách se nesmí míchat do jednoho obrázku. Společné srovnání se dělá indexem."
+>
+  <StavDat
+    stav={zCsu.stav}
+    zdroj={zCsu.zdroj}
+    co="Časové řady o městě"
+    prazdno={zCsu.stav === 'ok' && rady.length === 0}
+    modul="otevřená data — ČSÚ"
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        {variantaIndexu && (
+          <GrafKarta
+            id="index"
+            nadpis="Srovnání vývoje jedním pohledem"
+            popis="Různě velké veličiny v jednom grafu jde srovnat jen indexem ke společnému základu. Dvě osy Y jsou zakázané — vypadaly by jako souvislost, kterou v datech nic nedokládá."
+            varianty={[variantaIndexu]}
+          />
+        )}
+
+        {skupiny.map((s) => {
+          const vSkupine = rady.filter((r) => r.skupina === s);
+          return (
+            <section>
+              <h2 id={`skupina-${s}`}>{s}</h2>
+              {vSkupine.map((r) => {
+                const rozsah = rozsahRady(r);
+                return (
+                  <GrafKarta
+                    id={`rada-${r.klic}`}
+                    nadpis={r.nazev}
+                    popis={
+                      rozsah
+                        ? `${r.jednotka ? `Jednotka: ${r.jednotka}. ` : ''}Data za roky ${rozsah.od}–${rozsah.do}, ${cislo(r.hodnoty.size)} ${sklonuj(r.hodnoty.size, 'hodnota', 'hodnoty', 'hodnot')}. Rok, za který údaj chybí, je v grafu prázdný — není to nula.`
+                        : undefined
+                    }
+                    varianty={[variantaRady(r)]}
+                  />
+                );
+              })}
+            </section>
+          );
+        })}
+
+        <p class="graf-poznamka">
+          Čísla pocházejí ze zdrojových souborů beze změny — přehled je nepřepočítává,
+          nevyhlazuje ani nedopočítává chybějící roky. Kde v řadě chybí rok, chybí i v grafu
+          a v tabulce je uvedeno „údaj není".
+        </p>
+        <p class="graf-poznamka">
+          Souvislosti mezi řadami tenhle přehled netvrdí. Že dvě křivky jdou stejným směrem,
+          neznamená, že spolu souvisejí — a graf se o takový závěr nepokouší.
+        </p>
+      </>
+    )
+  }
+</Zaklad>

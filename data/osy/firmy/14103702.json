@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "14103702",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-12-23",
+    "do": "2023-09-19",
+    "prvni_rok": 2021,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:14103702:vznik",
+      "datum": "2021-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-23",
+      "rok": 2021,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků jednotek Kubelíkova 805, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků jednotek Kubelíkova 805, Mariánské Lázně (IČO 14103702), Společenství vlastníků jednotek, obor: Pronájem a správa vlastníc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-29-29/8",
+      "datum": "2023-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-08",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Bytový dům ul. Kubelíkova č.p. 805, kat. území Úšovice, obec Mariánské Lázně",
+      "popis": "Rada města, bod 29/8, usnesení 497/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3059394",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-9-9/19",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Bytový dům ul. Kubelíkova č.p. 805, kat. území Úšovice, obec Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 9/19, usnesení 161/23. Schvaleno.",
+      "castka_czk": 298000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3077423",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

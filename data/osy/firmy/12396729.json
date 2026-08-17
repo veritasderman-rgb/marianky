@@ -1,0 +1,259 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "12396729",
+    "nazev": "Hana Hončíková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2026-08-04",
+    "prvni_rok": 1992,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 8,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:12396729:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Hana Hončíková",
+      "popis": "Vznik subjektu Hana Hončíková (IČO 12396729), Fyzická osoba podnikající dle živnostenského zákona, obor: Velkoobchod a maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-65-65/5",
+      "datum": "2016-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP v ul. Hlavní, č.p. 159 - prodloužení nájmu - Hana Hončíková",
+      "popis": "Rada města, bod 65/5, usnesení 183/16. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1564126",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-65/5__8749",
+      "datum": "2016-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-28",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru v ul. Hlavní, čp. 159, M. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-06-28 s bodem 65/5 z 2016-04-19 (NP v ul. Hlavní, č.p. 159 - prodloužení nájmu - Hana Hončíková). Jistota stredni.",
+      "castka_czk": 637670.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12396729 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 70 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu",
+      "url": "https://smlouvy.gov.cz/smlouva/8977",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8749",
+      "datum": "2016-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-28",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru v ul. Hlavní, čp. 159, M. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Hončíková.",
+      "castka_czk": 637670.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8977",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-167-167/4",
+      "datum": "2018-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-25",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Věrnostní sleva, Hlavní 159",
+      "popis": "Rada města, bod 167/4, usnesení 506/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2111190",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/167.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/4__6473255",
+      "datum": "2018-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-15",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 159( věrnostní sleva)",
+      "popis": "Odhadované spojení smlouvy z 2018-10-15 s bodem 167/4 z 2018-09-25 (Věrnostní sleva, Hlavní 159). Jistota stredni.",
+      "castka_czk": 344341.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12396729 je uvedeno v textu usnesení; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, sleva, vernostni",
+      "url": "https://smlouvy.gov.cz/smlouva/6988243",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6473255",
+      "datum": "2018-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-15",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 159( věrnostní sleva)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Hončíková.",
+      "castka_czk": 344341.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6988243",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-122-122/7",
+      "datum": "2021-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 159 - Hana Hončíková - prodloužení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 122/7, usnesení 409/21. Schvaleno.",
+      "castka_czk": 94860,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2742985",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-122/7__16651935",
+      "datum": "2021-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-04",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hana Hončíková",
+      "popis": "Odhadované spojení smlouvy z 2021-10-04 s bodem 122/7 z 2021-09-21 (NP Hlavní, č.p. 159 - Hana Hončíková - prodloužení Smlouvy o nájmu nebytového prostoru). Jis",
+      "castka_czk": 573903.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12396729 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova hana, honcikova, najmu, nebytoveho",
+      "url": "https://smlouvy.gov.cz/smlouva/17933639",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16651935",
+      "datum": "2021-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-04",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hana Hončíková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Hončíková.",
+      "castka_czk": 573903.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17933639",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-123-123/11",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Hlavní třída, č.p. 159 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 123/11, usnesení 1382/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2219708349",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

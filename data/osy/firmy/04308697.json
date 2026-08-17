@@ -1,0 +1,639 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04308697",
+    "nazev": "Aricoma Systems a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-09-18",
+    "do": "2026-04-21",
+    "prvni_rok": 2018,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 30,
+    "dolozenych": 17,
+    "odhadu": 13,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 13,
+      "smlouva": 11
+    },
+    "dle_jistoty": {
+      "fakt": 17,
+      "nizka": 12,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-166-166/9",
+      "datum": "2018-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-18",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Přidělení veřejné zakázky na dodávky \"Modernizace informačního systému Města Mariánské Lázně\"",
+      "popis": "Rada města, bod 166/9, usnesení 489/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2107796",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/9__6566563",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Rozšíření centrální IT infrastruktury Města Mariánské Lázně a pořízení informačních systémů v rámci projektu \"Modernizace informačních systémů Města Mariánské  Lázně\"",
+      "popis": "Odhadované spojení smlouvy z 2018-10-19 s bodem 166/9 z 2018-09-18 (Přidělení veřejné zakázky na dodávky \"Modernizace informačního systému Města Mariánské Lázně",
+      "castka_czk": 5846543.34,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova modernizace, systemu; k témuž usnesení se hl",
+      "url": "https://smlouvy.gov.cz/smlouva/7092079",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/9__6566571",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o zabezpečení podpory provozu",
+      "popis": "Odhadované spojení smlouvy z 2018-10-19 s bodem 166/9 z 2018-09-18 (Přidělení veřejné zakázky na dodávky \"Modernizace informačního systému Města Mariánské Lázně",
+      "castka_czk": 1016400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/7092087",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6566563",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Rozšíření centrální IT infrastruktury Města Mariánské Lázně a pořízení informačních systémů v rámci projektu \"Modernizace informačních systémů Města Mariánské  Lázně\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 5846543.34,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7092079",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6566571",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o zabezpečení podpory provozu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 1016400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7092087",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-18-18/9",
+      "datum": "2019-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-02",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce školních dílen na Základní škole Úšovice v Mariánských Lázních – zajištění vnitřní konektivity k internetu",
+      "popis": "Rada města, bod 18/9, usnesení 168/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2321225",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-18/9__8303395",
+      "datum": "2019-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-02",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "ZŠ Úšovice – rekonstrukce školních dílen – zajištění vnitřní konektivity k internetu",
+      "popis": "Odhadované spojení smlouvy z 2019-05-02 s bodem 18/9 z 2019-04-02 (Rekonstrukce školních dílen na Základní škole Úšovice v Mariánských Lázních – zajištění vnitř",
+      "castka_czk": 2587706.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilen, internetu, konektivity, rekonstrukce;",
+      "url": "https://smlouvy.gov.cz/smlouva/8960111",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8303395",
+      "datum": "2019-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-02",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "ZŠ Úšovice – rekonstrukce školních dílen – zajištění vnitřní konektivity k internetu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 2587706.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8960111",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/9__8917095",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Objednávka maintenance FortiGate",
+      "popis": "Odhadované spojení smlouvy z 2019-06-11 s bodem 166/9 z 2018-09-18 (Přidělení veřejné zakázky na dodávky \"Modernizace informačního systému Města Mariánské Lázně",
+      "castka_czk": 137901.28,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 266 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/9608427",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-18/9__8917095",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Objednávka maintenance FortiGate",
+      "popis": "Odhadované spojení smlouvy z 2019-06-11 s bodem 18/9 z 2019-04-02 (Rekonstrukce školních dílen na Základní škole Úšovice v Mariánských Lázních – zajištění vnitř",
+      "castka_czk": 137901.28,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 70 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/9608427",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8917095",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka maintenance FortiGate",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 137901.28,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9608427",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-81-81/6",
+      "datum": "2020-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-01",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Zajištění maintenance a SLA pro IDM AC Identit od společnosti AUTOCONT a.s. a Mzdy a personalistiky Magma HCM společnosti ID.EST CZ, s.r.o.",
+      "popis": "Rada města, bod 81/6, usnesení 449/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2571666",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-81/6__13141704",
+      "datum": "2020-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-08",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Obj.č.102/20/PK maintenance FortiNet",
+      "popis": "Odhadované spojení smlouvy z 2020-09-08 s bodem 81/6 z 2020-09-01 (Zajištění maintenance a SLA pro IDM AC Identit od společnosti AUTOCONT a.s. a Mzdy a personal",
+      "castka_czk": 148491.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/14085720",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13141704",
+      "datum": "2020-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-08",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Obj.č.102/20/PK maintenance FortiNet",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 148491.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14085720",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-81/6__12979780",
+      "datum": "2020-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-18",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování maintenance a SLA",
+      "popis": "Odhadované spojení smlouvy z 2020-09-18 s bodem 81/6 z 2020-09-01 (Zajištění maintenance a SLA pro IDM AC Identit od společnosti AUTOCONT a.s. a Mzdy a personal",
+      "castka_czk": 359370.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/13917428",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12979780",
+      "datum": "2020-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování maintenance a SLA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 359370.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13917428",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-81/6__18057723",
+      "datum": "2022-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "objednávka licence MS 365 Business",
+      "popis": "Odhadované spojení smlouvy z 2022-02-18 s bodem 81/6 z 2020-09-01 (Zajištění maintenance a SLA pro IDM AC Identit od společnosti AUTOCONT a.s. a Mzdy a personal",
+      "castka_czk": 82981.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 535 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/19420515",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18057723",
+      "datum": "2022-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "objednávka licence MS 365 Business",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": 82981.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19420515",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/17",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke Smlouvě o poskytování maintenance a SLA se společností Autocont a.s. – prodloužení smlouvy na dobu neurčitou",
+      "popis": "Rada města, bod 31/17, usnesení 556/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3074346",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-31/17__24202947",
+      "datum": "2023-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-27",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - RCZ 230059 ke smlouvě o poskytování maintenance a SLA",
+      "popis": "Odhadované spojení smlouvy z 2023-09-27 s bodem 31/17 z 2023-09-05 (Dodatek ke Smlouvě o poskytování maintenance a SLA se společností Autocont a.s. – prodloužen",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova maintenance, poskytovani",
+      "url": "https://smlouvy.gov.cz/smlouva/25917703",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24202947",
+      "datum": "2023-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-27",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - RCZ 230059 ke smlouvě o poskytování maintenance a SLA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCONT a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25917703",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/14",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Výpověď ze Smlouvy o zabezpečení podpory provozu projektu Modernizace informačního systému MUML",
+      "popis": "Rada města, bod 48/14, usnesení 174/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166040",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/26",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Rozšíření infrastruktury“ k projektu portál občana – výběr dodavatele",
+      "popis": "Rada města, bod 51/26, usnesení 274/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3182204",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/14__27604608",
+      "datum": "2024-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Rozšíření infrastruktury",
+      "popis": "Odhadované spojení smlouvy z 2024-07-10 s bodem 48/14 z 2024-03-19 (Výpověď ze Smlouvy o zabezpečení podpory provozu projektu Modernizace informačního systému M",
+      "castka_czk": 696960.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 113 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29509340",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/26__27604608",
+      "datum": "2024-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Rozšíření infrastruktury",
+      "popis": "Odhadované spojení smlouvy z 2024-07-10 s bodem 51/26 z 2024-04-16 (Veřejná zakázka „Rozšíření infrastruktury“ k projektu portál občana – výběr dodavatele). Jis",
+      "castka_czk": 696960.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 85 dní po usnesení; název bodu a předmět smlouvy sdílí slova infrastruktury, rozsireni; stejně dobře sedí",
+      "url": "https://smlouvy.gov.cz/smlouva/29509340",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27604608",
+      "datum": "2024-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Rozšíření infrastruktury",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Aricoma Systems a.s..",
+      "castka_czk": 696960.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29509340",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/14__30809408",
+      "datum": "2025-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-07",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "VMware vSphere Standard 8 - roční licence",
+      "popis": "Odhadované spojení smlouvy z 2025-04-07 s bodem 48/14 z 2024-03-19 (Výpověď ze Smlouvy o zabezpečení podpory provozu projektu Modernizace informačního systému M",
+      "castka_czk": 92850.56,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 384 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32894196",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/26__30809408",
+      "datum": "2025-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-07",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "VMware vSphere Standard 8 - roční licence",
+      "popis": "Odhadované spojení smlouvy z 2025-04-07 s bodem 51/26 z 2024-04-16 (Veřejná zakázka „Rozšíření infrastruktury“ k projektu portál občana – výběr dodavatele). Jis",
+      "castka_czk": 92850.56,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04308697 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 356 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/32894196",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30809408",
+      "datum": "2025-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "VMware vSphere Standard 8 - roční licence",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Aricoma Systems a.s..",
+      "castka_czk": 92850.56,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32894196",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35387257",
+      "datum": "2026-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-21",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Integrace Identity &amp; Authentication řešení Aricoma ID (CAAIS) - vyřizuje p. Placek",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Aricoma Systems a.s..",
+      "castka_czk": 235950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37680709",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

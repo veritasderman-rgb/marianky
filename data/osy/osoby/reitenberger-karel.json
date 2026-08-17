@@ -1,0 +1,269 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "reitenberger-karel",
+    "jmeno": "Karel Kašpar Reitenberger",
+    "role": [
+      "zakladatel lázní",
+      "opat"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1812",
+    "do": "2026-08",
+    "prvni_rok": 1812,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 11,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 5,
+      "zpravodaj": 5
+    },
+    "dle_jistoty": {
+      "fakt": 11
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:reitenberger-karel:0",
+      "datum": "1812",
+      "datum_do": "1827",
+      "presnost": "obdobi",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "typ": "funkce",
+      "nadpis": "Karel Kašpar Reitenberger — opat kláštera Teplá",
+      "popis": "opat kláštera Teplá (1812 – 1827).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "historie:1812-reitenberger-opat",
+      "datum": "1812",
+      "datum_do": "1827",
+      "presnost": "obdobi",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "typ": "historie",
+      "nadpis": "Karel Kašpar Reitenberger opatem tepelského kláštera",
+      "popis": "Karel Kašpar Reitenberger byl v letech 1812–1827 opatem premonstrátského kláštera Teplá. Počátkem 19. století zahájil výstavbu lázeňských domů a pavilonů v Mari",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1812-samostatna-obec",
+      "datum": "1812",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "typ": "historie",
+      "nadpis": "Mariánské Lázně se stávají samostatnou obcí",
+      "popis": "Rozhodnutím tepelského kláštera byly Mariánské Lázně vyčleněny z Úšovic jako samostatná obec. Prvním rychtářem byl v letech 1812–1817 Franz Josef Seidl.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1820-goethe-prvni-navsteva",
+      "datum": "1820",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1820-01-01",
+      "rok": 1820,
+      "typ": "historie",
+      "nadpis": "První návštěva Johanna Wolfganga Goetha",
+      "popis": "Německý básník Johann Wolfgang von Goethe navštívil Mariánské Lázně poprvé roku 1820 a zavítal sem ještě dvakrát. Podle přehledu města povzbuzoval opata Reitenb",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1821-lazensky-orchestr",
+      "datum": "1821",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1821-01-01",
+      "rok": 1821,
+      "typ": "historie",
+      "nadpis": "Vzniká lázeňský orchestr",
+      "popis": "Opat Reitenberger vydal roku 1821 svolení ke zřízení lázeňského orchestru. Z tohoto tělesa vzešel dnešní Západočeský symfonický orchestr.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Z%C3%A1pado%C4%8Desk%C3%BD_symfonick%C3%BD_orchestr",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1906-ostatky-reitenbergera",
+      "datum": "1906",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1906-01-01",
+      "rok": 1906,
+      "typ": "historie",
+      "nadpis": "Do města přeneseny ostatky opata Reitenbergera",
+      "popis": "V roce 1906 byly do Mariánských Lázní přivezeny ostatky opata Karla Kašpara Reitenbergera.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-001",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "nový rok 2019 - práce i zábava čeká",
+      "popis": "Dvořák, Johannes Brahms a další. Ti sportovně nadanější z Vás se mohou účastnit veřejného závodu v běhu na lyžích volnou technikou s názvem „Okolo mariánskoláze",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-07-002",
+      "datum": "2024-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Rekonstrukce muzea bude pokračovat úpravami galerie a kinosálu",
+      "popis": "Mariánské Lázně pokračují v rekonstrukci městského muzea. Další etapa se týká galerie a kinosálu. Projekt navazuje na opravy stálé expozice a depozitáře. Takto ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50df7f3e%7C4236#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-07/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-017",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Osobnosti Mariánských Lázní v obrazech",
+      "popis": "Ponořte se s námi do (ne)dávné historie města a poznejte osobnosti, bez kterých by Mariánské Lázně nebyly takové, jaké jsou. V jednotlivých vydáních zpravodaje ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-033",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Naše oplatky slaví 170 let!",
+      "popis": "Věděli jste, že lázeňské oplatky, jak je známe dnes, se poprvé začaly péct právě u nás v Mariánských Lázních? Letos si připomínáme již 170 let od chvíle, kdy cu",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-034",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Jak to všechno začalo",
+      "popis": "Oplatky se v lázeňských městech pekly už v 18. století – tehdy šlo o jednoduché plátky bez náplně, které připomínaly hostie. Pekly se v kovových kleštích nad oh",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/034.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

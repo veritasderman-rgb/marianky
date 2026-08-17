@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27390675",
+    "nazev": "FLORAVIL, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-03-20",
+    "do": "2023-03-20",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "stredni": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2023-16/5__22197785",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "dodávka 58 ks samozavlažovacích mís",
+      "popis": "Odhadované spojení smlouvy z 2023-03-20 s bodem 16/5 z 2023-03-16 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru rozšíření závěsných",
+      "castka_czk": 255705.6,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27390675 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 4 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23809745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22197785",
+      "datum": "2023-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "dodávka 58 ks samozavlažovacích mís",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FLORAVIL, s.r.o..",
+      "castka_czk": 255705.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23809745",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45786747",
+    "nazev": "Orcave, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-05-21",
+    "do": "2019-09-16",
+    "prvni_rok": 2018,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 5,
+    "odhadu": 4,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 2,
+      "retez": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:5226691",
+      "datum": "2018-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-21",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Tisk a nalepení štítků na VO a zavedení systému hlášení poruch a jejich oprav v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Orcave, spol. s r.o..",
+      "castka_czk": 184996.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5629011",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-37-37/14",
+      "datum": "2018-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-19",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních - podání žádosti o dotaci",
+      "popis": "Zastupitelstvo města, bod 37/14, usnesení 739/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1964230",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/25",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo na zpracování žádosti o dotaci - projekt „Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních“",
+      "popis": "Rada města, bod 162/25, usnesení 427/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1986398",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/25__6026723",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - zpracování žádosti o dotaci na projekt \"Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních\"",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 162/25 z 2018-07-31 (Smlouva o dílo na zpracování žádosti o dotaci - projekt „Snížení energetické náročnosti veř",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45786747 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, dotaci, energeticke, laznich; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/6496951",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-37/14__6026723",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - zpracování žádosti o dotaci na projekt \"Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních\"",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 37/14 z 2018-06-19 (Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních - podání žádosti o ",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45786747 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 66 dní po usnesení; název bodu a předmět smlouvy sdílí slova dotaci, energeticke, laznich, marianskych; s",
+      "url": "https://smlouvy.gov.cz/smlouva/6496951",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6026723",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - zpracování žádosti o dotaci na projekt \"Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Orcave, spol. s r.o..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6496951",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/25__9419386",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Zpracování podkladů pro žádost o dotaci na výměnu svítidel a rozvaděčů veřejného osvětlení",
+      "popis": "Odhadované spojení smlouvy z 2019-09-16 s bodem 162/25 z 2018-07-31 (Smlouva o dílo na zpracování žádosti o dotaci - projekt „Snížení energetické náročnosti veř",
+      "castka_czk": 72479.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45786747 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 412 dní po usnesení; název bodu a předmět smlouvy sdílí slova dotaci, osvetleni, zpracovani; stejně do",
+      "url": "https://smlouvy.gov.cz/smlouva/10141610",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-37/14__9419386",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Zpracování podkladů pro žádost o dotaci na výměnu svítidel a rozvaděčů veřejného osvětlení",
+      "popis": "Odhadované spojení smlouvy z 2019-09-16 s bodem 37/14 z 2018-06-19 (Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních - podání žádosti o ",
+      "castka_czk": 72479.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45786747 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 454 dní po usnesení; název bodu a předmět smlouvy sdílí slova dotaci, osvetleni; stejně dobře sedí i 1",
+      "url": "https://smlouvy.gov.cz/smlouva/10141610",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9419386",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Zpracování podkladů pro žádost o dotaci na výměnu svítidel a rozvaděčů veřejného osvětlení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Orcave, spol. s r.o..",
+      "castka_czk": 72479.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10141610",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

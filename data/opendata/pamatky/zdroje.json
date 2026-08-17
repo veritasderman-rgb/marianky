@@ -1,0 +1,83 @@
+{
+  "generovano": "2026-08-17",
+  "obec": {
+    "kod": "554642",
+    "nazev": "Mariánské Lázně",
+    "okres": "Cheb"
+  },
+  "souradnicovy_system_vystupu": "WGS-84 (EPSG:4326), pořadí [délka, šířka]",
+  "prevod_souradnic": {
+    "z": "S-JTSK / Křovák East North (EPSG:5514)",
+    "do": "WGS-84 (EPSG:4326)",
+    "parametry": {
+      "dx_m": 570.8,
+      "dy_m": 85.7,
+      "dz_m": 462.8,
+      "rx_vteriny": -4.998,
+      "ry_vteriny": -1.587,
+      "rz_vteriny": -5.261,
+      "meritko_ppm": 3.56,
+      "konvence": "coordinate frame"
+    },
+    "provadi": "scrapers/geodata.py — stejná transformace jako u dat RÚIAN"
+  },
+  "zdroje": [
+    {
+      "nazev": "Otevřená data ÚSKP (Památkový katalog NPÚ)",
+      "url": "https://www.pamatkovykatalog.cz/otevrena-data",
+      "soubory": [
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_KP.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_NKP.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_PR.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_PZ.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_SD.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_OP.csv",
+        "https://www.pamatkovykatalog.cz/opendata/npu_opendata_NZ.csv"
+      ],
+      "provozovatel": "Národní památkový ústav",
+      "licence": "CC BY 4.0 — Národní památkový ústav. Data lze užít i komerčně, povinností je uvést původ a odkaz na licenci. https://creativecommons.org/licenses/by/4.0/deed.cs",
+      "povinna_dolozka": "datový podklad: Národní památkový ústav, https://www.pamatkovykatalog.cz/, datum aktualizace 31.07.2026, licence CC BY 4.0",
+      "datum_aktualizace": "31.07.2026",
+      "aktualizace": "1× měsíčně k poslednímu dni měsíce",
+      "puvodni_crs": "žádné — sady souřadnice neobsahují",
+      "zaznamu_v_ml": {
+        "KP": 46,
+        "NKP": 2,
+        "PR": 1,
+        "PZ": 2,
+        "SD": 1,
+        "OP": 0,
+        "NZ": 0
+      }
+    },
+    {
+      "nazev": "Geoportál NPÚ — definiční body památek",
+      "url": "https://geoportal.npu.cz/arcgis/rest/services/Tematicke/CP_PaKaOchreKP/MapServer",
+      "provozovatel": "Národní památkový ústav",
+      "copyright_sluzby": "CC-BY-SA 4.0 Národní památkový ústav",
+      "licence": "CC BY-SA 4.0 — Národní památkový ústav (uvedeno v poli copyrightText služby geoportálu). Odvozená díla se musí sdílet pod stejnou licencí.",
+      "puvodni_crs": "EPSG:5514",
+      "bodu": 48
+    },
+    {
+      "nazev": "Geoportál NPÚ — plošná vymezení ochrany",
+      "url": "https://geoportal.npu.cz/arcgis/rest/services/Tematicke/CP_Prstav_PVO/MapServer/0",
+      "provozovatel": "Národní památkový ústav",
+      "copyright_sluzby": "Národní památkový ústav",
+      "licence": "Služba uvádí jen autora (Národní památkový ústav), licenci ne. Sousední vrstvy geoportálu mají CC BY-SA 4.0, otevřená data ÚSKP CC BY 4.0. Zdroj se uvádí vždy; před komerčním užitím se doptat NPÚ.",
+      "puvodni_crs": "EPSG:5514",
+      "ploch_pamatek": 46,
+      "chranenych_uzemi": 5
+    }
+  ],
+  "vystupy": {
+    "pamatky.geojson": 48,
+    "pamatky_plochy.geojson": 46,
+    "ochranna_uzemi.geojson": 5,
+    "pamatky_bez_bodu.json": 0
+  },
+  "unesco": [
+    "Nárazníková zóna statku světového dědictví \"Slavná lázeňská města Evropy\"",
+    "Slavná lázeňská města Evropy"
+  ]
+}

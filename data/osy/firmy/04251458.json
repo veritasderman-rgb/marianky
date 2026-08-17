@@ -1,0 +1,639 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04251458",
+    "nazev": "MUSIL gastro spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-07-16",
+    "do": "2026-06-26",
+    "prvni_rok": 2015,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 30,
+    "dolozenych": 27,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 23,
+      "usneseni": 3,
+      "retez": 3
+    },
+    "dle_jistoty": {
+      "fakt": 27,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:04251458:vznik",
+      "datum": "2015-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-16",
+      "rok": 2015,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MUSIL gastro spol. s r.o.",
+      "popis": "Vznik subjektu MUSIL gastro spol. s r.o. (IČO 04251458), Společnost s ručením omezeným, obor: Zprostředkování v oblasti velkoobchodu za provizi.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:3811280",
+      "datum": "2017-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-08",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka myčky NUC3DP podpultová + příslušenství, ZŠ Vítězství Mariánské Lázně",
+      "popis": "Základní škola Vítězství Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 65180.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4110352",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47724978.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11996176",
+      "datum": "2018-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-21",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "dodávka sporáku s troubou",
+      "popis": "Mateřská škola, Mariánské Lázně, Na Třešňovce 603 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 84191.316,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12879460",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997594.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11989312",
+      "datum": "2020-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-14",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup myčky",
+      "popis": "Mateřská škola, Mariánské Lázně, Hlavní 440 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 64983.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17842743",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997578.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16591099",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "nákup konvektomatu",
+      "popis": "Mateřská škola, Mariánské Lázně, Na Třešňovce 603 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 162590.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17869679",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997594.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18674387",
+      "datum": "2022-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 22_80 - šoker, plynový sporák",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 366251.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20637023",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20962021",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup nářezového stroje BERKEL - RPA 301 CE",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 111340.57,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22500313",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-5-5/8",
+      "datum": "2022-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "VZ Dům Chopin - rekonstrukce objektu - vybavení objektu 1.etapy",
+      "popis": "Rada města, bod 5/8, usnesení 566/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2940418",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:21443205",
+      "datum": "2023-01-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-05",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva Dům Chopin – rekonstrukce objektu – vybavení – 1. etapa SO 02 - Gastrotechnologie",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 625222.73,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23011909",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/33",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dům Chopin – rekonstrukce objektu – vybavení – 1. etapa SO 02 – Gastrotechnologie",
+      "popis": "Rada města, bod 19/33, usnesení 221/23. Schvaleno.",
+      "castka_czk": 10527,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3000994",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/33__24522403",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Tunelová košová myčka ELEKTROLUX EDR20 vč. zařízení pro úsporu energie ESD",
+      "popis": "Odhadované spojení smlouvy z 2023-10-25 s bodem 19/33 z 2023-04-04 (Dům Chopin – rekonstrukce objektu – vybavení – 1. etapa SO 02 – Gastrotechnologie). Jistota ",
+      "castka_czk": 1393302.05,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04251458 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 204 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/26253311",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24522403",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Tunelová košová myčka ELEKTROLUX EDR20 vč. zařízení pro úsporu energie ESD",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 1393302.05,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26253311",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/33__24676615",
+      "datum": "2023-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-08",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Chladící skříně Elektrolux",
+      "popis": "Odhadované spojení smlouvy z 2023-11-08 s bodem 19/33 z 2023-04-04 (Dům Chopin – rekonstrukce objektu – vybavení – 1. etapa SO 02 – Gastrotechnologie). Jistota ",
+      "castka_czk": 239347.68,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04251458 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 218 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/26414587",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24676615",
+      "datum": "2023-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-08",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Chladící skříně Elektrolux",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 239347.68,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26414587",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/33__25107503",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Elektrické kotle",
+      "popis": "Odhadované spojení smlouvy z 2023-12-13 s bodem 19/33 z 2023-04-04 (Dům Chopin – rekonstrukce objektu – vybavení – 1. etapa SO 02 – Gastrotechnologie). Jistota ",
+      "castka_czk": 324355.02,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 04251458 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 253 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/26883167",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25107503",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Elektrické kotle",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 324355.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26883167",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26380167",
+      "datum": "2024-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka roštových polic s ližinami pro chladící skříně Elektrolux.",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 64134.84,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28232779",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28104192",
+      "datum": "2024-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-18",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání-sklopná pánev",
+      "popis": "Mateřská škola, Mariánské Lázně, Na Třešňovce 603 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 166411.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30035788",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997594.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29083632",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "objednávka konvektomat+cukr.pec",
+      "popis": "Mateřská škola, Mariánské Lázně, Křižíkova 555 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 279155.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31081228",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997560.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29074192",
+      "datum": "2024-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka  24_178 - gastro příslušenství",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 98388.73,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31071300",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30651188",
+      "datum": "2025-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-31",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – vytvoření dispozičního řešení pro stravovací provoz školní jídelny na ZŠ Jih.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 47795.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32727648",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31104056",
+      "datum": "2025-05-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-08",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_50 - kráječ chleba a knedlíků",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 105923.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33200592",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31181496",
+      "datum": "2025-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-15",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_56 - škrabka brambor VARES",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 61363.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33281132",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31375340",
+      "datum": "2025-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_74 - konvektomat ELEKTROLUX SKY Line",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 438961.38,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33484192",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31619365",
+      "datum": "2025-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-18",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_92 - transportní vybavení do kuchyně",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 166501.71,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33740753",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/11",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Modernizace stravovacího provozu na ZŠ JIH - konvektomat\" - výběr dodavatele",
+      "popis": "Rada města, bod 99/11, usnesení 648/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1553288228",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:33119825",
+      "datum": "2025-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Modernizace stravovacího provozu na ZŠ JIH – konvektomat",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 465850.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35309833",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36355088",
+      "datum": "2026-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-25",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání",
+      "popis": "Mateřská škola Úšovice, Mariánské Lázně, Skalníkova 518 — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 99482.57,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38697136",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997586.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36215172",
+      "datum": "2026-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-26",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 26_95 - myčka ELEKTROLUX na nádobí",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 98175.77,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38541748",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36215264",
+      "datum": "2026-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-26",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 26_96 - kotel ALBI 80l",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MUSIL gastro spol. s r.o..",
+      "castka_czk": 152324.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38541840",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

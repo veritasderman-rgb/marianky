@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "74276158",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-01-01",
+    "do": "2015-12-22",
+    "prvni_rok": 2007,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:74276158:vznik",
+      "datum": "2007-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-01-01",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Edita Tomsová",
+      "popis": "Vznik subjektu Edita Tomsová (IČO 74276158), Fyzická osoba podnikající dle živnostenského zákona, obor: Činnosti v oblasti sportu j. n..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-49-49/8",
+      "datum": "2015-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-22",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP v ul. Franze Kafky, č.p. 835",
+      "popis": "Rada města, bod 49/8, usnesení 620/15. Schvaleno.",
+      "castka_czk": 55000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1506627",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/49.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

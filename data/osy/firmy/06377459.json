@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06377459",
+    "nazev": "Lorawelt s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-25",
+    "do": "2026-07-15",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:06377459:vznik",
+      "datum": "2017-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-25",
+      "rok": 2017,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Lorawelt s.r.o.",
+      "popis": "Vznik subjektu Lorawelt s.r.o. (IČO 06377459), Společnost s ručením omezeným, obor: Podpůrné činnosti pro rostlinnou výrobu.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/22",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Neinvestiční dotace pro Lorawelt s.r.o., - 2. mezinárodní fotbalový turnaj malých fotbalistů",
+      "popis": "Rada města, bod 120/22, usnesení 1290/26. Schvaleno.",
+      "castka_czk": 80000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1487764122",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-120/22__36565602",
+      "datum": "2026-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-15",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace z rozpočtu Města Mariánské Lázně  - Lorawelt s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-07-15 s bodem 120/22 z 2026-06-23 (Neinvestiční dotace pro Lorawelt s.r.o., - 2. mezinárodní fotbalový turnaj malých fotbalist",
+      "castka_czk": 80000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 06377459 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/38905974",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36565602",
+      "datum": "2026-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-15",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace z rozpočtu Města Mariánské Lázně  - Lorawelt s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lorawelt s.r.o..",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38905974",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24138878",
+    "nazev": "AIRCON CLIMA CZ, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-09-20",
+    "do": "2016-10-12",
+    "prvni_rok": 2016,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-84-84/13",
+      "datum": "2016-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-20",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "MŠ Skalníkova – chlazení",
+      "popis": "Rada města, bod 84/13, usnesení 461/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1638112",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/84.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-84/13__526825",
+      "datum": "2016-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-12",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Instalace chlazení do objektu mateřské školy Úšovice, Skalníkova 518, 353 01 Mariánské Lázně.",
+      "popis": "Odhadované spojení smlouvy z 2016-10-12 s bodem 84/13 z 2016-09-20 (MŠ Skalníkova – chlazení). Jistota stredni.",
+      "castka_czk": 599555.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24138878 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova chlazeni, skalnikova",
+      "url": "https://smlouvy.gov.cz/smlouva/560973",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:526825",
+      "datum": "2016-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-12",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Instalace chlazení do objektu mateřské školy Úšovice, Skalníkova 518, 353 01 Mariánské Lázně.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AIRCON CLIMA CZ, s.r.o..",
+      "castka_czk": 599555.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/560973",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

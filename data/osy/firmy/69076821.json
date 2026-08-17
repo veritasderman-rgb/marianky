@@ -1,0 +1,380 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "69076821",
+    "nazev": "Thi Thanh Tam Le"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-01-27",
+    "do": "2023-03-16",
+    "prvni_rok": 2000,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 11,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 4,
+      "usneseni": 6,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "nizka": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:69076821:vznik",
+      "datum": "2000-01-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-01-27",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Thi Thanh Tâm Lé",
+      "popis": "Vznik subjektu Thi Thanh Tâm Lé (IČO 69076821), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:7805",
+      "datum": "2016-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-27",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Le Thi Thanh Tam.",
+      "castka_czk": 188179.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8029",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-143-143/2",
+      "datum": "2018-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-30",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - prodloužení nájemního vztahu - Le Thi Thanh Tam",
+      "popis": "Rada města, bod 143/2, usnesení 51/18. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1895114",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-150-150/2",
+      "datum": "2018-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133, dvorní trakt - žádost o snížení nájemného - Le Thi Thanh Tam",
+      "popis": "Rada města, bod 150/2, usnesení 168/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1921991",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-143/2__4743696",
+      "datum": "2018-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 133, dvorní trakt - Le ThiThanh Tam",
+      "popis": "Odhadované spojení smlouvy z 2018-03-29 s bodem 143/2 z 2018-01-30 (NP Hlavní 133 - prodloužení nájemního vztahu - Le Thi Thanh Tam). Jistota nizka.",
+      "castka_czk": 464640.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; smlouva podepsána 58 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5116148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-150/2__4743696",
+      "datum": "2018-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 133, dvorní trakt - Le ThiThanh Tam",
+      "popis": "Odhadované spojení smlouvy z 2018-03-29 s bodem 150/2 z 2018-03-27 (NP Hlavní 133, dvorní trakt - žádost o snížení nájemného - Le Thi Thanh Tam). Jistota nizka.",
+      "castka_czk": 464640.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova dvorni, hlavni, trakt; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/5116148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4743696",
+      "datum": "2018-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 133, dvorní trakt - Le ThiThanh Tam",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Thi Thanh Tam Le.",
+      "castka_czk": 464640.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5116148",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/12",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - dočasná sleva",
+      "popis": "Rada města, bod 162/12, usnesení 414/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1984326",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-143/2__6024483",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 133",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 143/2 z 2018-01-30 (NP Hlavní 133 - prodloužení nájemního vztahu - Le Thi Thanh Tam). Jistota nizka.",
+      "castka_czk": 7744.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; smlouva podepsána 206 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6494419",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-150/2__6024483",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 133",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 150/2 z 2018-03-27 (NP Hlavní 133, dvorní trakt - žádost o snížení nájemného - Le Thi Thanh Tam). Jistota nizka.",
+      "castka_czk": 7744.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; smlouva podepsána 150 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6494419",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/12__6024483",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 133",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 162/12 z 2018-07-31 (NP Hlavní 133 - dočasná sleva). Jistota nizka.",
+      "castka_czk": 7744.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; smlouva podepsána 24 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6494419",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6024483",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 133",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Thi Thanh Tam Le.",
+      "castka_czk": 7744.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6494419",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-24-24/5",
+      "datum": "2019-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-21",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133,Thi Thanh Tam Le - dočasná sleva",
+      "popis": "Rada města, bod 24/5, usnesení 229/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2341314",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-152-152/15",
+      "datum": "2022-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-28",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.133 (dvorní trakt) - Thi Thanh Tam Le - dočasná sleva",
+      "popis": "Rada města, bod 152/15, usnesení 336/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2872475",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-15-15/22",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 133 (dvorní trakt) – prodloužení nájemního vztahu – Thi Thanh Tam Le",
+      "popis": "Rada města, bod 15/22, usnesení 138/23. Schvaleno.",
+      "castka_czk": 76800,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2986511",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-15/22__22165597",
+      "datum": "2023-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-16",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Thi Thanh Tam Li",
+      "popis": "Odhadované spojení smlouvy z 2023-03-16 s bodem 15/22 z 2023-03-07 (NP Hlavní, č.p. 133 (dvorní trakt) – prodloužení nájemního vztahu – Thi Thanh Tam Le). Jisto",
+      "castka_czk": 464640.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 69076821 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova prodlouzeni, thanh",
+      "url": "https://smlouvy.gov.cz/smlouva/23776201",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22165597",
+      "datum": "2023-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Thi Thanh Tam Li",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Thi Thanh Tam Le.",
+      "castka_czk": 464640.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23776201",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

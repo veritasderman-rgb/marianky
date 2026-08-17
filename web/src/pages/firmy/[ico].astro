@@ -1,0 +1,312 @@
+---
+/**
+ * Detail firmy s doloženým vztahem k městu.
+ *
+ * Vlastní stránku dostávají jen firmy, u kterých se dá vztah k městu doložit
+ * (`duvody.length > 0`). Pro zbylé tisíce subjektů se sídlem ve městě by
+ * stránka neřekla nic než „sídlí tady", a to už stojí v přehledu.
+ *
+ * Kritérium důležitosti je na stránce první věc pod nadpisem — čtenář má hned
+ * vidět, proč se na tuhle firmu vůbec dívá.
+ */
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import Dlazdice from '../../components/Dlazdice.astro';
+import CasovaOsa from '../../components/CasovaOsa.astro';
+import type { Polozka } from '../../components/Dlazdice.astro';
+import { nactiProtistrany, nactiSmlouvy, nactiSubjekty, type Smlouva } from '../../lib/data';
+import { nactiOsobyFirmy } from '../../lib/vazby';
+import { jednou } from '../../lib/cache';
+import { dulezite, nactiFirmy, sKontextem, type FirmaSKontextem } from '../../lib/firmy';
+import { nactiCasovouOsu, proIco, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
+import { cislo, datumKratke, kc, kcZkraceno, orez } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const zFirem = jednou('firmy', nactiFirmy);
+  const zProtistran = jednou('protistrany', nactiProtistrany);
+  const zPropojeni = jednou('propojeni', nactiOsobyFirmy);
+  const zSubjektu = jednou('subjekty', nactiSubjekty);
+
+  const mestskaIca = new Set(
+    (zSubjektu.data?.subjekty ?? []).map((s) => s.ico).filter((i): i is string => Boolean(i)),
+  );
+  if (zSubjektu.data?.mesto?.ico) mestskaIca.add(zSubjektu.data.mesto.ico);
+
+  const firmy = sKontextem(zFirem.data ?? [], {
+    protistrany: zProtistran.data.protistrany ?? [],
+    propojeni: zPropojeni.data,
+    mestskaIca,
+    kc,
+    cislo,
+  });
+
+  return dulezite(firmy).map((f) => ({ params: { ico: f.klic }, props: { firma: f } }));
+}
+
+const { firma } = Astro.props as { firma: FirmaSKontextem };
+
+const zSmluv = jednou('smlouvy', nactiSmlouvy);
+const zOsy = jednou('casova-osa', nactiCasovouOsu);
+const znameProtistrany = new Set(
+  (jednou('protistrany', nactiProtistrany).data.protistrany ?? []).map((p) => p.klic),
+);
+
+/* ── Smlouvy s městem ──────────────────────────────────────────────────── */
+
+const smlouvy: (Smlouva & { odKoho: string })[] = [];
+if (firma.ico) {
+  for (const soubor of zSmluv.data ?? []) {
+    for (const s of soubor?.smlouvy ?? []) {
+      if (s?.protistrana_ico === firma.ico) smlouvy.push({ ...s, odKoho: soubor.nazev ?? soubor.ico });
+    }
+  }
+}
+smlouvy.sort((a, b) => String(b.datum ?? '').localeCompare(String(a.datum ?? '')));
+const vadnych = smlouvy.filter((s) => s.vada).length;
+
+/* ── Časová osa firmy ──────────────────────────────────────────────────── */
+
+const udalosti: UdalostOsy[] = [];
+
+if (firma.vznik) {
+  udalosti.push(
+    udalost({
+      id: `${firma.klic}-vznik`,
+      datum: firma.vznik,
+      druh: 'firma',
+      nadpis: 'Zápis do rejstříku',
+      detail: firma.pravniForma ?? null,
+      zdroj: 'firmy/ (ARES)',
+    }),
+  );
+}
+if (firma.zanik) {
+  udalosti.push(
+    udalost({
+      id: `${firma.klic}-zanik`,
+      datum: firma.zanik,
+      druh: 'firma',
+      nadpis: 'Výmaz z rejstříku',
+      zdroj: 'firmy/ (ARES)',
+    }),
+  );
+}
+
+for (const s of smlouvy) {
+  if (!s.datum) continue;
+  udalosti.push(
+    udalost({
+      id: `smlouva-${s.id ?? `${s.datum}-${s.castka_czk ?? 0}`}`,
+      datum: s.datum,
+      druh: 'smlouva',
+      nadpis: s.predmet ? orez(s.predmet, 90) : 'Smlouva s městem',
+      popis: s.predmet ?? null,
+      odkaz: s.url ?? null,
+      zdroj: 'penize/smlouvy/ (registr smluv)',
+      detail: `${s.smer === 'prijem' ? 'město inkasuje' : 'město platí'} ${kc(s.castka_czk)} · ${s.odKoho}${s.vada ? ' · Hlídač označuje smlouvu za vadnou' : ''}`,
+      ica: firma.ico ? [firma.ico] : [],
+    }),
+  );
+}
+
+const zJednotneOsy = firma.ico ? proIco(zOsy.data ?? [], firma.ico) : [];
+const vseNaOse = slucUdalosti(udalosti, zJednotneOsy);
+
+/* ── Dlaždice ──────────────────────────────────────────────────────────── */
+
+const dlazdice: Polozka[] = [
+  {
+    popisek: 'Od města',
+    hodnota: firma.odMesta === null ? '—' : kcZkraceno(firma.odMesta, true),
+    doplnek:
+      firma.odMesta === null
+        ? 'v registru smluv města firma není'
+        : `${kc(firma.odMesta)}${firma.smluv === null ? '' : ` ve ${cislo(firma.smluv)} smlouvách`}`,
+  },
+  {
+    popisek: 'Městu',
+    hodnota: firma.mestu === null ? '—' : kcZkraceno(firma.mestu, true),
+    doplnek: firma.mestu === null ? 'město od ní podle registru neinkasovalo' : kc(firma.mestu),
+  },
+  {
+    popisek: 'Existuje',
+    hodnota: firma.zanik ? 'Zanikla' : firma.vznik ? 'Zapsaná' : '—',
+    doplnek: firma.zanik
+      ? `výmaz ${firma.zanik}, zápis ${firma.vznik ?? 'v datech není'}`
+      : firma.vznik
+        ? `zápis ${firma.vznik}`
+        : 'datum vzniku v datech není',
+  },
+  {
+    popisek: 'Období s městem',
+    hodnota:
+      firma.prvniRok && firma.posledniRok ? `${firma.prvniRok}–${firma.posledniRok}` : '—',
+    doplnek:
+      firma.prvniRok && firma.posledniRok
+        ? 'roky, ve kterých má registr smlouvu'
+        : 'v registru smluv města firma není',
+  },
+];
+---
+
+<Zaklad titulek={firma.nazev} aktivni="firmy" nadpis={firma.nazev}>
+  <p class="uvod">
+    {firma.ico ? <>IČO <span class="mono">{firma.ico}</span></> : <>bez IČO — zdroj ho u téhle firmy neuvádí</>}
+    {firma.pravniForma && <> · {firma.pravniForma}</>}
+    {firma.obor && <> · {firma.obor}</>}
+    {firma.sidlo && <> · {firma.sidlo}</>}
+  </p>
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Podle čeho je firma v přehledu zvýrazněná</h2>
+    <p class="karta__podnadpis">
+      Kritéria jsou uzavřený seznam a každé se dá dohledat ve zdroji. Zvýraznění není
+      hodnocení firmy — jen upozornění, že s městem něco spojuje.
+    </p>
+    <ul class="duvody">
+      {firma.duvody.map((d) => (
+        <li>
+          <span class="duvod__nazev">{d.nazev}</span>
+          {d.detail && <span class="duvod__detail"> — {d.detail}</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <Dlazdice polozky={dlazdice} />
+
+  {
+    firma.mestska === true && (
+      <p class="graf-poznamka">
+        Tohle je organizace města. Peníze, které jí město posílá, nejsou platby cizí firmě, ale
+        financování vlastní organizace — technických služeb, kultury, sportovišť. Bez tohohle
+        rozlišení by přehled tvrdil opak toho, co v datech stojí.
+      </p>
+    )
+  }
+
+  {
+    vseNaOse.length > 0 && (
+      <CasovaOsa
+        id="osa-firmy"
+        nadpis="Časová osa firmy"
+        udalosti={vseNaOse}
+        popis="Zápis a výmaz v rejstříku, smlouvy s městem a další doložené události. Roky bez jediné události zabírají na ose stejně místa jako ostatní — mezera je informace."
+        zdroje={[
+          'firmy/ (ARES)',
+          ...(smlouvy.length > 0 ? ['penize/smlouvy/ (registr smluv)'] : []),
+          ...(zJednotneOsy.length > 0 ? ['casova_osa/'] : []),
+        ]}
+        neuplnost="Osa neobsahuje činnost firmy jako takovou, jen to, co je v našich datech — rejstříkové zápisy a smlouvy s městem."
+      />
+    )
+  }
+
+  {
+    firma.osoby.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Kdo ze samosprávy je u firmy uvedený</h2>
+        <p class="karta__podnadpis">
+          Zápis ve firmě je veřejný údaj z rejstříku. Sám o sobě neznamená nic víc, než že je
+          osoba ve firmě zapsaná — přehled z něj nevyvozuje žádný závěr.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Osoba</th>
+                <th scope="col">Role podle rejstříku</th>
+              </tr>
+            </thead>
+            <tbody>
+              {firma.osoby.map((o) => (
+                <tr>
+                  <td>
+                    {o.osoba_id ? (
+                      <a href={`/lide/${o.osoba_id}`}>{o.jmeno ?? o.osoba_id}</a>
+                    ) : (
+                      (o.jmeno ?? 'neuvedeno')
+                    )}
+                  </td>
+                  <td>{o.role.length > 0 ? o.role.join(', ') : 'zdroj ji u firmy neuvádí'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Smlouvy s městem</h2>
+    <StavDat
+      stav={zSmluv.stav}
+      zdroj="penize/smlouvy/"
+      co={`Smlouvy mezi městem a ${firma.nazev}`}
+      prazdno={zSmluv.stav === 'ok' && smlouvy.length === 0}
+      modul="A3 Peníze"
+      poznamky={
+        zSmluv.stav === 'ok' && smlouvy.length === 0 && firma.odMesta !== null
+          ? ['Souhrn z agregace peněz objem uvádí, ale jednotlivé smlouvy se k téhle firmě v datech nenašly.']
+          : []
+      }
+    />
+    {
+      smlouvy.length > 0 && (
+        <>
+          <p class="karta__podnadpis">
+            {cislo(smlouvy.length)} smluv z registru smluv
+            {vadnych > 0 && `, z toho ${cislo(vadnych)} označuje Hlídač státu za vážně vadné`}.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Datum</th>
+                  <th scope="col">Předmět</th>
+                  <th scope="col">Za město</th>
+                  <th scope="col">Směr</th>
+                  <th scope="col" class="cislo">Částka</th>
+                  <th scope="col">Poznámka</th>
+                </tr>
+              </thead>
+              <tbody>
+                {smlouvy.map((s) => (
+                  <tr>
+                    <td class="cislo">{datumKratke(s.datum)}</td>
+                    <td>{s.url ? <a href={s.url} rel="noreferrer noopener">{s.predmet ?? 'Smlouva'}</a> : (s.predmet ?? 'Smlouva')}</td>
+                    <td>{s.odKoho}</td>
+                    <td>{s.smer === 'prijem' ? 'město inkasuje' : 'město platí'}</td>
+                    <td class="cislo">{kc(s.castka_czk)}</td>
+                    <td>{s.vada ? 'Hlídač státu označuje za vadnou' : ''}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )
+    }
+  </section>
+
+  <p>
+    <a href="/firmy">← Zpět na přehled firem</a>
+    {
+      firma.protistranaKlic && znameProtistrany.has(firma.protistranaKlic) && (
+        <> · <a href={`/penize/${firma.protistranaKlic}`}>Peníze od města podrobně</a></>
+      )
+    }
+    {
+      firma.ico && (
+        <>
+          {' · '}
+          <a href={`https://www.hlidacstatu.cz/subjekt/${firma.ico}`} rel="noreferrer noopener">
+            profil na Hlídači státu
+          </a>
+        </>
+      )
+    }
+    {firma.url && <> · <a href={firma.url} rel="noreferrer noopener">zdrojový záznam</a></>}
+  </p>
+</Zaklad>

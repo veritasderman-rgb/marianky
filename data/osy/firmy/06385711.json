@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06385711",
+    "nazev": "Blank architekt s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-12-05",
+    "do": "2018-10-19",
+    "prvni_rok": 2017,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-137-137/19",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smluv na zpracování Územního plánu Mariánské Lázně",
+      "popis": "Rada města, bod 137/19, usnesení 701/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1869327",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/19__3784448",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Převedení práv a povinnosti ze smluv ev. č. S73/17 a ev. č. S155/17 na společnost Blank architekt s.r.o., IČ: 063 85 711",
+      "popis": "Odhadované spojení smlouvy z 2017-12-12 s bodem 137/19 z 2017-12-05 (Postoupení smluv na zpracování Územního plánu Mariánské Lázně). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06385711 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí i",
+      "url": "https://smlouvy.gov.cz/smlouva/4081576",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3784448",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Převedení práv a povinnosti ze smluv ev. č. S73/17 a ev. č. S155/17 na společnost Blank architekt s.r.o., IČ: 063 85 711",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Blank architekt s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4081576",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/19__6613735",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Prodloužení termínu na zpracování návrhu ÚP a navýšení ceny za zpracování návrhu ÚP s prvky regulačního plánu",
+      "popis": "Odhadované spojení smlouvy z 2018-10-19 s bodem 137/19 z 2017-12-05 (Postoupení smluv na zpracování Územního plánu Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 423500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 06385711 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 318 dní po usnesení; název bodu a předmět smlouvy sdílí slova planu, zpracovani; usnesení mluví o dodatku",
+      "url": "https://smlouvy.gov.cz/smlouva/7143655",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6613735",
+      "datum": "2018-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-19",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Prodloužení termínu na zpracování návrhu ÚP a navýšení ceny za zpracování návrhu ÚP s prvky regulačního plánu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Blank architekt s.r.o..",
+      "castka_czk": 423500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7143655",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

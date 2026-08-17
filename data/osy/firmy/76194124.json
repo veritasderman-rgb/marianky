@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "76194124",
+    "nazev": "Petr Drozda"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2010-09-06",
+    "do": "2022-10-12",
+    "prvni_rok": 2010,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 9,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 4,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:76194124:vznik",
+      "datum": "2010-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2010-09-06",
+      "rok": 2010,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petr Drozda",
+      "popis": "Vznik subjektu Petr Drozda (IČO 76194124), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-92-92/1",
+      "datum": "2012-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-18",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Klíčova 179",
+      "popis": "Rada města, bod 92/1, usnesení 600/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/853362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-148-148/11",
+      "datum": "2014-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-04-01",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Záměr pronájmu části p.p.č. 50/3 k. ú. ML - Drozda venkovní terasa",
+      "popis": "Rada města, bod 148/11, usnesení 129/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1102299",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-152-152/10",
+      "datum": "2014-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-06",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Pronájem části p.p.č.50/3 k.ú. ML -předzahrádka k České hospůdce",
+      "popis": "Rada města, bod 152/10, usnesení 197/14. Schvaleno.",
+      "castka_czk": 6738,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1118860",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-137-137/5",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu části p.p.č.50/3 k.ú.ML",
+      "popis": "Rada města, bod 137/5, usnesení 687/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1866156",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-138-138/2",
+      "datum": "2017-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Klíčova 179 - prodloužení nájmu - Petr Drozda",
+      "popis": "Rada města, bod 138/2, usnesení 707/17. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1873334",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/2__4147200",
+      "datum": "2018-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-22",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Klíčova 179 - Petr Drozda",
+      "popis": "Odhadované spojení smlouvy z 2018-01-22 s bodem 138/2 z 2017-12-19 (NP Klíčova 179 - prodloužení nájmu - Petr Drozda). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76194124 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova drozda, klicova, petr; stejně dobře sedí i 1",
+      "url": "https://smlouvy.gov.cz/smlouva/4468304",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-141/6__4147200",
+      "datum": "2018-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-22",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Klíčova 179 - Petr Drozda",
+      "popis": "Odhadované spojení smlouvy z 2018-01-22 s bodem 141/6 z 2018-01-16 (Pronájem části p. p. č. 50/3 k.ú. ML - P. Drozda). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76194124 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova drozda, pronajem; stejně dobře sedí i 1 další",
+      "url": "https://smlouvy.gov.cz/smlouva/4468304",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4147200",
+      "datum": "2018-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-22",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Klíčova 179 - Petr Drozda",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Drozda.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4468304",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-158-158/10",
+      "datum": "2022-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-20",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Klíčova, č.p.179 - prodloužení Smlouvy o nájmu nebytového prostoru - Petr Drozda",
+      "popis": "Rada města, bod 158/10, usnesení 457/22. Schvaleno.",
+      "castka_czk": 154560,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2909677",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/158.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-158/10__20454601",
+      "datum": "2022-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-12",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petr Drozda",
+      "popis": "Odhadované spojení smlouvy z 2022-10-12 s bodem 158/10 z 2022-09-20 (NP Klíčova, č.p.179 - prodloužení Smlouvy o nájmu nebytového prostoru - Petr Drozda). Jisto",
+      "castka_czk": 935088.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76194124 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova drozda, najmu, nebytoveho, petr; stejně dobř",
+      "url": "https://smlouvy.gov.cz/smlouva/21967721",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-159/9__20454601",
+      "datum": "2022-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-12",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petr Drozda",
+      "popis": "Odhadované spojení smlouvy z 2022-10-12 s bodem 159/9 z 2022-09-27 (Zveřejnění záměru prodloužení pronájmu části p.p.č.50/3 k. ú. ML - terasa k České hospůdce).",
+      "castka_czk": 935088.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76194124 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21967721",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20454601",
+      "datum": "2022-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-12",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petr Drozda",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Drozda.",
+      "castka_czk": 935088.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21967721",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

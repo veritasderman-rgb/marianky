@@ -1,0 +1,318 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28030672",
+    "nazev": "CHRISTO GROUP s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-09-29",
+    "do": "2024-04-19",
+    "prvni_rok": 2015,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 13,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 12
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-39-39/8",
+      "datum": "2015-09-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-29",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Znak města Mariánské Lázně",
+      "popis": "Rada města, bod 39/8, usnesení 456/15. Schvaleno.",
+      "castka_czk": 24200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1466732",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2015-39/8__2336250",
+      "datum": "2017-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka propagačního materiálu pro město Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-06-20 s bodem 39/8 z 2015-09-29 (Znak města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 240088.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28030672 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 630 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2518846",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2336250",
+      "datum": "2017-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka propagačního materiálu pro město Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Christo Group s.r.o..",
+      "castka_czk": 240088.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2518846",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3849696",
+      "datum": "2017-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-19",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "upomínkové předměty k 200. výročí lázeňství",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 120750.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4151772",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5081767",
+      "datum": "2018-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-20",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - komunikační strategie - on-line kampaň ZLS a 200 let (CHRISTO)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5476555",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6955975",
+      "datum": "2018-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-05",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "objednávka CHRISTO Děti milují ML",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 120945.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7511755",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8033119",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka upomínkových předmětů s logem UNESCO k Zahájení Lázeňské Sezóny 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 120887.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8673039",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8893331",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "upomínkové předměty s logem města ML a GREAT SPAS OF EUROPE",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 110481.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9583311",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9172575",
+      "datum": "2019-08-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-02",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "zpracování a tisk materiálu '' Turistický kurýr''",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 86893.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9879487",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9795766",
+      "datum": "2019-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka zpracování a tisku Turistický kurýr",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Christo Group s.r.o..",
+      "castka_czk": 55787.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10538930",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13910730",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dárkové předměty s logem města ML a Great Spas Of Europe",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 92300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14942522",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13910726",
+      "datum": "2020-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-16",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Upomínkové předměty",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 90576.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14942518",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25191319",
+      "datum": "2023-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-19",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - propagačních materiálů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 118000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26978587",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26550299",
+      "datum": "2024-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - CHRISTO GROUP s.r.o. - lehátka a houpací sítě s potiskem",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHRISTO GROUP s.r.o..",
+      "castka_czk": 56584.44,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28410707",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45794898",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-07-22",
+    "do": "2019-09-24",
+    "prvni_rok": 1992,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45794898:vznik",
+      "datum": "1992-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-07-22",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — HOTEL AMBASSADOR ZLATÁ HUSA spol. s r.o.",
+      "popis": "Vznik subjektu HOTEL AMBASSADOR ZLATÁ HUSA spol. s r.o. (IČO 45794898), Společnost s ručením omezeným, obor: Ubytování v hotelích a podobných ubytovacích zaříze",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-38-38/4",
+      "datum": "2019-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-24",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Nájem nebytových prostor – ZRUŠENÍ 2. opakované ZPŘ",
+      "popis": "Rada města, bod 38/4, usnesení 474/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2411628",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

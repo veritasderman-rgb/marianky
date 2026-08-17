@@ -1,0 +1,240 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00377945",
+    "nazev": "Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2001-09-30",
+    "do": "2024-09-04",
+    "prvni_rok": 2001,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:00377945:vznik",
+      "datum": "2001-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-09-30",
+      "rok": 2001,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace",
+      "popis": "Vznik subjektu Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace (IČO 00377945), Příspěvková organizace, obor: Ostatní ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-149-149/16",
+      "datum": "2018-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výpůjčce - objekt č.p. 73, ul. Ruská, Terezián",
+      "popis": "Rada města, bod 149/16, usnesení 163/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1920198",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/149.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-149/16__17163395",
+      "datum": "2018-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Parcela p. č. st. 115, budova č.p.74, parcela p. č. 133/10 v k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-08-16 s bodem 149/16 z 2018-03-20 (Smlouva o výpůjčce - objekt č.p. 73, ul. Ruská, Terezián). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00377945 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 149 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/18472003",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-149/16__6186779",
+      "datum": "2018-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-16",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke Smlouvě o výpůjčce",
+      "popis": "Odhadované spojení smlouvy z 2018-08-16 s bodem 149/16 z 2018-03-20 (Smlouva o výpůjčce - objekt č.p. 73, ul. Ruská, Terezián). Jistota nizka.",
+      "castka_czk": 968000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00377945 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 149 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6670131",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17163395",
+      "datum": "2018-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Parcela p. č. st. 115, budova č.p.74, parcela p. č. 133/10 v k. ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18472003",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6186779",
+      "datum": "2018-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-16",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke Smlouvě o výpůjčce",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace.",
+      "castka_czk": 968000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6670131",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17163391",
+      "datum": "2021-11-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-23",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke SMLOUVĚ  O  VÝPŮJČCE",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18471999",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-64-64/22",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 3 ke smlouvě o výpůjčce",
+      "popis": "Rada města, bod 64/22, usnesení 608/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3244947",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/22__28146316",
+      "datum": "2024-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-04",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č.3 ke Smlouvě o výpůjčce",
+      "popis": "Odhadované spojení smlouvy z 2024-09-04 s bodem 64/22 z 2024-09-03 (Dodatek č. 3 ke smlouvě o výpůjčce). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 00377945 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; obojí je dodatek č. 3",
+      "url": "https://smlouvy.gov.cz/smlouva/30079788",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28146316",
+      "datum": "2024-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.3 ke Smlouvě o výpůjčce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Domov mládeže a školní jídelna Mariánské Lázně, příspěvková organizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30079788",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

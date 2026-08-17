@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46822640",
+    "nazev": "Jaroslav Grunt"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-04-11",
+    "do": "2017-04-21",
+    "prvni_rok": 2017,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-110-110/2",
+      "datum": "2017-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-11",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Franze Kafky 833, B2 VI",
+      "popis": "Rada města, bod 110/2, usnesení 219/17. Schvaleno.",
+      "castka_czk": 84415,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1739985",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-110/2__1689322",
+      "datum": "2017-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-21",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Fr. Kafky 833 - B2 VI, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-04-21 s bodem 110/2 z 2017-04-11 (Pronájem NP Franze Kafky 833, B2 VI). Jistota stredni.",
+      "castka_czk": 510710.75,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 46822640 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova kafky, pronajem",
+      "url": "https://smlouvy.gov.cz/smlouva/1823934",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1689322",
+      "datum": "2017-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-21",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Fr. Kafky 833 - B2 VI, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslav Grunt.",
+      "castka_czk": 510710.75,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1823934",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

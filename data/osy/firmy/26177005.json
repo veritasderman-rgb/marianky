@@ -1,0 +1,1039 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26177005",
+    "nazev": "COLAS CZ, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-06-16",
+    "do": "2025-11-12",
+    "prvni_rok": 2015,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 50,
+    "dolozenych": 34,
+    "odhadu": 16,
+    "dle_typu": {
+      "usneseni": 19,
+      "retez": 16,
+      "smlouva": 15
+    },
+    "dle_jistoty": {
+      "fakt": 34,
+      "stredni": 4,
+      "nizka": 12
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-27-27/20",
+      "datum": "2015-06-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-16",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Palackého – 2. a 3. etapa, ML",
+      "popis": "Rada města, bod 27/20, usnesení 294/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1412895",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2015-27/20__29097",
+      "datum": "2015-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-17",
+      "rok": 2015,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce ul. Palackého - 2. a 3. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2015-07-17 s bodem 27/20 z 2015-06-16 (Rekonstrukce ul. Palackého – 2. a 3. etapa, ML). Jistota stredni.",
+      "castka_czk": 24184615.61,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, palackeho, rekonstrukce",
+      "url": "https://smlouvy.gov.cz/smlouva/30061",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29097",
+      "datum": "2015-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-17",
+      "rok": 2015,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce ul. Palackého - 2. a 3. etapa, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 24184615.61,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30061",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-39-39/11",
+      "datum": "2015-09-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-29",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Palackého – 2. a 3. etapa",
+      "popis": "Rada města, bod 39/11, usnesení 459/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1466949",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2015-27/20__28213",
+      "datum": "2015-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-11-03",
+      "rok": 2015,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 k SOD - Palackého ul. 2. a 3. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2015-11-03 s bodem 27/20 z 2015-06-16 (Rekonstrukce ul. Palackého – 2. a 3. etapa, ML). Jistota nizka.",
+      "castka_czk": 24182799.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 140 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, palackeho; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/29129",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2015-39/11__28213",
+      "datum": "2015-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-11-03",
+      "rok": 2015,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 k SOD - Palackého ul. 2. a 3. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2015-11-03 s bodem 39/11 z 2015-09-29 (Rekonstrukce ul. Palackého – 2. a 3. etapa). Jistota nizka.",
+      "castka_czk": 24182799.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, palackeho; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/29129",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28213",
+      "datum": "2015-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-11-03",
+      "rok": 2015,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 k SOD - Palackého ul. 2. a 3. etapa, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 24182799.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29129",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-72-72/13",
+      "datum": "2016-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-07",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke smlouvě o dílo č. 2- Rekonstrukce ul. Palackého – 2. a 3. etapa",
+      "popis": "Rada města, bod 72/13, usnesení 297/16. Schvaleno.",
+      "castka_czk": 1935256,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1588066",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-72/13__28245",
+      "datum": "2016-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-29",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 k SOD - Palackého ul. 2. a 3. etapa Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-06-29 s bodem 72/13 z 2016-06-07 (Dodatek ke smlouvě o dílo č. 2- Rekonstrukce ul. Palackého – 2. a 3. etapa). Jistota stredni",
+      "castka_czk": 26118055.85,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, palackeho; obojí je dodatek č. 2",
+      "url": "https://smlouvy.gov.cz/smlouva/29165",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28245",
+      "datum": "2016-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-29",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 k SOD - Palackého ul. 2. a 3. etapa Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 26118055.85,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29165",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-77-77/13",
+      "datum": "2016-07-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-26",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o vzájemném započtení pohledávek a závazků s firmou COLAS CZ na akci Rekonstrukce ul. Palackého - 2. a 3. etapa",
+      "popis": "Rada města, bod 77/13, usnesení 383/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1615016",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-82-82/2",
+      "datum": "2016-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-30",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele – Rozšíření parkovacích ploch Panská pole II. etapa",
+      "popis": "Rada města, bod 82/2, usnesení 424/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1626858",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/82.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-77/13__237973",
+      "datum": "2016-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-16",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Rozšíření parkovacích míst Panská pole – II. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-09-16 s bodem 77/13 z 2016-07-26 (Dohoda o vzájemném započtení pohledávek a závazků s firmou COLAS CZ na akci Rekonstrukce ul.",
+      "castka_czk": 3007364.03,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 52 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/255269",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-82/2__237973",
+      "datum": "2016-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-16",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Rozšíření parkovacích míst Panská pole – II. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-09-16 s bodem 82/2 z 2016-08-30 (Výběr dodavatele – Rozšíření parkovacích ploch Panská pole II. etapa). Jistota nizka.",
+      "castka_czk": 3007364.03,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, panska, parkovacich, pole; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/255269",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:237973",
+      "datum": "2016-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-16",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Rozšíření parkovacích míst Panská pole – II. etapa, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 3007364.03,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/255269",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-95-95/11",
+      "datum": "2016-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rozšíření parkovacích ploch Panská pole – II. etapa",
+      "popis": "Rada města, bod 95/11, usnesení 630/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1685273",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-77/13__2425290",
+      "datum": "2017-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-02",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Rozšíření realizace stavebního díla Rozšíření parkovacích ploch Panská pole - II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2017-03-02 s bodem 77/13 z 2016-07-26 (Dohoda o vzájemném započtení pohledávek a závazků s firmou COLAS CZ na akci Rekonstrukce ul.",
+      "castka_czk": 353734.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 219 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2612774",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-82/2__2425290",
+      "datum": "2017-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-02",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Rozšíření realizace stavebního díla Rozšíření parkovacích ploch Panská pole - II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2017-03-02 s bodem 82/2 z 2016-08-30 (Výběr dodavatele – Rozšíření parkovacích ploch Panská pole II. etapa). Jistota nizka.",
+      "castka_czk": 353734.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 184 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, panska, parkovacich, ploch; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/2612774",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-95/11__2425290",
+      "datum": "2017-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-02",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Rozšíření realizace stavebního díla Rozšíření parkovacích ploch Panská pole - II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2017-03-02 s bodem 95/11 z 2016-12-21 (Rozšíření parkovacích ploch Panská pole – II. etapa). Jistota nizka.",
+      "castka_czk": 353734.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 71 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, panska, parkovacich, ploch; usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/2612774",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2425290",
+      "datum": "2017-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-02",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Rozšíření realizace stavebního díla Rozšíření parkovacích ploch Panská pole - II. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 353734.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2612774",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-123-123/8",
+      "datum": "2017-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-15",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Rozšíření parkovacích ploch Panská pole – II. etapa",
+      "popis": "Rada města, bod 123/8, usnesení 472/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1806492",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/4",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava místních komunikací v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 19/4, usnesení 192/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2995732",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/4__22885007",
+      "datum": "2023-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-02",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-05-02 s bodem 19/4 z 2023-04-04 (VZ Oprava místních komunikací v Mariánských Lázních - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 7114800.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikaci, laznich, marianskych, mistnich",
+      "url": "https://smlouvy.gov.cz/smlouva/24531651",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22885007",
+      "datum": "2023-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-02",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2023",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 7114800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24531651",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/28",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“ - výběr dodavatele",
+      "popis": "Rada města, bod 48/28, usnesení 188/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3167380",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/28__26419203",
+      "datum": "2024-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-28",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Okružní křižovatka ul. Plzeňská – Černá most, Mariánské Lázně“.",
+      "popis": "Odhadované spojení smlouvy z 2024-03-28 s bodem 48/28 z 2024-03-19 (Veřejná zakázka „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“ - výběr doda",
+      "castka_czk": 19604883.31,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova krizovatka, most, okruzni, plzenska",
+      "url": "https://smlouvy.gov.cz/smlouva/28273687",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26419203",
+      "datum": "2024-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-28",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Okružní křižovatka ul. Plzeňská – Černá most, Mariánské Lázně“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 19604883.31,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28273687",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-53-53/24",
+      "datum": "2024-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění záměru pronájmu části p.p.č. 284/1 v k. ú. Úšovice – deponie stavebního materiálu",
+      "popis": "Rada města, bod 53/24, usnesení 335/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3194504",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-55-55/3",
+      "datum": "2024-06-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-05",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka Oprava chodníku podél Úšovického potoka - úsek ul. Anglická - ul. Dobrovského - výběr dodavatele",
+      "popis": "Rada města, bod 55/3, usnesení 385/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3205740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/55.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/23",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Pronájem části p.p.č. 284/1 v k. ú. Úšovice – deponie stavebního materiálu",
+      "popis": "Rada města, bod 56/23, usnesení 408/24. Schvaleno.",
+      "castka_czk": 10000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3206027",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:27279896",
+      "datum": "2024-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 3446476.31,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29170780",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-57-57/3",
+      "datum": "2024-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Zastávka MHD ul. Skalníkova“ – výběr dodavatele",
+      "popis": "Rada města, bod 57/3, usnesení 431/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3211381",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-61-61/24",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a uzavření dodatku ke smlouvě o dílo s COLAS CZ „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“",
+      "popis": "Rada města, bod 61/24, usnesení 540/24. Schvaleno.",
+      "castka_czk": 600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3232021",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-64-64/21",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo – Chodník podél Úšovického potoka",
+      "popis": "Rada města, bod 64/21, usnesení 607/24. Schvaleno.",
+      "castka_czk": 635000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3244833",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-64-64/25",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a uzavření dodatku č.2 ke smlouvě o dílo s COLAS CZ „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“",
+      "popis": "Rada města, bod 64/25, usnesení 611/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3246560",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28137372",
+      "datum": "2024-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-06",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 20274857.54,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30070544",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/21__28948432",
+      "datum": "2024-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Oprava chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul., 2.etapa",
+      "popis": "Odhadované spojení smlouvy z 2024-09-10 s bodem 64/21 z 2024-09-03 (Dodatek č. 1 ke smlouvě o dílo – Chodník podél Úšovického potoka). Jistota nizka.",
+      "castka_czk": 4044089.26,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova podel, potoka, usovickeho; usnesení mluví o d",
+      "url": "https://smlouvy.gov.cz/smlouva/30938476",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28948432",
+      "datum": "2024-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul., 2.etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 4044089.26,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30938476",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28338488",
+      "datum": "2024-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem se mění rozsah plnění a tím i cena díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 20279731.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30281452",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/25",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a uzavření dodatku č. 3 ke smlouvě o dílo s COLAS CZ „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“",
+      "popis": "Rada města, bod 67/25, usnesení 671/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3258981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/22",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo - Zastávka MHD ul. Skalníkova",
+      "popis": "Rada města, bod 68/22, usnesení 708/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3265208",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-61/24__28711752",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 – Zastávka MHD ul. Skalníkova",
+      "popis": "Odhadované spojení smlouvy z 2024-10-21 s bodem 61/24 z 2024-08-06 (Schválení víceprací a uzavření dodatku ke smlouvě o dílo s COLAS CZ „Okružní křižovatka ul. ",
+      "castka_czk": 4193502.84,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 76 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/30689452",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/21__28711752",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 – Zastávka MHD ul. Skalníkova",
+      "popis": "Odhadované spojení smlouvy z 2024-10-21 s bodem 64/21 z 2024-09-03 (Dodatek č. 1 ke smlouvě o dílo – Chodník podél Úšovického potoka). Jistota nizka.",
+      "castka_czk": 4193502.84,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 48 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/30689452",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/25__28659928",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3, změna rozsahu a ceny díla",
+      "popis": "Odhadované spojení smlouvy z 2024-10-21 s bodem 67/25 z 2024-10-01 (Schválení víceprací a uzavření dodatku č. 3 ke smlouvě o dílo s COLAS CZ „Okružní křižovatka",
+      "castka_czk": 20301257.51,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; obojí je dodatek č. 3; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/30632324",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/22__28711752",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 – Zastávka MHD ul. Skalníkova",
+      "popis": "Odhadované spojení smlouvy z 2024-10-21 s bodem 68/22 z 2024-10-15 (Dodatek č. 1 ke smlouvě o dílo - Zastávka MHD ul. Skalníkova). Jistota nizka.",
+      "castka_czk": 4193502.84,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26177005 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova skalnikova, zastavka; obojí je dodatek č. 1; ",
+      "url": "https://smlouvy.gov.cz/smlouva/30689452",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28659928",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3, změna rozsahu a ceny díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 20301257.51,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30632324",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28711752",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 – Zastávka MHD ul. Skalníkova",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 4193502.84,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30689452",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-70-70/25",
+      "datum": "2024-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-12",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a méněprací a uzavření dodatku č. 4 ke smlouvě o dílo s COLAS CZ „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“",
+      "popis": "Rada města, bod 70/25, usnesení 793/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3281041",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/70.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:29046212",
+      "datum": "2024-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění způsob plnění a tím i cena díla.(povrch cyklostezky z litého asfaltu byl nahrazen asfaltovým betonem)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 20262683.51,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31042252",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:33382981",
+      "datum": "2025-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-12",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Realizace Asfaltového povrchu chodníku v ulici Palackého, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana COLAS CZ, a.s..",
+      "castka_czk": 232390.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35584897",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

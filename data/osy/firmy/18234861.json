@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "18234861",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1991-08-22",
+    "do": "2022-12-06",
+    "prvni_rok": 1991,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:18234861:vznik",
+      "datum": "1991-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1991-08-22",
+      "rok": 1991,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — LIONS CLUB Mariánské Lázně - MARIENBAD",
+      "popis": "Vznik subjektu LIONS CLUB Mariánské Lázně - MARIENBAD (IČO 18234861), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování spole",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-67-67/11",
+      "datum": "2012-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-05-22",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "LIONS CLUB",
+      "popis": "Rada města, bod 67/11, usnesení 265/12.",
+      "castka_czk": 10000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/769279",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-79-79/11",
+      "datum": "2012-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-18",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "LIONS CLUB Mariánské Lázně",
+      "popis": "Rada města, bod 79/11, usnesení 458/12. Schvaleno.",
+      "castka_czk": 6100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/818623",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-5-5/31",
+      "datum": "2022-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Žádost o spoluúčast na charitativní akci LIONS CLUBU",
+      "popis": "Rada města, bod 5/31, usnesení 589/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2946125",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

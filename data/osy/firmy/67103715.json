@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "67103715",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1998-04-27",
+    "do": "2014-08-26",
+    "prvni_rok": 1998,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:67103715:vznik",
+      "datum": "1998-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1998-04-27",
+      "rok": 1998,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Andrew Simon Dennison",
+      "popis": "Vznik subjektu Andrew Simon Dennison (IČO 67103715), Fyzická osoba podnikající dle živnostenského zákona zapsaná v obchodním rejstříku, obor: Ostatní vzdělávání",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-77-77/8",
+      "datum": "2012-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-04",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výuce anglického jazyka",
+      "popis": "Rada města, bod 77/8, usnesení 426/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/810020",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-120-120/10",
+      "datum": "2013-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-03",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výuce anglického jazyka",
+      "popis": "Rada města, bod 120/10, usnesení 403/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1010416",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-163-163/1",
+      "datum": "2014-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-08-26",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výuce anglického jazyka",
+      "popis": "Rada města, bod 163/1, usnesení 367/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1200176",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/163.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

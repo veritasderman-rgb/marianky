@@ -1,0 +1,398 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24162825",
+    "nazev": "AUTAN s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-04-30",
+    "do": "2019-07-09",
+    "prvni_rok": 2013,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 18,
+    "dolozenych": 12,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 6,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "nizka": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-107-107/4",
+      "datum": "2013-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-30",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní ul. - převod práv a závazků",
+      "popis": "Rada města, bod 107/4, usnesení 170/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/936909",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-132-132/2",
+      "datum": "2017-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-24",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56,57 - prodloužení nájmu - AUTAN s.r.o.",
+      "popis": "Rada města, bod 132/2, usnesení 601/17. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1844636",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-132/2__3960440",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 56, NJ č. 56/3 AUTAN s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-12-27 s bodem 132/2 z 2017-10-24 (NP Poštovní 56,57 - prodloužení nájmu - AUTAN s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; název bodu a předmět smlouvy sdílí slova autan, postovni; k témuž usnesení se hlásí i",
+      "url": "https://smlouvy.gov.cz/smlouva/4263060",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-132/2__3960444",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 56, NJ č. 56/4  AUTAN s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-12-27 s bodem 132/2 z 2017-10-24 (NP Poštovní 56,57 - prodloužení nájmu - AUTAN s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; název bodu a předmět smlouvy sdílí slova autan, postovni; k témuž usnesení se hlásí i",
+      "url": "https://smlouvy.gov.cz/smlouva/4263064",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-132/2__3960448",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 57/6 AUTAN s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-12-27 s bodem 132/2 z 2017-10-24 (NP Poštovní 56,57 - prodloužení nájmu - AUTAN s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; název bodu a předmět smlouvy sdílí slova autan, postovni; k témuž usnesení se hlásí i",
+      "url": "https://smlouvy.gov.cz/smlouva/4263068",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3960440",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 56, NJ č. 56/3 AUTAN s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4263060",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3960444",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 56, NJ č. 56/4  AUTAN s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4263064",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3960448",
+      "datum": "2017-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-27",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 57/6 AUTAN s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4263068",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-152-152/10",
+      "datum": "2018-04-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-17",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56,57 - pronájem nebytových prostor",
+      "popis": "Rada města, bod 152/10, usnesení 213/18. Schvaleno.",
+      "castka_czk": 1900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1930503",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-152/10__5270839",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní, č. p. 56, NJ č. 56/4",
+      "popis": "Odhadované spojení smlouvy z 2018-05-07 s bodem 152/10 z 2018-04-17 (NP Poštovní 56,57 - pronájem nebytových prostor). Jistota nizka.",
+      "castka_czk": 234498.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova postovni, pronajem; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/5675843",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-152/10__5270843",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní, č.p. 56, NJ č. 56/3",
+      "popis": "Odhadované spojení smlouvy z 2018-05-07 s bodem 152/10 z 2018-04-17 (NP Poštovní 56,57 - pronájem nebytových prostor). Jistota nizka.",
+      "castka_czk": 1012709.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova postovni, pronajem; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/5675847",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-152/10__5270847",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 57/6",
+      "popis": "Odhadované spojení smlouvy z 2018-05-07 s bodem 152/10 z 2018-04-17 (NP Poštovní 56,57 - pronájem nebytových prostor). Jistota nizka.",
+      "castka_czk": 1264450.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24162825 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova postovni, pronajem; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/5675851",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5270839",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní, č. p. 56, NJ č. 56/4",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": 234498.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5675843",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5270843",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní, č.p. 56, NJ č. 56/3",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": 1012709.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5675847",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5270847",
+      "datum": "2018-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-07",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 57/6",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTAN s.r.o..",
+      "castka_czk": 1264450.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5675851",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-161-161/19",
+      "datum": "2018-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-17",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 259",
+      "popis": "Rada města, bod 161/19, usnesení 394/18.",
+      "castka_czk": 468103,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1979461",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-165-165/2",
+      "datum": "2018-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-04",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Odstoupení od nabídky, Hlavní 259",
+      "popis": "Rada města, bod 165/2, usnesení 476/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2088711",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/165.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-30-30/8",
+      "datum": "2019-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56,57 - výpověď nájmu nebytových prostor",
+      "popis": "Rada města, bod 30/8, usnesení 342/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2370009",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

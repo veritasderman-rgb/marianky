@@ -1,0 +1,199 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05360889",
+    "nazev": "MP technik spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-10-05",
+    "do": "2022-09-15",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-123-123/3",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "VZ Přestavba objektu Taormina na bytový dům - PD - zrušení VZ",
+      "popis": "Rada města, bod 123/3, usnesení 429/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2748676",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-132-132/24",
+      "datum": "2021-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Přestavba objektu Taormina na bytový dům - PD - výběr dodavatele",
+      "popis": "Rada města, bod 132/24, usnesení 594/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2785969",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-123/3__17749307",
+      "datum": "2022-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-17",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Přestavba objektu Taormína na bytový dům“.",
+      "popis": "Odhadované spojení smlouvy z 2022-01-17 s bodem 123/3 z 2021-10-05 (VZ Přestavba objektu Taormina na bytový dům - PD - zrušení VZ). Jistota nizka.",
+      "castka_czk": 1898490.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05360889 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 104 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytovy, objektu, prestavba, taormina; stejn",
+      "url": "https://smlouvy.gov.cz/smlouva/19093071",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/24__17749307",
+      "datum": "2022-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-17",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Přestavba objektu Taormína na bytový dům“.",
+      "popis": "Odhadované spojení smlouvy z 2022-01-17 s bodem 132/24 z 2021-12-21 (Přestavba objektu Taormina na bytový dům - PD - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 1898490.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05360889 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytovy, objektu, prestavba, taormina; stejně",
+      "url": "https://smlouvy.gov.cz/smlouva/19093071",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17749307",
+      "datum": "2022-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-17",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Přestavba objektu Taormína na bytový dům“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MP technik spol. s r.o..",
+      "castka_czk": 1898490.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19093071",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-157-157/15",
+      "datum": "2022-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Taormina – přestavba objektu na bytový dům - PD",
+      "popis": "Rada města, bod 157/15, usnesení 445/22. Schvaleno.",
+      "castka_czk": 96800,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2905249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/157.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-157/15__20246781",
+      "datum": "2022-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-15",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o dílo Přestavba objektu Taormína na bytový dům - PD (č. smlouvy objednatele: S3/22) uzavřené dne 17.1.2022",
+      "popis": "Odhadované spojení smlouvy z 2022-09-15 s bodem 157/15 z 2022-09-06 (Taormina – přestavba objektu na bytový dům - PD). Jistota vysoka.",
+      "castka_czk": 96800.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 05360889 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova b",
+      "url": "https://smlouvy.gov.cz/smlouva/21750205",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20246781",
+      "datum": "2022-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-15",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě o dílo Přestavba objektu Taormína na bytový dům - PD (č. smlouvy objednatele: S3/22) uzavřené dne 17.1.2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MP technik spol. s r.o..",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21750205",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

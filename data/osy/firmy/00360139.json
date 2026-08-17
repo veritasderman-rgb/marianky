@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00360139",
+    "nazev": "Divadlo A. Dvořáka Příbram"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-10-12",
+    "do": "2024-01-09",
+    "prvni_rok": 2020,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:13216044",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o zájezdovém představení - Hrdý Budžes - 17. 12. 2020",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana Divadlo A. Dvořáka Příbram.",
+      "castka_czk": 95590.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14165668",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25422043",
+      "datum": "2024-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o zájezdovém představení - Jak jsem vyhrál válku - 26. 2. 2024",
+      "popis": "Městské divadlo Mariánské Lázně — příjem, protistrana Divadlo A. Dvořáka Příbram.",
+      "castka_czk": 78650.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27223275",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

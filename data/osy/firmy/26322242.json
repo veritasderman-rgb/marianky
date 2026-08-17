@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26322242",
+    "nazev": "PP-servis Plzeň s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-08",
+    "do": "2021-08-24",
+    "prvni_rok": 2017,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-122-122/21",
+      "datum": "2017-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-08",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních (Slovan)",
+      "popis": "Rada města, bod 122/21, usnesení 461/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1803681",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-122/21__3071414",
+      "datum": "2017-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-19",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Smlouva se zhotovitelem na zateplení objektu a výměnu fasádních otvorů",
+      "popis": "Odhadované spojení smlouvy z 2017-09-19 s bodem 122/21 z 2017-08-08 (Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních (Slovan))",
+      "castka_czk": 3098736.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26322242 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3309402",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3071414",
+      "datum": "2017-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-19",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva se zhotovitelem na zateplení objektu a výměnu fasádních otvorů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PP-servis Plzeň s.r.o..",
+      "castka_czk": 3098736.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3309402",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-119-119/17",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti budovy zázemí sportovní haly – rozsudek Okresního soudu v Chebu",
+      "popis": "Rada města, bod 119/17, usnesení 377/21. Schvaleno.",
+      "castka_czk": 130000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2733641",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

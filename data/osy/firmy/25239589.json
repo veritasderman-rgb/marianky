@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25239589",
+    "nazev": "BELTY s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1999-12-01",
+    "do": "2023-05-04",
+    "prvni_rok": 1999,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25239589:vznik",
+      "datum": "1999-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1999-12-01",
+      "rok": 1999,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — BELTY s.r.o.",
+      "popis": "Vznik subjektu BELTY s.r.o. (IČO 25239589), Společnost s ručením omezeným, obor: Nespecializovaný velkoobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-156-156/13",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Franze Kafky, č.p. 833, nebyt. jednotka B2-VI",
+      "popis": "Rada města, bod 156/13, usnesení 428/22. Schvaleno.",
+      "castka_czk": 78160,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2898298",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/13__20050883",
+      "datum": "2022-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost BELTY s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-09-01 s bodem 156/13 z 2022-08-23 (Pronájem NP Franze Kafky, č.p. 833, nebyt. jednotka B2-VI). Jistota stredni.",
+      "castka_czk": 472868.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25239589 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21542979",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20050883",
+      "datum": "2022-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost BELTY s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BELTY s.r.o..",
+      "castka_czk": 472868.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21542979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-22-22/7",
+      "datum": "2023-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 833, nebytová jednotka č. B2-VI, - výpověď ze Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 22/7, usnesení 270/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3012775",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

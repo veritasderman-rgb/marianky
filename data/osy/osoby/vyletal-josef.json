@@ -1,0 +1,107 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "vyletal-josef",
+    "jmeno": "Josef Vyleťal",
+    "role": [
+      "malíř"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1979",
+    "do": "2019-01",
+    "prvni_rok": 1979,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 1,
+      "zpravodaj": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1979-vyletal-kolonada",
+      "datum": "1979",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1979-01-01",
+      "rok": 1979,
+      "typ": "historie",
+      "nadpis": "Josef Vyleťal vyzdobil strop kolonády",
+      "popis": "Malíř a grafik Josef Vyleťal je autorem dřevěného kazetového stropu a nástropních fresek kolonády v Mariánských Lázních z roku 1979.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-12-052",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Vyleťal - Vyleťalová",
+      "popis": "Galerie Goethe si pro návštěvníky připravila poslední výstavu roku 2018. Celý rok jste mohli obdivovat díla umělců místních nebo umělců ovlivněných pobytem v na",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b4fe313d%7C1780#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-12/052.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-022",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "vzdálený sen",
+      "popis": "Vzdálený sen je název výstavy obrazů a plakátů manželů Olgy Vyleťalové a Josefa Vyleťala v galerii Goethe Městského muzea, od 4. prosince 2018 do 6. ledna 2019.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

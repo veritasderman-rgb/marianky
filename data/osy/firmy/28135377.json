@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28135377",
+    "nazev": "HOFI engineering, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-07-23",
+    "do": "2019-08-28",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-32-32/28",
+      "datum": "2019-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Dodávka a výměna zavážecí plošiny na dekorace v Městském divadle Mariánské Lázně",
+      "popis": "Rada města, bod 32/28, usnesení 382/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2377240",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-32/28__9374658",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Dodávka a výměna zavážecí plošiny na dekorace v Městském divadle Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2019-08-28 s bodem 32/28 z 2019-07-23 (Dodávka a výměna zavážecí plošiny na dekorace v Městském divadle Mariánské Lázně). Jistota s",
+      "castka_czk": 2211262.9,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28135377 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova dekorace, divadle, dodavka, mestskem",
+      "url": "https://smlouvy.gov.cz/smlouva/10094174",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9374658",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Dodávka a výměna zavážecí plošiny na dekorace v Městském divadle Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HOFI engineering, s.r.o..",
+      "castka_czk": 2211262.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10094174",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05848474",
+    "nazev": "ART LINES s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-13",
+    "do": "2024-05-03",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 3,
+    "odhadu": 3,
+    "dle_typu": {
+      "retez": 3,
+      "smlouva": 2,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "vysoka": 1,
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2023-27/26__23476335",
+      "datum": "2023-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-13",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka-Zpracování projektové dokumentace uměleckého prvku na protihlukové stěně v ulici Plzeňská",
+      "popis": "Odhadované spojení smlouvy z 2023-07-13 s bodem 27/26 z 2023-07-11 (Vypracování projektové dokumentace na umělecký prvek - protihluková stěna Plzeňská). Jistota",
+      "castka_czk": 284592.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 05848474 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (rozdíl 408 Kč); smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí ",
+      "url": "https://smlouvy.gov.cz/smlouva/25156191",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23476335",
+      "datum": "2023-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Zpracování projektové dokumentace uměleckého prvku na protihlukové stěně v ulici Plzeňská",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ART LINES s.r.o..",
+      "castka_czk": 284592.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25156191",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-50-50/4",
+      "datum": "2024-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Protihluková stěna Plzeňská – uzavření smlouvy",
+      "popis": "Rada města, bod 50/4, usnesení 244/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3178099",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-27/26__26817415",
+      "datum": "2024-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-03",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Umělecký prvek na protihlukové stěně na ulici Plzeňská Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-05-03 s bodem 27/26 z 2023-07-11 (Vypracování projektové dokumentace na umělecký prvek - protihluková stěna Plzeňská). Jistota",
+      "castka_czk": 2184655.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05848474 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 297 dní po usnesení; název bodu a předmět smlouvy sdílí slova plzenska, prvek, umelecky; stejně dobře sed",
+      "url": "https://smlouvy.gov.cz/smlouva/28688999",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-50/4__26817415",
+      "datum": "2024-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-03",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Umělecký prvek na protihlukové stěně na ulici Plzeňská Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-05-03 s bodem 50/4 z 2024-04-11 (Protihluková stěna Plzeňská – uzavření smlouvy). Jistota nizka.",
+      "castka_czk": 2184655.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05848474 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/28688999",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26817415",
+      "datum": "2024-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Umělecký prvek na protihlukové stěně na ulici Plzeňská Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ART LINES s.r.o..",
+      "castka_czk": 2184655.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28688999",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

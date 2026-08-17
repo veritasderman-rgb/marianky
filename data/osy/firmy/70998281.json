@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70998281",
+    "nazev": "Společenství vlastníků jednotek Husova 416, Mariánské Lázně"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-05-10",
+    "do": "2024-06-13",
+    "prvni_rok": 2003,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 2,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70998281:vznik",
+      "datum": "2003-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-05-10",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků jednotek Husova 416, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků jednotek Husova 416, Mariánské Lázně (IČO 70998281), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních ne",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2024-52/25__27432868",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Stavební parcela č. 290/3 o výměře 458 m2 k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-06-13 s bodem 52/25 z 2024-04-30 (Zveřejnění záměru pronájmu st. p. č. 290/3 k. ú. Mariánské Lázně ul. Husova). Jistota nizka.",
+      "castka_czk": 16625.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70998281 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29328476",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/20__27432868",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Stavební parcela č. 290/3 o výměře 458 m2 k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-06-13 s bodem 54/20 z 2024-05-28 (Pronájem st.p. č. 290/3 k. ú. ML - SVJ Husova 416). Jistota stredni.",
+      "castka_czk": 16625.4,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70998281 je uvedeno v textu usnesení; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 16 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29328476",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27432868",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Stavební parcela č. 290/3 o výměře 458 m2 k. ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Společenství vlastníků jednotek Husova 416, Mariánské Lázně.",
+      "castka_czk": 16625.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29328476",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

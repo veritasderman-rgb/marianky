@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27080269",
+    "nazev": "STAVBY MARIÁNSKÉ LÁZNĚ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-08-13",
+    "do": "2018-05-29",
+    "prvni_rok": 2003,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:27080269:vznik",
+      "datum": "2003-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-08-13",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — STAVBY Mariánské Lázně s.r.o.",
+      "popis": "Vznik subjektu STAVBY Mariánské Lázně s.r.o. (IČO 27080269), Společnost s ručením omezeným, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:2745746",
+      "datum": "2017-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-23",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava-odvlhčení a izolace vnější zadní strany NP Poštovní 718, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY MARIÁNSKÉ LÁZNĚ s.r.o..",
+      "castka_czk": 215298.93,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3925416",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5328939",
+      "datum": "2018-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava vlhkého zdiva a omítek v NP Hlavní 314 – Klub seniorů, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY MARIÁNSKÉ LÁZNĚ s.r.o..",
+      "castka_czk": 82409.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5737271",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

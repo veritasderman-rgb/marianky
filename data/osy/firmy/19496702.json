@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "19496702",
+    "nazev": "MAPENIKO s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-25",
+    "do": "2025-11-06",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 9,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-28-28/12",
+      "datum": "2023-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-25",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 495 - postoupení smlouvy",
+      "popis": "Rada města, bod 28/12, usnesení 472/23. Schvaleno.",
+      "castka_czk": 1900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3054929",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-28/12__23630003",
+      "datum": "2023-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru s Dohodou o postoupení smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2023-08-01 s bodem 28/12 z 2023-07-25 (NP Chebská, č.p. 495 - postoupení smlouvy). Jistota stredni.",
+      "castka_czk": 831472.312,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 19496702 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří",
+      "url": "https://smlouvy.gov.cz/smlouva/25317111",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23630003",
+      "datum": "2023-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru s Dohodou o postoupení smlouvy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MAPENIKO s.r.o..",
+      "castka_czk": 831472.312,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25317111",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-30-30/9",
+      "datum": "2023-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-22",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Nájem reklamního zařízení na části pozemkové parcely č. 909 v k. ú. Mariánské Lázně",
+      "popis": "Rada města, bod 30/9, usnesení 522/23. Schvaleno.",
+      "castka_czk": 6050,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3065074",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-30/9__23874659",
+      "datum": "2023-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-29",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - reklama pro restauraci Kozlovna",
+      "popis": "Odhadované spojení smlouvy z 2023-08-29 s bodem 30/9 z 2023-08-22 (Nájem reklamního zařízení na části pozemkové parcely č. 909 v k. ú. Mariánské Lázně). Jistota",
+      "castka_czk": 6050.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 19496702 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 7 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25573859",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23874659",
+      "datum": "2023-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - reklama pro restauraci Kozlovna",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MAPENIKO s.r.o..",
+      "castka_czk": 6050.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25573859",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/38",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Výjimka z Manuálu na předzahrádky v Mariánských Lázních pro společnost MAPENIKO s.r.o.",
+      "popis": "Rada města, bod 48/38, usnesení 198/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3170495",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-49-49/20",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 495 – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 49/20, usnesení 218/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3173136",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/49.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/28",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Chebská, č.p. 495 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 99/28, usnesení 665/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1357890146",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/9",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Chebská, č.p. 495 – prodloužení nájemního vztahu – společnost MAPENIKO s.r.o.",
+      "popis": "Rada města, bod 102/9, usnesení 737/25. Schvaleno.",
+      "castka_czk": 294500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2060053059",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/9__33387077",
+      "datum": "2025-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - Smlouva o nájmu nebytového prostoru s Dohodou o postoupení smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2025-11-06 s bodem 102/9 z 2025-10-29 (Nebytový prostor Chebská, č.p. 495 – prodloužení nájemního vztahu – společnost MAPENIKO s.r.",
+      "castka_czk": 2945000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 19496702 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35589089",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-99/28__33387077",
+      "datum": "2025-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - Smlouva o nájmu nebytového prostoru s Dohodou o postoupení smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2025-11-06 s bodem 99/28 z 2025-09-30 (Nebytový prostor v ul. Chebská, č.p. 495 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 2945000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 19496702 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35589089",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33387077",
+      "datum": "2025-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-06",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - Smlouva o nájmu nebytového prostoru s Dohodou o postoupení smlouvy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MAPENIKO s.r.o..",
+      "castka_czk": 2945000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35589089",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

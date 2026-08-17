@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07216131",
+    "nazev": "FFR-20180601 s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-20",
+    "do": "2024-03-20",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 2,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2019-48/19__10493720",
+      "datum": "2019-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-20",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytových prostor - TZEX",
+      "popis": "Odhadované spojení smlouvy z 2019-12-20 s bodem 48/19 z 2019-12-03 (Nájem nebytových prostor). Jistota nizka.",
+      "castka_czk": 7411873.15,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (FFR-20180601 s.r.o.) je v textu usnesení; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova nebytovych, prostor",
+      "url": "https://smlouvy.gov.cz/smlouva/11292908",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10493720",
+      "datum": "2019-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-20",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytových prostor - TZEX",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FFR-20180601 s.r.o..",
+      "castka_czk": 7411873.15,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11292908",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-73-73/13",
+      "datum": "2020-06-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-09",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.1 ke Smlouvě o nájmu nebytových prostor",
+      "popis": "Rada města, bod 73/13, usnesení 312/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2535275",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-47-47/26",
+      "datum": "2024-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-05",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytových prostor – rozšíření pronajatých prostor v budově Příčná 647 o 47,98 m2",
+      "popis": "Rada města, bod 47/26, usnesení 146/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3160467",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/47.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-47/26__26238579",
+      "datum": "2024-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytových prostor - TUZEX",
+      "popis": "Odhadované spojení smlouvy z 2024-03-20 s bodem 47/26 z 2024-03-05 (Dodatek č. 2 ke Smlouvě o nájmu nebytových prostor – rozšíření pronajatých prostor v budově ",
+      "castka_czk": 319294.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07216131 je uvedeno v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytovych, prostor; obojí je dodatek č. 2",
+      "url": "https://smlouvy.gov.cz/smlouva/28085163",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26238579",
+      "datum": "2024-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytových prostor - TUZEX",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FFR-20180601 s.r.o..",
+      "castka_czk": 319294.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28085163",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

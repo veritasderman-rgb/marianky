@@ -1,0 +1,1499 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49787977",
+    "nazev": "CHEVAK Cheb, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-04-10",
+    "do": "2026-06-12",
+    "prvni_rok": 2012,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 73,
+    "dolozenych": 58,
+    "odhadu": 15,
+    "dle_typu": {
+      "usneseni": 39,
+      "retez": 15,
+      "smlouva": 19
+    },
+    "dle_jistoty": {
+      "fakt": 58,
+      "nizka": 13,
+      "vysoka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-62-62/5",
+      "datum": "2012-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení VB -vovodní řad - Hotel Krakonoš",
+      "popis": "Rada města, bod 62/5, usnesení 177/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/749976",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/15",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Nepeněžitý vklad vodohospodářského zařízení do společnosti CHEVAK Cheb, a.s.",
+      "popis": "Zastupitelstvo města, bod 11/15, usnesení 328/12.",
+      "castka_czk": 176000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/750063",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2012-62/5__2179858",
+      "datum": "2012-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-14",
+      "rok": 2012,
+      "typ": "retez",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Odhadované spojení smlouvy z 2012-06-14 s bodem 62/5 z 2012-04-10 (Smlouva o budoucí smlouvě o zřízení VB -vovodní řad - Hotel Krakonoš). Jistota nizka.",
+      "castka_czk": 302500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 65 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/2349382",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2012-11/15__2179858",
+      "datum": "2012-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-14",
+      "rok": 2012,
+      "typ": "retez",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Odhadované spojení smlouvy z 2012-06-14 s bodem 11/15 z 2012-04-24 (Nepeněžitý vklad vodohospodářského zařízení do společnosti CHEVAK Cheb, a.s.). Jistota nizka",
+      "castka_czk": 302500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 51 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/2349382",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2179858",
+      "datum": "2012-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-14",
+      "rok": 2012,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Správa městských sportovišť — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 302500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2349382",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2012-62/5__2180014",
+      "datum": "2013-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-01-09",
+      "rok": 2013,
+      "typ": "retez",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Odhadované spojení smlouvy z 2013-01-09 s bodem 62/5 z 2012-04-10 (Smlouva o budoucí smlouvě o zřízení VB -vovodní řad - Hotel Krakonoš). Jistota nizka.",
+      "castka_czk": 326700.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 274 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/2349554",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2012-11/15__2180014",
+      "datum": "2013-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-01-09",
+      "rok": 2013,
+      "typ": "retez",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Odhadované spojení smlouvy z 2013-01-09 s bodem 11/15 z 2012-04-24 (Nepeněžitý vklad vodohospodářského zařízení do společnosti CHEVAK Cheb, a.s.). Jistota nizka",
+      "castka_czk": 326700.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 260 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/2349554",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2180014",
+      "datum": "2013-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-01-09",
+      "rok": 2013,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dodávce vody a odvádění odpadních vod",
+      "popis": "Správa městských sportovišť — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 326700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2349554",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-112-112/9",
+      "datum": "2013-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-06-04",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení věcného břemene - vodovod hotel Krakonoš",
+      "popis": "Rada města, bod 112/9, usnesení 244/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/963545",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-120-120/16",
+      "datum": "2013-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-03",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o budoucí smlouvě o zřízení věcného břemene -vodovodní řad pro BD na ul. Tepelská",
+      "popis": "Rada města, bod 120/16, usnesení 409/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1010963",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-136-136/6",
+      "datum": "2013-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-30",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o budoucí smlouvě o zřízení věcného břemene - vodovodní přípojka- p. Javorský",
+      "popis": "Rada města, bod 136/6, usnesení 653/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1060391",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/136.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-144-144/2",
+      "datum": "2014-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Změna části textu usnesení RM č. 653/13 ze dne 30. 12. 2013",
+      "popis": "Rada města, bod 144/2, usnesení 64/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1082857",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/144.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-162-162/13",
+      "datum": "2014-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-08-12",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o provozování vodovodu a kanalizace ...",
+      "popis": "Rada města, bod 162/13, usnesení 362/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1196811",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-3-3/5",
+      "datum": "2014-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-09",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě zřízení služebnosti VB-kanalizace VŘ Drmoul - Mariánské Lázně p.p.č. 1175/15 k.ú. Úšovice",
+      "popis": "Rada města, bod 3/5, usnesení 547/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1309426",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-16-16/9",
+      "datum": "2015-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-03-24",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti VB - vodovodní řady v k.ú. Úšovice a v k.ú. Mariánské Lázně",
+      "popis": "Rada města, bod 16/9, usnesení 125/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1368106",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:2180146",
+      "datum": "2015-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-05-29",
+      "rok": 2015,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dodávce vody a o odvádění a čistění odpadní vody",
+      "popis": "Správa městských sportovišť — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 169400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2349694",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-29-29/5",
+      "datum": "2015-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-07",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě VB- vodovodní řad , ul. 1. máje",
+      "popis": "Rada města, bod 29/5, usnesení 322/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1423084",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-30-30/4",
+      "datum": "2015-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-21",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti věcného břemene - kanalizační řad Šafaříkova ul.",
+      "popis": "Rada města, bod 30/4, usnesení 335/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1431482",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:2178738",
+      "datum": "2015-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-11-05",
+      "rok": 2015,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dodávce vody a o odvádění a čistění odpadní vody",
+      "popis": "Správa městských sportovišť — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 968000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2348158",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-78-78/1",
+      "datum": "2016-08-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti - výměna vodovodních řadů v k.ú. Úšovice",
+      "popis": "Rada města, bod 78/1, usnesení 384/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1614981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-89-89/11",
+      "datum": "2016-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-25",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - kanalizační stoka p.p.1145, č. 1148/1, č. 1201/8 k.ú. Úšovice",
+      "popis": "Rada města, bod 89/11, usnesení 516/16. Schvaleno.",
+      "castka_czk": 10208,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1654858",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-110-110/9",
+      "datum": "2017-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-11",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti vodovodního řadu k.ú. Mar. Lázně ( Krakonoš)",
+      "popis": "Rada města, bod 110/9, usnesení 226/17. Schvaleno.",
+      "castka_czk": 14048,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1741249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-26-26/11",
+      "datum": "2017-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-23",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Valná hromada spol. Chevak a.s.",
+      "popis": "Zastupitelstvo města, bod 26/11, usnesení 503/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1766207",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-117-117/9",
+      "datum": "2017-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-06",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - kanalizační sběrač p.p.č. 1175/15 k.ú. Úšovice",
+      "popis": "Rada města, bod 117/9, usnesení 350/17. Schvaleno.",
+      "castka_czk": 2071,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1771152",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-125-125/8",
+      "datum": "2017-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-29",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti - oprava kanalizace v k.ú. Mariánské Lázně ( Koliba - Zádub)",
+      "popis": "Rada města, bod 125/8, usnesení 506/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1813481",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/125.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:6963407",
+      "datum": "2018-12-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy při akci Zahájení lázeňské sezóny 2019",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 60500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7519915",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/28",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Chevak Cheb, a.s.",
+      "popis": "Zastupitelstvo města, bod 2/28, usnesení 36/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2157477",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:10025340",
+      "datum": "2019-11-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-11",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 60500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10783316",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10748596",
+      "datum": "2020-01-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodávka vody a dovádění a čištění odpadní vody, likvidace dováženého odpadu",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 696960.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11566036",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-13-13/27",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Změna stanov společnosti CHEVAK Cheb, a.s.",
+      "popis": "Zastupitelstvo města, bod 13/27, usnesení 281/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2518746",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-71-71/4",
+      "datum": "2020-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-26",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti vodovodního řadu a vodovodní přípojky Třebízského, Nehrova, Fibichova, Ibsenova",
+      "popis": "Rada města, bod 71/4, usnesení 264/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2524635",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/71.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-92-92/2",
+      "datum": "2020-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-08",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Uzavření dohody o postupu při případné havárii na vodovodním řádu u přechodu pro pěší u úšovické křižovatky se společností CHEVAK",
+      "popis": "Rada města, bod 92/2, usnesení 614/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2613612",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-92-92/6",
+      "datum": "2020-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-08",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o zřízení služebnosti - Stanoviště u ML p.p.č. 338/1",
+      "popis": "Rada města, bod 92/6, usnesení 618/20. Schvaleno.",
+      "castka_czk": 17291,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2614103",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:15926367",
+      "datum": "2021-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-08",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy při akci Letní městská slavnost 2021",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17139743",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16632891",
+      "datum": "2021-09-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-29",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O POSKYTNUTÍ VYROVNÁVACÍ PLATBY  ZA ZÁVAZEK VEŘEJNÉ SLUŽBY",
+      "popis": "Město Mariánské Lázně — příjem, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 46516030.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17913739",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32323513",
+      "datum": "2021-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-15",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dodávce vody , SML-2012-300-000098/1,Masarykova ulice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34478617",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/18",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Záměr prodeje inženýrských sítí společnosti Chevak",
+      "popis": "Zastupitelstvo města, bod 23/18, usnesení 519/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2778320",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-138-138/16",
+      "datum": "2022-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-15",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o zřízení služebnosti - vodovodní řad - ul. 1. Máje v k.ú. Úšovice",
+      "popis": "Rada města, bod 138/16, usnesení 68/22. Schvaleno.",
+      "castka_czk": 54972,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2808317",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/25",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Prodej hmotné nemovité věci inženýrské sítě - vodovod a kanalizace CHEVAK",
+      "popis": "Zastupitelstvo města, bod 25/25, usnesení 553/22. Schvaleno.",
+      "castka_czk": 447250,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2809168",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/25__18662855",
+      "datum": "2022-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva",
+      "popis": "Odhadované spojení smlouvy z 2022-03-30 s bodem 25/25 z 2022-03-01 (Prodej hmotné nemovité věci inženýrské sítě - vodovod a kanalizace CHEVAK). Jistota vysoka.",
+      "castka_czk": 541172.5,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 29 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20209627",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18662855",
+      "datum": "2022-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva",
+      "popis": "Město Mariánské Lázně — příjem, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 541172.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20209627",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-138/16__18500423",
+      "datum": "2022-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-04",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "VB - Chevak - vodovodní řad ul. 1. Máje",
+      "popis": "Odhadované spojení smlouvy z 2022-04-04 s bodem 138/16 z 2022-02-15 (Uzavření Smlouvy o zřízení služebnosti - vodovodní řad - ul. 1. Máje v k.ú. Úšovice). Jisto",
+      "castka_czk": 66516.12,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 48 dní po usnesení; název bodu a pře",
+      "url": "https://smlouvy.gov.cz/smlouva/19889911",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18500423",
+      "datum": "2022-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-04",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "VB - Chevak - vodovodní řad ul. 1. Máje",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 66516.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19889911",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-138/16__18545299",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 138/16 z 2022-02-15 (Uzavření Smlouvy o zřízení služebnosti - vodovodní řad - ul. 1. Máje v k.ú. Úšovice). Jisto",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 51 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/19937167",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-138/16__18776675",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 138/16 z 2022-02-15 (Uzavření Smlouvy o zřízení služebnosti - vodovodní řad - ul. 1. Máje v k.ú. Úšovice). Jisto",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 51 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/20178879",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-23/18__18545299",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 23/18 z 2021-12-14 (Záměr prodeje inženýrských sítí společnosti Chevak). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/19937167",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-23/18__18776675",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 23/18 z 2021-12-14 (Záměr prodeje inženýrských sítí společnosti Chevak). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/20178879",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/25__18545299",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 25/25 z 2022-03-01 (Prodej hmotné nemovité věci inženýrské sítě - vodovod a kanalizace CHEVAK). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/19937167",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/25__18776675",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Odhadované spojení smlouvy z 2022-04-07 s bodem 25/25 z 2022-03-01 (Prodej hmotné nemovité věci inženýrské sítě - vodovod a kanalizace CHEVAK). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/20178879",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18545299",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19937167",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18776675",
+      "datum": "2022-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20178879",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/4",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - vodovodní řad v k. ú. Úšovice - BD Tepelská",
+      "popis": "Rada města, bod 145/4, usnesení 171/22. Schvaleno.",
+      "castka_czk": 25762,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2834442",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-151-151/4",
+      "datum": "2022-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-14",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě – vodovodu – 3 lokality v k.ú. Úšovice",
+      "popis": "Rada města, bod 151/4, usnesení 304/22. Schvaleno.",
+      "castka_czk": 2420,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2862542",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-154-154/17",
+      "datum": "2022-07-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-26",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - Vodovod a kanalizace Skláře - CHEVAK Cheb",
+      "popis": "Rada města, bod 154/17, usnesení 394/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2887845",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-157-157/4",
+      "datum": "2022-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti – kanalizace – p.p.č. 338/1 k.ú. Stanoviště u Mar. Lázní",
+      "popis": "Rada města, bod 157/4, usnesení 434/22. Schvaleno.",
+      "castka_czk": 1210,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2903491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/157.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-162-162/7",
+      "datum": "2022-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - Vodovod a kanalizace Skláře - CHEVAK Cheb",
+      "popis": "Rada města, bod 162/7, usnesení 502/22. Schvaleno.",
+      "castka_czk": 1000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2921894",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-2-2/17",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Žádost kvalifikovaného akcionáře o svolání valné hromady společnosti CHEVAK Cheb, a.s.",
+      "popis": "Zastupitelstvo města, bod 2/17, usnesení 25/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2934221",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-8-8/2",
+      "datum": "2022-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Žádost kvalifikovaného akcionáře o svolání valné hromady společnosti CHEVAK Cheb, a.s.",
+      "popis": "Rada města, bod 8/2, usnesení 633/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2954817",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-14-14/7",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti – vodovodu a kanalizace – 3 lokality převedené sítě spol. Chevak Cheb a.s.",
+      "popis": "Rada města, bod 14/7, usnesení 97/23. Schvaleno.",
+      "castka_czk": 1210,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2978125",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:22066193",
+      "datum": "2023-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-06",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23671557",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/20",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě - vodovodního řádu – ul. Třebízského, Nehrova, Fibichova a Ibsenova",
+      "popis": "Rada města, bod 19/20, usnesení 208/23. Schvaleno.",
+      "castka_czk": 1210,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2999204",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/24",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě – vodovodu – 5 lokalit v k. ú. Mariánské Lázně a Úšovice",
+      "popis": "Rada města, bod 19/24, usnesení 212/23. Schvaleno.",
+      "castka_czk": 1210,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2999888",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:22734689",
+      "datum": "2023-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-19",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy",
+      "popis": "TECHNICKÝ A DOPRAVNÍ SERVIS, s.r.o. (TDS) — příjem, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24373549",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25213261.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-7-7/4",
+      "datum": "2023-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-31",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Schválení stanov společnosti Chevak Cheb, a.s.",
+      "popis": "Zastupitelstvo města, bod 7/4, usnesení 114/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3027623",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/7.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/14",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o přeložce vodohospodářského zařízení se společností CHEVAK a.s. na stavbě okružní křižovatky ul. Plzeňská",
+      "popis": "Rada města, bod 31/14, usnesení 553/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3074185",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-34-34/17",
+      "datum": "2023-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-03",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o budoucí smlouvě o zřízení služebnosti inženýrské sítě se společností CHEVAK a.s. na stavbě okružní křižovatky ul. Plzeňská",
+      "popis": "Rada města, bod 34/17, usnesení 602/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3086645",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/34.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:27219048",
+      "datum": "2024-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy CHEVAK a.s. - ZLS 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29107056",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-31/14__31109076",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlpuva o obstárání reklamy č. SPA-2025-800-000083",
+      "popis": "Odhadované spojení smlouvy z 2025-05-09 s bodem 31/14 z 2023-09-05 (Uzavření smlouvy o přeložce vodohospodářského zařízení se společností CHEVAK a.s. na stavbě ",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 612 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/33205912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-34/17__31109076",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlpuva o obstárání reklamy č. SPA-2025-800-000083",
+      "popis": "Odhadované spojení smlouvy z 2025-05-09 s bodem 34/17 z 2023-10-03 (Uzavření smlouvy o budoucí smlouvě o zřízení služebnosti inženýrské sítě se společností CHEV",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 584 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/33205912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-7/4__31109076",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlpuva o obstárání reklamy č. SPA-2025-800-000083",
+      "popis": "Odhadované spojení smlouvy z 2025-05-09 s bodem 7/4 z 2023-05-31 (Schválení stanov společnosti Chevak Cheb, a.s.). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49787977 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 709 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33205912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31109076",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlpuva o obstárání reklamy č. SPA-2025-800-000083",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33205912",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35604457",
+      "datum": "2026-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-11",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o obstarání reklamy - Chevak Cheb a.s. - ZLS 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CHEVAK Cheb, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37906769",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/28",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Chevak a.s. Smlouva o zřízení služebnosti inženýrské sítě práva uložení, provozu a údržby vodovodního řádu – 1. etapa Hlavní ul.",
+      "popis": "Rada města, bod 119/28, usnesení 1236/26. Schvaleno.",
+      "castka_czk": 1210,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2787708395",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

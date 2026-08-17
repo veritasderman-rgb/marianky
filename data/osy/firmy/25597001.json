@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25597001",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-02-17",
+    "do": "2016-11-29",
+    "prvni_rok": 2015,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-11-11/5",
+      "datum": "2015-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-17",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele pro dotační administrativu na projekt Výměna oken a zateplení objektu ZŠPaS, Hamrníky",
+      "popis": "Rada města, bod 11/5, usnesení 65/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1353568",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-57-57/3",
+      "datum": "2016-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-23",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti budovy sportovní haly v Mariánských Lázních - zpracování žádosti o dotaci z OPŽP",
+      "popis": "Rada města, bod 57/3, usnesení 91/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1536529",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-93-93/13",
+      "datum": "2016-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce objektu - dům Chopin – výběr zpracovatele žádosti o dotaci a studie proveditelnosti",
+      "popis": "Rada města, bod 93/13, usnesení 603/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1675952",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

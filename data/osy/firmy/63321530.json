@@ -1,0 +1,320 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63321530",
+    "nazev": "&quot;WILIAM s.r.o.&quot;"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1995-05-16",
+    "do": "2025-05-14",
+    "prvni_rok": 1995,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 10,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:63321530:vznik",
+      "datum": "1995-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1995-05-16",
+      "rok": 1995,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — \"WILIAM s.r.o.\"",
+      "popis": "Vznik subjektu \"WILIAM s.r.o.\" (IČO 63321530), Společnost s ručením omezeným, obor: Maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-11-11/8",
+      "datum": "2015-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-17",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 11/8, usnesení 68/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1352668",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-164-164/16",
+      "datum": "2018-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-28",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159, změna účelu užívání",
+      "popis": "Rada města, bod 164/16, usnesení 461/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2084465",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-164/16__6379563",
+      "datum": "2018-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.3 ke smlouvě o nájmu NP Hlavní 159",
+      "popis": "Odhadované spojení smlouvy z 2018-10-04 s bodem 164/16 z 2018-08-28 (NP Hlavní 159, změna účelu užívání). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 63321530 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6884983",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6379563",
+      "datum": "2018-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.3 ke smlouvě o nájmu NP Hlavní 159",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana \"WILIAM s.r.o.\".",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6884983",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-30-30/7",
+      "datum": "2019-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159 - změna předmětu činnosti -",
+      "popis": "Rada města, bod 30/7, usnesení 341/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2369975",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-53-53/9",
+      "datum": "2020-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159 - prodloužení smlouvy",
+      "popis": "Rada města, bod 53/9, usnesení 23/20. Schvaleno.",
+      "castka_czk": 223200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2463345",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-30/7__10760124",
+      "datum": "2020-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - WILIAM",
+      "popis": "Odhadované spojení smlouvy z 2020-01-22 s bodem 30/7 z 2019-07-09 (NP Hlavní 159 - změna předmětu činnosti -). Jistota nizka.",
+      "castka_czk": 1350360.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 63321530 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 197 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11580036",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-53/9__10760124",
+      "datum": "2020-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - WILIAM",
+      "popis": "Odhadované spojení smlouvy z 2020-01-22 s bodem 53/9 z 2020-01-14 (NP Hlavní 159 - prodloužení smlouvy). Jistota nizka.",
+      "castka_czk": 1350360.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 63321530 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11580036",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10760124",
+      "datum": "2020-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-22",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - WILIAM",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana \"WILIAM s.r.o.\".",
+      "castka_czk": 1350360.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11580036",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-83-83/6",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 159 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 83/6, usnesení 229/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3342439",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-87-87/7",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 159 - prodloužení Smlouvy o nájmu nebytového prostoru – společnost \"WILIAM s.r.o.\"",
+      "popis": "Rada města, bod 87/7, usnesení 317/25. Schvaleno.",
+      "castka_czk": 223200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3359825",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-87/7__31180324",
+      "datum": "2025-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-14",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení nájemního vztahu",
+      "popis": "Odhadované spojení smlouvy z 2025-05-14 s bodem 87/7 z 2025-04-29 (NP Hlavní, č.p. 159 - prodloužení Smlouvy o nájmu nebytového prostoru – společnost \"WILIAM s.",
+      "castka_czk": 1116000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 63321530 je uvedeno v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prodlouzeni, prostoru; obojí je dodatek č. 6",
+      "url": "https://smlouvy.gov.cz/smlouva/33279896",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31180324",
+      "datum": "2025-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení nájemního vztahu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana &quot;WILIAM s.r.o.&quot;.",
+      "castka_czk": 1116000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33279896",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

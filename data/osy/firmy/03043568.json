@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03043568",
+    "nazev": "Hotely Mariánské  Lázně s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-04-28",
+    "do": "2025-04-28",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 1,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 2,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2025-75/19__31066860",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o výpůčce",
+      "popis": "Odhadované spojení smlouvy z 2025-04-28 s bodem 75/19 z 2025-01-07 (Zveřejnění záměru výpůjčky části parcely č. 1151/5 k. ú. Úšovice - SwissHouse). Jistota nizk",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03043568 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 111 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33162112",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-85/2__31066860",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o výpůčce",
+      "popis": "Odhadované spojení smlouvy z 2025-04-28 s bodem 85/2 z 2025-04-15 (Výpůjčka části p.č. 1151/1 k.ú.Úšovice - předpolí hotelu SwissHouse ul. Zeyerova). Jistota ni",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03043568 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33162112",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31066860",
+      "datum": "2025-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o výpůčce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hotely Mariánské  Lázně s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33162112",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

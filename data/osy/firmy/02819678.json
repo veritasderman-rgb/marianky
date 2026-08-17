@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "02819678",
+    "nazev": "O2 IT Services s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-10-02",
+    "do": "2025-01-27",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:25150883",
+      "datum": "2023-10-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-02",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 123/23/PK - analýza Posouzení stavu připravenosti z hlediska NIS2",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana O2 IT Services s.r.o..",
+      "castka_czk": 95563.38,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26934087",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29866848",
+      "datum": "2025-01-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "objednávka 015/25/PK - konzultační služby O2 - portál občana",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana O2 IT Services s.r.o..",
+      "castka_czk": 196020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31904212",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

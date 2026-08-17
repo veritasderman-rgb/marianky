@@ -1,0 +1,779 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26378191",
+    "nazev": "ČEZNET s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-02-09",
+    "do": "2026-08-04",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 37,
+    "dolozenych": 25,
+    "odhadu": 12,
+    "dle_typu": {
+      "usneseni": 17,
+      "retez": 12,
+      "smlouva": 8
+    },
+    "dle_jistoty": {
+      "fakt": 25,
+      "nizka": 10,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-55-55/10",
+      "datum": "2016-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-09",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Uložení sdělovacích kabelů ul. Palackého, Mariánské Lázně",
+      "popis": "Rada města, bod 55/10, usnesení 77/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1532170",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/55.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-157-157/15",
+      "datum": "2018-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-29",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Změna poskytovatele služeb – Internet, hlas",
+      "popis": "Rada města, bod 157/15, usnesení 307/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1956509",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/157.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-157/15__5426079",
+      "datum": "2018-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-31",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování telefonních služeb",
+      "popis": "Odhadované spojení smlouvy z 2018-05-31 s bodem 157/15 z 2018-05-29 (Změna poskytovatele služeb – Internet, hlas). Jistota nizka.",
+      "castka_czk": 241177.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/5841683",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5426079",
+      "datum": "2018-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-31",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování telefonních služeb",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TaNET West s.r.o..",
+      "castka_czk": 241177.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5841683",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-157/15__5426083",
+      "datum": "2018-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-06",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování přístupu k síti internet",
+      "popis": "Odhadované spojení smlouvy z 2018-06-06 s bodem 157/15 z 2018-05-29 (Změna poskytovatele služeb – Internet, hlas). Jistota nizka.",
+      "castka_czk": 243936.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/5841687",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5426083",
+      "datum": "2018-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování přístupu k síti internet",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TaNET West s.r.o..",
+      "castka_czk": 243936.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5841687",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11684596",
+      "datum": "2020-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-30",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva, dodatek č.1",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana TaNET West s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14060544",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-140-140/26",
+      "datum": "2022-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o podmínkách zhotovení a provozování optického kabelového rozvodu Mariánské Lázně",
+      "popis": "Rada města, bod 140/26, usnesení 114/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2819124",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/140.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-156-156/9",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - ČEZNET s.r.o. - telekomunikační vedení",
+      "popis": "Rada města, bod 156/9, usnesení 424/22. Schvaleno.",
+      "castka_czk": 1865,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2897780",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-161-161/13",
+      "datum": "2022-10-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-11",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Městský kamerový dohlížecí systém – pronájem",
+      "popis": "Rada města, bod 161/13, usnesení 495/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2919447",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/9__21315537",
+      "datum": "2022-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-09",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem této smlouvy je zajištění pronájmu a provozu Městského dohlížecího kamerového systému (dále jen MKDS) pro Město Mariánské Lázně.\nNíže uvedené částky jsou za pronájem MKDS za dobu 1 měsíce.",
+      "popis": "Odhadované spojení smlouvy z 2022-12-09 s bodem 156/9 z 2022-08-23 (Smlouva o zřízení služebnosti - ČEZNET s.r.o. - telekomunikační vedení). Jistota nizka.",
+      "castka_czk": 90343.44,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 108 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/22872849",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-161/13__21315537",
+      "datum": "2022-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-09",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem této smlouvy je zajištění pronájmu a provozu Městského dohlížecího kamerového systému (dále jen MKDS) pro Město Mariánské Lázně.\nNíže uvedené částky jsou za pronájem MKDS za dobu 1 měsíce.",
+      "popis": "Odhadované spojení smlouvy z 2022-12-09 s bodem 161/13 z 2022-10-11 (Městský kamerový dohlížecí systém – pronájem). Jistota nizka.",
+      "castka_czk": 90343.44,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 59 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/22872849",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21315537",
+      "datum": "2022-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-09",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem této smlouvy je zajištění pronájmu a provozu Městského dohlížecího kamerového systému (dále jen MKDS) pro Město Mariánské Lázně.\nNíže uvedené částky jsou za pronájem MKDS za dobu 1 měsíce.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZNET s.r.o..",
+      "castka_czk": 90343.44,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22872849",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/42",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Městský kamerový dohlížecí systém – pronájem – dodatek č. 1 ke smlouvě",
+      "popis": "Rada města, bod 19/42, usnesení 230/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3002261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/9__22734821",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatkem se \na)\tmění termín dokončení a předání MKDS do provozu \nb)\tstanovuje sjednání smluvní pokuty pro případ prodlení zhotovitele s předáním předmětu díla",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 156/9 z 2022-08-23 (Smlouva o zřízení služebnosti - ČEZNET s.r.o. - telekomunikační vedení). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 259 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24373685",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-161/13__22734821",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatkem se \na)\tmění termín dokončení a předání MKDS do provozu \nb)\tstanovuje sjednání smluvní pokuty pro případ prodlení zhotovitele s předáním předmětu díla",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 161/13 z 2022-10-11 (Městský kamerový dohlížecí systém – pronájem). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 210 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24373685",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/42__22734821",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatkem se \na)\tmění termín dokončení a předání MKDS do provozu \nb)\tstanovuje sjednání smluvní pokuty pro případ prodlení zhotovitele s předáním předmětu díla",
+      "popis": "Odhadované spojení smlouvy z 2023-05-09 s bodem 19/42 z 2023-04-04 (Městský kamerový dohlížecí systém – pronájem – dodatek č. 1 ke smlouvě). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24373685",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22734821",
+      "datum": "2023-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-09",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem se \na)\tmění termín dokončení a předání MKDS do provozu \nb)\tstanovuje sjednání smluvní pokuty pro případ prodlení zhotovitele s předáním předmětu díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZNET s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24373685",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-27-27/3",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti optického kabelu p. p. č. 221/9 v k.ú. Úšovice",
+      "popis": "Rada města, bod 27/3, usnesení 437/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3045578",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-30-30/22",
+      "datum": "2023-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-22",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Městský kamerový dohlížecí systém – pronájem – dodatek č. 2 ke smlouvě",
+      "popis": "Rada města, bod 30/22, usnesení 535/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3067960",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/5",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti podzemního telekomunikačního vedení – ČEZNET s.r.o.",
+      "popis": "Rada města, bod 44/5, usnesení 54/24. Schvaleno.",
+      "castka_czk": 1110,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3145671",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/15",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě podzemního telekomunikačního vedení – ČEZNET s.r.o.",
+      "popis": "Rada města, bod 56/15, usnesení 400/24. Schvaleno.",
+      "castka_czk": 1887,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3205118",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/5",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě práva uložení, provozu a údržby podzemního telekomunikačního vedení – ČEZNET s.r.o.",
+      "popis": "Rada města, bod 68/5, usnesení 691/24. Schvaleno.",
+      "castka_czk": 1031,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3262483",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-72-72/5",
+      "datum": "2024-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-26",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti uložení, provozu a údržby optického kabelu v k.ú. Úšovice – sídliště Vora.",
+      "popis": "Rada města, bod 72/5, usnesení 800/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3283283",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/29",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.2 ke smlouvě o dílo – Městský kamerový dohlížecí systém",
+      "popis": "Rada města, bod 73/29, usnesení 854/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3294042",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/5__29460400",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek číslo 2 ke smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-12-17 s bodem 68/5 z 2024-10-15 (Smlouva o zřízení služebnosti inženýrské sítě práva uložení, provozu a údržby podzemního tele",
+      "castka_czk": 101923.14,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 63 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31477148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-72/5__29460400",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek číslo 2 ke smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-12-17 s bodem 72/5 z 2024-11-26 (Smlouva o budoucí smlouvě o zřízení služebnosti uložení, provozu a údržby optického kabelu v ",
+      "castka_czk": 101923.14,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31477148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/29__29460400",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek číslo 2 ke smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-12-17 s bodem 73/29 z 2024-12-10 (Dodatek č.2 ke smlouvě o dílo – Městský kamerový dohlížecí systém). Jistota nizka.",
+      "castka_czk": 101923.14,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31477148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29460400",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek číslo 2 ke smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZNET s.r.o..",
+      "castka_czk": 101923.14,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31477148",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/8",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo – Městský kamerový dohlížecí systém",
+      "popis": "Rada města, bod 88/8, usnesení 346/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3364184",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-88/8__32251845",
+      "datum": "2025-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke smlouvě o pronájmu a provozu MKDS",
+      "popis": "Odhadované spojení smlouvy z 2025-08-04 s bodem 88/8 z 2025-05-13 (Dodatek č. 3 ke smlouvě o dílo – Městský kamerový dohlížecí systém). Jistota stredni.",
+      "castka_czk": 897118.2,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; obojí je dodatek č. 3",
+      "url": "https://smlouvy.gov.cz/smlouva/34403737",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32251845",
+      "datum": "2025-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke smlouvě o pronájmu a provozu MKDS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZNET s.r.o..",
+      "castka_czk": 897118.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34403737",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-107-107/21",
+      "datum": "2025-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-23",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 4 ke smlouvě o pronájmu a provozu městského kamerového dohlížecího systému",
+      "popis": "Rada města, bod 107/21, usnesení 865/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/473983618",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-107/21__34566453",
+      "datum": "2026-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-14",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 4 ke Smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2026-01-14 s bodem 107/21 z 2025-12-23 (Dodatek č. 4 ke smlouvě o pronájmu a provozu městského kamerového dohlížecího systému). Jis",
+      "castka_czk": 5789428.92,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26378191 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova pronajmu, provozu; obojí je dodatek č. 4",
+      "url": "https://smlouvy.gov.cz/smlouva/36824761",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34566453",
+      "datum": "2026-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 4 ke Smlouvě o pronájmu a provozu MKDS Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČEZNET s.r.o..",
+      "castka_czk": 5789428.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36824761",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-123-123/4",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zpracování osobních údajů pro Městský kamerový dohlížecí systém Mariánské Lázně - ČEZNET s.r.o.",
+      "popis": "Rada města, bod 123/4, usnesení 1375/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2018713371",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-123-123/7",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti inženýrské sítě práva uložení, provozu a údržby podzemního telekomunikačního vedení – ČEZNET s.r.o.",
+      "popis": "Rada města, bod 123/7, usnesení 1378/26. Schvaleno.",
+      "castka_czk": 32,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2463011784",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "62933591",
+    "nazev": "Agentura ochrany přírody a krajiny ČR"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-02-28",
+    "do": "2020-09-30",
+    "prvni_rok": 2012,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-56-56/5",
+      "datum": "2012-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-28",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o přístupu do nálezové databáze AOPK ČR",
+      "popis": "Rada města, bod 56/5, usnesení 88/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/707958",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-166-166/11",
+      "datum": "2014-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-23",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 Partnerská smlouva",
+      "popis": "Rada města, bod 166/11, usnesení 424/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1267315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-80/12__12773768",
+      "datum": "2020-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-31",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dohoda na tvorbu 2 tůní v k.ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2020-08-31 s bodem 80/12 z 2020-08-25 (Dohoda o realizaci managementových opatření s cílem vybudování dvou přírodních tůní na p.p.č",
+      "castka_czk": 100000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Agentura ochrany přírody a krajiny ČR) je v textu usnesení; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova dohoda, tuni",
+      "url": "https://smlouvy.gov.cz/smlouva/13700160",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12773768",
+      "datum": "2020-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-31",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dohoda na tvorbu 2 tůní v k.ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Agentura ochrany přírody a krajiny ČR.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13700160",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13063816",
+      "datum": "2020-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-30",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dohoda_Mesto Marianske Lazne_naucna stezka",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Agentura ochrany přírody a krajiny ČR.",
+      "castka_czk": 69025.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14004416",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

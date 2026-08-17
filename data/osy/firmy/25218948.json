@@ -1,0 +1,260 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25218948",
+    "nazev": "HELLMICH, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1998-02-23",
+    "do": "2019-07-24",
+    "prvni_rok": 1998,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 9,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "smlouva": 7,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 1,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25218948:vznik",
+      "datum": "1998-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1998-02-23",
+      "rok": 1998,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — HELLMICH, spol. s r.o.",
+      "popis": "Vznik subjektu HELLMICH, spol. s r.o. (IČO 25218948), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/13",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce školních dílen na Základní škole Úšovice v Mariánských Lázních",
+      "popis": "Rada města, bod 162/13, usnesení 415/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1984404",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:6141971",
+      "datum": "2018-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „ZŠ Úšovice – rekonstrukce školních dílen“ v areálu ZŠ Úšovice v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6620743",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7097319",
+      "datum": "2018-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-17",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smluvní strany se dohodly na níže uvedených změnách smlouvy o dílo: Mění rozsah plnění a zároveň cena díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": 9156633.7511,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7663259",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8129067",
+      "datum": "2019-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smluvní strany se dohodly na níže uvedených změnách smlouvy o dílo: Mění rozsah plnění a zároveň cena díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": 9488467.66,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8775731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-19/5__8325723",
+      "datum": "2019-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-24",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo ZŠ Úšovice – rekonstrukce školních dílen",
+      "popis": "Odhadované spojení smlouvy z 2019-04-24 s bodem 19/5 z 2019-04-16 (ZŠ Úšovice - stavební úpravy školních dílen). Jistota stredni.",
+      "castka_czk": 228265.94,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (HELLMICH, spol. s r.o.) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilen, skolnic",
+      "url": "https://smlouvy.gov.cz/smlouva/8983687",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8325723",
+      "datum": "2019-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo ZŠ Úšovice – rekonstrukce školních dílen",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": 228265.94,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8983687",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-24/14__8707627",
+      "datum": "2019-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-07",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 4 ke smlouvě o dílo ZŠ Úšovice – rekonstrukce školních dílen",
+      "popis": "Odhadované spojení smlouvy z 2019-06-07 s bodem 24/14 z 2019-05-21 (ZŠ Úšovice - stavební úpravy školních dílen). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (HELLMICH, spol. s r.o.) je v textu usnesení; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilen, skolnich, usovice; obojí je dodatek č. 4; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/9387111",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8707627",
+      "datum": "2019-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-07",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 4 ke smlouvě o dílo ZŠ Úšovice – rekonstrukce školních dílen",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9387111",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9175923",
+      "datum": "2019-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava podesty schodiště vchodu do budovy.",
+      "popis": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9882935",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47721472.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9184491",
+      "datum": "2019-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava schodiště do budovy.",
+      "popis": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně — výdaj, protistrana HELLMICH, spol. s r.o..",
+      "castka_czk": 106000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9891939",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47721472.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09183957",
+    "nazev": "JIHOSERVIS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-07-30",
+    "do": "2025-10-21",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:32208497",
+      "datum": "2025-07-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 52/25 - Oprava dožilého plynového kotle výměnou na základě nevyhovující revizní zprávy v NP Hlavní 233, Mariánské Lázně - kadeřnictví JAZUU",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana JIHOSERVIS s.r.o..",
+      "castka_czk": 65100.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34358585",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:33155497",
+      "datum": "2025-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 78/25 - Na základě revizní zprávy - Výměna dožilého plynového kotle v NP Hlavní 227, Mariánské Lázně - Arttrend",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana JIHOSERVIS s.r.o..",
+      "castka_czk": 68610.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35347069",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

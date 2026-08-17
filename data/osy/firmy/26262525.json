@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26262525",
+    "nazev": "QCM, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-03-22",
+    "do": "2023-03-23",
+    "prvni_rok": 2013,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 2,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:22392197",
+      "datum": "2013-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-22",
+      "rok": 2013,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování servisních služeb - E-ZAK",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana QCM, s.r.o..",
+      "castka_czk": 150645.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24013949",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-15-15/2",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o poskytnutí servisních služeb – společnost QCM s.r.o., Brno",
+      "popis": "Rada města, bod 15/2, usnesení 118/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2980451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-15/2__22407445",
+      "datum": "2023-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-23",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o pokytnutí servisních služeb ze dne 22.3.2013 - E-ZAK",
+      "popis": "Odhadované spojení smlouvy z 2023-03-23 s bodem 15/2 z 2023-03-07 (Dodatek č. 1 ke smlouvě o poskytnutí servisních služeb – společnost QCM s.r.o., Brno). Jistot",
+      "castka_czk": 170101.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26262525 je uvedeno v textu usnesení; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova servisnich, sluzeb; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/24029861",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22407445",
+      "datum": "2023-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-23",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o pokytnutí servisních služeb ze dne 22.3.2013 - E-ZAK",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana QCM, s.r.o..",
+      "castka_czk": 170101.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24029861",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

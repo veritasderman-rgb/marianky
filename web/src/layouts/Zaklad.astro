@@ -20,9 +20,14 @@ const polozkyNavigace = [
   { klic: 'usneseni', cesta: '/usneseni', nazev: 'Usnesení' },
   { klic: 'hlasovani', cesta: '/hlasovani', nazev: 'Hlasování' },
   { klic: 'penize', cesta: '/penize', nazev: 'Peníze' },
+  { klic: 'firmy', cesta: '/firmy', nazev: 'Firmy' },
   { klic: 'propojeni', cesta: '/propojeni', nazev: 'Propojení' },
   { klic: 'retez', cesta: '/retez', nazev: 'Řetěz' },
   { klic: 'lide', cesta: '/lide', nazev: 'Lidé' },
+  { klic: 'volby', cesta: '/volby', nazev: 'Volby' },
+  { klic: 'mapa', cesta: '/mapa', nazev: 'Mapa' },
+  { klic: 'historie', cesta: '/historie', nazev: 'Historie' },
+  { klic: 'statistika', cesta: '/statistika', nazev: 'Statistika' },
   { klic: 'zpravodaj', cesta: '/zpravodaj', nazev: 'Zpravodaj' },
   { klic: 'hledat', cesta: '/hledat', nazev: 'Hledat' },
 ];
@@ -96,14 +101,22 @@ const polozkyNavigace = [
       <div class="obal">
         <p>
           Neveřejný přehled dění v Mariánských Lázních. Data pocházejí z veřejných
-          zdrojů — portálu usnesení města, Městského zpravodaje, registru smluv
-          a Hlídače státu. Čísla a jména se propisují z dat, ne z generovaného textu.
+          zdrojů — portálu usnesení města, Městského zpravodaje, registru smluv,
+          Hlídače státu, rejstříku ARES, volebních výsledků a otevřených dat
+          o městě. Čísla a jména se propisují z dat, ne z generovaného textu.
         </p>
         <p>
           <a href="/usneseni">Usnesení</a> · <a href="/hlasovani">Hlasování</a> ·
-          <a href="/penize">Peníze</a> · <a href="/propojeni">Propojení</a> ·
-          <a href="/retez">Řetěz</a> · <a href="/lide">Lidé</a> ·
-          <a href="/zpravodaj">Zpravodaj</a> · <a href="/hledat">Hledat</a>
+          <a href="/penize">Peníze</a> · <a href="/firmy">Firmy</a> ·
+          <a href="/propojeni">Propojení</a> · <a href="/retez">Řetěz</a> ·
+          <a href="/lide">Lidé</a> · <a href="/volby">Volby</a> ·
+          <a href="/mapa">Mapa</a> · <a href="/historie">Historie</a> ·
+          <a href="/statistika">Statistika</a> · <a href="/zpravodaj">Zpravodaj</a> ·
+          <a href="/hledat">Hledat</a>
+        </p>
+        <p>
+          Mapy jsou vykreslené při buildu z otevřených geodat ve WGS-84; zdroj a licenci
+          uvádí každá mapa u sebe. Nenačítá se nic z cizích serverů.
         </p>
       </div>
     </footer>

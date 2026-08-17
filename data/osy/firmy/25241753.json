@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25241753",
+    "nazev": "SVS 2000 spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-09-03",
+    "do": "2021-03-29",
+    "prvni_rok": 2019,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 5,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-35-35/10",
+      "datum": "2019-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-03",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Odvlhčení a hydroizolace spodní stavby objektu Chebská 252 - výběr dodavatele",
+      "popis": "Rada města, bod 35/10, usnesení 447/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2400502",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-35/10__9451214",
+      "datum": "2019-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-17",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Odvlhčení a hydroizolace spodní stavby objektu Chebská 252“.",
+      "popis": "Odhadované spojení smlouvy z 2019-09-17 s bodem 35/10 z 2019-09-03 (Odvlhčení a hydroizolace spodní stavby objektu Chebská 252 - výběr dodavatele). Jistota stre",
+      "castka_czk": 1164018.1971,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25241753 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, hydroizolace, objektu, odvlhceni",
+      "url": "https://smlouvy.gov.cz/smlouva/10175218",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9451214",
+      "datum": "2019-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-17",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Odvlhčení a hydroizolace spodní stavby objektu Chebská 252“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SVS 2000 spol. s r.o..",
+      "castka_czk": 1164018.1971,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10175218",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-35/10__11701716",
+      "datum": "2020-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-05",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Odvlhčení a hydroizolace spodní stavby objektu Chebská 252",
+      "popis": "Odhadované spojení smlouvy z 2020-05-05 s bodem 35/10 z 2019-09-03 (Odvlhčení a hydroizolace spodní stavby objektu Chebská 252 - výběr dodavatele). Jistota nizk",
+      "castka_czk": 447340.0855,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25241753 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 245 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, hydroizolace, objektu, odvlhceni; ",
+      "url": "https://smlouvy.gov.cz/smlouva/12570796",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-67/10__11701716",
+      "datum": "2020-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-05",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Odvlhčení a hydroizolace spodní stavby objektu Chebská 252",
+      "popis": "Odhadované spojení smlouvy z 2020-05-05 s bodem 67/10 z 2020-04-21 (Odvlhčení a hydroizolace spodní stavby objektu Chebská 252). Jistota nizka.",
+      "castka_czk": 447340.0855,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (SVS 2000 spol. s r.o.) je v textu usnesení; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, hydroizolace, objektu, odvlhceni; obojí je dodate",
+      "url": "https://smlouvy.gov.cz/smlouva/12570796",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11701716",
+      "datum": "2020-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-05",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Odvlhčení a hydroizolace spodní stavby objektu Chebská 252",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SVS 2000 spol. s r.o..",
+      "castka_czk": 447340.0855,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12570796",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-92-92/5",
+      "datum": "2020-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-08",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "VZ Hydroizolace spodní stavby objektu městské knihovny - severní strana - výběr dodavatele",
+      "popis": "Rada města, bod 92/5, usnesení 617/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2614082",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-92/5__14944855",
+      "datum": "2021-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-29",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Hydroizolace spodní stavby objektu městské knihovny v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-03-29 s bodem 92/5 z 2020-12-08 (VZ Hydroizolace spodní stavby objektu městské knihovny - severní strana - výběr dodavatele). ",
+      "castka_czk": 878553.97,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25241753 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 111 dní po usnesení; název bodu a předmět smlouvy sdílí slova hydroizolace, knihovny, mestske, objektu",
+      "url": "https://smlouvy.gov.cz/smlouva/16082827",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14944855",
+      "datum": "2021-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-29",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Hydroizolace spodní stavby objektu městské knihovny v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SVS 2000 spol. s r.o..",
+      "castka_czk": 878553.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16082827",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

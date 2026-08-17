@@ -1,0 +1,136 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29090814",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2010-01-05",
+    "do": "2016-11-29",
+    "prvni_rok": 2010,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:29090814:vznik",
+      "datum": "2010-01-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2010-01-05",
+      "rok": 2010,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — BUBASTAV s.r.o.",
+      "popis": "Vznik subjektu BUBASTAV s.r.o. (IČO 29090814), Společnost s ručením omezeným, obor: Silniční nákladní doprava.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-54-54/5",
+      "datum": "2012-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rozšíření účelu užívání - NP Hlavní 232",
+      "popis": "Rada města, bod 54/5, usnesení 60/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/700595",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-62-62/1",
+      "datum": "2012-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 232 - podnájem",
+      "popis": "Rada města, bod 62/1, usnesení 173/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/749851",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-109-109/2",
+      "datum": "2013-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-05-14",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 232 - podnájemní smlouva",
+      "popis": "Rada města, bod 109/2, usnesení 201/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/943795",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-93-93/6",
+      "datum": "2016-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 232 - prodloužení nájmu, podnájemní smlouvy - BUBASTAV s.r.o.",
+      "popis": "Rada města, bod 93/6, usnesení 596/16. Schvaleno.",
+      "castka_czk": 2500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1675139",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

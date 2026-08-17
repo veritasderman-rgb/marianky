@@ -1,0 +1,637 @@
+---
+/**
+ * Jak se ve městě volilo.
+ *
+ * Past volební mapy (web/DESIGN.md §3.6): barví se plocha, ale volí lidé.
+ * Proto tu mapa nikdy nestojí sama — komponenta `MapaKarta` ji bez doprovodných
+ * absolutních počtů vůbec nevykreslí. A proto jsou u okrsků všude počty voličů,
+ * ne jen procenta.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import MapaKarta from '../components/MapaKarta.astro';
+import CasovaOsa from '../components/CasovaOsa.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { nactiLidi } from '../lib/data';
+import { nactiGeo } from '../lib/geodata';
+import { nactiVolby, registrStran, geometrieOkrsku, type Okrsek, type VolebniCyklus } from '../lib/volby';
+import { krokRampyLinearni, legendaRampyObecna, mapaSvg, type PrvekMapy, type VrstvaMapy } from '../lib/mapy';
+import { cssKrokRampy } from '../lib/barvy';
+import { grafVodorovny, type BodVodorovny } from '../lib/grafy';
+import { grafRadaPoLetech, grafSpojnice, type SerieRady } from '../lib/grafy_rady';
+import { nactiCasovouOsu, slucUdalosti, udalost, type UdalostOsy } from '../lib/osa';
+import { cislo, sklonuj } from '../lib/format';
+
+const zVoleb = nactiVolby();
+const zGeo = nactiGeo();
+const zLidi = nactiLidi();
+const zOsy = nactiCasovouOsu();
+
+const cykly = zVoleb.data ?? [];
+const maData = cykly.length > 0;
+const registr = registrStran(cykly);
+const znamiLide = new Map((zLidi.data ?? []).map((o) => [o.id, o.jmeno]));
+const podleJmena = new Map((zLidi.data ?? []).map((o) => [o.jmeno, o.id]));
+
+/* ── Formátování ───────────────────────────────────────────────────────── */
+
+function pct(v: number | null | undefined): string {
+  return v === null || v === undefined ? 'v datech není' : `${(v * 100).toFixed(1).replace('.', ',')} %`;
+}
+function pocet(v: number | null | undefined): string {
+  return v === null || v === undefined ? 'v datech není' : cislo(v);
+}
+function popisOkrsku(o: Okrsek): string {
+  return o.nazev ? `Okrsek ${o.cislo} — ${o.nazev}` : `Okrsek ${o.cislo}`;
+}
+function odkazNaOsobu(osoba_id: string | null, jmeno: string): string | null {
+  if (osoba_id && znamiLide.has(osoba_id)) return `/lide/${osoba_id}`;
+  const podleShody = podleJmena.get(jmeno);
+  return podleShody ? `/lide/${podleShody}` : null;
+}
+
+/* ── Výběr cyklu pro mapu ──────────────────────────────────────────────
+   Mapa se kreslí pro nejnovější cyklus, u kterého se podařilo spárovat
+   geometrii okrsků. Starší cykly mají grafy a tabulky — okrsky se v čase mění
+   a překreslovat je ze současné geometrie by lhalo. */
+
+const sGeometrii = cykly
+  .filter((c) => c.okrsky.length > 0)
+  .map((c) => ({ c, g: geometrieOkrsku(zGeo.data ?? [], c.okrsky.map((o) => o.cislo)) }))
+  .filter((x) => x.g.podleCisla.size > 0);
+
+const mapovy = sGeometrii[0] ?? null;
+
+/* ── Vrstva mapy: účast v okrscích ─────────────────────────────────────── */
+
+function vrstvaUcasti(x: NonNullable<typeof mapovy>): VrstvaMapy {
+  const { c, g } = x;
+  const hodnoty = c.okrsky.map((o) => o.ucast).filter((v): v is number => v !== null);
+  const min = hodnoty.length ? Math.min(...hodnoty) : 0;
+  const max = hodnoty.length ? Math.max(...hodnoty) : 1;
+
+  const prvky: PrvekMapy[] = c.okrsky.map((o) => {
+    const prvek = g.podleCisla.get(o.cislo);
+    const bezDat = o.ucast === null;
+    return {
+      id: o.cislo,
+      nazev: popisOkrsku(o),
+      tvary: prvek?.tvary ?? [],
+      barva: bezDat ? 'var(--surface-2)' : cssKrokRampy(krokRampyLinearni(o.ucast as number, min, max)),
+      bezDat,
+      tip: [
+        { l: 'Zapsaných voličů', v: pocet(o.volicu) },
+        { l: 'Vydaných obálek', v: pocet(o.obalky) },
+        { l: 'Platných hlasů', v: pocet(o.platne) },
+        { l: 'Účast', v: pct(o.ucast) + (o.ucastDopocitana ? ' (dopočet)' : '') },
+      ],
+      popis: `${popisOkrsku(o)}: účast ${pct(o.ucast)}, zapsaných voličů ${pocet(o.volicu)}`,
+    };
+  });
+
+  return {
+    klic: 'ucast',
+    nazev: 'Účast v okrscích',
+    popis: `Účast, zapsaní voliči a odevzdané hlasy po okrscích — ${c.nazev}.`,
+    druh: 'plocha',
+    prvky,
+    zapnuta: true,
+    legenda: legendaRampyObecna(pct(min), pct(max), 'účast v datech není'),
+    zdroj: g.vrstva?.zdroj ?? 'neuveden',
+    licence: g.vrstva?.licence ?? null,
+    tabulka: {
+      hlavicka: [
+        { nazev: 'Okrsek' },
+        { nazev: 'Kde se volí' },
+        { nazev: 'Zapsaní voliči', cislo: true },
+        { nazev: 'Vydané obálky', cislo: true },
+        { nazev: 'Platné hlasy', cislo: true },
+        { nazev: 'Účast', cislo: true },
+      ],
+      radky: c.okrsky.map((o) => [
+        o.cislo,
+        o.sidlo ?? o.nazev ?? 'v datech není',
+        pocet(o.volicu),
+        pocet(o.obalky),
+        pocet(o.platne),
+        pct(o.ucast) + (o.ucastDopocitana ? ' (dopočet z obálek)' : ''),
+      ]),
+    },
+  };
+}
+
+/* ── Vrstva mapy: vítěz v okrsku ───────────────────────────────────────── */
+
+function vrstvaViteze(x: NonNullable<typeof mapovy>): VrstvaMapy {
+  const { c, g } = x;
+  const vitezove = new Map<string, string>();
+  for (const o of c.okrsky) if (o.vitez) vitezove.set(o.vitez.klic, o.vitez.nazev);
+
+  const prvky: PrvekMapy[] = c.okrsky.map((o) => {
+    const prvek = g.podleCisla.get(o.cislo);
+    const bezDat = !o.vitez;
+    return {
+      id: o.cislo,
+      nazev: popisOkrsku(o),
+      tvary: prvek?.tvary ?? [],
+      barva: o.vitez ? registr.barva(o.vitez.klic) : 'var(--surface-2)',
+      bezDat,
+      tip: [
+        { l: 'Nejvíc hlasů', v: o.vitez?.nazev ?? 'v datech není' },
+        { l: 'Hlasů', v: pocet(o.vitez?.hlasy ?? null) },
+        { l: 'Podíl', v: pct(o.vitez?.podil ?? null) },
+        { l: 'Platných hlasů celkem', v: pocet(o.platne) },
+        { l: 'Zapsaných voličů', v: pocet(o.volicu) },
+      ],
+      popis: `${popisOkrsku(o)}: nejvíc hlasů ${o.vitez?.nazev ?? 'v datech není'} (${pocet(o.vitez?.hlasy ?? null)})`,
+    };
+  });
+
+  const legenda = [...vitezove.entries()]
+    .map(([klic, nazev]) => ({ nazev, barva: registr.barva(klic), tvar: 'rect' as const }))
+    .sort((a, b) => a.nazev.localeCompare(b.nazev, 'cs-CZ'));
+  legenda.push({ nazev: 'nejvíc hlasů v datech není', barva: 'var(--surface-2)', tvar: 'rect' as const });
+
+  return {
+    klic: 'vitez',
+    nazev: 'Kdo měl v okrsku nejvíc hlasů',
+    popis: `Strana s nejvyšším počtem hlasů v okrsku — ${c.nazev}. „Nejvíc hlasů" není totéž co většina; v okrsku s deseti kandidátkami stačí k prvnímu místu i pětina hlasů.`,
+    druh: 'plocha',
+    prvky,
+    zapnuta: true,
+    legenda,
+    zdroj: g.vrstva?.zdroj ?? 'neuveden',
+    licence: g.vrstva?.licence ?? null,
+    tabulka: {
+      hlavicka: [
+        { nazev: 'Okrsek' },
+        { nazev: 'Nejvíc hlasů' },
+        { nazev: 'Hlasů', cislo: true },
+        { nazev: 'Podíl', cislo: true },
+        { nazev: 'Platných hlasů', cislo: true },
+        { nazev: 'Zapsaní voliči', cislo: true },
+      ],
+      radky: c.okrsky.map((o) => [
+        o.cislo,
+        o.vitez?.nazev ?? 'v datech není',
+        pocet(o.vitez?.hlasy ?? null),
+        pct(o.vitez?.podil ?? null),
+        pocet(o.platne),
+        pocet(o.volicu),
+      ]),
+    },
+  };
+}
+
+const vrstvaU = mapovy ? vrstvaUcasti(mapovy) : null;
+const vrstvaV = mapovy ? vrstvaViteze(mapovy) : null;
+const mapaU = vrstvaU ? mapaSvg([vrstvaU], { popis: `Mapa účasti po volebních okrscích, ${mapovy?.c.nazev}` }) : null;
+const mapaV = vrstvaV ? mapaSvg([vrstvaV], { popis: `Mapa nejsilnější strany po volebních okrscích, ${mapovy?.c.nazev}` }) : null;
+
+/* ── Doprovodné grafy s absolutními počty ──────────────────────────────
+   Tohle je to, co brání volební mapě lhát: velká plocha nemusí znamenat
+   mnoho hlasů, a tady je vidět kolik. */
+
+function doprovodVolicu(c: VolebniCyklus) {
+  const sPocty = c.okrsky.filter((o) => o.volicu !== null);
+  const body: BodVodorovny[] = sPocty.map((o) => ({
+    nazev: `Okrsek ${o.cislo}`,
+    hodnota: o.volicu as number,
+    doplnky: [
+      { l: 'Vydané obálky', v: pocet(o.obalky) },
+      { l: 'Účast', v: pct(o.ucast) },
+      ...(o.sidlo ? [{ l: 'Kde se volí', v: o.sidlo }] : []),
+    ],
+  }));
+  const graf = grafVodorovny(body, 'Zapsaní voliči po okrscích');
+  graf.poznamky.push(
+    'Plocha okrsku na mapě neodpovídá počtu voličů. Rozlehlý okrsek na okraji města může mít méně voličů než jeden panelový blok — proto tenhle graf patří k mapě, ne za ni.',
+  );
+  if (sPocty.length < c.okrsky.length) {
+    graf.poznamky.push(
+      `U ${cislo(c.okrsky.length - sPocty.length)} z ${cislo(c.okrsky.length)} okrsků není počet zapsaných voličů v datech; v grafu chybí, v tabulce jsou.`,
+    );
+  }
+  return graf;
+}
+
+function doprovodHlasuViteze(c: VolebniCyklus) {
+  const sHlasy = c.okrsky.filter((o) => o.vitez?.hlasy !== null && o.vitez !== null);
+  const body: BodVodorovny[] = sHlasy.map((o) => ({
+    nazev: `Okrsek ${o.cislo}`,
+    hodnota: (o.vitez?.hlasy ?? 0) as number,
+    doplnky: [
+      { l: 'Nejvíc hlasů', v: o.vitez?.nazev ?? '—' },
+      { l: 'Podíl v okrsku', v: pct(o.vitez?.podil ?? null) },
+      { l: 'Platných hlasů', v: pocet(o.platne) },
+    ],
+  }));
+  const graf = grafVodorovny(body, 'Hlasy nejsilnější strany po okrscích');
+  graf.poznamky.push(
+    'Stejná barva na mapě může znamenat 40 hlasů i 400. Absolutní počty jsou tady — bez nich mapa tvrdí víc, než v datech stojí.',
+  );
+  return graf;
+}
+
+/* ── Účast v čase ──────────────────────────────────────────────────────── */
+
+const typy: { klic: 'komunalni' | 'parlamentni' | 'jine'; popisek: string }[] = [
+  { klic: 'komunalni', popisek: 'Komunální' },
+  { klic: 'parlamentni', popisek: 'Parlamentní' },
+  { klic: 'jine', popisek: 'Ostatní volby' },
+];
+
+const variantyUcasti: Varianta[] = typy
+  .map(({ klic, popisek }): Varianta | null => {
+    const vyber = cykly.filter((c) => c.typ === klic && c.rok > 0).sort((a, b) => a.rok - b.rok);
+    if (vyber.length === 0) return null;
+    const graf = grafRadaPoLetech(
+      vyber.map((c) => ({
+        rok: c.rok,
+        hodnota: c.celkem.ucast === null ? null : c.celkem.ucast * 100,
+        poznamka: c.celkem.ucastDopocitana ? 'účast dopočtena z obálek a zapsaných voličů' : null,
+      })),
+      `Volební účast — ${popisek.toLowerCase()}`,
+      'účast',
+      (v) => `${v.toFixed(1).replace('.', ',')} %`,
+    );
+    graf.poznamky.push(
+      'Osa má jeden sloupec na jedny volby, ne na každý rok. Rok bez voleb by jako nulový sloupec tvrdil nulovou účast — a to není totéž jako „nevolilo se". Skutečné rozestupy mezi volbami ukazuje časová osa níže.',
+    );
+    return { klic, popisek, graf };
+  })
+  .filter((v): v is Varianta => v !== null);
+
+/* ── Podpora stran v čase ──────────────────────────────────────────────── */
+
+const variantyStran: Varianta[] = typy
+  .map(({ klic, popisek }): Varianta | null => {
+    const vyber = cykly.filter((c) => c.typ === klic && c.rok > 0).sort((a, b) => a.rok - b.rok);
+    if (vyber.length < 2) return null;
+
+    const soucty = new Map<string, { nazev: string; hlasy: number }>();
+    for (const c of vyber) {
+      for (const s of c.strany) {
+        const stav = soucty.get(s.klic) ?? { nazev: s.nazev, hlasy: 0 };
+        stav.hlasy += s.hlasy ?? 0;
+        soucty.set(s.klic, stav);
+      }
+    }
+    const nej = [...soucty.entries()].sort((a, b) => b[1].hlasy - a[1].hlasy).slice(0, 6);
+    if (nej.length === 0) return null;
+
+    const roky = vyber.map((c) => c.rok);
+    const serie: SerieRady[] = nej.map(([klicStrany, info]) => ({
+      klic: klicStrany,
+      nazev: info.nazev,
+      hodnoty: vyber.map((c) => {
+        const s = c.strany.find((x) => x.klic === klicStrany);
+        return s?.podil === null || s?.podil === undefined ? null : s.podil * 100;
+      }),
+    }));
+
+    const graf = grafSpojnice(roky, serie, `Podpora stran — ${popisek.toLowerCase()}`, '% platných hlasů', (v) =>
+      `${v.toFixed(1).replace('.', ',')} %`,
+    );
+    graf.poznamky.push(
+      'Přerušená čára znamená, že strana v těch volbách nekandidovala nebo ji zdroj neuvádí — není to nula procent.',
+    );
+    graf.poznamky.push(
+      'Zobrazeno šest stran s nejvíce hlasy za celé období; barva patří straně, ne pořadí v jednotlivých volbách. Body jsou rozmístěné po volbách, ne po letech.',
+    );
+    return { klic, popisek, graf };
+  })
+  .filter((v): v is Varianta => v !== null);
+
+/* ── Účast po okrscích, cyklus po cyklu ────────────────────────────────── */
+
+const variantyOkrsku: Varianta[] = cykly
+  .filter((c) => c.okrsky.some((o) => o.ucast !== null))
+  .slice(0, 8)
+  .map((c) => {
+    const body: BodVodorovny[] = c.okrsky
+      .filter((o) => o.ucast !== null)
+      .map((o) => ({
+        nazev: popisOkrsku(o),
+        hodnota: (o.ucast as number) * 100,
+        doplnky: [
+          { l: 'Zapsaných voličů', v: pocet(o.volicu) },
+          { l: 'Vydaných obálek', v: pocet(o.obalky) },
+          { l: 'Platných hlasů', v: pocet(o.platne) },
+        ],
+      }));
+    const graf = grafVodorovny(body, `Účast po okrscích — ${c.nazev}`, (v) => `${v.toFixed(1).replace('.', ',')} %`);
+    graf.tabulka = {
+      hlavicka: [
+        { nazev: 'Okrsek' },
+        { nazev: 'Účast', cislo: true },
+        { nazev: 'Zapsaní voliči', cislo: true },
+        { nazev: 'Vydané obálky', cislo: true },
+        { nazev: 'Platné hlasy', cislo: true },
+      ],
+      radky: c.okrsky.map((o) => [popisOkrsku(o), pct(o.ucast), pocet(o.volicu), pocet(o.obalky), pocet(o.platne)]),
+    };
+    graf.poznamky.push('Procenta bez počtu voličů klamou — absolutní počty jsou v tooltipu i v tabulce.');
+    return { klic: c.id, popisek: `${c.rok} ${c.typNazev}`, graf };
+  });
+
+/* ── Časová osa voleb ──────────────────────────────────────────────────── */
+
+const udalostiVoleb: UdalostOsy[] = cykly
+  .filter((c) => c.rok > 0)
+  .map((c) =>
+    udalost({
+      id: `volby-${c.id}`,
+      datum: c.datum ?? String(c.rok),
+      druh: 'volby',
+      nadpis: c.nazev,
+      popis: null,
+      odkaz: `#cyklus-${c.id}`,
+      zdroj: c.zdroj ?? c.cesta,
+      detail: `účast ${pct(c.celkem.ucast)}, zapsaných voličů ${pocet(c.celkem.volicu)}, okrsků ${cislo(c.okrsky.length)}`,
+    }),
+  );
+
+const udalostiOsy = slucUdalosti(
+  udalostiVoleb,
+  (zOsy.data ?? []).filter((u) => u.druh === 'volby'),
+);
+
+/* ── Dlaždice ──────────────────────────────────────────────────────────── */
+
+const posledni = cykly[0] ?? null;
+const komunalnich = cykly.filter((c) => c.typ === 'komunalni').length;
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Volebních cyklů v datech',
+        hodnota: cislo(cykly.length),
+        doplnek: `z toho ${cislo(komunalnich)} ${sklonuj(komunalnich, 'komunální', 'komunální', 'komunálních')}`,
+      },
+      {
+        popisek: 'Poslední volby v datech',
+        hodnota: posledni ? String(posledni.rok) : '—',
+        doplnek: posledni?.typNazev,
+      },
+      {
+        popisek: 'Účast v posledních volbách',
+        hodnota: posledni ? pct(posledni.celkem.ucast) : '—',
+        doplnek: posledni
+          ? `${pocet(posledni.celkem.obalky)} obálek ze ${pocet(posledni.celkem.volicu)} zapsaných voličů`
+          : undefined,
+      },
+      {
+        popisek: 'Volebních okrsků',
+        hodnota: posledni ? cislo(posledni.okrsky.length) : '—',
+        doplnek: mapovy
+          ? `geometrie spárována u ${cislo(mapovy.g.podleCisla.size)}`
+          : 'geometrie okrsků zatím není',
+      },
+    ]
+  : [];
+
+/* Popisy map jsou tady, ne v atributu — obsahují uvozovky a v atributu by je
+   bylo nutné komolit. */
+const popisMapyUcasti =
+  'Sytost plochy roste s volební účastí. Okrsek, u kterého účast v datech není, má jinou výplň i přerušovaný obrys — „nezjištěno" se nesmí splést s „málo".';
+const popisMapyViteze =
+  'Barva patří straně, ne pořadí ve výsledku — stejná strana má stejnou barvu ve všech pohledech. Nejvýše šest stran má vlastní barvu, další spadnou do „Ostatní".';
+
+const rozsahLet = maData
+  ? `${Math.min(...cykly.map((c) => c.rok).filter((r) => r > 0))}–${Math.max(...cykly.map((c) => c.rok))}`
+  : '';
+---
+
+<Zaklad
+  titulek="Volby"
+  aktivni="volby"
+  nadpis="Jak se ve městě volilo"
+  uvod="Výsledky po volebních okrscích, účast a proměna voličské podpory v čase. Všechno se počítá při buildu z otevřených dat; mapa je SVG, ne dlaždice z cizího serveru."
+>
+  <StavDat
+    stav={zVoleb.stav}
+    zdroj={zVoleb.zdroj}
+    co="Výsledky voleb po okrscích"
+    prazdno={zVoleb.stav === 'ok' && cykly.length === 0}
+    modul="otevřená data — volby"
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        <p class="graf-poznamka">
+          V datech je {cislo(cykly.length)} {sklonuj(cykly.length, 'volební cyklus', 'volební cykly', 'volebních cyklů')}
+          {rozsahLet && ` za období ${rozsahLet}`}. Účast je uvedená tak, jak ji zdroj publikuje; kde chybí
+          a jde spočítat z vydaných obálek a počtu zapsaných voličů, je u ní napsané, že jde o dopočet.
+        </p>
+
+        {mapovy && vrstvaU && mapaU && (
+          <>
+            <h2>Mapa okrsků — {mapovy.c.nazev}</h2>
+            <p class="uvod">
+              Mapa barví plochu, ale volí lidé. Vedle každé mapy proto stojí graf s absolutními
+              počty: bez něj by rozlehlý okrsek s hrstkou voličů vypadal důležitěji než hustě
+              obydlený panelák.
+            </p>
+
+            <MapaKarta
+              id="mapa-ucast"
+              nadpis="Účast po okrscích"
+              popis={popisMapyUcasti}
+              mapa={mapaU}
+              vrstvy={[vrstvaU]}
+              barviPlochu
+              doprovod={{
+                nadpis: 'Kolik voličů okrsek má',
+                popis: 'Zapsaní voliči po okrscích — absolutní počty, ne procenta.',
+                graf: doprovodVolicu(mapovy.c),
+              }}
+              zdroje={[
+                {
+                  nazev: `Geometrie okrsků: ${vrstvaU.zdroj}`,
+                  licence: vrstvaU.licence,
+                },
+                {
+                  nazev: `Výsledky voleb: ${mapovy.c.zdroj ?? mapovy.c.cesta}`,
+                  licence: null,
+                },
+              ]}
+              poznamky={[
+                'Volební okrsky se v čase mění — hranice i čísla. Mapa platí pro uvedený rok a nedá se bez výhrad položit na výsledky jiných voleb.',
+                mapovy.g.nesparovano.length > 0
+                  ? `Pro ${cislo(mapovy.g.nesparovano.length)} okrsků (${mapovy.g.nesparovano.join(', ')}) se geometrie nenašla — v mapě chybí, v tabulce a v grafech jsou.`
+                  : 'Geometrie se podařilo spárovat u všech okrsků v datech.',
+              ]}
+            />
+
+            {vrstvaV && mapaV && (
+              <MapaKarta
+                id="mapa-vitez"
+                nadpis="Kdo měl v okrsku nejvíc hlasů"
+                popis={popisMapyViteze}
+                mapa={mapaV}
+                vrstvy={[vrstvaV]}
+                barviPlochu
+                doprovod={{
+                  nadpis: 'Kolik hlasů to bylo',
+                  popis: 'Hlasy nejsilnější strany v každém okrsku — absolutní počty.',
+                  graf: doprovodHlasuViteze(mapovy.c),
+                }}
+                zdroje={[
+                  { nazev: `Geometrie okrsků: ${vrstvaV.zdroj}`, licence: vrstvaV.licence },
+                  { nazev: `Výsledky voleb: ${mapovy.c.zdroj ?? mapovy.c.cesta}`, licence: null },
+                ]}
+                poznamky={[
+                  'Barevná plocha říká jen to, kdo měl v okrsku nejvíc hlasů. Neříká, že tam měl většinu, ani kolik lidí ho volilo — to je v doprovodném grafu a v tabulce.',
+                ]}
+              />
+            )}
+          </>
+        )}
+
+        {!mapovy && (
+          <div class="stav-dat stav-dat--chybi">
+            <strong class="stav-dat__nadpis">Mapa okrsků zatím není</strong>
+            <span>
+              Výsledky po okrscích máme, ale geometrii okrsků (GeoJSON ve WGS-84) se nepodařilo
+              najít nebo spárovat podle čísla okrsku.{' '}
+              <span class="stav-dat__zdroj">Očekávaný zdroj: opendata/geo/</span>. Grafy a tabulky
+              níže fungují i bez mapy.
+            </span>
+          </div>
+        )}
+
+        {variantyUcasti.length > 0 && (
+          <GrafKarta
+            id="ucast-cas"
+            nadpis="Účast v čase"
+            popis="Kolik lidí přišlo volit. Přepínač odděluje typy voleb — účast v komunálních a parlamentních volbách se nesrovnává, jsou to jiné volby s jinou logikou."
+            varianty={variantyUcasti}
+          />
+        )}
+
+        {variantyStran.length > 0 && (
+          <GrafKarta
+            id="strany-cas"
+            nadpis="Jak se měnila voličská podpora"
+            popis="Podíl na platných hlasech po jednotlivých volbách. Podíl, ne počet — počet hlasů kolísá s účastí a sám o sobě o podpoře neříká tolik. Absolutní počty jsou v tabulkách u jednotlivých voleb."
+            varianty={variantyStran}
+          />
+        )}
+
+        {udalostiOsy.length > 0 && (
+          <CasovaOsa
+            id="osa-voleb"
+            nadpis="Časová osa voleb"
+            udalosti={udalostiOsy}
+            zdroje={['opendata/volby/', ...(zOsy.stav === 'ok' ? ['casova_osa/'] : [])]}
+            popis="Volby tak, jak po sobě šly. Na rozdíl od sloupcových grafů výše je tahle osa lineární v čase — je z ní vidět, že mezi volbami leží roky, ve kterých se nevolilo."
+            neuplnost="Osa obsahuje jen volby, které jsou v datech; starší cykly mohou chybět."
+          />
+        )}
+
+        {variantyOkrsku.length > 0 && (
+          <GrafKarta
+            id="ucast-okrsky"
+            nadpis="Účast po okrscích"
+            popis="Rozdíly mezi okrscky uvnitř jednoho města. U každého okrsku je v tooltipu i v tabulce počet zapsaných voličů — bez něj by procenta klamala."
+            varianty={variantyOkrsku}
+          />
+        )}
+
+        <h2>Výsledky jednotlivých voleb</h2>
+
+        {cykly.map((c) => (
+          <section class="karta" id={`cyklus-${c.id}`}>
+            <h3 class="karta__nadpis">{c.nazev}</h3>
+            <p class="karta__podnadpis">
+              {c.datum ? `Konání: ${c.datum}. ` : ''}
+              Zapsaných voličů {pocet(c.celkem.volicu)}, vydaných obálek {pocet(c.celkem.obalky)},
+              platných hlasů {pocet(c.celkem.platne)}, účast {pct(c.celkem.ucast)}
+              {c.celkem.ucastDopocitana ? ' (dopočet z obálek a zapsaných voličů)' : ''}.
+              Okrsků v datech: {cislo(c.okrsky.length)}.
+            </p>
+
+            {c.strany.length > 0 && (
+              <div class="tabulka-obal">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Kandidátka</th>
+                      <th scope="col" class="cislo">Hlasů</th>
+                      <th scope="col" class="cislo">Podíl</th>
+                      <th scope="col" class="cislo">Mandátů</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {c.strany.map((s) => (
+                      <tr>
+                        <td>{s.nazev}</td>
+                        <td class="cislo">{pocet(s.hlasy)}</td>
+                        <td class="cislo">{pct(s.podil)}</td>
+                        <td class="cislo">{s.mandaty === null ? 'v datech není' : cislo(s.mandaty)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {c.zvoleni.length > 0 && (
+              <>
+                <h4>Zvolení zastupitelé</h4>
+                <div class="tabulka-obal">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th scope="col">Jméno</th>
+                        <th scope="col">Kandidátka</th>
+                        <th scope="col" class="cislo">Hlasů</th>
+                        <th scope="col" class="cislo">Pořadí</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {c.zvoleni.map((z) => {
+                        const odkaz = odkazNaOsobu(z.osoba_id, z.jmeno);
+                        return (
+                          <tr>
+                            <td>
+                              {odkaz ? <a href={odkaz}>{z.jmeno}</a> : z.jmeno}
+                              {z.nahradnik && <span class="stav-dat__zdroj"> (náhradník)</span>}
+                            </td>
+                            <td>{z.strana ?? 'v datech není'}</td>
+                            <td class="cislo">{pocet(z.hlasy)}</td>
+                            <td class="cislo">{z.poradi === null ? '—' : cislo(z.poradi)}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <p class="graf-poznamka">
+                  Odkaz na profil vede jen tam, kde se zvolený zastupitel podařilo spárovat
+                  s naším přehledem lidí. Kde spárování chybí, zůstává jen jméno ze zdroje.
+                </p>
+              </>
+            )}
+
+            {c.strany.length === 0 && c.zvoleni.length === 0 && (
+              <p>U těchhle voleb má zdroj jen souhrnná čísla — rozpis podle kandidátek v datech není.</p>
+            )}
+          </section>
+        ))}
+
+        <p class="graf-poznamka">
+          Volební okrsky se v čase mění, a to jak hranicemi, tak čísly. Srovnání okrsku napříč
+          volebními roky proto není srovnání téhož území. Tenhle přehled okrsky mezi roky nepřepočítává
+          a ani se o to nepokouší — čísla i mapa vždy platí pro uvedené volby.
+        </p>
+      </>
+    )
+  }
+</Zaklad>

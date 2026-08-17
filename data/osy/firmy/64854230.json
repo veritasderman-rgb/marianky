@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64854230",
+    "nazev": "Jan Srnec"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-06-04",
+    "do": "2020-05-31",
+    "prvni_rok": 2019,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:8684687",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Kosení v lokalitě VKP U Kamence",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jan Srnec.",
+      "castka_czk": 89903.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9362571",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8684691",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "kosení v lokalitě PCHP Cvičiště",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jan Srnec.",
+      "castka_czk": 63404.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9362575",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12095744",
+      "datum": "2020-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-31",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka prací ve VKP U Kamence",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jan Srnec.",
+      "castka_czk": 98857.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12983728",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73681423",
+    "nazev": "Projekční kancelář Pavel GRACA"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2004-12-01",
+    "do": "2023-10-09",
+    "prvni_rok": 2004,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 11,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "smlouva": 8
+    },
+    "dle_jistoty": {
+      "fakt": 11
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73681423:vznik",
+      "datum": "2004-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2004-12-01",
+      "rok": 2004,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ing. Pavel Graca",
+      "popis": "Vznik subjektu Ing. Pavel Graca (IČO 73681423), Fyzická osoba podnikající dle živnostenského zákona, obor: Architektonické a inženýrské činnosti a související t",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-132-132/8",
+      "datum": "2013-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-03",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o právu provedení stavby",
+      "popis": "Rada města, bod 132/8, usnesení 602/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1050868",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:401113",
+      "datum": "2016-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-09",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Vyhotovení projektové dokumentace pro stavbu \"Vybudování komunikace - Průmyslová zóna Hamrníky - 1. etapa, 1. část\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 358530.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/427081",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:81745",
+      "datum": "2016-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-09",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část – PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 358530.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/86761",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-84-84/9",
+      "datum": "2016-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-20",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "ZŠ Úšovice – rekonstrukce školních dílen",
+      "popis": "Rada města, bod 84/9, usnesení 457/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1637490",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/84.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:401261",
+      "datum": "2016-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-05",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Vyhotovení projektové dokumentace pro stavbu: \"ZŠ Úšovice _ rekonstrukce školních dílen\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 376246.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/427233",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3164254",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu \"Rekonstrukce správní budovy – Park Boheminium – PD\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 352435.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3411222",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3274902",
+      "datum": "2017-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Vybudování komunikace – Průmyslová zóna Hamrníky – 1. etapa, 1. část“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 433821.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3532750",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5724615",
+      "datum": "2018-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-17",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Výkon autorského dozoru na stavbě Park Boheminium - Rekonstrukce sociálního zařízení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Graca.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6166335",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18738427",
+      "datum": "2022-04-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Zpracování PD k odvlhčení suterénního zdiva a anglických dvorků z ul. Komenského ZŠ Jih, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Projekční kancelář Pavel GRACA.",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20138899",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24622579",
+      "datum": "2023-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-09",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Doplnění a úprava PD dle požadavků Památkové péče k akci: Odvlhčení suterénního zdiva a anglických dvorků z ul. Komenského ZŠ Jih, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Projekční kancelář Pavel GRACA.",
+      "castka_czk": 48000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26358107",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

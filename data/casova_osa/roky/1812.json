@@ -1,0 +1,171 @@
+{
+  "rok": 1812,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 2,
+      "historie": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "funkce:reitenberger-karel:0",
+      "datum": "1812",
+      "datum_do": "1827",
+      "presnost": "obdobi",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Karel Kašpar Reitenberger — opat kláštera Teplá",
+      "popis": "opat kláštera Teplá (1812 – 1827).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "reitenberger-karel"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "reitenberger-karel#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "opat kláštera Teplá",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1827"
+      }
+    },
+    {
+      "id": "funkce:seidl-franz:0",
+      "datum": "1812",
+      "datum_do": "1817",
+      "presnost": "obdobi",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Franz Josef Seidl — rychtář",
+      "popis": "rychtář (1812 – 1817).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "seidl-franz"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "seidl-franz#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "rychtář",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1817"
+      }
+    },
+    {
+      "id": "historie:1812-reitenberger-opat",
+      "datum": "1812",
+      "datum_do": "1827",
+      "presnost": "obdobi",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Karel Kašpar Reitenberger opatem tepelského kláštera",
+      "popis": "Karel Kašpar Reitenberger byl v letech 1812–1827 opatem premonstrátského kláštera Teplá. Počátkem 19. století zahájil výstavbu lázeňských domů a pavilonů v Mariánských Lázních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "reitenberger-karel"
+      ],
+      "firmy": [],
+      "tagy": [
+        "lazenstvi"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1812-reitenberger-opat",
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "detail": {
+        "kategorie": "klaster",
+        "obdobi": "vznik-lazni",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1812-samostatna-obec",
+      "datum": "1812",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1812-01-01",
+      "rok": 1812,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Mariánské Lázně se stávají samostatnou obcí",
+      "popis": "Rozhodnutím tepelského kláštera byly Mariánské Lázně vyčleněny z Úšovic jako samostatná obec. Prvním rychtářem byl v letech 1812–1817 Franz Josef Seidl.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "reitenberger-karel",
+        "seidl-franz"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1812-samostatna-obec",
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "vznik-lazni",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.muml.cz/mesto/o-meste/historie/",
+          "https://www.marianskelazne.cz/o-meste/historie-mesta/",
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    }
+  ]
+}

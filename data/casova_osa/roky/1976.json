@@ -1,0 +1,60 @@
+{
+  "rok": 1976,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 1,
+    "dolozenych": 1,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 1
+    },
+    "dle_jistoty": {
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "historie:1976-pripojeni-obci",
+      "datum": "1976",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1976-01-01",
+      "rok": 1976,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "K městu připojeny okolní obce",
+      "popis": "V roce 1976 byly k Mariánským Lázním připojeny okolní obce, mimo jiné Valy, Velká a Malá Hleďsebe, Klimentov, Záduba a Závišín. Po roce 1989 se připojené obce opět osamostatnily; součástí města zůstala osada Kladská.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1976-pripojeni-obci",
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+        ]
+      }
+    }
+  ]
+}

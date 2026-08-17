@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25132644",
+    "nazev": "TKF, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-04-11",
+    "do": "2024-07-03",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-50-50/2",
+      "datum": "2024-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Pořízení vybavení pro městské eventy",
+      "popis": "Rada města, bod 50/2, usnesení 242/24. Schvaleno.",
+      "castka_czk": 500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180606",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-50/2__26618871",
+      "datum": "2024-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-25",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka stanů - vybavení pro eventy města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-04-25 s bodem 50/2 z 2024-04-11 (Pořízení vybavení pro městské eventy). Jistota nizka.",
+      "castka_czk": 99032.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25132644 je uvedeno v textu usnesení; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova eventy, vybaveni; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/28481971",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26618871",
+      "datum": "2024-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-25",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka stanů - vybavení pro eventy města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TKF, spol. s r.o..",
+      "castka_czk": 99032.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28481971",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-50/2__27467140",
+      "datum": "2024-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-03",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka square vlajek ML",
+      "popis": "Odhadované spojení smlouvy z 2024-07-03 s bodem 50/2 z 2024-04-11 (Pořízení vybavení pro městské eventy). Jistota nizka.",
+      "castka_czk": 76630.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25132644 je uvedeno v textu usnesení; smlouva podepsána 83 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/29364680",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27467140",
+      "datum": "2024-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka square vlajek ML",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TKF, spol. s r.o..",
+      "castka_czk": 76630.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29364680",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

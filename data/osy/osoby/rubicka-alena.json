@@ -1,0 +1,86 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "rubicka-alena",
+    "jmeno": "Alena Rubická",
+    "role": [
+      "statutár"
+    ],
+    "kategorie": "mestske-firmy",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2022-06",
+    "do": "2024-11",
+    "prvni_rok": 2022,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2022-06-005",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ZPRAVODAJ – OKÉNKO MÍSTOSTAROSTŮ – ČERVEN 2022",
+      "popis": "Vážení spoluobčané, užili jsme si Zahájení lázeňské sezóny 2022. Myslím si, že každý mohl najít to „svoje“, ať už při nákupech u stánků nebo při poslechu muziky",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-11-027",
+      "datum": "2024-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kolem jednoho stolu",
+      "popis": "V pondělí 30. září 2024 se sešli ve 13:00 hodin v Domě Chopin na neformální besedě zástupci UNHCR (Úřad vysokého komisaře OSN pro uprchlíky – jako jedna ze spec",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=eaa59ce0%7C4345#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-11/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

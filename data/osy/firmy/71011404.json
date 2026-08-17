@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "71011404",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-07-01",
+    "do": "2020-04-21",
+    "prvni_rok": 2000,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:71011404:vznik",
+      "datum": "2000-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-07-01",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků Česká 552-5, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků Česká 552-5, Mariánské Lázně (IČO 71011404), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo prona",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-3-3/7",
+      "datum": "2018-12-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-04",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti přípojky NTL plynu -přemístění hlavního uzávěru domy Česká 552-5 do části p.p.č. 303/8 v k.ú. Úšovice",
+      "popis": "Rada města, bod 3/7, usnesení 652/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2147143",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-67-67/8",
+      "datum": "2020-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti plynárenského zařízení p.p.č. 303/8 k.ú. Úšovice ( Česká ul.)",
+      "popis": "Rada města, bod 67/8, usnesení 220/20. Schvaleno.",
+      "castka_czk": 2323,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2507781",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07807929",
+    "nazev": "MSP Projekty s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-09-20",
+    "do": "2024-03-01",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 1,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "vysoka": 1,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:24173311",
+      "datum": "2023-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Architektonická studie, průzkumy inženýrsko-geologický, geodetické zaměření fotbalové hřiště s umělou trávou, areál Viktorie, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MSP Projekty s.r.o..",
+      "castka_czk": 85305.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25886691",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-10-10/13",
+      "datum": "2023-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-24",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Podání žádosti o dotaci a schválení financování vlastního podílu na projekt „Technické zhodnocení fotbalového hřiště s umělým povrchem ve sportovním areálu Viktoria Mariánské Lázně“.",
+      "popis": "Zastupitelstvo města, bod 10/13, usnesení 192/23. Schvaleno.",
+      "castka_czk": 710000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3094492",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-10/13__25255071",
+      "datum": "2023-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-18",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Projektová dokumentace pro stavební povolení a pro provedení stavby, rozpočet, výkaz výměr fotbalové hřiště s umělou trávou, areál Viktorie, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-12-18 s bodem 10/13 z 2023-10-24 (Podání žádosti o dotaci a schválení financování vlastního podílu na projekt „Technické zhodn",
+      "castka_czk": 710028.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 07807929 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (rozdíl 28 Kč); smlouva podepsána 55 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27047215",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25255071",
+      "datum": "2023-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-18",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Projektová dokumentace pro stavební povolení a pro provedení stavby, rozpočet, výkaz výměr fotbalové hřiště s umělou trávou, areál Viktorie, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MSP Projekty s.r.o..",
+      "castka_czk": 710028.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27047215",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-10/13__26109211",
+      "datum": "2024-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Architektonická studie k akci: „Snížení energetické náročnosti stávajících sportovních hal, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-03-01 s bodem 10/13 z 2023-10-24 (Podání žádosti o dotaci a schválení financování vlastního podílu na projekt „Technické zhodn",
+      "castka_czk": 135520.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07807929 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 129 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/27949023",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26109211",
+      "datum": "2024-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Architektonická studie k akci: „Snížení energetické náročnosti stávajících sportovních hal, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MSP Projekty s.r.o..",
+      "castka_czk": 135520.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27949023",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

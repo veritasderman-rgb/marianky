@@ -1,0 +1,147 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "schaffer-josef",
+    "jmeno": "Josef Schaffer",
+    "role": [
+      "architekt",
+      "stavitel"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2020-02",
+    "do": "2026-05",
+    "prvni_rok": 2020,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 5
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2020-02-017",
+      "datum": "2020-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-02-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Staré mostky v okolí",
+      "popis": "V okolí našeho města je několik mostků, jež unikají pozornosti. Proč? Inu, nejsou tak atraktivní jako jiné stavby. Také jsou na místech málo turisticky navštěvo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=840fede0%7C2203#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-02/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-011",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 3. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte se dozvědět informace o ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-11-028",
+      "datum": "2023-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 2. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte s námi zavzpomínat a spo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=df015e5b%7C3997#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-11/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-08-012",
+      "datum": "2025-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-08-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Obnova pavilonu Rudolfova pramene: nová kapitola ve spolupráci města a lázní",
+      "popis": "Pavilon Rudolfova pramene není jen architektonicky cennou dřevostavbou z roku 1902, postavenou podle návrhu mariánskolázeňského architekta Josefa Schaffera ve s",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=3651834d%7C4642#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-08/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-012",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Symbol lázeňské tradice slaví 130 let",
+      "popis": "Hotel Nové Lázně letos v červnu oslaví 130 let od svého otevření. Jedna z nejvýznamnějších historických budov Mariánských Lázní si za tu dobu prošla obdobím slá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

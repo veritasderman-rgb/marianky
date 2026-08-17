@@ -1,0 +1,619 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01496735",
+    "nazev": "GRACCULUS s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-05-13",
+    "do": "2026-06-23",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 29,
+    "dolozenych": 20,
+    "odhadu": 9,
+    "dle_typu": {
+      "smlouva": 10,
+      "usneseni": 10,
+      "retez": 9
+    },
+    "dle_jistoty": {
+      "fakt": 20,
+      "nizka": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:26835131",
+      "datum": "2024-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Nátěr protihlukové zdi, ulice Plzeňská",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 273440.64,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28707407",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-53-53/12",
+      "datum": "2024-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Rekonstrukce budovy Ruská 155 v Mariánských Lázních - 1. etapa - výběr dodavatele",
+      "popis": "Rada města, bod 53/12, usnesení 323/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3192688",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-53/12__26943804",
+      "datum": "2024-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-24",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O DÍLO Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa",
+      "popis": "Odhadované spojení smlouvy z 2024-05-24 s bodem 53/12 z 2024-05-14 (Veřejná zakázka \"Rekonstrukce budovy Ruská 155 v Mariánských Lázních - 1. etapa - výběr doda",
+      "castka_czk": 1425053.3,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova budovy, etapa, laznich, marianskych; k témuž",
+      "url": "https://smlouvy.gov.cz/smlouva/28820604",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26943804",
+      "datum": "2024-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O DÍLO Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 1425053.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28820604",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/6",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka Chodník a zastávky u silnice II/230, Plzeňská ulice, Skláře - výběr dodavatele",
+      "popis": "Rada města, bod 54/6, usnesení 342/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3196257",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-53/12__27270496",
+      "datum": "2024-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Nátěr protihlukové zdi, ul. Plzeňská",
+      "popis": "Odhadované spojení smlouvy z 2024-06-19 s bodem 53/12 z 2024-05-14 (Veřejná zakázka \"Rekonstrukce budovy Ruská 155 v Mariánských Lázních - 1. etapa - výběr doda",
+      "castka_czk": 297640.64,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/29160896",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27270496",
+      "datum": "2024-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Nátěr protihlukové zdi, ul. Plzeňská",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 297640.64,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29160896",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27270516",
+      "datum": "2024-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 1548019.85,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29160916",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-63-63/4",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa",
+      "popis": "Rada města, bod 63/4, usnesení 586/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3242839",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/63.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-64-64/11",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře",
+      "popis": "Rada města, bod 64/11, usnesení 597/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3243478",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-63/4__28410964",
+      "datum": "2024-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-04",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa (č. smlouvy objednatele: S301/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2024-09-04 s bodem 63/4 z 2024-08-27 (Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova budovy, etapa, laznich, marianskych; obojí je",
+      "url": "https://smlouvy.gov.cz/smlouva/30357232",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/11__28410964",
+      "datum": "2024-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-04",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa (č. smlouvy objednatele: S301/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2024-09-04 s bodem 64/11 z 2024-09-03 (Dodatek č. 1 ke smlouvě o dílo Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře). J",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30357232",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28410964",
+      "datum": "2024-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce budovy Ruská 155 v Mariánských Lázních – 1.etapa (č. smlouvy objednatele: S301/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30357232",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/11__28146324",
+      "datum": "2024-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-09",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská Skláře",
+      "popis": "Odhadované spojení smlouvy z 2024-09-09 s bodem 64/11 z 2024-09-03 (Dodatek č. 1 ke smlouvě o dílo Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře). J",
+      "castka_czk": 1607105.36,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, plzenska, silnice, sklare; usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/30079796",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28146324",
+      "datum": "2024-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská Skláře",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 1607105.36,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30079796",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-65-65/4",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo-Chodník a zastávky u silnice II/230, Plzeňská ulice, Skláře",
+      "popis": "Rada města, bod 65/4, usnesení 618/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3248852",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/11__28410972",
+      "datum": "2024-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-26",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská, Skláře",
+      "popis": "Odhadované spojení smlouvy z 2024-09-26 s bodem 64/11 z 2024-09-03 (Dodatek č. 1 ke smlouvě o dílo Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře). J",
+      "castka_czk": 1619205.36,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, plzenska, silnice, sklare; usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30357240",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/4__28410972",
+      "datum": "2024-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-26",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská, Skláře",
+      "popis": "Odhadované spojení smlouvy z 2024-09-26 s bodem 65/4 z 2024-09-17 (Dodatek č. 2 ke smlouvě o dílo-Chodník a zastávky u silnice II/230, Plzeňská ulice, Skláře). ",
+      "castka_czk": 1619205.36,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, plzenska, silnice, sklare; usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/30357240",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28410972",
+      "datum": "2024-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-26",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Chodník a zastávky u silnice II/230, Plzeňská, Skláře",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 1619205.36,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30357240",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31487696",
+      "datum": "2025-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Vyfrézování pařezů v Mariánských Lázních 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 145260.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33602888",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-90-90/23",
+      "datum": "2025-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-10",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Oprava pískových komunikací 2025 – pěší komunikace Park střed Mariánské Lázně“ - výběr dodavatele a odsouhlasení uzavření smlouvy o dílo",
+      "popis": "Rada města, bod 90/23, usnesení 432/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3380558",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-90/23__31774861",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Oprava pískových komunikací 2025 – pěší komunikace Park Střed, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-06-19 s bodem 90/23 z 2025-06-10 (Veřejná zakázka „Oprava pískových komunikací 2025 – pěší komunikace Park střed Mariánské Láz",
+      "castka_czk": 700184.65,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikace, komunikaci, oprava, park",
+      "url": "https://smlouvy.gov.cz/smlouva/33904037",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31774861",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Oprava pískových komunikací 2025 – pěší komunikace Park Střed, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 700184.65,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33904037",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-96-96/10",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Uzavření smlouvy o dílo - oprava mlatových cest park U sv. Jana Nepomuckého",
+      "popis": "Rada města, bod 96/10, usnesení 574/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1010215172",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-99/22__32848609",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č 1 Oprava pískových komunikací 2025 – pěší komunikace Park Střed",
+      "popis": "Odhadované spojení smlouvy z 2025-09-30 s bodem 99/22 z 2025-09-30 (Dodatek ke smlouvě „Oprava pískových komunikací 2025 – pěší komunikace Park střed Mariánské ",
+      "castka_czk": 34575.47,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 01496735 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 0 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikace, komunikaci, oprava, park; obojí j",
+      "url": "https://smlouvy.gov.cz/smlouva/35026697",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32848609",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č 1 Oprava pískových komunikací 2025 – pěší komunikace Park Střed",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GRACCULUS s.r.o..",
+      "castka_czk": 34575.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35026697",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/22",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke smlouvě „Oprava pískových komunikací 2025 – pěší komunikace Park střed Mariánské Lázně“",
+      "popis": "Rada města, bod 99/22, usnesení 659/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2682448551",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/35",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.2 ke smlouvě „Oprava pískových komunikací 2025 – pěší komunikace Park střed Mariánské Lázně“",
+      "popis": "Rada města, bod 106/35, usnesení 840/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3891545226",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/28",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Oprava chodníku podél komunikace Hlavní ulice\" - výběr dodavatele",
+      "popis": "Rada města, bod 120/28, usnesení 1296/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1914549599",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

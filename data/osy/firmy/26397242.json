@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26397242",
+    "nazev": "SILBA s.r.o., Ing. Jiří Aulík"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-06-16",
+    "do": "2023-12-01",
+    "prvni_rok": 2015,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "smlouva": 3,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-27-27/19",
+      "datum": "2015-06-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-16",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele - Opravy místních komunikací",
+      "popis": "Rada města, bod 27/19, usnesení 293/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1412408",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:5121607",
+      "datum": "2018-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-11",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Výspravy výtluků komunikací tryskovou metodou v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILBA s.r.o..",
+      "castka_czk": 592900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5518667",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-25/10__23610619",
+      "datum": "2023-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-28",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Chodník, Tepelská ul., Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2023-07-28 s bodem 25/10 z 2023-06-13 (Chodník Tepelská ul., Mariánské Lázně - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 312431.25,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (SILBA s.r.o., Ing. Jiří Aulík) je v textu usnesení; smlouva podepsána 45 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, tepelska",
+      "url": "https://smlouvy.gov.cz/smlouva/25296795",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23610619",
+      "datum": "2023-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-28",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Chodník, Tepelská ul., Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILBA s.r.o., Ing. Jiří Aulík.",
+      "castka_czk": 312431.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25296795",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-37-37/30",
+      "datum": "2023-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-14",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Chodník, Tepelská ul., Mariánské Lázně",
+      "popis": "Rada města, bod 37/30, usnesení 719/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3109239",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-37/30__25078119",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla. Bylo třeba ochránit kořenový systém stromů v okolí, přizpůsobit se nově osazenému stožáru veřejného osvětlení, osadit část odvodňovacího žlabu, upravit obrubník směrem k prodejně Penny Market).",
+      "popis": "Odhadované spojení smlouvy z 2023-12-01 s bodem 37/30 z 2023-11-14 (Chodník, Tepelská ul., Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 277045.45,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26397242 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/26847019",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25078119",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla. Bylo třeba ochránit kořenový systém stromů v okolí, přizpůsobit se nově osazenému stožáru veřejného osvětlení, osadit část odvodňovacího žlabu, upravit obrubník směrem k prodejně Penny Market).",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILBA s.r.o., Ing. Jiří Aulík.",
+      "castka_czk": 277045.45,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26847019",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

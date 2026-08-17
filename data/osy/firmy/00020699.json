@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00020699",
+    "nazev": "Český hydrometeorologický ústav"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-01-06",
+    "do": "2023-01-24",
+    "prvni_rok": 2022,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 2,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:17688439",
+      "datum": "2022-01-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-06",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Sml.zal.obj.- Produkty a služby ČHMÚ",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Český hydrometeorologický ústav.",
+      "castka_czk": 366116.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19028923",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-151-151/16",
+      "datum": "2022-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-14",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání letního a podzimního expedičního měření kvality ovzduší u Českého hydrometeorologického ústavu v Praze.",
+      "popis": "Rada města, bod 151/16, usnesení 316/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2864993",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-151/16__19554987",
+      "datum": "2022-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-27",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Sml.zal.obj.- expediční měření kvality ovzduší v ML",
+      "popis": "Odhadované spojení smlouvy z 2022-06-27 s bodem 151/16 z 2022-06-14 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání letního ",
+      "castka_czk": 372516.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 00020699 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova kvality, mereni, ovzdusi",
+      "url": "https://smlouvy.gov.cz/smlouva/21019727",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19554987",
+      "datum": "2022-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-27",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Sml.zal.obj.- expediční měření kvality ovzduší v ML",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Český hydrometeorologický ústav.",
+      "castka_czk": 372516.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21019727",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-9-9/24",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Klimatické lázně - bioklimatologie,dočasné měření",
+      "popis": "Rada města, bod 9/24, usnesení 24/23. Schvaleno.",
+      "castka_czk": 60000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2959738",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-9/24__21620285",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Sml.zal.obj.- Produkty a služby ČHMÚ",
+      "popis": "Odhadované spojení smlouvy z 2023-01-24 s bodem 9/24 z 2023-01-10 (Klimatické lázně - bioklimatologie,dočasné měření). Jistota vysoka.",
+      "castka_czk": 72600.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 00020699 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 14 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23200581",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21620285",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Sml.zal.obj.- Produkty a služby ČHMÚ",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Český hydrometeorologický ústav.",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23200581",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

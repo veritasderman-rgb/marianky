@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01216694",
+    "nazev": "Jaroslava Voltrová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-12-18",
+    "do": "2024-01-18",
+    "prvni_rok": 2012,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2012-86/4__25785015",
+      "datum": "2012-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-18",
+      "rok": 2012,
+      "typ": "retez",
+      "nadpis": "Zajištění provozu městského útulku pro psy",
+      "popis": "Odhadované spojení smlouvy z 2012-12-18 s bodem 86/4 z 2012-11-06 (Vyhodnocení VŘ - provozovatel městského útulku pro psy). Jistota nizka.",
+      "castka_czk": 855228.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Jaroslava Voltrová) je v textu usnesení; smlouva podepsána 42 dní po usnesení; název bodu a předmět smlouvy sdílí slova mestskeho, utulku",
+      "url": "https://smlouvy.gov.cz/smlouva/27606807",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25785015",
+      "datum": "2012-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-18",
+      "rok": 2012,
+      "typ": "smlouva",
+      "nadpis": "Zajištění provozu městského útulku pro psy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslava Voltrová.",
+      "castka_czk": 855228.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27606807",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25790427",
+      "datum": "2024-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-18",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "zajištění provozu městského útulku pro psy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jaroslava Voltrová.",
+      "castka_czk": 1815000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27612559",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

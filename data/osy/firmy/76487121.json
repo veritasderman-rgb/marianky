@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "76487121",
+    "nazev": "Vodáček Jan, MgA."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-05-24",
+    "do": "2025-07-09",
+    "prvni_rok": 2022,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-148-148/14",
+      "datum": "2022-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-24",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo „Restaurování trojsoší můz u Lesního pramene v Mariánských Lázních“",
+      "popis": "Rada města, bod 148/14, usnesení 246/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2853187",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-148/14__19322191",
+      "datum": "2022-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-13",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Restaurování trojsoší múz u Lesního pramene v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2022-06-13 s bodem 148/14 z 2022-05-24 (Smlouva o dílo „Restaurování trojsoší můz u Lesního pramene v Mariánských Lázních“). Jistot",
+      "castka_czk": 1025225.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76487121 je uvedeno v textu usnesení; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, lesniho, marianskych, pramene; k témuž usnesení se hlásí i 1 další sml",
+      "url": "https://smlouvy.gov.cz/smlouva/20767239",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19322191",
+      "datum": "2022-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-13",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Restaurování trojsoší múz u Lesního pramene v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Vodáček Jan, MgA..",
+      "castka_czk": 1025225.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20767239",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-148/14__22156665",
+      "datum": "2023-03-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-09",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "doplňující práce při opravě sousoší u Lesního pramene",
+      "popis": "Odhadované spojení smlouvy z 2023-03-09 s bodem 148/14 z 2022-05-24 (Smlouva o dílo „Restaurování trojsoší můz u Lesního pramene v Mariánských Lázních“). Jistot",
+      "castka_czk": 85675.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76487121 je uvedeno v textu usnesení; smlouva podepsána 289 dní po usnesení; název bodu a předmět smlouvy sdílí slova lesniho, pramene; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/23766813",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22156665",
+      "datum": "2023-03-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-09",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "doplňující práce při opravě sousoší u Lesního pramene",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Vodáček Jan, MgA..",
+      "castka_czk": 85675.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23766813",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32042229",
+      "datum": "2025-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Oprava soch ak. soch. Olbrama Zoubka - rekonzervace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Vodáček Jan, MgA..",
+      "castka_czk": 94864.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34183069",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

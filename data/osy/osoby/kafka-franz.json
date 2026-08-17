@@ -1,0 +1,188 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "kafka-franz",
+    "jmeno": "Franz Kafka",
+    "role": [
+      "návštěvník",
+      "spisovatel"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1917",
+    "do": "2022-07-15",
+    "prvni_rok": 1917,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 1,
+      "media": 6
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1917-kafka",
+      "datum": "1917",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1917-01-01",
+      "rok": 1917,
+      "typ": "historie",
+      "nadpis": "Pobyt Franze Kafky",
+      "popis": "V roce 1917 pobýval v Mariánských Lázních spisovatel Franz Kafka.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "datum": "2017-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-21",
+      "rok": 2017,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně vzdají hold spisovatelům. Turistickou stezkou",
+      "popis": "Základní kámen nové stezky věnované spisovatelům symbolicky položil Vladimír Páral. Mezi autory, kteří si Mariánské Lázně oblíbili, patří Goethe, Kafka, Neruda ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-marianske-lazne-letos-dokonci-novou-stezku-spisovatelu-7765246",
+      "datum": "2019-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-19",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně letos dokončí novou Stezku spisovatelů",
+      "popis": "Město mělo ještě týž rok dokončit novou stezku připomínající spisovatele. Se jménem Mariánských Lázní jsou spojení například Vladimír Páral, Mark Twain nebo Fra",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-letos-dokonci-novou-stezku-spisovatelu-7765246",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:kkr-aktuality-v-marianskych-laznich-slavnostne-otevrou-stezku-spisovatelu",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "media",
+      "nadpis": "V Mariánských Lázních slavnostně otevřou Stezku spisovatelů",
+      "popis": "Naučná Stezka spisovatelů se měla slavnostně otevřít na kolonádě v neděli 11. srpna odpoledne. Projekt připomínající autory spjaté s městem, mezi nimi Goetha, F",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.kr-karlovarsky.cz/aktuality/v-marianskych-laznich-slavnostne-otevrou-stezku-spisovatelu",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:drbna-spolecnost-1787-golf-si-v-marianskych-laznich-zahral-napriklad-mark-tw",
+      "datum": "2020-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-12",
+      "rok": 2020,
+      "typ": "media",
+      "nadpis": "Golf si v Mariánských Lázních zahrál například Mark Twain, Thomas Alva Edison, Sigmund Freud, generál Patton nebo Franz Kafka",
+      "popis": "Královské golfové hřiště v Mariánských Lázních slavilo sto patnáct let od založení. K výročí vznikla výstava mapující historii klubu i jména hráčů, mezi nimiž b",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://karlovarska.drbna.cz/spolecnost/1787-golf-si-v-marianskych-laznich-zahral-napriklad-mark-twain-thomas-alva-edison-sigmund-freud-general-patton-nebo-franz-kafka.html",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-slavna-minulost-marianskych-lazni-oziva-pri-komentovanych-prohlidkach-",
+      "datum": "2021-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-24",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "Slavná minulost Mariánských Lázní ožívá při komentovaných prohlídkách",
+      "popis": "Komentované prohlídky centra provádějí návštěvníky místy, kde pobývali Fryderyk Chopin, Johann Strauss nebo Franz Kafka. Zájemci se při nich dozvědí zajímavosti",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/slavna-minulost-marianskych-lazni-oziva-pri-komentovanych-prohlidkach-8583385",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-knihovna-v-marianskych-laznich-predstavuje-slavne-spisovatele-zidovske",
+      "datum": "2022-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-15",
+      "rok": 2022,
+      "typ": "media",
+      "nadpis": "Knihovna v Mariánských Lázních představuje slavné spisovatele židovského původu",
+      "popis": "Městská knihovna připomněla spisovatele židovského původu, kteří Mariánské Lázně navštívili na počátku 20. století. Patří mezi ně Šolom Alejchem, Franz Kafka a ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/knihovna-v-marianskych-laznich-predstavuje-slavne-spisovatele-zidovskeho-puvodu-8788561",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

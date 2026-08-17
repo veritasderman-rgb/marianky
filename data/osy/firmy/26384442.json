@@ -1,0 +1,379 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26384442",
+    "nazev": "S.A.O.CH. spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-10-29",
+    "do": "2026-07-27",
+    "prvni_rok": 2020,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 12,
+    "odhadu": 5,
+    "dle_typu": {
+      "smlouva": 6,
+      "usneseni": 6,
+      "retez": 5
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "nizka": 3,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:13345012",
+      "datum": "2020-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-29",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana S.A.O.CH. spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14305520",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-53-53/8",
+      "datum": "2024-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Rekonstrukce ul. Tomáškova a Šafaříkova\" – výběr dodavatele",
+      "popis": "Rada města, bod 53/8, usnesení 319/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3191437",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-53/8__27140036",
+      "datum": "2024-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Ulice Tomáškova a Šafaříkova, Mariánské Lázně“.",
+      "popis": "Odhadované spojení smlouvy z 2024-06-10 s bodem 53/8 z 2024-05-14 (Veřejná zakázka \"Rekonstrukce ul. Tomáškova a Šafaříkova\" – výběr dodavatele). Jistota nizka.",
+      "castka_czk": 7120714.67,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26384442 je uvedeno v textu usnesení; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova safarikova, tomaskova; k témuž usnesení se hlásí i 1 další smlouva téže protist",
+      "url": "https://smlouvy.gov.cz/smlouva/29024608",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27140036",
+      "datum": "2024-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Ulice Tomáškova a Šafaříkova, Mariánské Lázně“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana S.A.O.CH. spol. s r.o..",
+      "castka_czk": 7120714.67,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29024608",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-61-61/21",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací a uzavření dodatku ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstrukce ul. Tomáškova, Šafaříkova“",
+      "popis": "Rada města, bod 61/21, usnesení 537/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3232356",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-53/8__28012716",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla (bylo třeba odstranit strom a dřevěný sloup, a dále se podařilo získat souhlas vlastníků dotčeného pozemku a je tak možné provést obnovu silničního obrubníku a chodníku v potřebném rozsahu)",
+      "popis": "Odhadované spojení smlouvy z 2024-08-27 s bodem 53/8 z 2024-05-14 (Veřejná zakázka \"Rekonstrukce ul. Tomáškova a Šafaříkova\" – výběr dodavatele). Jistota nizka.",
+      "castka_czk": 7218914.24,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26384442 je uvedeno v textu usnesení; smlouva podepsána 105 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/29939756",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-61/21__28012716",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla (bylo třeba odstranit strom a dřevěný sloup, a dále se podařilo získat souhlas vlastníků dotčeného pozemku a je tak možné provést obnovu silničního obrubníku a chodníku v potřebném rozsahu)",
+      "popis": "Odhadované spojení smlouvy z 2024-08-27 s bodem 61/21 z 2024-08-06 (Schválení víceprací a uzavření dodatku ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstru",
+      "castka_czk": 7218914.24,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26384442 je uvedeno v textu usnesení; smlouva podepsána 21 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29939756",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28012716",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla (bylo třeba odstranit strom a dřevěný sloup, a dále se podařilo získat souhlas vlastníků dotčeného pozemku a je tak možné provést obnovu silničního obrubníku a chodníku v potřebném rozsahu)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana S.A.O.CH. spol. s r.o..",
+      "castka_czk": 7218914.24,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29939756",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-72-72/24",
+      "datum": "2024-11-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-26",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení prodloužení termínu, poskytnutí zálohy a uzavření dodatku č. 2 ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstrukce ul. Tomáškova, Šafaříkova“",
+      "popis": "Rada města, bod 72/24, usnesení 819/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3286831",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-72/24__29267588",
+      "datum": "2024-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-03",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Rekonstrukce ulice Tomáškova, Šafaříkova\nTímto dodatkem se mění platební podmínky, termín plnění a rozsah plnění a tím i cena díla.",
+      "popis": "Odhadované spojení smlouvy z 2024-12-03 s bodem 72/24 z 2024-11-26 (Schválení prodloužení termínu, poskytnutí zálohy a uzavření dodatku č. 2 ke smlouvě o dílo s",
+      "castka_czk": 7301799.24,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26384442 je uvedeno v textu usnesení; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, rekonstrukce, safarikova, tomaskova; obojí je dodatek č. 2",
+      "url": "https://smlouvy.gov.cz/smlouva/31274796",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29267588",
+      "datum": "2024-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Rekonstrukce ulice Tomáškova, Šafaříkova\nTímto dodatkem se mění platební podmínky, termín plnění a rozsah plnění a tím i cena díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana S.A.O.CH. spol. s r.o..",
+      "castka_czk": 7301799.24,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31274796",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-91-91/27",
+      "datum": "2025-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení prodloužení termínu, schválení rozsahu prací dle přepracované PD a uzavření dodatku č. 3 ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstrukce ul. Tomáškova, Šafaříkova“",
+      "popis": "Rada města, bod 91/27, usnesení 473/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3389594",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/27__32135797",
+      "datum": "2025-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-21",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke smlově smlouvě o dílo Rekonstrukce ulice Tomáškova, Šafaříkova",
+      "popis": "Odhadované spojení smlouvy z 2025-07-21 s bodem 91/27 z 2025-06-27 (Schválení prodloužení termínu, schválení rozsahu prací dle přepracované PD a uzavření dodatk",
+      "castka_czk": 8264151.48,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26384442 je uvedeno v textu usnesení; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, rekonstrukce, safarikova, tomaskova; obojí je dodatek č. 3",
+      "url": "https://smlouvy.gov.cz/smlouva/34282329",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32135797",
+      "datum": "2025-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke smlově smlouvě o dílo Rekonstrukce ulice Tomáškova, Šafaříkova",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana S.A.O.CH spol. s r.o..",
+      "castka_czk": 8264151.48,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34282329",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/13",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení prodloužení termínu a uzavření dodatku č. 4 ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstrukce ul. Tomáškova, Šafaříkova“",
+      "popis": "Rada města, bod 99/13, usnesení 650/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/729138335",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/26",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Odpočet neprovedených prací a uzavření dodatku č. 5 ke smlouvě o dílo s S.A.O.CH. spol. s r.o. „Rekonstrukce ul. Tomáškova, Šafaříkova“",
+      "popis": "Rada města, bod 106/26, usnesení 831/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3540920987",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:36565878",
+      "datum": "2026-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-27",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo, Infrastruktura pro elektrobusy MHD Mariánské Lázně, stavební část",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana S.A.O.CH. spol. s r.o..",
+      "castka_czk": 4175821.4047,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38906266",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03265587",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-08-05",
+    "do": "2017-05-30",
+    "prvni_rok": 2014,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:03265587:vznik",
+      "datum": "2014-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-08-05",
+      "rok": 2014,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — SPA APARTMENTS ST.MORITZ   s.r.o.",
+      "popis": "Vznik subjektu SPA APARTMENTS ST.MORITZ   s.r.o. (IČO 03265587), Společnost s ručením omezeným, obor: Poskytování ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-116-116/29",
+      "datum": "2017-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-30",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení práva stavby",
+      "popis": "Rada města, bod 116/29, usnesení 341/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1767775",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

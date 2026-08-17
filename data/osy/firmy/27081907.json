@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27081907",
+    "nazev": "ČSOB Advisory, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-03-27",
+    "do": "2026-03-27",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 1,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 2,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2026-112/5__35102273",
+      "datum": "2026-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-27",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - projekt BD Třešňovka",
+      "popis": "Odhadované spojení smlouvy z 2026-03-27 s bodem 112/5 z 2026-03-02 (Udělení výjimky z vnitřního předpisu č. 2017-08 pro zakázku malého rozsahu – zajištění speci",
+      "castka_czk": 598950.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27081907 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 25 dní po usnesení; název bodu a předmět smlouvy sdílí slova projekt, tresnovka; stejně dobře sedí i 1 da",
+      "url": "https://smlouvy.gov.cz/smlouva/37382973",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/3__35102273",
+      "datum": "2026-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-27",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - projekt BD Třešňovka",
+      "popis": "Odhadované spojení smlouvy z 2026-03-27 s bodem 113/3 z 2026-03-17 (Zajištění specializovaného finančního a ekonomického poradenství pro projekt BD Třešňovka). ",
+      "castka_czk": 598950.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27081907 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova projekt, tresnovka; stejně dobře sedí i 1 da",
+      "url": "https://smlouvy.gov.cz/smlouva/37382973",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35102273",
+      "datum": "2026-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-27",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - projekt BD Třešňovka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČSOB Advisory, a.s..",
+      "castka_czk": 598950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37382973",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

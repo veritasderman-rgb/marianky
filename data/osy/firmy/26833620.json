@@ -1,0 +1,459 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26833620",
+    "nazev": "FT Technologies a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-01-01",
+    "do": "2025-12-09",
+    "prvni_rok": 2017,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 21,
+    "dolozenych": 13,
+    "odhadu": 8,
+    "dle_typu": {
+      "smlouva": 9,
+      "usneseni": 4,
+      "retez": 8
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 7,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2425286",
+      "datum": "2017-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Licenční smlouva - Dodatek č. 1",
+      "popis": "Město Mariánské Lázně — příjem, protistrana FT Technologies, a.s..",
+      "castka_czk": 196020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2612770",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-138-138/37",
+      "datum": "2017-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Licenční smlouva FT Technologies-dodatek",
+      "popis": "Rada města, bod 138/37, usnesení 742/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1877568",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/37__3887184",
+      "datum": "2017-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "smlouva o poskytnutí softwarového programu",
+      "popis": "Odhadované spojení smlouvy z 2017-12-20 s bodem 138/37 z 2017-12-19 (Licenční smlouva FT Technologies-dodatek). Jistota nizka.",
+      "castka_czk": 196020.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří",
+      "url": "https://smlouvy.gov.cz/smlouva/4192536",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3887184",
+      "datum": "2017-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "smlouva o poskytnutí softwarového programu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies a.s..",
+      "castka_czk": 196020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4192536",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-24-24/3",
+      "datum": "2019-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-21",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Licenční smlouva - Dodatek č. 3",
+      "popis": "Rada města, bod 24/3, usnesení 227/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2341157",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-24/3__8668531",
+      "datum": "2019-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-31",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 k licenční smlouvě - FT Technologies",
+      "popis": "Odhadované spojení smlouvy z 2019-05-31 s bodem 24/3 z 2019-05-21 (Licenční smlouva - Dodatek č. 3). Jistota stredni.",
+      "castka_czk": 196020.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; obojí je dodatek č. 3",
+      "url": "https://smlouvy.gov.cz/smlouva/9345427",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8668531",
+      "datum": "2019-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-31",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 k licenční smlouvě - FT Technologies",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies, a.s..",
+      "castka_czk": 196020.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9345427",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-33-33/2",
+      "datum": "2019-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-06",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Licenční smlouva MP Manager",
+      "popis": "Rada města, bod 33/2, usnesení 390/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2379006",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-24/3__9367310",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Licenční smlouva MP Manager",
+      "popis": "Odhadované spojení smlouvy z 2019-08-28 s bodem 24/3 z 2019-05-21 (Licenční smlouva - Dodatek č. 3). Jistota nizka.",
+      "castka_czk": 780450.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 99 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/10086326",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-24/3__9367314",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování údržby a podpory MP Manager",
+      "popis": "Odhadované spojení smlouvy z 2019-08-28 s bodem 24/3 z 2019-05-21 (Licenční smlouva - Dodatek č. 3). Jistota nizka.",
+      "castka_czk": 695725.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 99 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/10086330",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-33/2__9367310",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Licenční smlouva MP Manager",
+      "popis": "Odhadované spojení smlouvy z 2019-08-28 s bodem 33/2 z 2019-08-06 (Licenční smlouva MP Manager). Jistota nizka.",
+      "castka_czk": 780450.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova licencni, manager; usnesení mluví o dodatku,",
+      "url": "https://smlouvy.gov.cz/smlouva/10086326",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-33/2__9367314",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování údržby a podpory MP Manager",
+      "popis": "Odhadované spojení smlouvy z 2019-08-28 s bodem 33/2 z 2019-08-06 (Licenční smlouva MP Manager). Jistota nizka.",
+      "castka_czk": 695725.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/10086330",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9367310",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Licenční smlouva MP Manager",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies, a.s..",
+      "castka_czk": 780450.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10086326",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9367314",
+      "datum": "2019-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování údržby a podpory MP Manager",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies, a.s..",
+      "castka_czk": 695725.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10086330",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-147-147/4",
+      "datum": "2022-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-10",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 k Licenční smlouvě a Dodatek č. 1 ke Smlouvě o poskytování údržby a podpory - MP Manager",
+      "popis": "Rada města, bod 147/4, usnesení 221/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2847419",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/147.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-147/4__20160077",
+      "datum": "2022-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o poskytování údržby a podpory č.: 20190026",
+      "popis": "Odhadované spojení smlouvy z 2022-05-30 s bodem 147/4 z 2022-05-10 (Dodatek č. 1 k Licenční smlouvě a Dodatek č. 1 ke Smlouvě o poskytování údržby a podpory - M",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova podpory, poskytovani, udrzby; obojí je dodat",
+      "url": "https://smlouvy.gov.cz/smlouva/21658361",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-147/4__20160097",
+      "datum": "2022-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 Smlouvy č.: 20190025",
+      "popis": "Odhadované spojení smlouvy z 2022-05-30 s bodem 147/4 z 2022-05-10 (Dodatek č. 1 k Licenční smlouvě a Dodatek č. 1 ke Smlouvě o poskytování údržby a podpory - M",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26833620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; obojí je dodatek č. 1; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/21658381",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20160077",
+      "datum": "2022-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o poskytování údržby a podpory č.: 20190026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies, a.s..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21658361",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20160097",
+      "datum": "2022-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 Smlouvy č.: 20190025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies, a.s..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21658381",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29812804",
+      "datum": "2025-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka 203/24/PK - Propojení ze strany MP Manager se systémem Gordic",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies a.s..",
+      "castka_czk": 223850.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31847288",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34205749",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.2 ke smlouvě ke stávajícímu IS MP Manager",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana FT Technologies a.s..",
+      "castka_czk": 6000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36447653",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

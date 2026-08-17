@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03474992",
+    "nazev": "Hana Rolková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-12-13",
+    "do": "2026-05-12",
+    "prvni_rok": 2022,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 8,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 1,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-6-6/3",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Nerudova, č.p.250",
+      "popis": "Rada města, bod 6/3, usnesení 597/22. Schvaleno.",
+      "castka_czk": 98532,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2947692",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-29-29/9",
+      "datum": "2023-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-08",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Nerudova, č.p. 250 - přistoupení 2. nájemce k nájmu",
+      "popis": "Rada města, bod 29/9, usnesení 498/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3060346",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-29/9__23833555",
+      "datum": "2023-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-23",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - přistoupení 2. nájemce - Věra Lénart",
+      "popis": "Odhadované spojení smlouvy z 2023-08-23 s bodem 29/9 z 2023-08-08 (NP Nerudova, č.p. 250 - přistoupení 2. nájemce k nájmu). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03474992 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, najmu, pristoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/25530611",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23833555",
+      "datum": "2023-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-23",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - přistoupení 2. nájemce - Věra Lénart",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Rolková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25530611",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-43-43/7",
+      "datum": "2024-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Nerudova, č.p. 250 – odstoupení nájemce",
+      "popis": "Rada města, bod 43/7, usnesení 25/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3140661",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/43.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-29/9__25653627",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce",
+      "popis": "Odhadované spojení smlouvy z 2024-01-31 s bodem 29/9 z 2023-08-08 (NP Nerudova, č.p. 250 - přistoupení 2. nájemce k nájmu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03474992 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 176 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, najmu; stejně dobře sedí i 1 další",
+      "url": "https://smlouvy.gov.cz/smlouva/27467991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-43/7__25653627",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce",
+      "popis": "Odhadované spojení smlouvy z 2024-01-31 s bodem 43/7 z 2024-01-23 (NP Nerudova, č.p. 250 – odstoupení nájemce). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03474992 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, odstoupeni; stejně dobře sedí i 1 da",
+      "url": "https://smlouvy.gov.cz/smlouva/27467991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25653627",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Rolková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27467991",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-58-58/8",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Nerudova, č.p. 250 – přistoupení 2. nájemce ke Smlouvě o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 58/8, usnesení 439/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3212935",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-29/9__27432864",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o nájmu nebytového prostoru - přistoupení nájemce",
+      "popis": "Odhadované spojení smlouvy z 2024-07-01 s bodem 29/9 z 2023-08-08 (NP Nerudova, č.p. 250 - přistoupení 2. nájemce k nájmu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03474992 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 328 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, najmu, pristoupeni; stejně dobře s",
+      "url": "https://smlouvy.gov.cz/smlouva/29328472",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/8__27432864",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o nájmu nebytového prostoru - přistoupení nájemce",
+      "popis": "Odhadované spojení smlouvy z 2024-07-01 s bodem 58/8 z 2024-06-25 (NP Nerudova, č.p. 250 – přistoupení 2. nájemce ke Smlouvě o nájmu nebytového prostoru). Jisto",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03474992 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, najmu, nebytoveho, pristoupeni; stej",
+      "url": "https://smlouvy.gov.cz/smlouva/29328472",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27432864",
+      "datum": "2024-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o nájmu nebytového prostoru - přistoupení nájemce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hana Rolková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29328472",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-117-117/6",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Nerudova, č.p. 250 – přistoupení 3. nájemce ke Smlouvě o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 117/6, usnesení 1152/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2632010365",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

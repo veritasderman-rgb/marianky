@@ -1,0 +1,177 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03025519",
+    "nazev": "TRAFIKA SJ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-05-21",
+    "do": "2016-12-05",
+    "prvni_rok": 2014,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:03025519:vznik",
+      "datum": "2014-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-21",
+      "rok": 2014,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — TRAFIKA SJ s.r.o.",
+      "popis": "Vznik subjektu TRAFIKA SJ s.r.o. (IČO 03025519), Společnost s ručením omezeným, obor: Nespecializovaný velkoobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-42-42/20",
+      "datum": "2015-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-20",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Skalníkova 471",
+      "popis": "Rada města, bod 42/20, usnesení 498/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1476193",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/42.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-46-46/9",
+      "datum": "2015-11-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-11-24",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Skalníkova 471",
+      "popis": "Rada města, bod 46/9, usnesení 569/15. Schvaleno.",
+      "castka_czk": 60000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1493933",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-50-50/3",
+      "datum": "2016-01-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-01-05",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Revokace usnesení č. RM/569/15 ze dne 24. 11. 2015",
+      "popis": "Rada města, bod 50/3, usnesení 3/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1514298",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-74-74/4",
+      "datum": "2016-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-28",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Chebská 492",
+      "popis": "Rada města, bod 74/4, usnesení 321/16. Schvaleno.",
+      "castka_czk": 2000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1596158",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/74.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28097",
+      "datum": "2016-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-22",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TRAFIKA SJ s.r.o..",
+      "castka_czk": 1597200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29013",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-94-94/10",
+      "datum": "2016-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-05",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 492 - ukončení nájmu dohodou - TRAFIKA SJ s.r.o.",
+      "popis": "Rada města, bod 94/10, usnesení 617/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1681348",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/94.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

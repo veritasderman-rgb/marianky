@@ -1,0 +1,299 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08056196",
+    "nazev": "Spolek Mariánský z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-04-25",
+    "do": "2026-02-10",
+    "prvni_rok": 2019,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 11,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 2,
+      "smlouva": 2,
+      "usneseni": 8
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08056196:vznik",
+      "datum": "2019-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-25",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Spolek Mariánský z.s.",
+      "popis": "Vznik subjektu Spolek Mariánský z.s. (IČO 08056196), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování společných a veřejných",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2021-105/12__15549119",
+      "datum": "2021-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-25",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Část poz. parcely č. 81 o výměře 16 m2 k. ú. ML - \"Votivní sloup Panny Marie\"",
+      "popis": "Odhadované spojení smlouvy z 2021-05-25 s bodem 105/12 z 2021-04-20 (Zveřejnění záměru výpůjčky části p. p. č. 81 k. ú. ML - Votivní sloup Panny Marie). Jistota",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 08056196 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova marie, panny, sloup, votivni",
+      "url": "https://smlouvy.gov.cz/smlouva/16740179",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15549119",
+      "datum": "2021-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-25",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Část poz. parcely č. 81 o výměře 16 m2 k. ú. ML - \"Votivní sloup Panny Marie\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Spolek Mariánský z.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16740179",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-118-118/4",
+      "datum": "2021-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-10",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2.kolo",
+      "popis": "Rada města, bod 118/4, usnesení 348/21. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2714720",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-118/4__16816111",
+      "datum": "2021-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-20",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-10-20 s bodem 118/4 z 2021-08-10 (Fond Kultury 2.kolo). Jistota stredni.",
+      "castka_czk": 90000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 08056196 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 71 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18106163",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16816111",
+      "datum": "2021-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Spolek Mariánský z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18106163",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/3",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2023 - 1. kolo",
+      "popis": "Rada města, bod 11/3, usnesení 57/23. Schvaleno.",
+      "castka_czk": 95000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

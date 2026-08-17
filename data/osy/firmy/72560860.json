@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72560860",
+    "nazev": "Společenství vlastníků jednotek pro dům Dřevěná 511 Mariánské Lázně"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-10-17",
+    "do": "2018-01-09",
+    "prvni_rok": 2011,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:72560860:vznik",
+      "datum": "2011-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-10-17",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků jednotek pro dům Dřevěná 511 Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků jednotek pro dům Dřevěná 511 Mariánské Lázně (IČO 72560860), Společenství vlastníků jednotek, obor: Pronájem a správa vlas",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-31/11__4039416",
+      "datum": "2018-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Převod pozemkových parcel č. 993/15 a 993/44 v katastrálním území a obci Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-01-09 s bodem 31/11 z 2017-11-14 (Prodej p.p.č. 993/15 a č. 993/44 v k.ú. Mariánské Lázně). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 72560860 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 56 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4350284",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4039416",
+      "datum": "2018-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Převod pozemkových parcel č. 993/15 a 993/44 v katastrálním území a obci Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Společenství vlastníků jednotek pro dům Dřevěná 511 Mariánské Lázně.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4350284",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

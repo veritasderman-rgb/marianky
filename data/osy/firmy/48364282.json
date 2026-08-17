@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "48364282",
+    "nazev": "Dopravní podnik Karlovy Vary, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-04-04",
+    "do": "2024-08-15",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:8075379",
+      "datum": "2019-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Dopravní podnik Karlovy Vary, a.s..",
+      "castka_czk": 118580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8718087",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8075335",
+      "datum": "2019-04-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-08",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "kUPNÍ SMLOUVA",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Dopravní podnik Karlovy Vary, a.s..",
+      "castka_czk": 118580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8718035",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27893540",
+      "datum": "2024-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "PARKING CENTRUM s.r.o. - Smlouva o užívání parkovacích stání",
+      "popis": "DEVELOP CENTRUM Mariánské Lázně s. r. o. — výdaj, protistrana Dopravní podnik Karlovy Vary, a.s..",
+      "castka_czk": 363000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29871560",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/61776068.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "dubnicky-roman",
+    "jmeno": "Roman Dubnický",
+    "role": [
+      "zastupitel",
+      "člen dozorčí rady"
+    ],
+    "kategorie": "politika",
+    "strana": "ANO 2011",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2022-09-23",
+    "do": "2025-09-16",
+    "prvni_rok": 2022,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 11,
+    "odhadu": 0,
+    "dle_typu": {
+      "volby": 1,
+      "funkce": 1,
+      "hlasovani": 8,
+      "zpravodaj": 1
+    },
+    "dle_jistoty": {
+      "fakt": 11
+    },
+    "hlasovani_celkem": 612,
+    "hlasovani_v_ose": 8,
+    "hlasovani_v_souhrnu": 604
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2022,
+      "celkem": 38,
+      "pro": 38
+    },
+    {
+      "rok": 2023,
+      "celkem": 209,
+      "pro": 203,
+      "proti": 2,
+      "zdrzel": 2,
+      "nehlasoval": 2
+    },
+    {
+      "rok": 2024,
+      "celkem": 184,
+      "pro": 120,
+      "nepritomen": 63,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2025,
+      "celkem": 129,
+      "pro": 128,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2026,
+      "celkem": 52,
+      "pro": 52
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "volby:zvolen:kv2022:dubnicky-roman",
+      "datum": "2022-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-23",
+      "rok": 2022,
+      "typ": "volby",
+      "nadpis": "Roman Dubnický zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za ANO 2011 s 1165 hlasy (5.07 %), 8. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:dubnicky-roman:0",
+      "datum": "2022-10",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2022-10-01",
+      "rok": 2022,
+      "typ": "funkce",
+      "nadpis": "Roman Dubnický — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2022-10 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-25",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Bezúplatný převod poz. parcely č. 292/2 k.ú. Úšovice ul. Ke Kasárnům",
+      "popis": "Zastupitelstvo města, bod 4/25. Pro 11, proti 7, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-32",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Aktuální soudní spory",
+      "popis": "Zastupitelstvo města, bod 4/32. Pro 11, proti 3, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-5-5",
+      "datum": "2023-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-11",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Pověření člena Zastupitelstva města zastupováním Města Mariánské Lázně na valných hromadách Nemocnice Mariánské Lázně, s.r.o.",
+      "popis": "Zastupitelstvo města, bod 5/5. Pro 19, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/5.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-6-19",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury města Mariánské Lázně - Club Na Dvorku s.r.o.",
+      "popis": "Zastupitelstvo města, bod 6/19. Pro 13, proti 2, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-6-2",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Volba návrhové komise 6. Zastupitelstva města",
+      "popis": "Zastupitelstvo města, bod 6/2. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-9-31",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření - dotační projektová příprava",
+      "popis": "Zastupitelstvo města, bod 9/31. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/9.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2024-16-3",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "hlasovani",
+      "nadpis": "Schválení programu jednání",
+      "popis": "Zastupitelstvo města, bod 16/3. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2024/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2025-01-012",
+      "datum": "2025-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-01-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "LSPP JE PROVOZOVÁNA ZVLÁŠŤ PRO DOSPĚLÉ A ZVLÁŠŤ PRO DĚTI A DOROST",
+      "popis": "Lékařská pohotovostní služba pro dospělé Nemocnice Mariánské Lázně U Nemocnice 91/3, Mariánské Lázně, 353 01 Telefonní kontakt : +420 354 474 222 Ordinační hodi",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=084c05c3%7C4435#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-01/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2025-22-1",
+      "datum": "2025-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-16",
+      "rok": 2025,
+      "typ": "hlasovani",
+      "nadpis": "Volba ověřovatelů",
+      "popis": "Zastupitelstvo města, bod 22/1. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2025/22.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

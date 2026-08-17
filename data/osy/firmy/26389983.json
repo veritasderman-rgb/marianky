@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26389983",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-09-11",
+    "do": "2017-04-18",
+    "prvni_rok": 2012,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-78-78/1",
+      "datum": "2012-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-11",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - prodloužení nájmu",
+      "popis": "Rada města, bod 78/1, usnesení 434/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/813246",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-111-111/4",
+      "datum": "2017-04-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-18",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - postoupení smlouvy o nájmu - Domain s.r.o. x Poltona s.r.o.",
+      "popis": "Rada města, bod 111/4, usnesení 244/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1743491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

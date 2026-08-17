@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45362386",
+    "nazev": "Josef HAVLÍK"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-30",
+    "do": "2017-10-02",
+    "prvni_rok": 1992,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45362386:vznik",
+      "datum": "1992-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-30",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Josef Havlík",
+      "popis": "Vznik subjektu Josef Havlík (IČO 45362386), Fyzická osoba podnikající dle živnostenského zákona, obor: Opravy a údržba motorových vozidel.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:3137870",
+      "datum": "2017-10-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-02",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava povlakové krytiny, žlabů a sněhozábran Sportovní haly Slovan, ulice Tyršova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef HAVLÍK.",
+      "castka_czk": 94864.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3382122",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

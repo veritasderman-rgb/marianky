@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "43224245",
+    "nazev": "DIMATEX CS, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-17",
+    "do": "2025-12-01",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-65-65/2",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Kontejnery pro odkládání textilu - zajištění svozu",
+      "popis": "Rada města, bod 65/2, usnesení 616/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3248328",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/19",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 9 se společností Dimatex CS spol. s r. o. - svoz textilu",
+      "popis": "Rada města, bod 93/19, usnesení 523/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3401523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/19__32254405",
+      "datum": "2025-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 9 ke Smlouvě o spolupráci",
+      "popis": "Odhadované spojení smlouvy z 2025-07-28 s bodem 93/19 z 2025-07-22 (Dodatek č. 9 se společností Dimatex CS spol. s r. o. - svoz textilu). Jistota stredni.",
+      "castka_czk": 58080.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 43224245 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; obojí je dodatek č. 9",
+      "url": "https://smlouvy.gov.cz/smlouva/34406505",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32254405",
+      "datum": "2025-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 9 ke Smlouvě o spolupráci",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana DIMATEX CS, spol. s r.o..",
+      "castka_czk": 58080.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34406505",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/17",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 10 ke Smlouvě o spolupráci ze dne 18. 1. 2016 se společností Dimatex CS, spol. s.r.o.",
+      "popis": "Rada města, bod 102/17, usnesení 745/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/863816894",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/17__33724101",
+      "datum": "2025-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 10 ke Smlouvě o spolupráci ze dne 18.1.2016 se společností DIMATEX CS, spol s r. o.",
+      "popis": "Odhadované spojení smlouvy z 2025-12-01 s bodem 102/17 z 2025-10-29 (Dodatek č. 10 ke Smlouvě o spolupráci ze dne 18. 1. 2016 se společností Dimatex CS, spol. s",
+      "castka_czk": 159720.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 43224245 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 33 dní po usnesení; název bodu a předmět smlouvy sdílí slova dimatex, spol, spolupraci; obojí je dodatek ",
+      "url": "https://smlouvy.gov.cz/smlouva/35942461",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33724101",
+      "datum": "2025-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 10 ke Smlouvě o spolupráci ze dne 18.1.2016 se společností DIMATEX CS, spol s r. o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana DIMATEX CS, spol. s r.o..",
+      "castka_czk": 159720.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35942461",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

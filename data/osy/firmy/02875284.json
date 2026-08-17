@@ -1,0 +1,339 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "02875284",
+    "nazev": "SOFTWARUM s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-12-05",
+    "do": "2025-03-10",
+    "prvni_rok": 2017,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 9,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 6,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "nizka": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-137-137/1",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva - administrátor výběrového řízení a tvorba technické specifikace v rámci výzvy č. 28",
+      "popis": "Rada města, bod 137/1, usnesení 683/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1865085",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/1__4829544",
+      "datum": "2018-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-14",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Modernizace informačního systému Města Mariánské Lázně _technická specifikace (SOFTWARUM s.r.o.)",
+      "popis": "Odhadované spojení smlouvy z 2018-02-14 s bodem 137/1 z 2017-12-05 (Smlouva - administrátor výběrového řízení a tvorba technické specifikace v rámci výzvy č. 28",
+      "castka_czk": 96800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 71 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/5207788",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4829544",
+      "datum": "2018-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-14",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Modernizace informačního systému Města Mariánské Lázně _technická specifikace (SOFTWARUM s.r.o.)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SOFTWARUM s.r.o..",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5207788",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-137/1__6483567",
+      "datum": "2018-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-12",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo Služby technického dozoru investora pro projekt \"Modernizace informačního systému MUML\"",
+      "popis": "Odhadované spojení smlouvy z 2018-10-12 s bodem 137/1 z 2017-12-05 (Smlouva - administrátor výběrového řízení a tvorba technické specifikace v rámci výzvy č. 28",
+      "castka_czk": 137940.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 311 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6999579",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6483567",
+      "datum": "2018-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo Služby technického dozoru investora pro projekt \"Modernizace informačního systému MUML\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SOFTWARUM s.r.o..",
+      "castka_czk": 137940.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6999579",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-14-14/6",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "„Město Mariánské Lázně – portál občana“ – příprava technické specifikace",
+      "popis": "Rada města, bod 14/6, usnesení 96/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2978098",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-14/6__22959355",
+      "datum": "2023-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-26",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Předmětem plnění jsou odborné služby související s realizací projektu „Město Mariánské Lázně – portál \nobčana“ z 8. výzvy IROP – eGovernment – SC 1.1 (MRR), reg. č. CZ.06.01.01/00/22_008/0000468.",
+      "popis": "Odhadované spojení smlouvy z 2023-05-26 s bodem 14/6 z 2023-02-21 („Město Mariánské Lázně – portál občana“ – příprava technické specifikace). Jistota stredni.",
+      "castka_czk": 358160.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; název bodu a předmět smlouvy sdílí slova obcana, portal",
+      "url": "https://smlouvy.gov.cz/smlouva/24609959",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22959355",
+      "datum": "2023-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-26",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Předmětem plnění jsou odborné služby související s realizací projektu „Město Mariánské Lázně – portál \nobčana“ z 8. výzvy IROP – eGovernment – SC 1.1 (MRR), reg. č. CZ.06.01.01/00/22_008/0000468.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SOFTWARUM s.r.o..",
+      "castka_czk": 358160.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24609959",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/24",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka: Služby konzultace a odborného dozoru realizace projektu „Město Mariánské Lázně – portál občana\" – výběr dodavatele",
+      "popis": "Rada města, bod 54/24, usnesení 360/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3198649",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/24__27152452",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování služeb související s realizací projektu",
+      "popis": "Odhadované spojení smlouvy z 2024-06-11 s bodem 54/24 z 2024-05-28 (Veřejná zakázka: Služby konzultace a odborného dozoru realizace projektu „Město Mariánské Lá",
+      "castka_czk": 174240.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/29037724",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27152452",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb související s realizací projektu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SOFTWARUM s.r.o..",
+      "castka_czk": 174240.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29037724",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/7",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o poskytování služeb k projektu „Město Mariánské Lázně – portál občana“",
+      "popis": "Rada města, bod 79/7, usnesení 158/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3331939",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/24__30380776",
+      "datum": "2025-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování služeb související s realizací projektu",
+      "popis": "Odhadované spojení smlouvy z 2025-03-10 s bodem 54/24 z 2024-05-28 (Veřejná zakázka: Služby konzultace a odborného dozoru realizace projektu „Město Mariánské Lá",
+      "castka_czk": 272976.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 286 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32441856",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/7__30380776",
+      "datum": "2025-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování služeb související s realizací projektu",
+      "popis": "Odhadované spojení smlouvy z 2025-03-10 s bodem 79/7 z 2025-03-04 (Dodatek č. 1 ke smlouvě o poskytování služeb k projektu „Město Mariánské Lázně – portál občan",
+      "castka_czk": 272976.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02875284 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova poskytovani, projektu, sluzeb; usnesení mluví",
+      "url": "https://smlouvy.gov.cz/smlouva/32441856",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30380776",
+      "datum": "2025-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb související s realizací projektu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SOFTWARUM s.r.o..",
+      "castka_czk": 272976.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32441856",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

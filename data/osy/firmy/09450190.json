@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09450190",
+    "nazev": "Lenka Ročkárová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-09-15",
+    "do": "2021-10-26",
+    "prvni_rok": 2020,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2020-82-82/9",
+      "datum": "2020-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Nerudova 250 - pronájem nebytového prostoru",
+      "popis": "Rada města, bod 82/9, usnesení 463/20. Schvaleno.",
+      "castka_czk": 102000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2577044",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/82.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-82/9__13010612",
+      "datum": "2020-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-23",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Nerudova - Ročkárová, Straková",
+      "popis": "Odhadované spojení smlouvy z 2020-09-23 s bodem 82/9 z 2020-09-15 (NP Nerudova 250 - pronájem nebytového prostoru). Jistota stredni.",
+      "castka_czk": 589330.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09450190 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova nebytoveho, nerudova, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/13949936",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13010612",
+      "datum": "2020-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-23",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Nerudova - Ročkárová, Straková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lenka Ročkárová.",
+      "castka_czk": 589330.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13949936",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-124-124/9",
+      "datum": "2021-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-12",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP - Nerudova, č.p. 250 - ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 124/9, usnesení 450/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2754629",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-124/9__16899563",
+      "datum": "2021-10-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-26",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Lenka Ročkárová, Jana Straková",
+      "popis": "Odhadované spojení smlouvy z 2021-10-26 s bodem 124/9 z 2021-10-12 (NP - Nerudova, č.p. 250 - ukončení Smlouvy o nájmu nebytového prostoru dohodou). Jistota str",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09450190 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni",
+      "url": "https://smlouvy.gov.cz/smlouva/18194715",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16899563",
+      "datum": "2021-10-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-26",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Lenka Ročkárová, Jana Straková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lenka Ročkárová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18194715",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "16713044",
+    "nazev": "Elsa Sovková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-06-07",
+    "do": "2024-01-29",
+    "prvni_rok": 2016,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-72-72/4",
+      "datum": "2016-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-07",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - prodloužení nájemního vztahu, přistoupení druhého nájemce - Elsa Sovková",
+      "popis": "Rada města, bod 72/4, usnesení 288/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1586499",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-72/4__146981",
+      "datum": "2016-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-29",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru v ul. Hlavní, č.p. 222, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-08-29 s bodem 72/4 z 2016-06-07 (NP Hlavní 222 - prodloužení nájemního vztahu, přistoupení druhého nájemce - Elsa Sovková). Ji",
+      "castka_czk": 1194875.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16713044 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří",
+      "url": "https://smlouvy.gov.cz/smlouva/155013",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:146981",
+      "datum": "2016-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-29",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru v ul. Hlavní, č.p. 222, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Elsa Sovková.",
+      "castka_czk": 1194875.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/155013",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-150-150/3",
+      "datum": "2018-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - žádost o slevu na nájemném - Elsa Sovková, Roman Sovka",
+      "popis": "Rada města, bod 150/3, usnesení 169/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1922375",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-150/3__5020591",
+      "datum": "2018-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-25",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 222 - Dodatek č. 1 ke Smlouvě o nájmu NP - Elsa Sovková, Roman Sovka",
+      "popis": "Odhadované spojení smlouvy z 2018-04-25 s bodem 150/3 z 2018-03-27 (NP Hlavní 222 - žádost o slevu na nájemném - Elsa Sovková, Roman Sovka). Jistota stredni.",
+      "castka_czk": 544863.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16713044 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova elsa, hlavni, roman, sovka",
+      "url": "https://smlouvy.gov.cz/smlouva/5411131",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5020591",
+      "datum": "2018-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-25",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 222 - Dodatek č. 1 ke Smlouvě o nájmu NP - Elsa Sovková, Roman Sovka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Elsa Sovková.",
+      "castka_czk": 544863.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5411131",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-115-115/8",
+      "datum": "2021-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-29",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - prodloužení nájemního vztahu - Roman Sovka, Elsa Sovková",
+      "popis": "Rada města, bod 115/8, usnesení 289/21. Schvaleno.",
+      "castka_czk": 142200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2698107",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-41-41/11",
+      "datum": "2024-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-09",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 222 – odstoupení nájemce",
+      "popis": "Rada města, bod 41/11, usnesení 11/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3135565",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/41.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-41/11__25625267",
+      "datum": "2024-01-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-29",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce",
+      "popis": "Odhadované spojení smlouvy z 2024-01-29 s bodem 41/11 z 2024-01-09 (NP Hlavní třída, č.p. 222 – odstoupení nájemce). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 16713044 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemce, odstoupeni",
+      "url": "https://smlouvy.gov.cz/smlouva/27438035",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25625267",
+      "datum": "2024-01-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke Smlouvě o nájmu nebytového prostoru - odstoupení nájemce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Elsa Sovková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27438035",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00526622",
+    "nazev": "IVAR, a.s. "
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-08-07",
+    "do": "2019-05-15",
+    "prvni_rok": 2012,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 1,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-75-75/24",
+      "datum": "2012-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-08-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Výběrové řízení - bazén - přístupový systém",
+      "popis": "Rada města, bod 75/24, usnesení 397/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/798923",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:2193862",
+      "datum": "2014-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-16",
+      "rok": 2014,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí SW a HW podpory",
+      "popis": "Správa městských sportovišť — výdaj, protistrana Ivar a.s..",
+      "castka_czk": 199650.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2364618",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3382832",
+      "datum": "2017-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-25",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dodávka 100ks Off-Line zámků do šaten pro Městský bazén Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana IVAR, a.s..",
+      "castka_czk": 356972.99,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3648064",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5861639",
+      "datum": "2018-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Úprava vstupního pokladního systému pro aplikaci elektronických zámků do šaten Městského bazénu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Divize IVAR, a.s. Poděbrady, Bílkova 127, 290 01 Poděbrady.",
+      "castka_czk": 148516.61,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6315971",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8390459",
+      "datum": "2019-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-15",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Instalace elektronických zámků do šaten Městského bazénu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana IVAR, a.s. .",
+      "castka_czk": 499059.66,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9051535",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

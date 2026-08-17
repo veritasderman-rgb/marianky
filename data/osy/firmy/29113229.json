@@ -1,0 +1,900 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29113229",
+    "nazev": "ANT studio s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-07-14",
+    "do": "2024-12-16",
+    "prvni_rok": 2020,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 43,
+    "dolozenych": 26,
+    "odhadu": 17,
+    "dle_typu": {
+      "usneseni": 9,
+      "retez": 17,
+      "smlouva": 17
+    },
+    "dle_jistoty": {
+      "fakt": 26,
+      "stredni": 6,
+      "vysoka": 2,
+      "nizka": 9
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2020-77-77/10",
+      "datum": "2020-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Zápis z jednání Komise lázeňství a cestovního ruchu",
+      "popis": "Rada města, bod 77/10, usnesení 365/20. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2548490",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/10__12529272",
+      "datum": "2020-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-21",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o vypořádání závazků/ objednávka",
+      "popis": "Odhadované spojení smlouvy z 2020-07-21 s bodem 77/10 z 2020-07-14 (Zápis z jednání Komise lázeňství a cestovního ruchu). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 7 dní po usnesení; k témuž usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/13442272",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12529272",
+      "datum": "2020-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-21",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků/ objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13442272",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12529376",
+      "datum": "2020-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-21",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků/ objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13442380",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/10__12626896",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "objednávka  - mediální kampaň Německo  2020 - ANT",
+      "popis": "Odhadované spojení smlouvy z 2020-07-22 s bodem 77/10 z 2020-07-14 (Zápis z jednání Komise lázeňství a cestovního ruchu). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 8 dní po usnesení; k témuž usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/13545000",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12626896",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "objednávka  - mediální kampaň Německo  2020 - ANT",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13545000",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13397984",
+      "datum": "2020-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14363132",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-103-103/3",
+      "datum": "2021-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-23",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka on-line kampaň ML",
+      "popis": "Rada města, bod 103/3, usnesení 102/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2656862",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-103/3__15165935",
+      "datum": "2021-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-19",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "On-line kampaň Mariánských Lázní pro domácí cestovní ruch v období 4-12/2021 \"Mariánky jsou super i v roce 2021\"",
+      "popis": "Odhadované spojení smlouvy z 2021-04-19 s bodem 103/3 z 2021-03-23 (Veřejná zakázka on-line kampaň ML). Jistota stredni.",
+      "castka_czk": 602580.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova kampan, line",
+      "url": "https://smlouvy.gov.cz/smlouva/16328607",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15165935",
+      "datum": "2021-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-19",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "On-line kampaň Mariánských Lázní pro domácí cestovní ruch v období 4-12/2021 \"Mariánky jsou super i v roce 2021\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 602580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16328607",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-116-116/5",
+      "datum": "2021-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-13",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Komise lázeňství a cestovního ruchu 29.6.2021",
+      "popis": "Rada města, bod 116/5, usnesení 314/21. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2703585",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/5__16003347",
+      "datum": "2021-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-16",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka - ANT studio s.r.o. - on-line mediální kampaň 7/8/9 2021 Německo",
+      "popis": "Odhadované spojení smlouvy z 2021-07-16 s bodem 116/5 z 2021-07-13 (Komise lázeňství a cestovního ruchu 29.6.2021). Jistota vysoka.",
+      "castka_czk": 121000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 3 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17220999",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16003347",
+      "datum": "2021-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-16",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - ANT studio s.r.o. - on-line mediální kampaň 7/8/9 2021 Německo",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17220999",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-103/3__16504899",
+      "datum": "2021-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-16",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "objednávka  - online kampaň UNESCO 10-11/2021 - ANT",
+      "popis": "Odhadované spojení smlouvy z 2021-09-16 s bodem 103/3 z 2021-03-23 (Veřejná zakázka on-line kampaň ML). Jistota nizka.",
+      "castka_czk": 83490.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 177 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17776899",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/5__16504899",
+      "datum": "2021-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-16",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "objednávka  - online kampaň UNESCO 10-11/2021 - ANT",
+      "popis": "Odhadované spojení smlouvy z 2021-09-16 s bodem 116/5 z 2021-07-13 (Komise lázeňství a cestovního ruchu 29.6.2021). Jistota nizka.",
+      "castka_czk": 83490.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 65 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/17776899",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16504899",
+      "datum": "2021-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-16",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "objednávka  - online kampaň UNESCO 10-11/2021 - ANT",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 83490.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17776899",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-123-123/14",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Zápis komise lázeňství 21.9.2021",
+      "popis": "Rada města, bod 123/14, usnesení 440/21. Schvaleno.",
+      "castka_czk": 650000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2751687",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-103/3__16716107",
+      "datum": "2021-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-07",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka ANT studio s.r.o. - on-line kampaň ML v zimě",
+      "popis": "Odhadované spojení smlouvy z 2021-10-07 s bodem 103/3 z 2021-03-23 (Veřejná zakázka on-line kampaň ML). Jistota nizka.",
+      "castka_czk": 146410.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 198 dní po usnesení; název bodu a předmět smlouvy sdílí slova kampan, line; stejně dobře sedí i 2 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/18001347",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/5__16716107",
+      "datum": "2021-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-07",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka ANT studio s.r.o. - on-line kampaň ML v zimě",
+      "popis": "Odhadované spojení smlouvy z 2021-10-07 s bodem 116/5 z 2021-07-13 (Komise lázeňství a cestovního ruchu 29.6.2021). Jistota nizka.",
+      "castka_czk": 146410.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 86 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/18001347",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-123/14__16716107",
+      "datum": "2021-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-07",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka ANT studio s.r.o. - on-line kampaň ML v zimě",
+      "popis": "Odhadované spojení smlouvy z 2021-10-07 s bodem 123/14 z 2021-10-05 (Zápis komise lázeňství 21.9.2021). Jistota nizka.",
+      "castka_czk": 146410.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva téže",
+      "url": "https://smlouvy.gov.cz/smlouva/18001347",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16716107",
+      "datum": "2021-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-07",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka ANT studio s.r.o. - on-line kampaň ML v zimě",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 146410.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18001347",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-128-128/12",
+      "datum": "2021-11-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Komise lázeňství a cestovního ruchu 25.10.2021",
+      "popis": "Rada města, bod 128/12, usnesení 519/21. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2770587",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-131-131/16",
+      "datum": "2021-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Partnerská města - video",
+      "popis": "Rada města, bod 131/16, usnesení 567/21. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2780435",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/5__17400139",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně pro potřeby prezentace v partnerských městech min. v rozsahu dle nabídky z 30.11.2021",
+      "popis": "Odhadované spojení smlouvy z 2021-12-14 s bodem 116/5 z 2021-07-13 (Komise lázeňství a cestovního ruchu 29.6.2021). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 154 dní po usnesení; stejně dobře se",
+      "url": "https://smlouvy.gov.cz/smlouva/18721279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-128/12__17400139",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně pro potřeby prezentace v partnerských městech min. v rozsahu dle nabídky z 30.11.2021",
+      "popis": "Odhadované spojení smlouvy z 2021-12-14 s bodem 128/12 z 2021-11-16 (Komise lázeňství a cestovního ruchu 25.10.2021). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 28 dní po usnesení; stejně dobře sed",
+      "url": "https://smlouvy.gov.cz/smlouva/18721279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-131/16__17400139",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně pro potřeby prezentace v partnerských městech min. v rozsahu dle nabídky z 30.11.2021",
+      "popis": "Odhadované spojení smlouvy z 2021-12-14 s bodem 131/16 z 2021-12-07 (Partnerská města - video). Jistota stredni.",
+      "castka_czk": 121000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 7 dní po usnesení; stejně dobře sedí",
+      "url": "https://smlouvy.gov.cz/smlouva/18721279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17400139",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně pro potřeby prezentace v partnerských městech min. v rozsahu dle nabídky z 30.11.2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18721279",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-138-138/14",
+      "datum": "2022-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-15",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka on-line kampaň ML 2022",
+      "popis": "Rada města, bod 138/14, usnesení 66/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2807897",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-123/14__18524091",
+      "datum": "2022-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-31",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "On-line kampaň Mariánských Lázní pro domácí i zahraniční cestovní ruch v období 04-12/2022 na téma \"Letos v Mariánkách\"",
+      "popis": "Odhadované spojení smlouvy z 2022-03-31 s bodem 123/14 z 2021-10-05 (Zápis komise lázeňství 21.9.2021). Jistota vysoka.",
+      "castka_czk": 786500.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 177 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19914879",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-138/14__18524091",
+      "datum": "2022-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-31",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "On-line kampaň Mariánských Lázní pro domácí i zahraniční cestovní ruch v období 04-12/2022 na téma \"Letos v Mariánkách\"",
+      "popis": "Odhadované spojení smlouvy z 2022-03-31 s bodem 138/14 z 2022-02-15 (Veřejná zakázka on-line kampaň ML 2022). Jistota nizka.",
+      "castka_czk": 786500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; název bodu a předmět smlouvy sdílí slova kampan, line; stejně dobře sedí i 1 další us",
+      "url": "https://smlouvy.gov.cz/smlouva/19914879",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18524091",
+      "datum": "2022-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-31",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "On-line kampaň Mariánských Lázní pro domácí i zahraniční cestovní ruch v období 04-12/2022 na téma \"Letos v Mariánkách\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 786500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19914879",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:19013019",
+      "datum": "2022-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-02",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 151250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20426739",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:21141825",
+      "datum": "2022-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-12",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka prezenčního videa města Mariánské Lázně \" Zimní kreativní video 2022\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 70180.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22690029",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-10-10/26",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Komise lázeňství, cestovního ruchu a UNESCO - 18.1.2023",
+      "popis": "Rada města, bod 10/26, usnesení 52/23. Schvaleno.",
+      "castka_czk": 908000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2966276",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:23948067",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - prezentační video Klimatické Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 85000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25650999",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/29",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "On-line kampaň – uzavření smlouvy",
+      "popis": "Rada města, bod 35/29, usnesení 645/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3094662",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:25328071",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Správa a tvorba on-line kampaně pro město Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 1331000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27124423",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-10/26__25457979",
+      "datum": "2024-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-15",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně - Zimní kreativní video 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-01-15 s bodem 10/26 z 2023-01-24 (Komise lázeňství, cestovního ruchu a UNESCO - 18.1.2023). Jistota nizka.",
+      "castka_czk": 83500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 356 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/27261279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25457979",
+      "datum": "2024-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka prezentačního videa města Mariánské Lázně - Zimní kreativní video 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 83500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27261279",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-10/26__26917286",
+      "datum": "2024-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-22",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka plakátů a bannerů k Zahájení lázeňské sezóny 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-22 s bodem 10/26 z 2023-01-24 (Komise lázeňství, cestovního ruchu a UNESCO - 18.1.2023). Jistota nizka.",
+      "castka_czk": 73568.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 484 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/28792866",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26917286",
+      "datum": "2024-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-22",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka plakátů a bannerů k Zahájení lázeňské sezóny 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 73568.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28792866",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-10/26__29430216",
+      "datum": "2024-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-16",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka - zimní kreativní video",
+      "popis": "Odhadované spojení smlouvy z 2024-12-16 s bodem 10/26 z 2023-01-24 (Komise lázeňství, cestovního ruchu a UNESCO - 18.1.2023). Jistota nizka.",
+      "castka_czk": 113740.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29113229 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 692 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/31445384",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29430216",
+      "datum": "2024-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - zimní kreativní video",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ANT studio s.r.o..",
+      "castka_czk": 113740.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31445384",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

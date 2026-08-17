@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47115971",
+    "nazev": "Allianz pojišťovna, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-06-25",
+    "do": "2026-03-02",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-58-58/9",
+      "datum": "2024-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-25",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Pojištění odpovědnosti pro město Mariánské Lázně",
+      "popis": "Rada města, bod 58/9, usnesení 440/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3212950",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/9__27679744",
+      "datum": "2024-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-02",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Pojistná smlouva č. C550087467",
+      "popis": "Odhadované spojení smlouvy z 2024-07-02 s bodem 58/9 z 2024-06-25 (Pojištění odpovědnosti pro město Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 1049070.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47115971 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/29588668",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27679744",
+      "datum": "2024-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-02",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Pojistná smlouva č. C550087467",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Allianz pojišťovna, a.s..",
+      "castka_czk": 1049070.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29588668",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-58/9__34836085",
+      "datum": "2026-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-25",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatak č. 1 k Pojistné smlouvě č. C550087467",
+      "popis": "Odhadované spojení smlouvy z 2026-02-25 s bodem 58/9 z 2024-06-25 (Pojištění odpovědnosti pro město Mariánské Lázně). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47115971 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 610 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/37104961",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34836085",
+      "datum": "2026-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-25",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatak č. 1 k Pojistné smlouvě č. C550087467",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Allianz pojišťovna, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37104961",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-112-112/17",
+      "datum": "2026-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-02",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 k pojistné smlouvě č. C550087467 – pojištění odpovědnosti",
+      "popis": "Rada města, bod 112/17, usnesení 974/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1743482595",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

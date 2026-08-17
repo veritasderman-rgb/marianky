@@ -1,0 +1,176 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49789210",
+    "nazev": "M.L.PROFIT s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-12-21",
+    "do": "2021-04-30",
+    "prvni_rok": 1993,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:49789210:vznik",
+      "datum": "1993-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-12-21",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — M.L.PROFIT s.r.o.",
+      "popis": "Vznik subjektu M.L.PROFIT s.r.o. (IČO 49789210), Společnost s ručením omezeným, obor: Účetnické a auditorské činnosti; daňové poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:1864938",
+      "datum": "2016-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Městská knihovna Mariánské Lázně — výdaj, protistrana M.L.PROFIT v.o.s..",
+      "castka_czk": 439956.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2011870",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47720654.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15531555",
+      "datum": "2021-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Mateřská škola Úšovice, Mariánské Lázně, Skalníkova 518 — příjem, protistrana M.L.PROFIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16721091",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997586.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15531663",
+      "datum": "2021-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Mateřská škola, Mariánské Lázně, Hlavní 440 — příjem, protistrana M.L.PROFIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16721203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997578.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15532023",
+      "datum": "2021-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Městské muzeum a galerie Mariánské Lázně — příjem, protistrana M.L.PROFIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16721591",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00368997.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15532255",
+      "datum": "2021-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Mateřská škola, Mariánské Lázně, Křižíkova 555 — příjem, protistrana M.L.PROFIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16721827",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997560.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:15532371",
+      "datum": "2021-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vedení účetnictví",
+      "popis": "Mateřská škola, Mariánské Lázně, Na Třešňovce 603 — příjem, protistrana M.L.PROFIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16721947",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997594.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27924076",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-06-29",
+    "do": "2014-03-11",
+    "prvni_rok": 2007,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:27924076:vznik",
+      "datum": "2007-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-06-29",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Grand Hotel Marienbad Betriebs s.r.o.",
+      "popis": "Vznik subjektu Grand Hotel Marienbad Betriebs s.r.o. (IČO 27924076), Společnost s ručením omezeným, obor: Ubytování v hotelích a podobných ubytovacích zařízeníc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-145-145/8",
+      "datum": "2014-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Pronájem části p.p.č. 41 v k.ú. Mariánské Lázně -čerpání min. Alexandra",
+      "popis": "Rada města, bod 145/8, usnesení 83/14. Schvaleno.",
+      "castka_czk": 777,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1092921",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

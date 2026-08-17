@@ -1,0 +1,379 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26322978",
+    "nazev": "ARTTREND s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2001-02-09",
+    "do": "2025-05-28",
+    "prvni_rok": 2001,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 13,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8,
+      "retez": 4,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "stredni": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26322978:vznik",
+      "datum": "2001-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-02-09",
+      "rok": 2001,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — ARTTREND s.r.o.",
+      "popis": "Vznik subjektu ARTTREND s.r.o. (IČO 26322978), Společnost s ručením omezeným, obor: Maloobchod s ostatním novým zbožím.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-117-117/22",
+      "datum": "2013-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-06",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 227 - převod práv a závazků",
+      "popis": "Rada města, bod 117/22, usnesení 370/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1000703",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-170-170/10",
+      "datum": "2014-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226,227-žádost o prodloužení doby nájmu",
+      "popis": "Rada města, bod 170/10, usnesení 492/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1296006",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-32-32/6",
+      "datum": "2015-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-08-04",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o postoupení nájemní smlouvy - NP Poštovní 331",
+      "popis": "Rada města, bod 32/6, usnesení 361/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1438172",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-124-124/3",
+      "datum": "2017-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-22",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 331 - prodloužení nájmu - ARTTREND s.r.o.",
+      "popis": "Rada města, bod 124/3, usnesení 483/17. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1808350",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-124/3__3103914",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Poštovní 331, ARTTREND s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 124/3 z 2017-08-22 (NP Poštovní 331 - prodloužení nájmu - ARTTREND s.r.o.). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26322978 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova arttrend, postovni",
+      "url": "https://smlouvy.gov.cz/smlouva/3345262",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3103914",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Poštovní 331, ARTTREND s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTTREND s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3345262",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-62-62/8",
+      "datum": "2020-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-17",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení smlouvy NP Hlavní 227 - Arttrend s.r.o.",
+      "popis": "Rada města, bod 62/8, usnesení 171/20. Schvaleno.",
+      "castka_czk": 1201,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2493954",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-62/8__11586964",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 227 - ARTTREND s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2020-03-26 s bodem 62/8 z 2020-03-17 (Prodloužení smlouvy NP Hlavní 227 - Arttrend s.r.o.). Jistota stredni.",
+      "castka_czk": 1453452.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26322978 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova arttrend, hlavni",
+      "url": "https://smlouvy.gov.cz/smlouva/12451172",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11586964",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Hlavní 227 - ARTTREND s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTTREND s.r.o..",
+      "castka_czk": 1453452.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12451172",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-159-159/8",
+      "datum": "2022-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-27",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 331 - prodloužení nájemního vztahu - společnost ARTTREND s.r.o.",
+      "popis": "Rada města, bod 159/8, usnesení 471/22. Schvaleno.",
+      "castka_czk": 38805,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2913340",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-159/8__20382717",
+      "datum": "2022-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-05",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost ARTTREND s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-10-05 s bodem 159/8 z 2022-09-27 (NP Poštovní, č.p. 331 - prodloužení nájemního vztahu - společnost ARTTREND s.r.o.). Jistota ",
+      "castka_czk": 234770.25,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26322978 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21892649",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20382717",
+      "datum": "2022-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-05",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - společnost ARTTREND s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTTREND s.r.o..",
+      "castka_czk": 234770.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21892649",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/22",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 226, 227 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 85/22, usnesení 294/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3354263",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/13",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 226, 227 - prodloužení Smlouvy o nájmu nebytového prostoru – společnost ARTTREND s.r.o.",
+      "popis": "Rada města, bod 88/13, usnesení 351/25. Schvaleno.",
+      "castka_czk": 240240,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3366085",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-88/13__31367812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-05-28 s bodem 88/13 z 2025-05-13 (NP Hlavní třída, č.p. 226, 227 - prodloužení Smlouvy o nájmu nebytového prostoru – společnos",
+      "castka_czk": 1201200.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26322978 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru; obojí je dodate",
+      "url": "https://smlouvy.gov.cz/smlouva/33476156",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31367812",
+      "datum": "2025-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-28",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARTTREND s.r.o..",
+      "castka_czk": 1201200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33476156",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

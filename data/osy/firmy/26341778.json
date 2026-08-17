@@ -1,0 +1,560 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26341778",
+    "nazev": "GOROSHIT s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2002-01-14",
+    "do": "2026-05-21",
+    "prvni_rok": 2002,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 26,
+    "dolozenych": 16,
+    "odhadu": 10,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 10,
+      "retez": 10,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 16,
+      "nizka": 8,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26341778:vznik",
+      "datum": "2002-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2002-01-14",
+      "rok": 2002,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — GOROSHIT s.r.o.",
+      "popis": "Vznik subjektu GOROSHIT s.r.o. (IČO 26341778), Společnost s ručením omezeným, obor: Výroba chemických látek a chemických výrobků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-92-92/10",
+      "datum": "2016-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 630 - postoupení smlouvy o nájmu - Ing. Solehová x GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 92/10, usnesení 566/16. Schvaleno.",
+      "castka_czk": 1900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1665379",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-93-93/8",
+      "datum": "2016-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349-postoupení smouvy o nájmu - Ing. Solehová x GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 93/8, usnesení 598/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1675251",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-124-124/2",
+      "datum": "2017-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-22",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 630 - prodloužení nájmu - GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 124/2, usnesení 482/17. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1808311",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-134-134/10",
+      "datum": "2017-11-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-07",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349 - úprava nájemní smlouvy - GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 134/10, usnesení 636/17. Schvaleno.",
+      "castka_czk": 4000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1852389",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/134.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-93/8__3502648",
+      "datum": "2017-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-13",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 630, Mar. Lázně - GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-13 s bodem 93/8 z 2016-11-29 (NP Hlavní 349-postoupení smouvy o nájmu - Ing. Solehová x GOROSHIT s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 349 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, hlavni; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/3775544",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-124/2__3502648",
+      "datum": "2017-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-13",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 630, Mar. Lázně - GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-13 s bodem 124/2 z 2017-08-22 (NP Hlavní 630 - prodloužení nájmu - GOROSHIT s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, hlavni; stejně dobře sedí i 2 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/3775544",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-134/10__3502648",
+      "datum": "2017-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-13",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 630, Mar. Lázně - GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-13 s bodem 134/10 z 2017-11-07 (NP Hlavní 349 - úprava nájemní smlouvy - GOROSHIT s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, hlavni; usnesení mluví o dodatku, s",
+      "url": "https://smlouvy.gov.cz/smlouva/3775544",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3502648",
+      "datum": "2017-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-13",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 630, Mar. Lázně - GOROSHIT s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GOROSHIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3775544",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-136-136/7",
+      "datum": "2017-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349 - revokace usnesení č. RM/636/17, bod a) -",
+      "popis": "Rada města, bod 136/7, usnesení 653/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1859291",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/136.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-124/2__4319724",
+      "datum": "2018-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytového prostoru v ul. Hlavní, č.p. 349 - GOROSHIT s.r.o. -změna účelu užívání",
+      "popis": "Odhadované spojení smlouvy z 2018-02-09 s bodem 124/2 z 2017-08-22 (NP Hlavní 630 - prodloužení nájmu - GOROSHIT s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 171 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, hlavni; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/4654912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-134/10__4319724",
+      "datum": "2018-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytového prostoru v ul. Hlavní, č.p. 349 - GOROSHIT s.r.o. -změna účelu užívání",
+      "popis": "Odhadované spojení smlouvy z 2018-02-09 s bodem 134/10 z 2017-11-07 (NP Hlavní 349 - úprava nájemní smlouvy - GOROSHIT s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, hlavni; usnesení mluví o dodatku, ",
+      "url": "https://smlouvy.gov.cz/smlouva/4654912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-136/7__4319724",
+      "datum": "2018-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytového prostoru v ul. Hlavní, č.p. 349 - GOROSHIT s.r.o. -změna účelu užívání",
+      "popis": "Odhadované spojení smlouvy z 2018-02-09 s bodem 136/7 z 2017-11-28 (NP Hlavní 349 - revokace usnesení č. RM/636/17, bod a) -). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 73 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4654912",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4319724",
+      "datum": "2018-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pronájem nebytového prostoru v ul. Hlavní, č.p. 349 - GOROSHIT s.r.o. -změna účelu užívání",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GOROSHIT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4654912",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-26-26/14",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349 - žádost o podnájem",
+      "popis": "Rada města, bod 26/14, usnesení 261/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2347816",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-97-97/7",
+      "datum": "2021-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349 - GOROSHIT s.r.o. - prodloužení nájemní a podnájemní smlouvy",
+      "popis": "Rada města, bod 97/7, usnesení 46/21. Schvaleno.",
+      "castka_czk": 180000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2637396",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-97/7__14767051",
+      "datum": "2021-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-17",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - GOROSHIT s.r.o.- prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2021-03-17 s bodem 97/7 z 2021-02-02 (NP Hlavní 349 - GOROSHIT s.r.o. - prodloužení nájemní a podnájemní smlouvy). Jistota stredni.",
+      "castka_czk": 1089000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 43 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/15877543",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14767051",
+      "datum": "2021-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-17",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - GOROSHIT s.r.o.- prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GOROSHIT s.r.o..",
+      "castka_czk": 1089000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15877543",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-161-161/8",
+      "datum": "2022-10-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-11",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 630 - prodloužení Smlouvy o nájmu nebytového prostoru - společnost GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 161/8, usnesení 490/22. Schvaleno.",
+      "castka_czk": 45285,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2918902",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-161/8__20576045",
+      "datum": "2022-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-19",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-10-19 s bodem 161/8 z 2022-10-11 (NP Hlavní, č.p. 630 - prodloužení Smlouvy o nájmu nebytového prostoru - společnost GOROSHIT ",
+      "castka_czk": 273974.25,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, najmu, nebytoveho, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/22095417",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20576045",
+      "datum": "2022-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost GOROSHIT s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GOROSHIT s.r.o..",
+      "castka_czk": 273974.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22095417",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/35",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 349 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 114/35, usnesení 1057/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/314454976",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/32",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 349 – prodloužení nájemního a podnájemního vztahu – GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 116/32, usnesení 1125/26. Schvaleno.",
+      "castka_czk": 180000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3851862755",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/35__35746245",
+      "datum": "2026-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-21",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - prodloužení - společnost GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-05-21 s bodem 114/35 z 2026-03-30 (Nebytový prostor Hlavní třída, č.p. 349 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 1089000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 52 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38054837",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/32__35746245",
+      "datum": "2026-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-21",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - prodloužení - společnost GOROSHIT s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-05-21 s bodem 116/32 z 2026-05-05 (Nebytový prostor Hlavní třída, č.p. 349 – prodloužení nájemního a podnájemního vztahu – GOR",
+      "castka_czk": 1089000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341778 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova goroshit, prodlouzeni; stejně dobře sedí i 1",
+      "url": "https://smlouvy.gov.cz/smlouva/38054837",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35746245",
+      "datum": "2026-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-21",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - prodloužení - společnost GOROSHIT s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GOROSHIT s.r.o..",
+      "castka_czk": 1089000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38054837",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

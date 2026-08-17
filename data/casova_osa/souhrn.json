@@ -1,0 +1,998 @@
+{
+  "generovano": "2026-08-17",
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "stav_zdroju": {
+    "historie": "ok",
+    "usneseni": "ok",
+    "hlasovani": "ok",
+    "smlouvy": "ok",
+    "retez": "ok",
+    "zpravodaj": "ok",
+    "media": "ok",
+    "volby": "ok",
+    "firmy": "ok",
+    "funkce": "ok"
+  },
+  "vysvetlivky_stavu": {
+    "ok": "zdroj se načetl a něco v něm je",
+    "prazdno": "zdroj se načetl a nic v něm není",
+    "chybi": "zdroj v datech není — o období nevíme nic"
+  },
+  "pocty": {
+    "celkem": 43535,
+    "dolozenych": 41243,
+    "odhadu": 2292,
+    "dle_typu": {
+      "smlouva": 6264,
+      "historie": 100,
+      "funkce": 79,
+      "firma": 4173,
+      "volby": 162,
+      "media": 710,
+      "usneseni": 12890,
+      "hlasovani": 12349,
+      "retez": 2289,
+      "zpravodaj": 4519
+    },
+    "dle_jistoty": {
+      "fakt": 41243,
+      "nizka": 1483,
+      "stredni": 635,
+      "vysoka": 174
+    }
+  },
+  "preskoceno": {
+    "co_to_je": "Záznamy, které zdroj sice má, ale nešly umístit v čase (chybí datum). Nezahazují se tiše — patří do modulu, který je sbírá.",
+    "pocty": {
+      "firmy_bez_ica": 6,
+      "firmy_bez_data_vzniku": 3,
+      "funkce_bez_data": 62
+    }
+  },
+  "podezrela_data": {
+    "co_to_je": "Záznamy s rokem mimo 1000–2031. Zdroj má zjevně zkomolené datum (useknuté tisíciletí). V ose zůstávají s příznakem datum_podezrele a nevstupují do výpočtu rozsahu. Opravit je musí modul, který je sbírá.",
+    "pocet": 3,
+    "zaznamy": [
+      {
+        "id": "smlouva:21124697",
+        "datum": "0002-11-14",
+        "typ": "smlouva",
+        "soubor": "data/penize/smlouvy/00575143.json",
+        "nadpis": "Pracovní oděvy"
+      },
+      {
+        "id": "smlouva:35912745",
+        "datum": "0026-06-02",
+        "typ": "smlouva",
+        "soubor": "data/penize/smlouvy/26320053.json",
+        "nadpis": "Smlouva o provedení uměleckého výkonu"
+      },
+      {
+        "id": "smlouva:30298288",
+        "datum": "0025-01-03",
+        "typ": "smlouva",
+        "soubor": "data/penize/smlouvy/70997560.json",
+        "nadpis": "DODÁVKY ENERGIÍ/UJEDNÁNÍ O CENĚ/44783/2025"
+      }
+    ]
+  },
+  "rozsah": {
+    "od": "1193",
+    "do": "2026-12-19",
+    "prvni_rok": 1193,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 3
+  },
+  "po_letech": [
+    {
+      "rok": 1193,
+      "udalosti": 1
+    },
+    {
+      "rok": 1528,
+      "udalosti": 1
+    },
+    {
+      "rok": 1779,
+      "udalosti": 1
+    },
+    {
+      "rok": 1788,
+      "udalosti": 1
+    },
+    {
+      "rok": 1805,
+      "udalosti": 1
+    },
+    {
+      "rok": 1808,
+      "udalosti": 1
+    },
+    {
+      "rok": 1812,
+      "udalosti": 4
+    },
+    {
+      "rok": 1817,
+      "udalosti": 2
+    },
+    {
+      "rok": 1818,
+      "udalosti": 1
+    },
+    {
+      "rok": 1820,
+      "udalosti": 1
+    },
+    {
+      "rok": 1821,
+      "udalosti": 2
+    },
+    {
+      "rok": 1823,
+      "udalosti": 1
+    },
+    {
+      "rok": 1824,
+      "udalosti": 2
+    },
+    {
+      "rok": 1836,
+      "udalosti": 1
+    },
+    {
+      "rok": 1843,
+      "udalosti": 1
+    },
+    {
+      "rok": 1845,
+      "udalosti": 1
+    },
+    {
+      "rok": 1846,
+      "udalosti": 1
+    },
+    {
+      "rok": 1848,
+      "udalosti": 4
+    },
+    {
+      "rok": 1850,
+      "udalosti": 2
+    },
+    {
+      "rok": 1856,
+      "udalosti": 1
+    },
+    {
+      "rok": 1858,
+      "udalosti": 1
+    },
+    {
+      "rok": 1861,
+      "udalosti": 1
+    },
+    {
+      "rok": 1864,
+      "udalosti": 1
+    },
+    {
+      "rok": 1865,
+      "udalosti": 1
+    },
+    {
+      "rok": 1866,
+      "udalosti": 1
+    },
+    {
+      "rok": 1867,
+      "udalosti": 1
+    },
+    {
+      "rok": 1868,
+      "udalosti": 1
+    },
+    {
+      "rok": 1872,
+      "udalosti": 1
+    },
+    {
+      "rok": 1873,
+      "udalosti": 1
+    },
+    {
+      "rok": 1880,
+      "udalosti": 1
+    },
+    {
+      "rok": 1884,
+      "udalosti": 1
+    },
+    {
+      "rok": 1887,
+      "udalosti": 1
+    },
+    {
+      "rok": 1888,
+      "udalosti": 2
+    },
+    {
+      "rok": 1892,
+      "udalosti": 1
+    },
+    {
+      "rok": 1897,
+      "udalosti": 1
+    },
+    {
+      "rok": 1898,
+      "udalosti": 1
+    },
+    {
+      "rok": 1899,
+      "udalosti": 1
+    },
+    {
+      "rok": 1900,
+      "udalosti": 1
+    },
+    {
+      "rok": 1902,
+      "udalosti": 2
+    },
+    {
+      "rok": 1904,
+      "udalosti": 1
+    },
+    {
+      "rok": 1905,
+      "udalosti": 2
+    },
+    {
+      "rok": 1906,
+      "udalosti": 1
+    },
+    {
+      "rok": 1907,
+      "udalosti": 1
+    },
+    {
+      "rok": 1909,
+      "udalosti": 1
+    },
+    {
+      "rok": 1911,
+      "udalosti": 1
+    },
+    {
+      "rok": 1913,
+      "udalosti": 1
+    },
+    {
+      "rok": 1914,
+      "udalosti": 1
+    },
+    {
+      "rok": 1915,
+      "udalosti": 1
+    },
+    {
+      "rok": 1917,
+      "udalosti": 1
+    },
+    {
+      "rok": 1918,
+      "udalosti": 1
+    },
+    {
+      "rok": 1919,
+      "udalosti": 1
+    },
+    {
+      "rok": 1922,
+      "udalosti": 1
+    },
+    {
+      "rok": 1927,
+      "udalosti": 1
+    },
+    {
+      "rok": 1928,
+      "udalosti": 1
+    },
+    {
+      "rok": 1929,
+      "udalosti": 1
+    },
+    {
+      "rok": 1931,
+      "udalosti": 1
+    },
+    {
+      "rok": 1932,
+      "udalosti": 1
+    },
+    {
+      "rok": 1933,
+      "udalosti": 2
+    },
+    {
+      "rok": 1938,
+      "udalosti": 4
+    },
+    {
+      "rok": 1939,
+      "udalosti": 1
+    },
+    {
+      "rok": 1941,
+      "udalosti": 1
+    },
+    {
+      "rok": 1942,
+      "udalosti": 1
+    },
+    {
+      "rok": 1943,
+      "udalosti": 2
+    },
+    {
+      "rok": 1945,
+      "udalosti": 8
+    },
+    {
+      "rok": 1946,
+      "udalosti": 4
+    },
+    {
+      "rok": 1947,
+      "udalosti": 1
+    },
+    {
+      "rok": 1948,
+      "udalosti": 1
+    },
+    {
+      "rok": 1950,
+      "udalosti": 2
+    },
+    {
+      "rok": 1952,
+      "udalosti": 3
+    },
+    {
+      "rok": 1955,
+      "udalosti": 1
+    },
+    {
+      "rok": 1958,
+      "udalosti": 1
+    },
+    {
+      "rok": 1960,
+      "udalosti": 1
+    },
+    {
+      "rok": 1965,
+      "udalosti": 1
+    },
+    {
+      "rok": 1966,
+      "udalosti": 1
+    },
+    {
+      "rok": 1969,
+      "udalosti": 2
+    },
+    {
+      "rok": 1972,
+      "udalosti": 1
+    },
+    {
+      "rok": 1973,
+      "udalosti": 3
+    },
+    {
+      "rok": 1976,
+      "udalosti": 1
+    },
+    {
+      "rok": 1979,
+      "udalosti": 1
+    },
+    {
+      "rok": 1981,
+      "udalosti": 4
+    },
+    {
+      "rok": 1986,
+      "udalosti": 1
+    },
+    {
+      "rok": 1989,
+      "udalosti": 2
+    },
+    {
+      "rok": 1990,
+      "udalosti": 19
+    },
+    {
+      "rok": 1991,
+      "udalosti": 36
+    },
+    {
+      "rok": 1992,
+      "udalosti": 332
+    },
+    {
+      "rok": 1993,
+      "udalosti": 123
+    },
+    {
+      "rok": 1994,
+      "udalosti": 152
+    },
+    {
+      "rok": 1995,
+      "udalosti": 118
+    },
+    {
+      "rok": 1996,
+      "udalosti": 138
+    },
+    {
+      "rok": 1997,
+      "udalosti": 118
+    },
+    {
+      "rok": 1998,
+      "udalosti": 110
+    },
+    {
+      "rok": 1999,
+      "udalosti": 115
+    },
+    {
+      "rok": 2000,
+      "udalosti": 176
+    },
+    {
+      "rok": 2001,
+      "udalosti": 96
+    },
+    {
+      "rok": 2002,
+      "udalosti": 121
+    },
+    {
+      "rok": 2003,
+      "udalosti": 154
+    },
+    {
+      "rok": 2004,
+      "udalosti": 129
+    },
+    {
+      "rok": 2005,
+      "udalosti": 91
+    },
+    {
+      "rok": 2006,
+      "udalosti": 110
+    },
+    {
+      "rok": 2007,
+      "udalosti": 168
+    },
+    {
+      "rok": 2008,
+      "udalosti": 161
+    },
+    {
+      "rok": 2009,
+      "udalosti": 121
+    },
+    {
+      "rok": 2010,
+      "udalosti": 142
+    },
+    {
+      "rok": 2011,
+      "udalosti": 141
+    },
+    {
+      "rok": 2012,
+      "udalosti": 1438
+    },
+    {
+      "rok": 2013,
+      "udalosti": 1794
+    },
+    {
+      "rok": 2014,
+      "udalosti": 1804
+    },
+    {
+      "rok": 2015,
+      "udalosti": 1803
+    },
+    {
+      "rok": 2016,
+      "udalosti": 2337
+    },
+    {
+      "rok": 2017,
+      "udalosti": 3164
+    },
+    {
+      "rok": 2018,
+      "udalosti": 3147
+    },
+    {
+      "rok": 2019,
+      "udalosti": 3134
+    },
+    {
+      "rok": 2020,
+      "udalosti": 2821
+    },
+    {
+      "rok": 2021,
+      "udalosti": 2620
+    },
+    {
+      "rok": 2022,
+      "udalosti": 3053
+    },
+    {
+      "rok": 2023,
+      "udalosti": 3516
+    },
+    {
+      "rok": 2024,
+      "udalosti": 3866
+    },
+    {
+      "rok": 2025,
+      "udalosti": 3792
+    },
+    {
+      "rok": 2026,
+      "udalosti": 2252
+    }
+  ],
+  "entity": {
+    "osob": 127,
+    "firem": 1191,
+    "firem_nalezeno": 5518,
+    "tagu": 33,
+    "roku": 120
+  },
+  "rejstrik": {
+    "osoby": [
+      "abel-josef",
+      "baborak-radek",
+      "bartos-jaromir",
+      "baumgartnerova-jaroslava",
+      "blaha-vladislav",
+      "borka-lubos",
+      "bornova-irena",
+      "borsik-viktor",
+      "budka-jan",
+      "chadim-miloslav",
+      "chopin-fryderyk",
+      "clementso-ambros",
+      "dietl-wenzel",
+      "drahorad-michal",
+      "drexler-dusan",
+      "dubnicky-roman",
+      "dvorak-antonin",
+      "edison-thomas",
+      "eduard-vii",
+      "eibl-vitezslav",
+      "eliska-radomil",
+      "fedosejevova-eva",
+      "flek-jakub",
+      "franta-vojtech",
+      "frantisek-josef-i",
+      "freud-sigmund",
+      "gagarin-jurij",
+      "goethe-johann",
+      "hala-petr",
+      "halbmayr-josef",
+      "halova-alena",
+      "hamar-jan",
+      "hanish-a",
+      "havrdova-alena",
+      "herzig-august",
+      "hladik-martin",
+      "homolka-josef",
+      "hornicek-miroslav",
+      "hroznata",
+      "hurajcik-martin",
+      "jasicek-miroslav",
+      "javorska-hana",
+      "kafka-franz",
+      "kafka-vladimir",
+      "kalina-martin",
+      "kalivoda-karel",
+      "knizak-milan",
+      "knotek-ondrej",
+      "komarkova-stepanka",
+      "konecna-irena",
+      "kopek-rudolf",
+      "kopriva-milan",
+      "kral-zdenek",
+      "kroha-johann",
+      "krupnova-eliska",
+      "kruttner-theodor",
+      "lang-johann",
+      "lessing-theodor",
+      "levetzow-ulrika",
+      "liskova-miluse",
+      "lucak-karel",
+      "manner-otto",
+      "martinek-zbynek",
+      "maryska-zdenek",
+      "marzy-tomas",
+      "masaryk-tomas",
+      "mikolas-jan",
+      "mikova-ludmila",
+      "miksch-hans",
+      "mottlova-ivana",
+      "nadler-franz",
+      "necas-pavel",
+      "nehr-johann",
+      "neruda-jan",
+      "niedzielski-julian",
+      "nosek-ludek",
+      "novacek-roman",
+      "paral-vladimir",
+      "pavlik-michal",
+      "pavlovic-josef",
+      "pelc-miloslav",
+      "peschik-martin",
+      "petiska-eduard",
+      "prihoda-jan",
+      "reiniger-heinrich",
+      "reitenberger-karel",
+      "reznik-petr",
+      "rohac-michael",
+      "roubalova-jana",
+      "rubicka-alena",
+      "rubritius-johann",
+      "ruzickova-michaela",
+      "schaffer-josef",
+      "schneider-a",
+      "schurwonn-josef",
+      "seidl-franz",
+      "seifert-jaroslav",
+      "simeonova-vaclava",
+      "skacelik-frantisek",
+      "skalnik-vaclav",
+      "slehofer-martin",
+      "smetakova-hana",
+      "smutny-vladimir",
+      "spindler-kamil",
+      "sramek-jiri",
+      "stejskalova-zuzana",
+      "stepanek-zdenek",
+      "stranik-stepan",
+      "strauss-johann",
+      "svandrlik-richard",
+      "tesar-karel",
+      "tinterova-barbora",
+      "tomanek-david",
+      "trebizsky-vaclav",
+      "tresnak-petr",
+      "tresnak-zdenek",
+      "tucek-rene",
+      "turba-hans",
+      "turba-josef",
+      "twain-mark",
+      "volavkova-ellen",
+      "vyletal-josef",
+      "wagner-richard",
+      "weiserova-alena",
+      "wunsch-josef",
+      "zabolotny-samuel",
+      "zolotarova-jana"
+    ],
+    "tagy": [
+      "bezpecnost",
+      "bydleni",
+      "cestovni-ruch",
+      "doprava",
+      "dotace-poskytnute",
+      "dotace-prijate",
+      "energetika",
+      "investice",
+      "komise-vybory",
+      "kultura",
+      "lazenstvi",
+      "majetek-nakup",
+      "majetek-prodej",
+      "majetek-pronajem",
+      "mestske-firmy",
+      "odpady",
+      "organizacni",
+      "pamatky",
+      "parkovani",
+      "personalni",
+      "rozpocet",
+      "ruzne",
+      "skolstvi",
+      "smlouvy",
+      "socialni",
+      "sport",
+      "unesco",
+      "uzemni-plan",
+      "verejna-zakazka",
+      "vyhlasky",
+      "zdravotnictvi",
+      "zelen",
+      "zivotni-prostredi"
+    ],
+    "roky": [
+      1193,
+      1528,
+      1779,
+      1788,
+      1805,
+      1808,
+      1812,
+      1817,
+      1818,
+      1820,
+      1821,
+      1823,
+      1824,
+      1836,
+      1843,
+      1845,
+      1846,
+      1848,
+      1850,
+      1856,
+      1858,
+      1861,
+      1864,
+      1865,
+      1866,
+      1867,
+      1868,
+      1872,
+      1873,
+      1880,
+      1884,
+      1887,
+      1888,
+      1892,
+      1897,
+      1898,
+      1899,
+      1900,
+      1902,
+      1904,
+      1905,
+      1906,
+      1907,
+      1909,
+      1911,
+      1913,
+      1914,
+      1915,
+      1917,
+      1918,
+      1919,
+      1922,
+      1927,
+      1928,
+      1929,
+      1931,
+      1932,
+      1933,
+      1938,
+      1939,
+      1941,
+      1942,
+      1943,
+      1945,
+      1946,
+      1947,
+      1948,
+      1950,
+      1952,
+      1955,
+      1958,
+      1960,
+      1965,
+      1966,
+      1969,
+      1972,
+      1973,
+      1976,
+      1979,
+      1981,
+      1986,
+      1989,
+      1990,
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ]
+  },
+  "nezname_osoby": {
+    "co_to_je": "Slugy osob, které se objevují v článcích, ale nejsou v data/lide/osobnosti.json. Osa se pro ně nezakládá. Podnět pro modul B1, ne chyba.",
+    "pocet": 4725,
+    "nejcastejsi": [
+      [
+        "mika-miroslav",
+        5407
+      ],
+      [
+        "kajlik-vladimir",
+        3185
+      ],
+      [
+        "vejmelkova-karolina",
+        3180
+      ],
+      [
+        "riha-pavel",
+        2756
+      ],
+      [
+        "tobrman-oldrich",
+        2754
+      ],
+      [
+        "horky-petr",
+        1982
+      ],
+      [
+        "kandrac-michal",
+        1980
+      ],
+      [
+        "chval-jiri",
+        1948
+      ],
+      [
+        "miklusak-pavel",
+        1653
+      ],
+      [
+        "nemec-josef",
+        1584
+      ],
+      [
+        "kantor-vladimir",
+        1432
+      ],
+      [
+        "jadlovsky-lukas",
+        1107
+      ],
+      [
+        "simanek-antonin",
+        1051
+      ],
+      [
+        "haas-libor",
+        962
+      ],
+      [
+        "snajdr-radek",
+        776
+      ],
+      [
+        "danielova-veronika",
+        612
+      ],
+      [
+        "horacek-jindrich",
+        538
+      ],
+      [
+        "hurka-petr",
+        526
+      ],
+      [
+        "novak-jiri",
+        518
+      ],
+      [
+        "pyskaty-mirko",
+        517
+      ],
+      [
+        "klestilova-eva",
+        517
+      ],
+      [
+        "graca-pavel",
+        516
+      ],
+      [
+        "lambert-marek",
+        515
+      ],
+      [
+        "vrana-miloslav",
+        514
+      ],
+      [
+        "nykles-karel",
+        365
+      ],
+      [
+        "kozlikova-pavla",
+        332
+      ],
+      [
+        "tuckova-anna",
+        314
+      ],
+      [
+        "sasko-martin",
+        287
+      ],
+      [
+        "milota-josef",
+        237
+      ],
+      [
+        "coufalik-ivan",
+        201
+      ]
+    ]
+  },
+  "neplatne_tagy": {},
+  "smazano_zastaralych": {
+    "roky": 0,
+    "osoby": 0,
+    "firmy": 1,
+    "tagy": 0
+  }
+}

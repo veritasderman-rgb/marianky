@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27331334",
+    "nazev": "Bui Huy Dung"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-08-06",
+    "do": "2025-04-14",
+    "prvni_rok": 2007,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 8,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:27331334:vznik",
+      "datum": "2007-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-08-06",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Huy Dung Bui",
+      "popis": "Vznik subjektu Huy Dung Bui (IČO 27331334), Fyzická osoba podnikající dle živnostenského zákona, obor: Kadeřnické a holičské činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-39-39/4",
+      "datum": "2019-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-01",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 492",
+      "popis": "Rada města, bod 39/4, usnesení 494/19. Schvaleno.",
+      "castka_czk": 228000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2415745",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-45-45/5",
+      "datum": "2019-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 492 - odstoupení od žádosti o pronájem NP",
+      "popis": "Rada města, bod 45/5, usnesení 555/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2433647",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/45.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-59-59/8",
+      "datum": "2020-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 492 - pronájem nebytového prostoru",
+      "popis": "Rada města, bod 59/8, usnesení 119/20. Schvaleno.",
+      "castka_czk": 228000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2483810",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/8__11608996",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Chebská 492 - Huy Dung Bui",
+      "popis": "Odhadované spojení smlouvy z 2020-03-26 s bodem 59/8 z 2020-02-25 (NP Chebská 492 - pronájem nebytového prostoru). Jistota stredni.",
+      "castka_czk": 1379400.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27331334 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; název bodu a předmět smlouvy sdílí slova chebska, nebytoveho, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/12473944",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11608996",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Chebská 492 - Huy Dung Bui",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Huy Dung Bui.",
+      "castka_czk": 1379400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12473944",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/11",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 492 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 79/11, usnesení 162/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332288",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-83-83/8",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 492 - prodloužení Smlouvy o nájmu nebytového prostoru – Huy Dung Bui",
+      "popis": "Rada města, bod 83/8, usnesení 231/25. Schvaleno.",
+      "castka_czk": 228000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3342500",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/8__30983436",
+      "datum": "2025-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-14",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 - NS nebytový prostor",
+      "popis": "Odhadované spojení smlouvy z 2025-04-14 s bodem 83/8 z 2025-04-01 (NP Chebská, č.p. 492 - prodloužení Smlouvy o nájmu nebytového prostoru – Huy Dung Bui). Jisto",
+      "castka_czk": 1140000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27331334 je uvedeno v textu usnesení; smlouva podepsána 13 dní po usnesení; obojí je dodatek č. 5",
+      "url": "https://smlouvy.gov.cz/smlouva/33075356",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30983436",
+      "datum": "2025-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 - NS nebytový prostor",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bui Huy Dung.",
+      "castka_czk": 1140000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33075356",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

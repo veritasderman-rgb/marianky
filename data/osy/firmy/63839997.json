@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63839997",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-05-22",
+    "do": "2025-11-18",
+    "prvni_rok": 2012,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-67-67/12",
+      "datum": "2012-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-05-22",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Oslavy osvobození 2012",
+      "popis": "Rada města, bod 67/12, usnesení 266/12.",
+      "castka_czk": 1219,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/769354",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-104-104/20",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Licenční smlouva o veřejném provozování",
+      "popis": "Rada města, bod 104/20, usnesení 778/25. Schvaleno.",
+      "castka_czk": 1842,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3386247279",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

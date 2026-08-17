@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27940861",
+    "nazev": "Reitenberger s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-08-15",
+    "do": "2026-05-27",
+    "prvni_rok": 2007,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:27940861:vznik",
+      "datum": "2007-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-08-15",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Reitenberger s.r.o.",
+      "popis": "Vznik subjektu Reitenberger s.r.o. (IČO 27940861), Společnost s ručením omezeným, obor: Lůžková zdravotní péče.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:31756765",
+      "datum": "2025-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb MHD",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Reitenberger s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33885109",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36420212",
+      "datum": "2026-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-27",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o užívání parkovacích stání",
+      "popis": "DEVELOP CENTRUM Mariánské Lázně s. r. o. — výdaj, protistrana Reitenberger s.r.o..",
+      "castka_czk": 544500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38754580",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/61776068.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

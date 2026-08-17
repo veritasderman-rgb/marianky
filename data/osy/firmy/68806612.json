@@ -1,0 +1,920 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68806612",
+    "nazev": "Marian Valko"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-10-18",
+    "do": "2026-07-27",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 44,
+    "dolozenych": 29,
+    "odhadu": 15,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 11,
+      "retez": 15,
+      "smlouva": 17
+    },
+    "dle_jistoty": {
+      "fakt": 29,
+      "stredni": 1,
+      "nizka": 14
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:68806612:vznik",
+      "datum": "2000-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-10-18",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Marian Valko",
+      "popis": "Vznik subjektu Marian Valko (IČO 68806612), Fyzická osoba podnikající dle živnostenského zákona, obor: Pohřební a související činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-10-10/3",
+      "datum": "2015-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-03",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Správa veřejného pohřebiště v Mariánských Lázních - přidělení veř.zakázky",
+      "popis": "Rada města, bod 10/3, usnesení 47/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1347055",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-90-90/2",
+      "datum": "2016-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Družstevní 415 - pronájem novému nájemci",
+      "popis": "Rada města, bod 90/2, usnesení 525/16. Schvaleno.",
+      "castka_czk": 194184,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1657382",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-90/2__531649",
+      "datum": "2016-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-10",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Družstevní 415",
+      "popis": "Odhadované spojení smlouvy z 2016-11-10 s bodem 90/2 z 2016-11-01 (NP Družstevní 415 - pronájem novému nájemci). Jistota stredni.",
+      "castka_czk": 1174814.41,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/566153",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:531649",
+      "datum": "2016-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-10",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru Družstevní 415",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 1174814.41,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/566153",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:6829807",
+      "datum": "2018-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Obstaratelská smlouva o zajištění slušného pohřbení - Pavel Karička",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko - pohřební služba.",
+      "castka_czk": 16126.88,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7376083",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7090719",
+      "datum": "2018-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Obstaratelská smlouva o zajištění slušného pohřbení - Petr Líska",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko - pohřební služba.",
+      "castka_czk": 13528.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7656199",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7090715",
+      "datum": "2018-11-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Obstaratelská smlouva o zajištění slušného pohřbení - Bohumil Bartošek",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko - pohřební služba.",
+      "castka_czk": 13528.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7656195",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-20-20/3",
+      "datum": "2019-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Dodatku č. 1 ke Smlouvě o správě, provozu a údržbě veřejného pohřebiště a smuteční obřadní síně v Mariánských Lázních",
+      "popis": "Rada města, bod 20/3, usnesení 192/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2328970",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/20.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-30-30/14",
+      "datum": "2019-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o nájmu služebního bytu v budově č.p. 337, ul. Mladějovského, Mariánské Lázně (u hřbitova)",
+      "popis": "Rada města, bod 30/14, usnesení 348/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2370330",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-4/4__9071563",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o zajištění převozu a uložení těl zemřelých",
+      "popis": "Odhadované spojení smlouvy z 2019-08-01 s bodem 4/4 z 2018-12-11 (Veřejná zakázka - Správa veřejného pohřebiště v Mariánských Lázních - výběr nabídky). Jistota ",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 233 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9771511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-20/3__9071563",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o zajištění převozu a uložení těl zemřelých",
+      "popis": "Odhadované spojení smlouvy z 2019-08-01 s bodem 20/3 z 2019-04-23 (Uzavření Dodatku č. 1 ke Smlouvě o správě, provozu a údržbě veřejného pohřebiště a smuteční o",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 100 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/9771511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-30/14__9071563",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o zajištění převozu a uložení těl zemřelých",
+      "popis": "Odhadované spojení smlouvy z 2019-08-01 s bodem 30/14 z 2019-07-09 (Uzavření Smlouvy o nájmu služebního bytu v budově č.p. 337, ul. Mladějovského, Mariánské Láz",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9771511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9071563",
+      "datum": "2019-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o zajištění převozu a uložení těl zemřelých",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9771511",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-76/16__13412064",
+      "datum": "2020-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Renovace , oprava hrobky Halbmayer",
+      "popis": "Odhadované spojení smlouvy z 2020-11-06 s bodem 76/16 z 2020-06-30 (Smlouva o dílo – údržba veřejné zeleně na hřbitově). Jistota nizka.",
+      "castka_czk": 386776.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 129 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/14378232",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13412064",
+      "datum": "2020-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Renovace , oprava hrobky Halbmayer",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko.",
+      "castka_czk": 386776.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14378232",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-119-119/7",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní bez č.p., na st.p.č. 408/2",
+      "popis": "Rada města, bod 119/7, usnesení 367/21. Schvaleno.",
+      "castka_czk": 84500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2733110",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/7__16371647",
+      "datum": "2021-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Marian Valko",
+      "popis": "Odhadované spojení smlouvy z 2021-09-01 s bodem 119/7 z 2021-08-24 (Pronájem NP Hlavní bez č.p., na st.p.č. 408/2). Jistota nizka.",
+      "castka_czk": 511225.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/17627027",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16371647",
+      "datum": "2021-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Marian Valko",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 511225.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17627027",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-124-124/11",
+      "datum": "2021-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-12",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Družstevní, č.p. 415 - prodloužení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 124/11, usnesení 452/21. Schvaleno.",
+      "castka_czk": 194184,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2754704",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-124/11__16816127",
+      "datum": "2021-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-20",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - p. Valko",
+      "popis": "Odhadované spojení smlouvy z 2021-10-20 s bodem 124/11 z 2021-10-12 (NP Družstevní, č.p. 415 - prodloužení Smlouvy o nájmu nebytového prostoru). Jistota nizka.",
+      "castka_czk": 1174814.41,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prodlouzeni, prostoru; k t",
+      "url": "https://smlouvy.gov.cz/smlouva/18106179",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16816127",
+      "datum": "2021-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - p. Valko",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 1174814.41,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18106179",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/7__18347963",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "\"Renovace schodiště na Ruské tř., k hotelu Butterfly\", havarijní stav",
+      "popis": "Odhadované spojení smlouvy z 2022-03-18 s bodem 119/7 z 2021-08-24 (Pronájem NP Hlavní bez č.p., na st.p.č. 408/2). Jistota nizka.",
+      "castka_czk": 120776.8034,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 206 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/19729431",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-124/11__18347963",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "\"Renovace schodiště na Ruské tř., k hotelu Butterfly\", havarijní stav",
+      "popis": "Odhadované spojení smlouvy z 2022-03-18 s bodem 124/11 z 2021-10-12 (NP Družstevní, č.p. 415 - prodloužení Smlouvy o nájmu nebytového prostoru). Jistota nizka.",
+      "castka_czk": 120776.8034,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 157 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/19729431",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18347963",
+      "datum": "2022-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "\"Renovace schodiště na Ruské tř., k hotelu Butterfly\", havarijní stav",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko.",
+      "castka_czk": 120776.8034,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19729431",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/7__18963347",
+      "datum": "2022-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-27",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka - oprava hrobky na městském hřbitově, havarijní stav",
+      "popis": "Odhadované spojení smlouvy z 2022-04-27 s bodem 119/7 z 2021-08-24 (Pronájem NP Hlavní bez č.p., na st.p.č. 408/2). Jistota nizka.",
+      "castka_czk": 80419.504,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 246 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/20375003",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-124/11__18963347",
+      "datum": "2022-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-27",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka - oprava hrobky na městském hřbitově, havarijní stav",
+      "popis": "Odhadované spojení smlouvy z 2022-04-27 s bodem 124/11 z 2021-10-12 (NP Družstevní, č.p. 415 - prodloužení Smlouvy o nájmu nebytového prostoru). Jistota nizka.",
+      "castka_czk": 80419.504,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 197 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/20375003",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18963347",
+      "datum": "2022-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-27",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - oprava hrobky na městském hřbitově, havarijní stav",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko .",
+      "castka_czk": 80419.504,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20375003",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-152-152/4",
+      "datum": "2022-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-28",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Renovace schodišť na kolonádu v ML a Výměna plochy ze žulových desek na kolonádě v ML",
+      "popis": "Rada města, bod 152/4, usnesení 325/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2868935",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-152/4__19684887",
+      "datum": "2022-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-13",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "\"Renovace schodišť na kolonádu v Mariánských Lázních“ a \"Výměna plochy ze žulových desek na kolonádě v Mariánských Lázních\"",
+      "popis": "Odhadované spojení smlouvy z 2022-07-13 s bodem 152/4 z 2022-06-28 (Renovace schodišť na kolonádu v ML a Výměna plochy ze žulových desek na kolonádě v ML). Jist",
+      "castka_czk": 1628832.95,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova desek, kolonade, kolonadu, plochy; k témuž u",
+      "url": "https://smlouvy.gov.cz/smlouva/21157735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19684887",
+      "datum": "2022-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-13",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "\"Renovace schodišť na kolonádu v Mariánských Lázních“ a \"Výměna plochy ze žulových desek na kolonádě v Mariánských Lázních\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 1628832.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21157735",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-152/4__20680441",
+      "datum": "2022-10-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-26",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "\"Oprava hřbitovní zdi na městském hřbitově\", havarijní stav",
+      "popis": "Odhadované spojení smlouvy z 2022-10-26 s bodem 152/4 z 2022-06-28 (Renovace schodišť na kolonádu v ML a Výměna plochy ze žulových desek na kolonádě v ML). Jist",
+      "castka_czk": 80378.9206,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 120 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/22205725",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20680441",
+      "datum": "2022-10-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "\"Oprava hřbitovní zdi na městském hřbitově\", havarijní stav",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko.",
+      "castka_czk": 80378.9206,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22205725",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-152/4__22573977",
+      "datum": "2023-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-24",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu schodiště, areál sportoviště Sandow Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-04-24 s bodem 152/4 z 2022-06-28 (Renovace schodišť na kolonádu v ML a Výměna plochy ze žulových desek na kolonádě v ML). Jist",
+      "castka_czk": 99365.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 300 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/24204185",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/4__22573977",
+      "datum": "2023-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-24",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu schodiště, areál sportoviště Sandow Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-04-24 s bodem 18/4 z 2023-03-30 (Dodatek č. 2 ke Smlouvě o správě, provozu a údržbě veřejného pohřebiště a smuteční obřadní sí",
+      "castka_czk": 99365.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68806612 je uvedeno v textu usnesení; smlouva podepsána 25 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24204185",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22573977",
+      "datum": "2023-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-24",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Oprava havarijního stavu schodiště, areál sportoviště Sandow Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko.",
+      "castka_czk": 99365.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24204185",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30243680",
+      "datum": "2025-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Oprava havarijního stavu žulového obložení schodiště u objektu MÚ, Nákladní ulice,Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamenictví Valko.",
+      "castka_czk": 303953.1737,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32299212",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36229744",
+      "datum": "2026-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-18",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 62/26 - Výměna poškozených mramorových schodů v havarijním stavu u pítka Ferdinandova pramene, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 79497.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38556624",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/14",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Družstevní, č.p. 415, nebytová jednotka č. 415/10 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 120/14, usnesení 1282/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4219302560",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/15",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Hlavní třída bez č.p. – zveřejnění záměru obce",
+      "popis": "Rada města, bod 120/15, usnesení 1283/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/166821007",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/13",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Družstevní, č.p. 415 – prodloužení nájemního vztahu - Marian Valko",
+      "popis": "Rada města, bod 122/13, usnesení 1352/26. Schvaleno.",
+      "castka_czk": 194184,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/76115698",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/14",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Hlavní třída bez č.p.– prodloužení nájemního vztahu - Marian Valko",
+      "popis": "Rada města, bod 122/14, usnesení 1353/26. Schvaleno.",
+      "castka_czk": 84500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3848927371",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:36567238",
+      "datum": "2026-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-27",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - prodloužení - p. Valko",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 970921.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38907710",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36567786",
+      "datum": "2026-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-27",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Marian Valko",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marian Valko.",
+      "castka_czk": 422500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38908262",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

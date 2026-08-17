@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28042727",
+    "nazev": "Goethe Park s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-12-17",
+    "do": "2025-01-10",
+    "prvni_rok": 2008,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28042727:vznik",
+      "datum": "2008-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-12-17",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Goethe Park s.r.o.",
+      "popis": "Vznik subjektu Goethe Park s.r.o. (IČO 28042727), Společnost s ručením omezeným, obor: Poskytování ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:13008836",
+      "datum": "2020-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Goethe Park s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13948060",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18663703",
+      "datum": "2023-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb, dodatek č.1.",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Goethe Park s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27236147",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29966332",
+      "datum": "2025-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb MHD",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Goethe Park s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32008944",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

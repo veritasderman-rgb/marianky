@@ -1,0 +1,780 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64839931",
+    "nazev": "Marcoussis z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-02-03",
+    "do": "2026-03-23",
+    "prvni_rok": 1997,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 37,
+    "dolozenych": 30,
+    "odhadu": 7,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 25,
+      "retez": 7,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 30,
+      "stredni": 1,
+      "nizka": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64839931:vznik",
+      "datum": "1997-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-02-03",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Marcoussis z.s.",
+      "popis": "Vznik subjektu Marcoussis z.s. (IČO 64839931), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování společných a veřejných zájmů",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-59-59/10",
+      "datum": "2012-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-20",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 59/10, usnesení 139/12.",
+      "castka_czk": 82000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/741376",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/30",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 11/30, usnesení 343/12.",
+      "castka_czk": 593500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/754830",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-104-104/8",
+      "datum": "2013-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-26",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 104/8, usnesení 132/13. Schvaleno.",
+      "castka_czk": 50000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/925366",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-16-16/15",
+      "datum": "2013-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-23",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/15, usnesení 521/13. Schvaleno.",
+      "castka_czk": 400000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/932001",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-147-147/10",
+      "datum": "2014-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 147/10, usnesení 113/14. Schvaleno.",
+      "castka_czk": 80000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1098938",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/147.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-22-22/35",
+      "datum": "2014-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-04-29",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 22/35, usnesení 727/14. Schvaleno.",
+      "castka_czk": 800000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1104361",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-24-24/52",
+      "datum": "2014-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 24/52, usnesení 829/14. Schvaleno.",
+      "castka_czk": 1196950,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1259874",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-17-17/18",
+      "datum": "2015-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-03-31",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 17/18, usnesení 150/15. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1371495",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-6-6/23",
+      "datum": "2015-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-14",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 6/23, usnesení 91/15. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1376058",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-60-60/2",
+      "datum": "2016-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 60/2, usnesení 136/16. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1546906",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-63-63/13",
+      "datum": "2016-04-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-05",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Sdružení Marcoussis,umístění sídla",
+      "popis": "Rada města, bod 63/13, usnesení 177/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1562264",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/63.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-16-16/7",
+      "datum": "2016-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 293/16.",
+      "castka_czk": 1200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1561386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-117-117/8",
+      "datum": "2017-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-06",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 117/8, usnesení 349/17. Schvaleno.",
+      "castka_czk": 79000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1771105",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-27-27/15",
+      "datum": "2017-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-20",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 27/15, usnesení 521/17. Schvaleno.",
+      "castka_czk": 191000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1774184",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__5767663",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Marcousissis",
+      "popis": "Odhadované spojení smlouvy z 2018-07-23 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota stredni.",
+      "castka_czk": 50000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 102 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6213063",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5767663",
+      "datum": "2018-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "FK neinvestiční dotace Marcousissis",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcoussis z.s..",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6213063",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-164-164/24",
+      "datum": "2018-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-28",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2018",
+      "popis": "Rada města, bod 164/24, usnesení 469/18. Schvaleno.",
+      "castka_czk": 1600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2085646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-39-39/30",
+      "datum": "2018-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení žádostí podaných do 2. kola Fondu kultury 2018",
+      "popis": "Zastupitelstvo města, bod 39/30, usnesení 779/18. Schvaleno.",
+      "castka_czk": 125000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2089707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-96-96/7",
+      "datum": "2021-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-26",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2021 - 1. výzva",
+      "popis": "Rada města, bod 96/7, usnesení 32/21. Schvaleno.",
+      "castka_czk": 96000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2634326",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-18-18/12",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo - 2021",
+      "popis": "Zastupitelstvo města, bod 18/12, usnesení 389/21. Schvaleno.",
+      "castka_czk": 1167000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2637542",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/20",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Rada města, bod 77/20, usnesení 92/25. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317945",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/20__30685440",
+      "datum": "2025-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-02",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Marcoussis, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2025-04-02 s bodem 77/20 z 2025-02-04 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32763524",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-19/20__30685440",
+      "datum": "2025-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-02",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Marcoussis, z.s.",
+      "popis": "Odhadované spojení smlouvy z 2025-04-02 s bodem 19/20 z 2025-02-11 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/32763524",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30685440",
+      "datum": "2025-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-02",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Marcoussis, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcoussis z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32763524",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/20__32672681",
+      "datum": "2025-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-17",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Obejdnávka Marcoussis z.s - doprava na akcoi partnerství ML a Marcoussi",
+      "popis": "Odhadované spojení smlouvy z 2025-09-17 s bodem 77/20 z 2025-02-04 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 55000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 225 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/34843613",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-19/20__32672681",
+      "datum": "2025-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-17",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Obejdnávka Marcoussis z.s - doprava na akcoi partnerství ML a Marcoussi",
+      "popis": "Odhadované spojení smlouvy z 2025-09-17 s bodem 19/20 z 2025-02-11 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 55000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 218 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/34843613",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32672681",
+      "datum": "2025-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-17",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Obejdnávka Marcoussis z.s - doprava na akcoi partnerství ML a Marcoussi",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcoussis z.s..",
+      "castka_czk": 55000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34843613",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/5__35014429",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Marcoussis 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-03-23 s bodem 109/5 z 2026-01-20 (Fond kultury 2026). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 62 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37291333",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2026-25/6__35014429",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Marcoussis 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-03-23 s bodem 25/6 z 2026-02-10 (Fond kultury 2026 - 1.výzva). Jistota nizka.",
+      "castka_czk": 90000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64839931 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37291333",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35014429",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Marcoussis 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marcoussis z.s..",
+      "castka_czk": 90000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37291333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09629220",
+    "nazev": "Aureka s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-09-07",
+    "do": "2022-04-25",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-120-120/13",
+      "datum": "2021-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 831 - postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 120/13, usnesení 391/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2738594",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-120/13__16492847",
+      "datum": "2021-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-15",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 - dohoda o postoupení smlouvy o nájmu nebytového prostoru - Kamil Štědrák x Aureka s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2021-09-15 s bodem 120/13 z 2021-09-07 (NP Franze Kafky, č.p. 831 - postoupení Smlouvy o nájmu nebytového prostoru). Jistota stredn",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 09629220 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, postoupeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/17763379",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16492847",
+      "datum": "2021-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-15",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 - dohoda o postoupení smlouvy o nájmu nebytového prostoru - Kamil Štědrák x Aureka s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Aureka s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17763379",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/17",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, neb. jednotka č. A3 III, č.p.831 - prodloužení smlouvy - společnost Aureka s.r.o.",
+      "popis": "Rada města, bod 145/17, usnesení 184/22. Schvaleno.",
+      "castka_czk": 85524,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2837362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-120/13__18705959",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost Aureka s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-04-25 s bodem 120/13 z 2021-09-07 (NP Franze Kafky, č.p. 831 - postoupení Smlouvy o nájmu nebytového prostoru). Jistota nizka.",
+      "castka_czk": 517420.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 09629220 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 230 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru; stejně dobře s",
+      "url": "https://smlouvy.gov.cz/smlouva/20104959",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-145/17__18705959",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost Aureka s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-04-25 s bodem 145/17 z 2022-04-19 (NP Franze Kafky, neb. jednotka č. A3 III, č.p.831 - prodloužení smlouvy - společnost Aureka",
+      "castka_czk": 517420.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 09629220 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova aureka, prodlouzeni; stejně dobře sedí i 1 da",
+      "url": "https://smlouvy.gov.cz/smlouva/20104959",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18705959",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost Aureka s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Aureka s.r.o..",
+      "castka_czk": 517420.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20104959",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

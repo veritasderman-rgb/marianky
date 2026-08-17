@@ -1,0 +1,167 @@
+{
+  "rok": 1938,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "funkce:manner-otto:0",
+      "datum": "1938",
+      "datum_do": "1945",
+      "presnost": "obdobi",
+      "razeni": "1938-01-01",
+      "rok": 1938,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Otto Manner — starosta",
+      "popis": "starosta (1938 – 1945).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "manner-otto"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "manner-otto#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "starosta",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1945"
+      }
+    },
+    {
+      "id": "historie:1938-manner-starosta",
+      "datum": "1938",
+      "datum_do": "1945",
+      "presnost": "obdobi",
+      "razeni": "1938-01-01",
+      "rok": 1938,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Otto Manner posledním německým starostou města",
+      "popis": "Právník Otto Manner byl v letech 1938–1945 starostou Mariánských Lázní. Byl posledním starostou města před poválečným odsunem německého obyvatelstva.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "manner-otto"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1938-manner-starosta",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "okupace-a-valka",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    },
+    {
+      "id": "historie:1938-mnichov",
+      "datum": "1938-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "1938-10-01",
+      "rok": 1938,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Mariánské Lázně připojeny k nacistickému Německu",
+      "popis": "Na základě mnichovské dohody bylo v říjnu 1938 československé pohraničí včetně Mariánských Lázní připojeno k nacistickému Německu.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1938-mnichov",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "valka",
+        "obdobi": "okupace-a-valka",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B"
+        ]
+      }
+    },
+    {
+      "id": "historie:1938-synagoga",
+      "datum": "1938-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1938-11-09",
+      "rok": 1938,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Vypálena židovská synagoga",
+      "popis": "Během Křišťálové noci 9. listopadu 1938 byla v Mariánských Lázních nacisty vypálena a zničena židovská synagoga.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "pamatky"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1938-synagoga",
+      "url": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+      "detail": {
+        "kategorie": "valka",
+        "obdobi": "okupace-a-valka",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+          "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    }
+  ]
+}

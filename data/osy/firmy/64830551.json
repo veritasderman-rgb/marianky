@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64830551",
+    "nazev": "EUROVIA Silba, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-08-25",
+    "do": "2021-10-12",
+    "prvni_rok": 2020,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2020-80-80/11",
+      "datum": "2020-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava povrchu cyklotrasy v úseku Drmoul - Chodová Planá - přidělení veřejné zakázky",
+      "popis": "Rada města, bod 80/11, usnesení 433/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2566264",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/80.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-80/11__12871576",
+      "datum": "2020-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-10",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Oprava povrchu cyklotrasy v úseku Drmoul- Chodová Planá",
+      "popis": "Odhadované spojení smlouvy z 2020-09-10 s bodem 80/11 z 2020-08-25 (VZ Oprava povrchu cyklotrasy v úseku Drmoul - Chodová Planá - přidělení veřejné zakázky). Ji",
+      "castka_czk": 963933.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodova, cyklotrasy, drmoul, oprava; k témuž",
+      "url": "https://smlouvy.gov.cz/smlouva/13803304",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12871576",
+      "datum": "2020-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Oprava povrchu cyklotrasy v úseku Drmoul- Chodová Planá",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EUROVIA Silba, a.s..",
+      "castka_czk": 963933.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13803304",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-80/11__13267844",
+      "datum": "2020-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-25",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 Oprava povrchu cyklotrasy v úseku Drmoul- Chodová Planá",
+      "popis": "Odhadované spojení smlouvy z 2020-09-25 s bodem 80/11 z 2020-08-25 (VZ Oprava povrchu cyklotrasy v úseku Drmoul - Chodová Planá - přidělení veřejné zakázky). Ji",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 64830551 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodova, cyklotrasy, drmoul, oprava; k témuž",
+      "url": "https://smlouvy.gov.cz/smlouva/14222000",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13267844",
+      "datum": "2020-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-25",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 Oprava povrchu cyklotrasy v úseku Drmoul- Chodová Planá",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EUROVIA Silba, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14222000",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-115-115/23",
+      "datum": "2021-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-29",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Oprava povrchu komunikace k ČOV Chotěnov a oprava asfaltové komunikace příjezdu k Útulku pro psy - výběr dodavatele",
+      "popis": "Rada města, bod 115/23, usnesení 304/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2701127",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-124-124/15",
+      "datum": "2021-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-12",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.1 ke Smlouvě, Oprava povrchu komunikace k ČOV a příjezdové komunikace k útulku pro psy",
+      "popis": "Rada města, bod 124/15, usnesení 456/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2755334",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

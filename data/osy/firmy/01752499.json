@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01752499",
+    "nazev": "Certero IT Solutions s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-03-05",
+    "do": "2024-07-23",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 3,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-47-47/38",
+      "datum": "2024-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-05",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Konektivita na ZŠ JIH Mariánské Lázně\" - výběr dodavatele",
+      "popis": "Rada města, bod 47/38, usnesení 158/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3163294",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/47.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-47/38__26336011",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Konektivita na ZŠ JIH Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-04-02 s bodem 47/38 z 2024-03-05 (Veřejná zakázka \"Konektivita na ZŠ JIH Mariánské Lázně\" - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 8941481.34,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01752499 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/28186451",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26336011",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Konektivita na ZŠ JIH Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Certero IT Solutions s.r.o., Martin Dudek.",
+      "castka_czk": 8941481.34,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28186451",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-47/38__27679740",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva Konektivita na ZŠ Vítězství Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-07-23 s bodem 47/38 z 2024-03-05 (Veřejná zakázka \"Konektivita na ZŠ JIH Mariánské Lázně\" - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 4404679.51,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01752499 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 140 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/29588664",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/26__27679740",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva Konektivita na ZŠ Vítězství Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-07-23 s bodem 54/26 z 2024-05-28 (Konektivita na ZŠ Vítězství Mariánské Lázně (1.část veřejné zakázky) - výběr dodavatele). Ji",
+      "castka_czk": 4404679.51,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Certero IT Solutions s.r.o.) je v textu usnesení; smlouva podepsána 56 dní po usnesení; název bodu a předmět smlouvy sdílí slova konektivita, vitezstvi; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/29588664",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27679740",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva Konektivita na ZŠ Vítězství Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Certero IT Solutions s.r.o..",
+      "castka_czk": 4404679.51,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29588664",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

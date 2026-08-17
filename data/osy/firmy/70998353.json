@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70998353",
+    "nazev": "Společenství vlastníků U mlékárny 404 a 45"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-05-20",
+    "do": "2016-12-06",
+    "prvni_rok": 2003,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70998353:vznik",
+      "datum": "2003-05-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-05-20",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků U mlékárny 404 a 405, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků U mlékárny 404 a 405, Mariánské Lázně (IČO 70998353), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních n",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2016-92/22__891417",
+      "datum": "2016-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-06",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva na pronájem části p. p. č. 973/26 k. ú. Úšovice",
+      "popis": "Odhadované spojení smlouvy z 2016-12-06 s bodem 92/22 z 2016-11-21 (Pronájem části p.p.č. 973/26 k.ú.Úšovice - U Mlékárny). Jistota vysoka.",
+      "castka_czk": 24054.8,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 70998353 je uvedeno v textu usnesení; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova pronajem, ",
+      "url": "https://smlouvy.gov.cz/smlouva/949133",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:891417",
+      "datum": "2016-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-06",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva na pronájem části p. p. č. 973/26 k. ú. Úšovice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Společenství vlastníků U mlékárny 404 a 45.",
+      "castka_czk": 24054.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/949133",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

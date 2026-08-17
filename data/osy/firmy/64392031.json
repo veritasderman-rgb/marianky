@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64392031",
+    "nazev": "Petr Václavík"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-01-02",
+    "do": "2026-06-12",
+    "prvni_rok": 1996,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 8,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:64392031:vznik",
+      "datum": "1996-01-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-01-02",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petr Václavík",
+      "popis": "Vznik subjektu Petr Václavík (IČO 64392031), Fyzická osoba podnikající dle živnostenského zákona, obor: Destilace, rektifikace a míchaní lihovin.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-111-111/1",
+      "datum": "2013-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-05-28",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 45 - prodloužení doby nájmu",
+      "popis": "Rada města, bod 111/1, usnesení 219/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/960265",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-162-162/12",
+      "datum": "2022-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 45 - Petr Václavík",
+      "popis": "Rada města, bod 162/12, usnesení 507/22. Schvaleno.",
+      "castka_czk": 506472,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2922437",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-162/12__20856117",
+      "datum": "2022-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-10",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petr Václavík",
+      "popis": "Odhadované spojení smlouvy z 2022-11-10 s bodem 162/12 z 2022-10-18 (NP Hlavní, č.p. 45 - Petr Václavík). Jistota stredni.",
+      "castka_czk": 7047557.88,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 64392031 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova petr, vaclavik",
+      "url": "https://smlouvy.gov.cz/smlouva/22389957",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20856117",
+      "datum": "2022-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-10",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Petr Václavík",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Václavík.",
+      "castka_czk": 7047557.88,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22389957",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/11",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Modrá cukrárna – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 51/11, usnesení 259/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180047",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/25",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nebytového prostoru č. 45/10, v ul. Hlavní třída, č.p. 45, Mariánské Lázně",
+      "popis": "Rada města, bod 113/25, usnesení 1009/26. Schvaleno.",
+      "castka_czk": 240000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/501326925",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-117-117/7",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 45 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 117/7, usnesení 1153/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4119891891",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/25",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Hlavní třída, č.p. 45 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 119/25, usnesení 1233/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2464573058",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

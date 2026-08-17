@@ -1,0 +1,280 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "61176591",
+    "nazev": "Thuan Do Van - NAMHA"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-08-12",
+    "do": "2025-05-26",
+    "prvni_rok": 1994,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 9,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:61176591:vznik",
+      "datum": "1994-08-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-08-12",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Thuan Do Van - NAMHA",
+      "popis": "Vznik subjektu Thuan Do Van - NAMHA (IČO 61176591), Fyzická osoba podnikající dle živnostenského zákona zapsaná v obchodním rejstříku, obor: Nespecializovaný ma",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-50-50/34",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - pronájem NP",
+      "popis": "Rada města, bod 50/34, usnesení 656/19. Schvaleno.",
+      "castka_czk": 314122,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2451704",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/34__10752248",
+      "datum": "2020-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-13",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 259",
+      "popis": "Odhadované spojení smlouvy z 2020-01-13 s bodem 50/34 z 2019-12-17 (NP Hlavní 259 - pronájem NP). Jistota stredni.",
+      "castka_czk": 1900438.1,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 61176591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11571504",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10752248",
+      "datum": "2020-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-13",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 259",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Thuan Do Van - NAMHA.",
+      "castka_czk": 1900438.1,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11571504",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-82-82/6",
+      "datum": "2020-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - rozšíření předmětu činnosti",
+      "popis": "Rada města, bod 82/6, usnesení 460/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2576861",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/82.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-52-52/5",
+      "datum": "2024-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-30",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 259 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 52/5, usnesení 285/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3186578",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/52.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/10",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 259 – prodloužení nájemního vztahu – Thuan Do Van - NAMHA",
+      "popis": "Rada města, bod 56/10, usnesení 395/24. Schvaleno.",
+      "castka_czk": 314122,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3204477",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-83-83/5",
+      "datum": "2025-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 259 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 83/5, usnesení 228/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3342424",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-87-87/8",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 259 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 87/8, usnesení 318/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3359840",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-83/5__31344640",
+      "datum": "2025-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dohoda o postoupení smlouvy o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-05-26 s bodem 83/5 z 2025-04-01 (NP Hlavní třída, č.p. 259 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 1465902.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 61176591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 55 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33451540",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-87/8__31344640",
+      "datum": "2025-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dohoda o postoupení smlouvy o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-05-26 s bodem 87/8 z 2025-04-29 (NP Hlavní třída, č.p. 259 – postoupení Smlouvy o nájmu nebytového prostoru). Jistota nizka.",
+      "castka_czk": 1465902.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 61176591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, postoupeni, prostoru; usn",
+      "url": "https://smlouvy.gov.cz/smlouva/33451540",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31344640",
+      "datum": "2025-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o postoupení smlouvy o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Thuan Do Van - NAMHA.",
+      "castka_czk": 1465902.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33451540",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

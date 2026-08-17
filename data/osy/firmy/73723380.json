@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73723380",
+    "nazev": "Radek Hrkal, malířské a natěračské práce"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2006-03-01",
+    "do": "2020-11-05",
+    "prvni_rok": 2006,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73723380:vznik",
+      "datum": "2006-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-03-01",
+      "rok": 2006,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Radek Hrkal",
+      "popis": "Vznik subjektu Radek Hrkal (IČO 73723380), Fyzická osoba podnikající dle živnostenského zákona, obor: Sklenářské, malířské a natěračské práce.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:3013410",
+      "datum": "2017-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-04",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Oprava vnitřní výmalby",
+      "popis": "Správa městských sportovišť — výdaj, protistrana Hrkal Radek.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3246566",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:13399160",
+      "datum": "2020-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-05",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "výmalba prostor domova pro seniory",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Radek Hrkal, malířské a natěračské práce.",
+      "castka_czk": 84488.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25268843",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

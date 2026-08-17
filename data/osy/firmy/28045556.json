@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28045556",
+    "nazev": "SKA Group, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-01-01",
+    "do": "2015-10-12",
+    "prvni_rok": 2009,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 2,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28045556:vznik",
+      "datum": "2009-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-01-01",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — SKA Group, s.r.o.",
+      "popis": "Vznik subjektu SKA Group, s.r.o. (IČO 28045556), Společnost s ručením omezeným, obor: Zprostředkování v oblasti velkoobchodu za provizi.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2014-23/22__2200518",
+      "datum": "2015-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-12",
+      "rok": 2015,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva na dodávku pohonných hmot",
+      "popis": "Odhadované spojení smlouvy z 2015-10-12 s bodem 23/22 z 2014-06-24 (Záměr prodeje parcel v k. ú. Mariánské Lázně -SKA Group a.s.). Jistota nizka.",
+      "castka_czk": 96800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28045556 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 475 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2371974",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2014-24/20__2200518",
+      "datum": "2015-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-12",
+      "rok": 2015,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva na dodávku pohonných hmot",
+      "popis": "Odhadované spojení smlouvy z 2015-10-12 s bodem 24/20 z 2014-09-16 (Prodej parcel v k. ú. Mariánské Lázně ul. Chebská - SKA Group,s.r.o.). Jistota nizka.",
+      "castka_czk": 96800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28045556 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 391 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2371974",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2200518",
+      "datum": "2015-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-12",
+      "rok": 2015,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva na dodávku pohonných hmot",
+      "popis": "Správa městských sportovišť — výdaj, protistrana SKA Group, s.r.o..",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2371974",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

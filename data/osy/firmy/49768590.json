@@ -1,0 +1,339 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49768590",
+    "nazev": "Šárka Špetová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1995-01-13",
+    "do": "2022-10-19",
+    "prvni_rok": 1995,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 13,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 10,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:49768590:vznik",
+      "datum": "1995-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1995-01-13",
+      "rok": 1995,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Šárka Špetová",
+      "popis": "Vznik subjektu Šárka Špetová (IČO 49768590), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-75-75/13",
+      "datum": "2012-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-08-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - podnájem",
+      "popis": "Rada města, bod 75/13, usnesení 386/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/799953",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-2-2/17",
+      "datum": "2014-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - žádost o uzavření podnájemní smlouvy",
+      "popis": "Rada města, bod 2/17, usnesení 534/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1307040",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-57-57/13",
+      "datum": "2016-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-02-23",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133, zadní trakt - prodloužení nájmu - Šárka Špetová",
+      "popis": "Rada města, bod 57/13, usnesení 101/16. Schvaleno.",
+      "castka_czk": 817,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1538610",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-62-62/2",
+      "datum": "2016-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133, dvorní trakt - žádost o snížení nájemného - Šárka Špetová",
+      "popis": "Rada města, bod 62/2, usnesení 152/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1553669",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-98-98/4",
+      "datum": "2017-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - rozšíření účelu užívání, podnájemní smlouva - Šárka Špetová",
+      "popis": "Rada města, bod 98/4, usnesení 15/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1694640",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-160-160/31",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Žádost o schválení podnájmu- Šárka Špetová",
+      "popis": "Rada města, bod 160/31, usnesení 373/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1972517",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-107-107/3",
+      "datum": "2021-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-04",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 (zadní trakt) - prodloužení nájemní smlouvy - Špetová Šárka",
+      "popis": "Rada města, bod 107/3, usnesení 154/21. Schvaleno.",
+      "castka_czk": 44060,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2673640",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-107/3__15397343",
+      "datum": "2021-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-12",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Špetová - prodloužení smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2021-05-12 s bodem 107/3 z 2021-05-04 (NP Hlavní 133 (zadní trakt) - prodloužení nájemní smlouvy - Špetová Šárka). Jistota stredni.",
+      "castka_czk": 266563.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 49768590 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova prodlouzeni, spetova",
+      "url": "https://smlouvy.gov.cz/smlouva/16577839",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15397343",
+      "datum": "2021-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-12",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Špetová - prodloužení smlouvy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Šárka Špetová.",
+      "castka_czk": 266563.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16577839",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-117-117/15",
+      "datum": "2021-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-27",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 133 - zadní trakt - podnájemní smlouva",
+      "popis": "Rada města, bod 117/15, usnesení 340/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2711640",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-117-117/16",
+      "datum": "2021-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-27",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.133 - zadní trakt - podnájemní smlouva",
+      "popis": "Rada města, bod 117/16, usnesení 341/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2711683",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-161-161/7",
+      "datum": "2022-10-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-11",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 133 - dvorní trakt - ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 161/7, usnesení 489/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2918850",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/161.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-161/7__20646849",
+      "datum": "2022-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-19",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Šárka Špetová",
+      "popis": "Odhadované spojení smlouvy z 2022-10-19 s bodem 161/7 z 2022-10-11 (NP Hlavní, č.p. 133 - dvorní trakt - ukončení Smlouvy o nájmu nebytového prostoru dohodou). ",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 49768590 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni",
+      "url": "https://smlouvy.gov.cz/smlouva/22169889",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20646849",
+      "datum": "2022-10-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Šárka Špetová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Šárka Špetová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22169889",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

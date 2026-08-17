@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45805369",
+    "nazev": "ŠkoFIN s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-29",
+    "do": "2026-03-24",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:3249454",
+      "datum": "2017-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-29",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o operativním leasingu č. 1064893",
+      "popis": "Město Mariánské Lázně — příjem, protistrana ŠkoFIN s.r.o..",
+      "castka_czk": 264775.34,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3504862",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9805154",
+      "datum": "2019-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o operativním leasingu č. 1221360",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ŠkoFIN s.r.o..",
+      "castka_czk": 480968.08,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10548798",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/2",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení souhlasu k uzavření smlouvy k operativnímu leasingu - Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně, p.o.",
+      "popis": "Rada města, bod 113/2, usnesení 986/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/560133677",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/2__35012161",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o operativním leasingu - včetně příloh",
+      "popis": "Odhadované spojení smlouvy z 2026-03-24 s bodem 113/2 z 2026-03-17 (Udělení souhlasu k uzavření smlouvy k operativnímu leasingu - Domov pro seniory a dům s pečo",
+      "castka_czk": 735773.99,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45805369 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37288945",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35012161",
+      "datum": "2026-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-24",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o operativním leasingu - včetně příloh",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana ŠkoFIN s.r.o..",
+      "castka_czk": 735773.99,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37288945",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

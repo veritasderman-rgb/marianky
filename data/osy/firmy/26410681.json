@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26410681",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2006-05-29",
+    "do": "2019-07-23",
+    "prvni_rok": 2006,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26410681:vznik",
+      "datum": "2006-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-05-29",
+      "rok": 2006,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — ABC pack, s.r.o.",
+      "popis": "Vznik subjektu ABC pack, s.r.o. (IČO 26410681), Společnost s ručením omezeným, obor: Výroba plastových obalů.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-17-17/15",
+      "datum": "2013-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-06-18",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Prodej objektu č.p. 812 u náklad. nádraží ČD, vč. souvisejících pozemků",
+      "popis": "Zastupitelstvo města, bod 17/15, usnesení 540/13. Schvaleno.",
+      "castka_czk": 1080000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/962513",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-32-32/6",
+      "datum": "2019-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti kanalizační přípojky k objektu čp. 729 na st.p. 284 k.ú. Mar. Lázně (ABC pack)",
+      "popis": "Rada města, bod 32/6, usnesení 360/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2375140",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

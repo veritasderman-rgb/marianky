@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "17275491",
+    "nazev": "STAVBY ZaM s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-01-30",
+    "do": "2026-04-14",
+    "prvni_rok": 2023,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 7,
+    "odhadu": 3,
+    "dle_typu": {
+      "smlouva": 6,
+      "usneseni": 1,
+      "retez": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:21728409",
+      "datum": "2023-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava a sanace omítek, elektroinstalace podlahy a stropů v NP Hlavní 133, Mariánské Lázně – zadní trakt",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ZÍDEK STAVBY s.r.o..",
+      "castka_czk": 419917.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23315189",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-22-22/9",
+      "datum": "2023-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení požárních úseků v budově Základní školy JIH - výběr dodavatele",
+      "popis": "Rada města, bod 22/9, usnesení 272/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3014113",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-22/9__25931695",
+      "datum": "2024-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava omítek a stropů v NP Hlavní 314, Mariánské Lázně, Mariánské Lázně – klub důchodců",
+      "popis": "Odhadované spojení smlouvy z 2024-02-12 s bodem 22/9 z 2023-05-04 (Rozdělení požárních úseků v budově Základní školy JIH - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 589073.98,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 17275491 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 284 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/27761435",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25931695",
+      "datum": "2024-02-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava omítek a stropů v NP Hlavní 314, Mariánské Lázně, Mariánské Lázně – klub důchodců",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY ZaM s.r.o.",
+      "castka_czk": 589073.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27761435",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-22/9__27931092",
+      "datum": "2024-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava obkladů v objektu městského bazénu Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-08-19 s bodem 22/9 z 2023-05-04 (Rozdělení požárních úseků v budově Základní školy JIH - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 71438.4,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 17275491 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 473 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/29854488",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27931092",
+      "datum": "2024-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava obkladů v objektu městského bazénu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY ZaM s.r.o..",
+      "castka_czk": 71438.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29854488",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-22/9__28246156",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava schodů do malého bazénu v objektu městského bazénu Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-09-17 s bodem 22/9 z 2023-05-04 (Rozdělení požárních úseků v budově Základní školy JIH - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 116686.35,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 17275491 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 502 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/30184624",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28246156",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava schodů do malého bazénu v objektu městského bazénu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY ZaM s.r.o..",
+      "castka_czk": 116686.35,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30184624",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31849989",
+      "datum": "2025-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 44/25 - Oprava obvodového zdiva a soklu po pojistné události rozbitých luxferů v objektu VS Stacionáře, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY ZaM s.r.o..",
+      "castka_czk": 195899.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33981997",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35371197",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 27/26 - Oprava BJ Husova 443 včetně elektroinstalace, vodoinstalace, podlah, stěn, stropů, koupelny, WC a zařizovacích sanitárních předmětů , Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY ZaM s.r.o..",
+      "castka_czk": 558262.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37663873",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

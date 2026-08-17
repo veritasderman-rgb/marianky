@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08668175",
+    "nazev": "HOME WEST CZ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-17",
+    "do": "2024-12-20",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-65-65/10",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka – Domov pro seniory – požární úseky bez požár. rizika u evakuačního výtahu – výběr dodavatele",
+      "popis": "Rada města, bod 65/10, usnesení 624/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3251580",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/10__28527868",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Osazení protipožárních uzávěrů",
+      "popis": "Odhadované spojení smlouvy z 2024-10-08 s bodem 65/10 z 2024-09-17 (Veřejná zakázka – Domov pro seniory – požární úseky bez požár. rizika u evakuačního výtahu –",
+      "castka_czk": 1282176.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 08668175 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30483964",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28527868",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Osazení protipožárních uzávěrů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HOME WEST CZ s.r.o..",
+      "castka_czk": 1282176.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30483964",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/32",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení provedení víceprací, prodloužení termínu a uzavření dodatku č. 1 ke smlouvě o dílo s HOME WEST CZ s.r.o. „Domov pro seniory a DPS – osazení protipožárních uzávěrů“",
+      "popis": "Rada města, bod 73/32, usnesení 857/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3294118",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/10__29528280",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Osazení protipožárních uzávěrů",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 65/10 z 2024-09-17 (Veřejná zakázka – Domov pro seniory – požární úseky bez požár. rizika u evakuačního výtahu –",
+      "castka_czk": 1415460.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08668175 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31548664",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/32__29528280",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Osazení protipožárních uzávěrů",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/32 z 2024-12-10 (Schválení provedení víceprací, prodloužení termínu a uzavření dodatku č. 1 ke smlouvě o dílo",
+      "castka_czk": 1415460.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 08668175 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova osazeni, protipozarnich, uzaveru; usnesení m",
+      "url": "https://smlouvy.gov.cz/smlouva/31548664",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29528280",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Osazení protipožárních uzávěrů",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HOME WEST CZ s.r.o..",
+      "castka_czk": 1415460.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31548664",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

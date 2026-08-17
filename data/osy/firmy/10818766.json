@@ -1,0 +1,218 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10818766",
+    "nazev": "BP Colour s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-07-21",
+    "do": "2022-10-07",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 4,
+    "odhadu": 5,
+    "dle_typu": {
+      "retez": 5,
+      "smlouva": 3,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "nizka": 5,
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2021-20/11__16041011",
+      "datum": "2021-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Domov pro seniory Mariánské Lázně -  oprava střechy budova A“",
+      "popis": "Odhadované spojení smlouvy z 2021-07-21 s bodem 20/11 z 2021-06-22 (Oprava střechy Domova pro seniory a domu s pečovatelskou službou, budova A). Jistota nizka.",
+      "castka_czk": 726840.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10818766 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 29 dní po usnesení; název bodu a předmět smlouvy sdílí slova budova, oprava, seniory, strechy; k témuž us",
+      "url": "https://smlouvy.gov.cz/smlouva/17261275",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16041011",
+      "datum": "2021-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Domov pro seniory Mariánské Lázně -  oprava střechy budova A“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BP Colour s.r.o..",
+      "castka_czk": 726840.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17261275",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-119-119/10",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Domov pro seniory Mariánské Lázně – oprava střechy budova A",
+      "popis": "Rada města, bod 119/10, usnesení 370/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2733238",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/10__16480319",
+      "datum": "2021-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Domov pro seniory Mariánské Lázně - oprava střechy budova A\nZměna rozsahu plnění a ceny díla.",
+      "popis": "Odhadované spojení smlouvy z 2021-09-14 s bodem 119/10 z 2021-08-24 (Domov pro seniory Mariánské Lázně – oprava střechy budova A). Jistota nizka.",
+      "castka_czk": 779441.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10818766 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova budova, domov, oprava, seniory; stejně dobře",
+      "url": "https://smlouvy.gov.cz/smlouva/17749199",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-20/11__16480319",
+      "datum": "2021-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Domov pro seniory Mariánské Lázně - oprava střechy budova A\nZměna rozsahu plnění a ceny díla.",
+      "popis": "Odhadované spojení smlouvy z 2021-09-14 s bodem 20/11 z 2021-06-22 (Oprava střechy Domova pro seniory a domu s pečovatelskou službou, budova A). Jistota nizka.",
+      "castka_czk": 779441.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10818766 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 84 dní po usnesení; název bodu a předmět smlouvy sdílí slova budova, oprava, seniory, strechy; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/17749199",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16480319",
+      "datum": "2021-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Domov pro seniory Mariánské Lázně - oprava střechy budova A\nZměna rozsahu plnění a ceny díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BP Colour s.r.o..",
+      "castka_czk": 779441.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17749199",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-119/10__20746445",
+      "datum": "2022-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Oprava části střechy budovy Domova pro seniory a domu s pečovatelskou službou v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2022-10-07 s bodem 119/10 z 2021-08-24 (Domov pro seniory Mariánské Lázně – oprava střechy budova A). Jistota nizka.",
+      "castka_czk": 226996.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10818766 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 409 dní po usnesení; název bodu a předmět smlouvy sdílí slova oprava, seniory, strechy; usnesení mluví",
+      "url": "https://smlouvy.gov.cz/smlouva/22274817",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-20/11__20746445",
+      "datum": "2022-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Oprava části střechy budovy Domova pro seniory a domu s pečovatelskou službou v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2022-10-07 s bodem 20/11 z 2021-06-22 (Oprava střechy Domova pro seniory a domu s pečovatelskou službou, budova A). Jistota nizka.",
+      "castka_czk": 226996.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 10818766 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 472 dní po usnesení; název bodu a předmět smlouvy sdílí slova domova, domu, oprava, pecovatelskou; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/22274817",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20746445",
+      "datum": "2022-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Oprava části střechy budovy Domova pro seniory a domu s pečovatelskou službou v Mariánských Lázních",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana BP Colour s.r.o..",
+      "castka_czk": 226996.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22274817",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

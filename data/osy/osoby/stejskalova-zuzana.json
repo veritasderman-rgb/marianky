@@ -1,0 +1,547 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "stejskalova-zuzana",
+    "jmeno": "Zuzana Stejskalová",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-07",
+    "do": "2026-08",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 25,
+    "dolozenych": 25,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 24,
+      "media": 1
+    },
+    "dle_jistoty": {
+      "fakt": 25
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-07-029",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Marienbad Film Festival",
+      "popis": "Mezinárodní filmový festival v Karlových Varech vznikl v roce 1946 v Mariánských lázních. Letošní 70. výročí založení nejvýznamnější středoevropské filmové akce",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-043",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIENBAD FILM FESTIVAL PROBĚHNE NA PŘELOMU SRPNA A ZÁŘÍ",
+      "popis": "Ve dnech 29. srpna až 2. září 2017 se v Mariánských Lázních uskuteční druhý ročník Marienbad Film Festivalu. Festival se zaměřuje na český a zahraniční experime",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-08-029",
+      "datum": "2017-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIENBAD FILM FESTIVAL ODTAJŇUJE SVŮJ PROGRAM",
+      "popis": "Marienbad Film Festival, který se uskuteční ve dnech 29. srpna až 2. září 2017 v Mariánských Lázních, nabídne českou soutěž experimentálních filmů, rakouský exp",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821cdd68%7C1164#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-08/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-07-047",
+      "datum": "2018-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "MARIENBAD FILM FESTIVAL PROBĚHNE NA PŘELOMU SRPNA A ZÁŘÍ",
+      "popis": "Ve dnech 28. srpna až 1. září se v Mariánských Lázních uskuteční třetí ročník Marienbad Film Festivalu. Festival nabídne přehlídku českých a italských experimen",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821edbd4%7C1586#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-07/047.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-06-014",
+      "datum": "2021-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-06-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "MARIENBAD FILM FESTIVAL UŽ ČERVENCI V LESNÍM MLÝNĚ",
+      "popis": "Snímky experimentální povahy i perly zlatého fondu kinematografie nabídne šestý ročník Marienbad Film Festivalu, který se tentokrát uskuteční v netradičním term",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89626ec2%7C2613#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-06/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-010",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "AUTOŘI FILMU LONI V MARIENBADU BY LETOS OSLAVILI 100 LET",
+      "popis": "Jen málokdo z Mariánskolázeňských zná Alaina Resnaise (1922–2014), režiséra nové vlny, a Alaina Robbe Grilleta (1922–2008), představitele hnutí nového románu. D",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-novou-manazerkou-unesco-v-marianskych-lazni-je-architektka-zuzana-stej",
+      "datum": "2023-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-06",
+      "rok": 2023,
+      "typ": "media",
+      "nadpis": "Novou manažerkou UNESCO v Mariánských Lázní je architektka Zuzana Stejskalová",
+      "popis": "Site manažerkou UNESCO v Mariánských Lázních se stala Zuzana Stejskalová. Ve městě ji lidé znají jako ředitelku Marienbad Film Festivalu.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/novou-manazerkou-unesco-v-marianskych-lazni-je-architektka-zuzana-stejskalova-8946168",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-026",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PRACOVNÍ MISE STAROSTY ML V CITY OF BATH (2. GENERÁLNÍ SNĚM GSTE V CITY OF BATH, SOMERSET COUNTY, ANGLIE)",
+      "popis": "/Účast starosty ML, site man- shromáždění GSTE v anglickém agerky ML a poradce světového City of Bath 1.–3. března 2023/ dědictví UNESCO na 2. Valném  Pracovní ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-023",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "MEZINÁRODNÍ SETKÁNÍ NA PRAHU ZAHÁJENÍ LÁZEŇSKÉ SEZONY",
+      "popis": "V pátek 12. 5. 2023 se v prostorách Hotelové školy Mariánské Lázně uskutečnila celodenní mezinárodní konference s názvem Společenská odpovědnost za udržitelnost",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-11-008",
+      "datum": "2023-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OCENĚNÍ MARIÁNSKÝCH LÁZNÍ ESPA INOVATION AWARDS 2023",
+      "popis": "Podzim se již tradičně nese ve znamení výstav a kongresů, ale také ve znamení vyhlášení různých ocenění za uplynulý rok. Jedno takové ocenění si z Karlových Var",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=df015e5b%7C3997#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-11/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-02-009",
+      "datum": "2024-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-02-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Na vašem odkazu nám záleží",
+      "popis": "Žiji v památkové rezervaci. Co teď? Site manažerka UNESCO Zuzana Stejskalová o informativní kampani, kterou připravila ve spolupráci se Site manažery z Karlovýc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d5f46fb1%7C4122#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-02/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-019",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně zahajují čtvrtý rok členství v UNESCO",
+      "popis": "Dne 24. července uplynuly 3 roky od zápisu Mariánských Lázní na Seznam světového a kulturního dědictví UNESCO jako součást mezinárodní památky „Slavná lázeňská ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-001",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Ochrana památky není jen formální závazek, říká Zuzana Stejskalová",
+      "popis": "5/2025  Ocenění pro Mariánky  Třídíme zodpovědně  Historie  Vraťte se 100 let zpět  Judo formuje tělo i mysl  5  7  9  29  Obsah  Slavnostní zahájení lázeňské s",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-017",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Ochrana památky není jen formální závazek – vyžaduje každodenní zapojení nás všech, říká Zuzana Stejskalová",
+      "popis": "Většina památek zapsaných na seznamu UNESCO má svého site managera. Co si ale pod tímto pojmem představit? Jaká je jeho náplň práce? To v rozhovoru vysvětluje Z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-06-001",
+      "datum": "2025-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-06-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Odezva publika je pro hudebníky důležitá, říká prof. Ivan Klánský",
+      "popis": "6/2025  Z radnice  Fórum zdravého města  Historie  Vraťte se 100 let zpět  Úspěchy děti ze ZUŠ  Ze sportu  Krasobruslení? Láska  6  13  17  30  Obsah  5 Veřejno",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=492e199e%7C4550#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-06/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-06-007",
+      "datum": "2025-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-06-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně v Granadě: Jak plánovat turismus tak, aby neškodil",
+      "popis": "Ve dnech 22.–25. dubna jsem měla tu čest zastupovat české památky zapsané na Seznam světového dědictví UNESCO a zároveň Mariánské Lázně jako součást sériové pam",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=492e199e%7C4550#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-06/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-07-021",
+      "datum": "2025-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-07-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Lázeňáci oslavili své výročí na hádankářských slavnostech",
+      "popis": "O víkendu 7. – 8. 6. 2025 pořádali Lázeňáci již 36. ročník Mariánskolázeňských hádankářských slavností. Letos slavil náš kroužek 50 let od svého založení. Přiše",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89143bb4%7C4589#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-07/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-003",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně hledají cestu k obnově vily LIL",
+      "popis": "Mariánské Lázně se dlouhodobě zabývají otázkou, jak zachovat a smysluplně využít historickou vilu LIL. Aktuálně připravují architektonickou studii pro zadní bud",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-11-008",
+      "datum": "2025-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Hlas mladé generace z Mariánských Lázní zazněl na Valném shromáždění Great Spa Towns of Europe v Bad Ems",
+      "popis": "Ve dnech 8.–10. října 2025 proběhlo v německém Bad Ems již 7. zasedání Valného shromáždění asociace Great Spa Towns of Europe (GSTE), která sdružuje jedenáct ev",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e19f6e85%7C4726#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-11/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-019",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Studenti ČVUT hledají nové využití pro hospodářské zázemí Vily LIL",
+      "popis": "Site manažerka Zuzana Stejskalová v listopadu zahájila spolupráci s Českým vysokým učením technickým v Praze pod vedením prof. Ing. arch. Zuzany Peškové. Studen",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-03-021",
+      "datum": "2026-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-03-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Mecenášství má smysl i dnes. Město neroste jen z rozpočtů, ale z velkorysosti lidí",
+      "popis": "Podnikatel a člen městské komise cestovního ruchu a lázeňství David Folprecht mluví o vztahu k městu Mariánské Lázně, o odpovědnosti podnikatelů i o tom, proč m",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=59a41668%7C4833#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-03/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-010",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně si připomínají pět let na Seznamu UNESCO. Ve Vichy se rozhodovalo o budoucnosti evropských lázeňských měst",
+      "popis": "Mariánské Lázně si v letošním roce připomínají významné výročí, pět let od zápisu na Seznam světového kulturního dědictví UNESCO jako součást mezinárodní památk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-029",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Mladí z Mariánských Lázní na světovém sympoziu pod záštitou UNESCO",
+      "popis": "Ve dnech 22.–26. dubna 2026 se zástupci Mládežnického fóra Mariánské Lázně – Anna Anatolíková a Diana Negrea ze ZŠ JIH a Daniel Milfait a Timon Kůta z GOAML – v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-004",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Město získalo dotaci na další přípravy záchrany vily LIL",
+      "popis": "Mariánské Lázně získaly od Karlovarského kraje dotaci na další přípravné práce směřující k záchraně vily LIL. V posledních dvou letech už bylo provedeno digitál",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-006",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Už pět let součástí světového dědictví UNESCO",
+      "popis": "Letošní léto je pro Mariánské Lázně výjimečné. Dne 24. července uplynulo pět let od chvíle, kdy byly Mariánské Lázně společně s dalšími deseti evropskými lázeňs",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

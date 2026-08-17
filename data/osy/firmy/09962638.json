@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "09962638",
+    "nazev": "Yunex, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-03-18",
+    "do": "2025-06-19",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-81-81/6",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "VZ Výměna technologie světelného signalizačního zařízení - výběr dodavatele",
+      "popis": "Rada města, bod 81/6, usnesení 183/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3336877",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-89-89/15",
+      "datum": "2025-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Výměna technologie světelného signalizačního zařízení\" - výběr dodavatele",
+      "popis": "Rada města, bod 89/15, usnesení 379/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3370947",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/6__31633289",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Výměna technologie světelného signalizačního zařízení",
+      "popis": "Odhadované spojení smlouvy z 2025-06-19 s bodem 81/6 z 2025-03-18 (VZ Výměna technologie světelného signalizačního zařízení - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 2216632.88,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 09962638 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 93 dní po usnesení; název bodu a předmět smlouvy sdílí slova signalizacniho, svetelneho, technologie, vym",
+      "url": "https://smlouvy.gov.cz/smlouva/33755441",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-89/15__31633289",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Výměna technologie světelného signalizačního zařízení",
+      "popis": "Odhadované spojení smlouvy z 2025-06-19 s bodem 89/15 z 2025-05-27 (Veřejná zakázka \"Výměna technologie světelného signalizačního zařízení\" - výběr dodavatele).",
+      "castka_czk": 2216632.88,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 09962638 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova signalizacniho, svetelneho, technologie, vym",
+      "url": "https://smlouvy.gov.cz/smlouva/33755441",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31633289",
+      "datum": "2025-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Výměna technologie světelného signalizačního zařízení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Yunex, s.r.o..",
+      "castka_czk": 2216632.88,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33755441",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

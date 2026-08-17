@@ -1,0 +1,526 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "borsik-viktor",
+    "jmeno": "Viktor Borsik",
+    "role": [
+      "statutár"
+    ],
+    "kategorie": "mestske-firmy",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-03",
+    "do": "2026-04",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 24,
+    "dolozenych": 24,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 24
+    },
+    "dle_jistoty": {
+      "fakt": 24
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-03-037",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Otevírací doba bazénu",
+      "popis": "Hodiny  13—16  18-20  7—8  13-20  9—20  7-8  13-16  18-20  9-20  9-20  9-20  Ohřívárna + vířivky  K dispozici od 13 hod. K dispozici od 13 hod. Bez přístupu veř",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-029",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Na Plese sportovců vystoupili kulturisté ze Sport Studia SANDOW",
+      "popis": "Dne 12. března 2016 vystoupili na Společenském plese sportovců, který se konal dne 12. března 2016 v sále hotelu Continental v Mariánských Lázních Zuzka Kohouto",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-04-023",
+      "datum": "2017-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-04-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Vyhlášení nejlepších sportovců města Mariánské Lázně",
+      "popis": "V sobotu 11. března 2017 se v reprezentačních prostorách hotelu Continental uskutečnil Společenský ples sportovců a XIII. ročník vyhlášení nejlepších sportovců ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9557ed8b%7C1099#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-04/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-043",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "XV. ročník vyhlášení nejlepších sportovců města je minulostí",
+      "popis": "V sobotu 16. března 2019 se v reprezentačních prostorách hotelu Continental uskutečnil Společenský ples sportovců a XV. ročník Vyhlášení nejlepších sportovců mě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-031",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "14. ročník Dětské olympiády",
+      "popis": "Na stadionu Viktoria u Ferdinandova pramene se v neděli 29. září 2019 sešly děti ve věku od 4 do 7 let, aby poměřily své síly na 14. ročníku Dětské olympiády. N",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/031.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-03-022",
+      "datum": "2020-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-03-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Úspěch karatistů Karlovarského kraje na ZODM v Mariánských Lázních",
+      "popis": "Ve dnech 20. a 21. ledna 2020 se konaly v rámci IX. Zimní olympiády dětí a mládeže soutěže v karate v Městské sportovní hale v Tyršově ulici. Výprava Karlovarsk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fbf2261f%7C2223#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-03/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-06-022",
+      "datum": "2021-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-06-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "ČESKÉ BASKETBALISTKY ODSTARTOVALY PŘÍPRAVU NA EVROPSKÝ ŠAMPIONÁT",
+      "popis": "Mariánské Lázně nejsou pouze o léčebných lázeňských pobytech a pramenech, jsou také vyhlášeným městem sportu. Od 11. května do pátku 15. května 2021 u nás tréno",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89626ec2%7C2613#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-06/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-024",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "SOUSTŘEDĚNÍ TÝMU ZVVZ USK PRAHA V MARIÁNSKÝCH LÁZNÍCH",
+      "popis": "Mariánské Lázně nejsou pouze o léčebných lázeňských pobytech a pramenech, jsou také vyhlášeným městem sportu. Od pondělí 9. srpna 2021 až do pátku u nás trénují",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=22",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-02-027",
+      "datum": "2022-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-02-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "PODPORA DOPRAVNÍ VÝUKY V MARIÁNSKÝCH LÁZNÍCH Z DOTACE KARLOVARSKÉHO KRAJE",
+      "popis": "V roce 2021 byl realizován projekt „Podpora obnovy stávajících a vznik nových dopravních hřišť“, který byl financován z rozpočtu Karlovarského kraje v rámci dot",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d22c6f3e%7C3212#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-02/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-008",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "INDIÁNSKÝ DEN",
+      "popis": "V sobotu 4. 6. proběhl další Indiánský den. Malí indiáni měli možnost vyzkoušet si dva okruhy. Velký okruh pro starší děti měl 15 stanovišť a děti si vyzkoušely",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-030",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "BĚH SMOLNICKÝM KOPCEM VYHRÁL LUKÁŠ BECK",
+      "popis": "Dne 8. 10. 2022 se v Chodově konalo mistrovství Karlovarského kraje v přespolním běhu. Těchto závodů se zúčastnila i výprava mariánskolázeňských atletů. Nejlepš",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-03-009",
+      "datum": "2023-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-03-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "SPOLEČENSKÝ PLES SPORTOVCŮ",
+      "popis": "Dne 18. 3. 2023 od 18:30 hod. se ve Společenském domě CASINO v Mariánských Lázních koná SPOLEČENSKÝ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=453e866e%7C3709#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-03/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-05-043",
+      "datum": "2023-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-05-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "XVIII. ROČNÍK VYHLÁŠENÍ NEJLEPŠÍCH SPORTOVCŮ MĚSTA MARIÁNSKÉ LÁZNĚ",
+      "popis": "Dne 18. března 2023 se ve společenském domě CA- SINO v Mariánských Lázních konal XVIII. ročník vyhlášení nejlepších sportovců města Mariánské Lázně, který probě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=5e9a4509%7C3773#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-05/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-027",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "INDIÁNSKÝ DEN NA PRELÁTOVĚ PRAMENI",
+      "popis": "Srdečně zveme děti na další roč- práci se sdružením Hravý praník Indiánského dne, který se men. Akci inančně podporuje koná dne 3. června 2023 v parku město Mar",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-07-026",
+      "datum": "2023-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-07-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DELEGACE Z MARCOUSSIS NA OTEVŘENÍ LÁZEŇSKÉ SEZONY 2023",
+      "popis": "Ve středu 10. 5. ve večerních hodinách přijely osobním autem do Mariánek tři dámy milující naše město. Členové našeho spolku je ubytovali (2 v rodinách u Bártů ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13322300%7C3869#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-07/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-030",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "MISTROVSTVÍ REPUBLIKY V MODELÁŘSTVÍ PRO ROK 2023",
+      "popis": "Ve dnech 8.–9.září se konalo mistrovství republiky v plastikovém modelářství. Soutěž letos zajistili modeláři z Liberce a dokonale se akce zhostili. Pro nás mod",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-02-036",
+      "datum": "2024-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-02-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Naši mladí atleti mají čtyři krajské mistry a mnoho cenných medailí",
+      "popis": "Velmi nabitou podzimní závodní sezonu mají za sebou atleti Mariánských Lázní. Ti se účastnili velkého počtu závodů a to jak na dráze, tak v krosu. Anna Voláková",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d5f46fb1%7C4122#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-02/036.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-03-009",
+      "datum": "2024-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Sportovce potěší nové víceúčelové hřiště potěší",
+      "popis": "Město Mariánské Lázně v letošním roce rozšíří nabídku sportovišť o nové víceúčelové hřiště v Hamrníkách. Jedná se o projekt, který bude financován z programu Re",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fb079468%7C4145#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-03/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-006",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Sportovní areál Viktorka má projít kompletní revitalizací",
+      "popis": "Technický stav sportovního areálu Viktorka u Ferdinandova pramene je nevyhovující, město proto připravuje jeho revitalizaci. Na projekt chce získat dotaci z Nár",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-08-002",
+      "datum": "2024-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně jsou Evropským městem sportu 2025",
+      "popis": "Mariánské Lázně se mohou pyšnit dalším úspěchem. Byly oficiálně vyhlášeny Evropským městem sportu pro rok 2025. Tento titul je každoročně udělován jednomu či ví",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0c3aa834%7C4244#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-08/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-008",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Městský bazén čeká zářijová odstávka kvůli opravám",
+      "popis": "Od prvního zářijového týdnu bude uzavřen městský bazén. Důvodem jsou opravy, které není možné provádět za provozu. Dojde například k opravě hydroizolace, dlažby",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-04-039",
+      "datum": "2025-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně ocenily nejlepší sportovce během jubilejního 20. Společenského plesu sportovců",
+      "popis": "V sobotu 15. března se v reprezentativních prostorách Společenského domu Casino v Mariánských Lázních konal již 20. ročník Společenského plesu sportovců. Vrchol",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e3b47ab8%7C4524#page=32",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-04/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-11-006",
+      "datum": "2025-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Bazén prošel podzimní údržbou",
+      "popis": "Ve druhé polovině října proběhla plánovaná odstávka městského bazénu. Během dvoutýdenní přestávky proběhla řada oprav a modernizací, a to od výměny dlažby až po",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e19f6e85%7C4726#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-11/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-04-038",
+      "datum": "2026-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-04-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Slavnostní večer patřil sportovcům a jejich úspěchům",
+      "popis": "Ples sportovců opět nabídl nejen společenský večer, ale i ocenění nejlepších výkonů. Hosté si užili slavnostní atmosféru a připravený program. Vrchol večera pat",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13e2aedc%7C4927#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-04/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

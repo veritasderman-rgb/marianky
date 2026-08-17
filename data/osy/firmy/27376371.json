@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27376371",
+    "nazev": "Media Park s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-01-20",
+    "do": "2026-03-18",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-109-109/28",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o spolupořadatelství na uspořádání Letního koncertu Rádia Blaník dne 24.7.2026 v Mariánských Lázních společností Media Park",
+      "popis": "Rada města, bod 109/28, usnesení 913/26. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/4052713609",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/28__34959685",
+      "datum": "2026-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-18",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o spolupořadatelství letního koncertu Rádia Blaník 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-03-18 s bodem 109/28 z 2026-01-20 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o",
+      "castka_czk": 302500.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 27376371 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 57 dní po usnesení; název bodu a pře",
+      "url": "https://smlouvy.gov.cz/smlouva/37234149",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34959685",
+      "datum": "2026-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-18",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o spolupořadatelství letního koncertu Rádia Blaník 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Media Park s.r.o..",
+      "castka_czk": 302500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37234149",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

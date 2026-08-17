@@ -1,0 +1,248 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "tesar-karel",
+    "jmeno": "Karel Tesař",
+    "role": [
+      "dočasný starosta"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1945-05",
+    "do": "2025-05",
+    "prvni_rok": 1945,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 10,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 1,
+      "zpravodaj": 8
+    },
+    "dle_jistoty": {
+      "fakt": 10
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:tesar-karel:0",
+      "datum": "1945-05",
+      "datum_do": "1945-05",
+      "presnost": "obdobi",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "typ": "funkce",
+      "nadpis": "Karel Tesař — dočasný starosta",
+      "popis": "dočasný starosta (1945-05 – 1945-05).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "historie:1945-05-tesar-starosta",
+      "datum": "1945-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "1945-05-01",
+      "rok": 1945,
+      "typ": "historie",
+      "nadpis": "Karel Tesař dočasným starostou",
+      "popis": "V květnu 1945 byl bezprostředně po konci války dočasným starostou města Karel Tesař, představitel české menšiny v Mariánských Lázních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-01-023",
+      "datum": "2017-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Florbal je oblíbeným sportem",
+      "popis": "V ZŠ Úšovice tomu tak rozhodně je. Dvě družstva – chlapci a dívky 1.stupně (4. a 5.třídy) se utkala s dalšími družstvy v okresním kole v krásné hale ve Františk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9e8aed8%7C1054#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-01/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-02-028",
+      "datum": "2017-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-02-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Nikola Tomanová zvítězila ve dvou kategoriích",
+      "popis": "Mariánské Lázně – Předposlední prosincovou středu proběhl v tělocvičně Budo clubu Mariánské Lázně tradiční vánoční turnaj, jímž oddíl uzavírá pokaždé soutěžní r",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b1352f9c%7C1079#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-02/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-10-024",
+      "datum": "2017-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-10-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "JUDISTA KOROL VYHRÁL PODESÁTÉ ZÁVOD V ORIENTAČNÍM BĚHU",
+      "popis": "Na Fit louce u Kamzíku severně od Mariánských Lázní se koncem srpna sešli členové místních oddílů karate a juda u příležitosti 33. ročníku závodu v orientačním ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=17c8a1e8%7C1275#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-10/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-12-020",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "TOMANOVÁ SKONČILA DEVÁTÁ NA PŘEBORU ČR",
+      "popis": "Dva mladé judisty vyslal do Mladé Boleslavi na přebor České republiky mladšího žactva Budo Club Mariánské Lázně. Účast byla v této věkové kategorii opravdu znač",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-034",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "LÁZEŇŠTÍ JUDISTÉ USPĚLI V CHEBU",
+      "popis": "Dvacet jedna mladých judistů pod vedením trenérů Ivana Korola a Jitky Vlkové vyslal mariánskolázeňský Budo Club na Velkou cenu Chebu. Celkem se turnaje účastnil",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/034.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-030",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "ORIENTAČNÍ BĚH NA KAMZÍKU VYHRÁL KARATISTA MALINOVSKÝ",
+      "popis": "První srpnovou sobotu se na Fit louce u Kamzíku uskutečnil 34. ročník orientačního závodu, jenž je určen hlavně pro členy a příznivce místních oddílů juda, kara",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-05-046",
+      "datum": "2019-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-05-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "LÁZEŇŠTÍ JUDISTÉ BYLI ÚSPĚŠNÍ NA TŘECH FRONTÁCH",
+      "popis": "Na třech různých místech se během jednoho víkendu představili judisté z Budo clubu Mariánské Lázně. Pokaždé v dobrém světle. Vynikající návštěvnost měl XIII. ro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=060a5862%7C1950#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-05/046.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-047",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Judo formuje tělo i mysl",
+      "popis": "Judo je mnohem víc než pouhý bojový sport. Je to cesta k sebevědomí, disciplíně a respektu, které člověk uplatní nejen v tělocvičně, ale i v běžném životě. O to",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=28",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/047.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

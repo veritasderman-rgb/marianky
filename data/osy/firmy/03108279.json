@@ -1,0 +1,560 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03108279",
+    "nazev": "KOCMAN envimonitoring s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-05-11",
+    "do": "2026-06-17",
+    "prvni_rok": 2021,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 26,
+    "dolozenych": 16,
+    "odhadu": 10,
+    "dle_typu": {
+      "usneseni": 8,
+      "retez": 10,
+      "smlouva": 8
+    },
+    "dle_jistoty": {
+      "fakt": 16,
+      "stredni": 3,
+      "vysoka": 2,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-108-108/4",
+      "datum": "2021-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-11",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Klimatické lázně - zahájení šetření",
+      "popis": "Rada města, bod 108/4, usnesení 169/21. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2680152",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-108/4__16010563",
+      "datum": "2021-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Objednávka - KOCMAN envimonitoring s.r.o. - podklady pro studii Klimatické lázně ML",
+      "popis": "Odhadované spojení smlouvy z 2021-06-21 s bodem 108/4 z 2021-05-11 (Klimatické lázně - zahájení šetření). Jistota stredni.",
+      "castka_czk": 146410.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17228619",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16010563",
+      "datum": "2021-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - KOCMAN envimonitoring s.r.o. - podklady pro studii Klimatické lázně ML",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 146410.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17228619",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-123-123/10",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Zábor veřejného prostranství za účelem umístění měřící techniky - p.p.č. 126/1 k.ú. Úšovice",
+      "popis": "Rada města, bod 123/10, usnesení 436/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2751142",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-140-140/11",
+      "datum": "2022-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání zpracování studie „Zhodnocení léčebných podmínek klimatu v lázeňském místě Mariánské Lázně“",
+      "popis": "Rada města, bod 140/11, usnesení 99/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2815915",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/140.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-140/11__18508163",
+      "datum": "2022-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-04",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka studie \"Zpracování léčebných podmínek klimatu v láz. místě ML\"",
+      "popis": "Odhadované spojení smlouvy z 2022-04-04 s bodem 140/11 z 2022-03-08 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání zpracová",
+      "castka_czk": 423500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova klimatu, lecebnych, miste, podminek",
+      "url": "https://smlouvy.gov.cz/smlouva/19898035",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18508163",
+      "datum": "2022-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-04",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka studie \"Zpracování léčebných podmínek klimatu v láz. místě ML\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 423500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19898035",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-158-158/16",
+      "datum": "2022-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-20",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "VZ Automatická meteorologická stanice pro vnitřní území města Mariánské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 158/16, usnesení 463/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2910544",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/158.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-9-9/24",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Klimatické lázně - bioklimatologie,dočasné měření",
+      "popis": "Rada města, bod 9/24, usnesení 24/23. Schvaleno.",
+      "castka_czk": 60000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2959738",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-9/24__21610929",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Objednávka Kocman měření dočasnými stanicemi 2023",
+      "popis": "Odhadované spojení smlouvy z 2023-01-24 s bodem 9/24 z 2023-01-10 (Klimatické lázně - bioklimatologie,dočasné měření). Jistota vysoka.",
+      "castka_czk": 72600.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 14 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23190689",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21610929",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka Kocman měření dočasnými stanicemi 2023",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23190689",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/3",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o dílo na „Zajištění provozu klimatických lázní v lázeňském místě Mariánské Lázně“",
+      "popis": "Rada města, bod 48/3, usnesení 163/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3164325",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/3__26311111",
+      "datum": "2024-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-28",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kocman envimonitoring s.r.o",
+      "popis": "Odhadované spojení smlouvy z 2024-03-28 s bodem 48/3 z 2024-03-19 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o d",
+      "castka_czk": 402736.4,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/28160611",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26311111",
+      "datum": "2024-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-28",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Kocman envimonitoring s.r.o",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 402736.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28160611",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/37",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o dílo na „Zajištění provozu klimatických lázní v lázeňském místě Mariánské Lázně 2025“",
+      "popis": "Rada města, bod 81/37, usnesení 214/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3339723",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/3__30976288",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "\"Smlouva o dílo č. 202-036 - KOCMAN envimonitoring s.r.o. \"",
+      "popis": "Odhadované spojení smlouvy z 2025-03-19 s bodem 48/3 z 2024-03-19 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o d",
+      "castka_czk": 336240.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 365 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/33067836",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/37__30976288",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "\"Smlouva o dílo č. 202-036 - KOCMAN envimonitoring s.r.o. \"",
+      "popis": "Odhadované spojení smlouvy z 2025-03-19 s bodem 81/37 z 2025-03-18 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o ",
+      "castka_czk": 336240.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže",
+      "url": "https://smlouvy.gov.cz/smlouva/33067836",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30976288",
+      "datum": "2025-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "\"Smlouva o dílo č. 202-036 - KOCMAN envimonitoring s.r.o. \"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 336240.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33067836",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/37__31774873",
+      "datum": "2025-06-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-24",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodání a instalace 3 hladinových měrných bodů v intravilánu města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-06-24 s bodem 81/37 z 2025-03-18 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o ",
+      "castka_czk": 308731.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 98 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/33904049",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31774873",
+      "datum": "2025-06-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-24",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodání a instalace 3 hladinových měrných bodů v intravilánu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 308731.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33904049",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/3__33027393",
+      "datum": "2025-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-13",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Zajištění funkční způsobilosti lokálního výstražného systému města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-10-13 s bodem 48/3 z 2024-03-19 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o d",
+      "castka_czk": 120733.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 573 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35213465",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/37__33027393",
+      "datum": "2025-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-13",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Zajištění funkční způsobilosti lokálního výstražného systému města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-10-13 s bodem 81/37 z 2025-03-18 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem uzavření smlouvy o ",
+      "castka_czk": 120733.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 209 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/35213465",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33027393",
+      "datum": "2025-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-13",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Zajištění funkční způsobilosti lokálního výstražného systému města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 120733.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35213465",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/49",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č. 2017-08 Veřejné zakázky za účelem uzavření objednávky na „Zajištění provozu klimatických lázní v lázeňském místě Mariánské Lázně“ 07/2026",
+      "popis": "Rada města, bod 119/49, usnesení 1258/26. Schvaleno.",
+      "castka_czk": 181548,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3623918384",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/49__36151010",
+      "datum": "2026-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-17",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka KOCMAN envimonitoring s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-06-17 s bodem 119/49 z 2026-06-12 (Udělení výjimky z vnitřního předpisu č. 2017-08 Veřejné zakázky za účelem uzavření objednáv",
+      "castka_czk": 181548.4,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 03108279 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 5 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38474922",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36151010",
+      "datum": "2026-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-17",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka KOCMAN envimonitoring s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOCMAN envimonitoring s.r.o..",
+      "castka_czk": 181548.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38474922",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

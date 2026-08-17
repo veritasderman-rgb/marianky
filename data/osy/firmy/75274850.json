@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "75274850",
+    "nazev": "Kamil Štědrák"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-06-01",
+    "do": "2021-09-07",
+    "prvni_rok": 2009,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:75274850:vznik",
+      "datum": "2009-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-06-01",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Kamil Štědrák",
+      "popis": "Vznik subjektu Kamil Štědrák (IČO 75274850), Fyzická osoba podnikající dle živnostenského zákona, obor: Činnosti denních lázní, saun a parních lázní.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-110-110/3",
+      "datum": "2017-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-11",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Franze Kafky 831, A3 III",
+      "popis": "Rada města, bod 110/3, usnesení 220/17. Schvaleno.",
+      "castka_czk": 76972,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1740000",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-110/3__1652306",
+      "datum": "2017-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-21",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Fr. Kafky 831 A3 III",
+      "popis": "Odhadované spojení smlouvy z 2017-04-21 s bodem 110/3 z 2017-04-11 (Pronájem NP Franze Kafky 831, A3 III). Jistota stredni.",
+      "castka_czk": 465674.55,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 75274850 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova kafky, pronajem",
+      "url": "https://smlouvy.gov.cz/smlouva/1783398",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1652306",
+      "datum": "2017-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-21",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Fr. Kafky 831 A3 III",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Kamil Štědrák.",
+      "castka_czk": 465674.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1783398",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-120-120/13",
+      "datum": "2021-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p. 831 - postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 120/13, usnesení 391/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2738594",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

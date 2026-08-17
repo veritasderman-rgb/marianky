@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01027972",
+    "nazev": "Lukáš Švihovec"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-05-09",
+    "do": "2019-08-30",
+    "prvni_rok": 2018,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-154-154/15",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - pronájem nebytového prostoru",
+      "popis": "Rada města, bod 154/15, usnesení 254/18. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1943218",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-154/15__5293035",
+      "datum": "2018-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-23",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru NP Hlavní 226",
+      "popis": "Odhadované spojení smlouvy z 2018-05-23 s bodem 154/15 z 2018-05-09 (NP Hlavní 226 - pronájem nebytového prostoru). Jistota stredni.",
+      "castka_czk": 544500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 01027972 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, nebytoveho, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/5699235",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5293035",
+      "datum": "2018-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru NP Hlavní 226",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lukáš Švihovec.",
+      "castka_czk": 544500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5699235",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-34-34/20",
+      "datum": "2019-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-20",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - ukončení nájemního vztahu",
+      "popis": "Rada města, bod 34/20, usnesení 431/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2389255",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/34.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-34/20__9294446",
+      "datum": "2019-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-30",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájemního vztahu - Hlavní 226, Švihovec Lukáš",
+      "popis": "Odhadované spojení smlouvy z 2019-08-30 s bodem 34/20 z 2019-08-20 (NP Hlavní 226 - ukončení nájemního vztahu). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 01027972 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najemniho, ukonceni, vztahu",
+      "url": "https://smlouvy.gov.cz/smlouva/10008898",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9294446",
+      "datum": "2019-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájemního vztahu - Hlavní 226, Švihovec Lukáš",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lukáš Švihovec.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10008898",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

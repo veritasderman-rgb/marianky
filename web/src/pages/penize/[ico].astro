@@ -3,11 +3,15 @@ import Zaklad from '../../layouts/Zaklad.astro';
 import GrafKarta from '../../components/GrafKarta.astro';
 import StavDat from '../../components/StavDat.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
+import CasovaOsa from '../../components/CasovaOsa.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import { nactiProtistrany, nactiSmlouvy, nactiSubjekty, type Smlouva } from '../../lib/data';
 import { grafObjemPoLetech } from '../../lib/grafy';
 import { rokyZProtistran, smluvProtistranyZaRok, indexujSmlouvy, vRoce } from '../../lib/penize';
-import { cislo, datumKratke, kc, kcZkraceno, sklonuj } from '../../lib/format';
+import { jednou } from '../../lib/cache';
+import { nactiCasovouOsu, proIco, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
+import { nactiFirmy } from '../../lib/firmy';
+import { cislo, datumKratke, kc, kcZkraceno, orez, sklonuj } from '../../lib/format';
 
 export async function getStaticPaths() {
   const { data } = nactiProtistrany();
@@ -18,9 +22,9 @@ export async function getStaticPaths() {
 }
 
 const { protistrana } = Astro.props;
-const zSmluv = nactiSmlouvy();
-const index = indexujSmlouvy(zSmluv.data ?? []);
-const zSubjektu = nactiSubjekty();
+const zSmluv = jednou('smlouvy', nactiSmlouvy);
+const index = jednou('index-smluv', () => indexujSmlouvy(zSmluv.data ?? []));
+const zSubjektu = jednou('subjekty', nactiSubjekty);
 
 const roky = rokyZProtistran([protistrana]);
 const smer = protistrana.smer === 'prijem' ? 'prijem' : 'vydaj';
@@ -52,6 +56,56 @@ const vadnych = smlouvy.filter((s) => s.vada).length;
 const nazvySubjektu = new Map<string, string>(
   (zSubjektu.data?.subjekty ?? []).filter((s) => s.ico).map((s) => [s.ico as string, s.nazev]),
 );
+
+/* ── Časová osa protistrany ─────────────────────────────────────────────
+   Jednotlivé smlouvy jako značky, k tomu zápis a výmaz z rejstříku, pokud
+   protistranu najdeme mezi firmami se sídlem ve městě. Osa je lineární v čase,
+   takže roky bez jediné smlouvy jsou vidět jako prázdné místo. */
+
+const udalostiOsy: UdalostOsy[] = smlouvy
+  .filter((s) => s.datum)
+  .map((s, i) =>
+    udalost({
+      id: `smlouva-${s.id ?? `${s.datum}-${i}`}`,
+      datum: s.datum,
+      druh: 'smlouva',
+      nadpis: s.predmet ? orez(s.predmet, 90) : 'Smlouva',
+      popis: s.predmet ?? null,
+      odkaz: s.url ?? null,
+      zdroj: 'penize/smlouvy/ (registr smluv)',
+      detail: `${s.smer === 'prijem' ? 'město inkasuje' : 'město platí'} ${kc(s.castka_czk)} · ${s.odKoho}${s.vada ? ' · Hlídač označuje smlouvu za vadnou' : ''}`,
+      ica: protistrana.ico ? [protistrana.ico] : [],
+    }),
+  );
+
+const firmaVeMeste = protistrana.ico
+  ? ((jednou('firmy', nactiFirmy).data ?? []).find((f) => f.ico === protistrana.ico) ?? null)
+  : null;
+
+if (firmaVeMeste?.vznik) {
+  udalostiOsy.push(
+    udalost({
+      id: `firma-vznik-${protistrana.klic}`,
+      datum: firmaVeMeste.vznik,
+      datum_do: firmaVeMeste.zanik,
+      druh: 'firma',
+      nadpis: 'Zapsaná v rejstříku',
+      detail: firmaVeMeste.zanik ? `výmaz ${firmaVeMeste.zanik}` : 'bez zapsaného výmazu',
+      zdroj: 'firmy/ (ARES)',
+    }),
+  );
+}
+
+const zJednotneOsy = protistrana.ico
+  ? proIco(jednou('casova-osa', nactiCasovouOsu).data ?? [], protistrana.ico)
+  : [];
+const naOse = slucUdalosti(udalostiOsy, zJednotneOsy);
+
+const zdrojeOsy = [
+  ...(smlouvy.length > 0 ? ['penize/smlouvy/ (registr smluv)'] : []),
+  ...(firmaVeMeste ? ['firmy/ (ARES)'] : []),
+  ...(zJednotneOsy.length > 0 ? ['casova_osa/'] : []),
+];
 ---
 
 <Zaklad titulek={protistrana.nazev} aktivni="penize" nadpis={protistrana.nazev}>
@@ -101,6 +155,19 @@ const nazvySubjektu = new Map<string, string>(
     popis="Roky bez jediné platby se v grafu zobrazí jako nulový sloupec — nepřeskakují se, aby časová osa nelhala o tom, kdy vztah začal a skončil."
     varianty={varianty}
   />
+
+  {
+    naOse.length > 0 && (
+      <CasovaOsa
+        id="osa-protistrany"
+        nadpis="Časová osa vztahu s městem"
+        udalosti={naOse}
+        popis="Jednotlivé smlouvy jako značky na spojité časové ose. Na rozdíl od grafu po letech je z ní vidět i rozložení uvnitř roku — jestli šlo o jednu velkou zakázku, nebo o pravidelný přísun."
+        zdroje={zdrojeOsy}
+        neuplnost="Osa obsahuje jen smlouvy zveřejněné v registru smluv. Plnění, faktury ani objednávky mimo registr v ní nejsou."
+      />
+    )
+  }
 
   {
     protistrana.subjekty && protistrana.subjekty.length > 0 && (

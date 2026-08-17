@@ -1,0 +1,298 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27183912",
+    "nazev": "APRIS 3MP s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-10-04",
+    "do": "2020-03-06",
+    "prvni_rok": 2017,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 7,
+    "odhadu": 6,
+    "dle_typu": {
+      "smlouva": 5,
+      "usneseni": 2,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:4292604",
+      "datum": "2017-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-04",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Vypracování studie proveditelnosti a posouzení týkající se rekonstrukce stávajícího objektu radnice nebo výstavby nové radnice města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APRIS 3MP s.r.o..",
+      "castka_czk": 378004.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4625604",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:7142731",
+      "datum": "2018-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-02",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Stavebně technický, geologický a radonový průzkum týkající se Rekonstrukce stávajícího objektu radnice  města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APRIS 3MP s.r.o..",
+      "castka_czk": 120307.275,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7712111",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-44-44/6",
+      "datum": "2019-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-05",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Aktualizace studie providitelnosti - Rekonstrukce radnice na Obecní dům",
+      "popis": "Rada města, bod 44/6, usnesení 547/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2430807",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-44-44/7",
+      "datum": "2019-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-05",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Studie proveditelnosti - Administrativní budova MěÚ –areál Chebská",
+      "popis": "Rada města, bod 44/7, usnesení 548/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2430846",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/6__9984228",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Vypracování studie proveditelnosti \"Administrativní budova pro část odborů radnice v lokalitě Chebská 252, Mariánské Lázně\"",
+      "popis": "Odhadované spojení smlouvy z 2019-11-14 s bodem 44/6 z 2019-11-05 (Aktualizace studie providitelnosti - Rekonstrukce radnice na Obecní dům). Jistota nizka.",
+      "castka_czk": 163350.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova radnice, studie; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/10739072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/6__9984264",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Vypracování studie proveditelnosti a posouzení týkající se Rekonstrukce stávajícího objektu radnice - Obecní dům města města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-11-14 s bodem 44/6 z 2019-11-05 (Aktualizace studie providitelnosti - Rekonstrukce radnice na Obecní dům). Jistota nizka.",
+      "castka_czk": 220220.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova obecni, radnice, rekonstrukce, studie; stejně",
+      "url": "https://smlouvy.gov.cz/smlouva/10739112",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/7__9984228",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Vypracování studie proveditelnosti \"Administrativní budova pro část odborů radnice v lokalitě Chebská 252, Mariánské Lázně\"",
+      "popis": "Odhadované spojení smlouvy z 2019-11-14 s bodem 44/7 z 2019-11-05 (Studie proveditelnosti - Administrativní budova MěÚ –areál Chebská). Jistota nizka.",
+      "castka_czk": 163350.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova administrativni, budova, chebska, provediteln",
+      "url": "https://smlouvy.gov.cz/smlouva/10739072",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/7__9984264",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Vypracování studie proveditelnosti a posouzení týkající se Rekonstrukce stávajícího objektu radnice - Obecní dům města města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-11-14 s bodem 44/7 z 2019-11-05 (Studie proveditelnosti - Administrativní budova MěÚ –areál Chebská). Jistota nizka.",
+      "castka_czk": 220220.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova proveditelnosti, studie; stejně dobře sedí i ",
+      "url": "https://smlouvy.gov.cz/smlouva/10739112",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9984228",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Vypracování studie proveditelnosti \"Administrativní budova pro část odborů radnice v lokalitě Chebská 252, Mariánské Lázně\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APRIS 3MP s.r.o..",
+      "castka_czk": 163350.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10739072",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:9984264",
+      "datum": "2019-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-14",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Vypracování studie proveditelnosti a posouzení týkající se Rekonstrukce stávajícího objektu radnice - Obecní dům města města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APRIS 3MP s.r.o..",
+      "castka_czk": 220220.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10739112",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/6__11066016",
+      "datum": "2020-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o vypořádání závazků vyplývajících ze smlouvy (objednávky) č. IaD/17/1482/SP ze dne 4.10.2017",
+      "popis": "Odhadované spojení smlouvy z 2020-03-06 s bodem 44/6 z 2019-11-05 (Aktualizace studie providitelnosti - Rekonstrukce radnice na Obecní dům). Jistota nizka.",
+      "castka_czk": 378004.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 122 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/11907804",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-44/7__11066016",
+      "datum": "2020-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o vypořádání závazků vyplývajících ze smlouvy (objednávky) č. IaD/17/1482/SP ze dne 4.10.2017",
+      "popis": "Odhadované spojení smlouvy z 2020-03-06 s bodem 44/7 z 2019-11-05 (Studie proveditelnosti - Administrativní budova MěÚ –areál Chebská). Jistota nizka.",
+      "castka_czk": 378004.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27183912 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 122 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/11907804",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11066016",
+      "datum": "2020-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků vyplývajících ze smlouvy (objednávky) č. IaD/17/1482/SP ze dne 4.10.2017",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APRIS 3MP s.r.o..",
+      "castka_czk": 378004.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11907804",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

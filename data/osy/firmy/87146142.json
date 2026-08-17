@@ -1,0 +1,1260 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "87146142",
+    "nazev": "Václav Nekovář"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-10-15",
+    "do": "2026-05-07",
+    "prvni_rok": 2008,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 61,
+    "dolozenych": 29,
+    "odhadu": 32,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 32,
+      "smlouva": 19,
+      "usneseni": 9
+    },
+    "dle_jistoty": {
+      "fakt": 29,
+      "vysoka": 1,
+      "nizka": 31
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:87146142:vznik",
+      "datum": "2008-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-10-15",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Václav Nekovář",
+      "popis": "Vznik subjektu Václav Nekovář (IČO 87146142), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2016-82/4__174101",
+      "datum": "2016-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-31",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "NS k užívání prodejního stánku",
+      "popis": "Odhadované spojení smlouvy z 2016-08-31 s bodem 82/4 z 2016-08-30 (Pronájem stánků na ul. Promenáda města Bad Homburg). Jistota vysoka.",
+      "castka_czk": 54300.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 1 den po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/183565",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:174101",
+      "datum": "2016-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-31",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "NS k užívání prodejního stánku",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 54300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/183565",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-108-108/17",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Podnájemní smlouva Park Boheminium - Nekovář",
+      "popis": "Rada města, bod 108/17, usnesení 193/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734109",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-131/5__5676023",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Václav Nekovář",
+      "popis": "Odhadované spojení smlouvy z 2018-07-03 s bodem 131/5 z 2017-10-17 (Uzavření nájemní smlouvy k užívání 3 stánků - Promenáda města Bad Homburg). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 259 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6113735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__5676023",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Václav Nekovář",
+      "popis": "Odhadované spojení smlouvy z 2018-07-03 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 82 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6113735",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5676023",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "FK neinvestiční dotace Václav Nekovář",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6113735",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/5",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - vyúčtování 2018",
+      "popis": "Zastupitelstvo města, bod 2/5, usnesení 13/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145829",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/2__7862503",
+      "datum": "2019-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-30",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Odhadované spojení smlouvy z 2019-01-30 s bodem 167/2 z 2018-09-25 (Prodloužení pronájmu stánků -Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 133100.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; smlouva podepsána 127 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/8489955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-2/5__7862503",
+      "datum": "2019-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-30",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Odhadované spojení smlouvy z 2019-01-30 s bodem 2/5 z 2018-12-20 (Fond kultury - vyúčtování 2018). Jistota nizka.",
+      "castka_czk": 133100.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/8489955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__7862503",
+      "datum": "2019-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-30",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Odhadované spojení smlouvy z 2019-01-30 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota nizka.",
+      "castka_czk": 133100.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; smlouva podepsána 293 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/8489955",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7862503",
+      "datum": "2019-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana VN Catering - Václav Nekovář.",
+      "castka_czk": 133100.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8489955",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-15/10__8642471",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-12 s bodem 15/10 z 2019-03-12 (Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projedn",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9317967",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-2/5__8642471",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-12 s bodem 2/5 z 2018-12-20 (Fond kultury - vyúčtování 2018). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 174 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9317967",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-5/6__8642471",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-12 s bodem 5/6 z 2019-04-09 (Fond kultury 2019 - 1. výzva). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9317967",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8642471",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9317967",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-93/11__16033691",
+      "datum": "2021-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-19",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek N1",
+      "popis": "Odhadované spojení smlouvy z 2021-07-19 s bodem 93/11 z 2020-12-22 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 65600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 209 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17253599",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/10__16033691",
+      "datum": "2021-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-19",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek N1",
+      "popis": "Odhadované spojení smlouvy z 2021-07-19 s bodem 116/10 z 2021-07-13 (Pronájem prodejního stánku N 1 - Promenáda města Bad Homburg). Jistota nizka.",
+      "castka_czk": 65600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17253599",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16033691",
+      "datum": "2021-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-19",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek N1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 65600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17253599",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/10__17646395",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 1 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 116/10 z 2021-07-13 (Pronájem prodejního stánku N 1 - Promenáda města Bad Homburg). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 171 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18984491",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/10__17646399",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 2 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 116/10 z 2021-07-13 (Pronájem prodejního stánku N 1 - Promenáda města Bad Homburg). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 171 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18984495",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17646395",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 1 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/18984491",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17646399",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 2 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/18984495",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17646395",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva stánek č. 1 - BH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 146000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18984491",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17646399",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva stánek č. 2 - BH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 146000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18984495",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/10__17835279",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 116/10 z 2021-07-13 (Pronájem prodejního stánku N 1 - Promenáda města Bad Homburg). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 192 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19184791",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17835279",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/19184791",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17835279",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19184791",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__21371137",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Odhadované spojení smlouvy z 2022-12-30 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 154880.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/22935377",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__21371141",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.2",
+      "popis": "Odhadované spojení smlouvy z 2022-12-30 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 154880.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/22935381",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21371137",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 154880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22935377",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:21371141",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.2",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 154880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22935381",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__22242701",
+      "datum": "2023-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-21",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Odhadované spojení smlouvy z 2023-03-21 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 72600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 91 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/23856521",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22242701",
+      "datum": "2023-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o reklamě",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23856521",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-38-38/25",
+      "datum": "2023-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-28",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 38/25, usnesení 749/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3116493",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__25117043",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 357 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/26894227",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__25117043",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/26894227",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25117043",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26894227",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__27047848",
+      "datum": "2024-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace - VN CATERNG",
+      "popis": "Odhadované spojení smlouvy z 2024-05-31 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 528 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy",
+      "url": "https://smlouvy.gov.cz/smlouva/28928592",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__27047848",
+      "datum": "2024-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace - VN CATERNG",
+      "popis": "Odhadované spojení smlouvy z 2024-05-31 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 50000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 185 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/28928592",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27047848",
+      "datum": "2024-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-31",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace - VN CATERNG",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28928592",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/11",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 73/11, usnesení 836/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3292647",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__29517628",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31537332",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__29528256",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.2",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31548640",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29517628",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31537332",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29528256",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.2",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31548640",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__31135580",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace",
+      "popis": "Odhadované spojení smlouvy z 2025-05-09 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 60500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 528 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/33233432",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__31135580",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace",
+      "popis": "Odhadované spojení smlouvy z 2025-05-09 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 60500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 150 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/33233432",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31135580",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 60500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33233432",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/16",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026",
+      "popis": "Rada města, bod 106/16, usnesení 821/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/132170100",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/16__33983641",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 1. ul. Promenáda města Bad Homburg na rok 2026 - p. Nekovář",
+      "popis": "Odhadované spojení smlouvy z 2025-12-29 s bodem 106/16 z 2025-12-09 (Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova promenada, stanku; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/36215189",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/16__34066177",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 2. ul. Promenáda města Bad Homburg na rok 2026 - p. Nekovář",
+      "popis": "Odhadované spojení smlouvy z 2025-12-29 s bodem 106/16 z 2025-12-09 (Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova promenada, stanku; k témuž usnesení se hlásí",
+      "url": "https://smlouvy.gov.cz/smlouva/36301569",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33983641",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 1. ul. Promenáda města Bad Homburg na rok 2026 - p. Nekovář",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36215189",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34066177",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 2. ul. Promenáda města Bad Homburg na rok 2026 - p. Nekovář",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36301569",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__35585641",
+      "datum": "2026-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace - Václav Nekovář - ZLS 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-05-07 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 513 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy",
+      "url": "https://smlouvy.gov.cz/smlouva/37887257",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/16__35585641",
+      "datum": "2026-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o provedení reklamy a propagace - Václav Nekovář - ZLS 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-05-07 s bodem 106/16 z 2025-12-09 (Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 87146142 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 149 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/37887257",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35585641",
+      "datum": "2026-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace - Václav Nekovář - ZLS 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Václav Nekovář.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37887257",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

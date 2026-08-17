@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73732931",
+    "nazev": "Klub plastikových modelářů Mariánské Lázně"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-04-25",
+    "do": "2018-04-12",
+    "prvni_rok": 2007,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73732931:vznik",
+      "datum": "2007-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-04-25",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Klub plastikových modelářů Mariánské Lázně p.s.",
+      "popis": "Vznik subjektu Klub plastikových modelářů Mariánské Lázně p.s. (IČO 73732931), Pobočný spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:158481",
+      "datum": "2016-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-20",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu sportu Města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Klub plastikových modelářů Mariánské Lázně.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/167349",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/6",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z Fondu sportu - činnost",
+      "popis": "Zastupitelstvo města, bod 35/6, usnesení 687/18. Schvaleno.",
+      "castka_czk": 1917500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1921286",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

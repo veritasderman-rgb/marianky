@@ -1,0 +1,278 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63077639",
+    "nazev": "Wolters Kluwer ČR,a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-08-20",
+    "do": "2024-10-16",
+    "prvni_rok": 2013,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 9,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 3,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-119-119/1",
+      "datum": "2013-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-20",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "ASPI - právní systém",
+      "popis": "Rada města, bod 119/1, usnesení 373/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/998948",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-4-4/13",
+      "datum": "2014-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-23",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Dodatek smlouvy č. 3 k systému ASPI",
+      "popis": "Rada města, bod 4/13, usnesení 601/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1319882",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-98-98/15",
+      "datum": "2017-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí užívacích práv systému ASPI",
+      "popis": "Rada města, bod 98/15, usnesení 26/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1695946",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-98/15__1087485",
+      "datum": "2017-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-25",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "ASPI",
+      "popis": "Odhadované spojení smlouvy z 2017-01-25 s bodem 98/15 z 2017-01-10 (Smlouva o poskytnutí užívacích práv systému ASPI). Jistota stredni.",
+      "castka_czk": 40485.39,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 63077639 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1157801",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1087485",
+      "datum": "2017-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-25",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "ASPI",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Wolters Kluwer ČR,a.s..",
+      "castka_czk": 40485.39,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1157801",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12909220",
+      "datum": "2020-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-09-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Wolters Kluwer ČR,a.s..",
+      "castka_czk": 83938.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13843120",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-12-12/2",
+      "datum": "2023-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí užívacích práv ke Službě ASPI",
+      "popis": "Rada města, bod 12/2, usnesení 62/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2968874",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-12/2__21905189",
+      "datum": "2023-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-15",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí užívacích práv ke Službě ASPI",
+      "popis": "Odhadované spojení smlouvy z 2023-02-15 s bodem 12/2 z 2023-02-07 (Smlouva o poskytnutí užívacích práv ke Službě ASPI). Jistota stredni.",
+      "castka_czk": 74834.87,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 63077639 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova aspi, prav, sluzbe, uzivacich",
+      "url": "https://smlouvy.gov.cz/smlouva/23501313",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21905189",
+      "datum": "2023-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-15",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí užívacích práv ke Službě ASPI",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Wolters Kluwer ČR,a.s..",
+      "castka_czk": 74834.87,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23501313",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/39",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o poskytnutí užívacích práv ke Službě ASPI",
+      "popis": "Rada města, bod 67/39, usnesení 685/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3259859",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-67/39__28721084",
+      "datum": "2024-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-16",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě č. SM-30529-2023 o poskytnutí užívacích práv a zřízení přístupu ke Službě ASPI",
+      "popis": "Odhadované spojení smlouvy z 2024-10-16 s bodem 67/39 z 2024-10-01 (Dodatek č. 1 ke smlouvě o poskytnutí užívacích práv ke Službě ASPI). Jistota stredni.",
+      "castka_czk": 80258.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 63077639 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova aspi, prav, sluzbe, uzivacich; obojí je doda",
+      "url": "https://smlouvy.gov.cz/smlouva/30699720",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28721084",
+      "datum": "2024-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě č. SM-30529-2023 o poskytnutí užívacích práv a zřízení přístupu ke Službě ASPI",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Wolters Kluwer ČR,a.s..",
+      "castka_czk": 80258.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30699720",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

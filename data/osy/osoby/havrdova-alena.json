@@ -1,0 +1,246 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "havrdova-alena",
+    "jmeno": "Alena Havrdová",
+    "role": [
+      "statutár"
+    ],
+    "kategorie": "mestske-firmy",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-06",
+    "do": "2025-03",
+    "prvni_rok": 2016,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 10,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 10
+    },
+    "dle_jistoty": {
+      "fakt": 10
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-06-004",
+      "datum": "2016-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-06-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Sezóna v Mariánských Lázních byla zahájená",
+      "popis": "Město Mariánské Lázně otevřelo ve dnech 13.5. - 14.5. 2016 další lázeňskou sezónu. Tradičně tak byl druhý květnový víkend naplněný příjemnou atmosféru a bohatým",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c7fd3881%7C969#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-06/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-12-047",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Oslava 150. výročí otevření Městského divadla v Mariánských Lázních",
+      "popis": "V úterý 13. listopadu se uskutečnila oslava 150. výročí otevření Městského divadla v Mariánských Lázních. Oslava začala vernisáží výstavy věnované Divadlu lidov",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b4fe313d%7C1780#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-12/047.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-007",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Volby do Evropského parlamentu hledáme zájemce o práci v okrskových volebních komisích",
+      "popis": "Prezident republiky vyhlásil volby do Evropského parlamentu a stanovil dny jejich konání na pátek 24. května 2019 a sobotu 25. května 2019. V Mariánských Lázníc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-07-051",
+      "datum": "2019-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "KAPSA PLNÁ POHÁDEK se již brzy otevře",
+      "popis": "Dne 8.7. 2019 v 10.00 bude zahájen 18. ročník dětské akce s názvem „Kapsa plná pohádek“. Jedná se o ojedinělou a velice oblíbenou prázdninovou akci, kterou jako",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d096979f%7C2018#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-07/051.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-12-014",
+      "datum": "2020-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-12-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Divadlo lidové tvorby žije!",
+      "popis": "17. listopadu 1945 uspořádali členové Divadla lidové tvorby v divadle večer poezie s názvem „Osvobozené písně“. Tehdy poprvé v Městském divadle Mariánské Lázně ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89f6d982%7C2470#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-12/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-05-007",
+      "datum": "2021-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-05-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÉ DIVADLO MARIÁNSKÉ LÁZNĚ MÁ NOVÉ WEBOVÉ STRÁNKY",
+      "popis": "Podařilo se… Městské divadlo Mariánské Lázně spustí své vlastní webové stránky: www.divadloml.cz. Návštěvníci divadla si už delší dobu přáli snadnější orientaci",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9eaca2e7%7C2603#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-05/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-05-018",
+      "datum": "2022-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-05-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "77. OSLAVY OSVOBOZENÍ NAŠEHO MĚSTA",
+      "popis": "V pátek 6. května proběhnou v Mariánských Lázních oslavy výročí osvobození města. Právě v tento den se v roce 1945 ve městě objevily první tanky amerických vojá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=01790d32%7C3416#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-05/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-022",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "LÁZEŇSKÁ SEZÓNA 2022 V MARIÁNSKÝCH LÁZNÍCH BYLA ZAHÁJENA",
+      "popis": "Město Mariánské Lázně ve dnech 13.–15. května 2022 otevřelo prostřednictvím naší společnosti KIS Mariánské Lázně, s. r. o., další sezónu. Společně jsme tak mohl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-031",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "TANEČNÍ SOUTĚŽNÍ PŘEHLÍDKA V MARIÁNSKÝCH LÁZNÍCH",
+      "popis": "Ve čtvrtek 21. dubna se do Městského divadla v Mariánských Lázní sjeli tanečníci a tanečnice z uměleckých škol v Karlovarském kraji. Jednalo se o sólistky a tan",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=23",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/031.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-03-006",
+      "datum": "2025-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-03-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Městské divadlo má novou šatnu",
+      "popis": "Divadlo zahajuje sezónu a diváci se mohou těšit na příjemnější prostředí. Tou nejviditelnější změnou je opravená šatna. „Práce probíhaly od 15.10.2024 převážně ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=67be0247%7C4497#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-03/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

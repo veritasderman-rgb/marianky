@@ -1,0 +1,137 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66002222",
+    "nazev": "Ministerstvo pro místní rozvoj"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-02-06",
+    "do": "2018-12-07",
+    "prvni_rok": 2018,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 2,
+    "odhadu": 3,
+    "dle_typu": {
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "nizka": 3,
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2017-138/6__4317796",
+      "datum": "2018-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-06",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o podmínkách realizace projektu (SoPR) 172/PP2",
+      "popis": "Odhadované spojení smlouvy z 2018-02-06 s bodem 138/6 z 2017-12-19 (uzavření dotační smlouvy k projektu Malí, ale společně silní!). Jistota nizka.",
+      "castka_czk": 943602.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 66002222 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 49 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/4652860",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4317796",
+      "datum": "2018-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o podmínkách realizace projektu (SoPR) 172/PP2",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Ministerstvo pro místní rozvoj.",
+      "castka_czk": 943602.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4652860",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-138/6__7035135",
+      "datum": "2018-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-07",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o podmínkách realizace projektu (SoPR) - 172/PP2",
+      "popis": "Odhadované spojení smlouvy z 2018-12-07 s bodem 138/6 z 2017-12-19 (uzavření dotační smlouvy k projektu Malí, ale společně silní!). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 66002222 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 353 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/7596699",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-172/3__7035135",
+      "datum": "2018-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-07",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o podmínkách realizace projektu (SoPR) - 172/PP2",
+      "popis": "Odhadované spojení smlouvy z 2018-12-07 s bodem 172/3 z 2018-10-30 (Malí, ale společně silní! č. 172). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 66002222 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 38 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/7596699",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7035135",
+      "datum": "2018-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-07",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o podmínkách realizace projektu (SoPR) - 172/PP2",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Ministerstvo pro místní rozvoj.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7596699",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

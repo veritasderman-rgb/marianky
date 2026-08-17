@@ -1,0 +1,219 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49770918",
+    "nazev": "Lucie Heřtová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1995-11-01",
+    "do": "2025-07-29",
+    "prvni_rok": 1995,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 6,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 3,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:49770918:vznik",
+      "datum": "1995-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1995-11-01",
+      "rok": 1995,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Lucie Heřtová",
+      "popis": "Vznik subjektu Lucie Heřtová (IČO 49770918), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-71-71/18",
+      "datum": "2020-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-26",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56/57 - podnájemní smlouva",
+      "popis": "Rada města, bod 71/18, usnesení 278/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2528464",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/71.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-75-75/24",
+      "datum": "2025-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-07",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní č.p.56, 57 – prodloužení nájemního vztahu – Pavel Molnár",
+      "popis": "Rada města, bod 75/24, usnesení 24/25. Schvaleno.",
+      "castka_czk": 219999,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3305283",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-89-89/39",
+      "datum": "2025-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní třída, č.p. 228, Mariánské Lázně",
+      "popis": "Rada města, bod 89/39, usnesení 403/25. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3374307",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/10",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 228",
+      "popis": "Rada města, bod 93/10, usnesení 514/25. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3400789",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-75/24__32129329",
+      "datum": "2025-07-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-07-29 s bodem 75/24 z 2025-01-07 (NP Poštovní č.p.56, 57 – prodloužení nájemního vztahu – Pavel Molnár). Jistota nizka.",
+      "castka_czk": 1200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49770918 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 203 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/34275581",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-89/39__32129329",
+      "datum": "2025-07-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-07-29 s bodem 89/39 z 2025-05-27 (Pronájem NP Hlavní třída, č.p. 228, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 1200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49770918 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 63 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/34275581",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/10__32129329",
+      "datum": "2025-07-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2025-07-29 s bodem 93/10 z 2025-07-22 (NP Hlavní třída, č.p. 228). Jistota nizka.",
+      "castka_czk": 1200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 49770918 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/34275581",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32129329",
+      "datum": "2025-07-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lucie Heřtová.",
+      "castka_czk": 1200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34275581",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

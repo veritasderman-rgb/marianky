@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73714267",
+    "nazev": "Společenství pro dům Poštovní 331/13, Mariánské Lázně"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-12-27",
+    "do": "2026-05-06",
+    "prvni_rok": 2005,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73714267:vznik",
+      "datum": "2005-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-12-27",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství pro dům Poštovní 331/13, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství pro dům Poštovní 331/13, Mariánské Lázně (IČO 73714267), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo pro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-26-26/8",
+      "datum": "2026-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o majetkovém vypořádání SVJ Poštovní 331",
+      "popis": "Zastupitelstvo města, bod 26/8, usnesení 584/26. Schvaleno.",
+      "castka_czk": 484152,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1743340774",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2026-26/8__35620153",
+      "datum": "2026-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-06",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "DOHODA O BUDOUCÍ ZMĚNĚ PROHLÁŠENÍ VLASTNÍKA A O MAJETKOVÉM VYPOŘÁDÁNÍ - SVJ Poštovní 331",
+      "popis": "Odhadované spojení smlouvy z 2026-05-06 s bodem 26/8 z 2026-04-21 (Dohoda o majetkovém vypořádání SVJ Poštovní 331). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 73714267 je uvedeno v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova dohoda, majetkovem, postovni, vyporadani",
+      "url": "https://smlouvy.gov.cz/smlouva/37923169",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35620153",
+      "datum": "2026-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-06",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "DOHODA O BUDOUCÍ ZMĚNĚ PROHLÁŠENÍ VLASTNÍKA A O MAJETKOVÉM VYPOŘÁDÁNÍ - SVJ Poštovní 331",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Společenství pro dům Poštovní 331/13, Mariánské Lázně.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37923169",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

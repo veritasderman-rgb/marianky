@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72050021",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-04-14",
+    "do": "2014-04-29",
+    "prvni_rok": 2009,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:72050021:vznik",
+      "datum": "2009-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-04-14",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků jednotek Hlavní 231/232",
+      "popis": "Vznik subjektu Společenství vlastníků jednotek Hlavní 231/232 (IČO 72050021), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo pronajatýc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-22-22/5",
+      "datum": "2014-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-04-29",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Prodej pozemkové parcely č. 2347 k.ú. Mar. Lázně",
+      "popis": "Zastupitelstvo města, bod 22/5, usnesení 697/14. Schvaleno.",
+      "castka_czk": 14425,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1108100",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

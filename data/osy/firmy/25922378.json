@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25922378",
+    "nazev": "JP-KONTAKT, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-02-19",
+    "do": "2020-02-19",
+    "prvni_rok": 2020,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2020-56/21__10922964",
+      "datum": "2020-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-19",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Objednávka regálů archiv STAV",
+      "popis": "Odhadované spojení smlouvy z 2020-02-19 s bodem 56/21 z 2020-02-04 (Nákup regálů pro stavební archiv). Jistota nizka.",
+      "castka_czk": 430578.5,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (JP-KONTAKT, s.r.o.) je v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova archiv, regalu",
+      "url": "https://smlouvy.gov.cz/smlouva/11754768",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10922964",
+      "datum": "2020-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-19",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka regálů archiv STAV",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana JP-KONTAKT, s.r.o..",
+      "castka_czk": 430578.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11754768",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

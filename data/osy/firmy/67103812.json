@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "67103812",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-12-10",
+    "do": "2013-08-20",
+    "prvni_rok": 1997,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:67103812:vznik",
+      "datum": "1997-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-12-10",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — David Málek",
+      "popis": "Vznik subjektu David Málek (IČO 67103812), Fyzická osoba podnikající dle živnostenského zákona, obor: Maloobchod s použitým zbožím.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-119-119/3",
+      "datum": "2013-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-20",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Ukončení nájmu - NP Franze Kafky B2 I",
+      "popis": "Rada města, bod 119/3, usnesení 375/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1002531",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

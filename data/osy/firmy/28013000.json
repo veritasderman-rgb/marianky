@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28013000",
+    "nazev": "VŠESTAV Mariánské Lázně s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-07-24",
+    "do": "2023-10-31",
+    "prvni_rok": 2012,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 1,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-74-74/21",
+      "datum": "2012-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-07-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Městský bazén-udržovací práce bazénových šaten",
+      "popis": "Rada města, bod 74/21, usnesení 372/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/796416",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/74.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:20850969",
+      "datum": "2022-11-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana VŠESTAV Mariánské Lázně s.r.o..",
+      "castka_czk": 120464.9985,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22384545",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:21482889",
+      "datum": "2023-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-03",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana VŠESTAV Mariánské Lázně s.r.o..",
+      "castka_czk": 89673.1,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23225545",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24605219",
+      "datum": "2023-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-31",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava – sanace části zdiva v objektu Městského divadla, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VŠESTAV Mariánské Lázně s.r.o..",
+      "castka_czk": 76357.413,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26340099",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

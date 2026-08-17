@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27955834",
+    "nazev": "DS engineering PLUS, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-09-23",
+    "do": "2018-07-17",
+    "prvni_rok": 2016,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2378658",
+      "datum": "2016-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-23",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Technický dozor investora při provádění stavby",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana DS engineering PLUS a.s..",
+      "castka_czk": 94921.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2563454",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5724707",
+      "datum": "2018-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-17",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Zajištění činnosti koordinátora BOZP pro akci Vybudování komunikace - Průmyslová zóna Hamrníky - 1. etapa, 1. část",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana DS engineering PLUS, a.s..",
+      "castka_czk": 96098.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6166435",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

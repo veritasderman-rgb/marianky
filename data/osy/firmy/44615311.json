@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44615311",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-03-01",
+    "do": "2026-03-30",
+    "prvni_rok": 1993,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:44615311:vznik",
+      "datum": "1993-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-03-01",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Helena Brožová",
+      "popis": "Vznik subjektu Helena Brožová (IČO 44615311), Fyzická osoba podnikající dle živnostenského zákona, obor: Výroba ostatních nekovových minerálních výrobků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-112-112/16",
+      "datum": "2026-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-02",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Část objektu – kolonáda Ferdinandova pramene, v ul. Anglická, č.p. 270/49 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 112/16, usnesení 973/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3504934071",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/13",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájemního vztahu ul. Anglická, č.p. 270/49 – kolonáda Ferdinandova pramene",
+      "popis": "Rada města, bod 114/13, usnesení 1035/26. Schvaleno.",
+      "castka_czk": 4400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3754912101",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,539 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "42194407",
+    "nazev": "KTS - AME s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-04-25",
+    "do": "2025-05-06",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 25,
+    "dolozenych": 17,
+    "odhadu": 8,
+    "dle_typu": {
+      "usneseni": 9,
+      "retez": 8,
+      "smlouva": 8
+    },
+    "dle_jistoty": {
+      "fakt": 17,
+      "stredni": 5,
+      "vysoka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-21-21/3",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce Zpívající fontány",
+      "popis": "Rada města, bod 21/3, usnesení 263/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3014464",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-21/3__23290655",
+      "datum": "2023-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-29",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce Zpívající fontány Mariánské Lázně (technologická část) - PD",
+      "popis": "Odhadované spojení smlouvy z 2023-05-29 s bodem 21/3 z 2023-04-25 (Rekonstrukce Zpívající fontány). Jistota stredni.",
+      "castka_czk": 797148.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici",
+      "url": "https://smlouvy.gov.cz/smlouva/24957543",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23290655",
+      "datum": "2023-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-29",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce Zpívající fontány Mariánské Lázně (technologická část) - PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 797148.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24957543",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-53-53/18",
+      "datum": "2024-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Rekonstrukce zpívající fontány v Mariánských Lázních\" - výběr dodavatele",
+      "popis": "Rada města, bod 53/18, usnesení 329/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3193189",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-53/18__26943808",
+      "datum": "2024-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-24",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Rekonstrukce zpívající fontány",
+      "popis": "Odhadované spojení smlouvy z 2024-05-24 s bodem 53/18 z 2024-05-14 (Veřejná zakázka \"Rekonstrukce zpívající fontány v Mariánských Lázních\" - výběr dodavatele). ",
+      "castka_czk": 43487471.4868,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici",
+      "url": "https://smlouvy.gov.cz/smlouva/30951264",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26943808",
+      "datum": "2024-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - Rekonstrukce zpívající fontány",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 43487471.4868,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30951264",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-69-69/10",
+      "datum": "2024-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-29",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.1",
+      "popis": "Rada města, bod 69/10, usnesení 742/24. Schvaleno.",
+      "castka_czk": 768429,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3271299",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/10__28960740",
+      "datum": "2024-11-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-11",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2024-11-11 s bodem 69/10 z 2024-10-29 (Rekonstrukce zpívající fontány – dodatek č.1). Jistota vysoka.",
+      "castka_czk": 768428.7831,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici; o",
+      "url": "https://smlouvy.gov.cz/smlouva/30951268",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28960740",
+      "datum": "2024-11-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-11",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 768428.7831,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30951268",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-71-71/2",
+      "datum": "2024-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.2",
+      "popis": "Rada města, bod 71/2, usnesení 795/24. Schvaleno.",
+      "castka_czk": 1945680,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3286136",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/71.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/24",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.3",
+      "popis": "Rada města, bod 73/24, usnesení 849/24. Schvaleno.",
+      "castka_czk": 319839,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3293548",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-71/2__29384952",
+      "datum": "2024-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2024-12-12 s bodem 71/2 z 2024-11-20 (Rekonstrukce zpívající fontány – dodatek č.2). Jistota vysoka.",
+      "castka_czk": 1945680.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici; o",
+      "url": "https://smlouvy.gov.cz/smlouva/31398056",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29384952",
+      "datum": "2024-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 1945680.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31398056",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/24__29751936",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2025-01-16 s bodem 73/24 z 2024-12-10 (Rekonstrukce zpívající fontány – dodatek č.3). Jistota stredni.",
+      "castka_czk": 776932.6147,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; smlouva podepsána 37 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici; obojí je dodatek č. 3",
+      "url": "https://smlouvy.gov.cz/smlouva/31783440",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29751936",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 776932.6147,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31783440",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/31",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.4",
+      "popis": "Rada města, bod 77/31, usnesení 103/25. Schvaleno.",
+      "castka_czk": 261389,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3319167",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/31__30308788",
+      "datum": "2025-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-19",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 4 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2025-02-19 s bodem 77/31 z 2025-02-04 (Rekonstrukce zpívající fontány – dodatek č.4). Jistota stredni.",
+      "castka_czk": 343736.9936,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici; obojí je dodatek č. 4",
+      "url": "https://smlouvy.gov.cz/smlouva/32367220",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30308788",
+      "datum": "2025-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-19",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 4 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 343736.9936,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32367220",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-78-78/25",
+      "datum": "2025-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.5",
+      "popis": "Rada města, bod 78/25, usnesení 128/25. Schvaleno.",
+      "castka_czk": 922136,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3325505",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-78/25__30571588",
+      "datum": "2025-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-13",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Odhadované spojení smlouvy z 2025-03-13 s bodem 78/25 z 2025-02-25 (Rekonstrukce zpívající fontány – dodatek č.5). Jistota vysoka.",
+      "castka_czk": 1115784.2575,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, r",
+      "url": "https://smlouvy.gov.cz/smlouva/32642424",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30571588",
+      "datum": "2025-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-13",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke smlouvě o dílo Rekonstrukce zpívající fontány (č. smlouvy objednatele: S297/24) uzavřené dne 24.5.2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 1115784.2575,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32642424",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/29",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.6",
+      "popis": "Rada města, bod 81/29, usnesení 206/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3338728",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/25",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce zpívající fontány – dodatek č.7",
+      "popis": "Rada města, bod 85/25, usnesení 297/25. Schvaleno.",
+      "castka_czk": 2022805,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3354702",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-85/25__31145560",
+      "datum": "2025-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-06",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č.7 ke smlouvě o dílo - Rekonstrukce zpívající fontány",
+      "popis": "Odhadované spojení smlouvy z 2025-05-06 s bodem 85/25 z 2025-04-15 (Rekonstrukce zpívající fontány – dodatek č.7). Jistota stredni.",
+      "castka_czk": 45042460.72,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 42194407 je uvedeno v textu usnesení; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova fontany, rekonstrukce, zpivajici; obojí je dodatek č. 7",
+      "url": "https://smlouvy.gov.cz/smlouva/33243764",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31145560",
+      "datum": "2025-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-06",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.7 ke smlouvě o dílo - Rekonstrukce zpívající fontány",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KTS - AME s.r.o..",
+      "castka_czk": 45042460.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33243764",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

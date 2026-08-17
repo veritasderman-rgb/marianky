@@ -1,0 +1,148 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "eduard-vii",
+    "jmeno": "Eduard VII.",
+    "role": [
+      "návštěvník",
+      "panovník"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1897",
+    "do": "2021-05-24",
+    "prvni_rok": 1897,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 3,
+      "media": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1897-eduard-vii-prvni",
+      "datum": "1897",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1897-01-01",
+      "rok": 1897,
+      "typ": "historie",
+      "nadpis": "První návštěva pozdějšího britského krále Eduarda VII.",
+      "popis": "V roce 1897 zavítal do Mariánských Lázní poprvé pozdější britský panovník Eduard VII., tehdy ještě jako princ z Walesu. Celkem sem přijel devětkrát, převážně po",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1904-setkani-panovniku",
+      "datum": "1904-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1904-08-16",
+      "rok": 1904,
+      "typ": "historie",
+      "nadpis": "Setkání císaře Františka Josefa I. s králem Eduardem VII.",
+      "popis": "Dne 16. srpna 1904 se v hotelu Nové Lázně sešli při oficiálním setkání rakouský císař František Josef I. a britský král Eduard VII. Město se v té době stalo mís",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Mari%C3%A1nsk%C3%A9_L%C3%A1zn%C4%9B",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "historie:1909-eduard-vii-posledni",
+      "datum": "1909",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1909-01-01",
+      "rok": 1909,
+      "typ": "historie",
+      "nadpis": "Poslední pobyt krále Eduarda VII.",
+      "popis": "Rok 1909 byl podle análů města posledním pobytem britského krále Eduarda VII. v Mariánských Lázních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "media:cro-den-zeleznice-v-marianskych-laznich-pripomnel-setkani-dvou-monarchu-na",
+      "datum": "2014-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-21",
+      "rok": 2014,
+      "typ": "media",
+      "nadpis": "Den železnice v Mariánských Lázních připomněl setkání dvou monarchů na tamním nádraží",
+      "popis": "Den železnice na mariánskolázeňském nádraží připomněl setkání císaře Františka Josefa I. s anglickým králem Eduardem VII., k němuž tam došlo před 110 lety. Prog",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/den-zeleznice-v-marianskych-laznich-pripomnel-setkani-dvou-monarchu-na-tamnim-6814592",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:drbna-chebsko-4076-v-marianskych-laznich-vzpominaji-na-devet-navstev-anglick",
+      "datum": "2021-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-24",
+      "rok": 2021,
+      "typ": "media",
+      "nadpis": "V Mariánských Lázních vzpomínají na devět návštěv anglického krále",
+      "popis": "Anglický král Eduard VII. patřil k oblíbeným hostům Mariánských Lázní a přijel sem devětkrát. Ke 180. výročí jeho narození připravilo město prohlídku věnovanou ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://karlovarska.drbna.cz/chebsko/4076-v-marianskych-laznich-vzpominaji-na-devet-navstev-anglickeho-krale.html",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

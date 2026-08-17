@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24814466",
+    "nazev": "InterŠKOL a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-06-12",
+    "do": "2026-06-26",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-119-119/16",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Dodávky školních pomůcek pro ZŠ JIH\" - výběr dodavatele",
+      "popis": "Rada města, bod 119/16, usnesení 1224/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3679013774",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/16__36664774",
+      "datum": "2026-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-26",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "ZŠ JIH - modernizace učeben - pomůcky",
+      "popis": "Odhadované spojení smlouvy z 2026-06-26 s bodem 119/16 z 2026-06-12 (Veřejná zakázka \"Dodávky školních pomůcek pro ZŠ JIH\" - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 495376.42,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24814466 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39009286",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36664774",
+      "datum": "2026-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-26",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "ZŠ JIH - modernizace učeben - pomůcky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana InterŠKOL a.s..",
+      "castka_czk": 495376.42,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/39009286",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

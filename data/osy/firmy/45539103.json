@@ -1,0 +1,319 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45539103",
+    "nazev": "BAU-projekt spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-08-23",
+    "do": "2026-07-02",
+    "prvni_rok": 2022,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 10,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 5,
+      "retez": 4,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "stredni": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-156-156/7",
+      "datum": "2022-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Cyklostezka Mariánské Lázně – Drmoul – PD – výběr dodavatele",
+      "popis": "Rada města, bod 156/7, usnesení 422/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2897701",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/7__20171129",
+      "datum": "2022-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek zhotovitele zhotovit, dokončit a předat objednateli kompletní projektovou dokumentaci pro stavbu „Cyklostezka Mariánské Lázně – Drmoul – PD“.",
+      "popis": "Odhadované spojení smlouvy z 2022-09-14 s bodem 156/7 z 2022-08-23 (Cyklostezka Mariánské Lázně – Drmoul – PD – výběr dodavatele). Jistota stredni.",
+      "castka_czk": 336380.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45539103 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova cyklostezka, drmoul",
+      "url": "https://smlouvy.gov.cz/smlouva/21670201",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20171129",
+      "datum": "2022-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek zhotovitele zhotovit, dokončit a předat objednateli kompletní projektovou dokumentaci pro stavbu „Cyklostezka Mariánské Lázně – Drmoul – PD“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BAU-projekt spol. s r.o..",
+      "castka_czk": 336380.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21670201",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-25-25/28",
+      "datum": "2023-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-13",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Cyklostezka Mariánské Lázně – Hamrníky – Drmoul – PD",
+      "popis": "Rada města, bod 25/28, usnesení 385/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3036649",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/21",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Cyklostezka Mariánské Lázně – Hamrníky – Drmoul – PD",
+      "popis": "Rada města, bod 31/21, usnesení 560/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3074577",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-25/28__24281563",
+      "datum": "2023-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-05",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatkem č. 1 se mění termín a rozsah plnění, Vyvstala potřeba vyřešit majetkové vztahy formou smlouvy o právu provést stavbu na cizím pozemku a geometrické zaměření a následně vyjmutí některých pozemků potřebných pro záměr z ochrany ZPF",
+      "popis": "Odhadované spojení smlouvy z 2023-10-05 s bodem 25/28 z 2023-06-13 (Cyklostezka Mariánské Lázně – Hamrníky – Drmoul – PD). Jistota nizka.",
+      "castka_czk": 395524.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45539103 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25999939",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-31/21__24281563",
+      "datum": "2023-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-05",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatkem č. 1 se mění termín a rozsah plnění, Vyvstala potřeba vyřešit majetkové vztahy formou smlouvy o právu provést stavbu na cizím pozemku a geometrické zaměření a následně vyjmutí některých pozemků potřebných pro záměr z ochrany ZPF",
+      "popis": "Odhadované spojení smlouvy z 2023-10-05 s bodem 31/21 z 2023-09-05 (Cyklostezka Mariánské Lázně – Hamrníky – Drmoul – PD). Jistota nizka.",
+      "castka_czk": 395524.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45539103 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; obojí je dodatek č. 1; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25999939",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24281563",
+      "datum": "2023-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-05",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem č. 1 se mění termín a rozsah plnění, Vyvstala potřeba vyřešit majetkové vztahy formou smlouvy o právu provést stavbu na cizím pozemku a geometrické zaměření a následně vyjmutí některých pozemků potřebných pro záměr z ochrany ZPF",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BAU-projekt spol. s r.o..",
+      "castka_czk": 395524.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25999939",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-42-42/2",
+      "datum": "2024-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 1. etapa, PD - výběr dodavatele",
+      "popis": "Rada města, bod 42/2, usnesení 16/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3139654",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/42.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-42/2__25526475",
+      "datum": "2024-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 1.etapa, PD",
+      "popis": "Odhadované spojení smlouvy z 2024-01-17 s bodem 42/2 z 2024-01-16 (Veřejná zakázka - Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 1. etapa, PD -",
+      "castka_czk": 375100.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45539103 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova ceska, etapa, hlavni, krizovatka",
+      "url": "https://smlouvy.gov.cz/smlouva/27333567",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25526475",
+      "datum": "2024-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce ul. Hlavní - světelná křižovatka - Česká pošta, 1.etapa, PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BAU-projekt spol. s r.o..",
+      "castka_czk": 375100.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27333567",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-46-46/29",
+      "datum": "2024-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Cyklostezka Mariánské Lázně – Hamrníky – Drmoul – PD",
+      "popis": "Rada města, bod 46/29, usnesení 113/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3155098",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:26883270",
+      "datum": "2024-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatkem č. 2 se mění termín plnění, a to z důvodu, že se při plnění předmětu této smlouvy o dílo vyskytly skutečnosti, které nebylo možno předvídat",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BAU-projekt spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28757422",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:36305740",
+      "datum": "2026-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-02",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka provedení Výkonu  AD – Cyklostezka Mariánské Lázně – Hamrníky dle  nabídky ze 19.6.2026.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BAU-projekt spol. s r.o..",
+      "castka_czk": 190580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38635640",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

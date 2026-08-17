@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45007039",
+    "nazev": "Pavel Molnár"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-11-08",
+    "do": "2025-12-08",
+    "prvni_rok": 1993,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 10,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 7,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45007039:vznik",
+      "datum": "1993-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-11-08",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Pavel Molnár",
+      "popis": "Vznik subjektu Pavel Molnár (IČO 45007039), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-53-53/18",
+      "datum": "2020-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56, 57 - pronájem NP",
+      "popis": "Rada města, bod 53/18, usnesení 32/20. Schvaleno.",
+      "castka_czk": 219999,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2463681",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-64-64/3",
+      "datum": "2020-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-31",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56, 57 - rozšíření předmětu činnosti",
+      "popis": "Rada města, bod 64/3, usnesení 184/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2498671",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-71-71/18",
+      "datum": "2020-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-26",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 56/57 - podnájemní smlouva",
+      "popis": "Rada města, bod 71/18, usnesení 278/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2528464",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/71.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/12",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 56, 57 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 73/12, usnesení 837/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3292764",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-75-75/24",
+      "datum": "2025-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-07",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní č.p.56, 57 – prodloužení nájemního vztahu – Pavel Molnár",
+      "popis": "Rada města, bod 75/24, usnesení 24/25. Schvaleno.",
+      "castka_czk": 219999,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3305283",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-75/24__29683632",
+      "datum": "2025-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Pavel Molnár",
+      "popis": "Odhadované spojení smlouvy z 2025-01-10 s bodem 75/24 z 2025-01-07 (NP Poštovní č.p.56, 57 – prodloužení nájemního vztahu – Pavel Molnár). Jistota stredni.",
+      "castka_czk": 1330993.95,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45007039 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova molnar, pavel, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/31711904",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29683632",
+      "datum": "2025-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Pavel Molnár",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Molnár.",
+      "castka_czk": 1330993.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31711904",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-102-102/15",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Poštovní č.p. 56, 57 – změna účelu užívání – Pavel Molnár",
+      "popis": "Rada města, bod 102/15, usnesení 743/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3710528464",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-105-105/8",
+      "datum": "2025-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-25",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Poštovní 56,57 – úprava nájemní smlouvy – předmět činnosti",
+      "popis": "Rada města, bod 105/8, usnesení 790/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/602151809",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/105.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/15__33724097",
+      "datum": "2025-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-08",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru  - změna účelu užívání",
+      "popis": "Odhadované spojení smlouvy z 2025-12-08 s bodem 102/15 z 2025-10-29 (Nebytový prostor v ul. Poštovní č.p. 56, 57 – změna účelu užívání – Pavel Molnár). Jistota ",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45007039 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 40 dní po usnesení; název bodu a předmět smlouvy sdílí slova ucelu, uzivani, zmena",
+      "url": "https://smlouvy.gov.cz/smlouva/35942457",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33724097",
+      "datum": "2025-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-08",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru  - změna účelu užívání",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Molnár.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35942457",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

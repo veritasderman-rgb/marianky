@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26373386",
+    "nazev": "AKLEN stavební s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-05-03",
+    "do": "2016-08-18",
+    "prvni_rok": 2016,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-67-67/4",
+      "datum": "2016-05-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-03",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Změna dodavatele - Sanace vlhkosti v 1. PP – ZŠPaS – 2. etapa",
+      "popis": "Rada města, bod 67/4, usnesení 227/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1571869",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-78-78/3",
+      "datum": "2016-08-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Sanace vlhkosti v 1. PP Základní školy Vítězství, Hamrníky – 2. etapa",
+      "popis": "Rada města, bod 78/3, usnesení 386/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1615536",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-67/4__148249",
+      "datum": "2016-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-18",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "DODATEK Č. 1 KE SMLOUVĚ O DÍLO UZAVŘENÉ DNE 11.5.2016 EV. Č. OBJEDNATELE 162/16 Sanace vlhkosti v 1. PP – ZŠ Vítězství, Hamrníky – 2. etapa",
+      "popis": "Odhadované spojení smlouvy z 2016-08-18 s bodem 67/4 z 2016-05-03 (Změna dodavatele - Sanace vlhkosti v 1. PP – ZŠPaS – 2. etapa). Jistota nizka.",
+      "castka_czk": 129731.06,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26373386 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 107 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, sanace, vlhkosti; stejně dobře sedí ",
+      "url": "https://smlouvy.gov.cz/smlouva/201933",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-78/3__148249",
+      "datum": "2016-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-18",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "DODATEK Č. 1 KE SMLOUVĚ O DÍLO UZAVŘENÉ DNE 11.5.2016 EV. Č. OBJEDNATELE 162/16 Sanace vlhkosti v 1. PP – ZŠ Vítězství, Hamrníky – 2. etapa",
+      "popis": "Odhadované spojení smlouvy z 2016-08-18 s bodem 78/3 z 2016-08-02 (Sanace vlhkosti v 1. PP Základní školy Vítězství, Hamrníky – 2. etapa). Jistota nizka.",
+      "castka_czk": 129731.06,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26373386 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hamrniky, sanace, vitezstvi; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/201933",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:148249",
+      "datum": "2016-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-18",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "DODATEK Č. 1 KE SMLOUVĚ O DÍLO UZAVŘENÉ DNE 11.5.2016 EV. Č. OBJEDNATELE 162/16 Sanace vlhkosti v 1. PP – ZŠ Vítězství, Hamrníky – 2. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AKLEN stavební s.r.o..",
+      "castka_czk": 129731.06,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/201933",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

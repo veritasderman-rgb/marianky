@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "14890879",
+    "nazev": "ITALMEC, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-05-04",
+    "do": "2021-08-17",
+    "prvni_rok": 2021,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-107-107/12",
+      "datum": "2021-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-04",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Sportovní hala Mariánské Lázně - výměna palubové podlahy - výběr dodavatele",
+      "popis": "Rada města, bod 107/12, usnesení 163/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2674289",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-107/12__15410775",
+      "datum": "2021-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Sportovní hala Mariánské Lázně - výměna palubové podlahy“.",
+      "popis": "Odhadované spojení smlouvy z 2021-05-14 s bodem 107/12 z 2021-05-04 (Sportovní hala Mariánské Lázně - výměna palubové podlahy - výběr dodavatele). Jistota stred",
+      "castka_czk": 2497755.81,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 14890879 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova hala, palubove, podlahy, sportovni",
+      "url": "https://smlouvy.gov.cz/smlouva/16592007",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15410775",
+      "datum": "2021-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Sportovní hala Mariánské Lázně - výměna palubové podlahy“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ITALMEC, spol. s r.o..",
+      "castka_czk": 2497755.81,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16592007",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-116-116/4",
+      "datum": "2021-07-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-13",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Sportovní hala Mariánské Lázně - výměna palubové podlahy",
+      "popis": "Rada města, bod 116/4, usnesení 313/21. Schvaleno.",
+      "castka_czk": 48274,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2703256",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-116/4__16443247",
+      "datum": "2021-08-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-17",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Sportovní hala Mariánské Lázně - výměna palubové podlahy (č. smlouvy objednatele: S260/21) uzavřené dne 14.5.2021",
+      "popis": "Odhadované spojení smlouvy z 2021-08-17 s bodem 116/4 z 2021-07-13 (Sportovní hala Mariánské Lázně - výměna palubové podlahy). Jistota stredni.",
+      "castka_czk": 126803.16,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 14890879 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova hala, palubove, podlahy, sportovni; obojí je",
+      "url": "https://smlouvy.gov.cz/smlouva/17707263",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16443247",
+      "datum": "2021-08-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-17",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Sportovní hala Mariánské Lázně - výměna palubové podlahy (č. smlouvy objednatele: S260/21) uzavřené dne 14.5.2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ITALMEC, spol. s r.o..",
+      "castka_czk": 126803.16,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17707263",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

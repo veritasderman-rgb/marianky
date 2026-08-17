@@ -1,0 +1,176 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70724041",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-12-15",
+    "do": "2015-08-11",
+    "prvni_rok": 2000,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70724041:vznik",
+      "datum": "2000-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-12-15",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — David Koval",
+      "popis": "Vznik subjektu David Koval (IČO 70724041), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-54-54/3",
+      "datum": "2012-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Pronájem Fr. Kafky 833 B2-VI",
+      "popis": "Rada města, bod 54/3, usnesení 58/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/700159",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-56-56/11",
+      "datum": "2012-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-28",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Prominutí kauce - David Koval",
+      "popis": "Rada města, bod 56/11, usnesení 94/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/708783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-121-121/5",
+      "datum": "2013-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 835 B2 I - pronájem",
+      "popis": "Rada města, bod 121/5, usnesení 420/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1013096",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/121.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-151-151/3",
+      "datum": "2014-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-04-22",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky č.p.835-změna účelu užívání",
+      "popis": "Rada města, bod 151/3, usnesení 174/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1113394",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-166-166/3",
+      "datum": "2014-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-23",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Ukončení nájemní smlouvy - NP Franze Kafky č.p. 833",
+      "popis": "Rada města, bod 166/3, usnesení 416/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1265460",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-33-33/3",
+      "datum": "2015-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-08-11",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky 833, 835 - Dohoda o ukončení nájemního vztahu",
+      "popis": "Rada města, bod 33/3, usnesení 372/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1441146",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,839 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44615591",
+    "nazev": "Richard Neupauer"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-03-28",
+    "do": "2026-03-23",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 40,
+    "dolozenych": 26,
+    "odhadu": 14,
+    "dle_typu": {
+      "usneseni": 18,
+      "retez": 14,
+      "smlouva": 8
+    },
+    "dle_jistoty": {
+      "fakt": 26,
+      "stredni": 2,
+      "nizka": 12
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-35/15__5680999",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "FK neinvestiční dotace Agentura Richard Neupauer",
+      "popis": "Odhadované spojení smlouvy z 2018-07-04 s bodem 35/15 z 2018-04-12 (Fond kultury města ML pro rok 2018). Jistota stredni.",
+      "castka_czk": 60000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6119115",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5680999",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "FK neinvestiční dotace Agentura Richard Neupauer",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6119115",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-15/10__8621399",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-10 s bodem 15/10 z 2019-03-12 (Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projedn",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 90 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9295587",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-5/6__8621399",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-10 s bodem 5/6 z 2019-04-09 (Fond kultury 2019 - 1. výzva). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 62 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9295587",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8621399",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9295587",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-11/12__12069336",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Odhadované spojení smlouvy z 2020-06-11 s bodem 11/12 z 2020-02-18 (Fond kultury 2020 - přidělení dotací). Jistota stredni.",
+      "castka_czk": 56000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12956200",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12069336",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 56000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12956200",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-96-96/7",
+      "datum": "2021-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-26",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2021 - 1. výzva",
+      "popis": "Rada města, bod 96/7, usnesení 32/21. Schvaleno.",
+      "castka_czk": 96000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2634326",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-18-18/12",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo - 2021",
+      "popis": "Zastupitelstvo města, bod 18/12, usnesení 389/21. Schvaleno.",
+      "castka_czk": 1167000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2637542",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-96/7__15190139",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-21 s bodem 96/7 z 2021-01-26 (Fond kultury 2021 - 1. výzva). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 85 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16355203",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-18/12__15190139",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-21 s bodem 18/12 z 2021-02-16 (Fond kultury 1.kolo - 2021). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16355203",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15190139",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16355203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__18646819",
+      "datum": "2022-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-20",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-04-20 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20043091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/6__18646819",
+      "datum": "2022-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-20",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-04-20 s bodem 25/6 z 2022-03-01 (Fond kultury - 1. výzva 2022). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20043091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18646819",
+      "datum": "2022-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-20",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20043091",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-11-11/3",
+      "datum": "2023-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-02",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2023 - 1. kolo",
+      "popis": "Rada města, bod 11/3, usnesení 57/23. Schvaleno.",
+      "castka_czk": 95000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965827",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-4-4/9",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond Kultury 2023",
+      "popis": "Zastupitelstvo města, bod 4/9, usnesení 47/23. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2974451",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-11/3__22314369",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2023 - 1.kolo",
+      "popis": "Odhadované spojení smlouvy z 2023-03-30 s bodem 11/3 z 2023-02-02 (Fond kultury 2023 - 1. kolo). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 56 dní po usnesení; název bodu a předmět smlouvy sdílí slova kolo, kultury; stejně dobře sedí i 1 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/23931745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-4/9__22314369",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2023 - 1.kolo",
+      "popis": "Odhadované spojení smlouvy z 2023-03-30 s bodem 4/9 z 2023-02-21 (Fond Kultury 2023). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23931745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22314369",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2023 - 1.kolo",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23931745",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-44-44/19",
+      "datum": "2024-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2024",
+      "popis": "Rada města, bod 44/19, usnesení 68/24. Schvaleno.",
+      "castka_czk": 92000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3148072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/44.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-13-13/18",
+      "datum": "2024-02-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-27",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně pro rok 2024 – 1. kolo",
+      "popis": "Zastupitelstvo města, bod 13/18, usnesení 265/24. Schvaleno.",
+      "castka_czk": 1500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3138457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/20",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Rada města, bod 77/20, usnesení 92/25. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317945",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-19-19/20",
+      "datum": "2025-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-11",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2025",
+      "popis": "Zastupitelstvo města, bod 19/20, usnesení 451/25. Schvaleno.",
+      "castka_czk": 735000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3317783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/20__30707160",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Richard Neupauer",
+      "popis": "Odhadované spojení smlouvy z 2025-04-04 s bodem 77/20 z 2025-02-04 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 95000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 59 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32786564",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-19/20__30707160",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Richard Neupauer",
+      "popis": "Odhadované spojení smlouvy z 2025-04-04 s bodem 19/20 z 2025-02-11 (Fond kultury 2025). Jistota nizka.",
+      "castka_czk": 95000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 52 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32786564",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30707160",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně 2025 - Richard Neupauer",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 95000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32786564",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-109/5__35014453",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Richard Neupauer - Hudební promenádní koncerty u Lesního pramene",
+      "popis": "Odhadované spojení smlouvy z 2026-03-23 s bodem 109/5 z 2026-01-20 (Fond kultury 2026). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 62 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37291357",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2026-25/6__35014453",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Richard Neupauer - Hudební promenádní koncerty u Lesního pramene",
+      "popis": "Odhadované spojení smlouvy z 2026-03-23 s bodem 25/6 z 2026-02-10 (Fond kultury 2026 - 1.výzva). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615591 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/37291357",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35014453",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Richard Neupauer - Hudební promenádní koncerty u Lesního pramene",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Richard Neupauer.",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37291357",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

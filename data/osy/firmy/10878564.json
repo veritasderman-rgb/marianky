@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10878564",
+    "nazev": "Primetime Media s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-03-30",
+    "do": "2024-03-06",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:22424609",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka prezentace města - výroba a odvysílání reportáží a prezentací Primetime Media s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Primetime Media s.r.o..",
+      "castka_czk": 87846.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24047617",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23962043",
+      "datum": "2023-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-06",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - vysílání reklamní kampaně se spotem o délce 15\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Primetime Media s.r.o..",
+      "castka_czk": 59290.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25665711",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-46-46/31",
+      "datum": "2024-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání prezentace města Mariánské Lázně na Praha TV, TV POLAR, BTV - reklamní kampaně se spotem",
+      "popis": "Rada města, bod 46/31, usnesení 115/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3155178",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-46/31__26038959",
+      "datum": "2024-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-06",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Vysílání reklamní kampaně - Primetime Media s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-03-06 s bodem 46/31 z 2024-02-20 (Udělení výjimky z vnitřního předpisu č.2017-08 Veřejné zakázky za účelem objednání prezentac",
+      "castka_czk": 269527.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 10878564 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova kampane, reklamni",
+      "url": "https://smlouvy.gov.cz/smlouva/27874975",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26038959",
+      "datum": "2024-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-06",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Vysílání reklamní kampaně - Primetime Media s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Primetime Media s.r.o..",
+      "castka_czk": 269527.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27874975",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

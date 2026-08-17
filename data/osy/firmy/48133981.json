@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "48133981",
+    "nazev": "Státní zemědělský intervenční fond"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-08-09",
+    "do": "2023-06-22",
+    "prvni_rok": 2017,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2645666",
+      "datum": "2017-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-09",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o poskytnutí dotace z Programu rozvoje venkova ČR - 16/003/0861a/341/000575",
+      "popis": "Lázeňské lesy, spol. s r.o. — příjem, protistrana Státní zemědělský intervenční fond.",
+      "castka_czk": 975000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2847166",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/64831086.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23223987",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o poskytnutí dotace z Programu rozvoje venkova ČR - 22/015/08610/341/000116",
+      "popis": "Lázeňské lesy, spol. s r.o. — příjem, protistrana Státní zemědělský intervenční fond.",
+      "castka_czk": 792500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24887587",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/64831086.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

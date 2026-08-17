@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "40542947",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2016-11-21",
+    "prvni_rok": 1992,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:40542947:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ivana Potužáková",
+      "popis": "Vznik subjektu Ivana Potužáková (IČO 40542947), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování ubytování.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-164-164/7",
+      "datum": "2014-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-02",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332 - prodloužení nájmu",
+      "popis": "Rada města, bod 164/7, usnesení 391/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1257022",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-62-62/8",
+      "datum": "2016-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-29",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332 - odstoupení od Smlouvy o nájmu - J. Bílková, I. Potužáková",
+      "popis": "Rada města, bod 62/8, usnesení 158/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1555549",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-92-92/9",
+      "datum": "2016-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332 - postoupení smlouvy o nájmu - Ivana Potužáková x JTX, s.r.o., Kácov",
+      "popis": "Rada města, bod 92/9, usnesení 565/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1665362",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

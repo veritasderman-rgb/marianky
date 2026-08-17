@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10044507",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-06-03",
+    "do": "2017-11-28",
+    "prvni_rok": 2014,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-156-156/6",
+      "datum": "2014-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-06-03",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova 805 - pronájem",
+      "popis": "Rada města, bod 156/6, usnesení 243/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1130454",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-136-136/20",
+      "datum": "2017-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Kubelíkova 805 - výpověď z nájmu - Libor Reichel",
+      "popis": "Rada města, bod 136/20, usnesení 666/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1862292",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/136.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

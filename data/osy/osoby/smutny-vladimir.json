@@ -1,0 +1,308 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "smutny-vladimir",
+    "jmeno": "Vladimír Smutný",
+    "role": [
+      "ředitel"
+    ],
+    "kategorie": "kultura",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2009",
+    "do": "2026-03",
+    "prvni_rok": 2009,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 13,
+    "dolozenych": 13,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 2,
+      "zpravodaj": 10,
+      "media": 1
+    },
+    "dle_jistoty": {
+      "fakt": 13
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "funkce:smutny-vladimir:0",
+      "datum": "2009",
+      "datum_do": "2022",
+      "presnost": "obdobi",
+      "razeni": "2009-01-01",
+      "rok": 2009,
+      "typ": "funkce",
+      "nadpis": "Vladimír Smutný — náměstek ředitele ZSO Mariánské Lázně",
+      "popis": "náměstek ředitele ZSO Mariánské Lázně (2009 – 2022).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-01-034",
+      "datum": "2020-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-01-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "MNOZIL BRASS V MARIÁNSKÝCH LÁZNÍCH 2020",
+      "popis": "Vážení přátelé, srdečně Vás zveme na jedinečný koncert, který pořádá Západočeský symfonický orchestr: MNOZIL BRASS - \"GOLD\" - THE BEST OFF 20. června 2020 - Spo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=071d2a42%7C2192#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-01/034.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-05-006",
+      "datum": "2021-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-05-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "BEZPEČNĚ ZA KAMARÁDY S POMOCÍ MAS ZLATÁ CESTA A DÁRCŮ WWW.ZNESNAZE21.CZ",
+      "popis": "Středisko sociálních služeb Víteček v Černošíně po roční administraci převzalo ve středu 31. března 2021 nové vícemístné vozidlo pro bezpečnou přepravu lidí se ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9eaca2e7%7C2603#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-05/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-022",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "léto se ZSO",
+      "popis": "V letošním roce uplyne 200 let od založení stálého orchestru v Mariánských Lázních. Je to až neuvěřitelné číslo. Náš orchestr je jeden z nejstarších ve střední ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-024",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "pozdrav nového šéfdirigenta",
+      "popis": "Vážené dámy a pánové, abonenti ZSO, hudbymilovní přátelé, ač se zdá, že tato nelehká doba, která zasáhla veškerý normální život na celé planetě, nepřinesla nic ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-021",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "TISKOVÁ ZPRÁVA",
+      "popis": "Ke svému významnému výročí – 200 let od založení odehrál Západočeský symfonický orchestr dva gala koncerty na kolonádě v Mariánských Lázních. Uskutečnily se 25.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "funkce:smutny-vladimir:1",
+      "datum": "2025",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2025-01-01",
+      "rok": 2025,
+      "typ": "funkce",
+      "nadpis": "Vladimír Smutný — ředitel ZSO Mariánské Lázně",
+      "popis": "ředitel ZSO Mariánské Lázně (2025 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-11-012",
+      "datum": "2025-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Západočeský symfonický orchestr má nového ředitele",
+      "popis": "Na základě zářijového výběrového řízení se jím stal Vladimír Smutný, který od 1. října vystřídal dočasně jmenovaného Martina Peschíka. Nový ředitel přichází s h",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e19f6e85%7C4726#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-11/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-001",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Vést nejstarší orchestr v zemi je čest, ale i velká zodpovědnost, říká Vladimír Smutný",
+      "popis": "Obsah  Zázemí pro tenisty zajistí nová nafukovací hala. Vyrůst má co nejdříve 4  4 4 5 5 6 6 6 7  Cyklotrasa do Plané je bezpečnější díky nové propojce  Žáci op",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-013",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Vést nejstarší orchestr v zemi je čest, ale i velká zodpovědnost, říká Vladimír Smutný",
+      "popis": "Západočeský symfonický orchestr je nejstarším symfonickým orchestrem v České republice a příští rok si připomíná 205 let od svého vzniku. Do jeho čela na začátk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-014",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Vést nejstarší orchestr v zemi je čest, ale i velká zodpovědnost, říká Vladimír Smutný",
+      "popis": "dokončení ze str. 9 dia a je ředitelem úspěšného festivalu Composers Summit Prague, na který pravidelně jezdí desítky špičkových hollywoodských skladatelů filmo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "media:cro-zapadocesky-symfonicky-orchestr-vstupuje-do-nove-ery-pod-vedenim-vladi",
+      "datum": "2025-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-16",
+      "rok": 2025,
+      "typ": "media",
+      "nadpis": "Západočeský symfonický orchestr vstupuje do nové éry pod vedením Vladimíra Smutného",
+      "popis": "Novým ředitelem Západočeského symfonického orchestru se stal Vladimír Smutný, dlouholetý člen tělesa. Podle svých slov chce navázat na více než dvousetletou tra",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/zapadocesky-symfonicky-orchestr-vstupuje-do-nove-ery-pod-vedenim-vladimira-9583371",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-03-037",
+      "datum": "2026-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-03-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – březen",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=59a41668%7C4833#page=28",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-03/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

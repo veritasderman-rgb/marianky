@@ -1,0 +1,649 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "skalnik-vaclav",
+    "jmeno": "Václav Skalník",
+    "role": [
+      "zahradní architekt",
+      "přednosta obce"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1817",
+    "do": "2026-06",
+    "prvni_rok": 1817,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 30,
+    "dolozenych": 30,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 2,
+      "funkce": 1,
+      "zpravodaj": 27
+    },
+    "dle_jistoty": {
+      "fakt": 30
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1817-parkove-mesto",
+      "datum": "1817",
+      "datum_do": "1823",
+      "presnost": "obdobi",
+      "razeni": "1817-01-01",
+      "rok": 1817,
+      "typ": "historie",
+      "nadpis": "Období velkého rozvoje — vznik parkového města",
+      "popis": "V letech 1817–1823 proběhla přeměna bažinatého údolí v parkové město s klasicistní a empírovou zástavbou. Podíleli se na ní zahradník Václav Skalník, architekt ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "funkce:skalnik-vaclav:0",
+      "datum": "1824",
+      "datum_do": "1843",
+      "presnost": "obdobi",
+      "razeni": "1824-01-01",
+      "rok": 1824,
+      "typ": "funkce",
+      "nadpis": "Václav Skalník — přednosta obce",
+      "popis": "přednosta obce (1824 – 1843).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "historie:1824-skalnik-prednosta",
+      "datum": "1824",
+      "datum_do": "1843",
+      "presnost": "obdobi",
+      "razeni": "1824-01-01",
+      "rok": 1824,
+      "typ": "historie",
+      "nadpis": "Václav Skalník přednostou obce",
+      "popis": "Tvůrce mariánskolázeňských parků Václav Skalník byl v letech 1824–1843 přednostou obce.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-04-011",
+      "datum": "2017-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-04-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "V parcích nemyslíme pouze na zeleň",
+      "popis": "Vzhledem k tomu, že součástí veřejného prostoru našeho města nejsou pouze vegetační prvky, ale i množství zajímavých historických, technických prvků a uměleckýc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9557ed8b%7C1099#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-04/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-003",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "VEŘEJNÁ ZELEŇ",
+      "popis": "Milí spoluobčané,  lázeňská sezóna je již v plném proudu a s ní i sezóna vegetační. Letošní nástup vegetace byl velice prudký, a proto nebylo zcela jednoduché d",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-08-001",
+      "datum": "2017-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "OKURKOVÁ SEZÓNA V MARIÁNSKÝCH LÁZNÍCH NEHROZÍ",
+      "popis": "Vážení spoluobčané,  letní měsíce bývají v řadě měst nepříliš produktivní, diplomaticky řečeno. Ne tak u nás v Mariánských Lázních. Během uplynulých týdnů jsme ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821cdd68%7C1164#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-08/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-08-006",
+      "datum": "2017-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-08-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ SI TERÉNNÍ PEČOVATELSKÁ SLUŽBA PŘIPOMÍNAJÍ VÁCLAVA SKALNÍKA",
+      "popis": "Letos uplynulo přesně 200 let od chvíle, kdy do Mariánských Lázní přijel Václav Skalník. Byl to právě on, kdo dal tolik obdivovaným parkům jejich podobu a chara",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821cdd68%7C1164#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-08/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-014",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "káva u starosty",
+      "popis": "Při srpnovém setkání starosty Martina Kaliny s občany praskala jeho kancelář ve švech. Na kávu přišlo tentokrát 16 zájemců o dění v Mariánkách a také byl přítom",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-11-003",
+      "datum": "2018-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Karlovarský kraj podpořil marketingové projekty města částkou 140 tis. Kč",
+      "popis": "Karlovarský kraj vyhlásil začátkem roku 2018 „Program pro poskytování dotací z rozpočtu Karlovarského kraje na podporu aktivit v oblasti cestovního ruchu v roce",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=604cf2d3%7C1759#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-11/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-02-020",
+      "datum": "2019-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-02-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "lednová káva",
+      "popis": "Letošní první Káva se starostou se konala v pondělí 7. ledna v domě Terezián, do kterého se pan Kalina dočasně přestěhoval z budovy radnice, kterou čeká rekonst",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d321405a%7C1852#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-02/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-05-008",
+      "datum": "2019-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-05-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "propojení lázeňských parků a dendrologická stezka V.Skalníka",
+      "popis": "Milí spoluobčané a návštěvníci našeho města. Rádi bychom Vás informovali o projektech, které Správa veřejné zeleně již delší dobu připravuje a budou dokončeny a",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=060a5862%7C1950#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-05/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-05-017",
+      "datum": "2019-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-05-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "dubnová káva se starostou",
+      "popis": "Dubnové Kávy se zúčastnilo 15 občanů, na jejich podněty reagovali pan starosta a ředitel TDS pan Javůrek. Martin Kalina informoval, že: V Mariánkách budou zápas",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=060a5862%7C1950#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-05/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-003",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Udělejte si čas a vyrazte do parků a na dendrologickou stezku!",
+      "popis": "V r. 2017 uplynulo 200 let od příchodu Václava Skalníka, který dal Mariánským Lázním podobu a charakter, pro který jsou obdivovány dodnes. Správa veřejné zeleně",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-07-019",
+      "datum": "2019-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Červnová Káva se starostou",
+      "popis": "3. 6. přišlo na setkání se starostou jenom 6 obyvatel našeho města. Nevím, jesti to bylo nádherným, až letním počasím, takže dali nepřítomní přednost procházce,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d096979f%7C2018#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-07/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-10-013",
+      "datum": "2019-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-10-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Zamýšlený prodej historické budovy radnice",
+      "popis": "rozvířil hladinu veřejného mínění. A není divu. Tradiční „budovatelské“ počínání místních radních dosahuje vrcholu. Trochu historie: a) Demolice areálu kolem Te",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51d06134%7C2084#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-10/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-011",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 3. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte se dozvědět informace o ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-07-001",
+      "datum": "2023-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-07-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "ING. PAVEL NEČAS, VEDOUCÍ ODBORU ŽIVOTNÍHO PROSTŘEDÍ",
+      "popis": "Kolik irem zde pečuje o zeleň, co vše dělají a kolik to město stojí? Péči o zeleň zajišťují v Mariánských Lázních celkem 3 irmy na 4 obvodech údržby. O dva obvo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13322300%7C3869#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-07/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-11-028",
+      "datum": "2023-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 2. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte s námi zavzpomínat a spo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=df015e5b%7C3997#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-11/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-03-005",
+      "datum": "2024-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Město plánuje opravu Mírového náměstí",
+      "popis": "Vedení mariánskolázeňské radnice chce vrátit Mírovému náměstí reprezentativní podobu. Vzhled by měl opět odpovídat tomu, jak jej navrhl František J. Thomayer, v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fb079468%7C4145#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-03/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-035",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Oslavte s námi Mezinárodní den památek",
+      "popis": "Oslava Mezinárodního dne památek a sídel byla navržena již v roce 1982 Mezinárodní radou pro památky. Rok nato se UNESCO usneslo, že svátek připadne na den 18. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-05-026",
+      "datum": "2024-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-05-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "HURÁ DO PARKU – Evropský den parků inspiruje k procházkám a výletům",
+      "popis": "Na pátek 24. května připadá Evropský den parků. O důvod víc vyrazit na pěknou procházku aktuálně přímo bující přírodou, kterou máme v Mariánských Lázních a okol",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50faa71a%7C4171#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-05/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-07-002",
+      "datum": "2024-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Rekonstrukce muzea bude pokračovat úpravami galerie a kinosálu",
+      "popis": "Mariánské Lázně pokračují v rekonstrukci městského muzea. Další etapa se týká galerie a kinosálu. Projekt navazuje na opravy stálé expozice a depozitáře. Takto ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50df7f3e%7C4236#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-07/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-019",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně zahajují čtvrtý rok členství v UNESCO",
+      "popis": "Dne 24. července uplynuly 3 roky od zápisu Mariánských Lázní na Seznam světového a kulturního dědictví UNESCO jako součást mezinárodní památky „Slavná lázeňská ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-10-009",
+      "datum": "2024-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Rekonstrukce Mírového náměstí se blíží",
+      "popis": "Letos budou zahájeny práce na první etapě rekonstrukce Mírového náměstí. V rámci té by se měl vzhled místa opět přiblížit tomu, jak jej navrhl František J. Thom",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=070bd08b%7C4302#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-10/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-11-033",
+      "datum": "2024-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – listopad",
+      "popis": "20. 11. 19:30 Jiří Dědeček. Malá scéna. Koncert k příležitosti 35. výročí Sametové revoluce. Český písničkář, básník, textař, překladatel, spisovatel a autor če",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=eaa59ce0%7C4345#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-11/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-01-005",
+      "datum": "2025-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-01-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mírové náměstí je momentálně k nepoznání",
+      "popis": "Mírové náměstí prochází velkou proměnou. Foto: Milan Uxa  Naplno začaly práce na první etapě rekonstrukce Mírového náměstí. Po trávníku, keřích a lavičkách už z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=084c05c3%7C4435#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-01/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-07-008",
+      "datum": "2025-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-07-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "O Skalníkovy sady zkušebně pečují dvě robotické sekačky",
+      "popis": "Mariánské Lázně jsou proslulé svou zelení a pečlivě udržovanými parky, což je však pro městský rozpočet dlouhodobě finančně velmi náročné. Město proto nyní zahá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89143bb4%7C4589#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-07/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-01-004",
+      "datum": "2026-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-01-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Rekonstrukce Mírového náměstí jde do finále",
+      "popis": "Dlouho očekávaná revitalizace Mírového náměstí dospěla do svého finále. Stavební práce jsou dokončeny a zbývá už jen kolaudace, která by se měla uskutečnit na k",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=7d4b3c5f%7C4768#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-01/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-01-013",
+      "datum": "2026-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-01-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Tolkien a Sádlo v Mariánských Lázních",
+      "popis": "Leden znamená dát si čas. Anglický název měsíce January (latinsky Ianuarius) to nepřímo zdůrazňuje, protože vychází z římského boha Januse, patrona začátků, pře",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=7d4b3c5f%7C4768#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-01/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-027",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Jak se na Knižní lázně těší její organizátoři?",
+      "popis": "Klára Khine  zakladatelka Knižních lázní  Která kniha vás v poslední době zaujala a proč? Mám rozečtených kvůli práci hodně knih najednou. Zaujala mě kniha Miře",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

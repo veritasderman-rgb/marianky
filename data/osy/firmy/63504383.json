@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63504383",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-01-29",
+    "do": "2013-10-01",
+    "prvni_rok": 1996,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:63504383:vznik",
+      "datum": "1996-01-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-01-29",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Nam Trung Tran",
+      "popis": "Vznik subjektu Nam Trung Tran (IČO 63504383), Fyzická osoba podnikající dle živnostenského zákona, obor: Kadeřnické a holičské činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-123-123/7",
+      "datum": "2013-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-01",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 332 - ukončení nájmu",
+      "popis": "Rada města, bod 123/7, usnesení 449/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1023678",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3539 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70997543",
+    "nazev": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-01-01",
+    "do": "2026-07-09",
+    "prvni_rok": 2003,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 175,
+    "dolozenych": 168,
+    "odhadu": 7,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 132,
+      "usneseni": 35,
+      "retez": 7
+    },
+    "dle_jistoty": {
+      "fakt": 168,
+      "nizka": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70997543:vznik",
+      "datum": "2003-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-01-01",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472, příspěvková organizace",
+      "popis": "Vznik subjektu Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472, příspěvková organizace (IČO 70997543), Příspěvková organizace, obor: Sekundární všeo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:1670418",
+      "datum": "2008-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-01-14",
+      "rok": 2008,
+      "typ": "smlouva",
+      "nadpis": "KUPNÍ SMLOUVA NA DODÁVKU A ODBĚR TEPLA",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 7475000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2259426",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:4955596",
+      "datum": "2010-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2010-04-01",
+      "rok": 2010,
+      "typ": "smlouva",
+      "nadpis": "licenční smlouva na SW - dodávky SW a aktualizací",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veřejná informační služba, spol. s r.o..",
+      "castka_czk": 63143.85,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6508055",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-17-17/18",
+      "datum": "2015-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-03-31",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 17/18, usnesení 150/15. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1371495",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-6-6/23",
+      "datum": "2015-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-14",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 6/23, usnesení 91/15. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1376058",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-8-8/22",
+      "datum": "2015-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-23",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Navýšení příspěvku pro ZŠ Úšovice",
+      "popis": "Zastupitelstvo města, bod 8/22, usnesení 128/15. Schvaleno.",
+      "castka_czk": 50000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1409941",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-118-118/10",
+      "datum": "2017-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-13",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Čerpání finančních prostředků z investičního fondu ZŠ Úšovice M.L.",
+      "popis": "Rada města, bod 118/10, usnesení 362/17. Schvaleno.",
+      "castka_czk": 154181,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1774679",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-127-127/9",
+      "datum": "2017-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-19",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Povolení výjimky z nejvyššího počtu žáků ve třídě ZŠ Úšovice ML",
+      "popis": "Rada města, bod 127/9, usnesení 534/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1828073",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:7404719",
+      "datum": "2018-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-10",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/201901",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7994499",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:4415748",
+      "datum": "2018-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/201801",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4760208",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:4415836",
+      "datum": "2018-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/201801",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4760296",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:4415956",
+      "datum": "2018-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/201801",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4760416",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:4155964",
+      "datum": "2018-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-22",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Pojistná smlouva o pojištění právní ochrany",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 40000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4477772",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-144-144/1",
+      "datum": "2018-02-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-06",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Uvolnění fin. prostředků z fondu odměn ZŠ Úšovice",
+      "popis": "Rada města, bod 144/1, usnesení 62/18. Schvaleno.",
+      "castka_czk": 10660,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1898399",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/144.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-150-150/5",
+      "datum": "2018-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2017 přísp. org. Města ML",
+      "popis": "Rada města, bod 150/5, usnesení 171/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1922429",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-1-1/2",
+      "datum": "2018-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-13",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Provedení změny v rejstříku škol",
+      "popis": "Rada města, bod 1/2, usnesení 605/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2136003",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/1.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:7298063",
+      "datum": "2019-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/201901",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7879719",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:7348507",
+      "datum": "2019-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/201901",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7933831",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:7404715",
+      "datum": "2019-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/201901",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7994495",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-9-9/20",
+      "datum": "2019-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-22",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o spolupráci a užívání nebytových prostor",
+      "popis": "Rada města, bod 9/20, usnesení 47/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2172134",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-17-17/10",
+      "datum": "2019-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-26",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Konkurs na ředitele/ku ZŠ Úšovice M.L.",
+      "popis": "Rada města, bod 17/10, usnesení 156/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2317201",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-17-17/4",
+      "datum": "2019-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-26",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2018 PO Města ML",
+      "popis": "Rada města, bod 17/4, usnesení 150/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2316889",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-20-20/6",
+      "datum": "2019-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Jmenování členů konkursní komise - ZŠ Úšovice M.L.",
+      "popis": "Rada města, bod 20/6, usnesení 195/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2329443",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/20.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-26-26/19",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Jmenování ředitelky ZŠ Úšovice Mar. Lázně",
+      "popis": "Rada města, bod 26/19, usnesení 266/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2348438",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-29-29/21",
+      "datum": "2019-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-02",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Změna v rejstříku škol - ZŠ Úšovice M.L.",
+      "popis": "Rada města, bod 29/21, usnesení 330/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2367003",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:9813394",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o narovnání",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 263954.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10557310",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:9813450",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o narovnání",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 115441.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10557370",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:9817126",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 115441.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10561238",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:9817166",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 292817.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10561286",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:9818826",
+      "datum": "2019-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 118713.1,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10563066",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-9-9/9",
+      "datum": "2019-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-21",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Základní škola Úšovice - převod majetku",
+      "popis": "Zastupitelstvo města, bod 9/9, usnesení 188/19. Schvaleno.",
+      "castka_czk": 5541009,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2420646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/8",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Navýšení provozního příspěvku pro Základní školu Úšovice",
+      "popis": "Zastupitelstvo města, bod 10/8, usnesení 201/19. Schvaleno.",
+      "castka_czk": 160000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2442546",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:10618232",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "dodávka elektřiny",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj, protistrana Karlovarská plynárenská s.r.o..",
+      "castka_czk": 600000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11427836",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:10646004",
+      "datum": "2019-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/202001",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11457360",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:10646008",
+      "datum": "2019-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/202001",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11457364",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:10646012",
+      "datum": "2019-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/202001",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11457368",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-53-53/14",
+      "datum": "2020-01-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Protokol z veřejnosprávní kontroly - ZŠ Úšovice",
+      "popis": "Rada města, bod 53/14, usnesení 28/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2463486",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:11260236",
+      "datum": "2020-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "dodávka tabletů",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 229936.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12112052",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-67-67/5",
+      "datum": "2020-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2019 PO Města ML",
+      "popis": "Rada města, bod 67/5, usnesení 217/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2507189",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:12398616",
+      "datum": "2020-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-30",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "oprava sociálního zázemí chlapci",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 379573.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13304296",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:12484508",
+      "datum": "2020-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-01",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "učebnice",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 108347.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13395036",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:12484668",
+      "datum": "2020-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-08",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "oprava elektrického zařízení a instalace",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 118412.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13395208",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:12485564",
+      "datum": "2020-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-08",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "výroba nábytku",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 85200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13396128",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:12485288",
+      "datum": "2020-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "malířské práce a nátěry",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 79804.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13395844",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:12485348",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "učebnice",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 148518.48,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13395908",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13549760",
+      "datum": "2020-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-19",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup interaktivní tabule",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 38750.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14529932",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13131944",
+      "datum": "2020-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-07",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání - nákup učebnic",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 97976.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14075600",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13522408",
+      "datum": "2020-11-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-04",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "objednávka 2ks notebooků",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 37980.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14498948",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13558628",
+      "datum": "2020-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup notebooků",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 496039.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14539764",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13559340",
+      "datum": "2020-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-13",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup notebooků",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 57535.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14540580",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13560372",
+      "datum": "2020-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-13",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup notebooků",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 38357.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14541724",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-90-90/17",
+      "datum": "2020-11-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-24",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Protokol z veřejnosprávní kontroly - ZŠ Úšovice",
+      "popis": "Rada města, bod 90/17, usnesení 582/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2607036",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:13788857",
+      "datum": "2020-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-02",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup Office2019",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 40950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14806493",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13788933",
+      "datum": "2020-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-02",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup Office2019",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 37050.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14806573",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13941399",
+      "datum": "2020-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-02",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "oprava hromosvodů po revizi",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 63500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14975663",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13942563",
+      "datum": "2020-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-14",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "vybavení třídy",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 118540.07,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14976807",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:13942647",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "oprava vrátného",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 83725.51,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14976895",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:14512383",
+      "datum": "2020-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/202101",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15577639",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:14512535",
+      "datum": "2020-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/202101",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15577823",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:14512651",
+      "datum": "2020-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-18",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/202101",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15577943",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-102-102/3",
+      "datum": "2021-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2020 PO města Mariánské Lázně",
+      "popis": "Rada města, bod 102/3, usnesení 89/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2653540",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:15115427",
+      "datum": "2021-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-03-25",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "servisně licenční smlouva - licenční smlouva na software, zajištění servisních služeb k inf. systému - dodatek",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veřejná informační služba, spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16271763",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:15475595",
+      "datum": "2021-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-19",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "nákup demonstrační digestoře",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 181318.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16661055",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:15883859",
+      "datum": "2021-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "oprava chlapeckého WC 2.patro",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 563538.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17094831",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:15941387",
+      "datum": "2021-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-29",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "50ks PC do učebny IT",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 511225.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17155483",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-115-115/24",
+      "datum": "2021-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-29",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Protokol z veřejnosprávní kontroly - ZŠ Úšovice",
+      "popis": "Rada města, bod 115/24, usnesení 305/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2701142",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:15941471",
+      "datum": "2021-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-09",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "opravné a přípravné stavební práce, učebny CHE a FY",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 175903.75,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17876635",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:16240895",
+      "datum": "2021-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-19",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "stavební a instalační práce, kab.CHE a FY",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 96860.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17482207",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:16329559",
+      "datum": "2021-07-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-27",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "nábytek učebna+kabinet CHE",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 298249.27,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17579543",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:16542999",
+      "datum": "2021-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "licence Office Standard 2019",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 100284.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17818679",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:17223563",
+      "datum": "2021-11-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-23",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "nákup myčky do ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 111188.11,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18535571",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:17655227",
+      "datum": "2021-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/202201",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18993787",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:17655291",
+      "datum": "2021-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/202201",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18993851",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:17657111",
+      "datum": "2021-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/202201",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18995715",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:17657115",
+      "datum": "2021-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/202201",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 1634710.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18995719",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-140-140/8",
+      "datum": "2022-03-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-08",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2021 PO Města Mariánské Lázně",
+      "popis": "Rada města, bod 140/8, usnesení 96/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2815324",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/140.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:18660831",
+      "datum": "2022-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "servisně licenční smlouva - licenční smlouva na software, zajištění servisních služeb k inf. systému - dodatek",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana VIS Plzeň, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20057755",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-26-26/19",
+      "datum": "2022-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-12",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Základní škola Úšovice Mariánské Lázně - převod majetku",
+      "popis": "Zastupitelstvo města, bod 26/19, usnesení 577/22. Schvaleno.",
+      "castka_czk": 2190984,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2827335",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:18871931",
+      "datum": "2022-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-04",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup interaktivního panelu",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 78880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20279155",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:19157523",
+      "datum": "2022-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup učebnic AJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 89416.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20577775",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:19642551",
+      "datum": "2022-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "opravy elektro",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 120358.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21112951",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:19661367",
+      "datum": "2022-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "malířské práce",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 99952.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21132979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:19661391",
+      "datum": "2022-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-11",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "opravy WC hoši 1.p.",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 538645.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21133007",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:19823879",
+      "datum": "2022-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-11",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "opravy vodoinstalace WC-hoši",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 188554.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21303863",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "retez:rada-2022-155/11__20460681",
+      "datum": "2022-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-16",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "pronájem tělocvičny",
+      "popis": "Odhadované spojení smlouvy z 2022-09-16 s bodem 155/11 z 2022-08-09 (Změna v rejstříku škol - ZŠ Úšovice M.L.). Jistota nizka.",
+      "castka_czk": 86550.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 38 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21974189",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-26/19__20460681",
+      "datum": "2022-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-16",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "pronájem tělocvičny",
+      "popis": "Odhadované spojení smlouvy z 2022-09-16 s bodem 26/19 z 2022-04-12 (Základní škola Úšovice Mariánské Lázně - převod majetku). Jistota nizka.",
+      "castka_czk": 86550.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 157 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/21974189",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20460681",
+      "datum": "2022-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-16",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "pronájem tělocvičny",
+      "popis": "Městský dům dětí a mládeže, Mariánské Lázně — příjem, protistrana Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472, příspěvková organizace.",
+      "castka_czk": 86550.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21974189",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/69979430.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:20773137",
+      "datum": "2022-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "lektorování sebeobrany pro žáky",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 96000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22302513",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21303037",
+      "datum": "2022-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup nábytku",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 79424.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22859745",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21260317",
+      "datum": "2022-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup 30NTB",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 232320.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22814345",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21259853",
+      "datum": "2022-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-15",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "instalace kamerového systému",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 66892.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22813869",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21302561",
+      "datum": "2022-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "nákup 7ks NTB",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 54208.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22859169",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21573961",
+      "datum": "2022-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/CU/202301",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23151985",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21574021",
+      "datum": "2022-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/PK/202301",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23152045",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:21574089",
+      "datum": "2022-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "RECE VEML/44727/OD/202301",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23152113",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:22103197",
+      "datum": "2023-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "lektorování sebeobrany pro žáky",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23710705",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-17-17/4",
+      "datum": "2023-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-21",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2022 příspěvkových organizací Města Mariánské Lázně",
+      "popis": "Rada města, bod 17/4, usnesení 158/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2989194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/44",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Přípravná třída Základní školy Úšovice Mar. Lázně",
+      "popis": "Rada města, bod 19/44, usnesení 232/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3002363",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:23128811",
+      "datum": "2023-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "oprava výměnou elektro ve ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 69054.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24787547",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23213695",
+      "datum": "2023-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "oprava-výměna vestavných skříní",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 119136.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24876591",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23525075",
+      "datum": "2023-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-26",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup školního nábytku",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 118328.32,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25207295",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23523791",
+      "datum": "2023-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-28",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "oprava WC chlapci v přízemí ZŠ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 583512.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25205983",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23524815",
+      "datum": "2023-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-28",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "elektroopravy PC učebna",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 50925.27,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25207023",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23523703",
+      "datum": "2023-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "opravy - malování v ZŠ a ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 99979.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25205895",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23524583",
+      "datum": "2023-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-30",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup interaktivních tabulí Smart",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 107313.69,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25206791",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23524043",
+      "datum": "2023-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-10",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup sporáku do ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 146871.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25206247",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23986019",
+      "datum": "2023-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-18",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "výměna lina, koberce",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 146894.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25690683",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23803711",
+      "datum": "2023-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup digitálních UP",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 301123.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25499067",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:23803907",
+      "datum": "2023-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup digitálních UP",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 167948.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25499263",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:24101955",
+      "datum": "2023-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-08",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup pylonových pojezdů",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 77381.92,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25812511",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:24657735",
+      "datum": "2023-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "lektorování sebeobrany \"Stop násilí\"",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26394931",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25069315",
+      "datum": "2023-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-07",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup digitálních UP",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 595108.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26836219",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25439123",
+      "datum": "2023-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "ubytování a stravování, lyž.výcvik 8tř.",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 140800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27241383",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25439431",
+      "datum": "2023-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "nákup školního nábytku",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 129077.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27241695",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25483747",
+      "datum": "2024-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/ODBĚROVÝ DIAGRAM/44727/2024",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27288547",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25484295",
+      "datum": "2024-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/UJEDNÁNÍ O CENĚ/44727/2024",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27289095",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:25484299",
+      "datum": "2024-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/PLATEBNÍ KALENDÁŘ/44727/2024",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 2911426.98,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27289099",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-46-46/4",
+      "datum": "2024-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Přípravná třída Základní školy Úšovice Mar. Lázně",
+      "popis": "Rada města, bod 46/4, usnesení 88/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3151527",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/46.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/18",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2023 příspěvkových organizací Města Mariánské Lázně",
+      "popis": "Rada města, bod 48/18, usnesení 178/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166581",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:27557800",
+      "datum": "2024-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-03",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "polepy schodů",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 64680.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29459396",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:27574696",
+      "datum": "2024-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "opravy žaluzií",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 54896.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29477684",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:27575848",
+      "datum": "2024-07-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "malířské práce",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 99930.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29478916",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28156028",
+      "datum": "2024-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "stravovací systém Stravné5",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 80224.21,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30089880",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:27815044",
+      "datum": "2024-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "nákup 3ks interaktivních panelů",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 395145.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29731272",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28094732",
+      "datum": "2024-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-22",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "oprava-výměna vestavných skříní",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 191270.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30025964",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28332104",
+      "datum": "2024-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-26",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "opravy maleb a nátěrů",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 97421.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30274788",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28156360",
+      "datum": "2024-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "poskytnutí licence k užití SW",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 226263.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34722345",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "retez:rada-2024-46/4__28582168",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Výpůjčka-užívání tělocvičny vč. soc. zařízení ke sportovním činnostem",
+      "popis": "Odhadované spojení smlouvy z 2024-09-17 s bodem 46/4 z 2024-02-20 (Přípravná třída Základní školy Úšovice Mar. Lázně). Jistota nizka.",
+      "castka_czk": 71600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; smlouva podepsána 210 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30727724",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-48/18__28582168",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Výpůjčka-užívání tělocvičny vč. soc. zařízení ke sportovním činnostem",
+      "popis": "Odhadované spojení smlouvy z 2024-09-17 s bodem 48/18 z 2024-03-19 (Schválení účetních závěrek za rok 2023 příspěvkových organizací Města Mariánské Lázně). Jist",
+      "castka_czk": 71600.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; smlouva podepsána 182 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30727724",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28582168",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Výpůjčka-užívání tělocvičny vč. soc. zařízení ke sportovním činnostem",
+      "popis": "Městský dům dětí a mládeže, Mariánské Lázně — výdaj, protistrana Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472, příspěvková organizace.",
+      "castka_czk": 71600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30727724",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/69979430.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28413776",
+      "datum": "2024-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-18",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "nákup školních potřeb pro žáky cizince",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 53258.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30360240",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28551276",
+      "datum": "2024-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-23",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "lekce sebeobrany pro žáky šk.rok 2024/25",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30511388",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/37",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o nájmu služebního bytu v budově Základní školy Úšovice, Mariánské Lázně",
+      "popis": "Rada města, bod 68/37, usnesení 723/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3266204",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:28945992",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "oprava - výměna servoventilu, kotelna ZŠ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 62024.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30935936",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:28946228",
+      "datum": "2024-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-06",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "nákup 1ks interaktivní tabule s příslušenstvím",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 155237.83,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30936180",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29260176",
+      "datum": "2024-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "dotykový panel Ámos (HW včetně SW)",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 159600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31267064",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29194868",
+      "datum": "2024-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "ubytování a stravování, LKV 8tř.",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 140800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31198752",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29260732",
+      "datum": "2024-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "oprava výměnou 2ks cirkul.čerpadel a 3ks expanzomatů 500l ve VS školy",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 189207.7,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31267640",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29261032",
+      "datum": "2024-11-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "65´´ LED Samsung Flip Pro interaktivní panel",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 89990.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31267968",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29261340",
+      "datum": "2024-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-02",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "digitální učební pomůcky (chromebooky, graf. tablety, nabíjecí stanice, notebooky)",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 601224.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31268284",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29671608",
+      "datum": "2024-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "instalace 2.etapy kamer do přízemí HB",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 91597.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31699200",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29689876",
+      "datum": "2024-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-30",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/PLATEBNÍ KALENDÁŘ/44727/2025",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31718444",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29689900",
+      "datum": "2024-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-30",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/UJEDNÁNÍ O CENĚ/44727/2025",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31718468",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:29689984",
+      "datum": "2024-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-30",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/ODBĚROVÝ DIAGRAM/44727/2025",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31718552",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:30967948",
+      "datum": "2025-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "dohoda o narovnání - pronájem tělocvičny, šk.r.24/25",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 65700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33059080",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-87-87/9",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2024 příspěvkových organizací Města Mariánské Lázně",
+      "popis": "Rada města, bod 87/9, usnesení 319/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3359887",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:31554836",
+      "datum": "2025-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "oprava parního ohřívače -VS",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 138968.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33673308",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-89-89/25",
+      "datum": "2025-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Jmenování ředitele/ředitelky ZŠ Úšovice Mar. Lázně",
+      "popis": "Rada města, bod 89/25, usnesení 389/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3372574",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-21-21/21",
+      "datum": "2025-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-17",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Základní škola Úšovice Mariánské Lázně – převod majetku",
+      "popis": "Zastupitelstvo města, bod 21/21, usnesení 500/25. Schvaleno.",
+      "castka_czk": 2710421,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3379981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:31908565",
+      "datum": "2025-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-20",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "nákup interaktivního panelu Samsung 75´",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 109990.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34043473",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:31741145",
+      "datum": "2025-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "opravy - malování ZŠ a ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 141350.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33868997",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:31971413",
+      "datum": "2025-06-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-25",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "opravy omítek ZŠ, obkladů v ŠJ",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 68815.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34108917",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:32035429",
+      "datum": "2025-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-18",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "nákup žákovského nábytku, skříně",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 173904.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34176025",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-96-96/19",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Změna v rejstříku škol - zápis nového ředitele ZŠ Úšovice Mar. Lázně",
+      "popis": "Rada města, bod 96/19, usnesení 583/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3870737469",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:32846541",
+      "datum": "2025-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-01",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "podnájem nebytových prostor",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 350000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35024497",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "retez:rada-2025-89/25__33630741",
+      "datum": "2025-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "pronájem tělocvičny ZŠ",
+      "popis": "Odhadované spojení smlouvy z 2025-09-09 s bodem 89/25 z 2025-05-27 (Jmenování ředitele/ředitelky ZŠ Úšovice Mar. Lázně). Jistota nizka.",
+      "castka_czk": 71400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; smlouva podepsána 105 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35844633",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-96/19__33630741",
+      "datum": "2025-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "pronájem tělocvičny ZŠ",
+      "popis": "Odhadované spojení smlouvy z 2025-09-09 s bodem 96/19 z 2025-08-26 (Změna v rejstříku škol - zápis nového ředitele ZŠ Úšovice Mar. Lázně). Jistota nizka.",
+      "castka_czk": 71400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35844633",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-21/21__33630741",
+      "datum": "2025-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-09",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "pronájem tělocvičny ZŠ",
+      "popis": "Odhadované spojení smlouvy z 2025-09-09 s bodem 21/21 z 2025-06-17 (Základní škola Úšovice Mariánské Lázně – převod majetku). Jistota nizka.",
+      "castka_czk": 71400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70997543 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 84 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35844633",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33630741",
+      "datum": "2025-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "pronájem tělocvičny ZŠ",
+      "popis": "Městský dům dětí a mládeže, Mariánské Lázně — příjem, protistrana Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472, příspěvková organizace.",
+      "castka_czk": 71400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35844633",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/69979430.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:33316501",
+      "datum": "2025-10-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "pronájem přístroje &quot;Lokni&quot;",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 198440.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35515889",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:33644241",
+      "datum": "2025-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "prodloužení 180ks licence ESET 3roky",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 143708.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35858997",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:33632181",
+      "datum": "2025-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-02",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "ubytování žáků, LVK 2026",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 108800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35846153",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:33756381",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "nákup NTB HP",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 480945.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35976333",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:33779517",
+      "datum": "2025-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-11",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "rozšíření kamer 1+2.patro hl.budovy",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 91186.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36000725",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:33908273",
+      "datum": "2025-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-18",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "nákup 2ks interaktivních displejů vč.příslušenství",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 222627.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36136141",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:34186893",
+      "datum": "2025-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/UJEDNÁNÍ O CENĚ/44727/2026",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36428149",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:34186961",
+      "datum": "2025-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/PLATEBNÍ KALENDÁŘ/44727/2026",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36428217",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:34187337",
+      "datum": "2025-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/ODBĚROVÝ DIAGRAM/44727/2026",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 3474460.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36428593",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:34195413",
+      "datum": "2025-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nákup interaktivního panelu Samsung 75´´",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 129990.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36436821",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-112-112/9",
+      "datum": "2026-03-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-02",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Přípravná třída Základní školy Úšovice Mariánské Lázně",
+      "popis": "Rada města, bod 112/9, usnesení 966/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3846986924",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/5",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Schválení účetních závěrek za rok 2025 příspěvkových organizací Města Mariánské Lázně",
+      "popis": "Rada města, bod 113/5, usnesení 989/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2513785955",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:35370457",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "skartace, archivace písemností",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 145200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37663101",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-27-27/11",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Navýšení provozního příspěvku pro Základní školu Úšovice, p.o.",
+      "popis": "Zastupitelstvo města, bod 27/11, usnesení 598/26. Schvaleno.",
+      "castka_czk": 704000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3844902651",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:36547246",
+      "datum": "2026-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-26",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "nákup 1ks interaktivního displeje Samsung 75´´",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — výdaj.",
+      "castka_czk": 124267.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38887018",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    },
+    {
+      "id": "smlouva:36365744",
+      "datum": "2026-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-09",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Veřejnoprávní smlouva o poskytnutí dotace - Základní škola Úšovice",
+      "popis": "Základní škola Úšovice, Mariánské Lázně, Školní náměstí 472 — příjem, protistrana Karlovarský kraj.",
+      "castka_czk": 50000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38698280",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997543.json",
+      "role": {
+        "vztah": "subjekt"
+      }
+    }
+  ]
+}

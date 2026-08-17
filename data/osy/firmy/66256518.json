@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66256518",
+    "nazev": "Mgr. Martin Bělina, advokát"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-11-14",
+    "do": "2025-11-14",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "stredni": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2025-102/21__33442309",
+      "datum": "2025-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-14",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Příkazní smlouva o poskytování právních služeb - Mgr. Bělina",
+      "popis": "Odhadované spojení smlouvy z 2025-11-14 s bodem 102/21 z 2025-10-29 (Schválení příkazní smlouvy o poskytování právních služeb). Jistota stredni.",
+      "castka_czk": 200000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 66256518 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova poskytovani, pravnich, prikazni, sluzeb",
+      "url": "https://smlouvy.gov.cz/smlouva/35646897",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33442309",
+      "datum": "2025-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Příkazní smlouva o poskytování právních služeb - Mgr. Bělina",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Mgr. Martin Bělina, advokát.",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35646897",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

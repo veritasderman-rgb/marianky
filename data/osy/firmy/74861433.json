@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "74861433",
+    "nazev": "Ing. arch. Marek Blank"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-02-28",
+    "do": "2017-12-05",
+    "prvni_rok": 2017,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-104-104/17",
+      "datum": "2017-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele na veřejnou zakázku „ÚZEMNÍ PLÁN MARIÁNSKÉ LÁZNĚ - územně plánovací dokumentace“, schválení uzavření smluv o dílo s vybraným dodavatelem",
+      "popis": "Rada města, bod 104/17, usnesení 127/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1720235",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-104/17__1701718",
+      "datum": "2017-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-07",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Zpracování Vyhodnocení vlivů Územního plánu Mariánské Lázně na udržitelný rozvoj území",
+      "popis": "Odhadované spojení smlouvy z 2017-04-07 s bodem 104/17 z 2017-02-28 (Výběr dodavatele na veřejnou zakázku „ÚZEMNÍ PLÁN MARIÁNSKÉ LÁZNĚ - územně plánovací dokume",
+      "castka_czk": 363000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 74861433 je uvedeno v textu usnesení; smlouva podepsána 38 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/1838010",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-104/17__1701722",
+      "datum": "2017-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-07",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Zpracování Územního plánu Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-04-07 s bodem 104/17 z 2017-02-28 (Výběr dodavatele na veřejnou zakázku „ÚZEMNÍ PLÁN MARIÁNSKÉ LÁZNĚ - územně plánovací dokume",
+      "castka_czk": 3569500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 74861433 je uvedeno v textu usnesení; smlouva podepsána 38 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/1838014",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1701718",
+      "datum": "2017-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Zpracování Vyhodnocení vlivů Územního plánu Mariánské Lázně na udržitelný rozvoj území",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Marek Blank.",
+      "castka_czk": 363000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1838010",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1701722",
+      "datum": "2017-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Zpracování Územního plánu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Marek Blank.",
+      "castka_czk": 3569500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1838014",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-104/17__2689770",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 - Rozdělení etapy DPR na dvě části, počet paré, termín odevzdání, formát dat",
+      "popis": "Odhadované spojení smlouvy z 2017-07-20 s bodem 104/17 z 2017-02-28 (Výběr dodavatele na veřejnou zakázku „ÚZEMNÍ PLÁN MARIÁNSKÉ LÁZNĚ - územně plánovací dokume",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 74861433 je uvedeno v textu usnesení; smlouva podepsána 142 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/2894354",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2689770",
+      "datum": "2017-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 - Rozdělení etapy DPR na dvě části, počet paré, termín odevzdání, formát dat",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Marek Blank.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2894354",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-137-137/19",
+      "datum": "2017-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-05",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smluv na zpracování Územního plánu Mariánské Lázně",
+      "popis": "Rada města, bod 137/19, usnesení 701/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1869327",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/137.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

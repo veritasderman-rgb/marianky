@@ -316,6 +316,48 @@ Celkem **24 subjektů** k monitoringu včetně města a obchodních společnost�
 
 ---
 
+## 6b. ARES — firmy se sídlem ve městě
+
+`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat`, POST s JSON. Kód obce Mariánské Lázně je **554642**.
+
+**Staženo 4 177 ze 4 177 subjektů** — 1 499 právnických osob, 2 678 živnostníků.
+
+### Stahování se musí řezat
+
+ARES odmítne dotaz, který by vrátil **přes 1 000 výsledků**, a to ještě před první stránkou:
+
+```json
+{"kod":"CHYBA_VSTUPU","subKod":"VYSTUP_PRILIS_MNOHO_VYSLEDKU",
+ "popis":"Zadaný dotaz vrací příliš mnoho výsledků (4 177)."}
+```
+
+Řeší se kaskádou řezů: **právní forma** (151 kódů, jejich součet dá přesně 4 177, takže je rozklad ověřitelně úplný) → **část obce** → **ulice** → **číslo domovní**. Každý řez se porovnává s počtem, který ARES sám hlásí; rozdíl se zapisuje jako mezera, ne zamlčuje. První běh takto přiznal 7 chybějících subjektů v Úšovicích.
+
+Převažující obor (`czNacePrevazujici`) a kategorii počtu pracovníků dotahuje RES po stovce IČO na dotaz — celé město je 42 dotazů.
+
+### Dvě pasti, kvůli kterým by graf lhal
+
+**Obory nejde vykreslit naivně.** Ve městě je **396 společenství vlastníků jednotek** a všechna mají CZ-NACE „činnosti v oblasti nemovitostí". Z bytových domů by tak vyšlo, že hlavní obor lázeňského města je realitní byznys (663 subjektů, první místo). Bez SVJ a spolků spadnou nemovitosti na 263 a čtvrté místo, a nahoru se dostane to, co město opravdu živí: **stravování 364, maloobchod 327, osobní služby 272**. Ubytování a stravování dohromady dává **508 subjektů** — to je lázeňský podpis města.
+
+**Časová osa vzniků měří něco jiného, než se zdá.** Adresní index ARES vede převážně žijící subjekty, takže osa neříká „kolik firem v tom roce vzniklo", ale „kolik dnes existujících subjektů v tom roce vzniklo". Starší roky jsou osekané o všechno, co mezitím skončilo — je to přežití, ne vznik. Osa to nese v poli `mereni` a **graf to musí napsat**, jinak tvrdí, že podnikání ve městě setrvale roste.
+
+**Zániky nejde doplnit.** `datumZaniku` v ARES neexistuje ani ve vyhledávání, ani v detailu — má ho až obchodní rejstřík. Osa zániků nese `stav: "neuplne"`.
+
+**Obrat ARES nezveřejňuje vůbec.** Kategorie počtu pracovníků chybí u 2 639 ze 4 177 subjektů. Pásma obratu jsou jen u 21 nejvýznamnějších firem doplněných z Hlídače státu — a jsou to pásma, ne čísla.
+
+### Drobnosti, na kterých se dá ztratit čas
+
+- U části subjektů vrací ARES **`ico: null`** a jen interní `icoId` tvaru `ARES_00361728`. Číslo v něm vypadá jako IČO, ale detail pod ním vrací 404 — neodvozovat.
+- Dvanáct položek číselníku CZ-NACE má místo středníku rozbitou entitu `&amp;#59^`.
+
+### Kdo ve městě opravdu je
+
+Můj původní odhad („Danubius, Ensana") **neseděl** — ani jedna z nich nemá v Mariánských Lázních sídlo. Lázeňský provozovatel je veden jako **Léčebné lázně Mariánské Lázně a.s.** A druhý největší zaměstnavatel není lázeňský ani hotelový, ale **strojírenský: ELEKTROMETALL** (500–999 zaměstnanců).
+
+Největší zaměstnavatel je **OREA HOTELS** (1 000–1 500 zaměstnanců).
+
+Z 1 115 protistran města s IČO jich **248 sídlí přímo ve městě** a připadá na ně 1,74 mld. z 3,74 mld. Kč.
+
 ## 7. Média a regionální zpravodajství
 
 > **Doplněno po sklizni.** Otázka zněla, jestli jde jít 12 let zpět. Odpověď: **jde, ale jen u dvou zdrojů ze čtyř** — a u zbylých dvou to není technická překážka, nýbrž fakt, že ty weby dřív neexistovaly.

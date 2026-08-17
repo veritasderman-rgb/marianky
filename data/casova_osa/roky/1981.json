@@ -1,0 +1,167 @@
+{
+  "rok": 1981,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "funkce:kopek-rudolf:0",
+      "datum": "1981",
+      "datum_do": "1990",
+      "presnost": "obdobi",
+      "razeni": "1981-01-01",
+      "rok": 1981,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Rudolf Kopek — předseda MNV",
+      "popis": "předseda MNV (1981 – 1990).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "kopek-rudolf"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "kopek-rudolf#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "předseda MNV",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1990"
+      }
+    },
+    {
+      "id": "historie:1981-kopek-mnv",
+      "datum": "1981",
+      "datum_do": "1990",
+      "presnost": "obdobi",
+      "razeni": "1981-01-01",
+      "rok": 1981,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Rudolf Kopek předsedou MNV",
+      "popis": "Inženýr Rudolf Kopek byl v letech 1981–1990 předsedou Městského národního výboru, tedy posledním předlistopadovým představitelem města.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "kopek-rudolf"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1981-kopek-mnv",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    },
+    {
+      "id": "historie:1981-zimni-stadion",
+      "datum": "1981",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1981-01-01",
+      "rok": 1981,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Zřícení střechy zimního stadionu",
+      "popis": "V roce 1981 se zřítila střecha zimního stadionu.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "sport"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1981-zimni-stadion",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "stavba",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1981-kolonada-otevreni",
+      "datum": "1981-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1981-08-15",
+      "rok": 1981,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Otevřena Kolonáda Maxima Gorkého po rekonstrukci",
+      "popis": "Dne 15. srpna 1981 byla otevřena Kolonáda Maxima Gorkého.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "lazenstvi",
+        "pamatky"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1981-kolonada-otevreni",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "stavba",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    }
+  ]
+}

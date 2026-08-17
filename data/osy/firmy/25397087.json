@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25397087",
+    "nazev": "PB SCOM s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-17",
+    "do": "2025-04-04",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-65-65/11",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Odstranění budov v areálu Chebská 252“ – výběr dodavatele",
+      "popis": "Rada města, bod 65/11, usnesení 625/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3251628",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/11__28531920",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Odstranění budov v areálu Chebská 252",
+      "popis": "Odhadované spojení smlouvy z 2024-10-08 s bodem 65/11 z 2024-09-17 (Veřejná zakázka „Odstranění budov v areálu Chebská 252“ – výběr dodavatele). Jistota stredni",
+      "castka_czk": 2117008.01,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25397087 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, budov, chebska, odstraneni",
+      "url": "https://smlouvy.gov.cz/smlouva/30488260",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28531920",
+      "datum": "2024-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-08",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Odstranění budov v areálu Chebská 252",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PB SCOM s.r.o..",
+      "castka_czk": 2117008.01,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30488260",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/17",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Odstranění budov v areálu Chebská 252 – dodatek č.1",
+      "popis": "Rada města, bod 81/17, usnesení 194/25. Schvaleno.",
+      "castka_czk": 173350,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3338035",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/17__31027672",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě Odstranění budov v areálu Chebská 252",
+      "popis": "Odhadované spojení smlouvy z 2025-04-04 s bodem 81/17 z 2025-03-18 (Odstranění budov v areálu Chebská 252 – dodatek č.1). Jistota stredni.",
+      "castka_czk": 2290358.12,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25397087 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova arealu, budov, chebska, odstraneni; obojí je",
+      "url": "https://smlouvy.gov.cz/smlouva/33121316",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31027672",
+      "datum": "2025-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě Odstranění budov v areálu Chebská 252",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PB SCOM s.r.o..",
+      "castka_czk": 2290358.12,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33121316",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

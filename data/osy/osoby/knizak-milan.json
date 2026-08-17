@@ -1,0 +1,106 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "knizak-milan",
+    "jmeno": "Milan Knížák",
+    "role": [
+      "výtvarník"
+    ],
+    "kategorie": "kultura",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2017-12",
+    "do": "2024-11",
+    "prvni_rok": 2017,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2017-12-001",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "ADVENT KLEPE NA DVEŘE A S NÍM I OBLÍBENÝ VÁNOČNÍ TRH",
+      "popis": "Vážení spoluobčané,  po třiceti letech dostala ulice Pod Panoramou nový povrch. Bylo to už zapotřebí, silnici v horším stavu bychom v Mariánských Lázních jen tě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-12-028",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "RC MORRISON LISTOPAD 2017",
+      "popis": "■ ■ AKTUAL + UMĚLÁ HMOTA  pátek, 1.12. 2017, 20.00 Vstupné: 200 Kč  Milan Knížák se skupinou Aktual pokřtí v Mariánských Lázních nové album, které připomene cel",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-11-009",
+      "datum": "2024-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-11-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Generální stávka na kolonádě? Euforie – jako když se pod vámi chvěje zem, vzpomíná Bartůšek",
+      "popis": "Podzim 1989 přinesl Václavu (Wendy) Bartůškovi zlomové momenty nejen v jeho osobním životě. Přestože ještě krátce před revolucí plánoval emigraci do Austrálie, ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=eaa59ce0%7C4345#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-11/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

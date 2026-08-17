@@ -1,0 +1,136 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "67103031",
+    "nazev": "Josef Brichzin"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-04-10",
+    "do": "2022-04-28",
+    "prvni_rok": 2012,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 1,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-62-62/8",
+      "datum": "2012-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Oprava střechy NP Poštovní 96 - IRISH PUB",
+      "popis": "Rada města, bod 62/8, usnesení 180/12.",
+      "castka_czk": 71786,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/749960",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:3005790",
+      "datum": "2017-09-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-22",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava nátěru 20ks radiátorů a výmalby v prostorách Městské knihovny, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MALÍŘSKÉ, TAPETÁŘSKÉ a LAKÝRNÍCKÉ PRÁCE - Josef Brichzin.",
+      "castka_czk": 65524.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3238134",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3384152",
+      "datum": "2017-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-30",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Radnice města - rekonstrukce radnice - areál Chebská 252, Mariánské Lázně - výmalba objektu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef Brichzin - MALÍŘSKÉ, TAPETÁŘSKÉ a LAKÝRNÍCKÉ PRÁCE .",
+      "castka_czk": 137713.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3649584",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18670563",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava nátěru 58 oken v Městském muzeu, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef Brichzin.",
+      "castka_czk": 296784.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20067835",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18772603",
+      "datum": "2022-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-28",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava nátěru devíti stánků na kolonádě, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef Brichzin.",
+      "castka_czk": 84781.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20174607",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

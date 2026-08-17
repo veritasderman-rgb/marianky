@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04600401",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-12-01",
+    "do": "2017-09-12",
+    "prvni_rok": 2015,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:04600401:vznik",
+      "datum": "2015-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-01",
+      "rok": 2015,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — AMEER 007 s.r.o.",
+      "popis": "Vznik subjektu AMEER 007 s.r.o. (IČO 04600401), Společnost s ručením omezeným, obor: Pronájem a správa vlastních nebo pronajatých nemovitostí.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-29-29/7",
+      "datum": "2017-09-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Prodej bytové jednotky č. 233/4, v domě č.p. 233, ul. Hlavní třída, na st.p.č. 306, kat. území a obec Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 29/7, usnesení 551/17. Schvaleno.",
+      "castka_czk": 1295000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1812261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

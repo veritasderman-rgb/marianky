@@ -1,0 +1,86 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "jasicek-miroslav",
+    "jmeno": "Miroslav Jašíček",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-10",
+    "do": "2026-08",
+    "prvni_rok": 2018,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2018-10-007",
+      "datum": "2018-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "výběrové řízení",
+      "popis": "Město Mariánské Lázně vyhlašuje dle zákona 312/2002 Sb., o úřednících územních samosprávných celků a o změně některých zákonů, ve znění pozdějších předpisů, výb",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ca6f4fac%7C1679#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-10/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-020",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "😊 Město Mariánské Lázně",
+      "popis": "Hledá zaměstnance pro výkon funkce referent – pozemky, služebnosti, evidence majetku, na dobu určitou – zástup za mateřskou a rodičovskou dovolenou  Druh práce ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

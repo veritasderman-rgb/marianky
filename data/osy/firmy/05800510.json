@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05800510",
+    "nazev": "HUMAT-TEX.INVEST s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-25",
+    "do": "2023-08-07",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-28-28/11",
+      "datum": "2023-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-25",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nemovitosti – ul. Česká, č.p. 854/3, k.ú. Úšovice",
+      "popis": "Rada města, bod 28/11, usnesení 471/23. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3054913",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-28/11__23690571",
+      "datum": "2023-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-07",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nemovitosti - HUMAT - TEX.INVEST s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2023-08-07 s bodem 28/11 z 2023-07-25 (Pronájem nemovitosti – ul. Česká, č.p. 854/3, k.ú. Úšovice). Jistota stredni.",
+      "castka_czk": 726000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 05800510 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25380783",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23690571",
+      "datum": "2023-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-07",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nemovitosti - HUMAT - TEX.INVEST s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana HUMAT-TEX.INVEST s.r.o..",
+      "castka_czk": 726000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25380783",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

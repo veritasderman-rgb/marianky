@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07698232",
+    "nazev": "gogolák + grasse s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-04-29",
+    "do": "2025-05-22",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-87-87/21",
+      "datum": "2025-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Územní studie Nové centrum města Mariánské Lázně – výběr dodavatele",
+      "popis": "Rada města, bod 87/21, usnesení 331/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3361898",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/87.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-87/21__31352472",
+      "datum": "2025-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-22",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo na zhotovení územně plánovacího podkladu „ÚZEMNÍ STUDIE NOVÉ CENTRUM MĚSTA MARIÁNSKÉ LÁZNĚ“",
+      "popis": "Odhadované spojení smlouvy z 2025-05-22 s bodem 87/21 z 2025-04-29 (Územní studie Nové centrum města Mariánské Lázně – výběr dodavatele). Jistota stredni.",
+      "castka_czk": 1633500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07698232 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova centrum, nove, studie, uzemni",
+      "url": "https://smlouvy.gov.cz/smlouva/33459668",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31352472",
+      "datum": "2025-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-22",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo na zhotovení územně plánovacího podkladu „ÚZEMNÍ STUDIE NOVÉ CENTRUM MĚSTA MARIÁNSKÉ LÁZNĚ“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana gogolák + grasse s.r.o..",
+      "castka_czk": 1633500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33459668",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

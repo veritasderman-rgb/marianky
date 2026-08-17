@@ -1,0 +1,259 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25524291",
+    "nazev": "SAMAB PRESS GROUP, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-11-14",
+    "do": "2026-06-24",
+    "prvni_rok": 2023,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 11,
+    "dolozenych": 8,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-37-37/34",
+      "datum": "2023-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-14",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Zpravodaj města Mariánské Lázně na období 12/2023-12/2025 - výběr dodavatele",
+      "popis": "Rada města, bod 37/34, usnesení 723/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3109904",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-37/34__25007811",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Zpravodaj města Mariánské Lázně 12/2023-12/2025",
+      "popis": "Odhadované spojení smlouvy z 2023-12-01 s bodem 37/34 z 2023-11-14 (Zpravodaj města Mariánské Lázně na období 12/2023-12/2025 - výběr dodavatele). Jistota stred",
+      "castka_czk": 433664.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25524291 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/26765255",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25007811",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Zpravodaj města Mariánské Lázně 12/2023-12/2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 433664.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26765255",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34827681",
+      "datum": "2026-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-17",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka zpracování měsíčníku Zpravodaj na měsíc březen 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 40140.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37096165",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35149001",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka zpracování měsíčníku Zpravodaj na měsíc duben 2026.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 40140.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37432057",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35466985",
+      "datum": "2026-04-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-17",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka zpracování měsíčníku Zpravodaj na měsíc květen 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 40140.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37764029",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/50",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Zpravodaj města Mariánské Lázně - 2026",
+      "popis": "Rada města, bod 116/50, usnesení 1143/26. Schvaleno.",
+      "castka_czk": 200000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3489656359",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/50__35882509",
+      "datum": "2026-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-25",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka tisku měsíčníku Zpravodaj na měsíc červen 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-05-25 s bodem 116/50 z 2026-05-05 (Zpravodaj města Mariánské Lázně - 2026). Jistota nizka.",
+      "castka_czk": 35593.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25524291 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/38196777",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35882509",
+      "datum": "2026-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-25",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka tisku měsíčníku Zpravodaj na měsíc červen 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 35593.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38196777",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/50__36229732",
+      "datum": "2026-06-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka tisku měsíčníku Zpravodaj na měsíc červenec 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-06-24 s bodem 116/50 z 2026-05-05 (Zpravodaj města Mariánské Lázně - 2026). Jistota nizka.",
+      "castka_czk": 30217.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25524291 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/38556612",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36229732",
+      "datum": "2026-06-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-24",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka tisku měsíčníku Zpravodaj na měsíc červenec 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SAMAB PRESS GROUP, a.s..",
+      "castka_czk": 30217.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38556612",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

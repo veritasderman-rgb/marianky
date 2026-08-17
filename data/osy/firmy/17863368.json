@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "17863368",
+    "nazev": "S-Power Business Solutions s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-17",
+    "do": "2025-03-04",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-65-65/9",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"FVE Stadion Viktoria Mariánské Lázně formou Design & Build - výběr dodavatele",
+      "popis": "Rada města, bod 65/9, usnesení 623/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3251213",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-65/9__28728320",
+      "datum": "2024-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-24",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "FVE stadion Viktoria Mariánské Lázně formou Design & Build",
+      "popis": "Odhadované spojení smlouvy z 2024-10-24 s bodem 65/9 z 2024-09-17 (Veřejná zakázka \"FVE Stadion Viktoria Mariánské Lázně formou Design & Build - výběr dodavatel",
+      "castka_czk": 743138.0286,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 17863368 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; název bodu a předmět smlouvy sdílí slova build, design, formou, stadion",
+      "url": "https://smlouvy.gov.cz/smlouva/30707708",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28728320",
+      "datum": "2024-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-24",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "FVE stadion Viktoria Mariánské Lázně formou Design & Build",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana S-Power Business Solutions s.r.o..",
+      "castka_czk": 743138.0286,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30707708",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/5",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "FVE stadion Viktoria Mariánské Lázně formou Design & Build – dodatek č.1",
+      "popis": "Rada města, bod 79/5, usnesení 156/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3331008",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

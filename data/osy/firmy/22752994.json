@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "22752994",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-02-16",
+    "do": "2013-12-10",
+    "prvni_rok": 2012,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:22752994:vznik",
+      "datum": "2012-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-16",
+      "rok": 2012,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Mariánská dobročinná organizace",
+      "popis": "Vznik subjektu Mariánská dobročinná organizace (IČO 22752994), Spolek, obor: Činnosti ostatních organizací sdružujících osoby za účelem prosazování společných a",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-115-115/6",
+      "datum": "2013-07-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-07-09",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Zábor veřejného prostranství - Slavnost vody",
+      "popis": "Rada města, bod 115/6, usnesení 295/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/986298",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-127-127/21",
+      "datum": "2013-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-29",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 127/21, usnesení 520/13. Schvaleno.",
+      "castka_czk": 70000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1034968",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-19-19/34",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 19/34, usnesení 649/13. Schvaleno.",
+      "castka_czk": 247000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1049562",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29118821",
+    "nazev": "stavby VILDT s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-02-03",
+    "do": "2020-02-03",
+    "prvni_rok": 2020,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 1,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 2,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2019-28/3__10742440",
+      "datum": "2020-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Objednávka - \"Oprava povrchu dlážděnného chodníku\" v ulici U Nemocnice v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2020-02-03 s bodem 28/3 z 2019-06-18 (Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistota n",
+      "castka_czk": 382640.72,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (stavby VILDT s.r.o.) je v textu usnesení; smlouva podepsána 230 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych, oprava; stejně dobře sedí i",
+      "url": "https://smlouvy.gov.cz/smlouva/11559424",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-29/2__10742440",
+      "datum": "2020-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Objednávka - \"Oprava povrchu dlážděnného chodníku\" v ulici U Nemocnice v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2020-02-03 s bodem 29/2 z 2019-07-02 (Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních - výběr dodavatele). Jistota ni",
+      "castka_czk": 382640.72,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (stavby VILDT s.r.o.) je v textu usnesení; smlouva podepsána 216 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych, oprava; stejně dobře sedí i",
+      "url": "https://smlouvy.gov.cz/smlouva/11559424",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10742440",
+      "datum": "2020-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - \"Oprava povrchu dlážděnného chodníku\" v ulici U Nemocnice v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s.r.o..",
+      "castka_czk": 382640.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11559424",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

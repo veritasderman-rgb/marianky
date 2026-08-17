@@ -1,0 +1,115 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44615256",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-03-06",
+    "do": "2013-03-19",
+    "prvni_rok": 2012,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 4
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-57-57/9",
+      "datum": "2012-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-06",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Zveřejnění - Hlavní 146, Lidická 147",
+      "popis": "Rada města, bod 57/9, usnesení 112/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/711706",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-61-61/8",
+      "datum": "2012-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-03",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Pavel, Robert Čopák - prodloužení nájmu",
+      "popis": "Rada města, bod 61/8, usnesení 165/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/747235",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-95-95/8",
+      "datum": "2013-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-01-15",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Sleva z nájmu - P. Čopák",
+      "popis": "Rada města, bod 95/8, usnesení 24/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/891166",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-103-103/4",
+      "datum": "2013-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 146, Lidická 147 - sleva z nájmu",
+      "popis": "Rada města, bod 103/4, usnesení 116/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/916168",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

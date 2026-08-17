@@ -1,0 +1,278 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26330725",
+    "nazev": "INFOCENTRUM MĚSTA Karlovy Vary, z.ú."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-05-30",
+    "do": "2025-12-29",
+    "prvni_rok": 2017,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 11,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 10
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-116-116/25",
+      "datum": "2017-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-30",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Partnerství Karlovarská karta",
+      "popis": "Rada města, bod 116/25, usnesení 337/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1767577",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-116/25__3350104",
+      "datum": "2017-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-30",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Smlouva o spolupráci",
+      "popis": "Odhadované spojení smlouvy z 2017-10-30 s bodem 116/25 z 2017-05-30 (Partnerství Karlovarská karta). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26330725 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 153 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3612796",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3350104",
+      "datum": "2017-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-30",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o spolupráci",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3612796",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10240600",
+      "datum": "2019-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o partnerství",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11014064",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10240960",
+      "datum": "2019-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o partnerství",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11014448",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10277832",
+      "datum": "2019-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o partnerství",
+      "popis": "Městské muzeum a galerie Mariánské Lázně — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11053940",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00368997.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:10277952",
+      "datum": "2019-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-30",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o partnerství",
+      "popis": "Správa městských sportovišť — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11054060",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11079328",
+      "datum": "2020-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-01",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o partnerství 2. dodatek",
+      "popis": "Městské muzeum a galerie Mariánské Lázně — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11921824",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00368997.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17623027",
+      "datum": "2022-01-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-04",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o partnerství",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18959691",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:22242313",
+      "datum": "2023-03-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o partnerství č. 32/2018",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23856113",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27554944",
+      "datum": "2024-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-11",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 ke Smlouvě o partnerství č. 32/2018",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, z.ú..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29456308",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34157485",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o partnerství",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — příjem, protistrana INFOCENTRUM MĚSTA Karlovy Vary, z.ú..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36397069",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

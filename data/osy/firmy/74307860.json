@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "74307860",
+    "nazev": "Zdeňka Pszotová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2007-02-01",
+    "do": "2026-03-30",
+    "prvni_rok": 2007,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 8,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:74307860:vznik",
+      "datum": "2007-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2007-02-01",
+      "rok": 2007,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Zdeňka Pszotová",
+      "popis": "Vznik subjektu Zdeňka Pszotová (IČO 74307860), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-10-10/4",
+      "datum": "2015-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-03",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 331 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 10/4, usnesení 48/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1347543",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-61-61/6",
+      "datum": "2020-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-10",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 331 - prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 61/6, usnesení 152/20. Schvaleno.",
+      "castka_czk": 153000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2490646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-61/6__11495416",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Poštovní, Pszotová - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2020-03-26 s bodem 61/6 z 2020-03-10 (NP Poštovní 331 - prodloužení nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 925650.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 74307860 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova postovni, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/12355804",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11495416",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Poštovní, Pszotová - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zdeňka Pszotová.",
+      "castka_czk": 925650.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12355804",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/17",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 331 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 77/17, usnesení 89/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3317799",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-79-79/21",
+      "datum": "2025-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 331 - prodloužení Smlouvy o nájmu nebytového prostoru – Zdeňka Pszotová",
+      "popis": "Rada města, bod 79/21, usnesení 172/25. Schvaleno.",
+      "castka_czk": 153000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3332981",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-79/21__30380780",
+      "datum": "2025-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - Zdeňka Pszotová",
+      "popis": "Odhadované spojení smlouvy z 2025-03-10 s bodem 79/21 z 2025-03-04 (NP Poštovní, č.p. 331 - prodloužení Smlouvy o nájmu nebytového prostoru – Zdeňka Pszotová). ",
+      "castka_czk": 925650.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 74307860 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, pszotova; obojí ",
+      "url": "https://smlouvy.gov.cz/smlouva/32441860",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30380780",
+      "datum": "2025-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytového prostoru - Zdeňka Pszotová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zdeňka Pszotová.",
+      "castka_czk": 925650.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32441860",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/17",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Poštovní, č.p. 331 – Zdeňka Pszotová",
+      "popis": "Rada města, bod 114/17, usnesení 1039/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1524309228",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26368803",
+    "nazev": "Tran Van Thanh"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-06-28",
+    "do": "2025-12-15",
+    "prvni_rok": 2022,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-152-152/14",
+      "datum": "2022-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-28",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 251 - postoupení Smlouvy o nájmu nebytového prostoru - Patrik Kraus x Van Thanh Tran",
+      "popis": "Rada města, bod 152/14, usnesení 335/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2872423",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-152/14__19470367",
+      "datum": "2022-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 - Dohoda o postoupení Smlouvy o nájmu nebytového prostoru - Patrik Kraus x Van Thanh Tran",
+      "popis": "Odhadované spojení smlouvy z 2022-07-01 s bodem 152/14 z 2022-06-28 (NP Chebská, č.p. 251 - postoupení Smlouvy o nájmu nebytového prostoru - Patrik Kraus x Van ",
+      "castka_czk": 510468.75,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26368803 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova kraus, najmu, nebytoveho, patrik",
+      "url": "https://smlouvy.gov.cz/smlouva/20928623",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19470367",
+      "datum": "2022-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 - Dohoda o postoupení Smlouvy o nájmu nebytového prostoru - Patrik Kraus x Van Thanh Tran",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Van Thanh Tran.",
+      "castka_czk": 510468.75,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20928623",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-104-104/5",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Chebská, č.p. 251 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 104/5, usnesení 763/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/236980673",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/24",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Chebská, č.p. 251 – prodloužení nájemního vztahu – Van Thanh Tran",
+      "popis": "Rada města, bod 106/24, usnesení 829/25. Schvaleno.",
+      "castka_czk": 112500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/937204119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/24__33831301",
+      "datum": "2025-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-15",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Dodatek č. 2 - prodloužení nájemního vztahu",
+      "popis": "Odhadované spojení smlouvy z 2025-12-15 s bodem 106/24 z 2025-12-09 (Nebytový prostor Chebská, č.p. 251 – prodloužení nájemního vztahu – Van Thanh Tran). Jistot",
+      "castka_czk": 562500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26368803 je uvedeno v textu usnesení; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova najemniho, prodlouzeni, vztahu",
+      "url": "https://smlouvy.gov.cz/smlouva/36054977",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33831301",
+      "datum": "2025-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-15",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Dodatek č. 2 - prodloužení nájemního vztahu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Tran Van Thanh.",
+      "castka_czk": 562500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36054977",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

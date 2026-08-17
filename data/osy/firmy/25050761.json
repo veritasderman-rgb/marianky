@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25050761",
+    "nazev": "Stříbrný lukostřelec s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-05-17",
+    "do": "2019-04-01",
+    "prvni_rok": 1996,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25050761:vznik",
+      "datum": "1996-05-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-05-17",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Stříbrný lukostřelec s.r.o.",
+      "popis": "Vznik subjektu Stříbrný lukostřelec s.r.o. (IČO 25050761), Společnost s ručením omezeným, obor: Zprostředkování v oblasti nemovitostí.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/7",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - Stříbrný Lukostřelec, s.r.o.",
+      "popis": "Zastupitelstvo města, bod 32/7, usnesení 633/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1863248",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-25/14__8468135",
+      "datum": "2019-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí služeb manažera marketingu a realizaci komunikační strategie v roce 2019 pro města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-04-01 s bodem 25/14 z 2017-04-25 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25050761 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 706 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23910157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/7__8468135",
+      "datum": "2019-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí služeb manažera marketingu a realizaci komunikační strategie v roce 2019 pro města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-04-01 s bodem 32/7 z 2017-12-12 (Fond kultury - Stříbrný Lukostřelec, s.r.o.). Jistota nizka.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25050761 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 475 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23910157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8468135",
+      "datum": "2019-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí služeb manažera marketingu a realizaci komunikační strategie v roce 2019 pro města Mariánské Lázně",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Stříbrný lukostřelec s.r.o..",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23910157",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

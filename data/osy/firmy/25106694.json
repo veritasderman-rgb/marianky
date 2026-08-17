@@ -1,0 +1,500 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25106694",
+    "nazev": "MARS KBJR s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1997-02-18",
+    "do": "2024-05-10",
+    "prvni_rok": 1997,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 23,
+    "dolozenych": 14,
+    "odhadu": 9,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8,
+      "retez": 9,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 14,
+      "nizka": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25106694:vznik",
+      "datum": "1997-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1997-02-18",
+      "rok": 1997,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — MARS KBJR s.r.o.",
+      "popis": "Vznik subjektu MARS KBJR s.r.o. (IČO 25106694), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-84-84/1",
+      "datum": "2012-10-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-10-23",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 166 - prodloužení nájmu (MARS)",
+      "popis": "Rada města, bod 84/1, usnesení 513/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/832257",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/84.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-123-123/4",
+      "datum": "2017-08-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-15",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 166 - prodloužení nájmu - MARS KBJR s.r.o.",
+      "popis": "Rada města, bod 123/4, usnesení 468/17. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1806204",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-133-133/2",
+      "datum": "2017-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-31",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 166 - úprava nájemného - MARS KBJR s.r.o.",
+      "popis": "Rada města, bod 133/2, usnesení 616/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1848194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/133.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-123/4__3608260",
+      "datum": "2017-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-06",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní, č.p. 166 - MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-06 s bodem 123/4 z 2017-08-15 (NP Hlavní 166 - prodloužení nájmu - MARS KBJR s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, kbjr, mars; stejně dobře sedí i 1 da",
+      "url": "https://smlouvy.gov.cz/smlouva/3892184",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-133/2__3608260",
+      "datum": "2017-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-06",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní, č.p. 166 - MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-06 s bodem 133/2 z 2017-10-31 (NP Hlavní 166 - úprava nájemného - MARS KBJR s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, kbjr, mars; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/3892184",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3608260",
+      "datum": "2017-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-06",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní, č.p. 166 - MARS KBJR s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARS KBJR s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3892184",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-2-2/16",
+      "datum": "2018-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 166 - úprava nájemní smlouvy",
+      "popis": "Rada města, bod 2/16, usnesení 628/18. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2141571",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-123/4__6953103",
+      "datum": "2018-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 166 MARS",
+      "popis": "Odhadované spojení smlouvy z 2018-12-03 s bodem 123/4 z 2017-08-15 (NP Hlavní 166 - prodloužení nájmu - MARS KBJR s.r.o.). Jistota nizka.",
+      "castka_czk": 2868932.99,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 475 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, mars, najmu; stejně dobře sedí i",
+      "url": "https://smlouvy.gov.cz/smlouva/7508683",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-2/16__6953103",
+      "datum": "2018-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-03",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 166 MARS",
+      "popis": "Odhadované spojení smlouvy z 2018-12-03 s bodem 2/16 z 2018-11-27 (Hlavní 166 - úprava nájemní smlouvy). Jistota nizka.",
+      "castka_czk": 2868932.99,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7508683",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6953103",
+      "datum": "2018-12-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-03",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 ke smlouvě o nájmu NP Hlavní 166 MARS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARS KBJR s.r.o..",
+      "castka_czk": 2868932.99,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7508683",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-122-122/5",
+      "datum": "2021-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.166 - MARS KBJR s.r.o. - věrnostní sleva",
+      "popis": "Rada města, bod 122/5, usnesení 407/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2742889",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-122/5__16661551",
+      "datum": "2021-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2021-10-01 s bodem 122/5 z 2021-09-21 (NP Hlavní, č.p.166 - MARS KBJR s.r.o. - věrnostní sleva). Jistota stredni.",
+      "castka_czk": 637562.31,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova kbjr, mars",
+      "url": "https://smlouvy.gov.cz/smlouva/17943779",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16661551",
+      "datum": "2021-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - MARS KBJR s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARS KBJR s.r.o..",
+      "castka_czk": 637562.31,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17943779",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-154-154/3",
+      "datum": "2022-07-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-26",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 166 - prodloužení Smlouvy o nájmu nebytového prostoru - MARS KBJR s.r.o.",
+      "popis": "Rada města, bod 154/3, usnesení 380/22. Schvaleno.",
+      "castka_czk": 574812,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2882681",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-154/3__19826211",
+      "datum": "2022-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-09",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-08-09 s bodem 154/3 z 2022-07-26 (NP Hlavní, č.p. 166 - prodloužení Smlouvy o nájmu nebytového prostoru - MARS KBJR s.r.o.). J",
+      "castka_czk": 3503788.53,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova kbjr, mars, najmu, nebytoveho",
+      "url": "https://smlouvy.gov.cz/smlouva/21306327",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19826211",
+      "datum": "2022-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-09",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost MARS KBJR s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARS KBJR s.r.o..",
+      "castka_czk": 3503788.53,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21306327",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-49-49/16",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 166 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 49/16, usnesení 214/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3173019",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/49.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-52-52/6",
+      "datum": "2024-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-30",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 166 – úprava nájemní smlouvy - předmět činnosti",
+      "popis": "Rada města, bod 52/6, usnesení 286/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3186593",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/52.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-154/3__26788995",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - společnost MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 154/3 z 2022-07-26 (NP Hlavní, č.p. 166 - prodloužení Smlouvy o nájmu nebytového prostoru - MARS KBJR s.r.o.). J",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 654 dní po usnesení; název bodu a předmět smlouvy sdílí slova kbjr, mars, najmu, nebytoveho; stejně do",
+      "url": "https://smlouvy.gov.cz/smlouva/28659239",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-49/16__26788995",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - společnost MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 49/16 z 2024-04-02 (NP Hlavní třída, č.p. 166 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 38 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/28659239",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-52/6__26788995",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - společnost MARS KBJR s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-05-10 s bodem 52/6 z 2024-04-30 (NP Hlavní třída, č.p. 166 – úprava nájemní smlouvy - předmět činnosti). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25106694 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/28659239",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26788995",
+      "datum": "2024-05-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - společnost MARS KBJR s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MARS KBJR s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28659239",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

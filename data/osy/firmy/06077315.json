@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06077315",
+    "nazev": "STREETPARK s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-07-18",
+    "do": "2025-07-07",
+    "prvni_rok": 2022,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 4,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:19609999",
+      "datum": "2022-07-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-18",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – akceptace nabídky č. 22N.RH0278 ze dne 13.07.2022 – dodávka parkových laviček BETLA s opěrkou a bez opěrky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STREETPARK s.r.o..",
+      "castka_czk": 196171.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21077883",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26424143",
+      "datum": "2024-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka mobiliáře - dodávka parkových laviček BETLA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STREETPARK s.r.o..",
+      "castka_czk": 328629.95,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28278859",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27973796",
+      "datum": "2024-08-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "dodávka parkových laviček BETLA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STREETPARK s.r.o..",
+      "castka_czk": 96203.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29899180",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-92-92/12",
+      "datum": "2025-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru nákupu 36 ks laviček BETLA",
+      "popis": "Rada města, bod 92/12, usnesení 495/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3395345",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-92/12__32042233",
+      "datum": "2025-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-07",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "dodávka parkových laviček BETLA s opěrkou a bez opěrky, lavička Radiano",
+      "popis": "Odhadované spojení smlouvy z 2025-07-07 s bodem 92/12 z 2025-07-04 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace záměru nákupu 36 ks lavič",
+      "castka_czk": 502458.55,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06077315 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova betla, lavicek",
+      "url": "https://smlouvy.gov.cz/smlouva/34183073",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32042233",
+      "datum": "2025-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "dodávka parkových laviček BETLA s opěrkou a bez opěrky, lavička Radiano",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STREETPARK s.r.o..",
+      "castka_czk": 502458.55,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34183073",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68820810",
+    "nazev": "Martin Sasko"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1999-12-06",
+    "do": "2020-02-18",
+    "prvni_rok": 1999,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 6,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:68820810:vznik",
+      "datum": "1999-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1999-12-06",
+      "rok": 1999,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Martin Sasko",
+      "popis": "Vznik subjektu Martin Sasko (IČO 68820810), Fyzická osoba podnikající dle živnostenského zákona, obor: Zprostředkování v oblasti velkoobchodu za provizi.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-15/10__8621403",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-10 s bodem 15/10 z 2019-03-12 (Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projedn",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68820810 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 90 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9295591",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-5/6__8621403",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-10 s bodem 5/6 z 2019-04-09 (Fond kultury 2019 - 1. výzva). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 68820810 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 62 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9295591",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8621403",
+      "datum": "2019-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Martin Sasko.",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9295591",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

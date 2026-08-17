@@ -1,0 +1,133 @@
+{
+  "rok": 1952,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "historie": 2,
+      "firma": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "historie:1952-balneologicky-ustav",
+      "datum": "1952",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1952-01-01",
+      "rok": 1952,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Založen Výzkumný ústav balneologický",
+      "popis": "V roce 1952 byl v Mariánských Lázních založen Výzkumný ústav balneologický.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "lazenstvi",
+        "zdravotnictvi"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1952-balneologicky-ustav",
+      "url": "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49=",
+      "detail": {
+        "kategorie": "zdravotnictvi",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "historie:1952-trolejbusy",
+      "datum": "1952",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1952-01-01",
+      "rok": 1952,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Tramvaj nahrazena trolejbusy",
+      "popis": "Provoz tramvaje byl zrušen 1. května 1952 a ve městě byla zavedena trolejbusová doprava.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "doprava"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1952-trolejbusy",
+      "url": "https://www.muml.cz/mesto/o-meste/historie/",
+      "detail": {
+        "kategorie": "doprava",
+        "obdobi": "statni-lazne",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.muml.cz/mesto/o-meste/historie/",
+          "https://www.hamelika.cz/?cz_marianskolazenske-analy-1193-%E2%80%93-1990%2C49="
+        ]
+      }
+    },
+    {
+      "id": "firma:00029041:vznik",
+      "datum": "1952-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1952-02-22",
+      "rok": 1952,
+      "datum_podezrele": false,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Družstvo OSSA INVEST GROUP",
+      "popis": "Vznik subjektu Družstvo OSSA INVEST GROUP (IČO 00029041), Družstvo, obor: Výroba ostatních oděvů a oděvních doplňků.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "00029041"
+      ],
+      "tagy": [],
+      "organy": [],
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "zdroj_klic": "00029041",
+      "url": null,
+      "detail": {
+        "kategorie": "vznik",
+        "nazev": "Družstvo OSSA INVEST GROUP",
+        "stav": "aktivni",
+        "pravni_forma": "Družstvo",
+        "adresa": "Hlavní třída 279/7, 35301 Mariánské Lázně",
+        "sidlo_v_obci": true,
+        "obor": "Výroba ostatních oděvů a oděvních doplňků",
+        "zamestnancu_rozsah": "1 - 5 zaměstnanců"
+      }
+    }
+  ]
+}

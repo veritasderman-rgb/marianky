@@ -1,0 +1,168 @@
+{
+  "rok": null,
+  "nezarazene": true,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:21124697",
+      "datum": "0002-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "0002-11-14",
+      "rok": 2,
+      "datum_podezrele": true,
+      "typ": "smlouva",
+      "nadpis": "Pracovní oděvy",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana MEDICA HANDICAP s.r.o..",
+      "castka_czk": 142741.28,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "00575143",
+        "29124379"
+      ],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "zdroj_klic": "21124697",
+      "url": "https://smlouvy.gov.cz/smlouva/22671837",
+      "detail": {
+        "subjekt_ico": "00575143",
+        "subjekt": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně",
+        "protistrana_ico": "29124379",
+        "protistrana": "MEDICA HANDICAP s.r.o.",
+        "protistrana_neurcena": false,
+        "smer": "vydaj",
+        "vada": true,
+        "bez_ceny": false,
+        "kategorie": null,
+        "dle_subjektu": [
+          {
+            "subjekt_ico": "00575143",
+            "subjekt": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně",
+            "smer": "vydaj",
+            "soubor": "data/penize/smlouvy/00575143.json"
+          }
+        ],
+        "vice_subjektu": false
+      }
+    },
+    {
+      "id": "smlouva:30298288",
+      "datum": "0025-01-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "0025-01-03",
+      "rok": 25,
+      "datum_podezrele": true,
+      "typ": "smlouva",
+      "nadpis": "DODÁVKY ENERGIÍ/UJEDNÁNÍ O CENĚ/44783/2025",
+      "popis": "Mateřská škola, Mariánské Lázně, Křižíkova 555 — příjem, protistrana Veolia Energie Mariánské Lázně, s.r.o..",
+      "castka_czk": 822053.43,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "49790676",
+        "70997560"
+      ],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997560.json",
+      "zdroj_klic": "30298288",
+      "url": "https://smlouvy.gov.cz/smlouva/32356252",
+      "detail": {
+        "subjekt_ico": "70997560",
+        "subjekt": "Mateřská škola, Mariánské Lázně, Křižíkova 555",
+        "protistrana_ico": "49790676",
+        "protistrana": "Veolia Energie Mariánské Lázně, s.r.o.",
+        "protistrana_neurcena": false,
+        "smer": "prijem",
+        "vada": true,
+        "bez_ceny": false,
+        "kategorie": null,
+        "dle_subjektu": [
+          {
+            "subjekt_ico": "70997560",
+            "subjekt": "Mateřská škola, Mariánské Lázně, Křižíkova 555",
+            "smer": "prijem",
+            "soubor": "data/penize/smlouvy/70997560.json"
+          }
+        ],
+        "vice_subjektu": false
+      }
+    },
+    {
+      "id": "smlouva:35912745",
+      "datum": "0026-06-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "0026-06-02",
+      "rok": 26,
+      "datum_podezrele": true,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení uměleckého výkonu",
+      "popis": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s. — výdaj.",
+      "castka_czk": 160000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "26320053"
+      ],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26320053.json",
+      "zdroj_klic": "35912745",
+      "url": "https://smlouvy.gov.cz/smlouva/38228145",
+      "detail": {
+        "subjekt_ico": "26320053",
+        "subjekt": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s.",
+        "protistrana_ico": null,
+        "protistrana": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s.",
+        "protistrana_neurcena": true,
+        "smer": "vydaj",
+        "vada": true,
+        "bez_ceny": false,
+        "kategorie": null,
+        "dle_subjektu": [
+          {
+            "subjekt_ico": "26320053",
+            "subjekt": "ZÁPADOČESKÝ SYMFONICKÝ ORCHESTR MARIÁNSKÉ LÁZNĚ o.p.s.",
+            "smer": "vydaj",
+            "soubor": "data/penize/smlouvy/26320053.json"
+          }
+        ],
+        "vice_subjektu": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "10337172",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-10-27",
+    "do": "2012-10-30",
+    "prvni_rok": 1992,
+    "posledni_rok": 2012,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:10337172:vznik",
+      "datum": "1992-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-10-27",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Bohumil Chlad - T.V.Sat",
+      "popis": "Vznik subjektu Bohumil Chlad - T.V.Sat (IČO 10337172), Fyzická osoba podnikající dle živnostenského zákona zapsaná v obchodním rejstříku, obor: Činnosti reklamn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-72-72/11",
+      "datum": "2012-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-26",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Husova 439 - prodloužení",
+      "popis": "Rada města, bod 72/11, usnesení 318/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/782474",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-85-85/2",
+      "datum": "2012-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-10-30",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Převod práv a závazků - Husova 439 (p. Chlad)",
+      "popis": "Rada města, bod 85/2, usnesení 528/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/835267",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,459 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "48035599",
+    "nazev": "SWIETELSKY stavební s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-07-24",
+    "do": "2026-07-01",
+    "prvni_rok": 2012,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 21,
+    "dolozenych": 11,
+    "odhadu": 10,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 10,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "stredni": 1,
+      "nizka": 9
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-74-74/11",
+      "datum": "2012-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-07-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce parků - dodatek ke smlouvě o dílo č. 1",
+      "popis": "Rada města, bod 74/11, usnesení 362/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/793851",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/74.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-76-76/7",
+      "datum": "2012-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-08-21",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce parků - dodatek ke smlouvě o dílo č. 2",
+      "popis": "Rada města, bod 76/7, usnesení 411/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/805008",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-59-59/35",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - I.tapa - výběr dodavatele",
+      "popis": "Rada města, bod 59/35, usnesení 500/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3224098",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/35__27949764",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce Hlavní třídy – světelná křižovatka – Česká pošta, 1. etapa, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-08-06 s bodem 59/35 z 2024-07-16 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - I.tapa - výběr dod",
+      "castka_czk": 15051823.47,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, rekonstrukce",
+      "url": "https://smlouvy.gov.cz/smlouva/29874064",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27949764",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce Hlavní třídy – světelná křižovatka – Česká pošta, 1. etapa, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SWIETELSKY stavební s.r.o..",
+      "castka_czk": 15051823.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29874064",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-91-91/13",
+      "datum": "2025-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-27",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - II. etapa - výběr dodavatele",
+      "popis": "Rada města, bod 91/13, usnesení 459/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3387267",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/35__31861801",
+      "datum": "2025-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2025-07-03 s bodem 59/35 z 2024-07-16 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - I.tapa - výběr dod",
+      "castka_czk": 42280309.58,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 352 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, komunikace, rekonstrukce, trida; st",
+      "url": "https://smlouvy.gov.cz/smlouva/33994413",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/13__31861801",
+      "datum": "2025-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-03",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2025-07-03 s bodem 91/13 z 2025-06-27 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - II. etapa - výběr ",
+      "castka_czk": 42280309.58,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, komunikace, rekonstrukce; stej",
+      "url": "https://smlouvy.gov.cz/smlouva/33994413",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31861801",
+      "datum": "2025-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SWIETELSKY stavební s.r.o..",
+      "castka_czk": 42280309.58,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33994413",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-113-113/37",
+      "datum": "2026-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-17",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Chodník Skláře\" - vyloučení účastníka řízení, výběr dodavatele",
+      "popis": "Rada města, bod 113/37, usnesení 1021/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1627973449",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/13__36002974",
+      "datum": "2026-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-03",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - realizace betonových základů, zastávka MHD",
+      "popis": "Odhadované spojení smlouvy z 2026-06-03 s bodem 91/13 z 2025-06-27 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - II. etapa - výběr ",
+      "castka_czk": 72071.02,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 341 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/38321182",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/37__36002974",
+      "datum": "2026-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-03",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - realizace betonových základů, zastávka MHD",
+      "popis": "Odhadované spojení smlouvy z 2026-06-03 s bodem 113/37 z 2026-03-17 (Veřejná zakázka \"Chodník Skláře\" - vyloučení účastníka řízení, výběr dodavatele). Jistota n",
+      "castka_czk": 72071.02,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 78 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38321182",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36002974",
+      "datum": "2026-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-03",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - realizace betonových základů, zastávka MHD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SWIETELSKY stavební s.r.o.\\nodštěpený závod Dopravní stavby ZÁPAD\\noblast Karlovy Vary.",
+      "castka_czk": 72071.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38321182",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/35__36333176",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č.2, Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 59/35 z 2024-07-16 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - I.tapa - výběr dod",
+      "castka_czk": 579576.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 706 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, komunikace, rekonstrukce, trida;",
+      "url": "https://smlouvy.gov.cz/smlouva/38664008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-91/13__36333176",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č.2, Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 91/13 z 2025-06-27 (Veřejná zakázka - Rekonstrukce komunikace Hlavní třída, Mariánské Lázně - II. etapa - výběr ",
+      "castka_czk": 579576.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 360 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hlavni, komunikace, rekonstrukce; st",
+      "url": "https://smlouvy.gov.cz/smlouva/38664008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/37__36333176",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č.2, Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Odhadované spojení smlouvy z 2026-06-22 s bodem 113/37 z 2026-03-17 (Veřejná zakázka \"Chodník Skláře\" - vyloučení účastníka řízení, výběr dodavatele). Jistota n",
+      "castka_czk": 579576.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 97 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38664008",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36333176",
+      "datum": "2026-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-22",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.2, Rekonstrukce komunikace Hlavní třída, Mariánské Lázně – II. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SWIETELSKY stavební s.r.o..",
+      "castka_czk": 579576.74,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38664008",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/12",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Cyklostezka - Mariánské Lázně - Hamrníky\" - výběr dodavatele",
+      "popis": "Rada města, bod 120/12, usnesení 1280/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3209657590",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-113/37__36362528",
+      "datum": "2026-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-01",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo „Cyklostezka - Mariánské Lázně - Hamrníky“",
+      "popis": "Odhadované spojení smlouvy z 2026-07-01 s bodem 113/37 z 2026-03-17 (Veřejná zakázka \"Chodník Skláře\" - vyloučení účastníka řízení, výběr dodavatele). Jistota n",
+      "castka_czk": 15360807.76,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 106 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/38694884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-120/12__36362528",
+      "datum": "2026-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-01",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo „Cyklostezka - Mariánské Lázně - Hamrníky“",
+      "popis": "Odhadované spojení smlouvy z 2026-07-01 s bodem 120/12 z 2026-06-23 (Veřejná zakázka \"Cyklostezka - Mariánské Lázně - Hamrníky\" - výběr dodavatele). Jistota niz",
+      "castka_czk": 15360807.76,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 48035599 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova cyklostezka, hamrniky; stejně dobře sedí i 1 ",
+      "url": "https://smlouvy.gov.cz/smlouva/38694884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36362528",
+      "datum": "2026-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-01",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo „Cyklostezka - Mariánské Lázně - Hamrníky“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SWIETELSKY stavební s.r.o..",
+      "castka_czk": 15360807.76,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38694884",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

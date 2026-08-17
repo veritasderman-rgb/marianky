@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49190962",
+    "nazev": "Radek Pokorný"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-01-19",
+    "do": "2018-04-27",
+    "prvni_rok": 2018,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:4537260",
+      "datum": "2018-01-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-19",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "objednávka stěhování",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Radek Pokorný.",
+      "castka_czk": 78693.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4893684",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5002796",
+      "datum": "2018-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-27",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Stěhování nábytku z domu Terezian Ruská 74, Mariánské Lázně ve dnech 2.5.-3.5. a 9.5.-10.5.2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Radek Pokorný.",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5393076",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05116341",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-06-01",
+    "do": "2020-02-18",
+    "prvni_rok": 2016,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:05116341:vznik",
+      "datum": "2016-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-01",
+      "rok": 2016,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Letci Mariánské Lázně z.s.",
+      "popis": "Vznik subjektu Letci Mariánské Lázně z.s. (IČO 05116341), Spolek, obor: Činnosti organizací na podporu rekreační a zájmové činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-108-108/18",
+      "datum": "2017-03-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 108/18, usnesení 194/17. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-25-25/14",
+      "datum": "2017-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-25",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 25/14, usnesení 473/17. Schvaleno.",
+      "castka_czk": 1209000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-164-164/24",
+      "datum": "2018-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-28",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2018",
+      "popis": "Rada města, bod 164/24, usnesení 469/18. Schvaleno.",
+      "castka_czk": 1600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2085646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-39-39/30",
+      "datum": "2018-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení žádostí podaných do 2. kola Fondu kultury 2018",
+      "popis": "Zastupitelstvo města, bod 39/30, usnesení 779/18. Schvaleno.",
+      "castka_czk": 125000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2089707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

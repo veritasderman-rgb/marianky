@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "02613930",
+    "nazev": "Ultimo Wave, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-10-06",
+    "do": "2022-08-10",
+    "prvni_rok": 2021,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 2,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:16680747",
+      "datum": "2021-10-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-06",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "DiscGolfové hřiště realizované z participativního rozpočtu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ultimo Wave, s.r.o..",
+      "castka_czk": 449684.4,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17964111",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-155-155/8",
+      "datum": "2022-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-09",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace projektu „DiscGolfové hřiště - doplnění“ financovaného z Participativního rozpočtu města",
+      "popis": "Rada města, bod 155/8, usnesení 403/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2888918",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/155.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-155/8__19830335",
+      "datum": "2022-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-10",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka 6 ks odpališť a košů  v rámci PaRo „Doplnění stávajícího DiscGolf hřiště “",
+      "popis": "Odhadované spojení smlouvy z 2022-08-10 s bodem 155/8 z 2022-08-09 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace projektu „DiscGolfové hři",
+      "castka_czk": 198810.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 02613930 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova doplneni, hriste, ramci",
+      "url": "https://smlouvy.gov.cz/smlouva/21310683",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19830335",
+      "datum": "2022-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-10",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka 6 ks odpališť a košů  v rámci PaRo „Doplnění stávajícího DiscGolf hřiště “",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ultimo Wave, s.r.o..",
+      "castka_czk": 198810.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21310683",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

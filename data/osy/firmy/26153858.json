@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26153858",
+    "nazev": "B.I.M.O. spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-02-09",
+    "do": "2026-02-03",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26153858:vznik",
+      "datum": "2000-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-02-09",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — B.I.M.O. spol. s r.o.",
+      "popis": "Vznik subjektu B.I.M.O. spol. s r.o. (IČO 26153858), Společnost s ručením omezeným, obor: Pronájem a správa vlastních nebo pronajatých nemovitostí.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-93-93/26",
+      "datum": "2020-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-22",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce ul. Hlavní – II. etapa – smlouva o právu k provedení stavby",
+      "popis": "Rada města, bod 93/26, usnesení 656/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2621120",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-24/22__34404713",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva o převodu pozemků p.p.č. 967/13 a č. 989/26 k.ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2026-02-03 s bodem 24/22 z 2025-12-09 (Nabytí parcel od spol. B.I.M.O. s r. o. - lokalita \"Třešňovka\"). Jistota stredni.",
+      "castka_czk": 1000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26153858 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 56 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/36655849",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34404713",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva o převodu pozemků p.p.č. 967/13 a č. 989/26 k.ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana B.I.M.O. spol. s r.o..",
+      "castka_czk": 1000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36655849",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

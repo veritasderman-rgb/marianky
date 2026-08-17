@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28420349",
+    "nazev": "ALGON PLUS - AUTO, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-07-22",
+    "do": "2025-08-21",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-93-93/16",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "VZ - služební automobil MPML - vyloučení vybraného dodavatele",
+      "popis": "Rada města, bod 93/16, usnesení 520/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3401420",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/16__32369741",
+      "datum": "2025-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-21",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva - Nákup služebního automobilu pro Městskou policii Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-08-21 s bodem 93/16 z 2025-07-22 (VZ - služební automobil MPML - vyloučení vybraného dodavatele). Jistota stredni.",
+      "castka_czk": 1298349.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28420349 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/34527041",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32369741",
+      "datum": "2025-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva - Nákup služebního automobilu pro Městskou policii Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON PLUS - AUTO, a.s..",
+      "castka_czk": 1298349.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34527041",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

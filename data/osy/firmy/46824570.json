@@ -1,0 +1,156 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46824570",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-04-11",
+    "do": "2025-09-30",
+    "prvni_rok": 1994,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:46824570:vznik",
+      "datum": "1994-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-04-11",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Radka Tomášková",
+      "popis": "Vznik subjektu Radka Tomášková (IČO 46824570), Fyzická osoba podnikající dle živnostenského zákona, obor: Zprostředkování v oblasti velkoobchodu za provizi.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-107-107/3",
+      "datum": "2013-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-30",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - pronájem",
+      "popis": "Rada města, bod 107/3, usnesení 169/13. Schvaleno.",
+      "castka_czk": 222000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/936894",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-154-154/6",
+      "datum": "2018-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-09",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - prodloužení nájemního vztahu - Alla Coufalíková, Radka Tomášková",
+      "popis": "Rada města, bod 154/6, usnesení 245/18. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1940320",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/154.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/19",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 259 - Alla Coufalíková, Radka Tomášková",
+      "popis": "Rada města, bod 145/19, usnesení 186/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2837449",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-19-19/15",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 259 - prodloužení nájemního vztahu - Coufalíková, Tomášková",
+      "popis": "Rada města, bod 19/15, usnesení 203/23. Schvaleno.",
+      "castka_czk": 140355,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2997585",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/18",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 259 – dočasná sleva – Coufalíková, Tomášková",
+      "popis": "Rada města, bod 99/18, usnesení 655/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1715128126",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

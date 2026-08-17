@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44851529",
+    "nazev": "GEPRO spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-07-26",
+    "do": "2017-11-02",
+    "prvni_rok": 2016,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-77-77/9",
+      "datum": "2016-07-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-26",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 9 k licenční smlouvě 10/2009",
+      "popis": "Rada města, bod 77/9, usnesení 379/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1612340",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-131-131/4",
+      "datum": "2017-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-17",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva GEPRO s.r.o.",
+      "popis": "Rada města, bod 131/4, usnesení 582/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1841416",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-131/4__3419580",
+      "datum": "2017-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-02",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo č. 1169/2017",
+      "popis": "Odhadované spojení smlouvy z 2017-11-02 s bodem 131/4 z 2017-10-17 (Smlouva GEPRO s.r.o.). Jistota stredni.",
+      "castka_czk": 51183.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44851529 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3687592",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3419580",
+      "datum": "2017-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-02",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo č. 1169/2017",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GEPRO spol. s r.o..",
+      "castka_czk": 51183.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3687592",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

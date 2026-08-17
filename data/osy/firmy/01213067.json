@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01213067",
+    "nazev": "Ing. arch. Jan Albrecht"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-07-16",
+    "do": "2025-03-18",
+    "prvni_rok": 2024,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-59-59/26",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Scénář expozice včetně projektové dokumentace pro Městské muzeum\" – výběr dodavatele",
+      "popis": "Rada města, bod 59/26, usnesení 491/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3222903",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/26__28078124",
+      "datum": "2024-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-30",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli scénář expozice včetně projektové dokumentace a zajistit autorský dozor realizace muzejní expozice",
+      "popis": "Odhadované spojení smlouvy z 2024-08-30 s bodem 59/26 z 2024-07-16 (Veřejná zakázka \"Scénář expozice včetně projektové dokumentace pro Městské muzeum\" – výběr d",
+      "castka_czk": 1137400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01213067 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; název bodu a předmět smlouvy sdílí slova dokumentace, expozice, projektove, scenar; k",
+      "url": "https://smlouvy.gov.cz/smlouva/30008532",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28078124",
+      "datum": "2024-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-30",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli scénář expozice včetně projektové dokumentace a zajistit autorský dozor realizace muzejní expozice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Jan Albrecht.",
+      "castka_czk": 1137400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30008532",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-76-76/7",
+      "datum": "2025-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-21",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo „Scénář expozice včetně projektové dokumentace pro Městské muzeum“",
+      "popis": "Rada města, bod 76/7, usnesení 35/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3309171",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-59/26__29964844",
+      "datum": "2025-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-30",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla, a to z důvodu požadavku objednatele na \nrozšíření projektu o interaktivní vrstvu.",
+      "popis": "Odhadované spojení smlouvy z 2025-01-30 s bodem 59/26 z 2024-07-16 (Veřejná zakázka \"Scénář expozice včetně projektové dokumentace pro Městské muzeum\" – výběr d",
+      "castka_czk": 1355200.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01213067 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 198 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/32007412",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-76/7__29964844",
+      "datum": "2025-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-30",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla, a to z důvodu požadavku objednatele na \nrozšíření projektu o interaktivní vrstvu.",
+      "popis": "Odhadované spojení smlouvy z 2025-01-30 s bodem 76/7 z 2025-01-21 (Dodatek č. 1 ke smlouvě o dílo „Scénář expozice včetně projektové dokumentace pro Městské muz",
+      "castka_czk": 1355200.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01213067 je uvedeno v textu usnesení; smlouva podepsána 9 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32007412",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29964844",
+      "datum": "2025-01-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem se mění rozsah plnění a tím i cena díla, a to z důvodu požadavku objednatele na \nrozšíření projektu o interaktivní vrstvu.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Jan Albrecht.",
+      "castka_czk": 1355200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32007412",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/20",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo „Scénář expozice včetně projektové dokumentace pro Městské muzeum“",
+      "popis": "Rada města, bod 81/20, usnesení 197/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3338403",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

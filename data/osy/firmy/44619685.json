@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44619685",
+    "nazev": "Ing. Pavel Čížek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-03-01",
+    "do": "2019-10-07",
+    "prvni_rok": 1993,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:44619685:vznik",
+      "datum": "1993-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-03-01",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ing. Pavel Čížek",
+      "popis": "Vznik subjektu Ing. Pavel Čížek (IČO 44619685), Fyzická osoba podnikající dle živnostenského zákona, obor: Instalace průmyslových strojů a zařízení.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:9816962",
+      "datum": "2019-10-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-07",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodávka a montáž 72 ks nouzového osvětlení do Domova pro seniory a domu s pečovatelskou službou Mariánské Lázně, p.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Pavel Čížek.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10561058",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

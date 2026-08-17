@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46887628",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-31",
+    "do": "2022-05-31",
+    "prvni_rok": 1992,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:46887628:vznik",
+      "datum": "1992-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-31",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Betz IMMO s.r.o.",
+      "popis": "Vznik subjektu Betz IMMO s.r.o. (IČO 46887628), Společnost s ručením omezeným, obor: Účetnické a auditorské činnosti; daňové poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-10-10/10",
+      "datum": "2015-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-13",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Prodej parcel v k.ú. Úšovice - Betz IMMO s.r.o.",
+      "popis": "Zastupitelstvo města, bod 10/10, usnesení 190/15. Schvaleno.",
+      "castka_czk": 1088572,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1469023",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-149-149/5",
+      "datum": "2022-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-31",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - plynovodní přípojka - BETZ",
+      "popis": "Rada města, bod 149/5, usnesení 268/22. Schvaleno.",
+      "castka_czk": 2360,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2855854",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/149.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

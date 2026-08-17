@@ -15,6 +15,7 @@
  * doprovodného grafu nebo tabulky s absolutními počty.
  */
 import { escSvg, tipAtribut, type LegendaPolozka, type TipRadek, type Tabulka } from './grafy';
+import { cssKrokRampy, KROKU_RAMPY } from './barvy';
 import { jeObjekt, type Zaznam } from './tolerantni';
 
 /* ────────────────────────────  Geometrie  ──────────────────────────── */
@@ -360,6 +361,36 @@ function cesta(
     casti.push(`M${body.join('L')}${uzavrit ? 'Z' : ''}`);
   }
   return casti.join('');
+}
+
+/* ─────────────────────────  Rampa a legendy  ───────────────────────── */
+
+/**
+ * Krok sekvenční rampy pro veličinu, která se nemění o řády — účast, podíl
+ * hlasů, hustota. `krokRampy()` z `barvy.ts` je logaritmický (částky se liší
+ * o řády); na účasti v pásmu 40–65 % by logaritmus splácl všechno do jednoho
+ * odstínu.
+ */
+export function krokRampyLinearni(hodnota: number, min: number, max: number): number {
+  if (!(max > min)) return Math.floor(KROKU_RAMPY / 2);
+  const t = (hodnota - min) / (max - min);
+  return Math.min(KROKU_RAMPY - 1, Math.max(0, Math.round(t * (KROKU_RAMPY - 1))));
+}
+
+/**
+ * Legenda sekvenční rampy s vlastními popisky krajů. Políčko „bez dat" je
+ * oddělené — plocha bez údaje se nesmí splést s nejnižším krokem rampy.
+ */
+export function legendaRampyObecna(od: string, doo: string, bezDat = 'bez údaje'): LegendaPolozka[] {
+  const polozky: LegendaPolozka[] = [{ nazev: bezDat, barva: 'var(--surface-2)', tvar: 'prazdno' }];
+  for (let i = 0; i < KROKU_RAMPY; i++) {
+    polozky.push({
+      nazev: i === 0 ? od : i === KROKU_RAMPY - 1 ? doo : '',
+      barva: cssKrokRampy(i),
+      tvar: 'ramp',
+    });
+  }
+  return polozky;
 }
 
 /** Grafické měřítko. Bez něj mapa neříká, jestli je vidět ulice, nebo okres. */

@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28162609",
+    "nazev": "PHL - BROADWAY s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-10-03",
+    "do": "2023-09-05",
+    "prvni_rok": 2017,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-129-129/1",
+      "datum": "2017-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-03",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti přeložky plynové přípojky p.p.č.159/6 k.ú. Mariánské Lázně",
+      "popis": "Rada města, bod 129/1, usnesení 554/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1833365",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-17-17/9",
+      "datum": "2019-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-26",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Resort BROADWAY - Smlouva o právu k provedení stavby.",
+      "popis": "Rada města, bod 17/9, usnesení 155/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2317175",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-17/9__8242583",
+      "datum": "2019-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Podmínky pro využití obslužné komunikace na p.p.č. 170 a 12/2 jako staveništní komunikaci pro potřeby stavby Resort BROADWAY -rekonstrukce a dostavba stávajícího hotelu Polonia 2. etapa.",
+      "popis": "Odhadované spojení smlouvy z 2019-04-12 s bodem 17/9 z 2019-03-26 (Resort BROADWAY - Smlouva o právu k provedení stavby.). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28162609 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova broadway, resort, stavby",
+      "url": "https://smlouvy.gov.cz/smlouva/8896335",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8242583",
+      "datum": "2019-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Podmínky pro využití obslužné komunikace na p.p.č. 170 a 12/2 jako staveništní komunikaci pro potřeby stavby Resort BROADWAY -rekonstrukce a dostavba stávajícího hotelu Polonia 2. etapa.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PHL - BROADWAY s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8896335",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-59-59/22",
+      "datum": "2020-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o spolupráci se společností PHL – BROADWAY s.r.o.",
+      "popis": "Rada města, bod 59/22, usnesení 133/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2485545",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/5",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o právu k provedení stavby – Resort BROADWAY",
+      "popis": "Rada města, bod 31/5, usnesení 544/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3071411",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

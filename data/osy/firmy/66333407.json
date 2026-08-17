@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66333407",
+    "nazev": "Daniel Dvořák "
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-11-13",
+    "do": "2017-02-21",
+    "prvni_rok": 1996,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:66333407:vznik",
+      "datum": "1996-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-11-13",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Daniel Dvořák",
+      "popis": "Vznik subjektu Daniel Dvořák (IČO 66333407), Fyzická osoba podnikající dle živnostenského zákona, obor: Instalace rozvodů vody, odpadu, topení a klimatizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-60-60/1",
+      "datum": "2012-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-27",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Výběrové řízení ZŠ Úšovice - oprava roz.vody",
+      "popis": "Rada města, bod 60/1, usnesení 146/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/744161",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:1229253",
+      "datum": "2017-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-21",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava boileru 400 l výměnou na ZŠ Úšovice, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Daniel Dvořák .",
+      "castka_czk": 102253.47,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1312377",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

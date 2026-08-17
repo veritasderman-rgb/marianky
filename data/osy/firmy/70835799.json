@@ -1,0 +1,439 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70835799",
+    "nazev": "Athletic club Mariánské Lázně, z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-05-22",
+    "do": "2026-05-26",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 20,
+    "dolozenych": 18,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 11,
+      "retez": 2,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 18,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70835799:vznik",
+      "datum": "2000-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-05-22",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Athletic club Mariánské Lázně, z.s.",
+      "popis": "Vznik subjektu Athletic club Mariánské Lázně, z.s. (IČO 70835799), Spolek, obor: Provozování sportovních zařízení.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-61-61/5",
+      "datum": "2012-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-03",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Žádosti o dotaci z Fondu sportu města M.L.",
+      "popis": "Rada města, bod 61/5, usnesení 162/12.",
+      "castka_czk": 54000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/746846",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-11-11/29",
+      "datum": "2012-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-04-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu města M.L.",
+      "popis": "Zastupitelstvo města, bod 11/29, usnesení 342/12.",
+      "castka_czk": 645000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/753855",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2012-61/5__2587634",
+      "datum": "2013-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-07-10",
+      "rok": 2013,
+      "typ": "retez",
+      "nadpis": "Smlouva o užívání sportovního areálu",
+      "popis": "Odhadované spojení smlouvy z 2013-07-10 s bodem 61/5 z 2012-04-03 (Žádosti o dotaci z Fondu sportu města M.L.). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70835799 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 463 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2785338",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2012-11/29__2587634",
+      "datum": "2013-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-07-10",
+      "rok": 2013,
+      "typ": "retez",
+      "nadpis": "Smlouva o užívání sportovního areálu",
+      "popis": "Odhadované spojení smlouvy z 2013-07-10 s bodem 11/29 z 2012-04-24 (Poskytnutí dotace z Fondu sportu města M.L.). Jistota nizka.",
+      "castka_czk": 60000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70835799 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 442 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2785338",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2587634",
+      "datum": "2013-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-07-10",
+      "rok": 2013,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o užívání sportovního areálu",
+      "popis": "Správa městských sportovišť — výdaj, protistrana Athletic club Mariánské Lázně, z. s..",
+      "castka_czk": 60000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2785338",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/6",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu Města M. L.",
+      "popis": "Rada města, bod 143/6, usnesení 58/14. Schvaleno.",
+      "castka_czk": 2538708,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079436",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-143-143/7",
+      "datum": "2014-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-11",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Poskytnutí dotace z Fondu sportu na činnost",
+      "popis": "Rada města, bod 143/7, usnesení 59/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1079475",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/28",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na činnost z FS",
+      "popis": "Zastupitelstvo města, bod 21/28, usnesení 687/14. Schvaleno.",
+      "castka_czk": 2062100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082917",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-21-21/29",
+      "datum": "2014-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-03-04",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací na akce,investice a opravy z FS",
+      "popis": "Zastupitelstvo města, bod 21/29, usnesení 688/14. Schvaleno.",
+      "castka_czk": 1787900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1082932",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-5-5/17",
+      "datum": "2015-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-10",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z FS",
+      "popis": "Zastupitelstvo města, bod 5/17, usnesení 65/15. Schvaleno.",
+      "castka_czk": 2130000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1350215",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-90-90/9",
+      "datum": "2016-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o poskytnutí dotace z FS",
+      "popis": "Rada města, bod 90/9, usnesení 532/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1657823",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-21-21/14",
+      "datum": "2016-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o poskytnutí dotace z FS",
+      "popis": "Zastupitelstvo města, bod 21/14, usnesení 389/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1661529",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/21.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:4688580",
+      "datum": "2018-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-15",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Memoriál Hany Trejbalové - Athletic club Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Athletic club Mariánské Lázně, z.s..",
+      "castka_czk": 60500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5056220",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-35-35/6",
+      "datum": "2018-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení dotací z Fondu sportu - činnost",
+      "popis": "Zastupitelstvo města, bod 35/6, usnesení 687/18. Schvaleno.",
+      "castka_czk": 1917500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1921286",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:18340751",
+      "datum": "2022-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-17",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "ATHLETIC club Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Athletic club Mariánské Lázně, z.s..",
+      "castka_czk": 60500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19721667",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26259671",
+      "datum": "2024-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Athletic club Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Athletic club Mariánské Lázně, z.s..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28107007",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30315560",
+      "datum": "2025-03-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Athletic club Mariánské Lázně, z.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Athletic club Mariánské Lázně, z.s..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32374184",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35049641",
+      "datum": "2026-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-26",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinv. dot. na činnost - Athletic club",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Athletic club Mariánské Lázně, z.s..",
+      "castka_czk": 75000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37328265",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-118-118/47",
+      "datum": "2026-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-26",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Změna termínu konání schválené sportovní akce - Atletic club Mariánské Lázně, z.s.",
+      "popis": "Rada města, bod 118/47, usnesení 1204/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1010400907",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/118.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

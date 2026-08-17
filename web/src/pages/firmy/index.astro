@@ -1,0 +1,375 @@
+---
+/**
+ * Firmy se sídlem ve městě.
+ *
+ * Zásada: že firma sídlí ve městě, není zásluha ani podezření. Zvýrazněné jsou
+ * jen ty, u kterých se dá doložit vztah k městu — a u každé takové je vidět,
+ * PODLE JAKÉHO KRITÉRIA je za důležitou označená. Bez toho by seznam jen
+ * tvrdil „tahle je zajímavá" a nikdo by nevěděl proč.
+ */
+import Zaklad from '../../layouts/Zaklad.astro';
+import StavDat from '../../components/StavDat.astro';
+import Dlazdice from '../../components/Dlazdice.astro';
+import GrafKarta from '../../components/GrafKarta.astro';
+import CasovaOsa from '../../components/CasovaOsa.astro';
+import type { Varianta } from '../../components/GrafKarta.astro';
+import type { Polozka } from '../../components/Dlazdice.astro';
+import { nactiProtistrany, nactiSubjekty } from '../../lib/data';
+import { nactiOsobyFirmy } from '../../lib/vazby';
+import { jednou } from '../../lib/cache';
+import {
+  dulezite,
+  nactiFirmy,
+  podleOboru,
+  sKontextem,
+  vznikyAZaniky,
+  zivychNaKonciRoku,
+  type FirmaSKontextem,
+} from '../../lib/firmy';
+import { grafVodorovny } from '../../lib/grafy';
+import { grafSpojnice } from '../../lib/grafy_rady';
+import { nactiCasovouOsu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
+import { cislo, kc, kcZkraceno, sklonuj } from '../../lib/format';
+import { rokZIso } from '../../lib/tolerantni';
+
+const zFirem = jednou('firmy', nactiFirmy);
+const zProtistran = jednou('protistrany', nactiProtistrany);
+const zPropojeni = jednou('propojeni', nactiOsobyFirmy);
+const zSubjektu = jednou('subjekty', nactiSubjekty);
+const zOsy = jednou('casova-osa', nactiCasovouOsu);
+
+const mestskaIca = new Set(
+  (zSubjektu.data?.subjekty ?? []).map((s) => s.ico).filter((i): i is string => Boolean(i)),
+);
+if (zSubjektu.data?.mesto?.ico) mestskaIca.add(zSubjektu.data.mesto.ico);
+
+const firmy = sKontextem(zFirem.data ?? [], {
+  protistrany: zProtistran.data.protistrany ?? [],
+  propojeni: zPropojeni.data,
+  mestskaIca,
+  kc,
+  cislo,
+});
+
+const maData = firmy.length > 0;
+const vyznamne = dulezite(firmy);
+const obory = podleOboru(zFirem.data ?? []);
+const casova = vznikyAZaniky(zFirem.data ?? []);
+
+const aktivnich = firmy.filter((f) => f.zanik === null && f.aktivni !== false).length;
+const zaniklych = firmy.filter((f) => f.zanik !== null).length;
+const obchodujicich = firmy.filter((f) =>
+  f.duvody.some((d) => d.klic === 'dodavatel' || d.klic === 'odberatel'),
+).length;
+const mestskych = firmy.filter((f) => f.mestska === true).length;
+const objemOdMesta = firmy.reduce((s, f) => s + (f.odMesta ?? 0), 0);
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Firem se sídlem ve městě',
+        hodnota: cislo(firmy.length),
+        doplnek: `${cislo(aktivnich)} bez zapsaného zániku · ${cislo(zaniklych)} zaniklých`,
+      },
+      {
+        popisek: 'Obchoduje s městem',
+        hodnota: cislo(obchodujicich),
+        doplnek:
+          objemOdMesta > 0
+            ? `${kcZkraceno(objemOdMesta, true)} z registru smluv`
+            : 'objem se z registru smluv nedohledal',
+      },
+      {
+        popisek: 'Organizací města',
+        hodnota: cislo(mestskych),
+        doplnek: 'platby jim nejsou platby cizí firmě',
+      },
+      {
+        popisek: 'Oborů v datech',
+        hodnota: cislo(obory.length),
+        doplnek: obory[0] ? `nejčastější: ${obory[0].nazev}` : undefined,
+      },
+    ]
+  : [];
+
+/* ── Obory ─────────────────────────────────────────────────────────────── */
+
+const NEJVYSE_OBORU = 18;
+const variantyOboru: Varianta[] = maData
+  ? [
+      {
+        klic: 'obory',
+        popisek: 'Podle oborů',
+        graf: (() => {
+          const g = grafVodorovny(
+            obory.slice(0, NEJVYSE_OBORU).map((o) => ({ nazev: o.nazev, hodnota: o.pocet })),
+            'Firmy podle oborů',
+          );
+          g.tabulka = {
+            hlavicka: [{ nazev: 'Obor' }, { nazev: 'Firem', cislo: true }],
+            radky: obory.map((o) => [o.nazev, cislo(o.pocet)]),
+          };
+          if (obory.length > NEJVYSE_OBORU) {
+            g.poznamky.push(
+              `V grafu je ${cislo(NEJVYSE_OBORU)} nejčetnějších oborů z ${cislo(obory.length)}; všechny jsou v tabulce.`,
+            );
+          }
+          g.poznamky.push(
+            'Obor se bere tak, jak ho vede zdroj. Firma s víc předměty podnikání je zařazená pod ten hlavní — přehled ji do víc oborů nerozpočítává.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── Vzniky a zániky ───────────────────────────────────────────────────── */
+
+const variantyCasu: Varianta[] = [];
+if (casova.roky.length > 1) {
+  const gVznikyZaniky = grafSpojnice(
+    casova.roky,
+    [
+      { klic: 'vzniky', nazev: 'Vzniklo firem', hodnoty: casova.vzniky },
+      { klic: 'zaniky', nazev: 'Zaniklo firem', hodnoty: casova.zaniky },
+    ],
+    'Vzniky a zániky firem po letech',
+    'firem',
+  );
+  gVznikyZaniky.poznamky.push(
+    'Obě řady jsou ve stejné jednotce, proto mohou být v jednom grafu s jednou osou. Rok bez vzniku i bez zániku zůstává v ose jako nula — je to skutečná nula, ne chybějící údaj.',
+  );
+  if (casova.bezData.vznik > 0) {
+    gVznikyZaniky.poznamky.push(
+      `U ${cislo(casova.bezData.vznik)} ${sklonuj(casova.bezData.vznik, 'firmy', 'firem', 'firem')} není v datech datum vzniku — v téhle časové řadě chybí.`,
+    );
+  }
+  variantyCasu.push({ klic: 'zmeny', popisek: 'Vzniky a zániky', graf: gVznikyZaniky });
+
+  const zive = zivychNaKonciRoku(zFirem.data ?? [], casova.roky);
+  const gZive = grafSpojnice(
+    casova.roky,
+    [{ klic: 'zive', nazev: 'Firem na konci roku', hodnoty: zive }],
+    'Kolik firem ve městě existovalo',
+    'firem',
+  );
+  gZive.poznamky.push(
+    'Počet firem, které k poslednímu dni roku už vznikly a ještě nezanikly. Je to jiná veličina než počet vzniků — proto vlastní graf, ne druhá osa Y ve stejném obrázku.',
+  );
+  gZive.poznamky.push(
+    'Do počtu jdou jen firmy se známým datem vzniku. Data pocházejí z dnešního rejstříku, takže dřívější roky mohou být podhodnocené o subjekty, které se do něj nedostaly.',
+  );
+  variantyCasu.push({ klic: 'zive', popisek: 'Kolik jich existovalo', graf: gZive });
+}
+
+/* ── Časová osa významných firem ───────────────────────────────────────── */
+
+const NEJVYSE_NA_OSE = 60;
+const naOse = vyznamne.slice(0, NEJVYSE_NA_OSE);
+const udalostiFirem: UdalostOsy[] = naOse
+  .filter((f) => f.vznik !== null)
+  .map((f) =>
+    udalost({
+      id: `firma-${f.klic}`,
+      datum: f.vznik as string,
+      datum_do: f.zanik,
+      druh: 'firma',
+      nadpis: f.nazev,
+      odkaz: `/firmy/${f.klic}`,
+      zdroj: 'firmy/ (ARES)',
+      detail:
+        f.zanik === null
+          ? `${f.duvody.map((d) => d.nazev).join(', ')} — bez zapsaného zániku`
+          : `${f.duvody.map((d) => d.nazev).join(', ')} — zanikla ${f.zanik}`,
+      ica: f.ico ? [f.ico] : [],
+    }),
+  );
+
+const udalostiOsy = slucUdalosti(
+  udalostiFirem,
+  (zOsy.data ?? []).filter((u) => u.druh === 'firma'),
+);
+
+/* ── Výpis firem ───────────────────────────────────────────────────────── */
+
+const MAX_VYPIS = 500;
+const vsechnySerazene = [...firmy].sort((a, b) => a.nazev.localeCompare(b.nazev, 'cs-CZ'));
+const vypis = vsechnySerazene.slice(0, MAX_VYPIS);
+
+function stavFirmy(f: FirmaSKontextem): string {
+  if (f.zanik) return `zanikla ${f.zanik}`;
+  if (f.aktivni === false) return 'zdroj ji vede jako neaktivní';
+  if (f.vznik) return `od ${f.vznik}`;
+  return 'v datech není';
+}
+---
+
+<Zaklad
+  titulek="Firmy ve městě"
+  aktivni="firmy"
+  nadpis="Firmy se sídlem ve městě"
+  uvod="Ekonomické subjekty z rejstříku, jejich obory a proměna v čase. Zvýrazněné jsou firmy s doloženým vztahem k městu — u každé je uvedené, podle čeho je za důležitou označená."
+>
+  <StavDat
+    stav={zFirem.stav}
+    zdroj={zFirem.zdroj}
+    co="Firmy se sídlem ve městě"
+    prazdno={zFirem.stav === 'ok' && firmy.length === 0}
+    modul="firmy z ARES"
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        <p class="graf-poznamka">
+          Že firma sídlí ve městě, samo o sobě nic neznamená — ani zásluhu, ani podezření.
+          Přehled proto nikoho nehodnotí; odděluje jen doložený vztah k městu (smlouva
+          v registru, zřizovatelství, zápis osoby ze samosprávy v rejstříku) od pouhé adresy.
+        </p>
+
+        {variantyOboru.length > 0 && (
+          <GrafKarta
+            id="obory"
+            nadpis="Firmy podle oborů"
+            popis="Kolik firem připadá na jednotlivé obory. Jedna série, proto bez legendy — název grafu ji pojmenuje."
+            varianty={variantyOboru}
+          />
+        )}
+
+        {variantyCasu.length > 0 && (
+          <GrafKarta
+            id="vzniky"
+            nadpis="Vzniky a zániky v čase"
+            popis="Kdy firmy ve městě vznikaly a kdy končily. Přepínač odděluje roční změny od celkového počtu — jsou to různě velké veličiny a do jednoho grafu se dvěma osami Y nepatří."
+            varianty={variantyCasu}
+          />
+        )}
+
+        {udalostiOsy.length > 0 && (
+          <CasovaOsa
+            id="osa-firem"
+            nadpis="Časová osa firem s vazbou na město"
+            udalosti={udalostiOsy}
+            popis="Vodorovný pruh je doba, kdy firma existovala — od zápisu po výmaz. Firma bez zapsaného zániku končí značkou u data vzniku, ne čárou do dneška; že v rejstříku pořád je, neznamená, že funguje."
+            zdroje={[
+              'firmy/ (ARES)',
+              'penize/agregace/protistrany.json',
+              ...(zOsy.stav === 'ok' ? ['casova_osa/'] : []),
+            ]}
+            neuplnost={
+              vyznamne.length > NEJVYSE_NA_OSE
+                ? `Na ose je ${cislo(naOse.length)} firem s vazbou na město z ${cislo(vyznamne.length)}; zbytek je v tabulce níže.`
+                : undefined
+            }
+          />
+        )}
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Firmy s doloženým vztahem k městu</h2>
+          <p class="karta__podnadpis">
+            {cislo(vyznamne.length)} {sklonuj(vyznamne.length, 'firma', 'firmy', 'firem')} z{' '}
+            {cislo(firmy.length)}. U každé je vypsané kritérium — bez něj by „důležitá" bylo jen
+            tvrzení. Kritéria jsou uzavřený seznam: organizace města, dodavatel, plátce městu,
+            zápis osoby ze samosprávy.
+          </p>
+
+          {vyznamne.length === 0 ? (
+            <p>
+              Žádnou firmu se nepodařilo spojit s registrem smluv, s organizacemi města ani
+              s propojením osob. Neznamená to, že žádná s městem neobchoduje — znamená to, že se
+              podle IČO nic nespárovalo.
+            </p>
+          ) : (
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Firma</th>
+                    <th scope="col">IČO</th>
+                    <th scope="col">Podle čeho je označená</th>
+                    <th scope="col" class="cislo">Od města</th>
+                    <th scope="col" class="cislo">Městu</th>
+                    <th scope="col">Existuje</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vyznamne.map((f) => (
+                    <tr>
+                      <td>
+                        <a href={`/firmy/${f.klic}`}>{f.nazev}</a>
+                      </td>
+                      <td class="mono">{f.ico ?? 'bez IČO'}</td>
+                      <td>
+                        <ul class="duvody">
+                          {f.duvody.map((d) => (
+                            <li>
+                              <span class="duvod__nazev">{d.nazev}</span>
+                              {d.detail && <span class="duvod__detail"> — {d.detail}</span>}
+                            </li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td class="cislo">{f.odMesta === null ? '—' : kc(f.odMesta)}</td>
+                      <td class="cislo">{f.mestu === null ? '—' : kc(f.mestu)}</td>
+                      <td>{stavFirmy(f)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Všechny firmy</h2>
+          <p class="karta__podnadpis">
+            Řazeno podle názvu.{' '}
+            {vypis.length < vsechnySerazene.length
+              ? `Zobrazeno prvních ${cislo(vypis.length)} z ${cislo(vsechnySerazene.length)} — celý seznam by stránku zbytečně nafoukl. Firmy s vazbou na město jsou v tabulce výše všechny.`
+              : `Celkem ${cislo(vsechnySerazene.length)}.`}
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Firma</th>
+                  <th scope="col">IČO</th>
+                  <th scope="col">Obor</th>
+                  <th scope="col">Vznik</th>
+                  <th scope="col">Zánik</th>
+                  <th scope="col">Vztah k městu</th>
+                </tr>
+              </thead>
+              <tbody>
+                {vypis.map((f) => (
+                  <tr>
+                    <td>{f.duvody.length > 0 ? <a href={`/firmy/${f.klic}`}>{f.nazev}</a> : f.nazev}</td>
+                    <td class="mono">{f.ico ?? '—'}</td>
+                    <td>{f.obor ?? f.nace ?? 'v datech není'}</td>
+                    <td class="cislo">{f.vznik ?? '—'}</td>
+                    <td class="cislo">{f.zanik ?? '—'}</td>
+                    <td>
+                      {f.duvody.length === 0
+                        ? 'žádný doložený'
+                        : f.duvody.map((d) => d.nazev).join(', ')}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <p class="graf-poznamka">
+          Datum vzniku a zániku pochází z rejstříku a týká se subjektu, ne provozovny. Firma bez
+          zapsaného zániku nemusí fungovat — v rejstříku prostě zůstává.
+          {casova.roky.length > 0 && rokZIso(String(casova.roky[0])) !== null && (
+            <> Nejstarší zapsaný vznik v datech je z roku {casova.roky[0]}.</>
+          )}
+        </p>
+      </>
+    )
+  }
+</Zaklad>

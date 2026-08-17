@@ -1,0 +1,66 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "hroznata",
+    "jmeno": "Hroznata",
+    "role": [
+      "zakladatel kláštera Teplá"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "1193",
+    "do": "1193",
+    "prvni_rok": 1193,
+    "posledni_rok": 1193,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 1,
+    "dolozenych": 0,
+    "odhadu": 1,
+    "dle_typu": {
+      "historie": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "historie:1193-klaster-tepla",
+      "datum": "1193",
+      "datum_do": "1197",
+      "presnost": "obdobi",
+      "razeni": "1193-01-01",
+      "rok": 1193,
+      "typ": "historie",
+      "nadpis": "Hroznata zakládá premonstrátský klášter Teplá",
+      "popis": "Šlechtic Hroznata založil premonstrátský klášter v Teplé. Pod správu kláštera patřilo i území dnešních Mariánských Lázní, a klášter byl proto po staletí vlastní",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "Tradiční letopočet 1193 není potvrzen spolehlivým pramenem; jisté je jen to, že k založení došlo před rokem 1197. Záznam osobnosti hroznata v tomto projektu uvádí rok 1197.",
+      "url": "https://cs.wikipedia.org/wiki/Kl%C3%A1%C5%A1ter_Tepl%C3%A1",
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "role": {
+        "vztah": "historicka_udalost"
+      }
+    }
+  ]
+}

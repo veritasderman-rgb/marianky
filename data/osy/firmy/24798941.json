@@ -1,0 +1,399 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24798941",
+    "nazev": "Pflaument Investment, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-11",
+    "do": "2025-09-08",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 18,
+    "dolozenych": 11,
+    "odhadu": 7,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 7,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "stredni": 3,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-27-27/4",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníků v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 27/4, usnesení 438/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3045611",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-27/4__23724463",
+      "datum": "2023-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-20",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Opravy chodníků v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2023-07-20 s bodem 27/4 z 2023-07-11 (Oprava chodníků v Mariánských Lázních - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 4602299.49,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych",
+      "url": "https://smlouvy.gov.cz/smlouva/25416227",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23724463",
+      "datum": "2023-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Opravy chodníků v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pflaument Investment, s.r.o..",
+      "castka_czk": 4602299.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25416227",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-69-69/12",
+      "datum": "2024-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-29",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "VZ Nemocnice Mariánské Lázně - parkoviště - výběr dodavatele",
+      "popis": "Rada města, bod 69/12, usnesení 744/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3271631",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/12__29107632",
+      "datum": "2024-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-19",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Odhadované spojení smlouvy z 2024-11-19 s bodem 69/12 z 2024-10-29 (VZ Nemocnice Mariánské Lázně - parkoviště - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 7204039.39,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova nemocnice, parkoviste",
+      "url": "https://smlouvy.gov.cz/smlouva/31106628",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29107632",
+      "datum": "2024-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-19",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pflaument Investment, s.r.o..",
+      "castka_czk": 7204039.39,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31106628",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-81-81/4",
+      "datum": "2025-03-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo-Nemocnice M.L. - parkoviště",
+      "popis": "Rada města, bod 81/4, usnesení 181/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3335696",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/4__30599748",
+      "datum": "2025-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-24",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 - Parkovišně u nemocnice",
+      "popis": "Odhadované spojení smlouvy z 2025-03-24 s bodem 81/4 z 2025-03-18 (Dodatek č. 1 ke smlouvě o dílo-Nemocnice M.L. - parkoviště). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; obojí je dodatek č. 1; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/32673016",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30599748",
+      "datum": "2025-03-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-24",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 - Parkovišně u nemocnice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pflaument Investment, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32673016",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/15",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 2 ke smlouvě o dílo - parkoviště u Nemocnice",
+      "popis": "Rada města, bod 88/15, usnesení 353/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3366120",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/12__31220016",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodtek č. 2 ke smlouvě o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Odhadované spojení smlouvy z 2025-05-16 s bodem 69/12 z 2024-10-29 (VZ Nemocnice Mariánské Lázně - parkoviště - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 7685972.22,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 199 dní po usnesení; název bodu a předmět smlouvy sdílí slova nemocnice, parkoviste; stejně dobře sedí i ",
+      "url": "https://smlouvy.gov.cz/smlouva/33321240",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-81/4__31220016",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodtek č. 2 ke smlouvě o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Odhadované spojení smlouvy z 2025-05-16 s bodem 81/4 z 2025-03-18 (Dodatek č. 1 ke smlouvě o dílo-Nemocnice M.L. - parkoviště). Jistota nizka.",
+      "castka_czk": 7685972.22,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 59 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, nemocnice, parkoviste; usnesení mluví ",
+      "url": "https://smlouvy.gov.cz/smlouva/33321240",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-88/15__31220016",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodtek č. 2 ke smlouvě o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Odhadované spojení smlouvy z 2025-05-16 s bodem 88/15 z 2025-05-13 (Dodatek č. 2 ke smlouvě o dílo - parkoviště u Nemocnice). Jistota nizka.",
+      "castka_czk": 7685972.22,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova dilo, nemocnice, parkoviste; usnesení mluví o",
+      "url": "https://smlouvy.gov.cz/smlouva/33321240",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31220016",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodtek č. 2 ke smlouvě o dílo - Nemocnice M.L. - parkoviště",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pflaument Investment, s.r.o..",
+      "castka_czk": 7685972.22,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33321240",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/15",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 3 ke smlouvě o dílo-parkoviště u Nemocnice",
+      "popis": "Rada města, bod 93/15, usnesení 519/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3401372",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-97-97/12",
+      "datum": "2025-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-02",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Přechod pro cyklisty přes silnici II/230 “- výběr dodavatele",
+      "popis": "Rada města, bod 97/12, usnesení 603/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3054275438",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-97/12__32954649",
+      "datum": "2025-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-08",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - propojení cyklotrasy pres silnici II/230",
+      "popis": "Odhadované spojení smlouvy z 2025-09-08 s bodem 97/12 z 2025-09-02 (Veřejná zakázka „Přechod pro cyklisty přes silnici II/230 “- výběr dodavatele). Jistota stre",
+      "castka_czk": 1027290.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24798941 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova pres, silnici",
+      "url": "https://smlouvy.gov.cz/smlouva/35137985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32954649",
+      "datum": "2025-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-08",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - propojení cyklotrasy pres silnici II/230",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pflaument Investment, s.r.o..",
+      "castka_czk": 1027290.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35137985",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

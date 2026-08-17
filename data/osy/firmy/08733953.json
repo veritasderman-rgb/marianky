@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08733953",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-12-02",
+    "do": "2022-02-22",
+    "prvni_rok": 2019,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08733953:vznik",
+      "datum": "2019-12-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-02",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — JT- STAVSERVIS, s.r.o.",
+      "popis": "Vznik subjektu JT- STAVSERVIS, s.r.o. (IČO 08733953), Společnost s ručením omezeným, obor: Inženýrské činnosti a související technické poradenství.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/4",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o zřízení služebnosti - kabelová přípojka NN - p.p.č. 42 a č. 50/4 v k.ú. ML",
+      "popis": "Rada města, bod 139/4, usnesení 82/22. Schvaleno.",
+      "castka_czk": 5507,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2811728",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

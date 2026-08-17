@@ -1,0 +1,177 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26364883",
+    "nazev": "VODOVRTY, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-12-08",
+    "do": "2024-09-16",
+    "prvni_rok": 2003,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 7,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26364883:vznik",
+      "datum": "2003-12-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-12-08",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — VODOVRTY, s.r.o.",
+      "popis": "Vznik subjektu VODOVRTY, s.r.o. (IČO 26364883), Společnost s ručením omezeným, obor: Demolice a příprava staveniště.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-128-128/10",
+      "datum": "2013-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-05",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o dílo - průzkumný vrt",
+      "popis": "Rada města, bod 128/10, usnesení 531/13. Schvaleno.",
+      "castka_czk": 61100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1037306",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-130-130/16",
+      "datum": "2013-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o dílo SOD 260-2013 oprava psaní",
+      "popis": "Rada města, bod 130/16, usnesení 572/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1043308",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/130.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-164-164/13",
+      "datum": "2014-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-02",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Průzkumný vrt Tyršova ulice - výběrové řízení",
+      "popis": "Rada města, bod 164/13, usnesení 397/14. Schvaleno.",
+      "castka_czk": 398937,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1256386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:23753943",
+      "datum": "2023-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-08",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Provedení průzkumného vrtu 30 m v areálu Parku Boheminium, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VODOVRTY, s.r.o..",
+      "castka_czk": 136730.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25447031",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25097387",
+      "datum": "2023-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-11",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Provedení průzkumného vrtu - ocelové pažení 13 m v areálu Parku Boheminium, Mariánské Lázně - z důvodu nesoudržné horniny",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VODOVRTY, s.r.o..",
+      "castka_czk": 67397.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26871007",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28566712",
+      "datum": "2024-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-16",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Dokončovací práce (vystrojení vrtané studny) v areálu Boheminium v ML.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VODOVRTY, s.r.o..",
+      "castka_czk": 151250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30528616",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

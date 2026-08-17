@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "74372246",
+    "nazev": "Ing. Luděk Tesař"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-02-11",
+    "do": "2025-04-03",
+    "prvni_rok": 2020,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2020-57-57/15",
+      "datum": "2020-02-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-11",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Technický a dopravní servis, s.r.o.",
+      "popis": "Rada města, bod 57/15, usnesení 105/20. Schvaleno.",
+      "castka_czk": 179100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2479405",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/57.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-57/15__10960792",
+      "datum": "2020-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-19",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo Analýza TDS",
+      "popis": "Odhadované spojení smlouvy z 2020-02-19 s bodem 57/15 z 2020-02-11 (Technický a dopravní servis, s.r.o.). Jistota vysoka.",
+      "castka_czk": 179080.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 74372246 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (rozdíl 20 Kč); smlouva podepsána 8 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11796100",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10960792",
+      "datum": "2020-02-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-19",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo Analýza TDS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Luděk Tesař.",
+      "castka_czk": 179080.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11796100",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30993888",
+      "datum": "2025-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka: zpracování rozpočtového výhledu 2026-2030",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Luděk Tesař.",
+      "castka_czk": 60379.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33086156",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

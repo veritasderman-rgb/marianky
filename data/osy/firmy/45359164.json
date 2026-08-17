@@ -1,0 +1,319 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45359164",
+    "nazev": "Silnice Horšovský Týn a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-05-22",
+    "do": "2020-02-28",
+    "prvni_rok": 2018,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 7,
+    "odhadu": 7,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 7,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "stredni": 2,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-156-156/7",
+      "datum": "2018-05-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-22",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Vybudování komunikace – Průmyslová zóna Hamrníky – 1. etapa, 1. část – výběr dodavatele",
+      "popis": "Rada města, bod 156/7, usnesení 289/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1952282",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/156.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-156/7__5462707",
+      "datum": "2018-06-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-15",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část“ v Mariánských Lázních.",
+      "popis": "Odhadované spojení smlouvy z 2018-06-15 s bodem 156/7 z 2018-05-22 (Vybudování komunikace – Průmyslová zóna Hamrníky – 1. etapa, 1. část – výběr dodavatele). Ji",
+      "castka_czk": 11603900.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, hamrniky, komunikace, prumyslova",
+      "url": "https://smlouvy.gov.cz/smlouva/5881347",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5462707",
+      "datum": "2018-06-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-15",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část“ v Mariánských Lázních.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Silnice Horšovský Týn a. s..",
+      "castka_czk": 11603900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5881347",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-6/14__7543471",
+      "datum": "2019-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část (č. smlouvy objednatele: S243/18) uzavřené dne 15.06.2018",
+      "popis": "Odhadované spojení smlouvy z 2019-02-04 s bodem 6/14 z 2018-12-18 (Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část). Jistota stredni.",
+      "castka_czk": 1125882.39,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (Silnice Horšovský Týn a. s.) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 48 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, h",
+      "url": "https://smlouvy.gov.cz/smlouva/8143519",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7543471",
+      "datum": "2019-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Vybudování komunikace - Průmyslová zóna Hamrníky – 1. etapa, 1. část (č. smlouvy objednatele: S243/18) uzavřené dne 15.06.2018",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Silnice Horšovský Týn a. s..",
+      "castka_czk": 1125882.39,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8143519",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-19-19/13",
+      "datum": "2019-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-16",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Oprava asfaltových krytů frézováním místních komunikací v Mariánských Lázních",
+      "popis": "Rada města, bod 19/13, usnesení 183/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2327069",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-156/7__8410747",
+      "datum": "2019-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-24",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Mění rozsah plnění a zároveň cenu díla a to z důvodu, že v průběhu stavby byly zjištěny nové skutečnosti, které nebylo možné předvídat a rozsah dodávky je upraven na základě těchto nově zjištěných skutečností.",
+      "popis": "Odhadované spojení smlouvy z 2019-04-24 s bodem 156/7 z 2018-05-22 (Vybudování komunikace – Průmyslová zóna Hamrníky – 1. etapa, 1. část – výběr dodavatele). Ji",
+      "castka_czk": 71600.82,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 337 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9072795",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-19/13__8410747",
+      "datum": "2019-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-24",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Mění rozsah plnění a zároveň cenu díla a to z důvodu, že v průběhu stavby byly zjištěny nové skutečnosti, které nebylo možné předvídat a rozsah dodávky je upraven na základě těchto nově zjištěných skutečností.",
+      "popis": "Odhadované spojení smlouvy z 2019-04-24 s bodem 19/13 z 2019-04-16 (Oprava asfaltových krytů frézováním místních komunikací v Mariánských Lázních). Jistota nizk",
+      "castka_czk": 71600.82,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže",
+      "url": "https://smlouvy.gov.cz/smlouva/9072795",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8410747",
+      "datum": "2019-04-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-24",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Mění rozsah plnění a zároveň cenu díla a to z důvodu, že v průběhu stavby byly zjištěny nové skutečnosti, které nebylo možné předvídat a rozsah dodávky je upraven na základě těchto nově zjištěných skutečností.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Silnice Horšovský Týn a. s..",
+      "castka_czk": 71600.82,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9072795",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-19/13__8961503",
+      "datum": "2019-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-15",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Provizorní napojení OZ Tesco - ul. Husova, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-07-15 s bodem 19/13 z 2019-04-16 (Oprava asfaltových krytů frézováním místních komunikací v Mariánských Lázních). Jistota nizk",
+      "castka_czk": 640090.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 90 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/9655183",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8961503",
+      "datum": "2019-07-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-15",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Provizorní napojení OZ Tesco - ul. Husova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Silnice Horšovský Týn a.s..",
+      "castka_czk": 640090.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9655183",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-156/7__11114000",
+      "datum": "2020-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-28",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodání betonových prvků - silničních panelů a betonových svodidel",
+      "popis": "Odhadované spojení smlouvy z 2020-02-28 s bodem 156/7 z 2018-05-22 (Vybudování komunikace – Průmyslová zóna Hamrníky – 1. etapa, 1. část – výběr dodavatele). Ji",
+      "castka_czk": 241939.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 647 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11958148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-19/13__11114000",
+      "datum": "2020-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-28",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodání betonových prvků - silničních panelů a betonových svodidel",
+      "popis": "Odhadované spojení smlouvy z 2020-02-28 s bodem 19/13 z 2019-04-16 (Oprava asfaltových krytů frézováním místních komunikací v Mariánských Lázních). Jistota nizk",
+      "castka_czk": 241939.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359164 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 318 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/11958148",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11114000",
+      "datum": "2020-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodání betonových prvků - silničních panelů a betonových svodidel",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Silnice Horšovský Týn a.s..",
+      "castka_czk": 241939.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11958148",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

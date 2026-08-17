@@ -1,0 +1,196 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28037588",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-10-30",
+    "do": "2024-10-01",
+    "prvni_rok": 2008,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 8,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 7
+    },
+    "dle_jistoty": {
+      "fakt": 8
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28037588:vznik",
+      "datum": "2008-10-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-10-30",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — LIDARIO s.r.o.",
+      "popis": "Vznik subjektu LIDARIO s.r.o. (IČO 28037588), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-106-106/2",
+      "datum": "2013-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-16",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Sleva z nájmu - NP Hlavní 322 (LIDARIO)",
+      "popis": "Rada města, bod 106/2, usnesení 154/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/933093",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-107-107/6",
+      "datum": "2013-04-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-04-30",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 322 - zveřejnění záměru (prodloužení doby nájmu)",
+      "popis": "Rada města, bod 107/6, usnesení 172/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/938987",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-111-111/2",
+      "datum": "2013-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-05-28",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 322 - prodloužení doby nájmu",
+      "popis": "Rada města, bod 111/2, usnesení 220/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/960280",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/19",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 322 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 48/19, usnesení 179/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166770",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/16",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení smlouvy ul. Hlavní třída, č. p. 322 – společnost Lidario s.r.o.",
+      "popis": "Rada města, bod 51/16, usnesení 264/24. Schvaleno.",
+      "castka_czk": 214671,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180200",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-61-61/2",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "LIDARIO s.r.o. – Dolce Italia – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 61/2, usnesení 518/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3229201",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/23",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 322 – společnost LIDARIO s.r.o.",
+      "popis": "Rada města, bod 67/23, usnesení 669/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3258522",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

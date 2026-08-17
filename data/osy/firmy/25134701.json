@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25134701",
+    "nazev": "EKO-KOM, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-06-22",
+    "do": "2023-06-22",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "stredni": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2023-20/19__23795799",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "V rámci provozování Obecního systému zajišťovat zpětný odběr odpadu z obalů a poskytovat společnosti informace o evidenci, na jejímž základě bude obci vyplacena odměna",
+      "popis": "Odhadované spojení smlouvy z 2023-06-22 s bodem 20/19 z 2023-04-18 (Smlouva o spolupráci při zajištění zpětného odběru a zařazení místa zpětného odběru do obecn",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25134701 je uvedeno v textu usnesení; smlouva podepsána 65 dní po usnesení; název bodu a předmět smlouvy sdílí slova obecniho, systemu",
+      "url": "https://smlouvy.gov.cz/smlouva/25490831",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23795799",
+      "datum": "2023-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-22",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "V rámci provozování Obecního systému zajišťovat zpětný odběr odpadu z obalů a poskytovat společnosti informace o evidenci, na jejímž základě bude obci vyplacena odměna",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana EKO-KOM, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25490831",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

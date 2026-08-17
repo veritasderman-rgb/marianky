@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47692782",
+    "nazev": "Pavel Petrák v.r."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-01-01",
+    "do": "2021-01-25",
+    "prvni_rok": 1994,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:47692782:vznik",
+      "datum": "1994-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-01-01",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Pavel Petrák",
+      "popis": "Vznik subjektu Pavel Petrák (IČO 47692782), Fyzická osoba podnikající dle živnostenského zákona, obor: Instalace rozvodů vody, odpadu, topení a klimatizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:10618328",
+      "datum": "2020-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-20",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava radiátorů výměnou v objektu Městského divadla Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Petrák v.r., údržba domů a bytů .",
+      "castka_czk": 94837.622,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11427932",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11221744",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilých radiátorů výměnou ve vstupním prostoru Městského divadla, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Petrák v.r. údržba domů a bytů .",
+      "castka_czk": 94837.622,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12070892",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:14252759",
+      "datum": "2021-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-25",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava dožilých radiátorů výměnou ve 3.NP objektu Městského divadla Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Petrák v.r..",
+      "castka_czk": 73952.054,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15304367",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

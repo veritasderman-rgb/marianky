@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "43277349",
+    "nazev": "Milan Vojtěch"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-03-16",
+    "do": "2024-04-11",
+    "prvni_rok": 1992,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:43277349:vznik",
+      "datum": "1992-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-03-16",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Milan Vojtěch",
+      "popis": "Vznik subjektu Milan Vojtěch (IČO 43277349), Fyzická osoba podnikající dle živnostenského zákona, obor: Výroba ostatních výrobků stavebního truhlářství a tesařs",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:25104991",
+      "datum": "2023-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-21",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "oprava dřevěných herních prvků DH u nemocnice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Vojtěch.",
+      "castka_czk": 105875.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26880203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26478143",
+      "datum": "2024-04-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-11",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "oprava mobiliáře lavičky křižovatka Chebská a Hlavní",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Milan Vojtěch.",
+      "castka_czk": 95795.57,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28334915",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

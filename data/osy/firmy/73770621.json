@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "73770621",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2006-09-01",
+    "do": "2023-10-17",
+    "prvni_rok": 2006,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:73770621:vznik",
+      "datum": "2006-09-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-09-01",
+      "rok": 2006,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Hana Pešková",
+      "popis": "Vznik subjektu Hana Pešková (IČO 73770621), Fyzická osoba podnikající dle živnostenského zákona, obor: Činnosti denních lázní, saun a parních lázní.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-144-144/7",
+      "datum": "2014-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-02-25",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Fr.Kafky 835-podnájemní smlouva",
+      "popis": "Rada města, bod 144/7, usnesení 69/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1087798",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/144.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-35-35/11",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, č.p.835 - podnájemní smlouva",
+      "popis": "Rada města, bod 35/11, usnesení 627/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092285",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

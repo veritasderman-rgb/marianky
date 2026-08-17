@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07150831",
+    "nazev": "Martin Bukovský"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-06-28",
+    "do": "2023-01-24",
+    "prvni_rok": 2022,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-152-152/20",
+      "datum": "2022-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-28",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce bytového domu Hlavní 314 – 1. etapa",
+      "popis": "Rada města, bod 152/20, usnesení 341/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2873046",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-152/20__19767711",
+      "datum": "2022-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-01",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Rekonstrukce bytového domu Hlavní 314 – 1. etapa“.",
+      "popis": "Odhadované spojení smlouvy z 2022-08-01 s bodem 152/20 z 2022-06-28 (Rekonstrukce bytového domu Hlavní 314 – 1. etapa). Jistota stredni.",
+      "castka_czk": 2016023.0354,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07150831 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytoveho, domu, etapa, hlavni",
+      "url": "https://smlouvy.gov.cz/smlouva/21244583",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19767711",
+      "datum": "2022-08-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Rekonstrukce bytového domu Hlavní 314 – 1. etapa“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Martin Bukovský.",
+      "castka_czk": 2016023.0354,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21244583",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-10-10/20",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Zaslání výzvy k úhradě smluvní sankce za nedodržení termínu na akci Rekonstrukce bytového domu Hlavní 314-1. etapa",
+      "popis": "Rada města, bod 10/20, usnesení 46/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2965304",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

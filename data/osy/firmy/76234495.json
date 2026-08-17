@@ -1,0 +1,156 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "76234495",
+    "nazev": "BANDAS Petr"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2008-04-01",
+    "do": "2021-11-10",
+    "prvni_rok": 2008,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:76234495:vznik",
+      "datum": "2008-04-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2008-04-01",
+      "rok": 2008,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petr Bandas",
+      "popis": "Vznik subjektu Petr Bandas (IČO 76234495), Fyzická osoba podnikající dle živnostenského zákona, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:1633470",
+      "datum": "2017-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-12",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - oprava asfaltového povrchu ulice U Zastávky, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Bandas.",
+      "castka_czk": 177598.96,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1762230",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2168198",
+      "datum": "2017-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-13",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - oprava komunikace ulice U Ploché dráhy, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Bandas.",
+      "castka_czk": 250489.36,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2336542",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:4314024",
+      "datum": "2018-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-02-07",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - oprava komunikace a chodníku ulice Komenského, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Bandas.",
+      "castka_czk": 200991.89,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4648692",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16380795",
+      "datum": "2021-08-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-30",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "\"Opravy  - sanace průsakůhrázepři bezpečnostním přelivu u rybníka  Kamzíku v Mariánských Lázních\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Bandas.",
+      "castka_czk": 478525.6091,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17637275",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17040471",
+      "datum": "2021-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-10",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Rozebrání křídel bezpečnostních pilířů v návodní straně rybníka U Kamzíku a následně návodní stranu zpevnit štěrkojílovitou zeminou a doplnění lomovým kamenem",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BANDAS Petr.",
+      "castka_czk": 73432.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18343603",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

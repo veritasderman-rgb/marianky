@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26384612",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-01-18",
+    "do": "2012-01-17",
+    "prvni_rok": 2005,
+    "posledni_rok": 2012,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26384612:vznik",
+      "datum": "2005-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-01-18",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — JAKA CONSULTING s.r.o.",
+      "popis": "Vznik subjektu JAKA CONSULTING s.r.o. (IČO 26384612), Společnost s ručením omezeným, obor: Výstavba bytových a nebytových budov.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-51-51/4",
+      "datum": "2012-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-01-17",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě VB p.p. 1116/2 k.ú. Úšovice ul. Za Školou",
+      "popis": "Rada města, bod 51/4, usnesení 22/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/692720",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

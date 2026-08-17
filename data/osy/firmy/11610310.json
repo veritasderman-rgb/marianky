@@ -1,0 +1,97 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11610310",
+    "nazev": "Projektová práce a inženýrské činnosti Ing. Pavel TESAŘ"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2022-03-15",
+    "prvni_rok": 1992,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:11610310:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Tesař Pavel, Ing.",
+      "popis": "Vznik subjektu Tesař Pavel, Ing. (IČO 11610310), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Architektonické a ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:12235212",
+      "datum": "2020-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-29",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Zpracování dokumentace na odstranění objektu Pilnice, Mariánské Lázně č.p. 205/3 – areál bývalé pily",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Projektová práce a inženýrské činnosti Ing. Pavel TESAŘ.",
+      "castka_czk": 98252.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13131152",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-141-141/12",
+      "datum": "2022-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-15",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "SOBS - elektro, vodovodní a kanalizační přípojka p.p.č. 1066/1 a 1066/3 v k.ú. Úšovice - ul. Ladova Hamrníky",
+      "popis": "Rada města, bod 141/12, usnesení 128/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2822443",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/141.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

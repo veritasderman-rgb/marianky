@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "75057743",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-01-21",
+    "do": "2022-11-22",
+    "prvni_rok": 2005,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:75057743:vznik",
+      "datum": "2005-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-01-21",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků domu LLOYD Chebská 492, Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků domu LLOYD Chebská 492, Mariánské Lázně (IČO 75057743), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-0-0/4",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - drenážní potrubí - BD Chebská 492 v k.ú. ML",
+      "popis": "Rada města, bod 0/4, usnesení 537/22. Schvaleno.",
+      "castka_czk": 10406,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2933258",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/0.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

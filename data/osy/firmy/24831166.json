@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24831166",
+    "nazev": "GASTROTEL CZ spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-04-06",
+    "do": "2025-05-16",
+    "prvni_rok": 2011,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 9,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 7,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:24831166:vznik",
+      "datum": "2011-04-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-04-06",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — GASTROTEL CZ spol. s r.o.",
+      "popis": "Vznik subjektu GASTROTEL CZ spol. s r.o. (IČO 24831166), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-66-66/6",
+      "datum": "2012-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-05-15",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Gastrotel CZ - prodloužení nájmu",
+      "popis": "Rada města, bod 66/6, usnesení 242/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/764178",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/66.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-127-127/7",
+      "datum": "2013-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-10-29",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 251 - podnájemní smlouva",
+      "popis": "Rada města, bod 127/7, usnesení 506/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1034162",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/127.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-128-128/3",
+      "datum": "2013-11-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-05",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská 251 - podnájemní smlouva",
+      "popis": "Rada města, bod 128/3, usnesení 524/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1037249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/128.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-30-30/5",
+      "datum": "2015-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-21",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Žádost o slevu z nájemného - NP Chebská 251,495",
+      "popis": "Rada města, bod 30/5, usnesení 336/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1432259",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/30.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-53-53/17",
+      "datum": "2024-05-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-14",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "TIPSPORT – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 53/17, usnesení 328/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3193126",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/53.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/31",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 251, 495 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 85/31, usnesení 303/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3355012",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/12",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Chebská, č.p. 251 a Chebská, č.p. 495 - prodloužení Smlouvy o nájmu nebytového prostoru – společnost GASTROTEL CZ spol. s r.o.",
+      "popis": "Rada města, bod 88/12, usnesení 350/25. Schvaleno.",
+      "castka_czk": 200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3366070",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-88/12__31210684",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení společnost Gastrotel CZ s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2025-05-16 s bodem 88/12 z 2025-05-13 (NP Chebská, č.p. 251 a Chebská, č.p. 495 - prodloužení Smlouvy o nájmu nebytového prostoru –",
+      "castka_czk": 2000000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24831166 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova gastrotel, najmu, nebytoveho, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/33311624",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31210684",
+      "datum": "2025-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení společnost Gastrotel CZ s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana GASTROTEL CZ spol. s r.o..",
+      "castka_czk": 2000000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33311624",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "00216208",
+    "nazev": "Univerzita Karlova"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-08-06",
+    "do": "2024-09-09",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 7,
+    "odhadu": 5,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 7,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-33-33/14",
+      "datum": "2019-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-06",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí neinvestičního příspěvku z rozpočtu města Mariánské Lázně – obnova objektu Balmoral-Osborne",
+      "popis": "Rada města, bod 33/14, usnesení 402/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2382457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-33-33/15",
+      "datum": "2019-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-06",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí neinvestičního příspěvku z rozpočtu města Mariánské Lázně – podíl města na obnově památky – obnova objektu Balmoral-Osborne",
+      "popis": "Rada města, bod 33/15, usnesení 403/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2382472",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/33.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-1/2__21075573",
+      "datum": "2022-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu prostoru sloužícího k podnikání",
+      "popis": "Odhadované spojení smlouvy z 2022-10-25 s bodem 1/2 z 2022-10-25 (Schválení nájemní smlouvy-budovy, Karlovarská 333/11, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 75625.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00216208 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 0 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/22620461",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21075573",
+      "datum": "2022-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-25",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu prostoru sloužícího k podnikání",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Univerzita Karlova.",
+      "castka_czk": 75625.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22620461",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-1-1/2",
+      "datum": "2022-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-25",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Schválení nájemní smlouvy-budovy, Karlovarská 333/11, Mariánské Lázně",
+      "popis": "Rada města, bod 1/2, usnesení 510/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2924523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/1.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-8-8/4",
+      "datum": "2022-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-23",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Univerzita Karlova",
+      "popis": "Rada města, bod 8/4, usnesení 635/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2954834",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-1/2__21555657",
+      "datum": "2023-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2023-01-01 s bodem 1/2 z 2022-10-25 (Schválení nájemní smlouvy-budovy, Karlovarská 333/11, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 907500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00216208 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 68 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/23132309",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-8/4__21555657",
+      "datum": "2023-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Pronájem nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2023-01-01 s bodem 8/4 z 2022-12-23 (Smlouva o nájmu nebytového prostoru - Univerzita Karlova). Jistota nizka.",
+      "castka_czk": 907500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00216208 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva téže",
+      "url": "https://smlouvy.gov.cz/smlouva/23132309",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21555657",
+      "datum": "2023-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Pronájem nebytových prostor",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Univerzita Karlova.",
+      "castka_czk": 907500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23132309",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-1/2__28253072",
+      "datum": "2024-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-09",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "1. LF UK HO užívání prostor ve dnech 10.-20.9.2024 adaptační kurz",
+      "popis": "Odhadované spojení smlouvy z 2024-09-09 s bodem 1/2 z 2022-10-25 (Schválení nájemní smlouvy-budovy, Karlovarská 333/11, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 68909.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00216208 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 685 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy",
+      "url": "https://smlouvy.gov.cz/smlouva/30191876",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-8/4__28253072",
+      "datum": "2024-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-09",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "1. LF UK HO užívání prostor ve dnech 10.-20.9.2024 adaptační kurz",
+      "popis": "Odhadované spojení smlouvy z 2024-09-09 s bodem 8/4 z 2022-12-23 (Smlouva o nájmu nebytového prostoru - Univerzita Karlova). Jistota nizka.",
+      "castka_czk": 68909.5,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 00216208 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 626 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva",
+      "url": "https://smlouvy.gov.cz/smlouva/30191876",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28253072",
+      "datum": "2024-09-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-09",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "1. LF UK HO užívání prostor ve dnech 10.-20.9.2024 adaptační kurz",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — příjem, protistrana Univerzita Karlova.",
+      "castka_czk": 68909.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30191876",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

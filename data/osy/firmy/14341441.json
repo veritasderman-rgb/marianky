@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "14341441",
+    "nazev": "NEJMONT s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-03-14",
+    "do": "2026-07-21",
+    "prvni_rok": 2022,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 5,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:14341441:vznik",
+      "datum": "2022-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-14",
+      "rok": 2022,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — NEJMONT s.r.o.",
+      "popis": "Vznik subjektu NEJMONT s.r.o. (IČO 14341441), Společnost s ručením omezeným, obor: Silniční nákladní doprava.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/18",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Franze Kafky, neb. jednotka č. B2 - V, č.p. 833 - postoupení smlouvy - Václav Růžička x společnost NEJMONT s.r.o.",
+      "popis": "Rada města, bod 145/18, usnesení 185/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2837415",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-145/18__18821199",
+      "datum": "2022-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-29",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 - dohoda o postoupení Smlouvy o nájmu nebytového prostoru Václav Růžička x NEJMONT s.r.o. a Milan Svoboda",
+      "popis": "Odhadované spojení smlouvy z 2022-04-29 s bodem 145/18 z 2022-04-19 (NP Franze Kafky, neb. jednotka č. B2 - V, č.p. 833 - postoupení smlouvy - Václav Růžička x ",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 14341441 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova nejmont, postoupeni, ruzicka, vaclav",
+      "url": "https://smlouvy.gov.cz/smlouva/20225887",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18821199",
+      "datum": "2022-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-29",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 - dohoda o postoupení Smlouvy o nájmu nebytového prostoru Václav Růžička x NEJMONT s.r.o. a Milan Svoboda",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana NEJMONT s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20225887",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:33399885",
+      "datum": "2025-11-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-13",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "objednávka int.žaluzií-výměna",
+      "popis": "Mateřská škola, Mariánské Lázně, Hlavní 440 — výdaj, protistrana NEJMONT s.r.o..",
+      "castka_czk": 116926.91,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35665505",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997578.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/11",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Franze Kafky, č.p. 833 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 122/11, usnesení 1350/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/752273776",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

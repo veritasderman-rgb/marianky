@@ -1,0 +1,218 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26403510",
+    "nazev": "Stavby IS, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-10-29",
+    "do": "2026-03-23",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 5,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-102-102/10",
+      "datum": "2025-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-29",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Technické zhodnocení Masarykovy ulice \" - výběr dodavatele",
+      "popis": "Rada města, bod 102/10, usnesení 738/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1276549302",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/10__33741785",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Odhadované spojení smlouvy z 2025-11-18 s bodem 102/10 z 2025-10-29 (Veřejná zakázka \"Technické zhodnocení Masarykovy ulice \" - výběr dodavatele). Jistota nizka",
+      "castka_czk": 4173082.79,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26403510 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova masarykovy, technicke, ulice, zhodnoceni; k ",
+      "url": "https://smlouvy.gov.cz/smlouva/35960945",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33741785",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby IS, s.r.o..",
+      "castka_czk": 4173082.79,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35960945",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/31",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Technické zhodnocení Masarykovy ulice – dodatek č.1",
+      "popis": "Rada města, bod 106/31, usnesení 836/25. Schvaleno.",
+      "castka_czk": 169387,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/83754936",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/10__33766725",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Odhadované spojení smlouvy z 2025-12-10 s bodem 102/10 z 2025-10-29 (Veřejná zakázka \"Technické zhodnocení Masarykovy ulice \" - výběr dodavatele). Jistota nizka",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26403510 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 42 dní po usnesení; název bodu a předmět smlouvy sdílí slova masarykovy, technicke, ulice, zhodnoceni; st",
+      "url": "https://smlouvy.gov.cz/smlouva/35987365",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/31__33766725",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Odhadované spojení smlouvy z 2025-12-10 s bodem 106/31 z 2025-12-09 (Technické zhodnocení Masarykovy ulice – dodatek č.1). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26403510 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova masarykovy, technicke, ulice, zhodnoceni; usn",
+      "url": "https://smlouvy.gov.cz/smlouva/35987365",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33766725",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby IS, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35987365",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-102/10__35033021",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 3 - Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Odhadované spojení smlouvy z 2026-03-23 s bodem 102/10 z 2025-10-29 (Veřejná zakázka \"Technické zhodnocení Masarykovy ulice \" - výběr dodavatele). Jistota nizka",
+      "castka_czk": 179499.39,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26403510 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 145 dní po usnesení; název bodu a předmět smlouvy sdílí slova masarykovy, technicke, ulice, zhodnoceni; k",
+      "url": "https://smlouvy.gov.cz/smlouva/37310901",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35033021",
+      "datum": "2026-03-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-23",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 3 - Smlouva o dílo „Technické zhodnocení Masarykovy ulice“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby IS, s.r.o..",
+      "castka_czk": 179499.39,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37310901",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

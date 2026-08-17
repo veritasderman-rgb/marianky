@@ -1,0 +1,619 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28042484",
+    "nazev": "ColorMax s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-07-31",
+    "do": "2025-05-13",
+    "prvni_rok": 2018,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 29,
+    "dolozenych": 17,
+    "odhadu": 12,
+    "dle_typu": {
+      "usneseni": 8,
+      "retez": 12,
+      "smlouva": 9
+    },
+    "dle_jistoty": {
+      "fakt": 17,
+      "nizka": 8,
+      "stredni": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-162-162/17",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472, 353 01 Mariánské Lázně",
+      "popis": "Rada města, bod 162/17, usnesení 419/18. Schvaleno.",
+      "castka_czk": 500000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1985280",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-165-165/6",
+      "datum": "2018-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-04",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních",
+      "popis": "Rada města, bod 165/6, usnesení 480/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2099534",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/165.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/17__6364911",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dokončení výměny oken a dveří a dokončení zateplení obvodového pláště budovy.",
+      "popis": "Odhadované spojení smlouvy z 2018-10-01 s bodem 162/17 z 2018-07-31 (Přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472, 353 01 Mariánské Lázně). Jis",
+      "castka_czk": 2364537.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 62 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6869247",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-165/6__6364911",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dokončení výměny oken a dveří a dokončení zateplení obvodového pláště budovy.",
+      "popis": "Odhadované spojení smlouvy z 2018-10-01 s bodem 165/6 z 2018-09-04 (Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních). Jistota ",
+      "castka_czk": 2364537.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6869247",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6364911",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dokončení výměny oken a dveří a dokončení zateplení obvodového pláště budovy.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 2364537.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6869247",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-4-4/17",
+      "datum": "2018-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "VZ Rekonstrukce vily LIL - částečné odvlhčení objektu",
+      "popis": "Rada města, bod 4/17, usnesení 682/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2151457",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/4.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-13-13/11",
+      "datum": "2019-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-26",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Snížení energetické náročnosti budovy zázemí sportovní haly",
+      "popis": "Rada města, bod 13/11, usnesení 110/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2304241",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/13.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-165/6__7977435",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Snížení energetické náročnosti budovy zázemí sportovní haly - změna ceny díla a přerušení prací na zimu",
+      "popis": "Odhadované spojení smlouvy z 2019-03-25 s bodem 165/6 z 2018-09-04 (Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních). Jistota ",
+      "castka_czk": 2258712.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 202 dní po usnesení; název bodu a předmět smlouvy sdílí slova budovy, energeticke, haly, narocnosti; stej",
+      "url": "https://smlouvy.gov.cz/smlouva/8613423",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-13/11__7977435",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Snížení energetické náročnosti budovy zázemí sportovní haly - změna ceny díla a přerušení prací na zimu",
+      "popis": "Odhadované spojení smlouvy z 2019-03-25 s bodem 13/11 z 2019-02-26 (Snížení energetické náročnosti budovy zázemí sportovní haly). Jistota nizka.",
+      "castka_czk": 2258712.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova budovy, energeticke, haly, narocnosti; stejn",
+      "url": "https://smlouvy.gov.cz/smlouva/8613423",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7977435",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Snížení energetické náročnosti budovy zázemí sportovní haly - změna ceny díla a přerušení prací na zimu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 2258712.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8613423",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-4/17__8410751",
+      "datum": "2019-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-06",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Oprava vily LIL – částečné odvlhčení objektu, Anglická 336, k.ú. Mariánské Lázně, st.p.č. 339/1",
+      "popis": "Odhadované spojení smlouvy z 2019-05-06 s bodem 4/17 z 2018-12-11 (VZ Rekonstrukce vily LIL - částečné odvlhčení objektu). Jistota stredni.",
+      "castka_czk": 1299162.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 146 dní po usnesení; název bodu a předmět smlouvy sdílí slova castecne, objektu, odvlhceni, vily",
+      "url": "https://smlouvy.gov.cz/smlouva/9072799",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8410751",
+      "datum": "2019-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-06",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava vily LIL – částečné odvlhčení objektu, Anglická 336, k.ú. Mariánské Lázně, st.p.č. 339/1",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 1299162.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9072799",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/17__8843635",
+      "datum": "2019-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Realizace přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472,    353 01 Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-07-01 s bodem 162/17 z 2018-07-31 (Přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472, 353 01 Mariánské Lázně). Jis",
+      "castka_czk": 1410225.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 335 dní po usnesení; název bodu a předmět smlouvy sdílí slova namesti, naradovny, pristavba, skolni",
+      "url": "https://smlouvy.gov.cz/smlouva/9530859",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8843635",
+      "datum": "2019-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Realizace přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472,    353 01 Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 1410225.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9530859",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-35-35/6",
+      "datum": "2019-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-03",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Oprava vily LIL – částečné odvlhčení objektu - dodatek k SoD č. 1",
+      "popis": "Rada města, bod 35/6, usnesení 443/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2398847",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-4/17__9492962",
+      "datum": "2019-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Oprava vily LIL - částečné odvlhčení objektu , Anglická 336, k.ú. Mariánské Lázně, st. p.č.339/1 na změnu rozsahu plnění a ceny díla",
+      "popis": "Odhadované spojení smlouvy z 2019-09-04 s bodem 4/17 z 2018-12-11 (VZ Rekonstrukce vily LIL - částečné odvlhčení objektu). Jistota nizka.",
+      "castka_czk": 1167857.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 267 dní po usnesení; název bodu a předmět smlouvy sdílí slova castecne, objektu, odvlhceni, vily; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/10219266",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-35/6__9492962",
+      "datum": "2019-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Oprava vily LIL - částečné odvlhčení objektu , Anglická 336, k.ú. Mariánské Lázně, st. p.č.339/1 na změnu rozsahu plnění a ceny díla",
+      "popis": "Odhadované spojení smlouvy z 2019-09-04 s bodem 35/6 z 2019-09-03 (Oprava vily LIL – částečné odvlhčení objektu - dodatek k SoD č. 1). Jistota nizka.",
+      "castka_czk": 1167857.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova castecne, objektu, odvlhceni, oprava; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/10219266",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9492962",
+      "datum": "2019-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Oprava vily LIL - částečné odvlhčení objektu , Anglická 336, k.ú. Mariánské Lázně, st. p.č.339/1 na změnu rozsahu plnění a ceny díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 1167857.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10219266",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-50-50/23",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Přístavba nářaďovny k tělocvičně ZŠ Úšovice",
+      "popis": "Rada města, bod 50/23, usnesení 645/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2450822",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/23__10386828",
+      "datum": "2019-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-18",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472, Mariánské Lázně - změna ceny a termínu ukončení díla.",
+      "popis": "Odhadované spojení smlouvy z 2019-12-18 s bodem 50/23 z 2019-12-17 (Přístavba nářaďovny k tělocvičně ZŠ Úšovice). Jistota stredni.",
+      "castka_czk": 1606552.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova naradovny, pristavba, usovice",
+      "url": "https://smlouvy.gov.cz/smlouva/11170284",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10386828",
+      "datum": "2019-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-18",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Přístavba nářaďovny tělocvičny ZŠ Úšovice, Školní náměstí 472, Mariánské Lázně - změna ceny a termínu ukončení díla.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 1606552.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11170284",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/5",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP – výběr dodavatele",
+      "popis": "Rada města, bod 54/5, usnesení 341/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3196165",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/5__27415184",
+      "datum": "2024-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-18",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP“",
+      "popis": "Odhadované spojení smlouvy z 2024-06-18 s bodem 54/5 z 2024-05-28 (Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP – výběr dodavatele",
+      "castka_czk": 1391500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova mestske, muzeum, posileni, stavebni; k témuž",
+      "url": "https://smlouvy.gov.cz/smlouva/29310104",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27415184",
+      "datum": "2024-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-18",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků objednateli stavbu „Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o., Milan Baranec - jednatel.",
+      "castka_czk": 1391500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29310104",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-54/5__30762604",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Městské muzeum Mariánské Lázně, stavební práce spojené s přemístěním svislé plošiny ve foyer",
+      "popis": "Odhadované spojení smlouvy z 2025-03-26 s bodem 54/5 z 2024-05-28 (Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP – výběr dodavatele",
+      "castka_czk": 246955.43,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 302 dní po usnesení; název bodu a předmět smlouvy sdílí slova mestske, muzeum, stavebni; k témuž usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32844844",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30762604",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Městské muzeum Mariánské Lázně, stavební práce spojené s přemístěním svislé plošiny ve foyer",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o..",
+      "castka_czk": 246955.43,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32844844",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-85-85/15",
+      "datum": "2025-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-04-15",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení víceprací, neprovedení méněprací a uzavření dodatku č. 1 ke smlouvě o dílo s ColorMax s. r.o. „Stavební úpravy Městské muzeum Mariánské Lázně – posílení stropu nad 1. NP“",
+      "popis": "Rada města, bod 85/15, usnesení 287/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3353547",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/85.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-85/15__31160968",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Stavební úpravy Městské muzeum Mariánské Lázně - posílení stropu nad 1. NP",
+      "popis": "Odhadované spojení smlouvy z 2025-05-13 s bodem 85/15 z 2025-04-15 (Schválení víceprací, neprovedení méněprací a uzavření dodatku č. 1 ke smlouvě o dílo s Color",
+      "castka_czk": 1319739.06,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28042484 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilo, mestske, muzeum, posileni; obojí je do",
+      "url": "https://smlouvy.gov.cz/smlouva/33259712",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31160968",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Stavební úpravy Městské muzeum Mariánské Lázně - posílení stropu nad 1. NP",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ColorMax s.r.o..",
+      "castka_czk": 1319739.06,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33259712",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "18233864",
+    "nazev": "Tritia spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-01-10",
+    "do": "2022-01-11",
+    "prvni_rok": 2012,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-50-50/2",
+      "datum": "2012-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-01-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájmu - NP Skalníkova 471",
+      "popis": "Rada města, bod 50/2, usnesení 2/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/689251",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-104-104/5",
+      "datum": "2017-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-28",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova 471 - prodloužení nájmu - TRITIA spol. s r.o.",
+      "popis": "Rada města, bod 104/5, usnesení 115/17. Schvaleno.",
+      "castka_czk": 2510,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1717669",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-132-132/3",
+      "datum": "2021-12-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova, č.p. 471 - prodloužení Smlouvy o nájmu nebytového prostoru - Tritia spol.s.r.o.",
+      "popis": "Rada města, bod 132/3, usnesení 573/21. Schvaleno.",
+      "castka_czk": 180000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2782942",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/3__17708719",
+      "datum": "2022-01-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-11",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Tritia spol. s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-01-11 s bodem 132/3 z 2021-12-21 (NP Skalníkova, č.p. 471 - prodloužení Smlouvy o nájmu nebytového prostoru - Tritia spol.s.r.",
+      "castka_czk": 1089000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 18233864 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prodlouzeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/19050591",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17708719",
+      "datum": "2022-01-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-11",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Tritia spol. s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Tritia spol. s r.o..",
+      "castka_czk": 1089000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19050591",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

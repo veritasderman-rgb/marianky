@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28989121",
+    "nazev": "AWOCADO s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-08-09",
+    "do": "2022-08-10",
+    "prvni_rok": 2022,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-155-155/7",
+      "datum": "2022-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-09",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace části záměru „Doplnění edukativních prvků – hřiště Prelát“ financovaného z Participativního rozpočtu města",
+      "popis": "Rada města, bod 155/7, usnesení 402/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2888865",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/155.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-155/7__19830327",
+      "datum": "2022-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-10",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "7 ks Výplně herně naučných panelů v rámci PaRo \"Prelát edukativní prvky\"",
+      "popis": "Odhadované spojení smlouvy z 2022-08-10 s bodem 155/7 z 2022-08-09 (Žádost o výjimku z Vnitřního předpisu č. 2017-08 v rámci realizace části záměru „Doplnění ed",
+      "castka_czk": 164333.73,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28989121 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova prelat, ramci",
+      "url": "https://smlouvy.gov.cz/smlouva/21310675",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19830327",
+      "datum": "2022-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-10",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "7 ks Výplně herně naučných panelů v rámci PaRo \"Prelát edukativní prvky\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AWOCADO s.r.o..",
+      "castka_czk": 164333.73,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21310675",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

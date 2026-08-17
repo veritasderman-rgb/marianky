@@ -1,0 +1,180 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28504763",
+    "nazev": "Jezero Lido s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-01-21",
+    "do": "2022-12-12",
+    "prvni_rok": 2009,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 3,
+      "smlouva": 2,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:28504763:vznik",
+      "datum": "2009-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-01-21",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jezero Lido s.r.o.",
+      "popis": "Vznik subjektu Jezero Lido s.r.o. (IČO 28504763), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2022-140/6__18821203",
+      "datum": "2022-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-04",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Pozemkové a stavební parcely vč. objektů na nich stojících v k. ú. Úšovice, tvořící areál  koupaliště LIDO",
+      "popis": "Odhadované spojení smlouvy z 2022-05-04 s bodem 140/6 z 2022-03-08 (Zveřejnění záměru prodloužení pronájmu parcel tvořících areál koupaliště LIDO). Jistota nizk",
+      "castka_czk": 399300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28504763 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; název bodu a předmět smlouvy sdílí slova areal, koupaliste, lido; stejně dobře sedí i",
+      "url": "https://smlouvy.gov.cz/smlouva/20225895",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-145/13__18821203",
+      "datum": "2022-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-04",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Pozemkové a stavební parcely vč. objektů na nich stojících v k. ú. Úšovice, tvořící areál  koupaliště LIDO",
+      "popis": "Odhadované spojení smlouvy z 2022-05-04 s bodem 145/13 z 2022-04-19 (Prodloužení pronájmu - Jezero LIDO). Jistota nizka.",
+      "castka_czk": 399300.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28504763 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20225895",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18821203",
+      "datum": "2022-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-04",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Pozemkové a stavební parcely vč. objektů na nich stojících v k. ú. Úšovice, tvořící areál  koupaliště LIDO",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jezero Lido s.r.o..",
+      "castka_czk": 399300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20225895",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-0-0/24",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Adventní víkendy 2022 na Kolonádě",
+      "popis": "Rada města, bod 0/24, usnesení 557/22. Schvaleno.",
+      "castka_czk": 80000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2936792",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/0.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-0/24__21149125",
+      "datum": "2022-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-12",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Objednávka kulturní akce Adventní víkendy 2022 na Kolonádě v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2022-12-12 s bodem 0/24 z 2022-11-22 (Adventní víkendy 2022 na Kolonádě). Jistota vysoka.",
+      "castka_czk": 80000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 28504763 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/22697581",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21149125",
+      "datum": "2022-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-12",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Objednávka kulturní akce Adventní víkendy 2022 na Kolonádě v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jezero Lido s.r.o..",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22697581",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

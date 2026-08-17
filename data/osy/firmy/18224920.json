@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "18224920",
+    "nazev": "BPO spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-10-16",
+    "do": "2017-11-24",
+    "prvni_rok": 2012,
+    "posledni_rok": 2017,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-83-83/17",
+      "datum": "2012-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-10-16",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Mariánské Lázně, rekonstrukce Nákladní ulice – PD",
+      "popis": "Rada města, bod 83/17, usnesení 512/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/831556",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-92-92/8",
+      "datum": "2012-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-18",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Projektová dokumentace - rekonstrukce Nákladní ulice",
+      "popis": "Rada města, bod 92/8, usnesení 607/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/855302",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:3860324",
+      "datum": "2017-11-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-24",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Statické posouzení dílčích částí budovy Měsského úřadu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana BPO spol. s r.o..",
+      "castka_czk": 79860.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4163076",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

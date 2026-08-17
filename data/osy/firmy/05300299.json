@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05300299",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-01-26",
+    "do": "2021-02-16",
+    "prvni_rok": 2021,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2021-96-96/7",
+      "datum": "2021-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-26",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2021 - 1. výzva",
+      "popis": "Rada města, bod 96/7, usnesení 32/21. Schvaleno.",
+      "castka_czk": 96000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2634326",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-18-18/12",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo - 2021",
+      "popis": "Zastupitelstvo města, bod 18/12, usnesení 389/21. Schvaleno.",
+      "castka_czk": 1167000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2637542",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

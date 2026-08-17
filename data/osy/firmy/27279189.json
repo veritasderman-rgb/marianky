@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27279189",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2005-10-13",
+    "do": "2012-08-07",
+    "prvni_rok": 2005,
+    "posledni_rok": 2012,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:27279189:vznik",
+      "datum": "2005-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2005-10-13",
+      "rok": 2005,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Thanh Thuy Pham",
+      "popis": "Vznik subjektu Thanh Thuy Pham (IČO 27279189), Fyzická osoba podnikající dle živnostenského zákona zapsaná v obchodním rejstříku, obor: Kadeřnické a holičské či",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-75-75/13",
+      "datum": "2012-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-08-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 133 - podnájem",
+      "popis": "Rada města, bod 75/13, usnesení 386/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/799953",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,580 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44615876",
+    "nazev": "Hrašková Bohumila"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-06-22",
+    "do": "2025-12-29",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 27,
+    "dolozenych": 15,
+    "odhadu": 12,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 12,
+      "smlouva": 10
+    },
+    "dle_jistoty": {
+      "fakt": 15,
+      "nizka": 10,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:44615876:vznik",
+      "datum": "1992-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-06-22",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Bohumila Hrašková",
+      "popis": "Vznik subjektu Bohumila Hrašková (IČO 44615876), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-124-124/10",
+      "datum": "2021-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-12",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Ukončení a uzavření nájemní smlouvy k užívání prodejního stánku - Bad Homburg",
+      "popis": "Rada města, bod 124/10, usnesení 451/21. Schvaleno.",
+      "castka_czk": 400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2754646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/124.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17646403",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 3 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/18984499",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17646407",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva stánek č. 4 - BH",
+      "popis": "Odhadované spojení smlouvy z 2021-12-31 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 146000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/18984503",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17646403",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva stánek č. 3 - BH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 146000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18984499",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17646407",
+      "datum": "2021-12-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-31",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva stánek č. 4 - BH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 146000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18984503",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17835283",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/19184795",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-132/14__17835287",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Odhadované spojení smlouvy z 2022-01-21 s bodem 132/14 z 2021-12-21 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/19184799",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17835283",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19184795",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:17835287",
+      "datum": "2022-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-21",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 - sleva 50 % z nájemného na 3 měsíce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19184799",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__21371145",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Odhadované spojení smlouvy z 2022-12-30 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota stredni.",
+      "castka_czk": 154880.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/22935385",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21371145",
+      "datum": "2022-12-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 154880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22935385",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-38-38/25",
+      "datum": "2023-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-28",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 38/25, usnesení 749/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3116493",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__25117027",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 357 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/26894211",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/10__25117031",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.4",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 7/10 z 2022-12-20 (Prodloužení pronájmu stánků na ul. Promenáda města Bad Homburgu - rok 2023). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 357 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/26894215",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__25117027",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/26894211",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/25__25117031",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.4",
+      "popis": "Odhadované spojení smlouvy z 2023-12-12 s bodem 38/25 z 2023-11-28 (Pronájem prodejních stánků na rok 2024 - ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/26894215",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25117027",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26894211",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25117031",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.4",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26894215",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/11",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu",
+      "popis": "Rada města, bod 73/11, usnesení 836/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3292647",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__29528260",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31548644",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/11__29528268",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "NS - prodejní stánek č.4",
+      "popis": "Odhadované spojení smlouvy z 2024-12-20 s bodem 73/11 z 2024-12-10 (Prodloužení pronájmu prodejních stánků na ul. Promenáda města Bad Homburgu). Jistota nizka.",
+      "castka_czk": 126000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/31548652",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29528260",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.3",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31548644",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29528268",
+      "datum": "2024-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "NS - prodejní stánek č.4",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31548652",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-106-106/16",
+      "datum": "2025-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-09",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026",
+      "popis": "Rada města, bod 106/16, usnesení 821/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/132170100",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/106.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/16__34066181",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 3. - ul. Promenáda Bad Homburg na rok 2026 - p. Hrašková",
+      "popis": "Odhadované spojení smlouvy z 2025-12-29 s bodem 106/16 z 2025-12-09 (Pronájem prodejních stánků na ul. Promenáda města Bad Homburgu na rok 2026). Jistota stredn",
+      "castka_czk": 126000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44615876 je uvedeno v textu usnesení; smlouva podepsána 20 dní po usnesení; název bodu a předmět smlouvy sdílí slova promenada, stanku",
+      "url": "https://smlouvy.gov.cz/smlouva/36301573",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34066181",
+      "datum": "2025-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Nájemní smlouva k užívání prodejního stánku č. 3. - ul. Promenáda Bad Homburg na rok 2026 - p. Hrašková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Hrašková Bohumila.",
+      "castka_czk": 126000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36301573",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

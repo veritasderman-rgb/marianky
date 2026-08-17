@@ -1,0 +1,476 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "43277748",
+    "nazev": "Petr Rosenkranc"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-04-10",
+    "do": "2025-07-07",
+    "prvni_rok": 1992,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 22,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 21
+    },
+    "dle_jistoty": {
+      "fakt": 22
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:43277748:vznik",
+      "datum": "1992-04-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-04-10",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Petr Rosenkranc",
+      "popis": "Vznik subjektu Petr Rosenkranc (IČO 43277748), Zemědělský podnikatel - fyzická osoba, obor: Rostlinná a živočišná výroba, myslivost a související činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:207049",
+      "datum": "2016-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-16",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - odvodnění pozemkových parcel č. 1936 a 753, k.ú. Úšovice v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc - Sváta.",
+      "castka_czk": 70438.94,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/218849",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:230789",
+      "datum": "2016-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-14",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Oprava odvodňovacího žlabu v chodníku před hotelem Cristal, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc – Sváta.",
+      "castka_czk": 276714.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/245857",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:349173",
+      "datum": "2016-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-05",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava plotu výměnou včetně podezdívky MŠ Skalníkova",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc - Sváta.",
+      "castka_czk": 251150.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/372277",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:384641",
+      "datum": "2016-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-10",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava a zabezpečení násypů na uhlí v NP Skalníkova 471 - Kroupa, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta.",
+      "castka_czk": 82340.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/409605",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:467057",
+      "datum": "2016-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-24",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava kanalizace a osazení zpětné klapky v suterénu staré budovy ZŠ Jih, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení, Rosenkranc-Sváta.",
+      "castka_czk": 211930.29,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/497065",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:670629",
+      "datum": "2016-11-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-24",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava izolace a odvodnění základové spáry ZŠ Úšovice, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení Rosenkranc-Sváta.",
+      "castka_czk": 88910.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/711973",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1075065",
+      "datum": "2017-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-24",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava WC včetně výměny vodoinstalace, sanitárních předmětů, odsávání a obkladů v suterénu v MŠ Křižíkova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení, Rosenkranc-Sváta.",
+      "castka_czk": 64219.54,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1144353",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1329830",
+      "datum": "2017-03-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-09",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava části plotu z ulice Tepelská výměnou včetně podezdívky v MŠ Skalníkova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení Rosenkranc-Sváta.",
+      "castka_czk": 248480.76,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1434666",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1369002",
+      "datum": "2017-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-03-15",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava příjezdové cesty a odstavné plochy v MŠ Třešňovka -  Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení - Rosenkranc-Sváta.",
+      "castka_czk": 256282.84,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1479786",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:1554070",
+      "datum": "2017-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava základové spáry, kanalizace a vnější izolace NP Družstevní 415, Mariánské Lázně - Autosalon",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení - Rosenkranc-Sváta.",
+      "castka_czk": 89435.94,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1675934",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2037918",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava okapového chodníku, včetně izolace v MŠ VORA – zadní trakt - Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení - Rosenkranc-Sváta.",
+      "castka_czk": 194265.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2196670",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2186782",
+      "datum": "2017-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-26",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava podezdívky plotu v MŠ Hlavní - Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta.",
+      "castka_czk": 99621.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2356786",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2295918",
+      "datum": "2017-06-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-26",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - oprava palisád u chodníku v ulici Bezejmenná, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalace vody a topení, provádění staveb Rosenkranc - Sváta.",
+      "castka_czk": 84024.82,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2475866",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3811428",
+      "datum": "2017-07-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-26",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka opravy chodníku v areálu ZŠ Vítězství Mariánské Lázně",
+      "popis": "Základní škola Vítězství Mariánské Lázně — výdaj, protistrana Rosenkranc – Sváta.",
+      "castka_czk": 79847.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4110508",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47724978.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2745606",
+      "datum": "2017-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-18",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava plotu výměnou včetně podezdívky v ZŠ Vítězství, Mariánské Lázně - Hamrníky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta.",
+      "castka_czk": 259582.51,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2954730",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3000054",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava sprchy pro personál včetně obkladů a dlažby a oprava vzduchotechniky MŠ Křižíkova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta - Instalatérství, topenářství, provádění staveb, jejich změn a odstraňování.",
+      "castka_czk": 142989.33,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3232070",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3005558",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava hlavní páteřní cesty v Miniatur park Boheminium, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta - Instalatérství, topenářství, provádění staveb, jejich změn a odstraňování.",
+      "castka_czk": 499785.66,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3237870",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3732500",
+      "datum": "2017-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava topného systému v domě Chopin, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Instalatérství, topenářství, provádění staveb, jejich změn a odstraňování Rosenkranc-Sváta.",
+      "castka_czk": 85494.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4026180",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:3792768",
+      "datum": "2017-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-07",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havárie požárního vodovodu výměnou v NP Máchova 269, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Rosenkranc-Sváta - Instalatérství, topenářství, provádění staveb, jejich změn a odstraňování.",
+      "castka_czk": 174429.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4090420",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31501145",
+      "datum": "2025-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-03",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 35/25 - Oprava nefunkčního - rozpadlého tukového lapolu výměnou v MŠ Křižíkova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Rosenkranc.",
+      "castka_czk": 468442.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33616937",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31887165",
+      "datum": "2025-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-07",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "OBJEDNÁVKA 45/25 - Oprava  dožilých - zarostlých rozvodů vody v havarijním stavu v umývárnách MŠ VORA, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Petr Rosenkranc.",
+      "castka_czk": 85445.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34020945",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

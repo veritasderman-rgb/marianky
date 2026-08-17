@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29148472",
+    "nazev": "ARCHZONE architects, s. r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-06-12",
+    "do": "2018-06-12",
+    "prvni_rok": 2018,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "stredni": 1,
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2018-159/11__5610959",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Zpracování územně plánovacího podkladu - územní studie dopravního řešení a využitelnosti lokality u nemocnice",
+      "popis": "Odhadované spojení smlouvy z 2018-06-12 s bodem 159/11 z 2018-06-12 (Souhlas s přidělením zakázky - ÚS Nemocnice). Jistota stredni.",
+      "castka_czk": 217800.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29148472 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 0 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/6042999",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5610959",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Zpracování územně plánovacího podkladu - územní studie dopravního řešení a využitelnosti lokality u nemocnice",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ARCHZONE architects, s. r. o..",
+      "castka_czk": 217800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6042999",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-159-159/11",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Souhlas s přidělením zakázky - ÚS Nemocnice",
+      "popis": "Rada města, bod 159/11, usnesení 321/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1959803",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

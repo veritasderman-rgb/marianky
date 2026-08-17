@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28492170",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-02-05",
+    "do": "2014-07-02",
+    "prvni_rok": 2013,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-98-98/10",
+      "datum": "2013-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-02-05",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "GTS – nový dodatek a specifikace služeb",
+      "popis": "Rada města, bod 98/10, usnesení 56/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/898948",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-108-108/2",
+      "datum": "2013-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-05-07",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Přidání IP adres GTS",
+      "popis": "Rada města, bod 108/2, usnesení 193/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/941236",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/108.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-159-159/16",
+      "datum": "2014-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-07-02",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "GTS – nový dodatek a specifikace služeb",
+      "popis": "Rada města, bod 159/16, usnesení 292/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1178576",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

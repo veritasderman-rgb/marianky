@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "42817960",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-05-27",
+    "do": "2022-02-22",
+    "prvni_rok": 2016,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:42817960:vznik",
+      "datum": "2016-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-05-27",
+      "rok": 2016,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Štefan Kovač",
+      "popis": "Vznik subjektu Štefan Kovač (IČO 42817960), Fyzická osoba podnikající dle živnostenského zákona, obor: Zprostředkování v oblasti velkoobchodu za provizi.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-76-76/1",
+      "datum": "2016-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-19",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - přistoupení nájemce k nájemní smlouvě",
+      "popis": "Rada města, bod 76/1, usnesení 360/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1606545",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/76.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-103-103/3",
+      "datum": "2017-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-14",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 226 - prodloužení nájemního vztahu - Marcela Kovačová, Štefan Kovač",
+      "popis": "Rada města, bod 103/3, usnesení 99/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1711552",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/103.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/7",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 226, 227 - prodloužení Smlouvy o nájmu nebytového prostoru - Štefan Kovač, Marcela Kovačová",
+      "popis": "Rada města, bod 139/7, usnesení 85/22. Schvaleno.",
+      "castka_czk": 62400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2812334",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

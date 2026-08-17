@@ -1,0 +1,580 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "07815107",
+    "nazev": "CLUB NA DVORKU s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-01-17",
+    "do": "2023-04-25",
+    "prvni_rok": 2019,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 27,
+    "dolozenych": 18,
+    "odhadu": 9,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 13,
+      "retez": 9,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 18,
+      "nizka": 7,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:07815107:vznik",
+      "datum": "2019-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-17",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — CLUB NA DVORKU  s.r.o.",
+      "popis": "Vznik subjektu CLUB NA DVORKU  s.r.o. (IČO 07815107), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-15-15/10",
+      "datum": "2019-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-12",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projednání Svatováclavské slavnosti,neuplatňování sankce k akci Phill Niblock Marienbad film z.s.",
+      "popis": "Rada města, bod 15/10, usnesení 130/19. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2311523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-5-5/6",
+      "datum": "2019-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2019 - 1. výzva",
+      "popis": "Zastupitelstvo města, bod 5/6, usnesení 81/19. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2319249",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-15/10__8655723",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-12 s bodem 15/10 z 2019-03-12 (Fond kultury 2019-schválení žádostí,projednání 2.zápisu KK,vracení dotace Čajokrásno,projedn",
+      "castka_czk": 65000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9331979",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-5/6__8655723",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Odhadované spojení smlouvy z 2019-06-12 s bodem 5/6 z 2019-04-09 (Fond kultury 2019 - 1. výzva). Jistota nizka.",
+      "castka_czk": 65000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9331979",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8655723",
+      "datum": "2019-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-12",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Příspěvek z fondu kultury 2019",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CLUB NA DVORKU s.r.o..",
+      "castka_czk": 65000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9331979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-54-54/3",
+      "datum": "2020-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-21",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozdělení FK na rok 2020",
+      "popis": "Rada města, bod 54/3, usnesení 38/20. Schvaleno.",
+      "castka_czk": 90000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2466194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-11-11/12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12, usnesení 232/20. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2462491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-73-73/18",
+      "datum": "2020-06-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-09",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Parkáč Fest - Mariánky",
+      "popis": "Rada města, bod 73/18, usnesení 317/20. Schvaleno.",
+      "castka_czk": 260000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2535549",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-73/18__12069320",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Odhadované spojení smlouvy z 2020-06-11 s bodem 73/18 z 2020-06-09 (Parkáč Fest - Mariánky). Jistota nizka.",
+      "castka_czk": 71000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12956184",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-11/12__12069320",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Odhadované spojení smlouvy z 2020-06-11 s bodem 11/12 z 2020-02-18 (Fond kultury 2020 - přidělení dotací). Jistota nizka.",
+      "castka_czk": 71000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 114 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12956184",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12069320",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CLUB NA DVORKU s.r.o..",
+      "castka_czk": 71000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12956184",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-14-14/4",
+      "datum": "2020-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-23",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Neinvestiční dotace -Parkáč Fest -Mariánky",
+      "popis": "Zastupitelstvo města, bod 14/4, usnesení 290/20. Schvaleno.",
+      "castka_czk": 260000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2533477",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-73/18__12257524",
+      "datum": "2020-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-01",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Parkáč Fest - Mariánky",
+      "popis": "Odhadované spojení smlouvy z 2020-07-01 s bodem 73/18 z 2020-06-09 (Parkáč Fest - Mariánky). Jistota stredni.",
+      "castka_czk": 260000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/13154864",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-14/4__12257524",
+      "datum": "2020-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-01",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Parkáč Fest - Mariánky",
+      "popis": "Odhadované spojení smlouvy z 2020-07-01 s bodem 14/4 z 2020-06-23 (Neinvestiční dotace -Parkáč Fest -Mariánky). Jistota stredni.",
+      "castka_czk": 260000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova d",
+      "url": "https://smlouvy.gov.cz/smlouva/13154864",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12257524",
+      "datum": "2020-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-01",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Parkáč Fest - Mariánky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CLUB NA DVORKU s.r.o..",
+      "castka_czk": 260000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13154864",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/9",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Žádost o individuální dotaci z rozpočtu města 2022 - Mariánský fest",
+      "popis": "Zastupitelstvo města, bod 23/9, usnesení 510/21. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754089",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/7",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Mariánský fest 2022",
+      "popis": "Zastupitelstvo města, bod 25/7, usnesení 535/22. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792588",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-135/5__18635423",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-04-19 s bodem 135/5 z 2022-01-18 (Fond kultury 1.kolo 2022). Jistota nizka.",
+      "castka_czk": 85000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 91 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20031099",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/6__18635423",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-04-19 s bodem 25/6 z 2022-03-01 (Fond kultury - 1. výzva 2022). Jistota nizka.",
+      "castka_czk": 85000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 49 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20031099",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/7__18635423",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-04-19 s bodem 25/7 z 2022-03-01 (Mariánský fest 2022). Jistota nizka.",
+      "castka_czk": 85000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 07815107 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 49 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20031099",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18635423",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CLUB NA DVORKU s.r.o..",
+      "castka_czk": 85000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20031099",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-148-148/9",
+      "datum": "2022-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-24",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2022",
+      "popis": "Rada města, bod 148/9, usnesení 241/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2852931",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-28-28/3",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo",
+      "popis": "Zastupitelstvo města, bod 28/3, usnesení 606/22. Schvaleno.",
+      "castka_czk": 445000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2853699",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-6-6/19",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně - Club Na Dvorku s.r.o.",
+      "popis": "Zastupitelstvo města, bod 6/19, usnesení 94/23. Schvaleno.",
+      "castka_czk": 135000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2987099",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

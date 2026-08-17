@@ -1,0 +1,858 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "12481980",
+    "nazev": "Ing. Richard Stoklasa"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-06-27",
+    "do": "2026-07-02",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 41,
+    "dolozenych": 29,
+    "odhadu": 12,
+    "dle_typu": {
+      "usneseni": 7,
+      "retez": 12,
+      "smlouva": 22
+    },
+    "dle_jistoty": {
+      "fakt": 29,
+      "nizka": 12
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-119-119/3",
+      "datum": "2017-06-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-27",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Výkon technického dozoru investora a výkon činnosti koordinátora BOZP na stavbě „Snížení energetické náročnosti budovy zázemí sportovní haly v Mariánských Lázních“",
+      "popis": "Rada města, bod 119/3, usnesení 374/17.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1780168",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-119/3__3053190",
+      "datum": "2017-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-15",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Výkon technického dozoru investora s koordinátora BOZP na stavbě „Snížení energetické náročnosti zázemí sportovní haly v Mariánských Lázních“",
+      "popis": "Odhadované spojení smlouvy z 2017-09-15 s bodem 119/3 z 2017-06-27 (Výkon technického dozoru investora a výkon činnosti koordinátora BOZP na stavbě „Snížení ene",
+      "castka_czk": 148830.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; smlouva podepsána 80 dní po usnesení; název bodu a předmět smlouvy sdílí slova bozp, dozoru, energeticke, haly; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/3289658",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3053190",
+      "datum": "2017-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-15",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Výkon technického dozoru investora s koordinátora BOZP na stavbě „Snížení energetické náročnosti zázemí sportovní haly v Mariánských Lázních“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa, Ing. Richard Stoklasa.",
+      "castka_czk": 148830.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3289658",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-119/3__5071667",
+      "datum": "2018-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Účelem této smlouvy je zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „Park Boheminium – Rekonstrukce sociálního zařízení“, která spočívá ve stavebních pracích dle příslušné projektové dokumentace",
+      "popis": "Odhadované spojení smlouvy z 2018-05-04 s bodem 119/3 z 2017-06-27 (Výkon technického dozoru investora a výkon činnosti koordinátora BOZP na stavbě „Snížení ene",
+      "castka_czk": 96000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; smlouva podepsána 311 dní po usnesení; název bodu a předmět smlouvy sdílí slova dozoru, investora, technickeho; k témuž usnesení se hlásí i 2 další smlouvy té",
+      "url": "https://smlouvy.gov.cz/smlouva/5465643",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5071667",
+      "datum": "2018-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Účelem této smlouvy je zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „Park Boheminium – Rekonstrukce sociálního zařízení“, která spočívá ve stavebních pracích dle příslušné projektové dokumentace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa, Ing. Richard Stoklasa.",
+      "castka_czk": 96000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5465643",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-119/3__6141967",
+      "datum": "2018-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „ZŠ Úšovice – rekonstrukce školních dílen“",
+      "popis": "Odhadované spojení smlouvy z 2018-08-29 s bodem 119/3 z 2017-06-27 (Výkon technického dozoru investora a výkon činnosti koordinátora BOZP na stavbě „Snížení ene",
+      "castka_czk": 192500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 428 dní po usnesení; název bodu a předmět smlouvy sdílí slova dozoru, investora, technickeho; k témuž ",
+      "url": "https://smlouvy.gov.cz/smlouva/6620739",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6141967",
+      "datum": "2018-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „ZŠ Úšovice – rekonstrukce školních dílen“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 192500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6620739",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-14-14/5",
+      "datum": "2019-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-05",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "VZ Rekonstrukce chlazení zimního stadionu v Mariánských Lázních - TDI - výběr dodavatele",
+      "popis": "Rada města, bod 14/5, usnesení 115/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2307536",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:7973107",
+      "datum": "2019-03-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Účelem této smlouvy je zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „Zimní stadion Mariánské Lázně – rekonstrukce chladící desky  a technologie chlazení“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 179400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8608367",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8845859",
+      "datum": "2019-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Výkon technického dozoru na stavbě \"Přístavba nářaďovny tělocvičny ZŠ Úšovice\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 66000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9533195",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11095108",
+      "datum": "2020-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Výkon technického dozoru investora na stavbě Odvlhčení a hydroizolace spodní stavby objektu Chebská 252",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 79860.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11938460",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11113596",
+      "datum": "2020-03-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "výkon technického dozoru investora na stavbě Odvlhčení a hydroizolace spodní stavby objektu Chebská 252",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 79860.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11957724",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11564384",
+      "datum": "2020-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Kontrola a provádění TDI stavby\"Oprava komunikace, SO 102 - ul. Chebská, v Mariánských Lázních,1.a 2.etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Fa. HotelServis.",
+      "castka_czk": 105875.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12427408",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11674504",
+      "datum": "2020-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-04",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Provádění technického dozoru a cenového managera pro stavbu Regenerace sídliště Plzeňská, M. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 88000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12542712",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:18038083",
+      "datum": "2022-02-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-08",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "výkon technického dozoru investora na stavbě  „Dům Chopin – rekonstrukce objektu – 2. etapa“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 421806.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19399663",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/40",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka ulice Tomáškova a Šafaříkova, Mariánské Lázně - TDI - výběr dodavatele",
+      "popis": "Rada města, bod 54/40, usnesení 376/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3200394",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:27009628",
+      "datum": "2024-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-TDI \"Chodník a zastávky u silnice II/230, Plzeňská ul., Skláře",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 90750.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28889188",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27157308",
+      "datum": "2024-06-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-10",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Zabezpečení výkonu technického dozoru investora při realizaci stavby a po dokončení stavby „Ulice Tomáškova a Šafaříkova, Mariánské Lázně“, která spočívá ve stavebních pracích dle příslušné projektové dokumentace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 118580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29042812",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27438816",
+      "datum": "2024-06-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-13",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-TDI \"Zastávka MHD Sídliště, ul. Skalníkova, Mariánské Lázně\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 83490.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29334608",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28985032",
+      "datum": "2024-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - technický dozor investora na akci \"Parkoviště Nemocnice M.L.\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 272250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30976452",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/37",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dohoda o narovnání – výkon TDI „Rekonstrukce Hlavní třídy – světelná křižovatka – Česká pošta, 1. etapa, Mariánské Lázně“",
+      "popis": "Rada města, bod 73/37, usnesení 862/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3295027",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:29764208",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Technická dozor stavebníka na akci Městské muzeum Mariánské Lázně - posílení stropu nad 1. NP",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 30250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31796156",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:32322921",
+      "datum": "2025-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Příkazní smlouva, TDI ,Rekonstrukce Hlavní třídy, 2. etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 147000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34477993",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-93-93/22",
+      "datum": "2025-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-22",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení rozšíření činnosti TDI a uzavření dodatku k příkazní smlouvě o výkonu TDI s Ing. R. Stoklasa na stavbě „Ul. Tomáškova a Šafaříkova“",
+      "popis": "Rada města, bod 93/22, usnesení 526/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3402076",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/93.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/22__32516053",
+      "datum": "2025-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-04",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 k příkazní smlouvě  o výkonu TDI  na stavbě „Ulice Tomáškova a Šafaříkova, Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2025-09-04 s bodem 93/22 z 2025-07-22 (Schválení rozšíření činnosti TDI a uzavření dodatku k příkazní smlouvě o výkonu TDI s Ing. R",
+      "castka_czk": 147000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; smlouva podepsána 44 dní po usnesení; název bodu a předmět smlouvy sdílí slova prikazni, safarikova, stavbe, tomaskova; obojí je dodatek č. 1; k témuž usnesen",
+      "url": "https://smlouvy.gov.cz/smlouva/34680265",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32516053",
+      "datum": "2025-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-04",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 k příkazní smlouvě  o výkonu TDI  na stavbě „Ulice Tomáškova a Šafaříkova, Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa\\nprovozovna: Ruská 72/10, Mariánské Lázně.",
+      "castka_czk": 147000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34680265",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/22__33355361",
+      "datum": "2025-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka – na technický dozor investora na akci: “Technické zhodnocení Masarykovy ulice“",
+      "popis": "Odhadované spojení smlouvy z 2025-11-10 s bodem 93/22 z 2025-07-22 (Schválení rozšíření činnosti TDI a uzavření dodatku k příkazní smlouvě o výkonu TDI s Ing. R",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 111 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/35556213",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33355361",
+      "datum": "2025-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – na technický dozor investora na akci: “Technické zhodnocení Masarykovy ulice“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 75000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35556213",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-93/22__34205741",
+      "datum": "2026-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-16",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka – na technický dozor investora na akci: “ Nafukovací tenisová hala – Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2026-01-16 s bodem 93/22 z 2025-07-22 (Schválení rozšíření činnosti TDI a uzavření dodatku k příkazní smlouvě o výkonu TDI s Ing. R",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 178 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/36447645",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34205741",
+      "datum": "2026-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-16",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – na technický dozor investora na akci: “ Nafukovací tenisová hala – Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 75000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36447645",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/18",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Chodník Skláře - TDI a zajišťování služeb koordinátora BOZP\" - výběr dodavatele",
+      "popis": "Rada města, bod 114/18, usnesení 1040/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3920943075",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-114-114/19",
+      "datum": "2026-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-30",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Technické zhodnocení atletického areálu Viktoria - stavební úpravy šaten - TDI a zajišťování služeb koordinátora BOZP\" - výběr dodavatele",
+      "popis": "Rada města, bod 114/19, usnesení 1041/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3709862178",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/114.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/18__35206805",
+      "datum": "2026-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-09",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka – Provádění technického dozoru investora a zajišťování služeb koordinátora BOZP pro akci „Chodník Skláře“",
+      "popis": "Odhadované spojení smlouvy z 2026-04-09 s bodem 114/18 z 2026-03-30 (Veřejná zakázka \"Chodník Skláře - TDI a zajišťování služeb koordinátora BOZP\" - výběr dodav",
+      "castka_czk": 199000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova bozp, chodnik, koordinatora, sklare; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/37492157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/19__35206805",
+      "datum": "2026-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-09",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka – Provádění technického dozoru investora a zajišťování služeb koordinátora BOZP pro akci „Chodník Skláře“",
+      "popis": "Odhadované spojení smlouvy z 2026-04-09 s bodem 114/19 z 2026-03-30 (Veřejná zakázka \"Technické zhodnocení atletického areálu Viktoria - stavební úpravy šaten -",
+      "castka_czk": 199000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova bozp, koordinatora, sluzeb, zajistovani; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/37492157",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35206805",
+      "datum": "2026-04-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-09",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Provádění technického dozoru investora a zajišťování služeb koordinátora BOZP pro akci „Chodník Skláře“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 199000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37492157",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/18__35387269",
+      "datum": "2026-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-20",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - na technický dozor investroa na akci: &amp;quot;Bezbariérový vstup do kostela P.M.Nanebevzetí&amp;quot;",
+      "popis": "Odhadované spojení smlouvy z 2026-04-20 s bodem 114/18 z 2026-03-30 (Veřejná zakázka \"Chodník Skláře - TDI a zajišťování služeb koordinátora BOZP\" - výběr dodav",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/37680725",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/19__35387269",
+      "datum": "2026-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-20",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - na technický dozor investroa na akci: &amp;quot;Bezbariérový vstup do kostela P.M.Nanebevzetí&amp;quot;",
+      "popis": "Odhadované spojení smlouvy z 2026-04-20 s bodem 114/19 z 2026-03-30 (Veřejná zakázka \"Technické zhodnocení atletického areálu Viktoria - stavební úpravy šaten -",
+      "castka_czk": 75000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/37680725",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35387269",
+      "datum": "2026-04-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-20",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - na technický dozor investroa na akci: &amp;quot;Bezbariérový vstup do kostela P.M.Nanebevzetí&amp;quot;",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 75000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37680725",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/18__36746602",
+      "datum": "2026-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-02",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - Provedení Výkonu  TDI a KOO BOZP  – Cyklostezka Mariánské Lázně – Hamrníky dle nabídky ze dne 2.7.2026.",
+      "popis": "Odhadované spojení smlouvy z 2026-07-02 s bodem 114/18 z 2026-03-30 (Veřejná zakázka \"Chodník Skláře - TDI a zajišťování služeb koordinátora BOZP\" - výběr dodav",
+      "castka_czk": 182500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/39095058",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-114/19__36746602",
+      "datum": "2026-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-02",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka - Provedení Výkonu  TDI a KOO BOZP  – Cyklostezka Mariánské Lázně – Hamrníky dle nabídky ze dne 2.7.2026.",
+      "popis": "Odhadované spojení smlouvy z 2026-07-02 s bodem 114/19 z 2026-03-30 (Veřejná zakázka \"Technické zhodnocení atletického areálu Viktoria - stavební úpravy šaten -",
+      "castka_czk": 182500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12481980 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 94 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/39095058",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36746602",
+      "datum": "2026-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-02",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Provedení Výkonu  TDI a KOO BOZP  – Cyklostezka Mariánské Lázně – Hamrníky dle nabídky ze dne 2.7.2026.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Richard Stoklasa.",
+      "castka_czk": 182500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/39095058",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

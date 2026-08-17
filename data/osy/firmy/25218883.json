@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25218883",
+    "nazev": "VÝTAHY SCHMITT+SOHN s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-04-04",
+    "do": "2023-05-15",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-19-19/17",
+      "datum": "2023-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-04",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "VZ Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně - výměna lůžkového evakuačního výtahu v budově A - výběr dodavatele",
+      "popis": "Rada města, bod 19/17, usnesení 205/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2997998",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-19/17__22835227",
+      "datum": "2023-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-15",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně – dodávka a výměna lůžkového evakuačního výtahu v budově A.“.",
+      "popis": "Odhadované spojení smlouvy z 2023-05-15 s bodem 19/17 z 2023-04-04 (VZ Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně - výměna lůžkového evakua",
+      "castka_czk": 1716950.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25218883 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; název bodu a předmět smlouvy sdílí slova budove, domov, evakuacniho, luzkoveho",
+      "url": "https://smlouvy.gov.cz/smlouva/24479279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22835227",
+      "datum": "2023-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-15",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně – dodávka a výměna lůžkového evakuačního výtahu v budově A.“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VÝTAHY SCHMITT+SOHN s.r.o..",
+      "castka_czk": 1716950.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24479279",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

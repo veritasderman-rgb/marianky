@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26843935",
+    "nazev": "Z + M Partner, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-03-16",
+    "do": "2026-04-14",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:35466981",
+      "datum": "2026-03-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-03-16",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – zajištění administrace veřejných zakázek pro Město Mariánské Lázně v rámci projektů „Řešení bezbariérovosti a modernizace učebny chemie a multimediální učebny na ZŠ JIH” a „Modernizace multimediální učebny a vybudování učebny jazyků na ZŠ Úš",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Z + M Partner, spol. s r.o..",
+      "castka_czk": 142175.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37764025",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/28",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Zajištění administrace veřejných zakázek v rámci projektů „Řešení bezbariérovosti a modernizace učebny chemie a multimediální učebny na ZŠ JIH” a „Modernizace multimediální učebny a vybudování učebny jazyků na ZŠ Úšovice”",
+      "popis": "Rada města, bod 115/28, usnesení 1091/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3022739193",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63073463",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-12-04",
+    "do": "2015-09-15",
+    "prvni_rok": 2012,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-90-90/16",
+      "datum": "2012-12-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-04",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Studie MHD",
+      "popis": "Rada města, bod 90/16, usnesení 598/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/852915",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-37-37/12",
+      "datum": "2015-09-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-15",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Studie elektrifikované MHD - výběr zpracovatele",
+      "popis": "Rada města, bod 37/12, usnesení 420/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1460225",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

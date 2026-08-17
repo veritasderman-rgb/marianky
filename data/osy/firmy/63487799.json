@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "63487799",
+    "nazev": "Z-Group a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-02-16",
+    "do": "2025-02-26",
+    "prvni_rok": 2021,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:zastupitelstvo-2021-18-18/20",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Snížení ZK společnosti MHD Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 18/20, usnesení 397/21. Schvaleno.",
+      "castka_czk": 51996000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2640503",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-18/20__16858395",
+      "datum": "2021-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-15",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu prostor sloužících podnikání",
+      "popis": "Odhadované spojení smlouvy z 2021-10-15 s bodem 18/20 z 2021-02-16 (Snížení ZK společnosti MHD Mariánské Lázně). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 63487799 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 241 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18151175",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16858395",
+      "datum": "2021-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-15",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu prostor sloužících podnikání",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Z-Group a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18151175",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-49-49/41",
+      "datum": "2024-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-02",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o právu provedení stavby „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lázně“ – na pozemku Z-Group a.s.",
+      "popis": "Rada města, bod 49/41, usnesení 239/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3175099",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/49.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-49/41__16857655",
+      "datum": "2025-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "DODATEK Č.2 SMLOUVY O NÁJMU PROSTOR SLOUŽÍCÍCH PODNIKÁNÍ",
+      "popis": "Odhadované spojení smlouvy z 2025-02-26 s bodem 49/41 z 2024-04-02 (Smlouva o právu provedení stavby „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lá",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 63487799 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 330 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/33102296",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-49/41__16857707",
+      "datum": "2025-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu prostor sloužících podnikání, Dodatek č.2",
+      "popis": "Odhadované spojení smlouvy z 2025-02-26 s bodem 49/41 z 2024-04-02 (Smlouva o právu provedení stavby „Okružní křižovatka ul. Plzeňská - Černý most, Mariánské Lá",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 63487799 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 330 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/37667225",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16857655",
+      "datum": "2025-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "DODATEK Č.2 SMLOUVY O NÁJMU PROSTOR SLOUŽÍCÍCH PODNIKÁNÍ",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Z-Group a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33102296",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16857707",
+      "datum": "2025-02-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu prostor sloužících podnikání, Dodatek č.2",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana Z-Group a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37667225",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

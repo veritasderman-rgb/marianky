@@ -1,0 +1,239 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "23615681",
+    "nazev": "Knižní lázně, z.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-08-20",
+    "do": "2026-04-15",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 8,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:23615681:vznik",
+      "datum": "2025-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-20",
+      "rok": 2025,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Knižní lázně, z.s.",
+      "popis": "Vznik subjektu Knižní lázně, z.s. (IČO 23615681), Spolek, obor: Umělecká tvorba a činnosti v oblasti scénických umění.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-97-97/19",
+      "datum": "2025-09-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-02",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně pro Knižní lázně z.s. na kulturní akci \"Knižní lázně\" (festival) v letech 2026,2027",
+      "popis": "Rada města, bod 97/19, usnesení 610/25. Schvaleno.",
+      "castka_czk": 150000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/693767278",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2025-22-22/16",
+      "datum": "2025-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-16",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Knižní lázně z.s. na kulturní akci \"Knižní lázně\" (festival) v letech 2026 a 2027 - individuální dotace z rozpočtu města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 22/16, usnesení 522/25. Schvaleno.",
+      "castka_czk": 150000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1719381054",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2025/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-97/19__33178097",
+      "datum": "2025-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-27",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o spolupráci při pořádání Knižních lázní",
+      "popis": "Odhadované spojení smlouvy z 2025-10-27 s bodem 97/19 z 2025-09-02 (Individuální dotace z rozpočtu města Mariánské Lázně pro Knižní lázně z.s. na kulturní akci ",
+      "castka_czk": 300000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 23615681 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 55 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35370517",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2025-22/16__33178097",
+      "datum": "2025-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-27",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o spolupráci při pořádání Knižních lázní",
+      "popis": "Odhadované spojení smlouvy z 2025-10-27 s bodem 22/16 z 2025-09-16 (Knižní lázně z.s. na kulturní akci \"Knižní lázně\" (festival) v letech 2026 a 2027 - individu",
+      "castka_czk": 300000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 23615681 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 41 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/35370517",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33178097",
+      "datum": "2025-10-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o spolupráci při pořádání Knižních lázní",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Knižní lázně, z.s..",
+      "castka_czk": 300000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35370517",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-104-104/18",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Individuální dotace z rozpočtu města Mariánské Lázně - Knižní lázně z.s. Mezinárodní den seniorův ML 2025",
+      "popis": "Rada města, bod 104/18, usnesení 776/25. Schvaleno.",
+      "castka_czk": 50000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/784854721",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-109-109/5",
+      "datum": "2026-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-20",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026",
+      "popis": "Rada města, bod 109/5, usnesení 890/26. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3187817315",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/109.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2026-25-25/6",
+      "datum": "2026-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-10",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2026 - 1.výzva",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 566/26. Schvaleno.",
+      "castka_czk": 2000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3521785718",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2026/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:35286565",
+      "datum": "2026-04-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-15",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Knižní lázně z.s. - SETKÁNÍ KNIŽNÍCH LÁZNÍ 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Knižní lázně, z.s..",
+      "castka_czk": 80000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37575429",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

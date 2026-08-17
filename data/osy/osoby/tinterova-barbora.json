@@ -1,0 +1,466 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "tinterova-barbora",
+    "jmeno": "Barbora Tintěrová",
+    "role": [
+      "statutár"
+    ],
+    "kategorie": "mestske-firmy",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-02",
+    "do": "2026-01",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 21,
+    "dolozenych": 21,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 21
+    },
+    "dle_jistoty": {
+      "fakt": 21
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-02-024",
+      "datum": "2016-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-02-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Fotobanka Mariánské Lázně",
+      "popis": "Fotografie s tématem Mariánské Lázně a okolí ke stažení ZDAR- MA. Fotografie poskytuje město Mariánské Lázně a autoři fotografií bezplatně k propagačním účelům ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=011a4254%7C864#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-02/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-03-038",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Zahájení Lázeňské sezóny 2016",
+      "popis": "Zahájení lázeňské sezóny je významnou akcí, do které se mohou zapojit i místní podnikatelé. Loňský ročník ukázal, že společná prezentace města je krok tím správ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-034",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Lázně v pohodlí vašeho domova",
+      "popis": "Infocentrum města Mariánské Lázně jako jediné v Mariánských Lázních nabízí novinku na českém trhu, díky níž si můžete dopřát léčebnou kúru ve vlastní koupelně n",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/034.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-06-006",
+      "datum": "2016-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-06-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "O Mariánské Lázně byl v Číně zájem",
+      "popis": "Každé dva roky se koná Mezinárodní fórum cestovního ruchu starostů a primátorů (Internatinal Mayor's Forum on Tourism), které pořádá UNWTO (United Nations World",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c7fd3881%7C969#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-06/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-011",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Pendolino odkloněno kvůli sjezdu infocenter",
+      "popis": "Infocentrum města Mariánské Lázně hostilo od 20.− 21.10. 2016 okolo 150 účastníků členského fóra Asociace turistických informačních center z celé České republik",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-004",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ VZDAJÍ HOLD SPISOVATELŮM",
+      "popis": "Johann Wolfgang Goethe, Mark Twain, Ivan Alexandrovič Gončarov, Franz Kafka, Rudyard Kipling, Jan Neruda, Ivan Olbracht, Alexej Nikolajevič Tolstoj, Václav Bene",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-11-008",
+      "datum": "2017-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MALÝ PRŮVODCE MĚSTEM – NOVÝ PRŮVODCE PRO TURISTY",
+      "popis": "Infocentrum města Mariánské Lázně získalo dotaci Karlovarského kraje na nový propagační materiál, který nazvalo „Malý průvodce městem“. Průvodce je navržen přes",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=626f0d1f%7C1331#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-11/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-11-010",
+      "datum": "2017-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "POČET HOSTŮ V NAŠEM MĚSTĚ STÁLE ROSTE",
+      "popis": "■ ■ Statistické údaje za 2. čtvrtletí 2017  Český statistický úřad zveřejnil statistiky návštěvnosti pro město Mariánské Lázně za druhé čtvrtletí. Ve druhém čtv",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=626f0d1f%7C1331#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-11/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-02-005",
+      "datum": "2018-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-02-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "OZNAČTE SI V KALENDÁŘI DRUHÝ KVĚTNOVÝ VÍKEND",
+      "popis": "Mariánské Lázně letos budou žít oslavami 200 let od prohlášení města veřejným lázeňským místem. A nejvíc si toto významné jubileum připomeneme při slavnostním z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9973aa8d%7C1433#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-02/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-04-007",
+      "datum": "2018-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-04-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "SOUTĚŽ PRO ZAMĚSTNAVATELE LIDÍ SE ZDRAVOTNÍM POSTIŽENÍM",
+      "popis": "Člověk by měl mít v životě stejnou šanci, jako ti ostatní. Proč by to nemělo platit pro lidi se zdravotním postižením? Pomoci v tom mohou zaměstnavatelé, kteří ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d8b2c4c7%7C1460#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-04/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-016",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Stezka spisovatelů",
+      "popis": "Autorka kresby: Ing. arch. Ludmila Míková  Vznik očekávané „stezky spisovatelů“ připravuje Infocentrum města Mariánské Lázně za významné spolupráce Městské knih",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-05-007",
+      "datum": "2019-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-05-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "lázeňské sezóny a zápisu do unesco",
+      "popis": "dokončení. ze str. 1  věhlasní interpreti z Francie, USA, Itálie a Kanady. Již počtvrté se letos bude konat mezinárodní přehlídka filmů Marienbad Film Festival ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=060a5862%7C1950#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-05/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-09-011",
+      "datum": "2019-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-09-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Nové trolejbusy pro Ml",
+      "popis": "Ve středu 7. srpna.2019 byla uzavřena smlouva na dodávku 8 trolejbusů. Nové trolejbusy Škoda 30 Tr dodá ŠKODA ELECT- RIC a.s. v létě příštího roku za 100.640.00",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1903aa03%7C2032#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-09/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-04-024",
+      "datum": "2020-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-04-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "SOUTĚŽE MLADÝCH KYTARISTŮ – PRAGUITARRA 2020",
+      "popis": "Dne 29. února 2020 pořádala Konzervatoř v Teplicích „Soutěžní přehlídku mladých talentů hry na kytaru“. V hudebním sále konzervatoře se porotě složené z pedagog",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0f8558a4%7C2237#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-04/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-07-020",
+      "datum": "2020-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-07-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánky jsou super!",
+      "popis": "O tom chce veřejnost přesvědčit město Mariánské Lázně, které schválilo akční letní kampaň zaměřenou na domácí cestovní ruch s názvem „Mariánky jsou super“. Cíle",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48249e56%7C2274#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-07/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-013",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "44. ročník turistického pochodu Krajem léčivých vod",
+      "popis": "tů z Mar. Lázní a okolí, ale i z Prahy, Benešova a dalších míst přispělo jistě také pěkné počasí. Poděkování patří vedení obce Ovesné Kladruby, městu Mariánské ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-09-022",
+      "datum": "2021-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-09-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "KŠANDY OD MARKA TWAINA, VÝSTAVA MARKA TWAINA V MARIÁNSKÝCH LÁZNÍCH",
+      "popis": "„Trvalo mi 15 let, než jsem pochopil, že nemám literární talent. Bylo však příliš pozdě. Už jsem nemohl odmítnout psát, moje knihy mě proslavily.“ Takto by mohl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6b70778c%7C2954#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-09/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-05-027",
+      "datum": "2022-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-05-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "KRAJSKÉ KOLO SOUTĚŽE DŘEVĚNÝCH DECHOVÝCH NÁSTROJŮ V CHEBU",
+      "popis": "Ve středu 30. března reprezentovalo celkem sedm žáků ZUŠ F. Chopina na krajské soutěži v Chebu. V oboru klarinet získali žáci ze třídy P. Čecha dvě první (Tomáš",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=01790d32%7C3416#page=25",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-05/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-01-010",
+      "datum": "2025-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-01-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Beneﬁční koncert na podporu povodněmi poškozené ZUŠ v Krnově",
+      "popis": "V pondělí 9. prosince pořádala ZUŠ Fryderyka Chopina Mariánské Lázně ve spolupráci s Domem Chopin benefiční koncert. Výtěžek z koncertu byl věnován ZUŠ Krnov. T",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=084c05c3%7C4435#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-01/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-01-001",
+      "datum": "2026-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-01-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Dům Chopin je dnes místem, kde to žije, říká Barbora Tintěrová",
+      "popis": "Obsah  Město připravuje Územní studii nového správního centra  Mariánské Lázně budou investovat do bytů, školství a dopravní  infrastruktury  Rekonstrukce Mírov",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=7d4b3c5f%7C4768#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-01/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-01-010",
+      "datum": "2026-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-01-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Dům Chopin je dnes místem, kde to žije, říká Barbora Tintěrová",
+      "popis": "Když se řekne infocentrum, mnoha lidem se vybaví pult s mapami a tipy na výlety. V Mariánských Lázních je ale jeho role mnohem širší. Společnost Infocentrum Mar",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=7d4b3c5f%7C4768#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-01/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

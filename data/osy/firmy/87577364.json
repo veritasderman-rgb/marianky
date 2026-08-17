@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "87577364",
+    "nazev": "Ing. arch. Pavel Petrák"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-01-31",
+    "do": "2019-06-28",
+    "prvni_rok": 2011,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:87577364:vznik",
+      "datum": "2011-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-01-31",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Ing. arch. Pavel Petrák",
+      "popis": "Vznik subjektu Ing. arch. Pavel Petrák (IČO 87577364), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Architektoni",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-27-27/16",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Víceúčelové sportovní hřiště pro ZŠ Vítězství, Mariánské Lázně, Hamrníky - PD - výběr dodavatele",
+      "popis": "Rada města, bod 27/16, usnesení 289/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2356850",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-27/16__8843639",
+      "datum": "2019-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Projektová dokumentace Víceúčelové sportovní hřiště pro ZŠ Vítězství, Mariánské Lázně, Hamrníky",
+      "popis": "Odhadované spojení smlouvy z 2019-06-28 s bodem 27/16 z 2019-06-11 (Víceúčelové sportovní hřiště pro ZŠ Vítězství, Mariánské Lázně, Hamrníky - PD - výběr dodava",
+      "castka_czk": 107690.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 87577364 je uvedeno v textu usnesení; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova hamrniky, hriste, sportovni, viceucelove",
+      "url": "https://smlouvy.gov.cz/smlouva/9530863",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8843639",
+      "datum": "2019-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Projektová dokumentace Víceúčelové sportovní hřiště pro ZŠ Vítězství, Mariánské Lázně, Hamrníky",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. arch. Pavel Petrák.",
+      "castka_czk": 107690.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9530863",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

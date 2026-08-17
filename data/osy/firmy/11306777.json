@@ -1,0 +1,95 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11306777",
+    "nazev": "Ladislav Šifta"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-02-05",
+    "do": "2024-01-12",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:7527855",
+      "datum": "2019-02-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-05",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o realizaci pořadu",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana ATRIBUT - středočeská umělecká agentura.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8126535",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:21966913",
+      "datum": "2023-02-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-20",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o  realizaci pořadu",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Atribut-středočeská umělecká agentura.",
+      "castka_czk": 181379.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23566137",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25437479",
+      "datum": "2024-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o realizaci pořadu",
+      "popis": "Městské divadlo Mariánské Lázně — výdaj, protistrana Ladislav Šifta.",
+      "castka_czk": 139029.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27239603",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/19882629.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

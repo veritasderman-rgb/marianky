@@ -1185,12 +1185,252 @@ th.cislo {
   --pagefind-ui-font: var(--font-sans);
 }
 
+/* ════════════════════════════  Mapy  ════════════════════════════════
+ * Mapa je SVG složené při buildu (web/DESIGN.md §3.6). Žádná barva se tu
+ * nezavádí nová — všechno jsou tokeny z hlavičky souboru, takže mapa funguje
+ * ve všech třech stavech motivu bez druhého renderu.
+ */
+
+.mapa-svg {
+  min-width: 22rem;
+}
+
+/* Vypnutá vrstva. `hidden` v SVG nefunguje — UA styl ho aplikuje jen na HTML. */
+.mapa-vrstva[data-vypnuta="1"] {
+  display: none;
+}
+
+.mapa-prvek {
+  cursor: default;
+}
+
+.mapa-plocha {
+  stroke: var(--surface);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+}
+
+/* Plocha, o které data hodnotu nemají. Musí být rozpoznatelná od nejnižšího
+   kroku rampy — „nezjištěno" není „málo". */
+.mapa-plocha--bez-dat {
+  fill: var(--surface-2);
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+
+.mapa-linie {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.mapa-bod {
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+
+.mapa-prvek:hover .mapa-plocha,
+.mapa-prvek:hover .mapa-bod,
+.mapa-prvek:focus-visible .mapa-plocha,
+.mapa-prvek:focus-visible .mapa-bod {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.mapa-prvek:hover .mapa-linie {
+  stroke-width: 4;
+}
+
+.mapa-meritko line {
+  stroke: var(--graf-osa);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.mapa-vrstvy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem 0.75rem;
+  margin: 0 0 1rem;
+}
+.mapa-vrstvy legend {
+  padding: 0 0.35rem;
+}
+
+/* Mapa a její doprovodná čísla vedle sebe. Doprovod NENÍ ozdoba — bez něj
+   barevná plocha tvrdí něco jiného, než co je v datech. */
+.mapa-rozvrzeni {
+  display: grid;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .mapa-rozvrzeni {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
+.mapa-doprovod {
+  border: 1px solid var(--rule-soft);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 0.9rem 1rem;
+  min-width: 0;
+}
+.mapa-doprovod .karta__nadpis {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+.mapa-doprovod .graf-svg {
+  min-width: 20rem;
+}
+
+.mapa-sloupec {
+  min-width: 0;
+}
+
+.mapa-zdroje {
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 0.6rem;
+  margin-top: 1rem;
+}
+
+.legenda__polozka[data-vypnuta="1"] {
+  opacity: 0.42;
+}
+
+/* ═════════════════════════  Časová osa  ═════════════════════════════
+ * §3.7: osa nepřeskakuje prázdné roky a nízká jistota se nesmí tvářit jako
+ * fakt. Rozdíl v jistotě nese TVAR značky (dutá, přerušovaná), ne barva —
+ * barva už nese druh události.
+ */
+
+.osa-karta .graf-karta__hlava {
+  align-items: baseline;
+}
+
+.osa-rozsah {
+  margin: 0;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.osa-linka {
+  stroke: var(--rule-soft);
+  stroke-width: 1;
+}
+
+.osa-znacka {
+  cursor: default;
+}
+.osa-znacka circle,
+.osa-znacka rect {
+  stroke: var(--surface);
+  stroke-width: 1.5;
+}
+.osa-znacka--stredni circle,
+.osa-znacka--stredni rect {
+  stroke-dasharray: 2 2;
+}
+/* Nejistá událost: dutá značka s přerušovaným obrysem. */
+.osa-znacka--nejista circle,
+.osa-znacka--nejista rect {
+  stroke-width: 2;
+  stroke-dasharray: 3 2;
+}
+.osa-znacka:hover circle,
+.osa-znacka:hover rect,
+.osa-znacka:focus-visible circle,
+.osa-znacka:focus-visible rect {
+  stroke: var(--ink);
+  stroke-width: 2.5;
+  stroke-dasharray: none;
+}
+
+.legenda--jistota {
+  margin-top: -0.35rem;
+}
+
+.legenda__znacka {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  flex: none;
+}
+.legenda__znacka--nejista {
+  background: var(--surface);
+  border: 2px dashed var(--ink-soft);
+}
+
+/* ═══════════════  Doplňkové prvky grafů časových řad  ═══════════════ */
+
+.g-spojnice {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.g-bod {
+  stroke: var(--surface);
+  stroke-width: 1;
+}
+/* Rok, za který údaj chybí. Není to nula — proto tečka u osy, ne sloupec. */
+.g-chybi {
+  fill: var(--ink-faint);
+}
+
+/* ═════════════════  Kritéria důležitosti u firem  ═══════════════════
+ * U každé „důležité" firmy musí být vidět, PODLE ČEHO je za důležitou
+ * označená. Štítek je proto vždy s detailem, ne sám.
+ */
+
+.duvody {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+}
+.duvod__nazev {
+  font-weight: 600;
+  color: var(--ink);
+}
+.duvod__detail {
+  color: var(--ink-soft);
+}
+
+.mrizka-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+
+.obdobi-hlava {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+.obdobi-roky {
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
 /* ════════════════════════════  Tisk  ════════════════════════════════ */
 
 @media print {
   .navigace,
   .prepinac-motivu,
-  .filtry {
+  .filtry,
+  .mapa-vrstvy {
     display: none;
   }
   .karta,

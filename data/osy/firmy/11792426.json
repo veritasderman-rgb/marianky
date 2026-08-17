@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11792426",
+    "nazev": "Josef Hrubý"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-10-17",
+    "do": "2024-06-20",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-35-35/14",
+      "datum": "2023-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-17",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Skalníkova 471",
+      "popis": "Rada města, bod 35/14, usnesení 630/23. Schvaleno.",
+      "castka_czk": 118830,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3092331",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-35/14__24501159",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Josef Hrubý",
+      "popis": "Odhadované spojení smlouvy z 2023-10-25 s bodem 35/14 z 2023-10-17 (Pronájem NP Skalníkova 471). Jistota stredni.",
+      "castka_czk": 718921.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11792426 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/26231035",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24501159",
+      "datum": "2023-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-25",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Josef Hrubý",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef Hrubý.",
+      "castka_czk": 718921.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26231035",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-56-56/24",
+      "datum": "2024-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-11",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Skalníkova, č.p. 471 – ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 56/24, usnesení 409/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3206072",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/56.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-56/24__27275596",
+      "datum": "2024-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-20",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Josef Hrubý",
+      "popis": "Odhadované spojení smlouvy z 2024-06-20 s bodem 56/24 z 2024-06-11 (NP Skalníkova, č.p. 471 – ukončení Smlouvy o nájmu nebytového prostoru dohodou). Jistota str",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11792426 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni",
+      "url": "https://smlouvy.gov.cz/smlouva/29166264",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27275596",
+      "datum": "2024-06-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-20",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Josef Hrubý",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Josef Hrubý.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29166264",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

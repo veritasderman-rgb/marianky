@@ -1,0 +1,559 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28420403",
+    "nazev": "ALGON, a.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-08-06",
+    "do": "2026-08-04",
+    "prvni_rok": 2013,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 26,
+    "dolozenych": 16,
+    "odhadu": 10,
+    "dle_typu": {
+      "usneseni": 10,
+      "retez": 10,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 16,
+      "stredni": 3,
+      "nizka": 7
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-117-117/11",
+      "datum": "2013-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-06",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce chodníku od ul. Hlavní k Ruskému kostelu, Mariánské",
+      "popis": "Rada města, bod 117/11, usnesení 359/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/996701",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-75-75/12",
+      "datum": "2016-07-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Výběr dodavatele - Opravy místních komunikací",
+      "popis": "Rada města, bod 75/12, usnesení 351/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1602814",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-75/12__23833",
+      "datum": "2016-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-21",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O DÍLO Opravy místních komunikací v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2016-07-21 s bodem 75/12 z 2016-07-12 (Výběr dodavatele - Opravy místních komunikací). Jistota stredni.",
+      "castka_czk": 2126337.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikaci, mistnich, opravy",
+      "url": "https://smlouvy.gov.cz/smlouva/214317",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23833",
+      "datum": "2016-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-07-21",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "SMLOUVA O DÍLO Opravy místních komunikací v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 2126337.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/214317",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-83-83/11",
+      "datum": "2016-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-06",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.1 k SOD - opravy místních komunikací v Mariánských Lázních",
+      "popis": "Rada města, bod 83/11, usnesení 442/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1631020",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-129-129/13",
+      "datum": "2017-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-03",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníku Mariánské Lázně - Velká Hleďsebe",
+      "popis": "Rada města, bod 129/13, usnesení 566/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1834949",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/129.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-129/13__5641083",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo Oprava chodníku ML - VH",
+      "popis": "Odhadované spojení smlouvy z 2018-07-04 s bodem 129/13 z 2017-10-03 (Oprava chodníku Mariánské Lázně - Velká Hleďsebe). Jistota stredni.",
+      "castka_czk": 1254239.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 274 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, oprava",
+      "url": "https://smlouvy.gov.cz/smlouva/6075171",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5641083",
+      "datum": "2018-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo Oprava chodníku ML - VH",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 1254239.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6075171",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-165-165/4",
+      "datum": "2018-09-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-04",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníku Mar. Lázně – Velká Hleďsebe",
+      "popis": "Rada města, bod 165/4, usnesení 478/18. Schvaleno.",
+      "castka_czk": 264000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2089265",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/165.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-167-167/7",
+      "datum": "2018-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-25",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "SOD - Oprava chodníku ulice U Pily v Mariánských Lázních",
+      "popis": "Rada města, bod 167/7, usnesení 509/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2111345",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/167.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-129/13__6330083",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek na vícepráce a méněpráce. 1 ke smlouvě o dílo na \"Oprava chodníku Mariánské Lázně - Velká Hleďsebe\"",
+      "popis": "Odhadované spojení smlouvy z 2018-10-01 s bodem 129/13 z 2017-10-03 (Oprava chodníku Mariánské Lázně - Velká Hleďsebe). Jistota nizka.",
+      "castka_czk": 737507.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 363 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, hledsebe, oprava, velka; stejně d",
+      "url": "https://smlouvy.gov.cz/smlouva/6830991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-165/4__6330083",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek na vícepráce a méněpráce. 1 ke smlouvě o dílo na \"Oprava chodníku Mariánské Lázně - Velká Hleďsebe\"",
+      "popis": "Odhadované spojení smlouvy z 2018-10-01 s bodem 165/4 z 2018-09-04 (Oprava chodníku Mar. Lázně – Velká Hleďsebe). Jistota nizka.",
+      "castka_czk": 737507.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, hledsebe, oprava, velka; stejně do",
+      "url": "https://smlouvy.gov.cz/smlouva/6830991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/7__6330083",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek na vícepráce a méněpráce. 1 ke smlouvě o dílo na \"Oprava chodníku Mariánské Lázně - Velká Hleďsebe\"",
+      "popis": "Odhadované spojení smlouvy z 2018-10-01 s bodem 167/7 z 2018-09-25 (SOD - Oprava chodníku ulice U Pily v Mariánských Lázních). Jistota nizka.",
+      "castka_czk": 737507.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, oprava; stejně dobře sedí i 2 další",
+      "url": "https://smlouvy.gov.cz/smlouva/6830991",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6330083",
+      "datum": "2018-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek na vícepráce a méněpráce. 1 ke smlouvě o dílo na \"Oprava chodníku Mariánské Lázně - Velká Hleďsebe\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 737507.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6830991",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-165/4__6461295",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Oprava chodníku",
+      "popis": "Odhadované spojení smlouvy z 2018-10-08 s bodem 165/4 z 2018-09-04 (Oprava chodníku Mar. Lázně – Velká Hleďsebe). Jistota nizka.",
+      "castka_czk": 601115.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, oprava; usnesení mluví o dodatku, ",
+      "url": "https://smlouvy.gov.cz/smlouva/6974755",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/7__6461295",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Oprava chodníku",
+      "popis": "Odhadované spojení smlouvy z 2018-10-08 s bodem 167/7 z 2018-09-25 (SOD - Oprava chodníku ulice U Pily v Mariánských Lázních). Jistota nizka.",
+      "castka_czk": 601115.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, oprava; stejně dobře sedí i 1 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/6974755",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6461295",
+      "datum": "2018-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-08",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníku",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 601115.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6974755",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-170-170/6",
+      "datum": "2018-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-16",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "VZ Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Rada města, bod 170/6, usnesení 544/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2121791",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-170/6__6812259",
+      "datum": "2018-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-31",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-10-31 s bodem 170/6 z 2018-10-16 (VZ Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské L",
+      "castka_czk": 922923.91,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova demolice, nemocnice, obec, objektu",
+      "url": "https://smlouvy.gov.cz/smlouva/7357127",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6812259",
+      "datum": "2018-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-31",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 922923.91,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7357127",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-145-145/4",
+      "datum": "2022-04-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-19",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - vodovodní řad v k. ú. Úšovice - BD Tepelská",
+      "popis": "Rada města, bod 145/4, usnesení 171/22. Schvaleno.",
+      "castka_czk": 25762,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2834442",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/145.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-119-119/51",
+      "datum": "2026-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Oprava komunikací v Mariánských Lázních\" - výběr dodavatele",
+      "popis": "Rada města, bod 119/51, usnesení 1260/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2759098406",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/26",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Opravy chodníků v Mariánských Lázních 2026\" - Výběr dodavatele",
+      "popis": "Rada města, bod 122/26, usnesení 1365/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/109366628",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-119/51__36668014",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-08-04 s bodem 119/51 z 2026-06-12 (Veřejná zakázka \"Oprava komunikací v Mariánských Lázních\" - výběr dodavatele). Jistota nizk",
+      "castka_czk": 7212857.72,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 53 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39012722",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-122/26__36668014",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-08-04 s bodem 122/26 z 2026-07-21 (Veřejná zakázka \"Opravy chodníků v Mariánských Lázních 2026\" - Výběr dodavatele). Jistota n",
+      "castka_czk": 7212857.72,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28420403 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39012722",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36668014",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníků 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ALGON, a.s..",
+      "castka_czk": 7212857.72,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/39012722",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

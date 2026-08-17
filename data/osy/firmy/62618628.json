@@ -1,0 +1,460 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "62618628",
+    "nazev": "APOSTAV spol. s r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1994-12-12",
+    "do": "2026-06-29",
+    "prvni_rok": 1994,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 21,
+    "dolozenych": 15,
+    "odhadu": 6,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 11,
+      "usneseni": 3,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 15,
+      "stredni": 2,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:62618628:vznik",
+      "datum": "1994-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1994-12-12",
+      "rok": 1994,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — APOSTAV spol. s r. o.",
+      "popis": "Vznik subjektu APOSTAV spol. s r. o. (IČO 62618628), Společnost s ručením omezeným, obor: Všechny ostatní odborné, vědecké a technické činnosti j. n..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:9926436",
+      "datum": "2019-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "obstarání záležitostí na úseku požární ochrany a bezpečonosti práce",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 60984.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10677120",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-72-72/7",
+      "datum": "2020-06-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-02",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Příkazní smlouva Apostav",
+      "popis": "Rada města, bod 72/7, usnesení 293/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2531111",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-72/7__11984112",
+      "datum": "2020-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Vypracovávat dokumentaci požární ochrany a dbát o její řádné vedení. Tato dokumentace vychází z\npožadavků zákona ČNR č. 133/85 Sb. o požární ochraně ve znění pozdějších předpisů a prováděcí\nvyhlášky MV č. 246/2001 Sb.",
+      "popis": "Odhadované spojení smlouvy z 2020-06-03 s bodem 72/7 z 2020-06-02 (Příkazní smlouva Apostav). Jistota stredni.",
+      "castka_czk": 3630.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12866676",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11984112",
+      "datum": "2020-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Vypracovávat dokumentaci požární ochrany a dbát o její řádné vedení. Tato dokumentace vychází z\npožadavků zákona ČNR č. 133/85 Sb. o požární ochraně ve znění pozdějších předpisů a prováděcí\nvyhlášky MV č. 246/2001 Sb.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 3630.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12866676",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-112-112/7",
+      "datum": "2021-06-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-08",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Uzavření Smlouvy o zřízení služebnosti - přípojka NTL plynovodu - tř. Vítězství č.p. 246/6b",
+      "popis": "Rada města, bod 112/7, usnesení 246/21. Schvaleno.",
+      "castka_czk": 3630,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2690039",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/112.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-72/7__18699479",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Instalace protipožární zpěňující pásky ke dveřím",
+      "popis": "Odhadované spojení smlouvy z 2022-04-25 s bodem 72/7 z 2020-06-02 (Příkazní smlouva Apostav). Jistota nizka.",
+      "castka_czk": 83925.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 692 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20637091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-84/6__18699479",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Instalace protipožární zpěňující pásky ke dveřím",
+      "popis": "Odhadované spojení smlouvy z 2022-04-25 s bodem 84/6 z 2020-09-29 (Smlouva o budoucí smlouvě o zřízení služebnosti NTL plynovodu - p.p.č. 1039/2 a 1175/21 v k.ú",
+      "castka_czk": 83925.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 573 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/20637091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-112/7__18699479",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Instalace protipožární zpěňující pásky ke dveřím",
+      "popis": "Odhadované spojení smlouvy z 2022-04-25 s bodem 112/7 z 2021-06-08 (Uzavření Smlouvy o zřízení služebnosti - přípojka NTL plynovodu - tř. Vítězství č.p. 246/6b)",
+      "castka_czk": 83925.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 321 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/20637091",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18699479",
+      "datum": "2022-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-25",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Instalace protipožární zpěňující pásky ke dveřím",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 83925.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20637091",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2021-112/7__20944109",
+      "datum": "2022-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o výkonu koordinátora BOZP",
+      "popis": "Odhadované spojení smlouvy z 2022-11-01 s bodem 112/7 z 2021-06-08 (Uzavření Smlouvy o zřízení služebnosti - přípojka NTL plynovodu - tř. Vítězství č.p. 246/6b)",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 511 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/22481557",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20944109",
+      "datum": "2022-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o výkonu koordinátora BOZP",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22481557",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26015267",
+      "datum": "2024-03-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-04",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o narovnání  Smlouvy o výkonu koordinátora BOZPna stavbě \"Modernizace měnírny pro trolejbusovou dopravu Mariánské Lázně\"",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 66792.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27849619",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:27107892",
+      "datum": "2024-06-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-06-05",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – zajišťování služeb koordinátora BOZP a PO pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 81675.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28991360",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:28640548",
+      "datum": "2024-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-18",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – zajišťování služeb koordinátora BOZP a PO pro akci „Odstranění budov v areálu Chebská 252“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 62799.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30610040",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30223308",
+      "datum": "2025-02-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-24",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č.25_19 - protipožární konstrukce",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 42332.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32277612",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30587380",
+      "datum": "2025-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka č. 25_43 - ucpávky kabelových prostupů",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 219072.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33158884",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:30709392",
+      "datum": "2025-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – zajišťování služeb koordinátora BOZP a PO pro akci „Stavební úpravy Zpívající fontány, Mariánské Lázně“ - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 7139.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32788904",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/3",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 k Příkazní smlouvě s Apostav spol. s r.o.",
+      "popis": "Rada města, bod 120/3, usnesení 1271/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2723100278",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-120/3__36280596",
+      "datum": "2026-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-29",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 k Příkazní smlouvě Apostav.",
+      "popis": "Odhadované spojení smlouvy z 2026-06-29 s bodem 120/3 z 2026-06-23 (Dodatek č. 1 k Příkazní smlouvě s Apostav spol. s r.o.). Jistota stredni.",
+      "castka_czk": 217800.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 62618628 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova apostav, prikazni; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/38609532",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36280596",
+      "datum": "2026-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-29",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 k Příkazní smlouvě Apostav.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana APOSTAV spol. s r. o..",
+      "castka_czk": 217800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38609532",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

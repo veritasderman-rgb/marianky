@@ -1,0 +1,640 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "12875562",
+    "nazev": "Julie Luhanová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2024-08-26",
+    "prvni_rok": 1992,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 30,
+    "dolozenych": 21,
+    "odhadu": 9,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 14,
+      "retez": 9,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 21,
+      "nizka": 6,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:12875562:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Julie Luhanová",
+      "popis": "Vznik subjektu Julie Luhanová (IČO 12875562), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-54-54/4",
+      "datum": "2012-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Výpověď NS - Hlavní 259 (Luhanová)",
+      "popis": "Rada města, bod 54/4, usnesení 59/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/700174",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-66-66/8",
+      "datum": "2012-05-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-05-15",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 (J. Luhanová) - snížení nájmu",
+      "popis": "Rada města, bod 66/8, usnesení 244/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/766236",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/66.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-155-155/3",
+      "datum": "2014-05-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-05-27",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 -poskytnutí slevy z nájemného",
+      "popis": "Rada města, bod 155/3, usnesení 231/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1127752",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/155.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-166-166/4",
+      "datum": "2014-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-23",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájemní smlouvy - NP Hlavní č.p.142",
+      "popis": "Rada města, bod 166/4, usnesení 417/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1265475",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-113-113/8",
+      "datum": "2017-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-02",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - žádost o snížení nájemného - Julie Luhanová",
+      "popis": "Rada města, bod 113/8, usnesení 269/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1753538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-116-116/18",
+      "datum": "2017-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-30",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - prodloužení nájmu - Julie Luhanová",
+      "popis": "Rada města, bod 116/18, usnesení 330/17. Schvaleno.",
+      "castka_czk": 1900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1767231",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-113/8__2468734",
+      "datum": "2017-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-19",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 259, k. ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-07-19 s bodem 113/8 z 2017-05-02 (NP Hlavní 259 - žádost o snížení nájemného - Julie Luhanová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 78 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/2658634",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-116/18__2468734",
+      "datum": "2017-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-19",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 259, k. ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-07-19 s bodem 116/18 z 2017-05-30 (NP Hlavní 259 - prodloužení nájmu - Julie Luhanová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/2658634",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2468734",
+      "datum": "2017-07-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-19",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 259, k. ú. a obec Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2658634",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-122-122/1",
+      "datum": "2017-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-08",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - úprava nájemní smlouvy dle Sazebníku nájemného - Julie Luhanová",
+      "popis": "Rada města, bod 122/1, usnesení 441/17. Schvaleno.",
+      "castka_czk": 1500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1798001",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-116/18__3049310",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 259, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 116/18 z 2017-05-30 (NP Hlavní 259 - prodloužení nájmu - Julie Luhanová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 107 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/3285426",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-122/1__3049310",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 259, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 122/1 z 2017-08-08 (NP Hlavní 259 - úprava nájemní smlouvy dle Sazebníku nájemného - Julie Luhanová). Jistota ni",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3285426",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3049310",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 259, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3285426",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-132-132/1",
+      "datum": "2017-10-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-24",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 259 - výzpověď z nájmu - Julie Luhanová",
+      "popis": "Rada města, bod 132/1, usnesení 600/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1844602",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/132.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-151-151/8",
+      "datum": "2018-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - věrnostní sleva na nájemném - Julie Luhanová",
+      "popis": "Rada města, bod 151/8, usnesení 193/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1925954",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-151/8__5273531",
+      "datum": "2018-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-23",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 10 ke Smlouvě o nájmu nebytového prostoru (věrnostní sleva 10%)",
+      "popis": "Odhadované spojení smlouvy z 2018-05-23 s bodem 151/8 z 2018-04-03 (NP Hlavní 142 - věrnostní sleva na nájemném - Julie Luhanová). Jistota stredni.",
+      "castka_czk": 215206.97,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova sleva, vernostni",
+      "url": "https://smlouvy.gov.cz/smlouva/5678619",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5273531",
+      "datum": "2018-05-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 10 ke Smlouvě o nájmu nebytového prostoru (věrnostní sleva 10%)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": 215206.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5678619",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-166-166/15",
+      "datum": "2018-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-18",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142, sleva z nájmu",
+      "popis": "Rada města, bod 166/15, usnesení 495/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2108357",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-151/8__6433975",
+      "datum": "2018-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-10",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č. 11, Hlavní 142 dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-10-10 s bodem 151/8 z 2018-04-03 (NP Hlavní 142 - věrnostní sleva na nájemném - Julie Luhanová). Jistota nizka.",
+      "castka_czk": 33478.643,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 190 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, sleva; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/6944647",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/15__6433975",
+      "datum": "2018-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-10",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č. 11, Hlavní 142 dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-10-10 s bodem 166/15 z 2018-09-18 (NP Hlavní 142, sleva z nájmu). Jistota nizka.",
+      "castka_czk": 33478.643,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, sleva; stejně dobře sedí i 1 další u",
+      "url": "https://smlouvy.gov.cz/smlouva/6944647",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6433975",
+      "datum": "2018-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-10",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě č. 11, Hlavní 142 dočasná sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": 33478.643,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6944647",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-43-43/14",
+      "datum": "2019-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-29",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - prodloužení Smlouvy o nájmu nebytových prostor",
+      "popis": "Rada města, bod 43/14, usnesení 535/19. Schvaleno.",
+      "castka_czk": 1336,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2428194",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/43.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-43/14__10049616",
+      "datum": "2019-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-20",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 142 - Julie Luhanová",
+      "popis": "Odhadované spojení smlouvy z 2019-11-20 s bodem 43/14 z 2019-10-29 (NP Hlavní 142 - prodloužení Smlouvy o nájmu nebytových prostor). Jistota stredni.",
+      "castka_czk": 759553.3,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu",
+      "url": "https://smlouvy.gov.cz/smlouva/10809716",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10049616",
+      "datum": "2019-11-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-11-20",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 142 - Julie Luhanová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": 759553.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10809716",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-162-162/9",
+      "datum": "2022-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-10-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 142 - Julie Luhanová - dočasná sleva",
+      "popis": "Rada města, bod 162/9, usnesení 504/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2922305",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-59-59/7",
+      "datum": "2024-07-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 59/7, usnesení 472/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3218492",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-62-62/14",
+      "datum": "2024-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-20",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – prodloužení nájemního vztahu – Julie Luhanová",
+      "popis": "Rada města, bod 62/14, usnesení 558/24. Schvaleno.",
+      "castka_czk": 125546,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3236880",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/62.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-62/14__27994268",
+      "datum": "2024-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-26",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení nájemního vztahu - Julie Luhanová",
+      "popis": "Odhadované spojení smlouvy z 2024-08-26 s bodem 62/14 z 2024-08-20 (NP Hlavní třída, č.p. 142 – prodloužení nájemního vztahu – Julie Luhanová). Jistota stredni.",
+      "castka_czk": 759553.3,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 12875562 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova julie, luhanova, najemniho, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/29920284",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:27994268",
+      "datum": "2024-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-26",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení nájemního vztahu - Julie Luhanová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Julie Luhanová.",
+      "castka_czk": 759553.3,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29920284",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

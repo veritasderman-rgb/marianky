@@ -1,0 +1,115 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27891011",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-07-10",
+    "do": "2013-06-11",
+    "prvni_rok": 2012,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 4
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-73-73/17",
+      "datum": "2012-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-07-10",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 131 - pronájem",
+      "popis": "Rada města, bod 73/17, usnesení 349/12.",
+      "castka_czk": 12000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/789169",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-74-74/6",
+      "datum": "2012-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-07-24",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Revokace usnesení - pronájem NP Hlavní 131",
+      "popis": "Rada města, bod 74/6, usnesení 357/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/794331",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/74.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-102-102/10",
+      "datum": "2013-03-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-12",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Pronájem NP Hlavní 131",
+      "popis": "Rada města, bod 102/10, usnesení 100/13. Schvaleno.",
+      "castka_czk": 12000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/912169",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/102.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-113-113/4",
+      "datum": "2013-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-06-11",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Revokace usnesení č. RM/100/13",
+      "popis": "Rada města, bod 113/4, usnesení 254/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/967261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

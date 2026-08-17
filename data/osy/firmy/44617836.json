@@ -1,0 +1,380 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44617836",
+    "nazev": "Jitka Králová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-02-01",
+    "do": "2026-01-07",
+    "prvni_rok": 1993,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 12,
+    "odhadu": 5,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 12,
+      "nizka": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:44617836:vznik",
+      "datum": "1993-02-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-02-01",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jitka Králová",
+      "popis": "Vznik subjektu Jitka Králová (IČO 44617836), Fyzická osoba podnikající dle živnostenského zákona, obor: Výroba oděvů.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-89-89/10",
+      "datum": "2020-11-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-10",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 45 - přistoupení 2. nájemce k nájemní smlouvě",
+      "popis": "Rada města, bod 89/10, usnesení 559/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2601261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/89.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-97-97/8",
+      "datum": "2021-02-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-02",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 45 - prodloužení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 97/8, usnesení 47/21. Schvaleno.",
+      "castka_czk": 152436,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2637489",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/97.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/8",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.45 - Jitka Králová, Zdeněk Král",
+      "popis": "Rada města, bod 139/8, usnesení 86/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2812378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-9-9/7",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 45 - odstoupení nájemce od nájemní smlouvy",
+      "popis": "Rada města, bod 9/7, usnesení 7/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2958358",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/9.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-15-15/26",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 45 - Jitka Králová",
+      "popis": "Rada města, bod 15/26, usnesení 142/23. Schvaleno.",
+      "castka_czk": 1779,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2987024",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-15/26__22192361",
+      "datum": "2023-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-17",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 4 ke smlouvě o nájmu nebytového prostoru - Jitka Králová",
+      "popis": "Odhadované spojení smlouvy z 2023-03-17 s bodem 15/26 z 2023-03-07 (NP Hlavní, č.p. 45 - Jitka Králová). Jistota nizka.",
+      "castka_czk": 401453.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44617836 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova jitka, kralova; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/23804065",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-9/7__22192361",
+      "datum": "2023-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-17",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 4 ke smlouvě o nájmu nebytového prostoru - Jitka Králová",
+      "popis": "Odhadované spojení smlouvy z 2023-03-17 s bodem 9/7 z 2023-01-10 (NP Hlavní, č.p. 45 - odstoupení nájemce od nájemní smlouvy). Jistota nizka.",
+      "castka_czk": 401453.8,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44617836 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 66 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23804065",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22192361",
+      "datum": "2023-03-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-17",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 4 ke smlouvě o nájmu nebytového prostoru - Jitka Králová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jitka Králová.",
+      "castka_czk": 401453.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23804065",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-92-92/11",
+      "datum": "2025-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-07-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 45 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 92/11, usnesení 494/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3395329",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-95-95/3",
+      "datum": "2025-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-05",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 45 – prodloužení nájemního vztahu – Jitka Králová",
+      "popis": "Rada města, bod 95/3, usnesení 537/25. Schvaleno.",
+      "castka_czk": 104773,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/259828385",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/95.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-92/11__32419517",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Dodatek č. 5 - Jitka Králová",
+      "popis": "Odhadované spojení smlouvy z 2025-08-26 s bodem 92/11 z 2025-07-04 (NP Hlavní třída, č.p. 45 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 523865.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44617836 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 53 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/34579281",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-95/3__32419517",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Dodatek č. 5 - Jitka Králová",
+      "popis": "Odhadované spojení smlouvy z 2025-08-26 s bodem 95/3 z 2025-08-05 (NP Hlavní třída, č.p. 45 – prodloužení nájemního vztahu – Jitka Králová). Jistota nizka.",
+      "castka_czk": 523865.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44617836 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova jitka, kralova; stejně dobře sedí i 1 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/34579281",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32419517",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Dodatek č. 5 - Jitka Králová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jitka Králová.",
+      "castka_czk": 523865.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34579281",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-107-107/18",
+      "datum": "2025-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-23",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 45 – ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 107/18, usnesení 862/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/145038252",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-107/18__34138761",
+      "datum": "2026-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru",
+      "popis": "Odhadované spojení smlouvy z 2026-01-07 s bodem 107/18 z 2025-12-23 (Nebytový prostor Hlavní třída, č.p. 45 – ukončení Smlouvy o nájmu nebytového prostoru dohod",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 44617836 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni",
+      "url": "https://smlouvy.gov.cz/smlouva/36377329",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34138761",
+      "datum": "2026-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jitka Králová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36377329",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

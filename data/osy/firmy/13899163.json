@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "13899163",
+    "nazev": "Jana Kočárková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-12-07",
+    "do": "2024-11-06",
+    "prvni_rok": 1992,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 9,
+    "odhadu": 3,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 5,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:13899163:vznik",
+      "datum": "1992-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-12-07",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Jana Kočárková",
+      "popis": "Vznik subjektu Jana Kočárková (IČO 13899163), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Ostatní činnosti souv",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-3-3/3",
+      "datum": "2014-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-09",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159 - prodloužení doby nájmu/pronájem",
+      "popis": "Rada města, bod 3/3, usnesení 545/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1309892",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-160-160/15",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159, Jana Kočárková, věrnostní sleva 10%",
+      "popis": "Rada města, bod 160/15, usnesení 357/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1969244",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-160/15__5974427",
+      "datum": "2018-08-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-17",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru, Hlavní 159",
+      "popis": "Odhadované spojení smlouvy z 2018-08-17 s bodem 160/15 z 2018-07-03 (NP Hlavní 159, Jana Kočárková, věrnostní sleva 10%). Jistota stredni.",
+      "castka_czk": 617100.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 13899163 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří",
+      "url": "https://smlouvy.gov.cz/smlouva/6438887",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5974427",
+      "datum": "2018-08-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-17",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru, Hlavní 159",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jana Kočárková.",
+      "castka_czk": 617100.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6438887",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-50-50/30",
+      "datum": "2019-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-17",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 159 - prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 50/30, usnesení 652/19. Schvaleno.",
+      "castka_czk": 326430,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2451453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/50.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-50/30__10415736",
+      "datum": "2019-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-19",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Kočárková",
+      "popis": "Odhadované spojení smlouvy z 2019-12-19 s bodem 50/30 z 2019-12-17 (NP Hlavní 159 - prodloužení nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 1974901.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 13899163 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11201680",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10415736",
+      "datum": "2019-12-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-19",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru - Kočárková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jana Kočárková.",
+      "castka_czk": 1974901.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11201680",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/35",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 159 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 67/35, usnesení 681/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3259618",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-69-69/6",
+      "datum": "2024-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-29",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 159 – prodloužení nájemního vztahu – Jana Kočárková",
+      "popis": "Rada města, bod 69/6, usnesení 738/24. Schvaleno.",
+      "castka_czk": 326430,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3269959",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/69.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-69/6__28879832",
+      "datum": "2024-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-06",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení - Jana Kočárková",
+      "popis": "Odhadované spojení smlouvy z 2024-11-06 s bodem 69/6 z 2024-10-29 (NP Hlavní třída, č.p. 159 – prodloužení nájemního vztahu – Jana Kočárková). Jistota stredni.",
+      "castka_czk": 1974901.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 13899163 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova jana, kocarkova, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/30867572",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28879832",
+      "datum": "2024-11-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-06",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 6 ke Smlouvě o nájmu nebytového prostoru - prodloužení - Jana Kočárková",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jana Kočárková.",
+      "castka_czk": 1974901.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30867572",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72054999",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2009-10-29",
+    "do": "2018-06-12",
+    "prvni_rok": 2009,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:72054999:vznik",
+      "datum": "2009-10-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2009-10-29",
+      "rok": 2009,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků pro dům Hlavní 349 Mariánské Lázně",
+      "popis": "Vznik subjektu Společenství vlastníků pro dům Hlavní 349 Mariánské Lázně (IČO 72054999), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-159-159/5",
+      "datum": "2018-06-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-12",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti dešťové kanalizace, drenážního potrubí a vsakovací jímky - st.p.344/2 v k.ú. Mariánské Lázně",
+      "popis": "Rada města, bod 159/5, usnesení 315/18. Schvaleno.",
+      "castka_czk": 13794,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1959292",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

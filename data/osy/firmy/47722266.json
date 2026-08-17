@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47722266",
+    "nazev": "Regionální sdružení obcí a měst Euregio Egrensis"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-08-06",
+    "do": "2026-01-01",
+    "prvni_rok": 2013,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 1,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-117-117/14",
+      "datum": "2013-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-06",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Euregio Egrensis – Dispoziční fond",
+      "popis": "Rada města, bod 117/14, usnesení 362/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/998416",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:1692698",
+      "datum": "2017-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-28",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o financování malého projektu - Dispoziční fond, reg. Egrensis",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — příjem, protistrana Regionální sdružení obcí a měst Euregio Egrensis.",
+      "castka_czk": 562117.5968,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1827530",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34909589",
+      "datum": "2026-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-01",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Valná hromada EUREGIA EGRENSIS 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Regionální sdružení obcí a měst Euregio Egrensis.",
+      "castka_czk": 84312.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37181937",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

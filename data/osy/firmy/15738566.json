@@ -1,0 +1,360 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "15738566",
+    "nazev": "Bronislava Müllerová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-01-01",
+    "do": "2022-02-23",
+    "prvni_rok": 1992,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 16,
+    "dolozenych": 11,
+    "odhadu": 5,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 7,
+      "retez": 5,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "nizka": 3,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:15738566:vznik",
+      "datum": "1992-01-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-01-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Bronislava Müllerová",
+      "popis": "Vznik subjektu Bronislava Müllerová (IČO 15738566), Fyzická osoba podnikající dle živnostenského zákona, obor: Nespecializovaný maloobchod.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-54-54/1",
+      "datum": "2012-02-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájmu - Hlavní 319",
+      "popis": "Rada města, bod 54/1, usnesení 56/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/700129",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-91-91/4",
+      "datum": "2016-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-08",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - prodloužení nájmu - Bronislava Müllerová",
+      "popis": "Rada města, bod 91/4, usnesení 539/16. Schvaleno.",
+      "castka_czk": 2800,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1660325",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-98-98/6",
+      "datum": "2017-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - žádost o snížení nájemného - Bronislava Müllerová",
+      "popis": "Rada města, bod 98/6, usnesení 17/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1694702",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-113-113/7",
+      "datum": "2017-05-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-02",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 349 - žádost o snížení nájemného - GOROSHIT s.r.o.",
+      "popis": "Rada města, bod 113/7, usnesení 268/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1753523",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/113.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-122-122/2",
+      "datum": "2017-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-08",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - úprava nájemní smlouvy dle Sazebníku nájemného - Bronislava Müllerová",
+      "popis": "Rada města, bod 122/2, usnesení 442/17. Schvaleno.",
+      "castka_czk": 2500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1798056",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-91/4__3063754",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 319, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 91/4 z 2016-11-08 (NP Hlavní 319 - prodloužení nájmu - Bronislava Müllerová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 15738566 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 310 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu; stejně dobře sedí i 2 další ",
+      "url": "https://smlouvy.gov.cz/smlouva/3300918",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-122/2__3063754",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 319, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 122/2 z 2017-08-08 (NP Hlavní 319 - úprava nájemní smlouvy dle Sazebníku nájemného - Bronislava Müllerová). Jist",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 15738566 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 37 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3300918",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-98/6__3063754",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 319, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 98/6 z 2017-01-10 (NP Hlavní 319 - žádost o snížení nájemného - Bronislava Müllerová). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 15738566 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 247 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/3300918",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3063754",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke Smlouvě o nájmu nebytového prostoru v ul. Hlavní, č.p. 319, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bronislava Müllerová.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3300918",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-152-152/5",
+      "datum": "2018-04-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-17",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 319 - věrnostní sleva na nájemném - Bronislava Müllerová",
+      "popis": "Rada města, bod 152/5, usnesení 208/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1930428",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/152.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-152/5__6433979",
+      "datum": "2018-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č. 2, Hlavní 319, věrnostní sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-10-09 s bodem 152/5 z 2018-04-17 (NP Hlavní 319 - věrnostní sleva na nájemném - Bronislava Müllerová). Jistota stredni.",
+      "castka_czk": 1200380.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 15738566 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 175 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, sleva, vernostni",
+      "url": "https://smlouvy.gov.cz/smlouva/6944651",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6433979",
+      "datum": "2018-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě č. 2, Hlavní 319, věrnostní sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bronislava Müllerová.",
+      "castka_czk": 1200380.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6944651",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-138-138/12",
+      "datum": "2022-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-15",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.319 - prodloužení nájemní smlouvy a úprava předmětu činnosti - Bronislava Müllerová",
+      "popis": "Rada města, bod 138/12, usnesení 64/22. Schvaleno.",
+      "castka_czk": 254250,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2807382",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/138.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-138/12__18137959",
+      "datum": "2022-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-23",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Bronislava Müllerová",
+      "popis": "Odhadované spojení smlouvy z 2022-02-23 s bodem 138/12 z 2022-02-15 (NP Hlavní, č.p.319 - prodloužení nájemní smlouvy a úprava předmětu činnosti - Bronislava Mü",
+      "castka_czk": 1538212.5,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 15738566 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova bronislava, mullerova, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/19506083",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18137959",
+      "datum": "2022-02-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-23",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - Bronislava Müllerová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bronislava Müllerová.",
+      "castka_czk": 1538212.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19506083",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

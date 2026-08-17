@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "64510263",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-09-10",
+    "do": "2021-09-21",
+    "prvni_rok": 2019,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-36-36/3",
+      "datum": "2019-09-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-10",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o potvrzení zájmu o umístění sběrného boxu na drobná vysloužilá elektrozařízení a vytvoření místa zpětného odběru a o zapojení se do projektu „Zelená obec“.",
+      "popis": "Rada města, bod 36/3, usnesení 455/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2403856",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/36.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-122-122/6",
+      "datum": "2021-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-21",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení místa zpětného odběru v rámci projektu Zelená obec",
+      "popis": "Rada města, bod 122/6, usnesení 408/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2742954",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

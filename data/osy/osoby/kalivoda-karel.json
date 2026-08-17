@@ -1,0 +1,426 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "kalivoda-karel",
+    "jmeno": "Karel Kalivoda",
+    "role": [
+      "ředitel"
+    ],
+    "kategorie": "podnikani",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2021-10",
+    "do": "2026-06",
+    "prvni_rok": 2021,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 19,
+    "dolozenych": 19,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 19
+    },
+    "dle_jistoty": {
+      "fakt": 19
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2021-10-023",
+      "datum": "2021-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "ODHALENÍ SOCHY VIOLONCELLISTY",
+      "popis": "V pátek 10. září 2021 byla v lázeňském parku před budovou Casina odhalena socha „Violoncellista“. Autorem tohoto díla byl Josef Václav Schwarz, který vytvořil t",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fd74b073%7C2982#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-10/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-09-013",
+      "datum": "2022-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "Poděkování za spolupráci",
+      "popis": "Vážený pane Kajlíku, jménem Mariánskolázeňské asociace cestovního ruchu, z. s., i jménem největšího lokálníhoposkytovatele lázeňské péče, společnosti Ensana, si",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c13019ed%7C3593#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-09/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-026",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PRACOVNÍ MISE STAROSTY ML V CITY OF BATH (2. GENERÁLNÍ SNĚM GSTE V CITY OF BATH, SOMERSET COUNTY, ANGLIE)",
+      "popis": "/Účast starosty ML, site man- shromáždění GSTE v anglickém agerky ML a poradce světového City of Bath 1.–3. března 2023/ dědictví UNESCO na 2. Valném  Pracovní ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-05-005",
+      "datum": "2023-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-05-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "KAREL KALIVODA, GENERÁLNÍ ŘEDITEL LÉČEBNÝCH LÁZNÍ MARIÁNSKÉ LÁZNĚ",
+      "popis": "1. Co je a komu patří Ensana? Ensana je nová obchodní značka lázeňských hotelů, která vznikla při rozdělení původní značky Danubius Hotels Group. Pod obchodní z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=5e9a4509%7C3773#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-05/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-005",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "KUDY SE VYDAJÍ MARIÁNKY ANEB „NA SEVER, ČI NA JIH“?",
+      "popis": "Rada města Mariánské Lázně rozhodla na podnět Komise lázeňství, cestovního ruchu a UNESCO o zpracování dokumentu, který by byl „extraktem“ ze současně platných ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-09-012",
+      "datum": "2023-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-09-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OTEVŘENÍ VYHLÍDKY NA PODHORNÍM VRCHU",
+      "popis": "V pondělí 11. července se na Podhorním vrchu konalo neveřejné slavnostní otevření a požehnání upravené vyhlídky. Pan Karel Kalivoda v úvodu pronesl tato slova: ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2a007f32%7C3886#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-09/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-12-014",
+      "datum": "2023-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "MILÍ SPOLUOBČANÉ MARIÁNSKÝCH LÁZNÍCH, MILÍ BRATŘI A SESTRY V KRISTU!",
+      "popis": "Výzdoba za okny, vůně skořice a melodie koled nám opět připomínají, že se blíží Vánoce. Nastala doba adventní. Možná i vy máte doma svůj adventní věnec a na něm",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e90d08e5%7C4019#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-12/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-01-012",
+      "datum": "2024-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-01-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Bilancování a plány do budoucna v léčebných lázních",
+      "popis": "Přelom roku tradičně vybízí k bilancování, co se nám za uplynulý rok povedlo, co jsme případně dokončit nestihli a také máme připravena předsevzetí do roku nové",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=857a6547%7C4074#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-01/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-02-010",
+      "datum": "2024-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-02-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Psychofarmakologická konference ve Společenském domě Casino",
+      "popis": "66. ročník česko-slovenské psychofarmakologické konference, která se již druhým rokem konala v mariánskolázeňském Společenském domě Casino, navštívilo bezmála 9",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d5f46fb1%7C4122#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-02/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-015",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Léčebné lázně Mariánské Lázně, a.s. – příběh od sametové revoluce až po současnost",
+      "popis": "Vážení čtenáři zpravodaje, rád bych se ohlédl do nedávné historie a popsal cestu akciové společnosti Léčebné lázně Mariánské Lázně od jejího založení až do dneš",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-06-015",
+      "datum": "2024-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-06-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Léčebné lázně Mariánské Lázně a.s. – lázeňská infrastruktura",
+      "popis": "Vážení čtenáři zpravodaje, dovolím si navázat na dubnové představení naší společnosti a tentokrát bych se chtěl věnovat tématu lázeňské infrastruktury s cílem s",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6040eeec%7C4194#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-06/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-08-018",
+      "datum": "2024-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-08-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Rekonstrukce podlahy kolonády a vylepšení vzhledu Goethova náměstí",
+      "popis": "Společnosti Ensana se podařilo z integrovaného regionálního operačního programu Ministerstva pro místní rozvoj ČR získat příslib pokrytí 70 % nákladů na rozsáhl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0c3aa834%7C4244#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-08/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-015",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Budoucnost kolonády Ferdinandova pramene – výzva k dalšímu rozvoji",
+      "popis": "Vážení spoluobčané a návštěvníci Mariánských Lázní, s velkým respektem a vděčností bych rád poděkoval všem členům kulturního sdružení Švihák, i dalším spoluprac",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-12-015",
+      "datum": "2024-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-12-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Vánoční čas a shrnutí uplynulého roku",
+      "popis": "Vážení občané a návštěvníci Mariánských Lázní, rok 2024 utekl jako voda a opět nastává adventní čas – období, kdy bilancujeme uplynulé události, vzpomínáme na p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=cf2df4a1%7C4413#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-12/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-018",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Lázeňská kolonáda ožívá – pět let proměn v srdci Mariánských Lázní",
+      "popis": "Vážení čtenáři, milí občané a hosté Mariánských Lázní, dovolte mi malé ohlédnutí za tím, co se za posledních pět let událo v srdci našeho města – na hlavní láze",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-019",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Věděli jste, že kolonáda Karolinina a Rudolfova pramene je replikou původní stavby?",
+      "popis": "Původní pavilon nad Rudolfovým pramenem, vybudovaný v klasicistním stylu, stál na tomto místě již od počátku 19. století. V roce 1823 nahradil menší kruhový pav",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-018",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Historický krok pro Mariánské Lázně: Ferdinandův, Rudolfův a Lesní pavilon nově pod správou města",
+      "popis": "Zastupitelstvo Mariánských Lázní schválilo 16. září převod Ferdinandova, Rudolfova a Lesního pavilonu do vlastnictví města. Společnost Ensana tento krok vítá ja",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-11-015",
+      "datum": "2025-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-11-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Hotel Nové Lázně se stane dějištěm prestižní konference AHR",
+      "popis": "Mariánské Lázně se na konci listopadu stanou centrem českého hotelnictví a gastronomie. Ve Společenském domě Casino proběhne 18. konference Asociace hotelů a re",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e19f6e85%7C4726#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-11/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-025",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Petr Malina v Galerii Marienbad",
+      "popis": "Až do 15. září bude v Galerii Marienbad k vidění výstava obrazů Petra Maliny. Jeho plátna přivádějí do lázeňského města pohled, který se zastaví tam, kde ostatn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

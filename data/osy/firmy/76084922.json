@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "76084922",
+    "nazev": "Martin Dobiáš"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-03-07",
+    "do": "2024-01-23",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 4,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 4,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-15-15/31",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Výjimka z vnitřního předpisu pro Domov pro seniory a dům s pečovatelskou službou – energetická optimalizace",
+      "popis": "Rada města, bod 15/31, usnesení 147/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2989127",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-18-18/3",
+      "datum": "2023-03-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-30",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Výjimka z vnitřního předpisu na rekonstrukci odběrného místa, Ruská 74/14, 353 01 Mariánské Lázně a služby spojené s optimalizací tarifů u společnosti ČEZ",
+      "popis": "Rada města, bod 18/3, usnesení 187/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3001286",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-15/31__22495661",
+      "datum": "2023-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-03",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - energetická optimalizace - audit Ruská 74/14",
+      "popis": "Odhadované spojení smlouvy z 2023-04-03 s bodem 15/31 z 2023-03-07 (Výjimka z vnitřního předpisu pro Domov pro seniory a dům s pečovatelskou službou – energetic",
+      "castka_czk": 128865.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76084922 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova energeticka, optimalizace; stejně dobře sedí",
+      "url": "https://smlouvy.gov.cz/smlouva/24121897",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/3__22495661",
+      "datum": "2023-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-03",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - energetická optimalizace - audit Ruská 74/14",
+      "popis": "Odhadované spojení smlouvy z 2023-04-03 s bodem 18/3 z 2023-03-30 (Výjimka z vnitřního předpisu na rekonstrukci odběrného místa, Ruská 74/14, 353 01 Mariánské L",
+      "castka_czk": 128865.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76084922 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 4 dny po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/24121897",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22495661",
+      "datum": "2023-04-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-03",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - energetická optimalizace - audit Ruská 74/14",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Martin Dobiáš.",
+      "castka_czk": 128865.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24121897",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-15/31__25570843",
+      "datum": "2024-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o vypořádání závazků",
+      "popis": "Odhadované spojení smlouvy z 2024-01-23 s bodem 15/31 z 2023-03-07 (Výjimka z vnitřního předpisu pro Domov pro seniory a dům s pečovatelskou službou – energetic",
+      "castka_czk": 490679.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76084922 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 322 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/27383551",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-18/3__25570843",
+      "datum": "2024-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-23",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Smlouva o vypořádání závazků",
+      "popis": "Odhadované spojení smlouvy z 2024-01-23 s bodem 18/3 z 2023-03-30 (Výjimka z vnitřního předpisu na rekonstrukci odběrného místa, Ruská 74/14, 353 01 Mariánské L",
+      "castka_czk": 490679.2,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 76084922 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 299 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27383551",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25570843",
+      "datum": "2024-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-23",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o vypořádání závazků",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Martin Dobiáš.",
+      "castka_czk": 490679.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27383551",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

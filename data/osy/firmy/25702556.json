@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25702556",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2015-06-30",
+    "do": "2015-07-07",
+    "prvni_rok": 2015,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2015-28-28/2",
+      "datum": "2015-06-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-30",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti VB - přenosová soustava vedení 400 kV , část p.p.č. 250 v k.ú. Babice u Poutnova",
+      "popis": "Rada města, bod 28/2, usnesení 298/15. Schvaleno.",
+      "castka_czk": 4431,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1414604",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-29-29/4",
+      "datum": "2015-07-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-07-07",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti VB - přenosová soustava vedení 400 kV- část p.p.č. 1163/2 a č. 1168/2 v k.ú. Mnichov u Mariánských Lázní",
+      "popis": "Rada města, bod 29/4, usnesení 321/15. Schvaleno.",
+      "castka_czk": 18316,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1423061",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

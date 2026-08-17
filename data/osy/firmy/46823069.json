@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46823069",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1993-10-18",
+    "do": "2022-01-11",
+    "prvni_rok": 1993,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:46823069:vznik",
+      "datum": "1993-10-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1993-10-18",
+      "rok": 1993,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Miroslav Novotný",
+      "popis": "Vznik subjektu Miroslav Novotný (IČO 46823069), Fyzická osoba podnikající dle živnostenského zákona, obor: Maloobchod s použitým zbožím.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-58-58/3",
+      "datum": "2012-03-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-13",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Podnájem - NP Hlavní 225",
+      "popis": "Rada města, bod 58/3, usnesení 117/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/714261",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/58.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-98-98/3",
+      "datum": "2017-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-10",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 225 - prodloužení nájmu - M + A Obuv s.r.o.",
+      "popis": "Rada města, bod 98/3, usnesení 14/17. Schvaleno.",
+      "castka_czk": 2520,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1694625",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/98.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-134-134/2",
+      "datum": "2022-01-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-11",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 225 - společnost M+A Obuv s.r.o. - prodloužení nájemního vztahu a podnájemní smlouvy",
+      "popis": "Rada města, bod 134/2, usnesení 5/22. Schvaleno.",
+      "castka_czk": 252000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2793089",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/134.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

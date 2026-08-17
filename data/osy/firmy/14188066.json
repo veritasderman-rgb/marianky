@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "14188066",
+    "nazev": "Adminio s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-07-11",
+    "do": "2025-02-21",
+    "prvni_rok": 2023,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-27-27/20",
+      "datum": "2023-07-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-07-11",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "„Město Mariánské Lázně – portál občana“ – smlouva na administraci veřejných zakázek",
+      "popis": "Rada města, bod 27/20, usnesení 454/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3048870",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/27.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-27/20__30234976",
+      "datum": "2025-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-21",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Objednávka administrace VZMR - rozšířené řešení portálu občana",
+      "popis": "Odhadované spojení smlouvy z 2025-02-21 s bodem 27/20 z 2023-07-11 („Město Mariánské Lázně – portál občana“ – smlouva na administraci veřejných zakázek). Jistot",
+      "castka_czk": 96800.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 14188066 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 591 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/32289784",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30234976",
+      "datum": "2025-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Objednávka administrace VZMR - rozšířené řešení portálu občana",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Adminio s.r.o..",
+      "castka_czk": 96800.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32289784",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

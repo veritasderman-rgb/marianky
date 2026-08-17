@@ -1,0 +1,419 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45244782",
+    "nazev": "Česká spořitelna, a. s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2013-09-03",
+    "do": "2026-07-24",
+    "prvni_rok": 2013,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 19,
+    "dolozenych": 13,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 7,
+      "smlouva": 6,
+      "retez": 6
+    },
+    "dle_jistoty": {
+      "fakt": 13,
+      "nizka": 4,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2013-120-120/3",
+      "datum": "2013-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-03",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 235 - Dodatek č. 2",
+      "popis": "Rada města, bod 120/3, usnesení 396/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1009541",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-169-169/8",
+      "datum": "2014-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-10-21",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 235 - žádost o souhlas se zřízením užívacího práva k NP",
+      "popis": "Rada města, bod 169/8, usnesení 467/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1276537",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/169.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:4236360",
+      "datum": "2018-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-23",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o účtu_4042960",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Česká spořitelna, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30505660",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-167-167/3",
+      "datum": "2018-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-25",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájemní smlouvy- Hlavní 235",
+      "popis": "Rada města, bod 167/3, usnesení 505/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2111060",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/167.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/3__6476755",
+      "datum": "2018-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-09",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.3, Hlavní 235",
+      "popis": "Odhadované spojení smlouvy z 2018-10-09 s bodem 167/3 z 2018-09-25 (Prodloužení nájemní smlouvy- Hlavní 235). Jistota nizka.",
+      "castka_czk": 6072990.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; obojí je dodatek č. 3; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6992203",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6476755",
+      "datum": "2018-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-09",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.3, Hlavní 235",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Česká spořitelna, a.s..",
+      "castka_czk": 6072990.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6992203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-167/3__7397555",
+      "datum": "2018-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-31",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "VOP a Ceník",
+      "popis": "Odhadované spojení smlouvy z 2018-10-31 s bodem 167/3 z 2018-09-25 (Prodloužení nájemní smlouvy- Hlavní 235). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; k témuž usnesení se hlásí ",
+      "url": "https://smlouvy.gov.cz/smlouva/7986571",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7397555",
+      "datum": "2018-10-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-31",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "VOP a Ceník",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Česká spořitelna, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7986571",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-2-2/13",
+      "datum": "2018-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Hlavní 235- prodloužení nájemní smlouvy",
+      "popis": "Rada města, bod 2/13, usnesení 625/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2141449",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-2/13__7238787",
+      "datum": "2018-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-18",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek č.4, Česká spořitelna- prodloužení smlouvy",
+      "popis": "Odhadované spojení smlouvy z 2018-12-18 s bodem 2/13 z 2018-11-27 (Hlavní 235- prodloužení nájemní smlouvy). Jistota stredni.",
+      "castka_czk": 3643794.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; obojí je dodatek č. 4",
+      "url": "https://smlouvy.gov.cz/smlouva/7816051",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7238787",
+      "datum": "2018-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-18",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.4, Česká spořitelna- prodloužení smlouvy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Česká spořitelna, a.s..",
+      "castka_czk": 3643794.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7816051",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-26-26/10",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 235 - Česká spořitelna - Rekonstrukce nebytových prostor",
+      "popis": "Rada města, bod 26/10, usnesení 257/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2347635",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-26/10__8662655",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 Česká spořitelna",
+      "popis": "Odhadované spojení smlouvy z 2019-06-11 s bodem 26/10 z 2019-06-04 (NP Hlavní 235 - Česká spořitelna - Rekonstrukce nebytových prostor). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova ceska, sporitelna; obojí je dodatek č. 5",
+      "url": "https://smlouvy.gov.cz/smlouva/9339279",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8662655",
+      "datum": "2019-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-11",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 Česká spořitelna",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Česká spořitelna, a.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9339279",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/17",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor Hlavní třída, č.p. 235 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 120/17, usnesení 1285/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1588359897",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/15",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Hlavní třída, č.p. 235 - prodloužení nájemního vztahu - Česká spořitelna, a.s.",
+      "popis": "Rada města, bod 122/15, usnesení 1354/26. Schvaleno.",
+      "castka_czk": 1003800,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2179328102",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-120/17__36713406",
+      "datum": "2026-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2026-07-24 s bodem 120/17 z 2026-06-23 (Nebytový prostor Hlavní třída, č.p. 235 – zveřejnění záměru obce). Jistota nizka.",
+      "castka_czk": 3011400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39060486",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-122/15__36713406",
+      "datum": "2026-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-24",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytových prostor",
+      "popis": "Odhadované spojení smlouvy z 2026-07-24 s bodem 122/15 z 2026-07-21 (Nebytový prostor ul. Hlavní třída, č.p. 235 - prodloužení nájemního vztahu - Česká spořitel",
+      "castka_czk": 3011400.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45244782 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39060486",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36713406",
+      "datum": "2026-07-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-24",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 5 ke Smlouvě o nájmu nebytových prostor",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Česká spořitelna, a. s..",
+      "castka_czk": 3011400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/39060486",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

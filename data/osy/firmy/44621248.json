@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "44621248",
+    "nazev": "Jiří Kodajek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-01-13",
+    "do": "2021-01-13",
+    "prvni_rok": 2021,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 1,
+    "odhadu": 2,
+    "dle_typu": {
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "vysoka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2020-86/10__14174203",
+      "datum": "2021-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-13",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Pozemkové parcely v k. ú. Úšovice, uvedené v příloze č. 1 a v k. ú. Vlkovice u Mariánských Lázní, uvedené v příloze č. 2",
+      "popis": "Odhadované spojení smlouvy z 2021-01-13 s bodem 86/10 z 2020-10-13 (Zveřejnění záměru prodlouření pachtu parcel v k. ú. Úšovice a v k. ú. Vlkovice). Jistota niz",
+      "castka_czk": 28248.66,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 44621248 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 92 dní po usnesení; název bodu a předmět smlouvy sdílí slova usovice, vlkovice; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/15221543",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-89/8__14174203",
+      "datum": "2021-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-13",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Pozemkové parcely v k. ú. Úšovice, uvedené v příloze č. 1 a v k. ú. Vlkovice u Mariánských Lázní, uvedené v příloze č. 2",
+      "popis": "Odhadované spojení smlouvy z 2021-01-13 s bodem 89/8 z 2020-11-10 (Uzavření pachtovní smlouvy - J. Kodajek). Jistota vysoka.",
+      "castka_czk": 28248.66,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 44621248 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 64 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/15221543",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14174203",
+      "datum": "2021-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-13",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Pozemkové parcely v k. ú. Úšovice, uvedené v příloze č. 1 a v k. ú. Vlkovice u Mariánských Lázní, uvedené v příloze č. 2",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Jiří Kodajek.",
+      "castka_czk": 28248.66,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15221543",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

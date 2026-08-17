@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "17151881",
+    "nazev": "Marienbad Immobilien s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-09-03",
+    "do": "2024-10-21",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "vysoka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2024-64-64/20",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Odkup pozemkových parcel v lokalitě Třešňovka, ul. Bezejmenná, k. ú. Mariánské Lázně",
+      "popis": "Rada města, bod 64/20, usnesení 606/24. Schvaleno.",
+      "castka_czk": 26573920,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3244816",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-16-16/30",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Odkup pozemkových parcel v lokalitě Třešňovka, ul. Bezejmenná, k. ú. Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/30, usnesení 364/24. Schvaleno.",
+      "castka_czk": 29000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3245652",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-67-67/19",
+      "datum": "2024-10-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Postoupení smlouvy o dílo – projektová dokumentace bytové domy v lokalitě Třešňovka",
+      "popis": "Rada města, bod 67/19, usnesení 665/24. Schvaleno.",
+      "castka_czk": 1026080,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3258381",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/67.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-64/20__28687472",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva Třešňovka",
+      "popis": "Odhadované spojení smlouvy z 2024-10-21 s bodem 64/20 z 2024-09-03 (Odkup pozemkových parcel v lokalitě Třešňovka, ul. Bezejmenná, k. ú. Mariánské Lázně). Jisto",
+      "castka_czk": 32154443.2,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 17151881 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 48 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/30662284",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28687472",
+      "datum": "2024-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-21",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva Třešňovka",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Marienbad Immobilien s.r.o..",
+      "castka_czk": 32154443.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30662284",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

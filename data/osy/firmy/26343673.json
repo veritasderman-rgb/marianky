@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26343673",
+    "nazev": "AUTOCENTRUM JAN ŠMUCLER s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-05-16",
+    "do": "2023-12-13",
+    "prvni_rok": 2023,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-23-23/19",
+      "datum": "2023-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-05-16",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Nákup tří nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně - výběr dodavatele",
+      "popis": "Rada města, bod 23/19, usnesení 309/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3021631",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-23/19__23361487",
+      "datum": "2023-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-28",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Nákup nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-06-28 s bodem 23/19 z 2023-05-16 (Nákup tří nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně - výběr dodav",
+      "castka_czk": 2745858.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26343673 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 43 dní po usnesení; název bodu a předmět smlouvy sdílí slova nakup, nizkoemisnich, pecovatelskou, sluzbu;",
+      "url": "https://smlouvy.gov.cz/smlouva/25364051",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23361487",
+      "datum": "2023-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-06-28",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Nákup nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AUTOCENTRUM JAN ŠMUCLER s.r.o..",
+      "castka_czk": 2745858.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25364051",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2023-23/19__25116359",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva o prodeji motorových vozidel",
+      "popis": "Odhadované spojení smlouvy z 2023-12-13 s bodem 23/19 z 2023-05-16 (Nákup tří nízkoemisních vozidel pro pečovatelskou službu města Mariánské Lázně - výběr dodav",
+      "castka_czk": 1042759.9952,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26343673 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 211 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/26893363",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25116359",
+      "datum": "2023-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-13",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva o prodeji motorových vozidel",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana AUTOCENTRUM JAN ŠMUCLER s.r.o..",
+      "castka_czk": 1042759.9952,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26893363",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

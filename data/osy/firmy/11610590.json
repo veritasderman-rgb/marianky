@@ -1,0 +1,238 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "11610590",
+    "nazev": "Sovka Roman"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-06-07",
+    "do": "2026-07-28",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 8,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 6,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-72-72/4",
+      "datum": "2016-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-06-07",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - prodloužení nájemního vztahu, přistoupení druhého nájemce - Elsa Sovková",
+      "popis": "Rada města, bod 72/4, usnesení 288/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1586499",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/72.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-150-150/3",
+      "datum": "2018-03-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-03-27",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - žádost o slevu na nájemném - Elsa Sovková, Roman Sovka",
+      "popis": "Rada města, bod 150/3, usnesení 169/18.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1922375",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/150.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-115-115/8",
+      "datum": "2021-06-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-29",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 222 - prodloužení nájemního vztahu - Roman Sovka, Elsa Sovková",
+      "popis": "Rada města, bod 115/8, usnesení 289/21. Schvaleno.",
+      "castka_czk": 142200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2698107",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-115/8__16087475",
+      "datum": "2021-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-14",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Roman Sovka, Elsa Sovková - prodloužení NS",
+      "popis": "Odhadované spojení smlouvy z 2021-07-14 s bodem 115/8 z 2021-06-29 (NP Hlavní 222 - prodloužení nájemního vztahu - Roman Sovka, Elsa Sovková). Jistota stredni.",
+      "castka_czk": 860310.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11610590 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova elsa, prodlouzeni, roman, sovka",
+      "url": "https://smlouvy.gov.cz/smlouva/17311335",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16087475",
+      "datum": "2021-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-14",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Roman Sovka, Elsa Sovková - prodloužení NS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Roman Sovka.",
+      "castka_czk": 860310.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17311335",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-41-41/11",
+      "datum": "2024-01-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-09",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 222 – odstoupení nájemce",
+      "popis": "Rada města, bod 41/11, usnesení 11/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3135565",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/41.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-120-120/26",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor v ul. Hlavní třída, č.p. 222 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 120/26, usnesení 1294/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1039972805",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/16",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Hlavní třída, č.p. 222 – prodloužení nájemního vztahu – Roman Sovka",
+      "popis": "Rada města, bod 122/16, usnesení 1355/26. Schvaleno.",
+      "castka_czk": 142200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/138527926",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-122/16__36578758",
+      "datum": "2026-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-28",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Roman Sovka - prodloužení NS",
+      "popis": "Odhadované spojení smlouvy z 2026-07-28 s bodem 122/16 z 2026-07-21 (Nebytový prostor ul. Hlavní třída, č.p. 222 – prodloužení nájemního vztahu – Roman Sovka). ",
+      "castka_czk": 711000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 11610590 je uvedeno v textu usnesení; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova prodlouzeni, roman, sovka",
+      "url": "https://smlouvy.gov.cz/smlouva/38919822",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36578758",
+      "datum": "2026-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-28",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Roman Sovka - prodloužení NS",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Sovka Roman.",
+      "castka_czk": 711000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38919822",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28831365",
+    "nazev": "CALYPSO GROUP s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-11-18",
+    "do": "2025-12-10",
+    "prvni_rok": 2025,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 2,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-104-104/24",
+      "datum": "2025-11-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-18",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Výjimka z vnitřního předpisu města č. 2017-8 Veřejné zakázky - Nafukovací tenisová hala",
+      "popis": "Rada města, bod 104/24, usnesení 782/25. Schvaleno.",
+      "castka_czk": 6954387,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3830825213",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/104.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-104/24__34118565",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Nafukovací tenisová hala – Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-12-10 s bodem 104/24 z 2025-11-18 (Výjimka z vnitřního předpisu města č. 2017-8 Veřejné zakázky - Nafukovací tenisová hala). J",
+      "castka_czk": 6576229.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28831365 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 22 dní po usnesení; název bodu a předmět smlouvy sdílí slova hala, nafukovaci, tenisova; stejně dobře sed",
+      "url": "https://smlouvy.gov.cz/smlouva/36356305",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-106/30__34118565",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Nafukovací tenisová hala – Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2025-12-10 s bodem 106/30 z 2025-12-09 (Výjimka z vnitřního předpisu města č. 2017-8 Veřejné zakázky - Nafukovací tenisová hala). J",
+      "castka_czk": 6576229.0,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (CALYPSO GROUP s.r.o.) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova hala, nafukovaci",
+      "url": "https://smlouvy.gov.cz/smlouva/36356305",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34118565",
+      "datum": "2025-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - Nafukovací tenisová hala – Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CALYPSO GROUP s.r.o..",
+      "castka_czk": 6576229.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36356305",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

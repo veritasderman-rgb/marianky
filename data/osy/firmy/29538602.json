@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29538602",
+    "nazev": "Bogdán"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-05-12",
+    "do": "2026-07-28",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 4,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-117-117/8",
+      "datum": "2026-05-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-12",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nebytového prostoru v ul. Poštovní, č.p. 332, Mariánské Lázně",
+      "popis": "Rada města, bod 117/8, usnesení 1154/26. Schvaleno.",
+      "castka_czk": 120000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/711853285",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-117/8__35868005",
+      "datum": "2026-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-18",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Viktória Bógdan",
+      "popis": "Odhadované spojení smlouvy z 2026-05-18 s bodem 117/8 z 2026-05-12 (Pronájem nebytového prostoru v ul. Poštovní, č.p. 332, Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 600000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29538602 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 6 dní po usnesení; název bodu a předmět smlouvy sdílí slova nebytoveho, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/38181769",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35868005",
+      "datum": "2026-05-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-18",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Viktória Bógdan",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bogdán.",
+      "castka_czk": 600000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38181769",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-122-122/12",
+      "datum": "2026-07-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-21",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Nebytový prostor ul. Poštovní, č.p. 332 – ukončení Smlouvy o nájmu nebytového prostoru dohodou",
+      "popis": "Rada města, bod 122/12, usnesení 1351/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3375235733",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-117/8__36573518",
+      "datum": "2026-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-28",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Viktória Bógdan",
+      "popis": "Odhadované spojení smlouvy z 2026-07-28 s bodem 117/8 z 2026-05-12 (Pronájem nebytového prostoru v ul. Poštovní, č.p. 332, Mariánské Lázně). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29538602 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 77 dní po usnesení; název bodu a předmět smlouvy sdílí slova nebytoveho, prostoru; stejně dobře sedí i 1 ",
+      "url": "https://smlouvy.gov.cz/smlouva/38914210",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-122/12__36573518",
+      "datum": "2026-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-28",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Viktória Bógdan",
+      "popis": "Odhadované spojení smlouvy z 2026-07-28 s bodem 122/12 z 2026-07-21 (Nebytový prostor ul. Poštovní, č.p. 332 – ukončení Smlouvy o nájmu nebytového prostoru doho",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29538602 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, prostoru, ukonceni; stejně",
+      "url": "https://smlouvy.gov.cz/smlouva/38914210",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:36573518",
+      "datum": "2026-07-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-07-28",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dohoda o ukončení nájmu nebytového prostoru - Viktória Bógdan",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bogdán.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/38914210",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

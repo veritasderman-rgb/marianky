@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25226258",
+    "nazev": "Orcave, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-07-25",
+    "do": "2018-07-25",
+    "prvni_rok": 2018,
+    "posledni_rok": 2018,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2018-37/14__5813491",
+      "datum": "2018-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-25",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Objednávka - Koncepce rozvoje a obnovy VO v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2018-07-25 s bodem 37/14 z 2018-06-19 (Snížení energetické náročnosti veřejného osvětlení v Mariánských Lázních - podání žádosti o ",
+      "castka_czk": 229900.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Orcave, spol. s r.o.) je v textu usnesení; smlouva podepsána 36 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych",
+      "url": "https://smlouvy.gov.cz/smlouva/6262767",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5813491",
+      "datum": "2018-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-25",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Koncepce rozvoje a obnovy VO v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Orcave, spol. s r.o..",
+      "castka_czk": 229900.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6262767",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

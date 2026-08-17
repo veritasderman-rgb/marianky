@@ -1,0 +1,320 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25205099",
+    "nazev": "VOJÁČEK s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-12-09",
+    "do": "2021-09-06",
+    "prvni_rok": 1996,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 9,
+    "odhadu": 5,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 5,
+      "smlouva": 6
+    },
+    "dle_jistoty": {
+      "fakt": 9,
+      "vysoka": 1,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:25205099:vznik",
+      "datum": "1996-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-12-09",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — VOJÁČEK s.r.o.",
+      "popis": "Vznik subjektu VOJÁČEK s.r.o. (IČO 25205099), Společnost s ručením omezeným, obor: Instalace rozvodů vody, odpadu, topení a klimatizace.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-83-83/16",
+      "datum": "2016-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-06",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "ZŠ JIH – vyvážení otopné soustavy",
+      "popis": "Rada města, bod 83/16, usnesení 447/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1631816",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2016-18/18__421313",
+      "datum": "2016-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-21",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Kupní smlouva",
+      "popis": "Odhadované spojení smlouvy z 2016-09-21 s bodem 18/18 z 2016-06-21 (Prodej pozemkové parcely č. 1000/2 v k.ú. Mariánské Lázně). Jistota vysoka.",
+      "castka_czk": 888828.49,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 25205099 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 92 dní po usnesení; usnesení mluví o",
+      "url": "https://smlouvy.gov.cz/smlouva/448629",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:421313",
+      "datum": "2016-09-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-09-21",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Kupní smlouva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o..",
+      "castka_czk": 888828.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/448629",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2016-83/16__347081",
+      "datum": "2016-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-03",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "ZŠ JIH Mariánské Lázně – vyvážení otopné soustavy",
+      "popis": "Odhadované spojení smlouvy z 2016-10-03 s bodem 83/16 z 2016-09-06 (ZŠ JIH – vyvážení otopné soustavy). Jistota nizka.",
+      "castka_czk": 698817.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25205099 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova otopne, soustavy, vyvazeni; k témuž usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/877921",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:347081",
+      "datum": "2016-10-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-03",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "ZŠ JIH Mariánské Lázně – vyvážení otopné soustavy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o..",
+      "castka_czk": 698817.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/877921",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-91-91/17",
+      "datum": "2016-11-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-08",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "ZŠ JIH – vyvážení otopné soustavy",
+      "popis": "Rada města, bod 91/17, usnesení 552/16. Schvaleno.",
+      "castka_czk": 12727,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1662652",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-83/16__3138342",
+      "datum": "2017-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-10",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava sprch a kabin na stadionu Viktoria Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-10-10 s bodem 83/16 z 2016-09-06 (ZŠ JIH – vyvážení otopné soustavy). Jistota nizka.",
+      "castka_czk": 166102.3265,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25205099 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 399 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy",
+      "url": "https://smlouvy.gov.cz/smlouva/3382630",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-91/17__3138342",
+      "datum": "2017-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-10",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava sprch a kabin na stadionu Viktoria Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-10-10 s bodem 91/17 z 2016-11-08 (ZŠ JIH – vyvážení otopné soustavy). Jistota nizka.",
+      "castka_czk": 166102.3265,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25205099 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 336 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/3382630",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3138342",
+      "datum": "2017-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-10",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava sprch a kabin na stadionu Viktoria Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o –  topení – plyn - voda .",
+      "castka_czk": 166102.3265,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3382630",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2016-83/16__5276579",
+      "datum": "2018-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-29",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava havárie plynového kotle výměnou v budově stadionu Viktoria Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2018-05-29 s bodem 83/16 z 2016-09-06 (ZŠ JIH – vyvážení otopné soustavy). Jistota nizka.",
+      "castka_czk": 115544.594,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25205099 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 630 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/5681843",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5276579",
+      "datum": "2018-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-05-29",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havárie plynového kotle výměnou v budově stadionu Viktoria Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o –  topení – plyn - voda .",
+      "castka_czk": 115544.594,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5681843",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11221748",
+      "datum": "2020-03-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-26",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava sociálního zařízení 1.NP TJ Viktoria, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o..",
+      "castka_czk": 375997.9531,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12070896",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:16411771",
+      "datum": "2021-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-06",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava podlahové krytiny na schodišti výměnou v objektu TJ Viktoria, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana VOJÁČEK s.r.o..",
+      "castka_czk": 103377.318,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17672351",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

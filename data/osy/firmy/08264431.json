@@ -1,0 +1,96 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "08264431",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-07-05",
+    "do": "2022-06-21",
+    "prvni_rok": 2019,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 3,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:08264431:vznik",
+      "datum": "2019-07-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-05",
+      "rok": 2019,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Český kynologický svaz ZKO Mariánské Lázně-Vora - 1041",
+      "popis": "Vznik subjektu Český kynologický svaz ZKO Mariánské Lázně-Vora - 1041 (IČO 08264431), Pobočný spolek, obor: Činnosti organizací na podporu rekreační a zájmové č",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-148-148/9",
+      "datum": "2022-05-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-24",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2022",
+      "popis": "Rada města, bod 148/9, usnesení 241/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2852931",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/148.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-28-28/3",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo",
+      "popis": "Zastupitelstvo města, bod 28/3, usnesení 606/22. Schvaleno.",
+      "castka_czk": 445000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2853699",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

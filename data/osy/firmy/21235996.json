@@ -1,0 +1,139 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "21235996",
+    "nazev": "ŠPAČEK GASTRO s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-02-09",
+    "do": "2024-04-29",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:21235996:vznik",
+      "datum": "2024-02-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-02-09",
+      "rok": 2024,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — ŠPAČEK GASTRO s.r.o.",
+      "popis": "Vznik subjektu ŠPAČEK GASTRO s.r.o. (IČO 21235996), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-48-48/22",
+      "datum": "2024-03-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-03-19",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 – zveřejnění záměru obce",
+      "popis": "Rada města, bod 48/22, usnesení 182/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3166815",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/48.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/15",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní, č.p. 718 – postoupení Smlouvy o nájmu nebytového prostoru",
+      "popis": "Rada města, bod 51/15, usnesení 263/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3180179",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/15__26661183",
+      "datum": "2024-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-29",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 7 - Dohoda o postoupení smlouvy o nájmu nebytového prostoru Martin Špaček x ŠPAČEK GASTRO s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2024-04-29 s bodem 51/15 z 2024-04-16 (NP Poštovní, č.p. 718 – postoupení Smlouvy o nájmu nebytového prostoru). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 21235996 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, postoupeni, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/28525755",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26661183",
+      "datum": "2024-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-29",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 7 - Dohoda o postoupení smlouvy o nájmu nebytového prostoru Martin Špaček x ŠPAČEK GASTRO s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ŠPAČEK GASTRO s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28525755",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "75010852",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2003-05-06",
+    "do": "2014-10-21",
+    "prvni_rok": 2003,
+    "posledni_rok": 2014,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:75010852:vznik",
+      "datum": "2003-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2003-05-06",
+      "rok": 2003,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Společenství vlastníků bytových jednotek Ruská 135/17",
+      "popis": "Vznik subjektu Společenství vlastníků bytových jednotek Ruská 135/17 (IČO 75010852), Společenství vlastníků jednotek, obor: Pronájem a správa vlastních nebo pro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2014-169-169/2",
+      "datum": "2014-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-10-21",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě VB-plyn.přípojka,BD Ruská 135/17",
+      "popis": "Rada města, bod 169/2, usnesení 461/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1276420",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/169.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

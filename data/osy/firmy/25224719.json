@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25224719",
+    "nazev": "SMUTNÝ STAVITELSTVÍ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-07-17",
+    "do": "2019-06-14",
+    "prvni_rok": 2017,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
+    "dle_typu": {
+      "smlouva": 3,
+      "usneseni": 1,
+      "retez": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:2421346",
+      "datum": "2017-07-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-17",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Zabezpečení stropních konstrukcí v 1 a 2.NP Městského úřadu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SMUTNÝ STAVITELSTVÍ s.r.o..",
+      "castka_czk": 90282.94,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2608518",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:2510350",
+      "datum": "2017-07-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-07-25",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava podlahy ve 2.NP Městského úřadu Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SMUTNÝ STAVITELSTVÍ s.r.o..",
+      "castka_czk": 93928.9241,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2703158",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-170-170/6",
+      "datum": "2018-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-16",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "VZ Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské Lázně",
+      "popis": "Rada města, bod 170/6, usnesení 544/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2121791",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/170.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-170/6__8731067",
+      "datum": "2019-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-14",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Objednávka-Oprava sociálního zařízení MŠ Křižíkova, Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-06-14 s bodem 170/6 z 2018-10-16 (VZ Demolice objektu - U Nemocnice, č.p. 107, na st.p.č. 204, k. ú. Úšovice, obec Mariánské L",
+      "castka_czk": 410210.1586,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25224719 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 241 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9411667",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8731067",
+      "datum": "2019-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-14",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava sociálního zařízení MŠ Křižíkova, Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SMUTNÝ STAVITELSTVÍ s.r.o..",
+      "castka_czk": 410210.1586,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9411667",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

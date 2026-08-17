@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03777944",
+    "nazev": "Poltona s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-04-18",
+    "do": "2022-08-22",
+    "prvni_rok": 2017,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 3,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "stredni": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-111-111/4",
+      "datum": "2017-04-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-04-18",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 161 - postoupení smlouvy o nájmu - Domain s.r.o. x Poltona s.r.o.",
+      "popis": "Rada města, bod 111/4, usnesení 244/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1743491",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/111.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-111/4__3502652",
+      "datum": "2017-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-11",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Postoupení Smlouvy o nájmu ze dne 29. 2. 2008",
+      "popis": "Odhadované spojení smlouvy z 2017-05-11 s bodem 111/4 z 2017-04-18 (NP Hlavní 161 - postoupení smlouvy o nájmu - Domain s.r.o. x Poltona s.r.o.). Jistota stredn",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03777944 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, postoupeni; usnesení mluví o dodatku,",
+      "url": "https://smlouvy.gov.cz/smlouva/3775548",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3502652",
+      "datum": "2017-05-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-11",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Postoupení Smlouvy o nájmu ze dne 29. 2. 2008",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Poltona s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3775548",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-124/4__2981874",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 161, Poltona s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2017-09-14 s bodem 124/4 z 2017-08-22 (NP Hlavní 161 - prodloužení nájmu - Poltona s.r.o.). Jistota stredni.",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03777944 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, poltona",
+      "url": "https://smlouvy.gov.cz/smlouva/3212214",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2981874",
+      "datum": "2017-09-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-14",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 161, Poltona s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Poltona s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3212214",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-155-155/3",
+      "datum": "2022-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-09",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p.161 - prodloužení Smlouvy o nájmu nebytového prostoru - společnost Poltona s.r.o.",
+      "popis": "Rada města, bod 155/3, usnesení 398/22. Schvaleno.",
+      "castka_czk": 344100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2887750",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/155.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-155/3__19932163",
+      "datum": "2022-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-22",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost Poltona s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2022-08-22 s bodem 155/3 z 2022-08-09 (NP Hlavní, č.p.161 - prodloužení Smlouvy o nájmu nebytového prostoru - společnost Poltona s.",
+      "castka_czk": 2081805.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03777944 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova najmu, nebytoveho, poltona, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/21418731",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19932163",
+      "datum": "2022-08-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-22",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - prodloužení - společnost Poltona s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Poltona s.r.o..",
+      "castka_czk": 2081805.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21418731",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

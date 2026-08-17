@@ -1,0 +1,879 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29118221",
+    "nazev": "stavby VILDT s. r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-06-18",
+    "do": "2024-08-27",
+    "prvni_rok": 2019,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 42,
+    "dolozenych": 23,
+    "odhadu": 19,
+    "dle_typu": {
+      "usneseni": 8,
+      "retez": 19,
+      "smlouva": 15
+    },
+    "dle_jistoty": {
+      "fakt": 23,
+      "nizka": 18,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2019-28-28/3",
+      "datum": "2019-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-18",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 28/3, usnesení 298/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2359850",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/28.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-28/3__8856619",
+      "datum": "2019-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Oprava asfaltových a dlážděných chodníků v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-06-28 s bodem 28/3 z 2019-06-18 (Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistota n",
+      "castka_czk": 4542723.41,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova asfaltovych, chodniku, dlazdenych, laznich; ",
+      "url": "https://smlouvy.gov.cz/smlouva/9544535",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8856619",
+      "datum": "2019-06-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava asfaltových a dlážděných chodníků v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 4542723.41,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9544535",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-29-29/2",
+      "datum": "2019-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-02",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 29/2, usnesení 311/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2362816",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/29.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-28/3__9026923",
+      "datum": "2019-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-07-04 s bodem 28/3 z 2019-06-18 (Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistota n",
+      "castka_czk": 713553.91,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych, oprava; stej",
+      "url": "https://smlouvy.gov.cz/smlouva/9724435",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-29/2__9026923",
+      "datum": "2019-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-07-04 s bodem 29/2 z 2019-07-02 (Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních - výběr dodavatele). Jistota ni",
+      "castka_czk": 713553.91,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, libusina, marianskych; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/9724435",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9026923",
+      "datum": "2019-07-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 713553.91,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9724435",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-28/3__10320960",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Odstranění asfaltových povrchů na chodníku v ulici U Nemocnice, v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-12-05 s bodem 28/3 z 2019-06-18 (Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistota n",
+      "castka_czk": 83800.97,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 170 dní po usnesení; název bodu a předmět smlouvy sdílí slova asfaltovych, chodniku, laznich, marianskych",
+      "url": "https://smlouvy.gov.cz/smlouva/11099964",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-29/2__10320960",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Odstranění asfaltových povrchů na chodníku v ulici U Nemocnice, v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2019-12-05 s bodem 29/2 z 2019-07-02 (Oprava chodníků ulic Žižkova a Libušina v Mariánských Lázních - výběr dodavatele). Jistota ni",
+      "castka_czk": 83800.97,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 156 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych; stejně dobř",
+      "url": "https://smlouvy.gov.cz/smlouva/11099964",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10320960",
+      "datum": "2019-12-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-05",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Odstranění asfaltových povrchů na chodníku v ulici U Nemocnice, v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby VILDT s.r.o..",
+      "castka_czk": 83800.97,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11099964",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-59-59/17",
+      "datum": "2020-02-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava chodníku podél Úšovického potoka - úsek Anglická-Dobrovského - výběr dodavatele",
+      "popis": "Rada města, bod 59/17, usnesení 128/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2484564",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/59.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-71-71/2",
+      "datum": "2020-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-26",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 71/2, usnesení 262/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2524098",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/71.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:12143948",
+      "datum": "2020-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Oprava asfaltových a dlážděných chodníků v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 1809176.21,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13034444",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-77-77/11",
+      "datum": "2020-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "OPRAVA CHODNÍKU - MLATOVÝ POVRCH - ÚSEK ANGLICKÁ-DOBROVSKÉHO - výběr dodavatele",
+      "popis": "Rada města, bod 77/11, usnesení 366/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2549714",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/17__12683512",
+      "datum": "2020-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Realizace Mlatového chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul.",
+      "popis": "Odhadované spojení smlouvy z 2020-08-06 s bodem 59/17 z 2020-02-25 (VZ Oprava chodníku podél Úšovického potoka - úsek Anglická-Dobrovského - výběr dodavatele). ",
+      "castka_czk": 1074631.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 163 dní po usnesení; název bodu a předmět smlouvy sdílí slova anglicka, chodniku, dobrovskeho, podel; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/13604702",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-71/2__12683512",
+      "datum": "2020-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Realizace Mlatového chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul.",
+      "popis": "Odhadované spojení smlouvy z 2020-08-06 s bodem 71/2 z 2020-05-26 (VZ Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistot",
+      "castka_czk": 1074631.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 72 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/13604702",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/11__12683512",
+      "datum": "2020-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-06",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Realizace Mlatového chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul.",
+      "popis": "Odhadované spojení smlouvy z 2020-08-06 s bodem 77/11 z 2020-07-14 (OPRAVA CHODNÍKU - MLATOVÝ POVRCH - ÚSEK ANGLICKÁ-DOBROVSKÉHO - výběr dodavatele). Jistota ni",
+      "castka_czk": 1074631.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova anglicka, chodniku, dobrovskeho, usek; stejn",
+      "url": "https://smlouvy.gov.cz/smlouva/13604702",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12683512",
+      "datum": "2020-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-06",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Realizace Mlatového chodníku podél Úšovického potoka, úsek Anglická ul. - Dobrovského ul.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 1074631.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13604702",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/17__13267848",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1, Realizace mlatového chodníku podél Úšovického potoka, úsek ul. Anglická - Dobrovského ul.",
+      "popis": "Odhadované spojení smlouvy z 2020-10-12 s bodem 59/17 z 2020-02-25 (VZ Oprava chodníku podél Úšovického potoka - úsek Anglická-Dobrovského - výběr dodavatele). ",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 230 dní po usnesení; název bodu a předmět smlouvy sdílí slova anglicka, chodniku, dobrovskeho, podel; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/14222004",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/11__13267848",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1, Realizace mlatového chodníku podél Úšovického potoka, úsek ul. Anglická - Dobrovského ul.",
+      "popis": "Odhadované spojení smlouvy z 2020-10-12 s bodem 77/11 z 2020-07-14 (OPRAVA CHODNÍKU - MLATOVÝ POVRCH - ÚSEK ANGLICKÁ-DOBROVSKÉHO - výběr dodavatele). Jistota ni",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 90 dní po usnesení; název bodu a předmět smlouvy sdílí slova anglicka, chodniku, dobrovskeho, usek; stejn",
+      "url": "https://smlouvy.gov.cz/smlouva/14222004",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13267848",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1, Realizace mlatového chodníku podél Úšovického potoka, úsek ul. Anglická - Dobrovského ul.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14222004",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-59/17__13739669",
+      "datum": "2020-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-30",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Novostavba chodníku podél ul. U Nemocnice Mariánské Lázně - změna rozsahu plnění",
+      "popis": "Odhadované spojení smlouvy z 2020-11-30 s bodem 59/17 z 2020-02-25 (VZ Oprava chodníku podél Úšovického potoka - úsek Anglická-Dobrovského - výběr dodavatele). ",
+      "castka_czk": 348849.49,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 279 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, podel; stejně dobře sedí i 2 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/14751153",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-71/2__13739669",
+      "datum": "2020-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-30",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Novostavba chodníku podél ul. U Nemocnice Mariánské Lázně - změna rozsahu plnění",
+      "popis": "Odhadované spojení smlouvy z 2020-11-30 s bodem 71/2 z 2020-05-26 (VZ Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistot",
+      "castka_czk": 348849.49,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 188 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/14751153",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/11__13739669",
+      "datum": "2020-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-30",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Novostavba chodníku podél ul. U Nemocnice Mariánské Lázně - změna rozsahu plnění",
+      "popis": "Odhadované spojení smlouvy z 2020-11-30 s bodem 77/11 z 2020-07-14 (OPRAVA CHODNÍKU - MLATOVÝ POVRCH - ÚSEK ANGLICKÁ-DOBROVSKÉHO - výběr dodavatele). Jistota ni",
+      "castka_czk": 348849.49,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 139 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/14751153",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13739669",
+      "datum": "2020-11-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-30",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo Novostavba chodníku podél ul. U Nemocnice Mariánské Lázně - změna rozsahu plnění",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 348849.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14751153",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-107-107/10",
+      "datum": "2021-05-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-05-04",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Oprava chodníků v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 107/10, usnesení 161/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2673907",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-107/10__15790219",
+      "datum": "2021-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-07",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-06-07 s bodem 107/10 z 2021-05-04 (Oprava chodníků v Mariánských Lázních - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 1675261.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych, oprava; k té",
+      "url": "https://smlouvy.gov.cz/smlouva/16996143",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15790219",
+      "datum": "2021-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-07",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníků v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 1675261.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16996143",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-71/2__16703747",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu propadlého potrubí DN 500mm, v parku u Rudolfova pramene v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-10-05 s bodem 71/2 z 2020-05-26 (VZ Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistot",
+      "castka_czk": 77069.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 497 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych, oprava; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/17988375",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-107/10__16703747",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu propadlého potrubí DN 500mm, v parku u Rudolfova pramene v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-10-05 s bodem 107/10 z 2021-05-04 (Oprava chodníků v Mariánských Lázních - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 77069.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 154 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych, oprava; stejně dobře ",
+      "url": "https://smlouvy.gov.cz/smlouva/17988375",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16703747",
+      "datum": "2021-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-05",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Oprava havarijního stavu propadlého potrubí DN 500mm, v parku u Rudolfova pramene v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby Vildt, s.r.o..",
+      "castka_czk": 77069.74,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17988375",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-71/2__16703895",
+      "datum": "2021-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-08",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu rozpadlé kamenné zdi koryta potoku v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-10-08 s bodem 71/2 z 2020-05-26 (VZ Oprava asfaltových a dlážděných chodníků v Mariánských Lázních - výběr dodavatele). Jistot",
+      "castka_czk": 106190.81,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 500 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych, oprava; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/17988519",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-107/10__16703895",
+      "datum": "2021-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-08",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Oprava havarijního stavu rozpadlé kamenné zdi koryta potoku v Mariánských Lázních",
+      "popis": "Odhadované spojení smlouvy z 2021-10-08 s bodem 107/10 z 2021-05-04 (Oprava chodníků v Mariánských Lázních - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 106190.81,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 157 dní po usnesení; název bodu a předmět smlouvy sdílí slova laznich, marianskych, oprava; stejně dobře ",
+      "url": "https://smlouvy.gov.cz/smlouva/17988519",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16703895",
+      "datum": "2021-10-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-08",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Oprava havarijního stavu rozpadlé kamenné zdi koryta potoku v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby Vildt, s.r.o..",
+      "castka_czk": 106190.81,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17988519",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-151-151/10",
+      "datum": "2022-06-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-14",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava chodníků v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 151/10, usnesení 310/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2864247",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/151.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:19689395",
+      "datum": "2022-07-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-07-20",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníků v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 2127542.49,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21162563",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:23937015",
+      "datum": "2023-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-08-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Dodávka a osazení světelného signalizačního zařízení na přechod pro chodce ul. Plzeňská, Mariánské Lázně – stavební práce",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 373408.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25639571",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24440031",
+      "datum": "2023-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Oprava asfaltových povrchů chodníků, v ul. Stavbařů, Hroznatova, areál 3. ZDŠ, v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby Vildt s.r.o..",
+      "castka_czk": 588034.7836,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26166199",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:24440255",
+      "datum": "2023-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-16",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Oprava asfaltových povrchů chodníků, v ul. Stavbařů, Hroznatova, areál 3. ZDŠ, v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby Vildt s.r.o..",
+      "castka_czk": 588034.7836,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26166439",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-60-60/3",
+      "datum": "2024-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Oprava chodníků v Mariánských Lázních\" - výběr dodavatele",
+      "popis": "Rada města, bod 60/3, usnesení 504/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3225629",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-60/3__28122480",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Oprava chodníků v Mariánských Lázních 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-08-27 s bodem 60/3 z 2024-07-23 (Veřejná zakázka \"Oprava chodníků v Mariánských Lázních\" - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 2034854.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29118221 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodniku, laznich, marianskych, oprava",
+      "url": "https://smlouvy.gov.cz/smlouva/30054972",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:28122480",
+      "datum": "2024-08-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-27",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Oprava chodníků v Mariánských Lázních 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana stavby VILDT s. r. o..",
+      "castka_czk": 2034854.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/30054972",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

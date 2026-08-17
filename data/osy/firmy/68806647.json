@@ -1,0 +1,116 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "68806647",
+    "nazev": "Pavel Mikota - Tesařství"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-10-25",
+    "do": "2019-06-06",
+    "prvni_rok": 2000,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:68806647:vznik",
+      "datum": "2000-10-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-10-25",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Pavel Mikota",
+      "popis": "Vznik subjektu Pavel Mikota (IČO 68806647), Fyzická osoba podnikající dle živnostenského zákona, obor: Pokrývačské práce.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:1829450",
+      "datum": "2017-05-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-16",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava havarijních částí budovy na koupališti Lido - Mariánské lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Mikota - Tesařství.",
+      "castka_czk": 301423.1,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1974350",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:5381383",
+      "datum": "2018-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-06",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka - Oprava havarijních částí budov na koupališti Lido - Mariánské lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Mikota - Tesařství.",
+      "castka_czk": 345419.91,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/5793203",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:8602275",
+      "datum": "2019-06-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-06",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Objednávka-Oprava přístavby umýváren za hlavní budovou na koupališti Lido - Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Pavel Mikota - Tesařství.",
+      "castka_czk": 233249.28,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9275491",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

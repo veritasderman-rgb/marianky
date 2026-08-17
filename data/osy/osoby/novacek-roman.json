@@ -1,0 +1,286 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "novacek-roman",
+    "jmeno": "Roman Nováček",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-03",
+    "do": "2026-04",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 12,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 12
+    },
+    "dle_jistoty": {
+      "fakt": 12
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-03-008",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Sběr oděvů a textilních materiálů",
+      "popis": "Město Mariánské Lázně přistoupilo k rozšíření sběru tříděných složek komunálního odpadu. Od února 2016 je možné využívat kontejnery na sběr použitých oděvů a te",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-05-031",
+      "datum": "2016-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-05-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Zápas - Kořán se stal Zápasníkem roku",
+      "popis": "Mariánské Lázně – V restauraci Kamenný dvůr si ve druhé polovině března dali dostaveníčko zápasníci ze Sokola Mariánské, aby vyhodnotili nejlepší borce za uplyn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2d946870%7C968#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-05/031.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-07-012",
+      "datum": "2018-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "ODBOR SOCIÁLNÍCH VĚCÍ PŮSOBÍ NA NOVÉM MÍSTĚ",
+      "popis": "V souladu s harmonogramem připravované rekonstrukce radnice bylo 14. 5. 2018 zahájeno stěhování dalšího odboru městského úřadu. V této části etapy se změna míst",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821edbd4%7C1586#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-07/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-006",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "SENIOR-TAXI MARIÁNSKÉ LÁZNĚ",
+      "popis": "Město Mariánské Lázně spustí v měsíci září 2018 pro své občany novou službu Senior-taxi. Hlavním důvodem pro zavedení této služby i v našem městě je především s",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-12-003",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÁ POLICIE INFORMUJE",
+      "popis": "• 18.10.2018 – denní  vozidla Audi nezvládl řízení a sjel do příkopu. Při této nešťastné události nedošlo k žádnému zranění osob, ani k jiným dalším škodám na m",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b4fe313d%7C1780#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-12/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-12-009",
+      "datum": "2020-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-12-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "TERMÍN PRO ZASÍLÁNÍ PŘÍSPĚVKŮ DO 18.11.2020",
+      "popis": "Konference v případě zhoršení zdravotních nařízení bude realizována on-line. Výstupem z konference bude recenzovaný sborník. Přihláška a podrobné informace jsou",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89f6d982%7C2470#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-12/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-044",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "IFBB DIAMOND CUP PRAGUE 2022",
+      "popis": "Dne 11. 6. 2022 se v Praze konala mezinárodní soutěž v kulturistice, ve které usilovala o svůj první mezinárodní úspěch i závodnice TJ SANDOW Mariánské Lázně v ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=28",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/044.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-004",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "KOMISE SOCIÁLNÍ A ZDRAVOTNÍ INFORMUJE",
+      "popis": "Komise sociální a zdravotní Města Mariánské Lázně ve svém novém složení zahájila svoji činnost v únoru tohoto roku. Na svém prvním jednání si stanovila svoji bu",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-002",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "KRIZOVÉ BYDLENÍ PRO MATKY NEBO OTCE V TÍSNI",
+      "popis": "Myšlenka a zároveň potřeba podpořit mariánskolázeňské rodiče, kteří se ocitli v nepříznivé sociální situaci spojené se ztrátou bydlení a kteří zároveň chtějí ak",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-002",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "KOMISE SOCIÁLNÍ A ZDRAVOTNÍ",
+      "popis": "Komise sociální a zdravot- veřejnosti opětovně uveřej- žijící občany, kteří potřebují ní Města Mariánské Lázně, ňuje informační leták, jenž je v různých životní",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-10-037",
+      "datum": "2024-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Zlatá medaile na NPC Worldwide European Championships Londýn 2024",
+      "popis": "Dne 15. 9. 2024 se v Londýně konala mezinárodní soutěž v kulturistice, ve které usilovala o svůj první mezinárodní úspěch i závodnice TJ SANDOW Mariánské Lázně ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=070bd08b%7C4302#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-10/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-04-033",
+      "datum": "2026-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-04-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Výdejna potravinové banky v Mariánských Lázních",
+      "popis": "Město Mariánské Lázně se v roce 2023, po podpisu Memoranda o spolupráci, připojilo k projektu České federace potravinových bank. Dnes patří toto výdejního místo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13e2aedc%7C4927#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-04/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

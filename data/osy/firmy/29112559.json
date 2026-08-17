@@ -1,0 +1,218 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29112559",
+    "nazev": "STAVBY WESTMONT s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2020-04-28",
+    "do": "2020-07-22",
+    "prvni_rok": 2020,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 5,
+    "odhadu": 4,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2020-68-68/6",
+      "datum": "2020-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-28",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Komenského 459",
+      "popis": "Rada města, bod 68/6, usnesení 228/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2511123",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-68/6__11806940",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Komenského 459“",
+      "popis": "Odhadované spojení smlouvy z 2020-05-19 s bodem 68/6 z 2020-04-28 (Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Kom",
+      "castka_czk": 1103190.88,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29112559 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova akustickych, komenskeho, osvetleni, proveden",
+      "url": "https://smlouvy.gov.cz/smlouva/12680628",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11806940",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Komenského 459“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY WESTMONT s.r.o..",
+      "castka_czk": 1103190.88,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12680628",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-68/6__12003240",
+      "datum": "2020-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-03",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Dodávka a montáž mechanicky odolných předstěn a parozábrany stropu do tělocvičny ZŠ JIH Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2020-06-03 s bodem 68/6 z 2020-04-28 (Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Kom",
+      "castka_czk": 115504.18,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29112559 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/12886980",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12003240",
+      "datum": "2020-06-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-03",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Dodávka a montáž mechanicky odolných předstěn a parozábrany stropu do tělocvičny ZŠ JIH Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Stavby WESTMONT s.r.o..",
+      "castka_czk": 115504.18,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12886980",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-77-77/12",
+      "datum": "2020-07-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-14",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně",
+      "popis": "Rada města, bod 77/12, usnesení 367/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2549755",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-68/6__12470104",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Změna rozsahu a ceny díla a termínu plnění",
+      "popis": "Odhadované spojení smlouvy z 2020-07-22 s bodem 68/6 z 2020-04-28 (Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně ZŠ JIH Mariánské Lázně, Kom",
+      "castka_czk": 1059322.09,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29112559 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 85 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 2 další smlouvy též",
+      "url": "https://smlouvy.gov.cz/smlouva/13379932",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-77/12__12470104",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Změna rozsahu a ceny díla a termínu plnění",
+      "popis": "Odhadované spojení smlouvy z 2020-07-22 s bodem 77/12 z 2020-07-14 (Provedení akustických úprav a rekonstrukce osvětlení v tělocvičně). Jistota nizka.",
+      "castka_czk": 1059322.09,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 29112559 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 8 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 další",
+      "url": "https://smlouvy.gov.cz/smlouva/13379932",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12470104",
+      "datum": "2020-07-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-07-22",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Změna rozsahu a ceny díla a termínu plnění",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana STAVBY WESTMONT s.r.o..",
+      "castka_czk": 1059322.09,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13379932",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

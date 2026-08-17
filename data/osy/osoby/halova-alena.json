@@ -1,0 +1,2538 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "halova-alena",
+    "jmeno": "Alena Hálová",
+    "role": [
+      "zastupitel"
+    ],
+    "kategorie": "politika",
+    "strana": "Změna pro ML",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-02",
+    "do": "2026-06-23",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 122,
+    "dolozenych": 122,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 115,
+      "volby": 1,
+      "funkce": 1,
+      "hlasovani": 5
+    },
+    "dle_jistoty": {
+      "fakt": 122
+    },
+    "hlasovani_celkem": 612,
+    "hlasovani_v_ose": 5,
+    "hlasovani_v_souhrnu": 607
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2022,
+      "celkem": 38,
+      "pro": 38
+    },
+    {
+      "rok": 2023,
+      "celkem": 209,
+      "pro": 178,
+      "proti": 1,
+      "zdrzel": 2,
+      "nepritomen": 27,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2024,
+      "celkem": 184,
+      "pro": 156,
+      "nepritomen": 28
+    },
+    {
+      "rok": 2025,
+      "celkem": 129,
+      "pro": 102,
+      "nepritomen": 27
+    },
+    {
+      "rok": 2026,
+      "celkem": 52,
+      "pro": 40,
+      "nepritomen": 11,
+      "nehlasoval": 1
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-02-014",
+      "datum": "2016-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-02-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Dárečky žáků školy JIH",
+      "popis": "Tento nápad se zrodil v kolektivu rodičů dětí 3.C u paní učitelky Zdeňky Potůčkové. Proč pomáhat někomu vzdálenému, když v naší blízkosti jsou lidé, kteří se po",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=011a4254%7C864#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-02/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-03-021",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Vojáci 4. brigády rychlého nasazení ze Žatce přijeli na JIH",
+      "popis": "Příprava občanů k obraně státu pokračuje ve škole i v tomto školním roce. Za našimi žáky přijeli vojáci 4. brigády rychlého nasazení a pracovníci Ministerstva o",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-03-039",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Program městského divadla Mariánské Lázně - Březen 2016",
+      "popis": "1.3. úterý PROHLÍDKA DIVADLA S PRŮVODCEM od 14.00 v češtině, od 15.00 v němčině zdarma    2.3. středa, JARNÍ OPERETNÍ GALA 19.30 hodin 250,- 230, Operetní konc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-011",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Výchova k pohybu",
+      "popis": "Tak se jmenuje nový nepovinný předmět, který v tomto školním roce navštěvují 2x týdně ráno před vyučováním žáci 2. stupně ZŠ Úšovice pod vedením pana učitele Vl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-012",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Mimořádný úspěch ZŠ Úšovice v českém jazyce",
+      "popis": "V letošním školním roce jsme zažili opravdu velikou radost z úspěchu v olympiádě z českého jazyka. V okresním kole se umístila na krásném 2. místě s postupem do",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-022",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM KIS Mariánské Lázně – duben 2016 - MĚSTSKÉ DIVADLO",
+      "popis": "3.4. neděle ČERTŮV ŠVAGR 15.00 hodin Přízemí 80,-/60,balkon 50,- 40,- Hrají: Julie Jurištová, Dana Bartůňková, Aneta Krejčíková, Libor Jeník, Radovan Snítil, Da",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-07-015",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Děti nejen dětem v podání žáků ZŠ Úšovice",
+      "popis": "Pořad, který je tradičním zakončením školního roku již mnoho let a na kterém se vždy převážně představují tanečnice ze ZUŠ Fryderyka Chopina a mnoho dalších sou",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-07-019",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Karel IV. v obrazech",
+      "popis": "Žáci devátých tříd ZŠ Úšovice se pod vedením paní učitelky Běluše Milfaitové zapojili do výtvarného projektu - tentokráte na téma \"700. výročí narození Karla IV",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-08-009",
+      "datum": "2016-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-08-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "„Zámek Kynžvart“",
+      "popis": "…je nejen nádherná kulturní památka nedaleko Mariánských Lázní, ale také název projektu, který představila, a také realizovala společně s dětmi z 5.A ZŠ Úšovice",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9acbe55%7C981#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-08/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-08-011",
+      "datum": "2016-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-08-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Moderní, vstřícné a otevřené Mariánské Lázně/SpaRun2016",
+      "popis": "Na 250 sportovců všech generací z celé České Republiky i ze zahraničí se přihlásilo na dnes již tradiční běžecké závody SpaRun Mariánské Lázně. Pořadateli preci",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9acbe55%7C981#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-08/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-08-017",
+      "datum": "2016-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-08-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "„Parfém v podezření“ - 185. premiéra Divadla lidové tvorby Mariánské Lázně",
+      "popis": "Pravidelným návštěvníkům našich představení nemohlo uniknout, že již druhou sezónu se náš repertoár obrací na autory, v jejichž hrách převládají ženské role. V ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9acbe55%7C981#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-08/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-10-012",
+      "datum": "2016-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-10-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Dravci nad úšovickou školou",
+      "popis": "Začátek nového školního roku zpestřila žákům naší školy i školám z okolí společnost ZAYFERUS z jižní Moravy. Tato společnost se zabývá ochranou ptáků, zejména d",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ff5042e5%7C984#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-10/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-017",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Spolupráce školy JIH s městskou policií",
+      "popis": "Ve středu 12. 10. se ve druhých třídách konala první hodina projektu Strážník Pavel. Strážníci místní městské policie Marcel Halada a Tomáš Mazanec si žáky nejp",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-022",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "V paměti synagogy",
+      "popis": "Žáci 5. D zahájili s paní učitelkou Mgr. Ivou Kučerovou projekt V paměti synagogy. O tom, co se v jejich okolí dělo před 2. světovou válkou a během ní, se budou",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-12-011",
+      "datum": "2016-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-12-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Úspěch v \"Logické olympiádě\"",
+      "popis": "Každoročně pořádá společnost Mensa ČR olympiádu v logickém myšlení pro žáky základních a středních škol. Letos to bylo již podeváté. Do soutěže se zaregistroval",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0cb51cc5%7C1010#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-12/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-12-012",
+      "datum": "2016-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-12-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "\"Přírodovědný klokan\"",
+      "popis": "Ve středu 12. 10. 2016 usedlo 35 žáků 8. a 9. tříd ZŠ Úšovice k úlohám Přírodovědného klokana, aby porovnali své znalosti se stejně starými žáky z celé republik",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0cb51cc5%7C1010#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-12/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-01-016",
+      "datum": "2017-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Zdravé fórum a mladí",
+      "popis": "Ve středu 23. 11. se konalo ve velké zasedací síni Městského úřadu v Mariánských Lázních již druhé Fórum Zdravé město. Jedním z pomyslných kulatých stolů byl i ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9e8aed8%7C1054#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-01/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-01-022",
+      "datum": "2017-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Úspěšný rok 2016 Gymnázia a obchodní akademie Mariánské Lázně a plány do budoucna",
+      "popis": "Naše škola s dlouholetou tradicí v Mariánských Lázních má díky vynikající práci našeho pedagogického sboru absolventy, kteří nacházejí uplatnění v oborech po ce",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9e8aed8%7C1054#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-01/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-01-023",
+      "datum": "2017-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Florbal je oblíbeným sportem",
+      "popis": "V ZŠ Úšovice tomu tak rozhodně je. Dvě družstva – chlapci a dívky 1.stupně (4. a 5.třídy) se utkala s dalšími družstvy v okresním kole v krásné hale ve Františk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9e8aed8%7C1054#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-01/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-04-014",
+      "datum": "2017-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-04-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "INFORMACE ZE ŠKOL",
+      "popis": "Zápis dětí do 1. tříd základních škol  Podle zákona MŠMT ČR č. 561/2004 Sb. § 46 odst.1 o předškolním, základním, středním, vyšším odborném a jiném vzdělání (šk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9557ed8b%7C1099#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-04/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-04-015",
+      "datum": "2017-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-04-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Úspěchy ve vědomostních soutěžích",
+      "popis": "Od ledna 2017 probíhají okresní kola olympiád předmětových soutěží. Postupují do nich vždy 1 – 3 nejúspěšnější soutěžící z kol školních. Naši školu ZŠ Úšovice v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9557ed8b%7C1099#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-04/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-014",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "„SOUBOJ ČTENÁŘŮ“ JIŽ PO PÁTÉ",
+      "popis": "10. dubna 2017 proběhlo online kolo soutěže „Souboj čtenářů“ 2017, kterou pořádá Svět knihy, s.r.o. v rámci kampaně na podporu četby knih Rosteme s knihou.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-017",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "ZÁPIS DO PRVNÍCH TŘÍD V ZŠ ÚŠOVICE",
+      "popis": "Po skončení zápisu v ZŠ Úšovice zavládla spokojenost – předpokládaný počet žáků se dostavil, vše probíhalo v milé atmosféře, paní učitelky byly s výkony budoucí",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-019",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "JUBILEJNÍ „KOMENSKÝ A MY“ BYL VELMI ÚSPĚŠNÝ",
+      "popis": "Ve dnech 5. – 7. 4. 2017 se konal již 15.ročník soutěže „Komenský a my“ (viz článek z minulého čísla). Na finále celostátní soutěže do Brandýsa nad Orlicí odjel",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-020",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "ZŠ ÚŠOVICE - ŠKOLA UDRŽITELNÉHO ROZVOJE",
+      "popis": "Dne 7. dubna 2017 se v zastupitelském sále KÚ Karlovarského kraje konalo VI. setkání koordinátorů environmentální výchovy KV kraje. Jedním z bodů programu bylo ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-022",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "SKVĚLÁ NOC S ANDERSENEM",
+      "popis": "Již tradičně se této celorepublikové akce zúčastňují žáci čtvrtých tříd ZŠ Úšovice. Program byl velmi pestrý, bohatý a skvěle připravený. Celý večer se nesl ve ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-023",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "„DĚTSKÁ SCÉNA 2017“",
+      "popis": "Takový název nese soutěž v recitaci žáků do 15 let, jejíž krajské kolo se konalo ve středu 19. 4. 2017 v karlovarské Krajské knihovně. V kategorii žáků 2. a 3. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-019",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "VÝLET OPRAVDU POHÁDKOVÝ",
+      "popis": "„Učesaná neučesaná, obutá neobutá, oblečená neoblečená…“ takto ráno ve středu 24. 5. 2017 přivítala své žáky paní učitelka Zdeňka Matějková, která se vypravila ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-024",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "„EUROTIME DIRECT 2017“",
+      "popis": "…již několik roků velmi oblíbená soutěž v naší škole. Eurotime Direct je celorepubliková znalostní soutěž o EU. Letošní 10. ročník probíhal od 6. 3. 2017 do 21.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-07-025",
+      "datum": "2017-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-07-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "HRAVÝ ARCHITEKT - „BAROKO OČIMA DĚTÍ“",
+      "popis": "Takový název nese mezinárodní výtvarně – architektonický projekt pro základní školy, do jehož 5. ročníku letos vstoupila i naše základní škola, ZŠ Úšovice ML, j",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dcd45eaa%7C1148#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-07/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-011",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "“BAROKO OČIMA DĚTÍ” V KLÁŠTEŘE V TEPLÉ",
+      "popis": "Skvělé obrázky žáků třetích tříd ZŠ Úšovice ML se vrátily na místo svého vzniku - do kláštera v Teplé. Po celé léto se mohou návštěvníci tohoto jedinečného míst",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-10-001",
+      "datum": "2017-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-10-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "PRAVÝ LÁZEŇSKÝ PODZIM ZAČAL",
+      "popis": "Vážení obyvatelé,  začínat úvodní slovo starosty informací z odpadového hospodářství by se nemuselo zdát jako to pravé, mám k tomu však dobrý důvod. Příjemně mě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=17c8a1e8%7C1275#page=1",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-10/001.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-11-017",
+      "datum": "2017-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "„BAROKO OČIMA DĚTÍ“ – UKONČENÍ PROJEKTU",
+      "popis": "Základní škola Úšovice slavnostně začátkem října ukončila celoroční mezinárodní výtvarně – architektonický projekt „Baroko očima dětí“. Na projektu spolupracova",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=626f0d1f%7C1331#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-11/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-11-019",
+      "datum": "2017-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "EVROPSKÝ DEN JAZYKŮ",
+      "popis": "Žáci ZŠ Úšovice si koncem 26.září každoročně připomínají Evropský den jazyků. Tento den připomínala nejen nástěnka, kterou sestavila paní učitelka Běluše Milfai",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=626f0d1f%7C1331#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-11/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-12-013",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "HISTORICKÝ ÚSPĚCH ŽÁKŮ A UČITELŮ ZŠ JIH",
+      "popis": "Z naší školy, ZŠ Úšovice Mariánské Lázně,postoupilo celkem 5 žáků. V této soutěži o úspěchu nerozhodují naučená fakta, ale logické myšlení. Soutěžící nejdříve v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-12-015",
+      "datum": "2017-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-12-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "ÚSPĚŠNÉ STOLNÍ TENISTKY",
+      "popis": "Dne 14. 11. 2017 se konalo v tělocvičně na chebském gymnáziu krajské kolo soutěže ve stolním tenise. Sjelo se tam 6 nejlepších týmů z celého Karlovarského kraje",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a4896c1c%7C1339#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-12/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-022",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "RADOST Z ÚSPĚCHU",
+      "popis": "Pro školu je vždy potěšením, když se může pochlubit úspěšnými žáky, zejména ve vědomostních soutěžích. A tuto radost nám umožnily dvě dnes již bývalé žákyně - K",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-023",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "VÁNOČNÍ TRH V ZŠ ÚŠOVICE",
+      "popis": "Dne 15. 12. 2017 se konal již tradiční „Vánoční trh“ v prostorách tělocvičny ZŠ Úšovice. Výrobky tentokráte tvořili žáci 1. stupně a devátých tříd. Žáci si leto",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-043",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„PŘEDVÁNOČNÍ POHLAZENÍ“",
+      "popis": "Takovýto název mělo vystoupení Divadla lidové tvorby Mariánské Lázně. Šlo o pohlazení slovem, a to poezií i prózou. Členové DLT přišli ve čtvrtek 14. 12. 2017 p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-044",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„ODJEZD NEJISTÝ“",
+      "popis": "… je název nové divadelní hry francouzského autora Jean – Marie Chevreta, kterou uvedlo téměř v předvečer 72. výročí založení souboru Divadlo lidové tvorby jako",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/044.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-03-013",
+      "datum": "2018-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-03-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "ÚSPĚŠNÍ MATEMATICI Z PÁTÝCH TŘÍD",
+      "popis": "Dne 24. 1. 2018 se konalo okresní kolo Matematické olympiády pro páté třídy. Z naší školy ZŠ Úšovice se zúčastnilo celkem šest úspěšných řešitelů z osmi soutěží",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0fb98a15%7C1447#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-03/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-03-017",
+      "datum": "2018-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-03-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "NEKOKTÁM, ČTU",
+      "popis": "Dne 7. 2. a 8. 2. 2018 se konala v Městské knihovně Mariánské Lázně čtenářská soutěž žáků 4. a 5. tříd. Tuto soutěž již čtvrtým rokem vyhlašuje Krajská knihovna",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0fb98a15%7C1447#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-03/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-04-002",
+      "datum": "2018-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-04-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "V ÚŠOVICKÉ ZÁKLADNÍ ŠKOLE VZNIKNOU MODERNÍ DÍLNY",
+      "popis": "Moderní dílny vzniknou v Základní škole Úšovice, a to díky další dotaci, kterou se městu podařilo získat. S opravou objektu, ve které budou dílny fungovat, se z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d8b2c4c7%7C1460#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-04/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-04-014",
+      "datum": "2018-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-04-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„KOMENSKÝ A MY“ JIŽ PO JEDENÁCTÉ",
+      "popis": "Nikola Uhlíková (9.A)  Poprvé v roce 2007 se žákyně naší školy Renata Blažková zúčastnila finále celostátního kola soutěže „Komenský a my“ v kategorii žáků 2.st",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d8b2c4c7%7C1460#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-04/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-04-018",
+      "datum": "2018-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-04-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "ÚSPĚCH ZŠ ÚŠOVICE V ZEMĚPISNÉ VE ŠKOLÁCH SE LUŠTÍ SUDOKU OLYMPIÁDĚ",
+      "popis": "Tomáš Levora (7.A)  Nejen dle názoru samotných soutěžících, ale i jejich učitelů, jsou úkoly ve všech vědomostních soutěžích stále náročnější. Úspěšní řešitelé ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d8b2c4c7%7C1460#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-04/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-020",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„SOUBOJ ČTENÁŘŮ“ JIŽ PO ŠESTÉ",
+      "popis": "16. dubna 2018 proběhlo online kolo soutěže „Souboj čtenářů“ 2018, kterou pořádá Svět knihy, s.r.o. v rámci kampaně na podporu četby knih Rosteme s knihou.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-022",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„NA POHODU 2018“",
+      "popis": "Základní škola Úšovice realizovala pro žáky 7. B školní selektivní program primární prevence „Na pohodu 2018“. Program navazoval na projekt uskutečněný již v př",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-06-023",
+      "datum": "2018-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-06-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "VELKÝ ÚSPĚCH V MATEMATICKÉ SOUTĚŽI PYTHAGORIÁDA",
+      "popis": "Naši úspěšní řešitelé z pátých tříd! V letošním školním roce se podařil žákům ZŠ Úšovice přímo husarský kousek. Matematická soutěž Pythagoriáda nebývá úplně mez",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=8f81d471%7C1577#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-06/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-06-025",
+      "datum": "2018-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-06-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "VZDUCHOPLAVEC KRÁČMERA ZNOVU OŽIL",
+      "popis": "V sobotu 12. 5. 2018 měli hosté, kteří se zúčastnili zahájení lázeňské sezóny v Mariánských Lázních, možnost zhlédnout na Malé scéně domu Chopin film „Kdo nebyl",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=8f81d471%7C1577#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-06/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-06-040",
+      "datum": "2018-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-06-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "OHLÉDNUTÍ ZA LUBOŠEM KOVAŘÍKEM",
+      "popis": "Jestli byl někdo spolehlivý a přesný, byl to ON. Ať už to bylo v ochotnickém divadle, nejprve v Chodové Plané a později v Divadle lidové tvorby v Mariánských Lá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=8f81d471%7C1577#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-06/040.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-07-020",
+      "datum": "2018-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "ZUŠ OPEN - DĚTI DĚTEM 2018",
+      "popis": "Ve čtvrtek 24. května 2018 vystupovali po celé České republice žáci základních uměleckých škol. Jednalo se o další ročník ZUŠ open. Záštitu nad touto celostátní",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821edbd4%7C1586#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-07/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-07-024",
+      "datum": "2018-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-07-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "T-MOBILE OLYMPIJSKÝ BĚH V ZŠ ÚŠOVICE",
+      "popis": "V roce 1984 byl založen Mezinárodní olympijský výbor a k této příležitosti se slaví výročí založení Olympijským dnem po celém světě. Cílem je motivovat lidi, ab",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=821edbd4%7C1586#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-07/024.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-039",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM MĚSTSKÉHO DIVADLA na měsíc září",
+      "popis": "DIVADELNÍ GALERIE  4.9. úterý Vstupné: zdarma Městské divadlo individuální prohlídka od 14.00 do 17.00 hodin  ELVIS PRESLEY - REVIVAL BAND  5.9. středa Vstupné:",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-10-021",
+      "datum": "2018-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-10-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„Tady nová republika“",
+      "popis": "To je název elektronické výstavy, kterou jsme objednali pro ZŠ Úšovice z Národního pedagogického muzea a knihovny Jana Amose Komenského v Praze. Výstavu jsme „z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ca6f4fac%7C1679#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-10/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-11-051",
+      "datum": "2018-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM KIS Mariánské Lázně – listopad 2018",
+      "popis": "OPERETNÍ GALAKONCERT  Jan Prokeš a Yvonna Kršková PIRÁTSKÁ POHÁDKA  Lázeňský pokoj možná nevypadá jako vhodné místo pro komedii, ale opak je pravdou. Tři ženy, ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=604cf2d3%7C1759#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-11/051.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-026",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Logická olympiáda Mensy ČR 2018",
+      "popis": "Logická olympiáda je v naší škole vítanou a oblíbenou soutěží, a to zejména na 1.stupni ZŠ. Nominační kola probíhají vždy na začátku školního roku a začátkem li",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-030",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Nejlepší žáci Karlovarského kraje",
+      "popis": "Každoročně pořádá Karlovarský kraj akci, na které oceňuje nejlepší žáky ve svém kraji za nejrůznější činnosti a dovednosti, které žáci prokázali v průběhu minul",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-02-030",
+      "datum": "2019-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-02-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Od Adventu do Vánoc",
+      "popis": "Takto zněl název pořadu, který zorganizoval MAP „Vzdělávání na Mariánskolázeňsku“. Akce se zúčastnilo celkem 8 základních a mateřských škol z celého Mariánskolá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d321405a%7C1852#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-02/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-02-032",
+      "datum": "2019-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-02-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Zpívání na kolonádě",
+      "popis": "Již tradičně vystupují žáci ZŠ Úšovice na Vánočních trzích v Mariánských Lázních na kolonádě, kde v pátek v pravé poledne společně zazpívají pro své nejbližší a",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d321405a%7C1852#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-02/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-03-025",
+      "datum": "2019-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-03-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Edison dorazil do Čtyřlístku Házená v ZŠ Úšovice",
+      "popis": "Kdo by čekal, že týden před jarními prázdninami prožilo osazenstvo ZŠ Čtyřlístek v poklidu, toho nejspíš následující výčet vyvede z omylu. Laťku nasadil vysoko ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=30aa1a4c%7C1863#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-03/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-03-026",
+      "datum": "2019-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-03-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "„Nekoktám, čtu“",
+      "popis": "Soutěž s tímto názvem bychom mohli zařadit na naší škole už jako tradiční. Jedná se o čtenářskou soutěž 4. a 5.tříd základních škol. Žáci odborné porotě složené",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=30aa1a4c%7C1863#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-03/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-020",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "V Mariánských Lázních vznikne komunitní zahrada",
+      "popis": "Po vzoru a dobrých zkušenostech z jiných měst České republiky i ze zahraničí se dobrovolníci kolem Domečku z Vrbiček rozhodli založit v Mariánských Lázních komu",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-022",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "„Společně do školy“",
+      "popis": "Tento nevšední a rozsáhlý projekt připravil pro budoucí prvňáčky a jejich rodiče MAP (Místní akční plán) – Vzdělávání na Mariánskolázeňsku. Hlavní projektový ma",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-052",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla – duben 2019",
+      "popis": "Vstupné: 320,- 280,- Marian Vojtko, Pavel Vítek, Jan Kříž, Michal Bragagnolo 25.4. čtvrtek 19.30 hodin  4.4. pondělí 19.30 hodin  ně, režie: Petr Hála. Hrají: A",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/052.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-05-033",
+      "datum": "2019-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-05-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "„Komenský a my“ po dvanácté",
+      "popis": "Naše škola vstoupila do této soutěže v jejím 6.ročníku. Od této chvíle se pravidelně a nepřetržitě stává jejím finalistou. Celostátní soutěž se koná vždy v Bran",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=060a5862%7C1950#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-05/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-042",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Vzpomínky pamětníků z Mariánských Lázní ožijí díky audio reportážím žáků Základních škol",
+      "popis": "V úterý 11.června od 16 hodin se v Městském divadle v Mariánských Lázních uskuteční slavnostní prezentace projektu Příběhy našich sousedů, který přibližuje vzpo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/042.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-06-050",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla – ČERVen 2019",
+      "popis": "4.6. úterý od 14.00 v češtině, od 15.00 v němčině  PROHLÍDKA DIVADLA S PRŮVODCEM  VSTUPNÉ: zdarma  5.6. středa 19.30 hodin  ŠPANĚLSKÝ VEČER S CARMEN  VSTUPNÉ: 2",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=940d1a69%7C1999#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-06/050.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-09-021",
+      "datum": "2019-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-09-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Do ZUŠ F. Chopina se od září 2019 vrací literárně – dramatický obor",
+      "popis": "V září 2019 se do ZUŠ F. Chopina vrací literárně dramatický obor. Škola může přijmout 20 dětí ve věku od 9 do 13 let se zájmem o herectví. Výuka oboru bude prob",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1903aa03%7C2032#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-09/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-012",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Poděkování redakci Zpravodaje",
+      "popis": "Ráda bych touto cestou poděkovala všem pracovníkům, kteří se podíleli a podílejí na tvorbě Zpravodaje Mariánské Lázně. Spolupráci s redakcí ZŠ Úšovice začala ro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-11-042",
+      "datum": "2019-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-11-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "PROGRAM městského divadla listopad 2019",
+      "popis": "1.11. pátek, 19.30 hodin  BESÍDKA ROKU 2019  Vstupné: 350,- 320,-  Divadlo Sklep Praha. Účinkují: David Vávra, Milan Šteindler, Jiří Fero Burda, František Váša,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1811d8c9%7C2135#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-11/042.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-12-027",
+      "datum": "2019-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-12-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "„O myšce, která se nebála“",
+      "popis": "Pohádku s tímto názvem autora Petra Horáčka předvedli žáci Literárně dramatického oboru (LDO) ZUŠ F. Chopina v Mariánských Lázních v úterý 22. 10. 2019 v Městsk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=68d0dfcd%7C2145#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-12/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-03-017",
+      "datum": "2020-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-03-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Na chvíli tvůrcem komiksů",
+      "popis": "Komiksy a komiksové příběhy a postavy jsou u našich dětí stále populárnější. Taky proto zavítal do Mariánských Lázní již po několikáté autor komiksových příběhů",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fbf2261f%7C2223#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-03/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-04-019",
+      "datum": "2020-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-04-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "DESKOVÉ HRY TROCHU JINAK - PODRUHÉ",
+      "popis": "Ve středu 19. února 2020 zasedlo celkem 24 žáků z 5 škol na Mariánskolázeňsku k deskovým hrám v prostorách Domova mládeže ML, aby si vyzkoušeli trpělivost, štěs",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0f8558a4%7C2237#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-04/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-06-023",
+      "datum": "2020-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-06-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "„I když dál, jsme si blíž!“",
+      "popis": "Člověk je bytost sociální a příroda ho obdařila navíc i mluvou, a tak toho co nejvíce využívá. Někteří lidé jsou i velmi kontaktní, mají potřebu se scházet, pov",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=5591abb3%7C2263#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-06/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-11-008",
+      "datum": "2020-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-11-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "muzeum uzavřeno",
+      "popis": "Od pondělí 12. října 2020 je muzeum, stejně jako ostatní kulturní instituce, pro veřejnost zavřeno. Zákaz návštěv je prozatím stanoven do neděle 25. října 2020.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=dce6d589%7C2444#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-11/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-12-014",
+      "datum": "2020-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-12-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Divadlo lidové tvorby žije!",
+      "popis": "17. listopadu 1945 uspořádali členové Divadla lidové tvorby v divadle večer poezie s názvem „Osvobozené písně“. Tehdy poprvé v Městském divadle Mariánské Lázně ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89f6d982%7C2470#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-12/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-03-008",
+      "datum": "2021-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-03-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "„Statistika nuda je, má však cenné údaje,….“",
+      "popis": "zpívá se v jedné pohádce. To, co bych vám ráda sdělila, jsou vskutku cenné údaje, neboť mohou alespoň částečně vystihnout činnost, kterou s nadšením a kreativit",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=10f65b05%7C2577#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-03/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-04-005",
+      "datum": "2021-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-04-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "MARUŠKO, DĚKUJEME!",
+      "popis": "Ve středu 10. 3. 2021 nás opustila naše kolegyně a režisérka Divadla lidové tvorby, paní Marie Herová. Pro nás ale navždy jen Maruška. Od mládí milovala divadlo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e7abb432%7C2584#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-04/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-05-014",
+      "datum": "2021-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-05-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "KDYŽ SE SPOJÍ PŘÍJEMNÉ S UŽITEČNÝM",
+      "popis": "Manažerky MAPu Vzdělávání na Mariánskolázeňsku se rozhodly, že spojí příjemné s užitečným. A tak se přihlásily v sobotu 27. 3. 2021 podpořit vlastní aktivitou c",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9eaca2e7%7C2603#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-05/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-07-032",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "Už se nemohly dočkat",
+      "popis": "Kdo? Děti z mateřských škol v Mariánských Lázních a okolí, pro které organizace MAP Mariánskolázeňsko připravila Olympijské hry dovedností. A to přesně pro dese",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-10-016",
+      "datum": "2021-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "„HLÁSÍ SE ARTTV MARIÁNSKÉ LÁZNĚ“",
+      "popis": "Ne, to není nově vzniklé studio v našem městě, ale studio, které vzniklo pouze na malý okamžik. Přesně na dobu jednoho týdne od 16. 8. do 20. 8. 2021, kdy se ko",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fd74b073%7C2982#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-10/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-11-021",
+      "datum": "2021-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-11-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "DIVADLO MILOVAL Z CELÉ SVÉ DUŠE",
+      "popis": "V neděli 26. září 2021 odpoledne nás na vždy opustil – pan Otakar Zíma. Patřil ke „zlaté generaci“ Divadla lidové tvorby. Měl štěstí na divadelní partnery, kter",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b32a64bf%7C3042#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-11/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-12-017",
+      "datum": "2021-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-12-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "prosinec v knihovně",
+      "popis": "ejte o parku! nově Přijďte Knihovna si před Vánoci užít pár příjemných chvil až na 3 pracovní dny do v knihovně, máme připraakce pro K malé i velké kém vené odd",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1b742efa%7C3057#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-12/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-01-002",
+      "datum": "2022-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-01-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "„OD ADVENTU DO VÁNOC“ JIŽ POČTVRTÉ",
+      "popis": "Rok se s rokem sešel a Vánoce jsou za námi. Symbolem Vánoc je pro každého krásně nazdobený stromeček. Mariánskolázeňsko, dobrovolný svazek obcí, připravil v rám",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c37279c9%7C3178#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-01/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-05-008",
+      "datum": "2022-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-05-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ADAPTAČNÍ SKUPINY V PRAXI",
+      "popis": "Úvodní společná schůzka ředitelů škol, zástupců MŠ, ZŠ, SŠ i VŠ (ÚJOP UK) a starostů obcí Mariánskolázeňska se konala v pondělí 4. 4. 2022 v sále ZŠ JIH Mariáns",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=01790d32%7C3416#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-05/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-005",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ZPRAVODAJ – OKÉNKO MÍSTOSTAROSTŮ – ČERVEN 2022",
+      "popis": "Vážení spoluobčané, užili jsme si Zahájení lázeňské sezóny 2022. Myslím si, že každý mohl najít to „svoje“, ať už při nákupech u stánků nebo při poslechu muziky",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-013",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "„HISTORIE TKVÍ V PŘÍBĚZÍCH, KTERÉ VYPRÁVÍME.“ VZPOMÍNKY PAMĚTNÍKŮ Z MARIÁNSKOLÁZEŇSKA A TEPLÉ OŽIJÍ DÍKY AUDIO A VIDEO REPORTÁŽÍM ŽÁKŮ ZŠ",
+      "popis": "V pondělí 13. června od 17 hodin se v Lesním mlýně v Mariánských Lázních uskuteční slavnostní prezentace projektu Příběhy našich sousedů, který dětem přibližuje",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-06-032",
+      "datum": "2022-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "„NOC S ANDERSENEM“ UŽ ZASE NAŽIVO",
+      "popis": "V pátek 1. 4. 2022 se v 19:00 hodin sešlo 15 dětí žáků literárně dramatického oboru ZUŠ Fryderyka Chopina Mariánské Lázně, v Městské knihovně Mariánské Lázně. Ž",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=46f11e80%7C3469#page=23",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-06/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-027",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "„UŽ NIKDY NEBUDU SPÁT V RÁKOSÍ“ MALUJEME A SPORTUJEME",
+      "popis": "…a ještě mnohem víc se mohli dozvědět diváci, kteří ve středu 8. 6. 2022 v 18:00 hodin navštívili sál ZUŠ Fryderyka Chopina Mariánské Lázně. Žáci literárně dram",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-035",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "„JAK ŽIVOT HRÁL A HUDBA ŠLA“",
+      "popis": "To byl název závěrečné prezentace projektu Post Bellum – Příběhy našich sousedů týmu ZUŠ Fryderyka Chopina Mariánské Lázně. Příběhy našich sousedů byl vzdělávac",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=23",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-037",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "DĚTI DĚTEM 2022",
+      "popis": "Po třech letech uspořádali učitelé a žáci ZUŠ F. Chopina program s názvem „Děti nejen dětem“ v Městském divadle Mariánské Lázně. Program byl určen jak dětem ze ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-038",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "KOLONÁDA PLNÁ HUDBY, ZPĚVU A TANCE",
+      "popis": "Neděle 15. května patřila na kolonádě žákům a učitelům ZUŠ Fryderyka Chopina. Po třech letech bylo možné zahájit lázeňskou sezónu v Mariánských Lázních tak, jak",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=25",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-09-009",
+      "datum": "2022-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "Volte č. 4",
+      "popis": "1. Miloslav Pelc Mgr. 2. Petr Hála Mgr. 3. Tomáš Marzy 4. Alena Hálová PaedDr. 5. Vladislav Bláha Ing. 6. Jaromír Bartoš Ing. Mgr. 7. Stanislav Česal 8. Andrea ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c13019ed%7C3593#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-09/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2022:halova-alena",
+      "datum": "2022-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-23",
+      "rok": 2022,
+      "typ": "volby",
+      "nadpis": "Alena Hálová zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Změna pro Mariánské Lázně s 677 hlasy (6.95 %), 3. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:halova-alena:0",
+      "datum": "2022-10",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2022-10-01",
+      "rok": 2022,
+      "typ": "funkce",
+      "nadpis": "Alena Hálová — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2022-10 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-10-019",
+      "datum": "2022-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-10-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "KŘÍŽEM KRÁŽEM PO MARIÁNSKOLÁZEŇSKU",
+      "popis": "1. července 2022 se setkali v areálu přírodního parku Prelát všichni ukrajinští „absolventi“ adaptačních skupin Mariánskolázeňska, aby si řekli, jak bude pokrač",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=00c97e15%7C3604#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-10/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-019",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ZPĚVEM K SRDCI, SRDCEM K VLASTI",
+      "popis": "...je heslo pěveckého spolku Hlahol, které r. 1862 namaloval Josef Mánes na spolkový prapor a které je součástí vnitřní i vnější výzdoby krásného secesního domu",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/019.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-12-011",
+      "datum": "2022-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-12-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "SENIOR ROKU KARLOVARSKÉHO KRAJE 2022",
+      "popis": "V poměrně velké konkurenci 25 nominovaných si přivezly ve čtvrtek 10. 11. 2022 svoji cenu – „Cenu hejtmana“ tři dámy (seniorky) z Mariánských Lázní. Slavnostní ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48474860%7C3639#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-12/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-25",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Bezúplatný převod poz. parcely č. 292/2 k.ú. Úšovice ul. Ke Kasárnům",
+      "popis": "Zastupitelstvo města, bod 4/25. Pro 11, proti 7, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-32",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Aktuální soudní spory",
+      "popis": "Zastupitelstvo města, bod 4/32. Pro 11, proti 3, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-039",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PŘÍBĚHY 20. STOLETÍ",
+      "popis": "Už deset let mají žáci osmých a devátých tříd ZŠ možnost zapojit se do rozsáhlého novinářského projektu Příběhy našich sousedů, který organizuje Post Bellum a Č",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-040",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "„SPOLEČNĚ DO ŠKOLY“ UŽ PO PÁTÉ",
+      "popis": "Ve čtvrtek 23. 2. 2023 byl zahájen již popáté projekt “Společně do školy“ pořádaný dobrovolným svazkem obcí Mariánskolázeňsko. V letošním roce se přihlásil reko",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/040.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-6-19",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury města Mariánské Lázně - Club Na Dvorku s.r.o.",
+      "popis": "Zastupitelstvo města, bod 6/19. Pro 13, proti 2, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-06-036",
+      "datum": "2023-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-06-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "ROZTANČENÉ DIVADLO 2023",
+      "popis": "Žáci tanečního oddělení připravili pro své vystoupení s názvem \"Roztančené divadlo\" pod vedením svých učitelek Ireny Andre a Karin Wintrové pestrý program, kter",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b596f401%7C3812#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-06/036.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-09-045",
+      "datum": "2023-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-09-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OSLAVY 100 LET ŠKOLY JIH VYVRCHOLÍ 9. 9",
+      "popis": "Ačkoliv hlavní dny oslav již proběhly v polovině června, výroční datum si připomeneme v sobotu 9. září. Na programu je vystoupení DOM a mažoretek ZUŠ i Kopretin",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2a007f32%7C3886#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-09/045.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-9-10",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru prodeje st.p.č.336/2 k. ú. ML - SVJ Hlavní 346",
+      "popis": "Zastupitelstvo města, bod 9/10. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/9.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-026",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OHLÉDNUTÍ SE ZA OSLAVAMI 100 LET ŠKOLY JIH",
+      "popis": "Česká menšinová škola, jak se původně nazývala dnešní škola JIH, byla založena v roce 1919 učitelem Josefem Hořejším. Vlastní budovu získala v roce 1923 a právě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-12-026",
+      "datum": "2023-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "ZVEME VÁS NA MALÉ VÁNOČNÍ KNIŽNÍ LÁZNĚ!",
+      "popis": "Unikátní a milá příležitost ve speciálním čase. Setkání nakladatelů, knihkupců, spisovatelské obce, autorů krásného designu, čtenářů a milovníků knih. V pátek 1",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e90d08e5%7C4019#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-12/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-01-018",
+      "datum": "2024-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-01-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Děti nejen sobě",
+      "popis": "Ve čtvrtek 14. 12. 2023 ve 14:00 hodin se zaplnil téměř do posledního místečka sál ZŠ JIH. Byl plný dětí, rodičů, pedagogů, ale i dalších hostů. Mezi nimi byl t",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=857a6547%7C4074#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-01/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-03-027",
+      "datum": "2024-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Deskové hry opě t zaujaly",
+      "popis": "Ve č tvrtek 25. ledna 2024 se sešlo v Domě Chopin Mariánské Lázně celkem 38 žáků ze základních škol Mariánskolázeň ska, aby se př átelsky utkali ve tř ec",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fb079468%7C4145#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-03/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-07-021",
+      "datum": "2024-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-07-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Hry bez hranic aneb Knihovníci dětem letos v Mariánských Lázních",
+      "popis": "V sobotu 18. 5. 2024 se uskutečnil již 16. ročník tradiční soutěže pro dětské čtenáře knihoven našeho regionu - Hry bez hranic. Hlavním pořadatelem letošního ro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=50df7f3e%7C4236#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-07/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-029",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – září",
+      "popis": "EVANGELICKÝ KOSTEL 18. 9. 19:00 Mariánský festival duchovní hudby. Smíšený pěvecký sbor Fontána organizuje Mariánský festival duchovní hudby, letos je to již 23",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-10-032",
+      "datum": "2024-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-10-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – říjen",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=070bd08b%7C4302#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-10/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-12-018",
+      "datum": "2024-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-12-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Pan Otakar Zíma – nedožitých 90 let",
+      "popis": "John Patrick „Podivná paní Savageová“ – Doktor Emmet v podání pana Otakara Zímy – nahoře uprostřed (květen 2008). Jsou to už tři roky, co opustil řady Divadla l",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=cf2df4a1%7C4413#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-12/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-03-022",
+      "datum": "2025-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-03-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – březen",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=67be0247%7C4497#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-03/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-046",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – květen",
+      "popis": "a koncertů pro návštěvníky s platnou vstupenkou. 13. 5. 14.00 Prohlídka městského divadla s průvodcem. Sraz u divadelní pokladny. 14. 5. 19.30 Nejen na krásném ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=27",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/046.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-06-017",
+      "datum": "2025-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-06-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Děti dětem 2025",
+      "popis": "Tradiční pořad se letos konal v Městském divadle Mariánské Lázně ve čtvrtek 24. dubna. Dopoledne zaplnili Městské divadlo žáci mariánskolázeňských škol. Na podi",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=492e199e%7C4550#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-06/017.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-10-032",
+      "datum": "2025-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-10-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – říjen",
+      "popis": "Chcete zařadit akci, kterou pořádáte, do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve for",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b035e3b5%7C4713#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-10/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-12-022",
+      "datum": "2025-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-12-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Divadlo žije!",
+      "popis": "Ano, je to tak, a to nepřetržitě od roku 1945. Mluvím o Divadlu lidové tvorby Mariánské Lázně, které právě v tento čas slaví své 80.narozeniny. Je to úctyhodná ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=303bd7ef%7C4736#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-12/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-03-038",
+      "datum": "2026-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-03-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – březen",
+      "popis": "novely R. Kiplinga. Představení pro MŠ a 1.stupeň ZŠ, doprodej volných míst pro veřejnost v divadelní pokladně před představením. Představení je finančně podpor",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=59a41668%7C4833#page=29",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-03/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-05-025",
+      "datum": "2026-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-05-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "100 let školy aneb radost kam se podíváš",
+      "popis": "1. února 2026 Základní umělecká škola Fryderyka Chopina Mariánské Lázně oslavila 100 let svého působení. Za tuto dobu se v ní vystřídala řada skvělých učitelů a",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f32d6d8d%7C4942#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-05/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2026-27-20",
+      "datum": "2026-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-06-23",
+      "rok": 2026,
+      "typ": "hlasovani",
+      "nadpis": "Dobrovolný svazek obcí České dědictví UNESCO – závěrečný účet a zpráva o hospodaření za rok 2025",
+      "popis": "Zastupitelstvo města, bod 27/20. Pro 18, proti 0, zdrželo se 0, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2026/27.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "45359172",
+    "nazev": "CRISTAL PALACE a. s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1992-05-01",
+    "do": "2024-05-28",
+    "prvni_rok": 1992,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 10,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "smlouva": 3,
+      "retez": 2
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:45359172:vznik",
+      "datum": "1992-05-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1992-05-01",
+      "rok": 1992,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — CRISTAL PALACE s.r.o.",
+      "popis": "Vznik subjektu CRISTAL PALACE s.r.o. (IČO 45359172), Společnost s ručením omezeným, obor: Ubytování v hotelích a podobných ubytovacích zařízeních.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-18-18/7",
+      "datum": "2013-09-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-09-24",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Prodej st.p.č. 1175 a p.p.č. 2131/5 v k.ú. Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 18/7, usnesení 576/13. Schvaleno.",
+      "castka_czk": 209685,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1006837",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:4140532",
+      "datum": "2018-01-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-22",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Objednávka",
+      "popis": "Infocentrum Mariánské Lázně s.r.o. — výdaj, protistrana Hotel Cristal Palace a.s..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4461024",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/25208438.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-8-8/3",
+      "datum": "2019-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-15",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti minerálkovodu - hotel San Remo",
+      "popis": "Rada města, bod 8/3, usnesení 17/19. Schvaleno.",
+      "castka_czk": 28531,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2167955",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/8.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-8/3__7736023",
+      "datum": "2019-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-28",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Služebnost minerálkovodu, čerpací šachty minerálních vod s akumulační jímkou, odpadního potrubí a ovládacího kabelu čerpadla p.p.č. 42,159/6,167/1,180/1,830/1,848/2,848/5,848/6,848/7,848/8,848/9,849/1,849/2,849/3,854,866/3,1158,1222,1235 v k.ú. Mariá",
+      "popis": "Odhadované spojení smlouvy z 2019-02-28 s bodem 8/3 z 2019-01-15 (Smlouva o zřízení služebnosti minerálkovodu - hotel San Remo). Jistota nizka.",
+      "castka_czk": 134900.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359172 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 44 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/8352979",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7736023",
+      "datum": "2019-02-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-02-28",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Služebnost minerálkovodu, čerpací šachty minerálních vod s akumulační jímkou, odpadního potrubí a ovládacího kabelu čerpadla p.p.č. 42,159/6,167/1,180/1,830/1,848/2,848/5,848/6,848/7,848/8,848/9,849/1,849/2,849/3,854,866/3,1158,1222,1235 v k.ú. Mariá",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CRISTAL PALACE a. s..",
+      "castka_czk": 134900.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8352979",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2019-8/3__8084607",
+      "datum": "2019-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-20",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Parcely v k. ú. Mariánské Lázně - minerálkovod",
+      "popis": "Odhadované spojení smlouvy z 2019-03-20 s bodem 8/3 z 2019-01-15 (Smlouva o zřízení služebnosti minerálkovodu - hotel San Remo). Jistota nizka.",
+      "castka_czk": 134900.6,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 45359172 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/8728215",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8084607",
+      "datum": "2019-03-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-03-20",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Parcely v k. ú. Mariánské Lázně - minerálkovod",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana CRISTAL PALACE a. s..",
+      "castka_czk": 134900.6,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8728215",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-65-65/10",
+      "datum": "2020-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-07",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti minerálkovodu a ovládacích optických kabelů pro hotely Bohemia, Polonia a Zvon",
+      "popis": "Rada města, bod 65/10, usnesení 200/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2501888",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-73-73/5",
+      "datum": "2020-06-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-09",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení služebnosti minerálkovodu a ovládacích elektrických a optických kabelů pro hotely Boheminia, Polonia a Zvon",
+      "popis": "Rada města, bod 73/5, usnesení 304/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2534582",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-86-86/2",
+      "datum": "2020-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-13",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o budoucí smlouvě o zřízení minerálkovodů p.p.č. 130, 131 a 167/2 v k.ú.Mariánské Lázně",
+      "popis": "Rada města, bod 86/2, usnesení 508/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2589019",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/86.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-54-54/11",
+      "datum": "2024-05-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-28",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "OREA – Hotel CRISTAL – Dohoda o provozování restaurační předzahrádky",
+      "popis": "Rada města, bod 54/11, usnesení 347/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3197295",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/54.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

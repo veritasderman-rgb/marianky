@@ -1,0 +1,626 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "konecna-irena",
+    "jmeno": "Irena Konečná",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-02",
+    "do": "2026-04",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 29,
+    "dolozenych": 29,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 29
+    },
+    "dle_jistoty": {
+      "fakt": 29
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-02-023",
+      "datum": "2016-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-02-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Změny ve vydávání cestovních dokladů",
+      "popis": "Podání žádosti o vydání e-Pasu a e-Pasu BLESK je nyní možné provést na kterémkoliv úřadě obce s rozšířenou působností bez ohledu na místo trvalého pobytu. Na st",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=011a4254%7C864#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-02/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-005",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Vážení spoluobčané,",
+      "popis": "jako zastupitel města, který dostal Vaši důvěru ve volbách cítím povinnost Vás informovat o změně mé politické příslušnosti. Po 7 letech jsem ukončil členství v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-07-006",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Vítání občánků",
+      "popis": "Ve sváteční sobotní odpoledne dne 21. května 2016 zpestřila život našeho města milá událost – Vítání občánků. Do Anglikánského kostela v Mariánských Lázních při",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-09-007",
+      "datum": "2016-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-09-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "V sobotu 24. září 2016 se bude konat další vítání občánků",
+      "popis": "Již tradičně informujeme veřejnost o novinkách, které se týkají vítání nových občánků města Mariánské Lázně. Nově narozené děti a jejich rodiče a blízké nyní ak",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a5004af1%7C983#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-09/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-005",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Vítání občánků",
+      "popis": "Na krásné sobotní odpoledne dne 24. září 2016 pozvali představitelé města Mariánské Lázně opět nejmladší občánky s jejich rodinami a blízkými do Anglikánského k",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-03-007",
+      "datum": "2017-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-03-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Vítání občánků",
+      "popis": "Znovu touto cestou informujeme veřejnost o vítání nových občánků Mariánských Lázní, které se v našem městě opět stalo milou tradicí. Nově narozené děti a jejich",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=895cb762%7C1093#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-03/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-06-005",
+      "datum": "2017-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-06-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "VÍTÁNÍ OBČÁNKŮ 22. DUBNA 2017",
+      "popis": "I když byla sobota 22. dubna 2017 deštivá a chladná, přesto jsme měli v příjemném prostředí Anglikánského kostela v Mariánských Lázních velmi milou možnost setk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=58241ca3%7C1140#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-06/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-006",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "VÍTÁNÍ OBČÁNKŮ",
+      "popis": "Nově narozené děti a jejich rodiče a blízké aktuálně zveme k účasti na této milé společenské události, která se nyní uskuteční v sobotu dne 23. září 2017 od 14:",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-03-007",
+      "datum": "2018-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-03-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "VÍTÁNÍ OBČÁNKŮ",
+      "popis": "V sobotu 21. dubna 2018 se bude konat další vítání občánků města Mariánské Lázně. Již tradičně informujeme veřejnost o novinkách, které se týkají vítání nových ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0fb98a15%7C1447#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-03/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-003",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Informace k volbám do zastupitelstev obcí a do Senátu",
+      "popis": "V pátek 5. října a v sobotu 6. října 2018 se v České republice uskuteční volby do zastupitelstev obcí. Zároveň je termín těchto voleb v našem městě (volební obv",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-004",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Doručení hlasovacích lístků voličům",
+      "popis": "Nejpozději tři dny před začátkem voleb, tj. 2. října 2018 dostane každý volič do schránky ve svém trvalém bydlišti obálku s hlasovacími lístky. Spolu s nimi naj",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-005",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Hledáme zájemce o práci v okrskových volebních komisích",
+      "popis": "Okrskové volební komise pro volby do zastupitelstev obcí, které se budou konat společně s volbami do Senátu Parlamentu ČR ve dnech 5. a 6. října 2018 a pravděpo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-09-008",
+      "datum": "2018-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-09-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "Opět se bude konat vítání občánků",
+      "popis": "Nově narozené děti a jejich rodiče a blízké aktuálně zveme k účasti na Vítání občánků města Mariánské Lázně - milé společenské události, která se uskuteční v so",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0e96dae4%7C1646#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-09/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-03-009",
+      "datum": "2019-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-03-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Svatby v Mariánských Lázních",
+      "popis": "Rádi seznamujeme veřejnost s novou skutečností - od letošního roku je obřadní místností pro konání civilních svateb v Mariánských Lázních krásný prostor Angliká",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=30aa1a4c%7C1863#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-03/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-006",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Další vítání občánků se bude konat 18. května 2019",
+      "popis": "Zveme nově narozené děti a jejich rodiče a blízké na další Vítání občánků města Mariánské Lázně. Tato již tradiční milá společenská událost se aktuálně uskutečn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-04-007",
+      "datum": "2019-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-04-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Volby do Evropského parlamentu hledáme zájemce o práci v okrskových volebních komisích",
+      "popis": "Prezident republiky vyhlásil volby do Evropského parlamentu a stanovil dny jejich konání na pátek 24. května 2019 a sobotu 25. května 2019. V Mariánských Lázníc",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c4d2984c%7C1915#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-04/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-04-009",
+      "datum": "2020-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-04-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ VÍTAJÍ NOVÉ OBČÁNKY",
+      "popis": "Narodilo se vám miminko, máte trvalé bydliště v Mariánských Lázních a chtěli byste se zúčastnit slavnostního aktu vítání občánků? Město pro vás a vaše děti již ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0f8558a4%7C2237#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-04/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-05-003",
+      "datum": "2020-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-05-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Vítání občánků 23. května 2020 se neuskuteční",
+      "popis": "S ohledem na nastalou situaci danou koronavirovou pandemií a v souladu s mimořádným opatřením Ministerstva zdravotnictví ČR o omezení volného pohybu osob na úze",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6269ac11%7C2241#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-05/003.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-05-004",
+      "datum": "2020-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-05-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Městský úřad Mariánské Lázně informuje…",
+      "popis": "Pokud nedojde k nějakým neočekávaným skutečnostem, přestěhuje se od května 2020 i poslední část Městského úřadu Mariánské Lázně, která doposud ještě zůstávala v",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6269ac11%7C2241#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-05/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-04-006",
+      "datum": "2021-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-04-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "VÍTÁNÍ OBČÁNKŮ - ODLOŽENO",
+      "popis": "Dovolujeme si informovat veřejnost o tom, že akce Vítání nových občánků Mariánských Lázní plánovaná na 22. května 2021 bude odložena a spojena s podzimním termí",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e7abb432%7C2584#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-04/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-04-010",
+      "datum": "2022-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-04-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ OPĚT UVÍTAJÍ NOVÉ OBČÁNKY",
+      "popis": "Narodilo se vám miminko, máte bydliště v Mariánských Lázních a chtěli byste se zúčastnit slavnostního aktu vítání občánků? Městský úřad pro vás a vaše děti již ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fc84829b%7C3365#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-04/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-09-005",
+      "datum": "2022-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-09-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "Informace k volbám do zastupitelstev obcí",
+      "popis": "V pátek 23. září a v sobotu 24. září 2022 se v České republice uskuteční volby do zastupitelstev obcí. Při těchto volbách je možné udílet preferenční hlasy – ko",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c13019ed%7C3593#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-09/005.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-04-009",
+      "datum": "2023-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-04-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DALŠÍ VÍTÁNÍ OBČÁNKŮ SE BUDE KONAT 20. KVĚTNA 2023",
+      "popis": "Zveme nově narozené děti a jejich rodiče a blízké na další vítání občánků města Mariánské Lázně. Tato již tradiční milá společenská událost se aktuálně uskutečn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2ab30a0d%7C3729#page=5",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-04/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-09-015",
+      "datum": "2023-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-09-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PODĚKOVÁNÍ",
+      "popis": "Děkujeme paní Klestilové, že při projížďce městem kočároumožnila dětem z Mateřské vou dopravou. školy Velká Hleďsebe prožít krásný zážitkový den 1. 6. 2023 Kole",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2a007f32%7C3886#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-09/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-030",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Další vítání občánků se bude konat 18. května 2024",
+      "popis": "Zveme nově narozené děti a jejich rodiče a blízké na další vítání občánků města Mariánské Lázně, které se aktuálně uskuteční v sobotu 18. května 2024 dopoledne ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-013",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "SportMaria 2024 se uskuteční 7. září",
+      "popis": "Letošní SportMaria 2024 se bude konat 7. září. Základním smyslem akce je rozšíření povědomí o mimoškolních aktivitách pro děti a jejich rodiče. Největší důraz j",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-016",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Z kroniky Mariánských Lázní před 100 lety - květen 1925",
+      "popis": "Foto: Sbírka Městského muzea a galerie Mariánské Lázně.. 2. 5. Divadlo. Divadlo zahájilo pod řízením Linnbrunnera sezonu veselohrou. 3. 5. Svěcení pramenů. Arci",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-08-007",
+      "datum": "2025-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-08-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně budou opět vítat nové občánky",
+      "popis": "Narodilo se vám miminko, máte bydliště v Mariánských Lázních a chtěli byste se zúčastnit vítání občánků? Město Marián­ ské Lázně pro vás a vaše děti již tradičn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=3651834d%7C4642#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-08/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-04-018",
+      "datum": "2026-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-04-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Vítání občánků - 23. května 2026",
+      "popis": "Milí rodiče mariánskolázeňských novorozených děťátek, chtěli bychom vás pozvat na Vítání občánků, které proběhne v obřadní síni v Anglikánském kostele v sobotu ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13e2aedc%7C4927#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-04/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

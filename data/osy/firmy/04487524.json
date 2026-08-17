@@ -1,0 +1,136 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "04487524",
+    "nazev": "Trhy Aleš, spol. s r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-08-02",
+    "do": "2026-04-29",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-78-78/4",
+      "datum": "2016-08-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-02",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Farmářské trhy v Mariánských Lázních",
+      "popis": "Rada města, bod 78/4, usnesení 387/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1615882",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/78.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-101-101/7",
+      "datum": "2017-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-31",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Fármářské trhy v roce 2017",
+      "popis": "Rada města, bod 101/7, usnesení 69/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1705740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/101.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:27047840",
+      "datum": "2024-05-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-31",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace - Trhy Aleš, spol s.r.o.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Trhy Aleš, spol. s r.o..",
+      "castka_czk": 40000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28928584",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:31135584",
+      "datum": "2025-05-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-09",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provední reklamy a propagace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Trhy Aleš, spol. s.r.o..",
+      "castka_czk": 48400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33233436",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35465861",
+      "datum": "2026-04-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-29",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o provedení reklamy a propagace - Trhy Aleš",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Trhy Aleš, spol. s r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37762773",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

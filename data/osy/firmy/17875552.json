@@ -1,0 +1,159 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "17875552",
+    "nazev": "Urologie Mariánské Lázně s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-12-29",
+    "do": "2023-09-06",
+    "prvni_rok": 2022,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 2,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:17875552:vznik",
+      "datum": "2022-12-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-29",
+      "rok": 2022,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Urologie Mariánské Lázně s.r.o.",
+      "popis": "Vznik subjektu Urologie Mariánské Lázně s.r.o. (IČO 17875552), Společnost s ručením omezeným, obor: Specializovaná ambulantní zdravotní péče.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/15",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Revokace usnesení č. RM/487/23",
+      "popis": "Rada města, bod 31/15, usnesení 554/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3074229",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-31-31/16",
+      "datum": "2023-09-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-05",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o výpůjčce ultrazvukového systému Versana Balance s příslušenstvím a jeho bezplatného užívání",
+      "popis": "Rada města, bod 31/16, usnesení 555/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3074275",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/31.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-31/15__23977343",
+      "datum": "2023-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-06",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "UTZ systém Versana Balance, včetně abdominální (4C-RS), lineární (12L-RS) a endokavitální transrektální (E8C-RS) sondy v hodnotě 652.190 Kč vč. DPH (dále jen „ultrazvukový systém Versana Balance“).",
+      "popis": "Odhadované spojení smlouvy z 2023-09-06 s bodem 31/15 z 2023-09-05 (Revokace usnesení č. RM/487/23). Jistota nizka.",
+      "castka_czk": 789149.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 17875552 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/25681691",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-31/16__23977343",
+      "datum": "2023-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-06",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "UTZ systém Versana Balance, včetně abdominální (4C-RS), lineární (12L-RS) a endokavitální transrektální (E8C-RS) sondy v hodnotě 652.190 Kč vč. DPH (dále jen „ultrazvukový systém Versana Balance“).",
+      "popis": "Odhadované spojení smlouvy z 2023-09-06 s bodem 31/16 z 2023-09-05 (Smlouva o výpůjčce ultrazvukového systému Versana Balance s příslušenstvím a jeho bezplatnéh",
+      "castka_czk": 789149.9,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 17875552 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova balance, versana; stejně dobře sedí i 1 další",
+      "url": "https://smlouvy.gov.cz/smlouva/25681691",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:23977343",
+      "datum": "2023-09-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-06",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "UTZ systém Versana Balance, včetně abdominální (4C-RS), lineární (12L-RS) a endokavitální transrektální (E8C-RS) sondy v hodnotě 652.190 Kč vč. DPH (dále jen „ultrazvukový systém Versana Balance“).",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Urologie Mariánské Lázně s.r.o..",
+      "castka_czk": 789149.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25681691",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46615876",
+    "nazev": "Bohumila Hrašková"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-08-31",
+    "do": "2016-08-31",
+    "prvni_rok": 2016,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "stredni": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2016-82/4__174201",
+      "datum": "2016-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-31",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "NS na prodejní stánek",
+      "popis": "Odhadované spojení smlouvy z 2016-08-31 s bodem 82/4 z 2016-08-30 (Pronájem stánků na ul. Promenáda města Bad Homburg). Jistota stredni.",
+      "castka_czk": 54300.0,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (Bohumila Hrašková) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 1 den po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/183681",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:174201",
+      "datum": "2016-08-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-31",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "NS na prodejní stánek",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Bohumila Hrašková.",
+      "castka_czk": 54300.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/183681",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "01171071",
+    "nazev": "ČESKÉ LÁZNĚ - SALONY EVROPY"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-03-01",
+    "do": "2024-01-12",
+    "prvni_rok": 2022,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/8",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "DSO České dědictví UNESCO - vstup ML a úhrada členských příspěvků",
+      "popis": "Zastupitelstvo města, bod 25/8, usnesení 536/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792603",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-38-38/19",
+      "datum": "2023-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-28",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.1 k Dohodě o spolupráci s DSO České lázně - Salony Evropy",
+      "popis": "Rada města, bod 38/19, usnesení 743/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3116201",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/38.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2023-12-12/21",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č.1 k Dohodě o spolupráci s DSO České lázně - Salony Evropy",
+      "popis": "Zastupitelstvo města, bod 12/21, usnesení 234/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3119332",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-38/19__25440935",
+      "datum": "2024-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "České Lázně - Salony Evropy",
+      "popis": "Odhadované spojení smlouvy z 2024-01-12 s bodem 38/19 z 2023-11-28 (Dodatek č.1 k Dohodě o spolupráci s DSO České lázně - Salony Evropy). Jistota nizka.",
+      "castka_czk": 150000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01171071 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 45 dní po usnesení; název bodu a předmět smlouvy sdílí slova evropy, salony; usnesení mluví o dodatku, sm",
+      "url": "https://smlouvy.gov.cz/smlouva/27243407",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/21__25440935",
+      "datum": "2024-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-12",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "České Lázně - Salony Evropy",
+      "popis": "Odhadované spojení smlouvy z 2024-01-12 s bodem 12/21 z 2023-12-12 (Dodatek č.1 k Dohodě o spolupráci s DSO České lázně - Salony Evropy). Jistota nizka.",
+      "castka_czk": 150000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 01171071 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení; název bodu a předmět smlouvy sdílí slova evropy, salony; usnesení mluví o dodatku, sm",
+      "url": "https://smlouvy.gov.cz/smlouva/27243407",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25440935",
+      "datum": "2024-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "České Lázně - Salony Evropy",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ČESKÉ LÁZNĚ - SALONY EVROPY.",
+      "castka_czk": 150000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27243407",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "neruda-jan",
+    "jmeno": "Jan Neruda",
+    "role": [
+      "návštěvník",
+      "spisovatel"
+    ],
+    "kategorie": "historie",
+    "strana": null,
+    "zijici": false
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2017-08-21",
+    "do": "2026-08",
+    "prvni_rok": 2017,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "media": 1,
+      "zpravodaj": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "media:cro-marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "datum": "2017-08-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-21",
+      "rok": 2017,
+      "typ": "media",
+      "nadpis": "Mariánské Lázně vzdají hold spisovatelům. Turistickou stezkou",
+      "popis": "Základní kámen nové stezky věnované spisovatelům symbolicky položil Vladimír Páral. Mezi autory, kteří si Mariánské Lázně oblíbili, patří Goethe, Kafka, Neruda ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://vary.rozhlas.cz/marianske-lazne-vzdaji-hold-spisovatelum-turistickou-stezkou-6806200",
+      "zdroj": "media",
+      "zdroj_soubor": "data/media/clanky.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-09-004",
+      "datum": "2017-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-09-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MARIÁNSKÉ LÁZNĚ VZDAJÍ HOLD SPISOVATELŮM",
+      "popis": "Johann Wolfgang Goethe, Mark Twain, Ivan Alexandrovič Gončarov, Franz Kafka, Rudyard Kipling, Jan Neruda, Ivan Olbracht, Alexej Nikolajevič Tolstoj, Václav Bene",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=48b565fa%7C1221#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-09/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-01-043",
+      "datum": "2018-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-01-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "„PŘEDVÁNOČNÍ POHLAZENÍ“",
+      "popis": "Takovýto název mělo vystoupení Divadla lidové tvorby Mariánské Lázně. Šlo o pohlazení slovem, a to poezií i prózou. Členové DLT přišli ve čtvrtek 14. 12. 2017 p",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2cf8e74b%7C1416#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-01/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-08-036",
+      "datum": "2026-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-08-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Srpnový kulturní přehled",
+      "popis": "INFOCENTRUM  Prohlídka centra města – tematická komentovaná prohlídka 6. 8. 15.30 Po pramenech – tematická komentovaná prohlídka 8. 8. 15.30 Po stopách slavných",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a008dce7%7C5047#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-08/036.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

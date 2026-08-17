@@ -1,0 +1,279 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "02022915",
+    "nazev": "Zahradní centrum Malinkovič - Důbrava s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-07-12",
+    "do": "2026-01-15",
+    "prvni_rok": 2024,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 12,
+    "dolozenych": 8,
+    "odhadu": 4,
+    "dle_typu": {
+      "smlouva": 5,
+      "usneseni": 3,
+      "retez": 4
+    },
+    "dle_jistoty": {
+      "fakt": 8,
+      "nizka": 2,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:27583436",
+      "datum": "2024-07-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-07-12",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "dodávka rostlin",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zahradní centrum Malinkovič - Důbrava s.r.o..",
+      "castka_czk": 67605.44,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/29487368",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-75-75/28",
+      "datum": "2025-01-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-07",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka malého rozsahu na dodání letniček pro výsadby 2025",
+      "popis": "Rada města, bod 75/28, usnesení 28/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3306707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-75/28__29900780",
+      "datum": "2025-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-23",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodání letniček pro výsadby 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-01-23 s bodem 75/28 z 2025-01-07 (Veřejná zakázka malého rozsahu na dodání letniček pro výsadby 2025). Jistota nizka.",
+      "castka_czk": 603344.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02022915 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova dodani, letnicek, vysadby; k témuž usnesení ",
+      "url": "https://smlouvy.gov.cz/smlouva/31940212",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29900780",
+      "datum": "2025-01-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-23",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodání letniček pro výsadby 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zahradní centrum Malinkovič - Důbrava s.r.o..",
+      "castka_czk": 603344.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31940212",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2025-75/28__31674837",
+      "datum": "2025-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodávka rostlin pro závěsné nádoby a zásobního hnojiva pro záhonové výsadby letniček sezóna 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-05-29 s bodem 75/28 z 2025-01-07 (Veřejná zakázka malého rozsahu na dodání letniček pro výsadby 2025). Jistota nizka.",
+      "castka_czk": 65060.25,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 02022915 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 142 dní po usnesení; název bodu a předmět smlouvy sdílí slova letnicek, vysadby; k témuž usnesení se hlás",
+      "url": "https://smlouvy.gov.cz/smlouva/33799065",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31674837",
+      "datum": "2025-05-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodávka rostlin pro závěsné nádoby a zásobního hnojiva pro záhonové výsadby letniček sezóna 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zahradní centrum Malinkovič - Důbrava s.r.o..",
+      "castka_czk": 65060.25,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33799065",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-96-96/26",
+      "datum": "2025-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-26",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodání dvouletek pro výsadky jaro 2026",
+      "popis": "Rada města, bod 96/26, usnesení 590/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1028728712",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/96.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-96/26__32688377",
+      "datum": "2025-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-29",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodání dvouletek pro výsadby jaro 2026",
+      "popis": "Odhadované spojení smlouvy z 2025-08-29 s bodem 96/26 z 2025-08-26 (Dodání dvouletek pro výsadky jaro 2026). Jistota stredni.",
+      "castka_czk": 577388.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 02022915 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova dodani, dvouletek, jaro",
+      "url": "https://smlouvy.gov.cz/smlouva/34859957",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:32688377",
+      "datum": "2025-08-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-08-29",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodání dvouletek pro výsadby jaro 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zahradní centrum Malinkovič - Důbrava s.r.o..",
+      "castka_czk": 577388.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/34859957",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-107-107/7",
+      "datum": "2025-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-23",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Kupní smlouva na dodání letniček pro výsadby 2026",
+      "popis": "Rada města, bod 107/7, usnesení 851/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/413284387",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-107/7__34183245",
+      "datum": "2026-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-15",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Dodání letniček pro výsadby 2026",
+      "popis": "Odhadované spojení smlouvy z 2026-01-15 s bodem 107/7 z 2025-12-23 (Kupní smlouva na dodání letniček pro výsadby 2026). Jistota stredni.",
+      "castka_czk": 629428.8,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 02022915 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova dodani, letnicek, vysadby",
+      "url": "https://smlouvy.gov.cz/smlouva/36424321",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:34183245",
+      "datum": "2026-01-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-15",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Dodání letniček pro výsadby 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Zahradní centrum Malinkovič - Důbrava s.r.o..",
+      "castka_czk": 629428.8,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36424321",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,940 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "70923817",
+    "nazev": "Senioři České republiky, z. s., Základní organizace Mariánské Lázně"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2000-08-09",
+    "do": "2026-01-21",
+    "prvni_rok": 2000,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 45,
+    "dolozenych": 30,
+    "odhadu": 15,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 18,
+      "retez": 15,
+      "smlouva": 11
+    },
+    "dle_jistoty": {
+      "fakt": 30,
+      "nizka": 10,
+      "stredni": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:70923817:vznik",
+      "datum": "2000-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2000-08-09",
+      "rok": 2000,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Senioři České republiky, z. s., Základní organizace Mariánské Lázně",
+      "popis": "Vznik subjektu Senioři České republiky, z. s., Základní organizace Mariánské Lázně (IČO 70923817), Pobočný spolek, obor: Činnosti občanských iniciativ, protestn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2012-14-14/8",
+      "datum": "2012-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-11",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2013",
+      "popis": "Zastupitelstvo města, bod 14/8, usnesení 444/12. Schvaleno.",
+      "castka_czk": 273070000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/842480",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-19-19/2",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2014",
+      "popis": "Zastupitelstvo města, bod 19/2, usnesení 617/13. Schvaleno.",
+      "castka_czk": 292861500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1033936",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-3-3/2",
+      "datum": "2014-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2015",
+      "popis": "Zastupitelstvo města, bod 3/2, usnesení 24/14. Schvaleno.",
+      "castka_czk": 299652700,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1311842",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-17-17/18",
+      "datum": "2015-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-03-31",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 17/18, usnesení 150/15. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1371495",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-6-6/23",
+      "datum": "2015-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-14",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 6/23, usnesení 91/15. Schvaleno.",
+      "castka_czk": 1000000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1376058",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/6.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-12-12/2",
+      "datum": "2015-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-15",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2016",
+      "popis": "Zastupitelstvo města, bod 12/2, usnesení 214/15. Schvaleno.",
+      "castka_czk": 282638000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1495224",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-60-60/2",
+      "datum": "2016-03-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-15",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Rada města, bod 60/2, usnesení 136/16. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1546906",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/60.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-16-16/7",
+      "datum": "2016-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-04-12",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 16/7, usnesení 293/16.",
+      "castka_czk": 1200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1561386",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/16.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-22-22/6",
+      "datum": "2016-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-13",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2017",
+      "popis": "Zastupitelstvo města, bod 22/6, usnesení 405/16. Schvaleno.",
+      "castka_czk": 328404900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1673740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-60/2__1003393",
+      "datum": "2017-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Svaz důchodců České republiky, o.s. místní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-01-20 s bodem 60/2 z 2016-03-15 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; smlouva podepsána 311 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1068937",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2016-16/7__1003393",
+      "datum": "2017-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Svaz důchodců České republiky, o.s. místní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-01-20 s bodem 16/7 z 2016-04-12 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; smlouva podepsána 283 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1068937",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2016-22/6__1003393",
+      "datum": "2017-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-20",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Svaz důchodců České republiky, o.s. místní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-01-20 s bodem 22/6 z 2016-12-13 (Rozpočet města Mariánské Lázně na rok 2017). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; smlouva podepsána 38 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/1068937",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:1003393",
+      "datum": "2017-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Svaz důchodců České republiky, o.s. místní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Svaz důchodců České republiky, o. s., místní organizace Mariánské Lázně.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/1068937",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-24-24/11",
+      "datum": "2017-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-02-21",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Neinvestiční dotace - Svaz důchodců ČR",
+      "popis": "Zastupitelstvo města, bod 24/11, usnesení 433/17. Schvaleno.",
+      "castka_czk": 70000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1707595",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/4",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2018",
+      "popis": "Zastupitelstvo města, bod 32/4, usnesení 630/17. Schvaleno.",
+      "castka_czk": 350001200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1861378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-24/11__4139048",
+      "datum": "2018-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-10",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Svaz důchodců ČR, z.s., místní organizace M.L.- účelová neinvestiční dotace ve výši: 140.000,-Kč - ZM/630/17 ze dne 12. 12. 2017",
+      "popis": "Odhadované spojení smlouvy z 2018-01-10 s bodem 24/11 z 2017-02-21 (Neinvestiční dotace - Svaz důchodců ČR). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; smlouva podepsána 323 dní po usnesení; název bodu a předmět smlouvy sdílí slova dotace, duchodcu, neinvesticni, svaz; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4459396",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/4__4139048",
+      "datum": "2018-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-10",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Svaz důchodců ČR, z.s., místní organizace M.L.- účelová neinvestiční dotace ve výši: 140.000,-Kč - ZM/630/17 ze dne 12. 12. 2017",
+      "popis": "Odhadované spojení smlouvy z 2018-01-10 s bodem 32/4 z 2017-12-12 (Rozpočet města Mariánské Lázně na rok 2018). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; smlouva podepsána 29 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/4459396",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:4139048",
+      "datum": "2018-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-01-10",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Svaz důchodců ČR, z.s., místní organizace M.L.- účelová neinvestiční dotace ve výši: 140.000,-Kč - ZM/630/17 ze dne 12. 12. 2017",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Svaz důchodců České republiky, o. s., místní organizace Mariánské Lázně.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/4459396",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/4",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2019",
+      "popis": "Zastupitelstvo města, bod 2/4, usnesení 12/18. Schvaleno.",
+      "castka_czk": 397951000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145448",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-2/4__7367791",
+      "datum": "2019-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-21",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z. s., Základní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-01-21 s bodem 2/4 z 2018-12-20 (Rozpočet města Mariánské Lázně na rok 2019). Jistota stredni.",
+      "castka_czk": 145200.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 32 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/7954599",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7367791",
+      "datum": "2019-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-01-21",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z. s., Základní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 145200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7954599",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/4",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2020",
+      "popis": "Zastupitelstvo města, bod 10/4, usnesení 197/19. Schvaleno.",
+      "castka_czk": 383624720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2433453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2019-10/4__10549292",
+      "datum": "2020-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-13",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2020-01-13 s bodem 10/4 z 2019-12-09 (Rozpočet města Mariánské Lázně na rok 2020). Jistota stredni.",
+      "castka_czk": 100000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/11594364",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:10549292",
+      "datum": "2020-01-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-01-13",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 100000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11594364",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-17-17/3",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2021",
+      "popis": "Zastupitelstvo města, bod 17/3, usnesení 361/20. Schvaleno.",
+      "castka_czk": 415455400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2605014",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-17/3__14201583",
+      "datum": "2021-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-20",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2021-01-20 s bodem 17/3 z 2020-12-15 (Rozpočet města Mariánské Lázně na rok 2021). Jistota stredni.",
+      "castka_czk": 111500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 36 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/15250435",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:14201583",
+      "datum": "2021-01-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-01-20",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 111500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/15250435",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/6",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2022",
+      "popis": "Zastupitelstvo města, bod 23/6, usnesení 507/21. Schvaleno.",
+      "castka_czk": 427652900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2021-23/6__17840327",
+      "datum": "2022-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-26",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2022-01-26 s bodem 23/6 z 2021-12-14 (Rozpočet města Mariánské Lázně na rok 2022). Jistota stredni.",
+      "castka_czk": 139150.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 43 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19190175",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:17840327",
+      "datum": "2022-01-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku - Senioři České republiky, z.s., Základní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 139150.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19190175",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-3-3/6",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2023",
+      "popis": "Zastupitelstvo města, bod 3/6, usnesení 33/22. Schvaleno.",
+      "castka_czk": 526578820,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2938538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-3/6__21464853",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Senioři České republiky, z.s. základní organizace Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-01-10 s bodem 3/6 z 2022-12-13 (Rozpočet města Mariánské Lázně na rok 2023). Jistota stredni.",
+      "castka_czk": 145200.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23034769",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21464853",
+      "datum": "2023-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-10",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - Senioři České republiky, z.s. základní organizace Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 145200.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23034769",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:25493115",
+      "datum": "2024-01-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace  - Senioři ČR - ZO Mariánské Lázně  2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Svaz důchodců České republiky, o. s., místní organizace Mariánské Lázně.",
+      "castka_czk": 154880.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27298415",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-51-51/25",
+      "datum": "2024-04-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-16",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYCZ-SPF00209) pro organizaci Senioři České republiky, z. s., Základní organizace Mariánské Lázně",
+      "popis": "Rada města, bod 51/25, usnesení 273/24. Schvaleno.",
+      "castka_czk": 740380,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3181900",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/51.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2024-14-14/21",
+      "datum": "2024-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-23",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYCZ-SPF00209) pro organizaci Senioři České republiky, z. s., Základní organizace Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 14/21, usnesení 292/24. Schvaleno.",
+      "castka_czk": 740380,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/3182496",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2024/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/25__26746131",
+      "datum": "2024-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-07",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Veřejnoprávní smlouva o poskytnutí návratné finanční výpomoci - Senioři České republiky, z. s., Základní organizace Mariánské Lázně 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-07 s bodem 51/25 z 2024-04-16 (Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYC",
+      "castka_czk": 749974.965,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova financni, organizace, seniori, zakladni; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/28614671",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-14/21__26746131",
+      "datum": "2024-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-07",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Veřejnoprávní smlouva o poskytnutí návratné finanční výpomoci - Senioři České republiky, z. s., Základní organizace Mariánské Lázně 2024",
+      "popis": "Odhadované spojení smlouvy z 2024-05-07 s bodem 14/21 z 2024-04-23 (Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYC",
+      "castka_czk": 749974.965,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 14 dní po usnesení; název bodu a předmět smlouvy sdílí slova financni, organizace, seniori, zakladni; ste",
+      "url": "https://smlouvy.gov.cz/smlouva/28614671",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:26746131",
+      "datum": "2024-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-05-07",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Veřejnoprávní smlouva o poskytnutí návratné finanční výpomoci - Senioři České republiky, z. s., Základní organizace Mariánské Lázně 2024",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 749974.965,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28614671",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2024-51/25__29757896",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace  -  Senioři České republiky, z.s. Základné organizace Mariánské Lázně. 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-01-16 s bodem 51/25 z 2024-04-16 (Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYC",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 275 dní po usnesení; název bodu a předmět smlouvy sdílí slova organizace, seniori; stejně dobře sedí i 2 ",
+      "url": "https://smlouvy.gov.cz/smlouva/31789616",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-14/21__29757896",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace  -  Senioři České republiky, z.s. Základné organizace Mariánské Lázně. 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-01-16 s bodem 14/21 z 2024-04-23 (Žádost o návratnou finanční výpomoc na předfinancování projektu „Stále aktivní“ (reg. č. BYC",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 70923817 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 268 dní po usnesení; název bodu a předmět smlouvy sdílí slova organizace, seniori; stejně dobře sedí i 2 ",
+      "url": "https://smlouvy.gov.cz/smlouva/31789616",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2024-18/10__29757896",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace  -  Senioři České republiky, z.s. Základné organizace Mariánské Lázně. 2025",
+      "popis": "Odhadované spojení smlouvy z 2025-01-16 s bodem 18/10 z 2024-12-10 (Individuální dotace z rozpočtu města Mariánské Lázně společnosti Senioři České republiky, z.",
+      "castka_czk": 200000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Senioři České republiky, z. s., Základní organizace Mariánské Lázně) je v textu usnesení; smlouva podepsána 37 dní po usnesení; název bodu a předmět smlouvy sdílí slova dotace, orga",
+      "url": "https://smlouvy.gov.cz/smlouva/31789616",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29757896",
+      "datum": "2025-01-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-16",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace  -  Senioři České republiky, z.s. Základné organizace Mariánské Lázně. 2025",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31789616",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:34241357",
+      "datum": "2026-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-01-21",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Senioři České republiky, z.s., Základní organizace Mariánské Lázně - Smlouvao poskytnutí neinvestiční dotace – příspěvku 2026",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Senioři České republiky, z. s., Základní organizace Mariánské Lázně.",
+      "castka_czk": 150000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/36485005",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

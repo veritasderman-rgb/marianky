@@ -1,0 +1,1097 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "mikova-ludmila",
+    "jmeno": "Ludmila Míková",
+    "role": [
+      "zastupitel"
+    ],
+    "kategorie": "politika",
+    "strana": "ODS Plus",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-07",
+    "do": "2026-06",
+    "prvni_rok": 2016,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 49,
+    "dolozenych": 49,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 36,
+      "volby": 1,
+      "funkce": 1,
+      "hlasovani": 11
+    },
+    "dle_jistoty": {
+      "fakt": 49
+    },
+    "hlasovani_celkem": 612,
+    "hlasovani_v_ose": 11,
+    "hlasovani_v_souhrnu": 601
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2022,
+      "celkem": 38,
+      "pro": 37,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2023,
+      "celkem": 209,
+      "pro": 203,
+      "zdrzel": 3,
+      "nehlasoval": 3
+    },
+    {
+      "rok": 2024,
+      "celkem": 184,
+      "pro": 136,
+      "nepritomen": 45,
+      "nehlasoval": 2,
+      "zdrzel": 1
+    },
+    {
+      "rok": 2025,
+      "celkem": 129,
+      "pro": 97,
+      "nepritomen": 31,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2026,
+      "celkem": 52,
+      "pro": 41,
+      "nepritomen": 11
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-07-027",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Noc v Anglikánském kostele",
+      "popis": "V pátek 10.6.2016 od 20 hod. uspořádal Smíšený pěvecký sbor Fontána Mariánské Lázně volně v rámci akce Noc kostelů již třetí koncert letos v Anglikánském kostel",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/027.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-10-023",
+      "datum": "2016-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-10-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "ŘÍJNOVÝ PROGRAM V KNIHOVNĚ",
+      "popis": "Knihovna se přes léto trošku poopravila, a tak naše návštěvníky čeká zmodernizovaná přednášková místnost. J e nově vymalováno, vykobercováno a bude zpřístupněn ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ff5042e5%7C984#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-10/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-05-038",
+      "datum": "2017-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-05-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "MĚSTSKÁ KNIHOVNA",
+      "popis": "■ ■ ČESKOSLOVENŠTÍ LETCI V ROYAL AIR FORCE  2. 5. úterý v 17,00 hod. Vstupné 30 Kč, studovna  PŘEDNÁŠKA PhDr. Daniela Švece – . K výročí osvobození pro velký ús",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ad291f26%7C1139#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-05/038.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-10-016",
+      "datum": "2017-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-10-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "„ZÁPISNÍK MÉHO POHÁRKU – PRAMENY MARIÁNSKÝCH LÁZNÍ“",
+      "popis": "Na začátku letošního školního roku čekalo na žáky sedmých tříd ZŠ Úšovice milé překvapení. Přímo z rukou pana Radka Míky (autor) a paní Ludmily Míkové (ilustrát",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=17c8a1e8%7C1275#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-10/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-02-033",
+      "datum": "2018-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-02-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "OHLÉDNUTÍ ZA ROKEM 2017 A ÚNOROVÝ PROGRAM V KNIHOVNĚ",
+      "popis": "Milí čtenáři místního zpravodaje,  rádi bychom se s vámi podělili o zajímavosti z roku 2017, které se v knihovně udály. Rok 2017 byl plný novinek, zajímavých ak",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9973aa8d%7C1433#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-02/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2018-05-045",
+      "datum": "2018-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2018-05-01",
+      "rok": 2018,
+      "typ": "zpravodaj",
+      "nadpis": "VÝROČÍ 50 LET SBORU FONTÁNA",
+      "popis": "Smíšený pěvecký sbor Fontána v letošním roce slaví 50. výročí založení a při této příležitosti spojil oslavy tohoto výročí s organizací setkání západočeských sb",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=9f955ba3%7C1543#page=18",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2018-05/045.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-016",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Stezka spisovatelů",
+      "popis": "Autorka kresby: Ing. arch. Ludmila Míková  Vznik očekávané „stezky spisovatelů“ připravuje Infocentrum města Mariánské Lázně za významné spolupráce Městské knih",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-09-016",
+      "datum": "2019-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-09-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "sloupek poslance arboristické práce SLOUPEK POSLANCE PARLAMENTU petra třešnáka",
+      "popis": "toto ustanovení ruší, se nám díky  stromů citlivěji. Paní Rákosová  Zdravotnictví bude vždy zásad-  Město v lese, les ve městě, tak  úsilí ve s hejtmankou ním b",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=1903aa03%7C2032#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-09/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-10-023",
+      "datum": "2019-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-10-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "RADNICE SE (ZATÍM) NEPRODÁVÁ?",
+      "popis": "V pondělí 16.9. 2019 byla předána na podatelnu městského úřadu Petice za zachování historické budovy radnice v majetku Města Mariánské Lázně. Na originálních pe",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51d06134%7C2084#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-10/023.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-12-030",
+      "datum": "2019-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-12-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "Senior roku 2019",
+      "popis": "Ve čtvrtek 31. 10. 2019 se v Kulturním domě Svoboda v Chebu konalo slavnostní vyhlášení ankety Senior roku 2019, na kterém byli kromě hejtmanky Karlovarského kr",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=68d0dfcd%7C2145#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-12/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-01-036",
+      "datum": "2020-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-01-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "20 let Mariánského festivalu duchovní hudby",
+      "popis": "V loňském roce 2019 proběhl v Mariánských Lázních již 20. ročník Mariánského festivalu duchovní hudby, který pravidelně pořádá Smíšený pěvecký sbor Fontána Mari",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=071d2a42%7C2192#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-01/036.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-10-012",
+      "datum": "2021-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-10-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKOVNÝ SLOUP PANNY MARIE V MARIÁNSKÝCH LÁZNÍCH",
+      "popis": "V sobotu 14. srpna 2021, v předvečer svátku Nanebevzetí Panny Marie, proběhla v Mariánských Lázních slavnost požehnání základního kamene Mariánského sloupu. Pam",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fd74b073%7C2982#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-10/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2021-11-016",
+      "datum": "2021-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-11-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "VILA LIL – MINULOST A BUDOUCNOST",
+      "popis": "V příkrém svahu nad meandrem Úšovického potoka se vypíná malebná pohádková vila, která je dokladem historie Mariánských Lázní, bohatství i mecenášství zdejších ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b32a64bf%7C3042#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-11/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-07-013",
+      "datum": "2022-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-07-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "BESEDA MARIÁNSKÉ SLOUPY A MARIÁNSKÁ MÍSTA ČECH",
+      "popis": "V pavilonu Křížového pramene si návštěvníci i obyvatelé mohou od května prohlédnout model děkovného sloupu Panny Marie s modelem Mariánských Lázní, na kterém uv",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=6fe3fa1e%7C3546#page=7",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-07/013.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2022:mikova-ludmila",
+      "datum": "2022-09-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-23",
+      "rok": 2022,
+      "typ": "volby",
+      "nadpis": "Ludmila Míková zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za ODS Plus s 481 hlasy (6.27 %), 2. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:mikova-ludmila:0",
+      "datum": "2022-10",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2022-10-01",
+      "rok": 2022,
+      "typ": "funkce",
+      "nadpis": "Ludmila Míková — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2022-10 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-011",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 3. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte se dozvědět informace o ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=8",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-11-016",
+      "datum": "2022-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-11-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "PŘEDSTAVENÍ NÁVRHU PLASTIKY PANNY MARIE",
+      "popis": "Spolek Mariánský je iniciátorem vytvoření mariánského sloupu k připomenutí patronky města a poděkování za pomoc a uzdravení desetitisíců lázeňských hostů. Spolk",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=51a07d9c%7C3617#page=9",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-11/016.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-2-15",
+      "datum": "2022-11-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-11-22",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Určený zastupitel pro pořizování územně plánovací dokumentace města Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 2/15. Pro 18, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-4-26",
+      "datum": "2023-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Boheminium ML s.r.o. - žádost o splátkový kalendář a prominutí úroku z prodlení",
+      "popis": "Zastupitelstvo města, bod 4/26. Pro 17, proti 0, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/4.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-03-002",
+      "datum": "2023-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-03-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "PROJEKT REKONSTRUKCE BUDOVY BÝVALÉ RADNICE SPUŠTĚN",
+      "popis": "Koordinační skupina tvořená zástupci Odboru investic a dotací a Ing. arch. Ludmilou Míkovou se sešel se zpracovateli projektové dokumentace, vítěznou irmou atel",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=453e866e%7C3709#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-03/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-03-007",
+      "datum": "2023-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-03-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "1. ZASEDÁNÍ KOMISE URBANISTIKY A ARCHITEKTURY",
+      "popis": "1. zasedání nové desetičlenné komise urbanistiky a architektury se konalo 25. ledna 2023 v zasedačce MěÚ v Ruské ulici (Terezián). Přítomno bylo 8 členů komise,",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=453e866e%7C3709#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-03/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-6-19",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury města Mariánské Lázně - Club Na Dvorku s.r.o.",
+      "popis": "Zastupitelstvo města, bod 6/19. Pro 13, proti 2, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-05-022",
+      "datum": "2023-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-05-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKOVNÝ SLOUP PANNY MARIE",
+      "popis": "Co je Spolek Mariánský? Jméno „Mariánské“ máme v názvu města a ve znaku je Panna Maria s Ježíškem v náruči. Mariánskou symbolikou poctili v roce 1784 premonstrá",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=5e9a4509%7C3773#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-05/022.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-07-026",
+      "datum": "2023-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-07-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DELEGACE Z MARCOUSSIS NA OTEVŘENÍ LÁZEŇSKÉ SEZONY 2023",
+      "popis": "Ve středu 10. 5. ve večerních hodinách přijely osobním autem do Mariánek tři dámy milující naše město. Členové našeho spolku je ubytovali (2 v rodinách u Bártů ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=13322300%7C3869#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-07/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-9-14",
+      "datum": "2023-09-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-19",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Prodej jednotky č. 319/10 (nebytový prostor) v bytovém domě č.p. 319 ul. Hlavní třída, na stav. parc. č. 312/1, kat. území a obec Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 9/14. Pro 14, proti 1, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/9.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-010",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "POSEZENÍ POD LIPAMI",
+      "popis": "Město Mariánské Lázně připravilo v průběhu září u Zpívající fontány „Posezení pod lipami“ formou nových stolečků a židlí. Prostor na západní straně lázeňské pro",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/010.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-011",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "CO JE NOVÉHO NA HŘBITOVĚ",
+      "popis": "V minulém Zpravodaji jste si mohli přečíst, že od 1. června je novým správcem hřbitova Technický a dopravní servis. Změny jsou vidět na první pohled – zlepšil s",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/011.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-11-028",
+      "datum": "2023-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-11-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "DUŠIČKOVÁ PROHLÍDKA",
+      "popis": "Ve čtvrtek 2. listopadu uctíme Památku zesnulých v Mariánských Lázních návštěvou městského hřbitova v rámci Dušičkové prohlídky. Pojďte s námi zavzpomínat a spo",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=df015e5b%7C3997#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-11/028.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-11-19",
+      "datum": "2023-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-21",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Delegování starosty - valná hromada společnosti Nemocnice Mariánské Lázně s.r.o.",
+      "popis": "Zastupitelstvo města, bod 11/19. Pro 19, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/11.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-12-10",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Individuální neinvestiční dotace z rozpočtu města Mariánské Lázně společnosti Diecézní Charita Plzeň, církevní organizace na rok 2024",
+      "popis": "Zastupitelstvo města, bod 12/10. Pro 20, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2023-12-29",
+      "datum": "2023-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-12",
+      "rok": 2023,
+      "typ": "hlasovani",
+      "nadpis": "Prodej parcely č. 1014/184 k. ú. Úšovice lokalita U PILY",
+      "popis": "Zastupitelstvo města, bod 12/29. Pro 15, proti 2, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2023/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2024-02-026",
+      "datum": "2024-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-02-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Adventní a vánoční koncerty sboru Fontána",
+      "popis": "Letošní advent jsme zahájili 9.12.2023 odpoledním koncertem v obci Milhostov u Chebu. Gotický kostel sv. Mikuláše ze 14. stol., který byl barokně upraven v 17. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=d5f46fb1%7C4122#page=19",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-02/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-03-007",
+      "datum": "2024-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Vzhled předzahrádek se nově bude řídit manuálem",
+      "popis": "Na vzhled města mají velký vliv také provozovatelé restaurací, kteří mají u svého podniku předzahrádku. Právě podobu předzahrádek začne nově regulovat manuál. P",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fb079468%7C4145#page=6",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-03/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-04-035",
+      "datum": "2024-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-04-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Oslavte s námi Mezinárodní den památek",
+      "popis": "Oslava Mezinárodního dne památek a sídel byla navržena již v roce 1982 Mezinárodní radou pro památky. Rok nato se UNESCO usneslo, že svátek připadne na den 18. ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=79f689dc%7C4161#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-04/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-012",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Knižní pramen je literární oázou v parku",
+      "popis": "Zatím asi spíše jen zasvěcení či kolemjdoucí vědí, že v červnu byl v parku pod Anglickou ulicí, nedaleko stáčírny minerálních vod (pamětníci ji stále nazývají S",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=11",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/012.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-018",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Sbor Fontána v Malvern",
+      "popis": "Smíšený pěvecký sbor Fontána se ve dnech 28.6 – 2.7. zúčastnil pěveckého zájezdu do Malvern, partnerského města Mariánských Lázní. Navázali jsme tak na návštěvu",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-09-025",
+      "datum": "2024-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-09-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Podzimní komentované prohlídky",
+      "popis": "Zážitky, na které budete dlouho vzpomínat, se často skrývají na velmi nenápadných místech. Pojďte brouzdat ulicemi našeho města, objevte krásná zákoutí, histori",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=270d7b26%7C4288#page=17",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-09/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2024-16-31",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "hlasovani",
+      "nadpis": "Odkup parcely č. 270/6 k.ú.Úšovice pod Elektrometallem",
+      "popis": "Zastupitelstvo města, bod 16/31. Pro 14, proti 0, zdrželo se 5, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2024/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2024-16-7",
+      "datum": "2024-09-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-17",
+      "rok": 2024,
+      "typ": "hlasovani",
+      "nadpis": "VITREUS z.s.-projekt Bytový dům ORAVA",
+      "popis": "Zastupitelstvo města, bod 16/7. Pro 19, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2024/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2024-17-13",
+      "datum": "2024-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-19",
+      "rok": 2024,
+      "typ": "hlasovani",
+      "nadpis": "Zahájení investiční akce \"Technické zhodnocení Masarykovy ulice\"",
+      "popis": "Zastupitelstvo města, bod 17/13. Pro 17, proti 0, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2024/17.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2025-04-033",
+      "datum": "2025-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Kulturní přehled – Mariánské Lázně – duben",
+      "popis": "Chcete zařadit akci, kterou pořádáte do kulturního přehledu Zpravodaje města Mariánské Lázně? Zašlete informace na adresu zpravodaj@muml.cz, a to shodně ve form",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e3b47ab8%7C4524#page=26",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-04/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-05-043",
+      "datum": "2025-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-05-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Výjimečný hudební zážitek!",
+      "popis": "V sobotu 17. května 2025 se v Tachově uskuteční 17. Setkání pěveckých sborů Plzeňského a Karlovarského kraje (v loňském roce se setkání uskutečnilo v Klatovech ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=2b2954da%7C4533#page=24",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-05/043.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2025-21-27",
+      "datum": "2025-06-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-06-17",
+      "rok": 2025,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření na projekt, „Městské muzeum – rekonstrukce objektu“",
+      "popis": "Zastupitelstvo města, bod 21/27. Pro 16, proti 0, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2025/21.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2025-07-035",
+      "datum": "2025-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-07-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Ašské jaro a XVII. Setkání sborů v Tachově a ve Světcích",
+      "popis": "Smíšený pěvecký sbor Fontána Mariánské Lázně se letos v květnu zúčastnil dvou mimořádně zdařilých akcí v našem regionu. První z nich byla účast na 2. ročníku Aš",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=89143bb4%7C4589#page=21",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-07/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-08-014",
+      "datum": "2025-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-08-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Konec prázdnin v Domě Chopin",
+      "popis": "Dům Chopin se loučí s prázdninami pro­ gramem pro děti i dospělé. Sérii letních koncertů na nádvoří ukončí ve čtvrtek 28. srpna od 19.00 vystoupení bluesmana Ge",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=3651834d%7C4642#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-08/014.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2025-09-015",
+      "datum": "2025-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-09-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Café Ulrika 1905 – Rendezvous ve zvukové kavárně",
+      "popis": "V průběhu jednoho letního týdne (22.–26. 7.) se hudební pavilon / Café Ulrika u Lesního pramene proměnil ve fungující kavárnu v roce 1905.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f06bb416%7C4646#page=10",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-09/015.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-02-002",
+      "datum": "2026-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-02-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Nový manuál radí, jak zacházet s reklamou",
+      "popis": "Mariánské Lázně mají nový „Manuál na kultivovanou reklamu“. Jeho cílem je omezit vizuální smog v lázeňském městě, zejména pak v městské památkové rezervaci. Pod",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=5390c502%7C4824#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-02/002.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2026-06-033",
+      "datum": "2026-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2026-06-01",
+      "rok": 2026,
+      "typ": "zpravodaj",
+      "nadpis": "Sbor Fontána – ostrý start do nové sezóny",
+      "popis": "Sbor Fontána Mariánské Lázně zahájil letošní sezónu v městečku Schönsee nedaleko Rozvadova. 26.4.2026 se tam v kostele St. Wenzeslaus Kirche sešly čtyři pěvecké",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ffb938cf%7C4961#page=15",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2026-06/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "19647794",
+    "nazev": "Chvojka odpady s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-05-05",
+    "do": "2026-05-07",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-116-116/48",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Výskyt ACM v objektu „Truhlárna“, st.p.č. 1525 k.ú. Úšovice",
+      "popis": "Rada města, bod 116/48, usnesení 1141/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2620460430",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-116/48__35604449",
+      "datum": "2026-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Objednávka – Sanace (demontáž a odstranění) azbestu z objektu na st.p.č 1525 v k.ú. Úšovice, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2026-05-07 s bodem 116/48 z 2026-05-05 (Výskyt ACM v objektu „Truhlárna“, st.p.č. 1525 k.ú. Úšovice). Jistota stredni.",
+      "castka_czk": 569208.2,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 19647794 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova objektu, usovice",
+      "url": "https://smlouvy.gov.cz/smlouva/37906761",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:35604449",
+      "datum": "2026-05-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Sanace (demontáž a odstranění) azbestu z objektu na st.p.č 1525 v k.ú. Úšovice, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Chvojka odpady s.r.o..",
+      "castka_czk": 569208.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37906761",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

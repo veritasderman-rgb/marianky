@@ -1,0 +1,179 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29112516",
+    "nazev": "Mes Amis - Mariánské Lázně, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2011-01-21",
+    "do": "2020-12-01",
+    "prvni_rok": 2011,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 6,
+    "odhadu": 1,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 4,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:29112516:vznik",
+      "datum": "2011-01-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2011-01-21",
+      "rok": 2011,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Mes Amis - Mariánské Lázně, s.r.o.",
+      "popis": "Vznik subjektu Mes Amis - Mariánské Lázně, s.r.o. (IČO 29112516), Společnost s ručením omezeným, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-26-26/2",
+      "datum": "2015-06-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-09",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 718 - žádost o prodloužení nájmu",
+      "popis": "Rada města, bod 26/2, usnesení 269/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1406806",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/26.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-134-134/9",
+      "datum": "2017-11-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-07",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 718 - úprava nájemní smlouvy - Mes AMIS - Mariánské Lázně, s.r.o.",
+      "popis": "Rada města, bod 134/9, usnesení 635/17. Schvaleno.",
+      "castka_czk": 1200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1852374",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/134.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-65-65/11",
+      "datum": "2020-04-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-07",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 718 - věrnostní sleva a prodloužení nájemního vztahu",
+      "popis": "Rada města, bod 65/11, usnesení 201/20. Schvaleno.",
+      "castka_czk": 169625,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2501921",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/65.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-65/11__11570608",
+      "datum": "2020-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-28",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Poštovní, Mes Amis - Mariánské Lázně, s.r.o. - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2020-04-28 s bodem 65/11 z 2020-04-07 (NP Poštovní 718 - věrnostní sleva a prodloužení nájemního vztahu). Jistota stredni.",
+      "castka_czk": 2052460.08,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29112516 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova postovni, prodlouzeni",
+      "url": "https://smlouvy.gov.cz/smlouva/12433884",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11570608",
+      "datum": "2020-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-28",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - ul. Poštovní, Mes Amis - Mariánské Lázně, s.r.o. - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Mes Amis - Mariánské Lázně, s.r.o..",
+      "castka_czk": 2052460.08,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12433884",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-91-91/5",
+      "datum": "2020-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-01",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "NP Poštovní 718 - postoupení smlouvy - Mes Amis - Mariánské Lázně, s.r.o. x Martin Špaček",
+      "popis": "Rada města, bod 91/5, usnesení 597/20. Schvaleno.",
+      "castka_czk": 188472,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2610101",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/91.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

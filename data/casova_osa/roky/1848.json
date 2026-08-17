@@ -1,0 +1,166 @@
+{
+  "rok": 1848,
+  "nezarazene": false,
+  "metodika": {
+    "co_to_je": "Jednotná časová osa. Sesbírané datované záznamy ze všech zdrojů projektu v jednom formátu. Osa není zdroj pravdy — každá událost nese zdroj.soubor a zdroj.klic, kterými se dohledá původní záznam.",
+    "jistota": "fakt = doložený záznam (usnesení, smlouva, článek). sporne = historický údaj, ve kterém se prameny rozcházejí (rozpor je v jistota_duvod). vysoka / stredni / nizka = ODHAD spojení usnesení → smlouva, převzatý beze změny z data/retez/retezy.json. Odhad se nesmí zobrazovat jako fakt a v součtech je oddělený (pocty.dolozenych vs. pocty.odhadu).",
+    "castka": "castka_czk je null, když zdroj částku neuvádí. Nula znamená nulu.",
+    "presnost": "presnost říká, jak přesně je záznam datovaný (den / mesic / rok / obdobi). Pole razeni je datum doplněné na celý den JEN kvůli řazení — není to údaj ze zdroje a nesmí se zobrazovat.",
+    "chybejici_zdroj": "Zdroj, který v datech není, má v souhrnu stav chybi. To není totéž jako prazdno. Prázdná osa kvůli chybějícímu zdroji nesmí vypadat jako „nic se nedělo“.",
+    "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 4,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "historie": 3
+    },
+    "dle_jistoty": {
+      "fakt": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "funkce:abel-josef:0",
+      "datum": "1848",
+      "datum_do": "1850",
+      "presnost": "obdobi",
+      "razeni": "1848-01-01",
+      "rok": 1848,
+      "datum_podezrele": false,
+      "typ": "funkce",
+      "nadpis": "Josef Abel — přednosta obce",
+      "popis": "přednosta obce (1848 – 1850).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "abel-josef"
+      ],
+      "firmy": [],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "zdroj_klic": "abel-josef#funkce[0]",
+      "url": null,
+      "detail": {
+        "funkce": "přednosta obce",
+        "strana": null,
+        "kategorie": "historie",
+        "do": "1850"
+      }
+    },
+    {
+      "id": "historie:1848-abel-prednosta",
+      "datum": "1848",
+      "datum_do": "1850",
+      "presnost": "obdobi",
+      "razeni": "1848-01-01",
+      "rok": 1848,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Josef Abel posledním přednostou obce",
+      "popis": "Lázeňský lékař Josef Abel byl v letech 1848–1850 přednostou Mariánských Lázní, tedy posledním představitelem obce před zavedením funkce starosty.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [
+        "abel-josef"
+      ],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1848-abel-prednosta",
+      "url": "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "goethova-era",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://cs.wikipedia.org/wiki/Seznam_p%C5%99edstavitel%C5%AF_Mari%C3%A1nsk%C3%BDch_L%C3%A1zn%C3%AD"
+        ]
+      }
+    },
+    {
+      "id": "historie:1848-zruseni-poddanstvi",
+      "datum": "1848",
+      "datum_do": null,
+      "presnost": "rok",
+      "razeni": "1848-01-01",
+      "rok": 1848,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Zrušení poddanského poměru vůči tepelskému klášteru",
+      "popis": "V roce 1848 byl zrušen poddanský poměr obce vůči tepelskému klášteru.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "organizacni"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1848-zruseni-poddanstvi",
+      "url": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+      "detail": {
+        "kategorie": "sprava-mesta",
+        "obdobi": "goethova-era",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+        ]
+      }
+    },
+    {
+      "id": "historie:1848-novy-chram",
+      "datum": "1848-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1848-11-19",
+      "rok": 1848,
+      "datum_podezrele": false,
+      "typ": "historie",
+      "nadpis": "Vysvěcen nový římskokatolický chrám",
+      "popis": "Dne 19. listopadu 1848 byl vysvěcen nový římskokatolický chrám.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [],
+      "tagy": [
+        "pamatky"
+      ],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "historie",
+      "zdroj_soubor": "data/historie/udalosti.json",
+      "zdroj_klic": "1848-novy-chram",
+      "url": "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html",
+      "detail": {
+        "kategorie": "stavba",
+        "obdobi": "goethova-era",
+        "jistota_zdroje": "dolozeno",
+        "zdroje": [
+          "https://www.muml.cz/aktualne/novinky/osmickove-roky-v-historii-marianskych-lazni-1659cs.html"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "47714018",
+    "nazev": "InterCora, spol. s r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2023-01-24",
+    "do": "2024-01-31",
+    "prvni_rok": 2023,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2023-10-10/3",
+      "datum": "2023-01-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-24",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o zřízení služebnosti - vodovodní přípojka - p.p.č. 1220/1 a č. 1220/3 v k.ú. ML (Obchodní centrum Nová Chebská)",
+      "popis": "Rada města, bod 10/3, usnesení 29/23. Schvaleno.",
+      "castka_czk": 35126,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2962530",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-15-15/11",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Revokace usn. č. RM/29/23 ze dne 24. 01. 2023 a Smlouva o zřízení služebnosti - vodovodní přípojka p.p.č. 1220/1 a č. 1220/3 v k. ú. Mariánské Lázně",
+      "popis": "Rada města, bod 15/11, usnesení 127/23. Schvaleno.",
+      "castka_czk": 35126,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2985270",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2023-12/28__25793963",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 141/46 o výměře 594 m2 ostatní plocha k. ú. Mariánské Lázně vč. stavba chodníku",
+      "popis": "Odhadované spojení smlouvy z 2024-01-31 s bodem 12/28 z 2023-12-12 (Odkup poz. parcely č. 141/46 k. ú. Mariánské Lázně - u OC Kaufland). Jistota stredni.",
+      "castka_czk": 121.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 47714018 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 50 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27616507",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25793963",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 141/46 o výměře 594 m2 ostatní plocha k. ú. Mariánské Lázně vč. stavba chodníku",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana InterCora, spol. s r. o..",
+      "castka_czk": 121.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27616507",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

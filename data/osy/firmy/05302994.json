@@ -1,0 +1,320 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "05302994",
+    "nazev": "Eva Koreisová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-08-10",
+    "do": "2022-03-01",
+    "prvni_rok": 2016,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 14,
+    "dolozenych": 10,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 6,
+      "retez": 4,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 10,
+      "vysoka": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:05302994:vznik",
+      "datum": "2016-08-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-10",
+      "rok": 2016,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Eva Koreisová",
+      "popis": "Vznik subjektu Eva Koreisová (IČO 05302994), Fyzická osoba podnikající dle živnostenského zákona, obor: Poskytování stravování v restauracích.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-164-164/24",
+      "datum": "2018-08-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-28",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 2.kolo 2018",
+      "popis": "Rada města, bod 164/24, usnesení 469/18. Schvaleno.",
+      "castka_czk": 1600000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2085646",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/164.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-39-39/30",
+      "datum": "2018-09-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-11",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Schválení žádostí podaných do 2. kola Fondu kultury 2018",
+      "popis": "Zastupitelstvo města, bod 39/30, usnesení 779/18. Schvaleno.",
+      "castka_czk": 125000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2089707",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/39.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-80-80/2",
+      "datum": "2020-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-25",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení - ML vánoční trh 2020",
+      "popis": "Rada města, bod 80/2, usnesení 424/20. Schvaleno.",
+      "castka_czk": 400000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2564427",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/80.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-80/2__13155036",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Mariánskolázeňský vánoční trh 2020",
+      "popis": "Odhadované spojení smlouvy z 2020-10-12 s bodem 80/2 z 2020-08-25 (Grantové řízení - ML vánoční trh 2020). Jistota vysoka.",
+      "castka_czk": 400000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 05302994 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 48 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/14099532",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:13155036",
+      "datum": "2020-10-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-10-12",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Mariánskolázeňský vánoční trh 2020",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Eva Koreisová.",
+      "castka_czk": 400000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/14099532",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2020-80/2__15246583",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-21 s bodem 80/2 z 2020-08-25 (Grantové řízení - ML vánoční trh 2020). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05302994 je uvedeno v textu usnesení; smlouva podepsána 239 dní po usnesení; stejně dobře sedí i 1 další usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/16416719",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-85/9__15246583",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-04-21 s bodem 85/9 z 2020-10-06 (Zábor VP na kolonádě - trhy medu a jablek). Jistota nizka.",
+      "castka_czk": 70000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 05302994 je uvedeno v textu usnesení; smlouva podepsána 197 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/16416719",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15246583",
+      "datum": "2021-04-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Eva Koreisová.",
+      "castka_czk": 70000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/16416719",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-120-120/19",
+      "datum": "2021-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-09-07",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Grant ML vánoční trh 2021",
+      "popis": "Rada města, bod 120/19, usnesení 397/21. Schvaleno.",
+      "castka_czk": 200000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2740205",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/120.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-120/19__16784855",
+      "datum": "2021-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-13",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí grantu/neinvestiční dotace 2021-Eva Koreisová",
+      "popis": "Odhadované spojení smlouvy z 2021-10-13 s bodem 120/19 z 2021-09-07 (Grant ML vánoční trh 2021). Jistota vysoka.",
+      "castka_czk": 200000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 05302994 je uvedeno v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 36 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18073295",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16784855",
+      "datum": "2021-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-10-13",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí grantu/neinvestiční dotace 2021-Eva Koreisová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Eva Koreisová.",
+      "castka_czk": 200000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18073295",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-135-135/5",
+      "datum": "2022-01-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-18",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury 1.kolo 2022",
+      "popis": "Rada města, bod 135/5, usnesení 17/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2795783",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/135.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/6",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Fond kultury - 1. výzva 2022",
+      "popis": "Zastupitelstvo města, bod 25/6, usnesení 534/22. Schvaleno.",
+      "castka_czk": 1300000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2792573",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

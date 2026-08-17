@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "06275036",
+    "nazev": "Ing. Marcel Zoufálek"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-03-29",
+    "do": "2022-05-25",
+    "prvni_rok": 2022,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-143-143/13",
+      "datum": "2022-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-29",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Opatření dle diagnostiky na mostu ul. Husova, Mariánské Lázně - PD",
+      "popis": "Rada města, bod 143/13, usnesení 155/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2829428",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-143/13__19042871",
+      "datum": "2022-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-25",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zpracovat, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Oprava dle diagnostiky mostu M6 ul. Husova, Mariánské Lázně“.",
+      "popis": "Odhadované spojení smlouvy z 2022-05-25 s bodem 143/13 z 2022-03-29 (Opatření dle diagnostiky na mostu ul. Husova, Mariánské Lázně - PD). Jistota stredni.",
+      "castka_czk": 411400.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 06275036 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; název bodu a předmět smlouvy sdílí slova diagnostiky, husova, mostu",
+      "url": "https://smlouvy.gov.cz/smlouva/20457851",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19042871",
+      "datum": "2022-05-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-05-25",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zpracovat, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Oprava dle diagnostiky mostu M6 ul. Husova, Mariánské Lázně“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ing. Marcel Zoufálek.",
+      "castka_czk": 411400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20457851",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

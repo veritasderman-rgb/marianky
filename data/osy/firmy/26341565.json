@@ -1,0 +1,400 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26341565",
+    "nazev": "PRO AKTIV Marienbad, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2002-01-10",
+    "do": "2025-01-10",
+    "prvni_rok": 2002,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 18,
+    "dolozenych": 14,
+    "odhadu": 4,
+    "dle_typu": {
+      "firma": 1,
+      "usneseni": 8,
+      "retez": 4,
+      "smlouva": 5
+    },
+    "dle_jistoty": {
+      "fakt": 14,
+      "vysoka": 2,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26341565:vznik",
+      "datum": "2002-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2002-01-10",
+      "rok": 2002,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — PRO AKTIV Marienbad, s.r.o.",
+      "popis": "Vznik subjektu PRO AKTIV Marienbad, s.r.o. (IČO 26341565), Společnost s ručením omezeným, obor: Činnosti cestovních agentur.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-75-75/27",
+      "datum": "2012-08-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-08-07",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Mariánskolázeňské vánoční trhy 2012",
+      "popis": "Rada města, bod 75/27, usnesení 400/12. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/800151",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/75.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2012-83-83/14",
+      "datum": "2012-10-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-10-16",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Komise lázeňství, cestovního ruchu a kultury",
+      "popis": "Rada města, bod 83/14, usnesení 509/12. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/830056",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/83.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-117-117/15",
+      "datum": "2013-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-08-06",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení - Mariánskolázeňský vánoční trh 2013",
+      "popis": "Rada města, bod 117/15, usnesení 363/13. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/998541",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/117.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-24-24/51",
+      "datum": "2014-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-09-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení - Mariánskolázeňský adventní/vánoční trh 2014",
+      "popis": "Zastupitelstvo města, bod 24/51, usnesení 828/14. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1256403",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/24.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-35-35/4",
+      "datum": "2015-08-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-08-25",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení - Mariánskolázeňský vánoční trh 2015",
+      "popis": "Rada města, bod 35/4, usnesení 393/15. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1448674",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/35.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-86-86/11",
+      "datum": "2016-10-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-10-04",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení",
+      "popis": "Rada města, bod 86/11, usnesení 490/16. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1645229",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/86.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-86/11__566485",
+      "datum": "2016-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-09",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí grantu/neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2016-11-09 s bodem 86/11 z 2016-10-04 (Grantové řízení). Jistota vysoka.",
+      "castka_czk": 302500.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26341565 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 36 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/602817",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:566485",
+      "datum": "2016-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-09",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí grantu/neinvestiční dotace",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRO AKTIV Marienbad, s.r.o..",
+      "castka_czk": 302500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/602817",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2017-122-122/16",
+      "datum": "2017-08-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-08",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení- Mariánskolázeňský vánoční trh 2017",
+      "popis": "Rada města, bod 122/16, usnesení 456/17. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1801820",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/122.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-122/16__2726238",
+      "datum": "2017-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-18",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Grant na akci \"Mariánskolázeňský vánoční trh\"",
+      "popis": "Odhadované spojení smlouvy z 2017-08-18 s bodem 122/16 z 2017-08-08 (Grantové řízení- Mariánskolázeňský vánoční trh 2017). Jistota vysoka.",
+      "castka_czk": 250000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26341565 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 10 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/2934058",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:2726238",
+      "datum": "2017-08-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-08-18",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Grant na akci \"Mariánskolázeňský vánoční trh\"",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana PRO AKTIV Marienbad s.r.o..",
+      "castka_czk": 250000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/2934058",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-166-166/10",
+      "datum": "2018-09-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-09-18",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Grantové řízení - ML Vánoční trh 2018",
+      "popis": "Rada města, bod 166/10, usnesení 490/18. Schvaleno.",
+      "castka_czk": 250000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2108120",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/166.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/10__7382431",
+      "datum": "2018-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-27",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytování služeb MHD",
+      "popis": "Odhadované spojení smlouvy z 2018-12-27 s bodem 166/10 z 2018-09-18 (Grantové řízení - ML Vánoční trh 2018). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341565 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 100 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/7970379",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:7382431",
+      "datum": "2018-12-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-27",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování služeb MHD",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana PRO AKTIV Marienbad, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/7970379",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2018-166/10__9766118",
+      "datum": "2019-10-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-22",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "O poskytování služeb",
+      "popis": "Odhadované spojení smlouvy z 2019-10-22 s bodem 166/10 z 2018-09-18 (Grantové řízení - ML Vánoční trh 2018). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26341565 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 399 dní po usnesení; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/10507678",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9766118",
+      "datum": "2019-10-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-22",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "O poskytování služeb",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana PRO AKTIV Marienbad, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10507678",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:19425731",
+      "datum": "2025-01-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-01-10",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.3 Smlouvy o poskytování služeb MHD",
+      "popis": "MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. — výdaj, protistrana PRO AKTIV Marienbad, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32008832",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/26412501.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

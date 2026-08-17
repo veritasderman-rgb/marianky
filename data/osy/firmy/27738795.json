@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27738795",
+    "nazev": "Bonita Group Service s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-07-10",
+    "do": "2020-04-17",
+    "prvni_rok": 2019,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "smlouva:9869040",
+      "datum": "2019-07-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-10",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Zahradní prvky",
+      "popis": "Mateřská škola Vora, Mariánské Lázně, Za Tratí 687 — výdaj, protistrana Bonita Group Service s.r.o..",
+      "castka_czk": 191134.02,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/25149519",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/47723483.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:12013180",
+      "datum": "2020-04-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-17",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "nákup trampolíny a lanové pyramidy",
+      "popis": "Mateřská škola, Mariánské Lázně, Křižíkova 555 — výdaj, protistrana Bonita Group Service s.r.o..",
+      "castka_czk": 131793.2,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23994661",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/70997560.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

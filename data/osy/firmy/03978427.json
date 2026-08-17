@@ -1,0 +1,158 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03978427",
+    "nazev": "ML Strategy s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-08-23",
+    "do": "2022-01-25",
+    "prvni_rok": 2016,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 4,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 3,
+      "retez": 2,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 4,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2016-81-81/3",
+      "datum": "2016-08-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-08-23",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních – výběr zpracovatele žádostí o dotaci",
+      "popis": "Rada města, bod 81/3, usnesení 418/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1624903",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/81.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-92-92/25",
+      "datum": "2016-11-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-21",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních – Smlouva o dílo se společností ML Strategy s.r.o.",
+      "popis": "Rada města, bod 92/25, usnesení 581/16. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1669985",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/92.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-81/3__740737",
+      "datum": "2016-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-28",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Zpracování žádosti o finanční podporu a studie proveditelnosti (Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních)",
+      "popis": "Odhadované spojení smlouvy z 2016-11-28 s bodem 81/3 z 2016-08-23 (Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních – výběr zpracovatele žádostí ",
+      "castka_czk": 151250.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03978427 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 97 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilen, laznich, marianskych, rekonstrukce; s",
+      "url": "https://smlouvy.gov.cz/smlouva/787381",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2016-92/25__740737",
+      "datum": "2016-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-28",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o dílo - Zpracování žádosti o finanční podporu a studie proveditelnosti (Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních)",
+      "popis": "Odhadované spojení smlouvy z 2016-11-28 s bodem 92/25 z 2016-11-21 (Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních – Smlouva o dílo se společno",
+      "castka_czk": 151250.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 03978427 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova dilen, dilo, laznich, marianskych; stejně dob",
+      "url": "https://smlouvy.gov.cz/smlouva/787381",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:740737",
+      "datum": "2016-11-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-28",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o dílo - Zpracování žádosti o finanční podporu a studie proveditelnosti (Rekonstrukce školních dílen na ZŠ Úšovice v Mariánských Lázních)",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ML Strategy s.r.o..",
+      "castka_czk": 151250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/787381",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-136-136/11",
+      "datum": "2022-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-01-25",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Příprava projektu informačních systémů pro město Mariánské Lázně – studie",
+      "popis": "Rada města, bod 136/11, usnesení 41/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2800134",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/136.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

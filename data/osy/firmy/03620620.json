@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "03620620",
+    "nazev": "\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2025-02-04",
+    "do": "2026-04-14",
+    "prvni_rok": 2025,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 6,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 4,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 6,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2025-77-77/2",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \"Revitalizace veřejného prostoru městské tržnice – PD\"",
+      "popis": "Rada města, bod 77/2, usnesení 74/25. Schvaleno.",
+      "castka_czk": 550000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3314639",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-77/2__30486112",
+      "datum": "2025-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-14",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Revitalizace veřejného prostoru městské tržnice – PD",
+      "popis": "Odhadované spojení smlouvy z 2025-03-14 s bodem 77/2 z 2025-02-04 (Veřejná zakázka \"Revitalizace veřejného prostoru městské tržnice – PD\"). Jistota stredni.",
+      "castka_czk": 689700.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03620620 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 38 dní po usnesení; název bodu a předmět smlouvy sdílí slova mestske, prostoru, revitalizace, trznice",
+      "url": "https://smlouvy.gov.cz/smlouva/32552512",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:30486112",
+      "datum": "2025-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-03-14",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Revitalizace veřejného prostoru městské tržnice – PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Architecture Acts s.r.o..",
+      "castka_czk": 689700.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/32552512",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-88-88/7",
+      "datum": "2025-05-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-13",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Dodatek č. 1 ke smlouvě o dílo \"Revitalizace veřejného prostoru městské tržnice – PD“",
+      "popis": "Rada města, bod 88/7, usnesení 345/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3364169",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/88.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-88/7__31432604",
+      "datum": "2025-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-30",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Dodatek č.1 Revitalizace veřejného prostoru městské tržnice – PD",
+      "popis": "Odhadované spojení smlouvy z 2025-05-30 s bodem 88/7 z 2025-05-13 (Dodatek č. 1 ke smlouvě o dílo \"Revitalizace veřejného prostoru městské tržnice – PD“). Jisto",
+      "castka_czk": 619520.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 03620620 je uvedeno v textu usnesení; smlouva podepsána 17 dní po usnesení; název bodu a předmět smlouvy sdílí slova mestske, prostoru, revitalizace, trznice; obojí je dodatek č. 1",
+      "url": "https://smlouvy.gov.cz/smlouva/33544872",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:31432604",
+      "datum": "2025-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-05-30",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.1 Revitalizace veřejného prostoru městské tržnice – PD",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana \\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArchitecture Acts s.r.o.\\n\\nArc",
+      "castka_czk": 619520.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/33544872",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-107-107/24",
+      "datum": "2025-12-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-12-23",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Schválení prodloužení termínu a uzavření dodatku č. 2 ke smlouvě o dílo s Architecture Acts s.r.o. „Revitalizace veřejného prostoru městské tržnice - PD“",
+      "popis": "Rada města, bod 107/24, usnesení 868/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1028587875",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/107.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-115-115/20",
+      "datum": "2026-04-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-14",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Schválení prodloužení termínu a uzavření dodatku č. 3 ke smlouvě o dílo s Architecture Acts s.r.o. „Revitalizace veřejného prostoru městské tržnice - PD“",
+      "popis": "Rada města, bod 115/20, usnesení 1083/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2992894955",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/115.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

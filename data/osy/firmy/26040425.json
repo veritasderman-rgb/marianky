@@ -1,0 +1,137 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26040425",
+    "nazev": "TINA elektro, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2001-11-27",
+    "do": "2026-04-22",
+    "prvni_rok": 2001,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 3,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:26040425:vznik",
+      "datum": "2001-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-11-27",
+      "rok": 2001,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — TINA elektro, s.r.o.",
+      "popis": "Vznik subjektu TINA elektro, s.r.o. (IČO 26040425), Společnost s ručením omezeným, obor: Instalace průmyslových strojů a zařízení.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:3256674",
+      "datum": "2017-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-09-20",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Rámcová kupní smlouva",
+      "popis": "Správa městských sportovišť — výdaj, protistrana TINA elektro, s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3512602",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/72559772.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-79-79/3",
+      "datum": "2020-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-11",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce veřejného osvětlení a nové infrastruktury v Mariánských Lázních",
+      "popis": "Rada města, bod 79/3, usnesení 402/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2559478",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "smlouva:33617605",
+      "datum": "2025-11-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-11-27",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Provizorní přeložka napájení NN pro TDS M. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TINA elektro, s.r.o..",
+      "castka_czk": 88995.5,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35830961",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:35606749",
+      "datum": "2026-04-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-04-22",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "Objednávka – Dodávka elektrického rozvaděče, montáž a úprava přívodů NN - Fontána M. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TINA elektro, s.r.o..",
+      "castka_czk": 168834.9,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/37909177",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

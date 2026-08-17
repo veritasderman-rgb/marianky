@@ -1,0 +1,198 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25869795",
+    "nazev": "METAL MB s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2017-10-17",
+    "do": "2020-03-10",
+    "prvni_rok": 2017,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 8,
+    "dolozenych": 5,
+    "odhadu": 3,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 3,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 3
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2017-131-131/17",
+      "datum": "2017-10-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-10-17",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Čistička odpadních vod - koupaliště LIDO v ML",
+      "popis": "Rada města, bod 131/17, usnesení 595/17. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1842396",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2017/131.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2017-131/17__3419576",
+      "datum": "2017-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-02",
+      "rok": 2017,
+      "typ": "retez",
+      "nadpis": "Předmětem smlouvy o dílo je zhotovení stavby „Čistička odpadních vod pro koupaliště LIDO v Mariánských Lázních na st.p.č. 1953, p.p.č. 1113/2 k.ú. Úšovice“.",
+      "popis": "Odhadované spojení smlouvy z 2017-11-02 s bodem 131/17 z 2017-10-17 (Čistička odpadních vod - koupaliště LIDO v ML). Jistota nizka.",
+      "castka_czk": 805126.74,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25869795 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 16 dní po usnesení; název bodu a předmět smlouvy sdílí slova cisticka, koupaliste, lido, odpadnich; k tém",
+      "url": "https://smlouvy.gov.cz/smlouva/3687588",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:3419576",
+      "datum": "2017-11-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-02",
+      "rok": 2017,
+      "typ": "smlouva",
+      "nadpis": "Předmětem smlouvy o dílo je zhotovení stavby „Čistička odpadních vod pro koupaliště LIDO v Mariánských Lázních na st.p.č. 1953, p.p.č. 1113/2 k.ú. Úšovice“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana METAL MB s.r.o..",
+      "castka_czk": 805126.74,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/3687588",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-131/17__5714675",
+      "datum": "2018-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-04",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Změna termínu pro dokončení díla",
+      "popis": "Odhadované spojení smlouvy z 2018-04-04 s bodem 131/17 z 2017-10-17 (Čistička odpadních vod - koupaliště LIDO v ML). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25869795 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 169 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6155495",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5714675",
+      "datum": "2018-04-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-04-04",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Změna termínu pro dokončení díla",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana METAL MB s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6155495",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2017-131/17__5716915",
+      "datum": "2018-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-22",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Změna technického řešení s úpravou rozpočtu",
+      "popis": "Odhadované spojení smlouvy z 2018-06-22 s bodem 131/17 z 2017-10-17 (Čistička odpadních vod - koupaliště LIDO v ML). Jistota nizka.",
+      "castka_czk": 812631.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 25869795 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 248 dní po usnesení; k témuž usnesení se hlásí i 2 další smlouvy téže protistrany",
+      "url": "https://smlouvy.gov.cz/smlouva/6157983",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:5716915",
+      "datum": "2018-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-06-22",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Změna technického řešení s úpravou rozpočtu",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana METAL MB s.r.o..",
+      "castka_czk": 812631.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6157983",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:11091184",
+      "datum": "2020-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-10",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Původní smlouva: Stavba díla „Čistička odpadních vod pro koupaliště LIDO v Mariánských Lázních na st.p.č.1953, p.p.č. 1113/2 k.ú. Úšovice“.\nDodatek č. 1 ke smlouvě: Změna termínu dokončení díla z důvodu nepříznivých klimatických podmínek.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana METAL MB s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/11934360",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

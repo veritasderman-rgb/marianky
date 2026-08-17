@@ -1,0 +1,681 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26648415",
+    "nazev": "KOTEC o.p.s."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-12-11",
+    "do": "2025-10-21",
+    "prvni_rok": 2012,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 32,
+    "dolozenych": 23,
+    "odhadu": 9,
+    "dle_typu": {
+      "usneseni": 15,
+      "firma": 1,
+      "retez": 9,
+      "smlouva": 7
+    },
+    "dle_jistoty": {
+      "fakt": 23,
+      "nizka": 5,
+      "vysoka": 2,
+      "stredni": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:zastupitelstvo-2012-14-14/8",
+      "datum": "2012-12-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-12-11",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2013",
+      "popis": "Zastupitelstvo města, bod 14/8, usnesení 444/12. Schvaleno.",
+      "castka_czk": 273070000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/842480",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2012/14.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "firma:26648415:vznik",
+      "datum": "2013-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-01",
+      "rok": 2013,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — KOTEC o.p.s.",
+      "popis": "Vznik subjektu KOTEC o.p.s. (IČO 26648415), Obecně prospěšná společnost, obor: Ostatní ambulantní nebo terénní sociální služby.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2013-19-19/2",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2014",
+      "popis": "Zastupitelstvo města, bod 19/2, usnesení 617/13. Schvaleno.",
+      "castka_czk": 292861500,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1033936",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2014-3-3/2",
+      "datum": "2014-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-16",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2015",
+      "popis": "Zastupitelstvo města, bod 3/2, usnesení 24/14. Schvaleno.",
+      "castka_czk": 299652700,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1311842",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2014/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2015-12-12/2",
+      "datum": "2015-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-15",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2016",
+      "popis": "Zastupitelstvo města, bod 12/2, usnesení 214/15. Schvaleno.",
+      "castka_czk": 282638000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1495224",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2015/12.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2016-22-22/6",
+      "datum": "2016-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-12-13",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2017",
+      "popis": "Zastupitelstvo města, bod 22/6, usnesení 405/16. Schvaleno.",
+      "castka_czk": 328404900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1673740",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2016/22.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2017-32-32/4",
+      "datum": "2017-12-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-12",
+      "rok": 2017,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2018",
+      "popis": "Zastupitelstvo města, bod 32/4, usnesení 630/17. Schvaleno.",
+      "castka_czk": 350001200,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1861378",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2017/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2018-2-2/4",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2019",
+      "popis": "Zastupitelstvo města, bod 2/4, usnesení 12/18. Schvaleno.",
+      "castka_czk": 397951000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2145448",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-32/4__8351163",
+      "datum": "2019-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-06",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "KOTEC, o.p.s.,. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-05-06 s bodem 32/4 z 2017-12-12 (Rozpočet města Mariánské Lázně na rok 2018). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 510 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9010263",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2018-2/4__8351163",
+      "datum": "2019-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-06",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "KOTEC, o.p.s.,. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2019-05-06 s bodem 2/4 z 2018-12-20 (Rozpočet města Mariánské Lázně na rok 2019). Jistota nizka.",
+      "castka_czk": 121000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 137 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9010263",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8351163",
+      "datum": "2019-05-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-06",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "KOTEC, o.p.s.,. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9010263",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2019-10-10/4",
+      "datum": "2019-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-12-09",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2020",
+      "popis": "Zastupitelstvo města, bod 10/4, usnesení 197/19. Schvaleno.",
+      "castka_czk": 383624720,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2433453",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2019/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2020-17-17/3",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2021",
+      "popis": "Zastupitelstvo města, bod 17/3, usnesení 361/20. Schvaleno.",
+      "castka_czk": 415455400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2605014",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2021-23-23/6",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2022",
+      "popis": "Zastupitelstvo města, bod 23/6, usnesení 507/21. Schvaleno.",
+      "castka_czk": 427652900,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2754119",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-25-25/5",
+      "datum": "2022-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-01",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Smlouva Kotec o.p.s.",
+      "popis": "Zastupitelstvo města, bod 25/5, usnesení 533/22. Schvaleno.",
+      "castka_czk": 100000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2809291",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/25.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/5__18314675",
+      "datum": "2022-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-14",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku KOTEC 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-03-14 s bodem 25/5 z 2022-03-01 (Smlouva Kotec o.p.s.). Jistota vysoka.",
+      "castka_czk": 121000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 13 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/19693511",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:18314675",
+      "datum": "2022-03-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-14",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace - příspěvku KOTEC 2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": 121000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/19693511",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:zastupitelstvo-2022-3-3/6",
+      "datum": "2022-12-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-13",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rozpočet města Mariánské Lázně na rok 2023",
+      "popis": "Zastupitelstvo města, bod 3/6, usnesení 33/22. Schvaleno.",
+      "castka_czk": 526578820,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/2938538",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/zastupitelstvo/2022/3.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-7/31__21528533",
+      "datum": "2023-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace KOTEC o.p.s. ve městě Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-01-12 s bodem 7/31 z 2022-12-20 (Prodloužení výpůjčky stánku na tržnici - KOTEC). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva též",
+      "url": "https://smlouvy.gov.cz/smlouva/23102985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-25/5__21528533",
+      "datum": "2023-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace KOTEC o.p.s. ve městě Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-01-12 s bodem 25/5 z 2022-03-01 (Smlouva Kotec o.p.s.). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 317 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23102985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2022-3/6__21528533",
+      "datum": "2023-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-12",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace KOTEC o.p.s. ve městě Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2023-01-12 s bodem 3/6 z 2022-12-13 (Rozpočet města Mariánské Lázně na rok 2023). Jistota nizka.",
+      "castka_czk": 181500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 30 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23102985",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21528533",
+      "datum": "2023-01-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-01-12",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace KOTEC o.p.s. ve městě Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23102985",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:29484456",
+      "datum": "2023-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-14",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Zajištění funkce Místního protidrogového koordinátora pro Město Mariánské Lázně.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31502484",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-68-68/23",
+      "datum": "2024-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-10-15",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace pro Kotec o.p.s.",
+      "popis": "Rada města, bod 68/23, usnesení 709/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3265229",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/68.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-68/23__29016732",
+      "datum": "2024-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-15",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace ve městě Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-11-15 s bodem 68/23 z 2024-10-15 (Smlouva o poskytnutí neinvestiční dotace pro Kotec o.p.s.). Jistota stredni.",
+      "castka_czk": 181500.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 31 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/31010904",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29016732",
+      "datum": "2024-11-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-11-15",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "úhrada nákladů souvisejících s dofinancováním základních činností sociálních služeb organizace ve městě Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": 181500.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31010904",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-73-73/33",
+      "datum": "2024-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-10",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Dodatek ke smlouvě o obsazení pozice Místního protidrogového koordinátora pro Město Mariánské Lázně",
+      "popis": "Rada města, bod 73/33, usnesení 858/24. Schvaleno.",
+      "castka_czk": 30000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3294230",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/73.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2024-73/33__29491188",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Dodatek číslo 1 ke smlouvě o obsazení pozice Místního protidrogového koordinátora pro Město Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2024-12-17 s bodem 73/33 z 2024-12-10 (Dodatek ke smlouvě o obsazení pozice Místního protidrogového koordinátora pro Město Mariánsk",
+      "castka_czk": null,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 7 dní po usnesení; název bodu a předmět smlouvy sdílí slova koordinatora, mistniho, obsazeni, pozice",
+      "url": "https://smlouvy.gov.cz/smlouva/31509496",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:29491188",
+      "datum": "2024-12-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-12-17",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Dodatek číslo 1 ke smlouvě o obsazení pozice Místního protidrogového koordinátora pro Město Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/31509496",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-99-99/2",
+      "datum": "2025-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-09-30",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "Smlouva o poskytnutí neinvestiční dotace Kotec",
+      "popis": "Rada města, bod 99/2, usnesení 639/25. Schvaleno.",
+      "castka_czk": 150000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1912411017",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/99.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2025-99/2__33193057",
+      "datum": "2025-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-21",
+      "rok": 2025,
+      "typ": "retez",
+      "nadpis": "Neinvestiční dotace pro Kotec",
+      "popis": "Odhadované spojení smlouvy z 2025-10-21 s bodem 99/2 z 2025-09-30 (Smlouva o poskytnutí neinvestiční dotace Kotec). Jistota vysoka.",
+      "castka_czk": 150000.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 26648415 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova ",
+      "url": "https://smlouvy.gov.cz/smlouva/35386241",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:33193057",
+      "datum": "2025-10-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-10-21",
+      "rok": 2025,
+      "typ": "smlouva",
+      "nadpis": "Neinvestiční dotace pro Kotec",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana KOTEC o.p.s..",
+      "castka_czk": 150000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/35386241",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

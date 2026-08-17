@@ -1,0 +1,339 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "24668613",
+    "nazev": "ADVISIA s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-08-16",
+    "do": "2023-12-01",
+    "prvni_rok": 2019,
+    "posledni_rok": 2023,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 10,
+    "odhadu": 5,
+    "dle_typu": {
+      "retez": 5,
+      "smlouva": 4,
+      "usneseni": 6
+    },
+    "dle_jistoty": {
+      "nizka": 4,
+      "fakt": 10,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2019-32/4__9301374",
+      "datum": "2019-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-16",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Chodník Na Voře“.",
+      "popis": "Odhadované spojení smlouvy z 2019-08-16 s bodem 32/4 z 2019-07-23 (Chodník Na Voře – PD). Jistota nizka.",
+      "castka_czk": 139150.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (ADVISIA s.r.o.) je v textu usnesení; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova chodnik, vore",
+      "url": "https://smlouvy.gov.cz/smlouva/10016094",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9301374",
+      "datum": "2019-08-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-16",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Předmětem díla je závazek zhotovitele zhotovit, dokončit a předat objednateli komplexní projektovou dokumentaci pro stavbu „Chodník Na Voře“.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ADVISIA s.r.o..",
+      "castka_czk": 139150.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10016094",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-41-41/19",
+      "datum": "2019-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-10-15",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Okružní křižovatka Plzeňská - Polní - Ke Kasárnům, Mariánské Lázně - PD - výběr dodavatele",
+      "popis": "Rada města, bod 41/19, usnesení 517/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2422335",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/41.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-41/19__11164016",
+      "datum": "2020-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "PD studie parkovací plochy sídliště Úšovice u ul. Skalníkova",
+      "popis": "Odhadované spojení smlouvy z 2020-03-11 s bodem 41/19 z 2019-10-15 (Okružní křižovatka Plzeňská - Polní - Ke Kasárnům, Mariánské Lázně - PD - výběr dodavatele).",
+      "castka_czk": 81070.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24668613 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 148 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/12010056",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11164016",
+      "datum": "2020-03-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-11",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "PD studie parkovací plochy sídliště Úšovice u ul. Skalníkova",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ADVISIA s.r.o..",
+      "castka_czk": 81070.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12010056",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2021-119-119/11",
+      "datum": "2021-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-08-24",
+      "rok": 2021,
+      "typ": "usneseni",
+      "nadpis": "Okružní křižovatka Plzeňská – Polní – Ke Kasárnům,",
+      "popis": "Rada města, bod 119/11, usnesení 371/21. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2733267",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2021/119.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-158-158/11",
+      "datum": "2022-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-20",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Okružní křižovatka Plzeňská – Polní – Ke Kasárnům – PD",
+      "popis": "Rada města, bod 158/11, usnesení 458/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2909712",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/158.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-158-158/12",
+      "datum": "2022-09-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-20",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Rekonstrukce bytového domu Hlavní 314–1. etapa",
+      "popis": "Rada města, bod 158/12, usnesení 459/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2910062",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/158.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-158/11__21978449",
+      "datum": "2023-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-17",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Projektová dokumentace ve stupni pro stavební povolení a provedení stavby \"Zastávka MHD Sídliště, ul. Skalníkova, Mariánské Lázně\" a její projednání s DOSS a správci sítí.",
+      "popis": "Odhadované spojení smlouvy z 2023-02-17 s bodem 158/11 z 2022-09-20 (Okružní křižovatka Plzeňská – Polní – Ke Kasárnům – PD). Jistota nizka.",
+      "castka_czk": 118580.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24668613 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 150 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 1 dal",
+      "url": "https://smlouvy.gov.cz/smlouva/23578229",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-158/12__21978449",
+      "datum": "2023-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-17",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Projektová dokumentace ve stupni pro stavební povolení a provedení stavby \"Zastávka MHD Sídliště, ul. Skalníkova, Mariánské Lázně\" a její projednání s DOSS a správci sítí.",
+      "popis": "Odhadované spojení smlouvy z 2023-02-17 s bodem 158/12 z 2022-09-20 (Rekonstrukce bytového domu Hlavní 314–1. etapa). Jistota nizka.",
+      "castka_czk": 118580.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 24668613 je uvedeno v textu usnesení; smlouva podepsána 150 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/23578229",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21978449",
+      "datum": "2023-02-17",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-02-17",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Projektová dokumentace ve stupni pro stavební povolení a provedení stavby \"Zastávka MHD Sídliště, ul. Skalníkova, Mariánské Lázně\" a její projednání s DOSS a správci sítí.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ADVISIA s.r.o..",
+      "castka_czk": 118580.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/23578229",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-15-15/28",
+      "datum": "2023-03-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-03-07",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Okružní křižovatka Plzeňská – Polní – Ke Kasárnům – PD",
+      "popis": "Rada města, bod 15/28, usnesení 144/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2987323",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/15.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-37-37/29",
+      "datum": "2023-11-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-11-14",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Okružní křižovatka Plzeňská – Polní – Ke Kasárnům – PD",
+      "popis": "Rada města, bod 37/29, usnesení 718/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3109183",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/37.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-37/29__25078115",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Tímto dodatkem č. 4 se mění termín a rozsah plnění s cenou díla. V průběhu realizace se ukázalo jako vhodné sjednotit zastávku ze směru od centra pro městkou hromadnou dopravu i pro krajskou autobusovou dopravu.",
+      "popis": "Odhadované spojení smlouvy z 2023-12-01 s bodem 37/29 z 2023-11-14 (Okružní křižovatka Plzeňská – Polní – Ke Kasárnům – PD). Jistota stredni.",
+      "castka_czk": 540870.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 24668613 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 17 dní po usnesení; obojí je dodatek č. 4",
+      "url": "https://smlouvy.gov.cz/smlouva/26847015",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25078115",
+      "datum": "2023-12-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-12-01",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Tímto dodatkem č. 4 se mění termín a rozsah plnění s cenou díla. V průběhu realizace se ukázalo jako vhodné sjednotit zastávku ze směru od centra pro městkou hromadnou dopravu i pro krajskou autobusovou dopravu.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ADVISIA s.r.o..",
+      "castka_czk": 540870.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26847015",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

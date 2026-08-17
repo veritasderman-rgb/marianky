@@ -1,0 +1,138 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28036166",
+    "nazev": "Komunikace Sokolov s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2022-03-29",
+    "do": "2022-09-26",
+    "prvni_rok": 2022,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 3,
+    "odhadu": 2,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 2,
+      "smlouva": 2
+    },
+    "dle_jistoty": {
+      "fakt": 3,
+      "nizka": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2022-143-143/5",
+      "datum": "2022-03-29",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-29",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "VZ Oprava místních komunikací v Mariánských Lázních - výběr dodavatele",
+      "popis": "Rada města, bod 143/5, usnesení 147/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2828476",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/143.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-143/5__19270671",
+      "datum": "2022-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2022",
+      "popis": "Odhadované spojení smlouvy z 2022-06-01 s bodem 143/5 z 2022-03-29 (VZ Oprava místních komunikací v Mariánských Lázních - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 8322934.54,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28036166 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 64 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikaci, laznich, marianskych, mistnich; ",
+      "url": "https://smlouvy.gov.cz/smlouva/20707239",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:19270671",
+      "datum": "2022-06-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-01",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2022",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Komunikace Sokolov s.r.o..",
+      "castka_czk": 8322934.54,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/20707239",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "retez:rada-2022-143/5__20275497",
+      "datum": "2022-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-26",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2022, II.ETAPA",
+      "popis": "Odhadované spojení smlouvy z 2022-09-26 s bodem 143/5 z 2022-03-29 (VZ Oprava místních komunikací v Mariánských Lázních - výběr dodavatele). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 28036166 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 181 dní po usnesení; název bodu a předmět smlouvy sdílí slova komunikaci, laznich, marianskych, mistnich;",
+      "url": "https://smlouvy.gov.cz/smlouva/21780585",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20275497",
+      "datum": "2022-09-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních v roce 2022, II.ETAPA",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Komunikace Sokolov s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21780585",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

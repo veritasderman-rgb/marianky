@@ -1,0 +1,379 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "27977951",
+    "nazev": "SILNICE CHMELÍŘ s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2018-07-03",
+    "do": "2024-09-03",
+    "prvni_rok": 2018,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 11,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 7,
+      "retez": 6,
+      "smlouva": 4
+    },
+    "dle_jistoty": {
+      "fakt": 11,
+      "stredni": 2,
+      "nizka": 4
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2018-160-160/24",
+      "datum": "2018-07-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-03",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "Opravy místních komunikací v Mariánských Lázních_2018",
+      "popis": "Rada města, bod 160/24, usnesení 366/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1971903",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/160.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-32-32/15",
+      "datum": "2019-07-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-23",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "Informačně orientační dopravní značení města - výběr dodavatele",
+      "popis": "Rada města, bod 32/15, usnesení 369/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2375823",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-32/15__9128395",
+      "datum": "2019-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-05",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Informačně orientační dopravní značení města",
+      "popis": "Odhadované spojení smlouvy z 2019-08-05 s bodem 32/15 z 2019-07-23 (Informačně orientační dopravní značení města - výběr dodavatele). Jistota stredni.",
+      "castka_czk": 1147859.24,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 13 dní po usnesení; název bodu a předmět smlouvy sdílí slova dopravni, informacne, orientacni, znaceni",
+      "url": "https://smlouvy.gov.cz/smlouva/9832043",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9128395",
+      "datum": "2019-08-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-05",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Informačně orientační dopravní značení města",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILNICE CHMELÍŘ s.r.o..",
+      "castka_czk": 1147859.24,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9832043",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-64-64/6",
+      "datum": "2020-03-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-03-31",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Regenerace sídliště Plzeňská parkoviště pro osobní automobily sídliště Plzeňská ulice Mariánské Lázně",
+      "popis": "Rada města, bod 64/6, usnesení 187/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2499353",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-64/6__11680780",
+      "datum": "2020-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-27",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Regenerace sídliště Plzeňská parkoviště pro osobní automobily sídliště Plzeňská ulice Mariánské Lázně“",
+      "popis": "Odhadované spojení smlouvy z 2020-04-27 s bodem 64/6 z 2020-03-31 (Regenerace sídliště Plzeňská parkoviště pro osobní automobily sídliště Plzeňská ulice Mariáns",
+      "castka_czk": 4254131.31,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 27 dní po usnesení; název bodu a předmět smlouvy sdílí slova automobily, osobni, parkoviste, plzenska; k ",
+      "url": "https://smlouvy.gov.cz/smlouva/12549228",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:11680780",
+      "datum": "2020-04-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-04-27",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Předmětem Díla je závazek Zhotovitele na své náklady a nebezpečí provést, dokončit a předat bez vad a nedodělků Objednateli stavbu „Regenerace sídliště Plzeňská parkoviště pro osobní automobily sídliště Plzeňská ulice Mariánské Lázně“",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILNICE CHMELÍŘ s.r.o..",
+      "castka_czk": 4254131.31,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12549228",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2020-79-79/21",
+      "datum": "2020-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-11",
+      "rok": 2020,
+      "typ": "usneseni",
+      "nadpis": "Parkoviště pro osobní automobily sídliště Plzeňská",
+      "popis": "Rada města, bod 79/21, usnesení 420/20. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2562184",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2020/79.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-32/15__12808268",
+      "datum": "2020-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-20",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Změna rozsahu plnění, ceny díla a termínu dokončení",
+      "popis": "Odhadované spojení smlouvy z 2020-08-20 s bodem 32/15 z 2019-07-23 (Informačně orientační dopravní značení města - výběr dodavatele). Jistota nizka.",
+      "castka_czk": 4534940.61,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána až 394 dní po usnesení; stejně dobře sedí i 2 další usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/13736832",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-64/6__12808268",
+      "datum": "2020-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-20",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Změna rozsahu plnění, ceny díla a termínu dokončení",
+      "popis": "Odhadované spojení smlouvy z 2020-08-20 s bodem 64/6 z 2020-03-31 (Regenerace sídliště Plzeňská parkoviště pro osobní automobily sídliště Plzeňská ulice Mariáns",
+      "castka_czk": 4534940.61,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 142 dní po usnesení; stejně dobře sedí i 2 další usnesení; k témuž usnesení se hlásí i 1 další smlouva té",
+      "url": "https://smlouvy.gov.cz/smlouva/13736832",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2020-79/21__12808268",
+      "datum": "2020-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-20",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Změna rozsahu plnění, ceny díla a termínu dokončení",
+      "popis": "Odhadované spojení smlouvy z 2020-08-20 s bodem 79/21 z 2020-08-11 (Parkoviště pro osobní automobily sídliště Plzeňská). Jistota nizka.",
+      "castka_czk": 4534940.61,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 9 dní po usnesení; usnesení mluví o dodatku, smlouva se jako dodatek netváří; stejně dobře sedí i 2 další",
+      "url": "https://smlouvy.gov.cz/smlouva/13736832",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12808268",
+      "datum": "2020-08-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-08-20",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Změna rozsahu plnění, ceny díla a termínu dokončení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILNICE CHMELÍŘ s.r.o..",
+      "castka_czk": 4534940.61,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/13736832",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2023-32-32/2",
+      "datum": "2023-09-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-09-12",
+      "rok": 2023,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka - Oprava místních komunikací v Mariánských Lázních - II. etapa",
+      "popis": "Rada města, bod 32/2, usnesení 563/23. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3079761",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2023/32.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-32/2__24331391",
+      "datum": "2023-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-10",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních - II.etapa",
+      "popis": "Odhadované spojení smlouvy z 2023-10-10 s bodem 32/2 z 2023-09-12 (Veřejná zakázka - Oprava místních komunikací v Mariánských Lázních - II. etapa). Jistota stre",
+      "castka_czk": 8477866.21,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 27977951 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 28 dní po usnesení; název bodu a předmět smlouvy sdílí slova etapa, komunikaci, laznich, marianskych",
+      "url": "https://smlouvy.gov.cz/smlouva/26052175",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:24331391",
+      "datum": "2023-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-10-10",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Oprava místních komunikací v Mariánských Lázních - II.etapa",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana SILNICE CHMELÍŘ s.r.o..",
+      "castka_czk": 8477866.21,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/26052175",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-61-61/28",
+      "datum": "2024-08-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-08-06",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka \" Oprava místních komunikací v Mariánských Lázních",
+      "popis": "Rada města, bod 61/28, usnesení 544/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3234173",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/61.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2024-64-64/13",
+      "datum": "2024-09-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-09-03",
+      "rok": 2024,
+      "typ": "usneseni",
+      "nadpis": "VZ Opravy místních komunikací v Mariánských Lázních - vyloučení vybraného dodavatele",
+      "popis": "Rada města, bod 64/13, usnesení 599/24. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3243829",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2024/64.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

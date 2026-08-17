@@ -1,0 +1,180 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "29124794",
+    "nazev": "Moje Zdraví s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-03-10",
+    "do": "2024-04-23",
+    "prvni_rok": 2012,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 7,
+    "dolozenych": 5,
+    "odhadu": 2,
+    "dle_typu": {
+      "firma": 1,
+      "retez": 2,
+      "smlouva": 3,
+      "usneseni": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5,
+      "nizka": 1,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:29124794:vznik",
+      "datum": "2012-03-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-03-10",
+      "rok": 2012,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Moje Zdraví s.r.o.",
+      "popis": "Vznik subjektu Moje Zdraví s.r.o. (IČO 29124794), Společnost s ručením omezeným, obor: Všeobecná ambulantní zdravotní péče.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "retez:rada-2022-156/5__20171133",
+      "datum": "2022-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-26",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Zajištění lékařské péče v ML - příloha k žádosti o dotaci z KV kraje",
+      "popis": "Odhadované spojení smlouvy z 2022-08-26 s bodem 156/5 z 2022-08-23 (Uzavření smlouvy o zajištění lékařské péče s firmou Moje zdraví s.r.o.). Jistota nizka.",
+      "castka_czk": null,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Moje Zdraví s.r.o.) je v textu usnesení; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova lekarske, pece, zajisteni",
+      "url": "https://smlouvy.gov.cz/smlouva/21670205",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20171133",
+      "datum": "2022-08-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-08-26",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Zajištění lékařské péče v ML - příloha k žádosti o dotaci z KV kraje",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Moje Zdraví s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21670205",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-5-5/29",
+      "datum": "2022-12-06",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-06",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "Veřejnoprávní smlouva o poskytnutí dotace z rozpočtu Karlovarského kraje na projekt ,,Moje zdraví s.r.o.\"",
+      "popis": "Rada města, bod 5/29, usnesení 587/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2946662",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/5.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-5/29__21241425",
+      "datum": "2022-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-07",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Moje zdraví",
+      "popis": "Odhadované spojení smlouvy z 2022-12-07 s bodem 5/29 z 2022-12-06 (Veřejnoprávní smlouva o poskytnutí dotace z rozpočtu Karlovarského kraje na projekt ,,Moje zd",
+      "castka_czk": 484000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 29124794 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 1 den po usnesení; název bodu a předmět smlouvy sdílí slova moje, zdravi; usnesení mluví o dodatku, smlou",
+      "url": "https://smlouvy.gov.cz/smlouva/22794229",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:21241425",
+      "datum": "2022-12-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-12-07",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Moje zdraví",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Moje Zdraví s.r.o..",
+      "castka_czk": 484000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/22794229",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "smlouva:26618847",
+      "datum": "2024-04-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-04-23",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytování zdravotních služeb",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Moje Zdraví s.r.o..",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/28481947",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

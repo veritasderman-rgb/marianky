@@ -1,0 +1,439 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "46824715",
+    "nazev": "Alena Vondrašová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2012-02-14",
+    "do": "2026-05-05",
+    "prvni_rok": 2012,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 20,
+    "dolozenych": 14,
+    "odhadu": 6,
+    "dle_typu": {
+      "usneseni": 11,
+      "retez": 6,
+      "smlouva": 3
+    },
+    "dle_jistoty": {
+      "fakt": 14,
+      "stredni": 1,
+      "nizka": 5
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2012-55-55/6",
+      "datum": "2012-02-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-14",
+      "rok": 2012,
+      "typ": "usneseni",
+      "nadpis": "Prodloužení nájmu - Hlavní 142",
+      "popis": "Rada města, bod 55/6, usnesení 75/12.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/703568",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2012/55.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2013-130-130/5",
+      "datum": "2013-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-11-19",
+      "rok": 2013,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - sleva z nájmu",
+      "popis": "Rada města, bod 130/5, usnesení 561/13. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1043662",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2013/130.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2016-90-90/4",
+      "datum": "2016-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - prodloužení nájmu - Alena Vondrašová",
+      "popis": "Rada města, bod 90/4, usnesení 527/16. Schvaleno.",
+      "castka_czk": 3100,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1657412",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2016/90.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2018-162-162/14",
+      "datum": "2018-07-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-07-31",
+      "rok": 2018,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - dočasná sleva",
+      "popis": "Rada města, bod 162/14, usnesení 416/18. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1984460",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2018/162.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/14__6024495",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "retez",
+      "nadpis": "Dodatek ke smlouvě č.1 dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2018-08-24 s bodem 162/14 z 2018-07-31 (NP Hlavní 142 - dočasná sleva). Jistota stredni.",
+      "castka_czk": 29382.8293,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 24 dní po usnesení; název bodu a předmět smlouvy sdílí slova docasna, sleva",
+      "url": "https://smlouvy.gov.cz/smlouva/6494431",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:6024495",
+      "datum": "2018-08-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-08-24",
+      "rok": 2018,
+      "typ": "smlouva",
+      "nadpis": "Dodatek ke smlouvě č.1 dočasná sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Alena Vondrašová.",
+      "castka_czk": 29382.8293,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/6494431",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2019-18-18/5",
+      "datum": "2019-04-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-02",
+      "rok": 2019,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní 142 - dočasná sleva",
+      "popis": "Rada města, bod 18/5, usnesení 164/19. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2320414",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2019/18.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2018-162/14__8298151",
+      "datum": "2019-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-25",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č.2 ke smlouvě o nájmu NP Hlavní 142 - Vondrašová Alena - dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2019-04-25 s bodem 162/14 z 2018-07-31 (NP Hlavní 142 - dočasná sleva). Jistota nizka.",
+      "castka_czk": 17060.9758,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 268 dní po usnesení; název bodu a předmět smlouvy sdílí slova docasna, hlavni, sleva; stejně dobře sedí i",
+      "url": "https://smlouvy.gov.cz/smlouva/8954659",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-18/5__8298151",
+      "datum": "2019-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-25",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Dodatek č.2 ke smlouvě o nájmu NP Hlavní 142 - Vondrašová Alena - dočasná sleva",
+      "popis": "Odhadované spojení smlouvy z 2019-04-25 s bodem 18/5 z 2019-04-02 (NP Hlavní 142 - dočasná sleva). Jistota nizka.",
+      "castka_czk": 17060.9758,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova docasna, hlavni, sleva; stejně dobře sedí i ",
+      "url": "https://smlouvy.gov.cz/smlouva/8954659",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8298151",
+      "datum": "2019-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-04-25",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č.2 ke smlouvě o nájmu NP Hlavní 142 - Vondrašová Alena - dočasná sleva",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Alena Vondrašová.",
+      "castka_czk": 17060.9758,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/8954659",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-139-139/6",
+      "datum": "2022-02-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 142 - prodloužení Smlouvy o nájmu nebytového prostoru - Alena Vondrašová",
+      "popis": "Rada města, bod 139/6, usnesení 84/22. Schvaleno.",
+      "castka_czk": 291400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2812298",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/139.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-142-142/8",
+      "datum": "2022-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-03-22",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 142 - Alena Vondrašová",
+      "popis": "Rada města, bod 142/8, usnesení 141/22. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2825255",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/142.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2022-159-159/6",
+      "datum": "2022-09-27",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-27",
+      "rok": 2022,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní, č.p. 142 - Alena Vondrašová",
+      "popis": "Rada města, bod 159/6, usnesení 469/22. Schvaleno.",
+      "castka_czk": 244400,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2913267",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2022/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-139/6__20350109",
+      "datum": "2022-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Alena Vondrašová",
+      "popis": "Odhadované spojení smlouvy z 2022-09-30 s bodem 139/6 z 2022-02-22 (NP Hlavní, č.p. 142 - prodloužení Smlouvy o nájmu nebytového prostoru - Alena Vondrašová). J",
+      "castka_czk": 1330758.242,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 220 dní po usnesení; název bodu a předmět smlouvy sdílí slova alena, najmu, nebytoveho, prostoru; stejně ",
+      "url": "https://smlouvy.gov.cz/smlouva/21858745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-142/8__20350109",
+      "datum": "2022-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Alena Vondrašová",
+      "popis": "Odhadované spojení smlouvy z 2022-09-30 s bodem 142/8 z 2022-03-22 (NP Hlavní, č.p. 142 - Alena Vondrašová). Jistota nizka.",
+      "castka_czk": 1330758.242,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 192 dní po usnesení; název bodu a předmět smlouvy sdílí slova alena, vondrasova; stejně dobře sedí i 2 da",
+      "url": "https://smlouvy.gov.cz/smlouva/21858745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "retez:rada-2022-159/6__20350109",
+      "datum": "2022-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-30",
+      "rok": 2022,
+      "typ": "retez",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Alena Vondrašová",
+      "popis": "Odhadované spojení smlouvy z 2022-09-30 s bodem 159/6 z 2022-09-27 (NP Hlavní, č.p. 142 - Alena Vondrašová). Jistota nizka.",
+      "castka_czk": 1330758.242,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 46824715 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení; název bodu a předmět smlouvy sdílí slova alena, vondrasova; stejně dobře sedí i 2 dalš",
+      "url": "https://smlouvy.gov.cz/smlouva/21858745",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:20350109",
+      "datum": "2022-09-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-30",
+      "rok": 2022,
+      "typ": "smlouva",
+      "nadpis": "Dodatek č. 2 ke Smlouvě o nájmu nebytového prostoru - Alena Vondrašová",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Alena Vondrašová.",
+      "castka_czk": 1330758.242,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/21858745",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    },
+    {
+      "id": "usneseni:rada-2025-77-77/11",
+      "datum": "2025-02-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2025-02-04",
+      "rok": 2025,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – Alena Vondrašová",
+      "popis": "Rada města, bod 77/11, usnesení 83/25. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3316496",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2025/77.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-110-110/5",
+      "datum": "2026-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-02-03",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – Alena Vondrašová",
+      "popis": "Rada města, bod 110/5, usnesení 918/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3093555984",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/110.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-116-116/46",
+      "datum": "2026-05-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-05-05",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "NP Hlavní třída, č.p. 142 – Alena Vondrašová",
+      "popis": "Rada města, bod 116/46, usnesení 1139/26. Schvaleno.",
+      "castka_czk": 5367,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/353254464",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/116.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}

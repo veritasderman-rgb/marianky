@@ -1,0 +1,386 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "sramek-jiri",
+    "jmeno": "Jiří Šrámek",
+    "role": [
+      "úředník"
+    ],
+    "kategorie": "urad",
+    "strana": null,
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2016-02",
+    "do": "2022-05",
+    "prvni_rok": 2016,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 17,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 17
+    },
+    "dle_jistoty": {
+      "fakt": 17
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2016-02-025",
+      "datum": "2016-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-02-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost  Formát A4 210 x 297 mm  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  Cena  9 000,- Kč  4 500,- Kč  2 250,- Kč  1 125,- Kč  K",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=011a4254%7C864#page=12",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-02/025.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-03-006",
+      "datum": "2016-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-03-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Na úřadě bude možné platit kartou",
+      "popis": "V rámci zvyšování kvality služeb přineseme občanům, klientům městského úřadu možnost platit poplatky na úřadě platební kartou. Terminál bude umístěn v pokladně ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ea483172%7C877#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-03/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-004",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Vážení občané města Mariánské Lázně,",
+      "popis": "V rámci zkvalitňování služeb Městského úřadu Mariánské Lázně Vám přinášíme novou službu. Jedná se o možnost platby kartou, jak jsme avizovali v minulém čísle Zp",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-04-037",
+      "datum": "2016-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-04-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "TVML se vrací na televizní obrazovky",
+      "popis": "Vážení občané, milí televizní diváci,  zajímá vás dění na mariánskolázeňské radnici? Chcete vědět, co se ve vašem městě událo, jaké jsou plánovány projekty a in",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=408d83c4%7C1236#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-04/037.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-06-021",
+      "datum": "2016-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-06-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Formát A4 210 x 297 mm  Cena  9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K uvedeným ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=c7fd3881%7C969#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-06/021.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-07-031",
+      "datum": "2016-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-07-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  4 500,- Kč  Formát A6 148 x 105 mm  2 250,- Kč  Speciální edice výroční turistické zná",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f0cc38eb%7C967#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-07/031.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-08-020",
+      "datum": "2016-08",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-08-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9acbe55%7C981#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-08/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-09-020",
+      "datum": "2016-09",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-09-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a5004af1%7C983#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-09/020.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-10-030",
+      "datum": "2016-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-10-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=ff5042e5%7C984#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-10/030.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-006",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Studenti gymnázia jako zastupitelé",
+      "popis": "Dvacátého čtvrtého října radnice Mariánských Lázní v ranních hodinách ožila studentskou atmosférou. Třída 4.A z místního Gymnázia absolvovala projekt pořádaný M",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/006.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-11-035",
+      "datum": "2016-11",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-11-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=12fb13b0%7C990#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-11/035.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2016-12-029",
+      "datum": "2016-12",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2016-12-01",
+      "rok": 2016,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=0cb51cc5%7C1010#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2016-12/029.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-01-033",
+      "datum": "2017-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-01-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Ceník placené inzerce",
+      "popis": "Velikost Formát A4 210 x 297 mm  Cena 9 000,- Kč  Formát A5 210 x 148 mm  Formát A6 148 x 105 mm  Formát A7 105 x 74 mm  4 500,- Kč  2 250,- Kč  1 125,- Kč  K u",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=a9e8aed8%7C1054#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-01/033.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-02-008",
+      "datum": "2017-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-02-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Upozornění na možné zneužití razítka",
+      "popis": "Vážení občané,  dne 12. 1. 2017 jsme obdrželi informaci od Police České republiky, obvodního oddělení v Plané, kde nám sdělují, že bylo nalezeno úřední razítko ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b1352f9c%7C1079#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-02/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2017-06-009",
+      "datum": "2017-06",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-06-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "OPRAVA V BUDOVĚ RADNICE",
+      "popis": "Dne 22. 5. 2017 se začalo s opravou stropní konstrukce u kanceláří nacházející se v zadním traktu budovy radnice. Stavební práce budou probíhat za provozu a tím",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=58241ca3%7C1140#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-06/009.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2020-03-008",
+      "datum": "2020-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2020-03-01",
+      "rok": 2020,
+      "typ": "zpravodaj",
+      "nadpis": "Živnostenský úřad informuje",
+      "popis": "Informace k návrhu zákona o realitním prostředkování a o změně souvisejících zákonů (zákon o realitním zprostředkování) Dne 17. 2. 2020 byl vyhlášen ve Sbírce z",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fbf2261f%7C2223#page=4",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2020-03/008.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2022-05-004",
+      "datum": "2022-05",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2022-05-01",
+      "rok": 2022,
+      "typ": "zpravodaj",
+      "nadpis": "ZMĚNY V PODNIKÁNÍ MALÝMI VOZIDLY K 21. KVĚTNU 2022",
+      "popis": "V důsledku přijetí nových norem EU, tvořících tzv. balíček mobility, budou od 21.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=01790d32%7C3416#page=3",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2022-05/004.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

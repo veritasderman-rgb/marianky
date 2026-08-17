@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "468247155",
+    "nazev": "Alena Vondrašová"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2016-11-09",
+    "do": "2016-11-09",
+    "prvni_rok": 2016,
+    "posledni_rok": 2016,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2016-90/4__691953",
+      "datum": "2016-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-09",
+      "rok": 2016,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 142, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2016-11-09 s bodem 90/4 z 2016-11-01 (NP Hlavní 142 - prodloužení nájmu - Alena Vondrašová). Jistota nizka.",
+      "castka_czk": 1762970.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Alena Vondrašová) je v textu usnesení; smlouva podepsána 8 dní po usnesení; název bodu a předmět smlouvy sdílí slova hlavni, najmu",
+      "url": "https://smlouvy.gov.cz/smlouva/735261",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:691953",
+      "datum": "2016-11-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-11-09",
+      "rok": 2016,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Hlavní 142, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Alena Vondrašová.",
+      "castka_czk": 1762970.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/735261",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "72198516",
+    "nazev": null
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2014-07-02",
+    "do": "2015-02-03",
+    "prvni_rok": 2014,
+    "posledni_rok": 2015,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "usneseni": 2
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2014-159-159/8",
+      "datum": "2014-07-02",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-07-02",
+      "rok": 2014,
+      "typ": "usneseni",
+      "nadpis": "Informace k veř.pohřebišti ML, sleva z nájemného NP Pramenská 658",
+      "popis": "Rada města, bod 159/8, usnesení 284/14. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1177274",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2014/159.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "usneseni:rada-2015-10-10/3",
+      "datum": "2015-02-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-03",
+      "rok": 2015,
+      "typ": "usneseni",
+      "nadpis": "Správa veřejného pohřebiště v Mariánských Lázních - přidělení veř.zakázky",
+      "popis": "Rada města, bod 10/3, usnesení 47/15. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/1347055",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2015/10.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    }
+  ]
+}
