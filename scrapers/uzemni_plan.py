@@ -82,7 +82,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from selectolax.parser import HTMLParser  # noqa: E402
 
 from lib.core import (CACHE, DATA, Log, ZdrojSelhal, cistit, fetch,  # noqa: E402
-                      nacti, pdf_na_text, pdf_pocet_stran, platne_tagy,
+                      pdf_na_text, pdf_pocet_stran, platne_tagy,
                       potrebuje_ocr, uloz)
 
 CIL = "uzemni_plan"
@@ -245,7 +245,8 @@ def rozcestnik(log: Log) -> tuple[dict[str, dict], dict[str, dict]]:
         slug = href[len(cesta):].split("/")[0].split("?")[0]
         if slug:
             obce.setdefault(slug, {"slug": slug, "nazev": area.attributes.get("title") or slug,
-                                   "url": _abs(href), "kategorii": 0})
+                                   "url": _abs(href),
+                                   "kategorii_na_rozcestniku": 0})
 
     popisky: dict[str, dict] = {}
     for a in node.css("a[href]"):
@@ -255,7 +256,8 @@ def rozcestnik(log: Log) -> tuple[dict[str, dict], dict[str, dict]]:
         slug = href[len(cesta):].split("/")[0].split("?")[0]
         if not slug:
             continue
-        obce.setdefault(slug, {"slug": slug, "nazev": slug, "url": _abs(href), "kategorii": 0})
+        obce.setdefault(slug, {"slug": slug, "nazev": slug, "url": _abs(href),
+                               "kategorii_na_rozcestniku": 0})
         kateg = parse_qs(urlparse(href).query).get("kateg", [None])[0]
         if not kateg:
             continue
@@ -265,7 +267,7 @@ def rozcestnik(log: Log) -> tuple[dict[str, dict], dict[str, dict]]:
             "kateg": kateg, "obec": slug, "popisek": text,
             "datum": iso, "presnost": presnost, "datum_doslova": doslova,
         }
-        obce[slug]["kategorii"] += 1
+        obce[slug]["kategorii_na_rozcestniku"] += 1
 
     if len(obce) < 10:
         raise ZdrojSelhal(f"Rozcestník vrátil jen {len(obce)} obcí — změnila se stránka?")
@@ -822,6 +824,14 @@ def _kroky_z_odstavce(text: str) -> list[dict]:
         return []
     nalezy = [(m.start(), m.end(), m.group(0)) for m in RE_DEN.finditer(text)]
     nalezy += [(m.start(), m.end(), m.group(0)) for m in RE_DEN_SLOVY.finditer(text)]
+    # Část kroků je datovaná jen měsícem („Na začátku července 2025 byly
+    # odeslány pokyny k úpravě návrhu“). Bez nich by z osy vypadl krok,
+    # kterým začala celá etapa před veřejným projednáním. Bere se jen
+    # slovní tvar měsíce — číselný by spolkl čísla zákonů (183/2006).
+    obsazeno = [(z, k) for z, k, _ in nalezy]
+    for m in RE_MESIC_SLOVY.finditer(text):
+        if not any(z <= m.start() < k for z, k in obsazeno):
+            nalezy.append((m.start(), m.end(), m.group(0)))
     nalezy.sort()
     if not nalezy:
         return []
@@ -837,7 +847,11 @@ def _kroky_z_odstavce(text: str) -> list[dict]:
         zacatek = _zacatek_vety(text, zac, nalezy[i - 1][1] if i else 0)
         popis = re.sub(r"\s+", " ", text[zacatek:dalsi]).strip(" ,.;-–—")
         out.append({"datum": iso, "presnost": presnost, "popis": popis,
-                    "pravni_odkaz": pravni})
+                    "pravni_odkaz": pravni,
+                    # Jak daleko od začátku věty datum stojí. Věta, která
+                    # datem začíná, o něm mluví; věta, kde je až na konci,
+                    # ho většinou jen zmiňuje mimochodem.
+                    "odsazeni": zac - zacatek})
     return out
 
 
@@ -855,8 +869,20 @@ def _druh_kroku(krok: dict) -> str:
     return "krok"
 
 
+def _lepsi_popis(a: dict, b: dict) -> dict:
+    """Ze dvou popisů téže události vybere ten, který o ní opravdu mluví.
+
+    Rozhoduje, jak brzy ve větě datum stojí: „Beseda proběhla 24.6.2019
+    v muzeu“ je o tom dni, kdežto „Dotazník slouží jako podklad … veřejnosti
+    bude představena 24.6.2019“ ho jen zmiňuje. Při shodě vyhraje delší.
+    """
+    if a["odsazeni"] != b["odsazeni"]:
+        return a if a["odsazeni"] < b["odsazeni"] else b
+    return a if len(a["popis"]) >= len(b["popis"]) else b
+
+
 def _bez_duplicit(kroky: list[dict]) -> list[dict]:
-    """Jedno datum uvnitř zprávy = jeden krok; zůstane nejdelší popis.
+    """Jedno datum uvnitř zprávy = jeden krok.
 
     Úřad tutéž událost v jedné zprávě zmíní víckrát (v textu a znovu
     v názvu přiloženého zápisu z jednání). Na ose by z toho byly dvě.
@@ -864,8 +890,7 @@ def _bez_duplicit(kroky: list[dict]) -> list[dict]:
     nejlepsi: dict[str, dict] = {}
     for k in kroky:
         stavajici = nejlepsi.get(k["datum"])
-        if stavajici is None or len(k["popis"]) > len(stavajici["popis"]):
-            nejlepsi[k["datum"]] = k
+        nejlepsi[k["datum"]] = k if stavajici is None else _lepsi_popis(stavajici, k)
     return sorted(nejlepsi.values(), key=lambda k: k["datum"])
 
 
@@ -1100,6 +1125,11 @@ def obce_orp(obce: dict[str, dict], log: Log) -> dict:
                       "že existují a kolik dokumentů mají.",
             "dokumentu": "Počet souborů v kořenovém výpisu obce, ne počet "
                          "územních plánů. Jeden územní plán je desítky výkresů.",
+            "kategorii_na_rozcestniku": "Kolik odkazů na kategorie vede z rozcestníku. "
+                                        "Není to úplný počet kategorií — u Mariánských "
+                                        "Lázní jich rozcestník uvádí 10, ale strom "
+                                        "kategorií na stránce obce jich má 16 "
+                                        "(regulační plán na rozcestníku chybí).",
             "rozpracovano": "Věty ze stránky úřadu územního plánování „na čem "
                             "zrovna pracujeme“. Obec je k nim přiřazená podle "
                             "názvu v textu — je to odhad, ne údaj ze zdroje.",
@@ -1152,8 +1182,17 @@ def _rozpracovane(log: Log) -> list[dict]:
 RE_TEXTOVY = re.compile(
     r"textov[áa]\s*část|výrok|odůvodn|zadání|opatření obecné povahy|"
     r"oznámení\s*(o\s*)?vydání|OOP|zpráva o uplatňování|údaje o vydané|OZV", re.I)
-# Nabytí účinnosti bývá jedinou tvrdou informací v oznámení o vydání OOP.
+# Datum nabytí účinnosti se hledá VÝHRADNĚ v dokumentech, které o vydání
+# změny samy jsou. V textové části územního plánu se totiž „nabylo
+# účinnosti dne …“ vyskytuje taky — jenže u cizích předpisů (zásady
+# územního rozvoje kraje, stavební zákon). První shoda v takovém
+# dokumentu dá datum, které s ním nemá nic společného.
+RE_O_VYDANI = re.compile(r"oznámení\s*(o\s*)?vydání|údaje\s+o\s+vydané|opatření\s+obecné\s+povahy", re.I)
 RE_UCINNOST = re.compile(r"nab\w+\s+účinnosti\s+(?:dne\s+)?(\d{1,2}\s*\.\s*\d{1,2}\s*\.\s*\d{4})", re.I)
+# Poškozené kódování: v PDF z roku 2012 vypadnou háčky a z „Změny“ je
+# „Zm ny“. Zdravý český text má háčkovaných písmen kolem 4 %, poškozený
+# přesně nula — práh 1 % je proto bezpečný.
+HACKY = "ěščřžĚŠČŘŽ"
 
 
 def vytez_texty(dokumenty: list[dict], log: Log, limit: int | None = None) -> dict:
@@ -1173,17 +1212,20 @@ def vytez_texty(dokumenty: list[dict], log: Log, limit: int | None = None) -> di
     cil.mkdir(parents=True, exist_ok=True)
     hotovo, skeny, ucinnosti = 0, 0, []
     for d in vybrane:
-        try:
-            data = fetch(d["url"], binary=True, max_age=CACHE_SOUBOR, retries=2)
-        except ZdrojSelhal as e:
-            log.chyba(f"nestáhl se {d['nazev']}: {e}")
-            continue
-        if not isinstance(data, bytes) or not data.startswith(b"%PDF"):
-            log.chyba(f"{d['nazev']} není PDF, přeskakuji")
-            continue
+        # PDF zůstává v .cache/, do data/ jde jen text a metadata. Když už
+        # v cache leží, na server se vůbec nesahá — je sdílený a má strop.
         docasny = CACHE / "uzemni_plan" / f"{d['id']}.pdf"
         docasny.parent.mkdir(parents=True, exist_ok=True)
-        docasny.write_bytes(data)
+        if not docasny.exists():
+            try:
+                data = fetch(d["url"], binary=True, max_age=CACHE_SOUBOR, retries=2)
+            except ZdrojSelhal as e:
+                log.chyba(f"nestáhl se {d['nazev']}: {e}")
+                continue
+            if not isinstance(data, bytes) or not data.startswith(b"%PDF"):
+                log.chyba(f"{d['nazev']} není PDF, přeskakuji")
+                continue
+            docasny.write_bytes(data)
         try:
             stran = pdf_pocet_stran(docasny)
             text = pdf_na_text(docasny)
@@ -1191,20 +1233,22 @@ def vytez_texty(dokumenty: list[dict], log: Log, limit: int | None = None) -> di
             log.chyba(f"pdftotext selhal na {d['nazev']}: {e}")
             continue
         d["stran"] = stran
-        d["velikost_stazena_b"] = len(data)
+        d["velikost_stazena_b"] = docasny.stat().st_size
         if potrebuje_ocr(text, stran):
             # Oznámení o vydání OOP jsou skeny. Nedomýšlíme, co v nich je.
             d["sken"] = True
             skeny += 1
             continue
         d["sken"] = False
-        # Starší PDF mají rozbité kódování a diakritika z nich vypadne.
-        d["diakritika_poskozena"] = not re.search(r"[ěščřžýáíéůúňťď]", text[:4000], re.I)
+        d["diakritika_poskozena"] = (
+            sum(text.count(c) for c in HACKY) / max(len(text), 1)) < 0.01
         soubor = cil / f"{d['id']}.txt"
         soubor.write_text(text, encoding="utf-8")
         d["text_soubor"] = str(soubor.relative_to(DATA.parent))
         d["znaku_textu"] = len(text)
         hotovo += 1
+        if not RE_O_VYDANI.search(d["nazev"] or ""):
+            continue
         m = RE_UCINNOST.search(text)
         if m:
             iso, _, doslova = datum_z_textu(m.group(1))
@@ -1224,7 +1268,7 @@ def vytez_texty(dokumenty: list[dict], log: Log, limit: int | None = None) -> di
 # Časová osa procesu
 # ==========================================================================
 
-def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
+def osa(plan: dict, usn: list[dict], zmeny: dict) -> dict:
     """Sestaví časovou osu pořizování nového územního plánu.
 
     Formát událostí drží tvar `data/casova_osa/` (id, datum, presnost,
@@ -1239,10 +1283,11 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
     for zprava in plan["zpravy"]:
         for krok in zprava["kroky"]:
             stavajici = z_webu.get(krok["datum"])
-            if stavajici and len(stavajici["nadpis"]) >= len(krok["popis"]):
+            if stavajici and _lepsi_popis(stavajici["_krok"], krok) is stavajici["_krok"]:
                 stavajici["zmineno_krat"] += 1
                 continue
             z_webu[krok["datum"]] = {
+                "_krok": krok,
                 "id": f"uzemni-plan:web:{krok['datum']}",
                 "datum": krok["datum"],
                 "presnost": krok["presnost"],
@@ -1262,6 +1307,8 @@ def osa(plan: dict, usn: list[dict], dokumentace: dict, zmeny: dict) -> dict:
                 "zdroj": "web-mesta",
                 "zdroj_soubor": f"data/{CIL}/novy_plan.json",
             }
+    for u in z_webu.values():
+        u.pop("_krok", None)
     udalosti += list(z_webu.values())
 
     for m in plan["milniky_dokumentace"]:
@@ -1382,7 +1429,7 @@ def main() -> None:
     if not args.bez_textu:
         texty = vytez_texty(dokumentace["dokumenty"], log, limit=args.limit_textu)
 
-    cesta = osa(plan, usn, dokumentace, zmeny)
+    cesta = osa(plan, usn, zmeny)
 
     ml = dokumentace["dokumenty"]
     uloz(f"{CIL}/dokumentace.json", {

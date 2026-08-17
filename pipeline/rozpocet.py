@@ -99,7 +99,15 @@ ROZVAHA = {
     "kratkodobe_uvery": "D.III.1.",
     "dodavatele": "D.III.5.",
 }
-VYZZ = {"naklady": "A.", "vynosy": "B.", "vysledek_hospodareni": "C."}
+# Řádek „C." je ve výkazu jen nadpis a vozí nulu — skutečné výsledky jsou
+# až v C.1. a C.2. Kdo by sáhl na „C.", dostal by nulový hospodářský
+# výsledek u všech organizací ve všech letech, a vypadalo by to jako fakt.
+VYZZ = {
+    "naklady": "A.",
+    "vynosy": "B.",
+    "vysledek_pred_zdanenim": "C.1.",
+    "vysledek_po_zdaneni": "C.2.",
+}
 
 # Financování, tabulka 000300 — odsud se pozná zadlužování a splácení.
 FINANCOVANI = {
@@ -147,6 +155,12 @@ def _radky(obd: dict, oddil: str, ico: str) -> list[dict]:
 # Díky tomu jde konsolidaci dopočítat i pro běžící rok, kde souhrnná tabulka
 # ve výkazu chybí — není to odhad, je to pravidlo ověřené proti zdroji.
 KONSOLIDACNI_PRIJMY = {"4133", "4134", "4135", "4136", "4137", "4138", "4139"}
+
+# Tabulka financování ve výkazu 051 nese vedle jednotlivých položek i hotový
+# součet za celou třídu 8 (řádek 8000). Kdo ho nechá v součtu, dostane
+# financování přesně dvojnásobné — a s ním falešný dojem, že si město
+# půjčuje dvakrát víc, než si půjčuje.
+SOUHRNNE_POLOZKY_FINANCOVANI = {"8000"}
 
 
 def _rozdel(obd: dict, ico: str) -> dict:
@@ -254,7 +268,9 @@ def _dopoctem(cast: dict) -> dict:
         "kapitalove_vydaje": podle_tridy(cast["vydaje"], "6"),
         "prijmy_pred_konsolidaci": _soucet_sloupcu(cast["prijmy"]),
         "vydaje_pred_konsolidaci": _soucet_sloupcu(cast["vydaje"]),
-        "financovani": _soucet_sloupcu(cast["financovani"]),
+        "financovani": _soucet_sloupcu(
+            [r for r in cast["financovani"]
+             if r.get("polozka_vykazu") not in SOUHRNNE_POLOZKY_FINANCOVANI]),
         "konsolidace_prijmu": _soucet_sloupcu(
             [r for r in cast["prijmy"] if r.get("polozka") in KONSOLIDACNI_PRIJMY]),
         "konsolidace_vydaju": _soucet_sloupcu(
@@ -264,6 +280,50 @@ def _dopoctem(cast: dict) -> dict:
     p["vydaje"] = _rozdil(p["vydaje_pred_konsolidaci"], p["konsolidace_vydaju"])
     p["saldo"] = _rozdil(p["prijmy"], p["vydaje"])
     return p
+
+
+KONTROLOVANE_UKAZATELE = (
+    "prijmy", "vydaje", "saldo", "financovani", "danove", "nedanove",
+    "kapitalove_prijmy", "transfery", "bezne_vydaje", "kapitalove_vydaje",
+    "konsolidace_prijmu", "konsolidace_vydaju",
+)
+
+
+def kontrola_dopoctu(fin: list[dict]) -> dict:
+    """Ověří dopočet proti souhrnům, které vozí sám výkaz.
+
+    Od roku 2026 souhrnná tabulka v extraktu není a součty si musíme udělat
+    sami. Aby to nebylo „věřte nám", pustí se stejný výpočet na všech
+    ročnících, kde souhrn ve zdroji **je**, a porovná se s ním. Výsledek se
+    ukládá k datům: kdyby se pravidlo někdy rozešlo se zdrojem, je to vidět
+    v datech, ne až v grafu.
+    """
+    porovnano = neshody = 0
+    rozdily = []
+    for obd in fin:
+        cast = _rozdel(obd, MESTO)
+        if not cast["rekapitulace"]:
+            continue
+        zdroj, nas = _z_rekapitulace(cast["rekapitulace"]), _dopoctem(cast)
+        for u in KONTROLOVANE_UKAZATELE:
+            for sloupec in ("schvaleny", "upraveny", "skutecnost"):
+                a, b = zdroj[u][sloupec], nas[u][sloupec]
+                if a is None and b is None:
+                    continue
+                porovnano += 1
+                if a is None or b is None or abs(a - b) > 0.5:
+                    neshody += 1
+                    rozdily.append({"obdobi": obd["obdobi"], "ukazatel": u,
+                                    "sloupec": sloupec, "vykaz": a, "dopocet": b})
+    return {
+        "porovnanych_hodnot": porovnano,
+        "neshod": neshody,
+        "obdobi_se_souhrnem": sum(1 for o in fin if _rozdel(o, MESTO)["rekapitulace"]),
+        "rozdily": rozdily[:20],
+        "zaver": ("dopočet se shoduje se souhrny výkazu ve všech porovnaných "
+                  "hodnotách" if not neshody else
+                  "POZOR: dopočet se v některých hodnotách rozchází se zdrojem"),
+    }
 
 
 def po_letech(fin: list[dict], log: Log) -> dict:
@@ -328,6 +388,7 @@ def po_letech(fin: list[dict], log: Log) -> dict:
             "konsolidace, jejíž pravidlo se do haléře shoduje se souhrny všech "
             "šestnácti uzavřených ročníků.",
         ],
+        "kontrola_dopoctu": kontrola_dopoctu(fin),
         "roky": roky,
         "roky_bez_dat": mezery,
     }
@@ -358,19 +419,32 @@ def vydaje_struktura(fin: list[dict], cis_par: dict, log: Log) -> dict:
 
         for r in radky:
             par = r.get("paragraf") or ""
+            je_prevod = par == PARAGRAF_PREVODY
             hodnoty = {k: (r.get(k) or 0.0) for k in celkem}
             for k in celkem:
                 celkem[k] += hodnoty[k]
-            cil = prevody if par == PARAGRAF_PREVODY else bez_prevodu
+            cil = prevody if je_prevod else bez_prevodu
             for k in cil:
                 cil[k] += hodnoty[k]
 
             for kos, kod in ((po_paragrafu, par), (po_oddilu, par[:2]),
                              (po_skupine, par[:1])):
-                z = kos.setdefault(kod, {"schvaleny": 0.0, "upraveny": 0.0,
-                                         "skutecnost": 0.0})
-                for k in z:
+                z = kos.setdefault(kod, {
+                    "schvaleny": 0.0, "upraveny": 0.0, "skutecnost": 0.0,
+                    "schvaleny_bez_prevodu": 0.0, "upraveny_bez_prevodu": 0.0,
+                    "skutecnost_bez_prevodu": 0.0, "obsahuje_prevody": False})
+                for k in ("schvaleny", "upraveny", "skutecnost"):
                     z[k] += hodnoty[k]
+                # Převody vlastním fondům sedí na paragrafu 6330, takže se
+                # schovají i do nadřazeného oddílu 63 a skupiny 6. Bez téhle
+                # druhé řady by z „finančních operací" vyšla dvoutřetinová
+                # největší kapitola města — a byly by to jen přesuny mezi
+                # vlastními účty.
+                if je_prevod:
+                    z["obsahuje_prevody"] = True
+                else:
+                    for k in ("schvaleny", "upraveny", "skutecnost"):
+                        z[f"{k}_bez_prevodu"] += hodnoty[k]
 
         def _sez(kos: dict, uroven: str) -> list[dict]:
             out = []
@@ -379,15 +453,23 @@ def vydaje_struktura(fin: list[dict], cis_par: dict, log: Log) -> dict:
                     "kod": kod,
                     "nazev": _nazev_paragrafu(kod, cis_par),
                     "uroven": uroven,
-                    "prevod_vlastnim_fondum": kod == PARAGRAF_PREVODY,
-                    **{k: round(x, 2) for k, x in v.items()},
+                    "obsahuje_prevody_vlastnim_fondum": v["obsahuje_prevody"],
+                    **{k: round(v[k], 2) for k in
+                       ("schvaleny", "upraveny", "skutecnost",
+                        "schvaleny_bez_prevodu", "upraveny_bez_prevodu",
+                        "skutecnost_bez_prevodu")},
                     "podil_pct": None,
+                    "podil_bez_prevodu_pct": None,
                 })
             zaklad = celkem["skutecnost"]
-            if zaklad:
-                for z in out:
+            zaklad_bez = bez_prevodu["skutecnost"]
+            for z in out:
+                if zaklad:
                     z["podil_pct"] = round(z["skutecnost"] / zaklad * 100, 2)
-            return sorted(out, key=lambda z: -z["skutecnost"])
+                if zaklad_bez:
+                    z["podil_bez_prevodu_pct"] = round(
+                        z["skutecnost_bez_prevodu"] / zaklad_bez * 100, 2)
+            return sorted(out, key=lambda z: -z["skutecnost_bez_prevodu"])
 
         roky.append({
             "rok": obd["rok"],
@@ -411,9 +493,15 @@ def vydaje_struktura(fin: list[dict], cis_par: dict, log: Log) -> dict:
             "je vyšší než výdaje po konsolidaci z `po_letech.json`.",
             "Paragraf 6330 jsou převody vlastním fondům — vnitřní přesuny peněz "
             "města. Do grafu „kam jdou peníze\" patří "
-            "`bez_prevodu_vlastnim_fondum`, ne `celkem`.",
-            "`podil_pct` je podíl na skutečnosti VČETNĚ převodů, aby se dal "
-            "sečíst na 100 %.",
+            "`skutecnost_bez_prevodu` a `podil_bez_prevodu_pct`, ne `skutecnost`. "
+            "V roce 2025 by jinak vyšlo, že 65 % rozpočtu města jde na "
+            "„finanční operace\" — přitom jde o přesuny mezi jeho vlastními účty.",
+            "`podil_pct` počítá podíl na skutečnosti VČETNĚ převodů, "
+            "`podil_bez_prevodu_pct` bez nich. Každá řada se sečte na 100 % "
+            "ve své vlastní základně; nemíchat je v jednom grafu.",
+            "`obsahuje_prevody_vlastnim_fondum` označuje oddíl nebo skupinu, "
+            "do které paragraf 6330 spadá (oddíl 63, skupina 6).",
+            "Řazení je podle `skutecnost_bez_prevodu`.",
             "Úrovně: skupina (1 číslice), oddíl (2), paragraf (4) — hierarchie "
             "rozpočtové skladby. Nesčítat napříč úrovněmi.",
         ],
@@ -435,18 +523,21 @@ def plan_vs_skutecnost(osa: dict, struktura: dict, cis_par: dict) -> dict:
 
         rozchody = []
         if s:
+            # Záměrně se pracuje s hodnotami BEZ převodů vlastním fondům.
+            # Ty se do plánu nerozpočtují, takže by u oddílu 63 vyšel rozchod
+            # v řádu miliardy — a byl by to jen účetní přesun, ne minutý plán.
             for p in s["oddily"]:
-                sch, sku = p["schvaleny"], p["skutecnost"]
-                rozdil = sku - sch
+                sch, upr = p["schvaleny_bez_prevodu"], p["upraveny_bez_prevodu"]
+                sku = p["skutecnost_bez_prevodu"]
                 rozchody.append({
                     "kod": p["kod"],
                     "nazev": p["nazev"],
                     "schvaleny": sch,
-                    "upraveny": p["upraveny"],
+                    "upraveny": upr,
                     "skutecnost": sku,
-                    "rozdil_proti_schvalenemu": round(rozdil, 2),
-                    "plneni_pct": (round(sku / p["upraveny"] * 100, 1)
-                                   if p["upraveny"] else None),
+                    "rozdil_proti_schvalenemu": round(sku - sch, 2),
+                    "rozdil_proti_upravenemu": round(sku - upr, 2),
+                    "plneni_pct": round(sku / upr * 100, 1) if upr else None,
                 })
             rozchody.sort(key=lambda z: -abs(z["rozdil_proti_schvalenemu"]))
 
@@ -485,7 +576,10 @@ def plan_vs_skutecnost(osa: dict, struktura: dict, cis_par: dict) -> dict:
             "tedy o kolik minulo plnění i ten opravený plán.",
             "`plneni_pct` se počítá proti UPRAVENÉMU rozpočtu; proti schválenému "
             "by měřilo hlavně to, kolikrát se rozpočet během roku měnil.",
-            "Rozchody podle oddílů jsou před konsolidací (viz vydaje_struktura.json).",
+            "Rozchody podle oddílů se počítají BEZ převodů vlastním fondům "
+            "(paragraf 6330). Ty se do plánu nerozpočtují, takže by u oddílu 63 "
+            "vyšel rozchod v řádu miliardy — což by byl přesun mezi vlastními "
+            "účty města, ne minutý plán.",
         ],
         "roky": roky,
     }
@@ -605,13 +699,23 @@ def organizace(rozv: list[dict], vyzz: list[dict], subjekty: dict) -> dict:
             rok["koncove"] = obd["koncove"]
             hlavni = _vykaz_hodnoty(radky, VYZZ, "hlavni_cinnost")
             hosp = _vykaz_hodnoty(radky, VYZZ, "hospodarska_cinnost")
+            naklady = _soucet(hlavni["naklady"], hosp["naklady"])
+            vynosy = _soucet(hlavni["vynosy"], hosp["vynosy"])
+            vysledek = _soucet(hlavni["vysledek_po_zdaneni"],
+                               hosp["vysledek_po_zdaneni"])
+            # Výkazy za roky 2010 a 2011 řádek s výsledkem hospodaření vůbec
+            # nemají. Dopočítá se rozdílem výnosů a nákladů a nese to napsané
+            # v `vysledek_zdroj`, aby se pak nedalo tvrdit, že to říká výkaz.
+            zdroj_vysledku = "vykaz"
+            if vysledek is None and None not in (naklady, vynosy):
+                vysledek, zdroj_vysledku = round(vynosy - naklady, 2), "dopocet"
             rok["vyzz"] = {
                 "hlavni_cinnost": hlavni,
                 "hospodarska_cinnost": hosp,
-                "naklady_celkem": _soucet(hlavni["naklady"], hosp["naklady"]),
-                "vynosy_celkem": _soucet(hlavni["vynosy"], hosp["vynosy"]),
-                "vysledek_hospodareni_celkem": _soucet(
-                    hlavni["vysledek_hospodareni"], hosp["vysledek_hospodareni"]),
+                "naklady_celkem": naklady,
+                "vynosy_celkem": vynosy,
+                "vysledek_hospodareni_celkem": vysledek,
+                "vysledek_zdroj": zdroj_vysledku,
             }
 
     out = []
@@ -635,7 +739,10 @@ def organizace(rozv: list[dict], vyzz: list[dict], subjekty: dict) -> dict:
         "metodika": [
             "Rozvahové hodnoty jsou netto za běžné období.",
             "Výkaz zisku a ztráty se vede zvlášť za hlavní a hospodářskou "
-            "činnost; součty jsou dopočítané, ne převzaté ze zdroje.",
+            "činnost; součty obou činností jsou dopočítané, ne převzaté ze zdroje.",
+            "`vysledek_hospodareni_celkem` je výsledek PO zdanění (řádek C.2.). "
+            "`vysledek_zdroj: dopocet` značí roky 2010 a 2011, kde výkaz řádek "
+            "s výsledkem nemá a počítá se z rozdílu výnosů a nákladů.",
             "Obchodní společnosti města (TDS, Lázeňské lesy…) v CSÚIS nejsou — "
             "nejsou to vybrané účetní jednotky. Jejich závěrky vede sbírka "
             "listin obchodního rejstříku, ne Monitor.",
@@ -761,7 +868,7 @@ def souhrn(osa: dict, struktura: dict, majetek: dict, orgs: dict) -> dict:
         s = next((x for x in struktura["roky"] if x["rok"] == posledni["rok"]), None)
         if s:
             top = [o for o in s["oddily"]
-                   if not o["prevod_vlastnim_fondum"]][:8]
+                   if o["skutecnost_bez_prevodu"] > 0][:8]
 
     maj = next((m for m in reversed(majetek["roky"]) if m["koncove"]), None)
 
@@ -821,6 +928,11 @@ def main() -> int:
         uloz(f"{VYSTUP}/po_letech.json", osa)
         log.info(f"po_letech: {len(osa['roky'])} období, "
                  f"mezery {osa['roky_bez_dat'] or 'žádné'}")
+        kd = osa["kontrola_dopoctu"]
+        log.info(f"kontrola dopočtu: {kd['porovnanych_hodnot']} hodnot proti "
+                 f"souhrnům výkazu, neshod {kd['neshod']}")
+        if kd["neshod"]:
+            log.chyba(kd["zaver"])
 
         struktura = vydaje_struktura(fin, cis_par, log)
         uloz(f"{VYSTUP}/vydaje_struktura.json", struktura)

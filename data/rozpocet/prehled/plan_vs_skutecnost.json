@@ -9,7 +9,7 @@
     "`navyseni_rozpoctu` je rozdíl upraveného a schváleného rozpočtu — o kolik zastupitelstvo v průběhu roku plán změnilo.",
     "`odchylka_od_planu` je rozdíl skutečnosti proti upravenému rozpočtu, tedy o kolik minulo plnění i ten opravený plán.",
     "`plneni_pct` se počítá proti UPRAVENÉMU rozpočtu; proti schválenému by měřilo hlavně to, kolikrát se rozpočet během roku měnil.",
-    "Rozchody podle oddílů jsou před konsolidací (viz vydaje_struktura.json)."
+    "Rozchody podle oddílů se počítají BEZ převodů vlastním fondům (paragraf 6330). Ty se do plánu nerozpočtují, takže by u oddílu 63 vyšel rozchod v řádu miliardy — což by byl přesun mezi vlastními účty města, ne minutý plán."
   ],
   "roky": [
     {
@@ -44,9 +44,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 140000.0,
           "upraveny": 36607600.0,
-          "skutecnost": 783224200.0,
-          "rozdil_proti_schvalenemu": 783084200.0,
-          "plneni_pct": 2139.5
+          "skutecnost": 36600880.0,
+          "rozdil_proti_schvalenemu": 36460880.0,
+          "rozdil_proti_upravenemu": -6720.0,
+          "plneni_pct": 100.0
         },
         {
           "kod": "31",
@@ -55,6 +56,7 @@
           "upraveny": 62446920.0,
           "skutecnost": 32925060.0,
           "rozdil_proti_schvalenemu": -23346940.0,
+          "rozdil_proti_upravenemu": -29521860.0,
           "plneni_pct": 52.7
         },
         {
@@ -64,6 +66,7 @@
           "upraveny": 25024900.0,
           "skutecnost": 24655590.0,
           "rozdil_proti_schvalenemu": 11569590.0,
+          "rozdil_proti_upravenemu": -369310.0,
           "plneni_pct": 98.5
         },
         {
@@ -73,6 +76,7 @@
           "upraveny": 66293000.0,
           "skutecnost": 65256020.0,
           "rozdil_proti_schvalenemu": 5256020.0,
+          "rozdil_proti_upravenemu": -1036980.0,
           "plneni_pct": 98.4
         },
         {
@@ -82,6 +86,7 @@
           "upraveny": 66079900.0,
           "skutecnost": 55237900.0,
           "rozdil_proti_schvalenemu": -3498100.0,
+          "rozdil_proti_upravenemu": -10842000.0,
           "plneni_pct": 83.6
         },
         {
@@ -91,6 +96,7 @@
           "upraveny": 66465620.0,
           "skutecnost": 60165190.0,
           "rozdil_proti_schvalenemu": -3228810.0,
+          "rozdil_proti_upravenemu": -6300430.0,
           "plneni_pct": 90.5
         },
         {
@@ -100,6 +106,7 @@
           "upraveny": 31356910.0,
           "skutecnost": 27481520.0,
           "rozdil_proti_schvalenemu": 2666520.0,
+          "rozdil_proti_upravenemu": -3875390.0,
           "plneni_pct": 87.6
         },
         {
@@ -109,6 +116,7 @@
           "upraveny": 3847860.0,
           "skutecnost": 3516430.0,
           "rozdil_proti_schvalenemu": 2396430.0,
+          "rozdil_proti_upravenemu": -331430.0,
           "plneni_pct": 91.4
         },
         {
@@ -118,6 +126,7 @@
           "upraveny": 31118390.0,
           "skutecnost": 28914520.0,
           "rozdil_proti_schvalenemu": -1810480.0,
+          "rozdil_proti_upravenemu": -2203870.0,
           "plneni_pct": 92.9
         },
         {
@@ -127,6 +136,7 @@
           "upraveny": 9813800.0,
           "skutecnost": 9203490.0,
           "rozdil_proti_schvalenemu": -1592510.0,
+          "rozdil_proti_upravenemu": -610310.0,
           "plneni_pct": 93.8
         }
       ]
@@ -163,9 +173,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 140000.0,
           "upraveny": 27475160.0,
-          "skutecnost": 924290484.9,
-          "rozdil_proti_schvalenemu": 924150484.9,
-          "plneni_pct": 3364.1
+          "skutecnost": 27475146.27,
+          "rozdil_proti_schvalenemu": 27335146.27,
+          "rozdil_proti_upravenemu": -13.73,
+          "plneni_pct": 100.0
         },
         {
           "kod": "34",
@@ -174,6 +185,7 @@
           "upraveny": 45328780.0,
           "skutecnost": 41520335.25,
           "rozdil_proti_schvalenemu": 5602335.25,
+          "rozdil_proti_upravenemu": -3808444.75,
           "plneni_pct": 91.6
         },
         {
@@ -183,6 +195,7 @@
           "upraveny": 66603500.0,
           "skutecnost": 65556210.0,
           "rozdil_proti_schvalenemu": 4556210.0,
+          "rozdil_proti_upravenemu": -1047290.0,
           "plneni_pct": 98.4
         },
         {
@@ -192,6 +205,7 @@
           "upraveny": 120971180.0,
           "skutecnost": 103208998.93,
           "rozdil_proti_schvalenemu": 2821598.93,
+          "rozdil_proti_upravenemu": -17762181.07,
           "plneni_pct": 85.3
         },
         {
@@ -201,6 +215,7 @@
           "upraveny": 61890550.0,
           "skutecnost": 54942166.69,
           "rozdil_proti_schvalenemu": -2733333.31,
+          "rozdil_proti_upravenemu": -6948383.31,
           "plneni_pct": 88.8
         },
         {
@@ -210,6 +225,7 @@
           "upraveny": 28755720.0,
           "skutecnost": 25280982.01,
           "rozdil_proti_schvalenemu": -2593017.99,
+          "rozdil_proti_upravenemu": -3474737.99,
           "plneni_pct": 87.9
         },
         {
@@ -219,6 +235,7 @@
           "upraveny": 26241370.0,
           "skutecnost": 25487294.07,
           "rozdil_proti_schvalenemu": 2507294.07,
+          "rozdil_proti_upravenemu": -754075.93,
           "plneni_pct": 97.1
         },
         {
@@ -228,6 +245,7 @@
           "upraveny": 79348980.0,
           "skutecnost": 78945264.7,
           "rozdil_proti_schvalenemu": 2406264.7,
+          "rozdil_proti_upravenemu": -403715.3,
           "plneni_pct": 99.5
         },
         {
@@ -237,6 +255,7 @@
           "upraveny": 57778850.0,
           "skutecnost": 48945924.65,
           "rozdil_proti_schvalenemu": 1804924.65,
+          "rozdil_proti_upravenemu": -8832925.35,
           "plneni_pct": 84.7
         },
         {
@@ -246,6 +265,7 @@
           "upraveny": 230.0,
           "skutecnost": 1040481.03,
           "rozdil_proti_schvalenemu": 1040481.03,
+          "rozdil_proti_upravenemu": 1040251.03,
           "plneni_pct": 452383.1
         }
       ]
@@ -282,9 +302,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 180000.0,
           "upraveny": 18504130.0,
-          "skutecnost": 643480379.58,
-          "rozdil_proti_schvalenemu": 643300379.58,
-          "plneni_pct": 3477.5
+          "skutecnost": 18504034.24,
+          "rozdil_proti_schvalenemu": 18324034.24,
+          "rozdil_proti_upravenemu": -95.76,
+          "plneni_pct": 100.0
         },
         {
           "kod": "37",
@@ -293,6 +314,7 @@
           "upraveny": 46860420.0,
           "skutecnost": 41698804.32,
           "rozdil_proti_schvalenemu": -9342195.68,
+          "rozdil_proti_upravenemu": -5161615.68,
           "plneni_pct": 89.0
         },
         {
@@ -302,6 +324,7 @@
           "upraveny": 29711150.0,
           "skutecnost": 25725175.32,
           "rozdil_proti_schvalenemu": 6444175.32,
+          "rozdil_proti_upravenemu": -3985974.68,
           "plneni_pct": 86.6
         },
         {
@@ -311,6 +334,7 @@
           "upraveny": 24835900.0,
           "skutecnost": 23722972.63,
           "rozdil_proti_schvalenemu": 3317972.63,
+          "rozdil_proti_upravenemu": -1112927.37,
           "plneni_pct": 95.5
         },
         {
@@ -320,6 +344,7 @@
           "upraveny": 41932260.0,
           "skutecnost": 35711670.7,
           "rozdil_proti_schvalenemu": 2779170.7,
+          "rozdil_proti_upravenemu": -6220589.3,
           "plneni_pct": 85.2
         },
         {
@@ -329,6 +354,7 @@
           "upraveny": 44147860.0,
           "skutecnost": 38281972.11,
           "rozdil_proti_schvalenemu": -2391527.89,
+          "rozdil_proti_upravenemu": -5865887.89,
           "plneni_pct": 86.7
         },
         {
@@ -338,6 +364,7 @@
           "upraveny": 17153740.0,
           "skutecnost": 17149876.0,
           "rozdil_proti_schvalenemu": 2215876.0,
+          "rozdil_proti_upravenemu": -3864.0,
           "plneni_pct": 100.0
         },
         {
@@ -347,6 +374,7 @@
           "upraveny": 58052220.0,
           "skutecnost": 54073704.65,
           "rozdil_proti_schvalenemu": -1595095.35,
+          "rozdil_proti_upravenemu": -3978515.35,
           "plneni_pct": 93.1
         },
         {
@@ -356,6 +384,7 @@
           "upraveny": 2753200.0,
           "skutecnost": 2163011.21,
           "rozdil_proti_schvalenemu": -1314988.79,
+          "rozdil_proti_upravenemu": -590188.79,
           "plneni_pct": 78.6
         },
         {
@@ -365,6 +394,7 @@
           "upraveny": 35000.0,
           "skutecnost": 603962.76,
           "rozdil_proti_schvalenemu": 568962.76,
+          "rozdil_proti_upravenemu": 568962.76,
           "plneni_pct": 1725.6
         }
       ]
@@ -401,9 +431,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 180000.0,
           "upraveny": 13602790.0,
-          "skutecnost": 526909228.27,
-          "rozdil_proti_schvalenemu": 526729228.27,
-          "plneni_pct": 3873.5
+          "skutecnost": 13602033.13,
+          "rozdil_proti_schvalenemu": 13422033.13,
+          "rozdil_proti_upravenemu": -756.87,
+          "plneni_pct": 100.0
         },
         {
           "kod": "22",
@@ -412,6 +443,7 @@
           "upraveny": 71234790.0,
           "skutecnost": 64275065.93,
           "rozdil_proti_schvalenemu": 11633765.93,
+          "rozdil_proti_upravenemu": -6959724.07,
           "plneni_pct": 90.2
         },
         {
@@ -421,6 +453,7 @@
           "upraveny": 29433970.0,
           "skutecnost": 26172279.03,
           "rozdil_proti_schvalenemu": 6072279.03,
+          "rozdil_proti_upravenemu": -3261690.97,
           "plneni_pct": 88.9
         },
         {
@@ -430,6 +463,7 @@
           "upraveny": 57794760.0,
           "skutecnost": 51064126.83,
           "rozdil_proti_schvalenemu": -3924873.17,
+          "rozdil_proti_upravenemu": -6730633.17,
           "plneni_pct": 88.4
         },
         {
@@ -439,6 +473,7 @@
           "upraveny": 33212440.0,
           "skutecnost": 26410484.84,
           "rozdil_proti_schvalenemu": -3880515.16,
+          "rozdil_proti_upravenemu": -6801955.16,
           "plneni_pct": 79.5
         },
         {
@@ -448,6 +483,7 @@
           "upraveny": 22885990.0,
           "skutecnost": 19086920.74,
           "rozdil_proti_schvalenemu": -2883079.26,
+          "rozdil_proti_upravenemu": -3799069.26,
           "plneni_pct": 83.4
         },
         {
@@ -457,6 +493,7 @@
           "upraveny": 8962190.0,
           "skutecnost": 8792829.4,
           "rozdil_proti_schvalenemu": 2727829.4,
+          "rozdil_proti_upravenemu": -169360.6,
           "plneni_pct": 98.1
         },
         {
@@ -466,6 +503,7 @@
           "upraveny": 29834460.0,
           "skutecnost": 28206806.49,
           "rozdil_proti_schvalenemu": 2264906.49,
+          "rozdil_proti_upravenemu": -1627653.51,
           "plneni_pct": 94.5
         },
         {
@@ -475,6 +513,7 @@
           "upraveny": 2398800.0,
           "skutecnost": 2040849.54,
           "rozdil_proti_schvalenemu": -1910950.46,
+          "rozdil_proti_upravenemu": -357950.46,
           "plneni_pct": 85.1
         },
         {
@@ -484,6 +523,7 @@
           "upraveny": 42884360.0,
           "skutecnost": 38135931.22,
           "rozdil_proti_schvalenemu": 705931.22,
+          "rozdil_proti_upravenemu": -4748428.78,
           "plneni_pct": 88.9
         }
       ]
@@ -520,9 +560,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 180000.0,
           "upraveny": 17103180.0,
-          "skutecnost": 413871400.47,
-          "rozdil_proti_schvalenemu": 413691400.47,
-          "plneni_pct": 2419.9
+          "skutecnost": 17102518.45,
+          "rozdil_proti_schvalenemu": 16922518.45,
+          "rozdil_proti_upravenemu": -661.55,
+          "plneni_pct": 100.0
         },
         {
           "kod": "22",
@@ -531,6 +572,7 @@
           "upraveny": 70832460.0,
           "skutecnost": 54954455.18,
           "rozdil_proti_schvalenemu": 11417955.18,
+          "rozdil_proti_upravenemu": -15878004.82,
           "plneni_pct": 77.6
         },
         {
@@ -540,6 +582,7 @@
           "upraveny": 36204380.0,
           "skutecnost": 19977036.71,
           "rozdil_proti_schvalenemu": -8642963.29,
+          "rozdil_proti_upravenemu": -16227343.29,
           "plneni_pct": 55.2
         },
         {
@@ -549,6 +592,7 @@
           "upraveny": 40040280.0,
           "skutecnost": 29936775.7,
           "rozdil_proti_schvalenemu": -4934624.3,
+          "rozdil_proti_upravenemu": -10103504.3,
           "plneni_pct": 74.8
         },
         {
@@ -558,6 +602,7 @@
           "upraveny": 33083000.0,
           "skutecnost": 31128998.83,
           "rozdil_proti_schvalenemu": 4696998.83,
+          "rozdil_proti_upravenemu": -1954001.17,
           "plneni_pct": 94.1
         },
         {
@@ -567,6 +612,7 @@
           "upraveny": 61673090.0,
           "skutecnost": 55397309.92,
           "rozdil_proti_schvalenemu": -3047690.08,
+          "rozdil_proti_upravenemu": -6275780.08,
           "plneni_pct": 89.8
         },
         {
@@ -576,6 +622,7 @@
           "upraveny": 2626820.0,
           "skutecnost": 2065036.86,
           "rozdil_proti_schvalenemu": -1623063.14,
+          "rozdil_proti_upravenemu": -561783.14,
           "plneni_pct": 78.6
         },
         {
@@ -585,6 +632,7 @@
           "upraveny": 24556660.0,
           "skutecnost": 23533087.68,
           "rozdil_proti_schvalenemu": 1142087.68,
+          "rozdil_proti_upravenemu": -1023572.32,
           "plneni_pct": 95.8
         },
         {
@@ -594,6 +642,7 @@
           "upraveny": 36009380.0,
           "skutecnost": 31816785.93,
           "rozdil_proti_schvalenemu": -748214.07,
+          "rozdil_proti_upravenemu": -4192594.07,
           "plneni_pct": 88.4
         },
         {
@@ -603,6 +652,7 @@
           "upraveny": 31205720.0,
           "skutecnost": 24850889.73,
           "rozdil_proti_schvalenemu": 515889.73,
+          "rozdil_proti_upravenemu": -6354830.27,
           "plneni_pct": 79.6
         }
       ]
@@ -639,9 +689,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 200000.0,
           "upraveny": 13411580.0,
-          "skutecnost": 380993623.07,
-          "rozdil_proti_schvalenemu": 380793623.07,
-          "plneni_pct": 2840.8
+          "skutecnost": 13384555.38,
+          "rozdil_proti_schvalenemu": 13184555.38,
+          "rozdil_proti_upravenemu": -27024.62,
+          "plneni_pct": 99.8
         },
         {
           "kod": "22",
@@ -650,6 +701,7 @@
           "upraveny": 68559310.0,
           "skutecnost": 58624477.0,
           "rozdil_proti_schvalenemu": -10782023.0,
+          "rozdil_proti_upravenemu": -9934833.0,
           "plneni_pct": 85.5
         },
         {
@@ -659,6 +711,7 @@
           "upraveny": 32187510.0,
           "skutecnost": 25352603.03,
           "rozdil_proti_schvalenemu": 8413603.03,
+          "rozdil_proti_upravenemu": -6834906.97,
           "plneni_pct": 78.8
         },
         {
@@ -668,6 +721,7 @@
           "upraveny": 34299570.0,
           "skutecnost": 32054160.96,
           "rozdil_proti_schvalenemu": 6424160.96,
+          "rozdil_proti_upravenemu": -2245409.04,
           "plneni_pct": 93.5
         },
         {
@@ -677,6 +731,7 @@
           "upraveny": 36571960.0,
           "skutecnost": 29140804.43,
           "rozdil_proti_schvalenemu": -5529995.57,
+          "rozdil_proti_upravenemu": -7431155.57,
           "plneni_pct": 79.7
         },
         {
@@ -686,6 +741,7 @@
           "upraveny": 28546250.0,
           "skutecnost": 23429146.77,
           "rozdil_proti_schvalenemu": -4892853.23,
+          "rozdil_proti_upravenemu": -5117103.23,
           "plneni_pct": 82.1
         },
         {
@@ -695,6 +751,7 @@
           "upraveny": 65983660.0,
           "skutecnost": 58441290.28,
           "rozdil_proti_schvalenemu": -4158709.72,
+          "rozdil_proti_upravenemu": -7542369.72,
           "plneni_pct": 88.6
         },
         {
@@ -704,6 +761,7 @@
           "upraveny": 30399800.0,
           "skutecnost": 28901402.43,
           "rozdil_proti_schvalenemu": 2221402.43,
+          "rozdil_proti_upravenemu": -1498397.57,
           "plneni_pct": 95.1
         },
         {
@@ -713,6 +771,7 @@
           "upraveny": 8358210.0,
           "skutecnost": 8352974.0,
           "rozdil_proti_schvalenemu": 1970474.0,
+          "rozdil_proti_upravenemu": -5236.0,
           "plneni_pct": 99.9
         },
         {
@@ -722,6 +781,7 @@
           "upraveny": 2775600.0,
           "skutecnost": 1760054.21,
           "rozdil_proti_schvalenemu": -1913845.79,
+          "rozdil_proti_upravenemu": -1015545.79,
           "plneni_pct": 63.4
         }
       ]
@@ -758,9 +818,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 200000.0,
           "upraveny": 11531140.0,
-          "skutecnost": 410533239.34,
-          "rozdil_proti_schvalenemu": 410333239.34,
-          "plneni_pct": 3560.2
+          "skutecnost": 11523330.29,
+          "rozdil_proti_schvalenemu": 11323330.29,
+          "rozdil_proti_upravenemu": -7809.71,
+          "plneni_pct": 99.9
         },
         {
           "kod": "61",
@@ -769,6 +830,7 @@
           "upraveny": 73084180.0,
           "skutecnost": 60002549.92,
           "rozdil_proti_schvalenemu": -8579450.08,
+          "rozdil_proti_upravenemu": -13081630.08,
           "plneni_pct": 82.1
         },
         {
@@ -778,6 +840,7 @@
           "upraveny": 6350400.0,
           "skutecnost": 6454498.42,
           "rozdil_proti_schvalenemu": 6454498.42,
+          "rozdil_proti_upravenemu": 104098.42,
           "plneni_pct": 101.6
         },
         {
@@ -787,6 +850,7 @@
           "upraveny": 73435200.0,
           "skutecnost": 54864136.59,
           "rozdil_proti_schvalenemu": -5434863.41,
+          "rozdil_proti_upravenemu": -18571063.41,
           "plneni_pct": 74.7
         },
         {
@@ -796,6 +860,7 @@
           "upraveny": 11193060.0,
           "skutecnost": 11181183.01,
           "rozdil_proti_schvalenemu": 4707683.01,
+          "rozdil_proti_upravenemu": -11876.99,
           "plneni_pct": 99.9
         },
         {
@@ -805,6 +870,7 @@
           "upraveny": 27403540.0,
           "skutecnost": 24093404.5,
           "rozdil_proti_schvalenemu": -2607595.5,
+          "rozdil_proti_upravenemu": -3310135.5,
           "plneni_pct": 87.9
         },
         {
@@ -814,6 +880,7 @@
           "upraveny": 3727000.0,
           "skutecnost": 1680908.65,
           "rozdil_proti_schvalenemu": -2063391.35,
+          "rozdil_proti_upravenemu": -2046091.35,
           "plneni_pct": 45.1
         },
         {
@@ -823,6 +890,7 @@
           "upraveny": 39517890.0,
           "skutecnost": 32618412.34,
           "rozdil_proti_schvalenemu": -440787.66,
+          "rozdil_proti_upravenemu": -6899477.66,
           "plneni_pct": 82.5
         },
         {
@@ -832,6 +900,7 @@
           "upraveny": 10253500.0,
           "skutecnost": 9882344.39,
           "rozdil_proti_schvalenemu": 367344.39,
+          "rozdil_proti_upravenemu": -371155.61,
           "plneni_pct": 96.4
         },
         {
@@ -841,6 +910,7 @@
           "upraveny": 24322500.0,
           "skutecnost": 22646712.21,
           "rozdil_proti_schvalenemu": 307712.21,
+          "rozdil_proti_upravenemu": -1675787.79,
           "plneni_pct": 93.1
         }
       ]
@@ -877,9 +947,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 200000.0,
           "upraveny": 15712380.0,
-          "skutecnost": 545736752.97,
-          "rozdil_proti_schvalenemu": 545536752.97,
-          "plneni_pct": 3473.3
+          "skutecnost": 15707401.85,
+          "rozdil_proti_schvalenemu": 15507401.85,
+          "rozdil_proti_upravenemu": -4978.15,
+          "plneni_pct": 100.0
         },
         {
           "kod": "36",
@@ -888,6 +959,7 @@
           "upraveny": 48918050.0,
           "skutecnost": 32700283.34,
           "rozdil_proti_schvalenemu": -11336916.66,
+          "rozdil_proti_upravenemu": -16217766.66,
           "plneni_pct": 66.8
         },
         {
@@ -897,6 +969,7 @@
           "upraveny": 34576050.0,
           "skutecnost": 22831877.53,
           "rozdil_proti_schvalenemu": -9610122.47,
+          "rozdil_proti_upravenemu": -11744172.47,
           "plneni_pct": 66.0
         },
         {
@@ -906,6 +979,7 @@
           "upraveny": 38007010.0,
           "skutecnost": 20986135.01,
           "rozdil_proti_schvalenemu": -9600864.99,
+          "rozdil_proti_upravenemu": -17020874.99,
           "plneni_pct": 55.2
         },
         {
@@ -915,6 +989,7 @@
           "upraveny": 75833140.0,
           "skutecnost": 64389772.73,
           "rozdil_proti_schvalenemu": -8237727.27,
+          "rozdil_proti_upravenemu": -11443367.27,
           "plneni_pct": 84.9
         },
         {
@@ -924,6 +999,7 @@
           "upraveny": 35847600.0,
           "skutecnost": 24154117.62,
           "rozdil_proti_schvalenemu": -7825882.38,
+          "rozdil_proti_upravenemu": -11693482.38,
           "plneni_pct": 67.4
         },
         {
@@ -933,6 +1009,7 @@
           "upraveny": 6280180.0,
           "skutecnost": 893237.62,
           "rozdil_proti_schvalenemu": -5316762.38,
+          "rozdil_proti_upravenemu": -5386942.38,
           "plneni_pct": 14.2
         },
         {
@@ -942,6 +1019,7 @@
           "upraveny": 6765000.0,
           "skutecnost": 6720000.0,
           "rozdil_proti_schvalenemu": 4720000.0,
+          "rozdil_proti_upravenemu": -45000.0,
           "plneni_pct": 99.3
         },
         {
@@ -951,6 +1029,7 @@
           "upraveny": 20058930.0,
           "skutecnost": 17132879.26,
           "rozdil_proti_schvalenemu": 4177879.26,
+          "rozdil_proti_upravenemu": -2926050.74,
           "plneni_pct": 85.4
         },
         {
@@ -960,6 +1039,7 @@
           "upraveny": 3848860.0,
           "skutecnost": 1802086.3,
           "rozdil_proti_schvalenemu": -1664813.7,
+          "rozdil_proti_upravenemu": -2046773.7,
           "plneni_pct": 46.8
         }
       ]
@@ -992,22 +1072,24 @@
       "saldo_skutecne": -6823790.42,
       "nejvetsi_rozchody_oddilu": [
         {
-          "kod": "63",
-          "nazev": "Finanční operace",
-          "schvaleny": 200000.0,
-          "upraveny": 13782790.0,
-          "skutecnost": 785345328.89,
-          "rozdil_proti_schvalenemu": 785145328.89,
-          "plneni_pct": 5698.0
-        },
-        {
           "kod": "36",
           "nazev": "Bydlení, komunální služby a územní rozvoj",
           "schvaleny": 70976200.0,
           "upraveny": 80190630.0,
           "skutecnost": 45376136.02,
           "rozdil_proti_schvalenemu": -25600063.98,
+          "rozdil_proti_upravenemu": -34814493.98,
           "plneni_pct": 56.6
+        },
+        {
+          "kod": "63",
+          "nazev": "Finanční operace",
+          "schvaleny": 200000.0,
+          "upraveny": 13782790.0,
+          "skutecnost": 13772399.33,
+          "rozdil_proti_schvalenemu": 13572399.33,
+          "rozdil_proti_upravenemu": -10390.67,
+          "plneni_pct": 99.9
         },
         {
           "kod": "43",
@@ -1016,6 +1098,7 @@
           "upraveny": 24425410.0,
           "skutecnost": 21643428.61,
           "rozdil_proti_schvalenemu": 8082428.61,
+          "rozdil_proti_upravenemu": -2781981.39,
           "plneni_pct": 88.6
         },
         {
@@ -1025,6 +1108,7 @@
           "upraveny": 6450850.0,
           "skutecnost": 6504614.0,
           "rozdil_proti_schvalenemu": 6504614.0,
+          "rozdil_proti_upravenemu": 53764.0,
           "plneni_pct": 100.8
         },
         {
@@ -1034,6 +1118,7 @@
           "upraveny": 99181010.0,
           "skutecnost": 81671262.34,
           "rozdil_proti_schvalenemu": -3972237.66,
+          "rozdil_proti_upravenemu": -17509747.66,
           "plneni_pct": 82.3
         },
         {
@@ -1043,6 +1128,7 @@
           "upraveny": 7860080.0,
           "skutecnost": 6860075.0,
           "rozdil_proti_schvalenemu": 3860075.0,
+          "rozdil_proti_upravenemu": -1000005.0,
           "plneni_pct": 87.3
         },
         {
@@ -1052,6 +1138,7 @@
           "upraveny": 3341670.0,
           "skutecnost": 1476868.36,
           "rozdil_proti_schvalenemu": -2910131.64,
+          "rozdil_proti_upravenemu": -1864801.64,
           "plneni_pct": 44.2
         },
         {
@@ -1061,6 +1148,7 @@
           "upraveny": 34337630.0,
           "skutecnost": 28067158.76,
           "rozdil_proti_schvalenemu": 1682158.76,
+          "rozdil_proti_upravenemu": -6270471.24,
           "plneni_pct": 81.7
         },
         {
@@ -1070,6 +1158,7 @@
           "upraveny": 2530320.0,
           "skutecnost": 2529316.0,
           "rozdil_proti_schvalenemu": 1664316.0,
+          "rozdil_proti_upravenemu": -1004.0,
           "plneni_pct": 100.0
         },
         {
@@ -1079,6 +1168,7 @@
           "upraveny": 33380020.0,
           "skutecnost": 27879286.77,
           "rozdil_proti_schvalenemu": 1203786.77,
+          "rozdil_proti_upravenemu": -5500733.23,
           "plneni_pct": 83.5
         }
       ]
@@ -1115,9 +1205,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 200000.0,
           "upraveny": 26049160.0,
-          "skutecnost": 819545193.91,
-          "rozdil_proti_schvalenemu": 819345193.91,
-          "plneni_pct": 3146.1
+          "skutecnost": 26048632.49,
+          "rozdil_proti_schvalenemu": 25848632.49,
+          "rozdil_proti_upravenemu": -527.51,
+          "plneni_pct": 100.0
         },
         {
           "kod": "36",
@@ -1126,6 +1217,7 @@
           "upraveny": 61346610.0,
           "skutecnost": 38495614.69,
           "rozdil_proti_schvalenemu": -22901985.31,
+          "rozdil_proti_upravenemu": -22850995.31,
           "plneni_pct": 62.8
         },
         {
@@ -1135,6 +1227,7 @@
           "upraveny": 31635940.0,
           "skutecnost": 28868289.02,
           "rozdil_proti_schvalenemu": 13045289.02,
+          "rozdil_proti_upravenemu": -2767650.98,
           "plneni_pct": 91.3
         },
         {
@@ -1144,6 +1237,7 @@
           "upraveny": 74000080.0,
           "skutecnost": 67971079.18,
           "rozdil_proti_schvalenemu": 10020979.18,
+          "rozdil_proti_upravenemu": -6029000.82,
           "plneni_pct": 91.9
         },
         {
@@ -1153,6 +1247,7 @@
           "upraveny": 98172280.0,
           "skutecnost": 81909327.93,
           "rozdil_proti_schvalenemu": -9225272.07,
+          "rozdil_proti_upravenemu": -16262952.07,
           "plneni_pct": 83.4
         },
         {
@@ -1162,6 +1257,7 @@
           "upraveny": 70359550.0,
           "skutecnost": 61817646.95,
           "rozdil_proti_schvalenemu": 6858146.95,
+          "rozdil_proti_upravenemu": -8541903.05,
           "plneni_pct": 87.9
         },
         {
@@ -1171,6 +1267,7 @@
           "upraveny": 40756200.0,
           "skutecnost": 32583380.84,
           "rozdil_proti_schvalenemu": 5771380.84,
+          "rozdil_proti_upravenemu": -8172819.16,
           "plneni_pct": 79.9
         },
         {
@@ -1180,6 +1277,7 @@
           "upraveny": 43791290.0,
           "skutecnost": 41555701.03,
           "rozdil_proti_schvalenemu": 3134701.03,
+          "rozdil_proti_upravenemu": -2235588.97,
           "plneni_pct": 94.9
         },
         {
@@ -1189,6 +1287,7 @@
           "upraveny": 5616450.0,
           "skutecnost": 3112582.91,
           "rozdil_proti_schvalenemu": -2474117.09,
+          "rozdil_proti_upravenemu": -2503867.09,
           "plneni_pct": 55.4
         },
         {
@@ -1198,6 +1297,7 @@
           "upraveny": 13195580.0,
           "skutecnost": 12137313.01,
           "rozdil_proti_schvalenemu": -263186.99,
+          "rozdil_proti_upravenemu": -1058266.99,
           "plneni_pct": 92.0
         }
       ]
@@ -1230,21 +1330,13 @@
       "saldo_skutecne": 19416392.68,
       "nejvetsi_rozchody_oddilu": [
         {
-          "kod": "63",
-          "nazev": "Finanční operace",
-          "schvaleny": 220000.0,
-          "upraveny": 14981100.0,
-          "skutecnost": 996011699.22,
-          "rozdil_proti_schvalenemu": 995791699.22,
-          "plneni_pct": 6648.5
-        },
-        {
           "kod": "43",
           "nazev": "Sociální služby a společné činnosti v sociálním zabezpečení a politice zaměstnanosti",
           "schvaleny": 22090000.0,
           "upraveny": 42687520.0,
           "skutecnost": 42261214.38,
           "rozdil_proti_schvalenemu": 20171214.38,
+          "rozdil_proti_upravenemu": -426305.62,
           "plneni_pct": 99.0
         },
         {
@@ -1254,6 +1346,7 @@
           "upraveny": 58231500.0,
           "skutecnost": 38267136.52,
           "rozdil_proti_schvalenemu": -18080863.48,
+          "rozdil_proti_upravenemu": -19964363.48,
           "plneni_pct": 65.7
         },
         {
@@ -1263,7 +1356,18 @@
           "upraveny": 55282890.0,
           "skutecnost": 32780524.53,
           "rozdil_proti_schvalenemu": -17631475.47,
+          "rozdil_proti_upravenemu": -22502365.47,
           "plneni_pct": 59.3
+        },
+        {
+          "kod": "63",
+          "nazev": "Finanční operace",
+          "schvaleny": 220000.0,
+          "upraveny": 14981100.0,
+          "skutecnost": 14934622.77,
+          "rozdil_proti_schvalenemu": 14714622.77,
+          "rozdil_proti_upravenemu": -46477.23,
+          "plneni_pct": 99.7
         },
         {
           "kod": "61",
@@ -1272,6 +1376,7 @@
           "upraveny": 102078520.0,
           "skutecnost": 83716228.78,
           "rozdil_proti_schvalenemu": -10344031.22,
+          "rozdil_proti_upravenemu": -18362291.22,
           "plneni_pct": 82.0
         },
         {
@@ -1281,6 +1386,7 @@
           "upraveny": 23777480.0,
           "skutecnost": 22515382.79,
           "rozdil_proti_schvalenemu": -1924617.21,
+          "rozdil_proti_upravenemu": -1262097.21,
           "plneni_pct": 94.7
         },
         {
@@ -1290,6 +1396,7 @@
           "upraveny": 24764330.0,
           "skutecnost": 24089087.21,
           "rozdil_proti_schvalenemu": 1784587.21,
+          "rozdil_proti_upravenemu": -675242.79,
           "plneni_pct": 97.3
         },
         {
@@ -1299,6 +1406,7 @@
           "upraveny": 27798910.0,
           "skutecnost": 26852768.41,
           "rozdil_proti_schvalenemu": 1153768.41,
+          "rozdil_proti_upravenemu": -946141.59,
           "plneni_pct": 96.6
         },
         {
@@ -1308,6 +1416,7 @@
           "upraveny": 1093500.0,
           "skutecnost": 779769.17,
           "rozdil_proti_schvalenemu": 774769.17,
+          "rozdil_proti_upravenemu": -313730.83,
           "plneni_pct": 71.3
         },
         {
@@ -1317,6 +1426,7 @@
           "upraveny": 2189500.0,
           "skutecnost": 2039568.75,
           "rozdil_proti_schvalenemu": 719568.75,
+          "rozdil_proti_upravenemu": -149931.25,
           "plneni_pct": 93.2
         }
       ]
@@ -1349,21 +1459,13 @@
       "saldo_skutecne": 1360605.92,
       "nejvetsi_rozchody_oddilu": [
         {
-          "kod": "63",
-          "nazev": "Finanční operace",
-          "schvaleny": 220000.0,
-          "upraveny": 11033540.0,
-          "skutecnost": 1135420748.29,
-          "rozdil_proti_schvalenemu": 1135200748.29,
-          "plneni_pct": 10290.6
-        },
-        {
           "kod": "36",
           "nazev": "Bydlení, komunální služby a územní rozvoj",
           "schvaleny": 66518000.0,
           "upraveny": 77941500.0,
           "skutecnost": 27163922.67,
           "rozdil_proti_schvalenemu": -39354077.33,
+          "rozdil_proti_upravenemu": -50777577.33,
           "plneni_pct": 34.9
         },
         {
@@ -1373,6 +1475,7 @@
           "upraveny": 40015260.0,
           "skutecnost": 38747153.93,
           "rozdil_proti_schvalenemu": 19341653.93,
+          "rozdil_proti_upravenemu": -1268106.07,
           "plneni_pct": 96.8
         },
         {
@@ -1382,6 +1485,7 @@
           "upraveny": 101064590.0,
           "skutecnost": 82405840.26,
           "rozdil_proti_schvalenemu": -14168959.74,
+          "rozdil_proti_upravenemu": -18658749.74,
           "plneni_pct": 81.5
         },
         {
@@ -1391,7 +1495,18 @@
           "upraveny": 75008170.0,
           "skutecnost": 59661738.29,
           "rozdil_proti_schvalenemu": -13211261.71,
+          "rozdil_proti_upravenemu": -15346431.71,
           "plneni_pct": 79.5
+        },
+        {
+          "kod": "63",
+          "nazev": "Finanční operace",
+          "schvaleny": 220000.0,
+          "upraveny": 11033540.0,
+          "skutecnost": 10999739.04,
+          "rozdil_proti_schvalenemu": 10779739.04,
+          "rozdil_proti_upravenemu": -33800.96,
+          "plneni_pct": 99.7
         },
         {
           "kod": "23",
@@ -1400,6 +1515,7 @@
           "upraveny": 2970000.0,
           "skutecnost": 2675658.67,
           "rozdil_proti_schvalenemu": 1975658.67,
+          "rozdil_proti_upravenemu": -294341.33,
           "plneni_pct": 90.1
         },
         {
@@ -1409,6 +1525,7 @@
           "upraveny": 32256780.0,
           "skutecnost": 30102977.55,
           "rozdil_proti_schvalenemu": 1738477.55,
+          "rozdil_proti_upravenemu": -2153802.45,
           "plneni_pct": 93.3
         },
         {
@@ -1418,6 +1535,7 @@
           "upraveny": 1420300.0,
           "skutecnost": 1420191.73,
           "rozdil_proti_schvalenemu": 1420191.73,
+          "rozdil_proti_upravenemu": -108.27,
           "plneni_pct": 100.0
         },
         {
@@ -1427,6 +1545,7 @@
           "upraveny": 58082150.0,
           "skutecnost": 54933838.78,
           "rozdil_proti_schvalenemu": 1366938.78,
+          "rozdil_proti_upravenemu": -3148311.22,
           "plneni_pct": 94.6
         },
         {
@@ -1436,6 +1555,7 @@
           "upraveny": 28333340.0,
           "skutecnost": 26179295.2,
           "rozdil_proti_schvalenemu": -520704.8,
+          "rozdil_proti_upravenemu": -2154044.8,
           "plneni_pct": 92.4
         }
       ]
@@ -1468,21 +1588,13 @@
       "saldo_skutecne": 47060924.91,
       "nejvetsi_rozchody_oddilu": [
         {
-          "kod": "63",
-          "nazev": "Finanční operace",
-          "schvaleny": 220000.0,
-          "upraveny": 14784780.0,
-          "skutecnost": 1297461975.94,
-          "rozdil_proti_schvalenemu": 1297241975.94,
-          "plneni_pct": 8775.7
-        },
-        {
           "kod": "36",
           "nazev": "Bydlení, komunální služby a územní rozvoj",
           "schvaleny": 78201000.0,
           "upraveny": 88447610.0,
           "skutecnost": 38910782.92,
           "rozdil_proti_schvalenemu": -39290217.08,
+          "rozdil_proti_upravenemu": -49536827.08,
           "plneni_pct": 44.0
         },
         {
@@ -1492,7 +1604,18 @@
           "upraveny": 38014300.0,
           "skutecnost": 37705963.16,
           "rozdil_proti_schvalenemu": 15940963.16,
+          "rozdil_proti_upravenemu": -308336.84,
           "plneni_pct": 99.2
+        },
+        {
+          "kod": "63",
+          "nazev": "Finanční operace",
+          "schvaleny": 220000.0,
+          "upraveny": 14784780.0,
+          "skutecnost": 14773425.35,
+          "rozdil_proti_schvalenemu": 14553425.35,
+          "rozdil_proti_upravenemu": -11354.65,
+          "plneni_pct": 99.9
         },
         {
           "kod": "22",
@@ -1501,6 +1624,7 @@
           "upraveny": 64215710.0,
           "skutecnost": 62399692.81,
           "rozdil_proti_schvalenemu": 6261992.81,
+          "rozdil_proti_upravenemu": -1816017.19,
           "plneni_pct": 97.2
         },
         {
@@ -1510,6 +1634,7 @@
           "upraveny": 99022340.0,
           "skutecnost": 87694313.63,
           "rozdil_proti_schvalenemu": -5845186.37,
+          "rozdil_proti_upravenemu": -11328026.37,
           "plneni_pct": 88.6
         },
         {
@@ -1519,6 +1644,7 @@
           "upraveny": 33771500.0,
           "skutecnost": 28601244.69,
           "rozdil_proti_schvalenemu": 3243744.69,
+          "rozdil_proti_upravenemu": -5170255.31,
           "plneni_pct": 84.7
         },
         {
@@ -1528,6 +1654,7 @@
           "upraveny": 25995040.0,
           "skutecnost": 25177569.52,
           "rozdil_proti_schvalenemu": 2732569.52,
+          "rozdil_proti_upravenemu": -817470.48,
           "plneni_pct": 96.9
         },
         {
@@ -1537,6 +1664,7 @@
           "upraveny": 32748440.0,
           "skutecnost": 31407346.93,
           "rozdil_proti_schvalenemu": 2311346.93,
+          "rozdil_proti_upravenemu": -1341093.07,
           "plneni_pct": 95.9
         },
         {
@@ -1546,6 +1674,7 @@
           "upraveny": 3442410.0,
           "skutecnost": 3187402.0,
           "rozdil_proti_schvalenemu": 2197402.0,
+          "rozdil_proti_upravenemu": -255008.0,
           "plneni_pct": 92.6
         },
         {
@@ -1555,6 +1684,7 @@
           "upraveny": 84517070.0,
           "skutecnost": 76049531.49,
           "rozdil_proti_schvalenemu": 1708531.49,
+          "rozdil_proti_upravenemu": -8467538.51,
           "plneni_pct": 90.0
         }
       ]
@@ -1591,9 +1721,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 250000.0,
           "upraveny": 18951350.0,
-          "skutecnost": 1452137040.75,
-          "rozdil_proti_schvalenemu": 1451887040.75,
-          "plneni_pct": 7662.4
+          "skutecnost": 18918890.05,
+          "rozdil_proti_schvalenemu": 18668890.05,
+          "rozdil_proti_upravenemu": -32459.95,
+          "plneni_pct": 99.8
         },
         {
           "kod": "43",
@@ -1602,6 +1733,7 @@
           "upraveny": 47478430.0,
           "skutecnost": 40394416.94,
           "rozdil_proti_schvalenemu": 15904416.94,
+          "rozdil_proti_upravenemu": -7084013.06,
           "plneni_pct": 85.1
         },
         {
@@ -1611,6 +1743,7 @@
           "upraveny": 13835000.0,
           "skutecnost": 1531564.89,
           "rozdil_proti_schvalenemu": -12048435.11,
+          "rozdil_proti_upravenemu": -12303435.11,
           "plneni_pct": 11.1
         },
         {
@@ -1620,6 +1753,7 @@
           "upraveny": 123771130.0,
           "skutecnost": 102986846.66,
           "rozdil_proti_schvalenemu": -9958753.34,
+          "rozdil_proti_upravenemu": -20784283.34,
           "plneni_pct": 83.2
         },
         {
@@ -1629,6 +1763,7 @@
           "upraveny": 8342180.0,
           "skutecnost": 5731734.91,
           "rozdil_proti_schvalenemu": -4514265.09,
+          "rozdil_proti_upravenemu": -2610445.09,
           "plneni_pct": 68.7
         },
         {
@@ -1638,6 +1773,7 @@
           "upraveny": 77869380.0,
           "skutecnost": 71439722.07,
           "rozdil_proti_schvalenemu": 3636022.07,
+          "rozdil_proti_upravenemu": -6429657.93,
           "plneni_pct": 91.7
         },
         {
@@ -1647,6 +1783,7 @@
           "upraveny": 39726340.0,
           "skutecnost": 36233362.91,
           "rozdil_proti_schvalenemu": 3125362.91,
+          "rozdil_proti_upravenemu": -3492977.09,
           "plneni_pct": 91.2
         },
         {
@@ -1656,6 +1793,7 @@
           "upraveny": 37334910.0,
           "skutecnost": 32159277.43,
           "rozdil_proti_schvalenemu": 2646777.43,
+          "rozdil_proti_upravenemu": -5175632.57,
           "plneni_pct": 86.1
         },
         {
@@ -1665,6 +1803,7 @@
           "upraveny": 2755280.0,
           "skutecnost": 2730689.2,
           "rozdil_proti_schvalenemu": -2319310.8,
+          "rozdil_proti_upravenemu": -24590.8,
           "plneni_pct": 99.1
         },
         {
@@ -1674,6 +1813,7 @@
           "upraveny": 89340020.0,
           "skutecnost": 85320397.76,
           "rozdil_proti_schvalenemu": -1523602.24,
+          "rozdil_proti_upravenemu": -4019622.24,
           "plneni_pct": 95.5
         }
       ]
@@ -1710,9 +1850,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 250000.0,
           "upraveny": 23614500.0,
-          "skutecnost": 1248758874.75,
-          "rozdil_proti_schvalenemu": 1248508874.75,
-          "plneni_pct": 5288.1
+          "skutecnost": 23614114.17,
+          "rozdil_proti_schvalenemu": 23364114.17,
+          "rozdil_proti_upravenemu": -385.83,
+          "plneni_pct": 100.0
         },
         {
           "kod": "22",
@@ -1721,6 +1862,7 @@
           "upraveny": 164819990.0,
           "skutecnost": 117342317.28,
           "rozdil_proti_schvalenemu": -21869382.72,
+          "rozdil_proti_upravenemu": -47477672.72,
           "plneni_pct": 71.2
         },
         {
@@ -1730,6 +1872,7 @@
           "upraveny": 11274040.0,
           "skutecnost": 8544511.31,
           "rozdil_proti_schvalenemu": -18654488.69,
+          "rozdil_proti_upravenemu": -2729528.69,
           "plneni_pct": 75.8
         },
         {
@@ -1739,6 +1882,7 @@
           "upraveny": 71408390.0,
           "skutecnost": 40753820.54,
           "rozdil_proti_schvalenemu": -17656179.46,
+          "rozdil_proti_upravenemu": -30654569.46,
           "plneni_pct": 57.1
         },
         {
@@ -1748,6 +1892,7 @@
           "upraveny": 6231760.0,
           "skutecnost": 125379.42,
           "rozdil_proti_schvalenemu": -12924620.58,
+          "rozdil_proti_upravenemu": -6106380.58,
           "plneni_pct": 2.0
         },
         {
@@ -1757,6 +1902,7 @@
           "upraveny": 47155800.0,
           "skutecnost": 40061343.83,
           "rozdil_proti_schvalenemu": 8963343.83,
+          "rozdil_proti_upravenemu": -7094456.17,
           "plneni_pct": 85.0
         },
         {
@@ -1766,6 +1912,7 @@
           "upraveny": 60265520.0,
           "skutecnost": 45390441.66,
           "rozdil_proti_schvalenemu": -5501058.34,
+          "rozdil_proti_upravenemu": -14875078.34,
           "plneni_pct": 75.3
         },
         {
@@ -1775,6 +1922,7 @@
           "upraveny": 50526300.0,
           "skutecnost": 41524886.53,
           "rozdil_proti_schvalenemu": 4559886.53,
+          "rozdil_proti_upravenemu": -9001413.47,
           "plneni_pct": 82.2
         },
         {
@@ -1784,6 +1932,7 @@
           "upraveny": 61291290.0,
           "skutecnost": 52322347.79,
           "rozdil_proti_schvalenemu": 3059347.79,
+          "rozdil_proti_upravenemu": -8968942.21,
           "plneni_pct": 85.4
         },
         {
@@ -1793,6 +1942,7 @@
           "upraveny": 122443100.0,
           "skutecnost": 110130064.45,
           "rozdil_proti_schvalenemu": -2878445.55,
+          "rozdil_proti_upravenemu": -12313035.55,
           "plneni_pct": 89.9
         }
       ]
@@ -1829,9 +1979,10 @@
           "nazev": "Finanční operace",
           "schvaleny": 270000.0,
           "upraveny": 26945400.0,
-          "skutecnost": 1112349357.7,
-          "rozdil_proti_schvalenemu": 1112079357.7,
-          "plneni_pct": 4128.2
+          "skutecnost": 26942584.07,
+          "rozdil_proti_schvalenemu": 26672584.07,
+          "rozdil_proti_upravenemu": -2815.93,
+          "plneni_pct": 100.0
         },
         {
           "kod": "21",
@@ -1840,6 +1991,7 @@
           "upraveny": 12515970.0,
           "skutecnost": 10687539.73,
           "rozdil_proti_schvalenemu": -24980460.27,
+          "rozdil_proti_upravenemu": -1828430.27,
           "plneni_pct": 85.4
         },
         {
@@ -1849,6 +2001,7 @@
           "upraveny": 121141680.0,
           "skutecnost": 79045022.67,
           "rozdil_proti_schvalenemu": -23807577.33,
+          "rozdil_proti_upravenemu": -42096657.33,
           "plneni_pct": 65.3
         },
         {
@@ -1858,6 +2011,7 @@
           "upraveny": 45964600.0,
           "skutecnost": 43746514.0,
           "rozdil_proti_schvalenemu": 22051514.0,
+          "rozdil_proti_upravenemu": -2218086.0,
           "plneni_pct": 95.2
         },
         {
@@ -1867,6 +2021,7 @@
           "upraveny": 156333850.0,
           "skutecnost": 101054274.9,
           "rozdil_proti_schvalenemu": -20789425.1,
+          "rozdil_proti_upravenemu": -55279575.1,
           "plneni_pct": 64.6
         },
         {
@@ -1876,6 +2031,7 @@
           "upraveny": 7496580.0,
           "skutecnost": 368664.64,
           "rozdil_proti_schvalenemu": -12681335.36,
+          "rozdil_proti_upravenemu": -7127915.36,
           "plneni_pct": 4.9
         },
         {
@@ -1885,6 +2041,7 @@
           "upraveny": 11055430.0,
           "skutecnost": 11028780.22,
           "rozdil_proti_schvalenemu": 10078780.22,
+          "rozdil_proti_upravenemu": -26649.78,
           "plneni_pct": 99.8
         },
         {
@@ -1894,6 +2051,7 @@
           "upraveny": 59455160.0,
           "skutecnost": 38708974.58,
           "rozdil_proti_schvalenemu": -7347345.42,
+          "rozdil_proti_upravenemu": -20746185.42,
           "plneni_pct": 65.1
         },
         {
@@ -1903,6 +2061,7 @@
           "upraveny": 100600500.0,
           "skutecnost": 63562485.05,
           "rozdil_proti_schvalenemu": -6117514.95,
+          "rozdil_proti_upravenemu": -37038014.95,
           "plneni_pct": 63.2
         },
         {
@@ -1912,6 +2071,7 @@
           "upraveny": 52394470.0,
           "skutecnost": 37985804.56,
           "rozdil_proti_schvalenemu": -4164195.44,
+          "rozdil_proti_upravenemu": -14408665.44,
           "plneni_pct": 72.5
         }
       ]
@@ -1944,21 +2104,13 @@
       "saldo_skutecne": 5942640.09,
       "nejvetsi_rozchody_oddilu": [
         {
-          "kod": "63",
-          "nazev": "Finanční operace",
-          "schvaleny": 280000.0,
-          "upraveny": 24880240.0,
-          "skutecnost": 469452621.86,
-          "rozdil_proti_schvalenemu": 469172621.86,
-          "plneni_pct": 1886.8
-        },
-        {
           "kod": "22",
           "nazev": "Doprava",
           "schvaleny": 151786200.0,
           "upraveny": 164467820.0,
           "skutecnost": 59433622.22,
           "rozdil_proti_schvalenemu": -92352577.78,
+          "rozdil_proti_upravenemu": -105034197.78,
           "plneni_pct": 36.1
         },
         {
@@ -1968,6 +2120,7 @@
           "upraveny": 119648740.0,
           "skutecnost": 45259670.58,
           "rozdil_proti_schvalenemu": -68708729.42,
+          "rozdil_proti_upravenemu": -74389069.42,
           "plneni_pct": 37.8
         },
         {
@@ -1977,6 +2130,7 @@
           "upraveny": 72948930.0,
           "skutecnost": 23715796.41,
           "rozdil_proti_schvalenemu": -47904313.59,
+          "rozdil_proti_upravenemu": -49233133.59,
           "plneni_pct": 32.5
         },
         {
@@ -1986,6 +2140,7 @@
           "upraveny": 75511370.0,
           "skutecnost": 31300132.2,
           "rozdil_proti_schvalenemu": -42599867.8,
+          "rozdil_proti_upravenemu": -44211237.8,
           "plneni_pct": 41.5
         },
         {
@@ -1995,6 +2150,7 @@
           "upraveny": 65333500.0,
           "skutecnost": 26155698.5,
           "rozdil_proti_schvalenemu": -40415801.5,
+          "rozdil_proti_upravenemu": -39177801.5,
           "plneni_pct": 40.0
         },
         {
@@ -2004,6 +2160,7 @@
           "upraveny": 98056820.0,
           "skutecnost": 36389835.6,
           "rozdil_proti_schvalenemu": -37340164.4,
+          "rozdil_proti_upravenemu": -61666984.4,
           "plneni_pct": 37.1
         },
         {
@@ -2013,6 +2170,7 @@
           "upraveny": 16251000.0,
           "skutecnost": 6534571.28,
           "rozdil_proti_schvalenemu": -33593428.72,
+          "rozdil_proti_upravenemu": -9716428.72,
           "plneni_pct": 40.2
         },
         {
@@ -2022,7 +2180,18 @@
           "upraveny": 53444300.0,
           "skutecnost": 20115074.16,
           "rozdil_proti_schvalenemu": -31940925.84,
+          "rozdil_proti_upravenemu": -33329225.84,
           "plneni_pct": 37.6
+        },
+        {
+          "kod": "63",
+          "nazev": "Finanční operace",
+          "schvaleny": 280000.0,
+          "upraveny": 24880240.0,
+          "skutecnost": 24643491.25,
+          "rozdil_proti_schvalenemu": 24363491.25,
+          "rozdil_proti_upravenemu": -236748.75,
+          "plneni_pct": 99.0
         },
         {
           "kod": "43",
@@ -2031,6 +2200,7 @@
           "upraveny": 47281400.0,
           "skutecnost": 43317047.0,
           "rozdil_proti_schvalenemu": 19532047.0,
+          "rozdil_proti_upravenemu": -3964353.0,
           "plneni_pct": 91.6
         }
       ]
