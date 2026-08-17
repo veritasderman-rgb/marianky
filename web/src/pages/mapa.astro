@@ -160,6 +160,7 @@ for (const s of SKUPINY) {
     druh,
     prvky: prvkyPamatek(vyber, barva),
     zapnuta: vyber.length <= PRAH_VYCHOZIHO_VYPNUTI,
+    pruhledna: druh === 'plocha',
     legenda: [{ nazev: s.nazev, barva, tvar: 'rect' }],
     zdroj: zPamatek.data.zdroj ?? 'neuveden',
     licence: zPamatek.data.licence,
@@ -219,6 +220,7 @@ function vrstvyZeSouboru(g: GeoSoubor, prvniSlot: number): VrstvaMapy[] {
       })),
       zapnuta: s.prvky.length <= PRAH_VYCHOZIHO_VYPNUTI,
       bezTooltipu: s.prvky.length > PRAH_VYCHOZIHO_VYPNUTI,
+      pruhledna: druh === 'plocha',
       legenda: [{ nazev: s.nazev, barva, tvar: 'rect' as const }],
       zdroj: g.zdroj ?? `soubor ${g.cesta}`,
       licence: g.licence,
@@ -318,12 +320,12 @@ const dlazdice: Polozka[] = maData
             : 'data o památkách zatím nejsou',
       },
       {
-        popisek: 'Zápis UNESCO',
-        hodnota: unesco.length > 0 ? cislo(unesco.length) : '—',
+        popisek: 'Uvnitř statku UNESCO',
+        hodnota: vStatku.length > 0 ? cislo(vStatku.length) : '—',
         doplnek:
-          unesco.length > 0
-            ? unesco.map((p) => p.nazev).join(', ')
-            : 'zápis světového dědictví data u žádné položky neuvádějí',
+          vStatku.length > 0
+            ? 'památek leží uvnitř statku — je to údaj o poloze, ne o vlastním zápisu'
+            : 'zdroj u žádné památky polohu vůči statku neuvádí',
       },
     ]
   : [];
@@ -379,14 +381,22 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
             <p class="karta__podnadpis">
               Označení se bere výhradně z kódu ochrany, který u záznamu uvádí Národní památkový
               ústav — ne z názvu a ne z toho, co se o městě obecně ví.
+              {vStatku.length > 0 && (
+                <>
+                  {' '}Dalších {cislo(vStatku.length)}{' '}
+                  {sklonuj(vStatku.length, 'památka leží', 'památky leží', 'památek leží')} uvnitř
+                  statku. To je údaj o poloze: samy na seznamu světového dědictví zapsané nejsou.
+                </>
+              )}
             </p>
             <div class="tabulka-obal">
               <table>
                 <thead>
                   <tr>
-                    <th scope="col">Název statku</th>
+                    <th scope="col">Název</th>
                     <th scope="col">Typ ochrany</th>
                     <th scope="col">Rejstřík ÚSKP</th>
+                    <th scope="col" class="cislo">Chráněno od</th>
                     <th scope="col">Stav</th>
                   </tr>
                 </thead>
@@ -394,8 +404,9 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
                   {unesco.map((p) => (
                     <tr>
                       <td>{p.url ? <a href={p.url} rel="noreferrer noopener">{p.nazev}</a> : p.nazev}</td>
-                      <td>{p.typOchrany ?? 'v datech není'}</td>
+                      <td>{p.ochrana ?? 'v datech není'}</td>
                       <td class="mono">{p.rejstrik ?? '—'}</td>
+                      <td class="cislo">{p.rokZapisu === null ? '—' : p.rokZapisu}</td>
                       <td>{p.fazeOchrany ?? 'v datech není'}</td>
                     </tr>
                   ))}
@@ -439,7 +450,7 @@ const bezPolohy = pamatky.filter((p) => !p.maPolohu);
                   {[...new Map([...bezPolohy, ...zbylePamatky].map((p) => [p.id, p])).values()].map((p) => (
                     <tr>
                       <td>{p.url ? <a href={p.url} rel="noreferrer noopener">{p.nazev}</a> : p.nazev}</td>
-                      <td>{p.typOchrany ?? 'v datech není'}</td>
+                      <td>{p.ochrana ?? 'v datech není'}</td>
                       <td>{p.adresa ?? '—'}</td>
                       <td class="mono">{p.rejstrik ?? '—'}</td>
                     </tr>

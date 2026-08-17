@@ -1210,6 +1210,14 @@ th.cislo {
   stroke-linejoin: round;
 }
 
+/* Překrývající se plochy (ochranná území, katastry). Bez průhlednosti by
+   největší polygon všechno pod sebou schoval. U choroplethu se nepoužívá —
+   prosvítající pozadí by posunulo barvu a rozbilo ověřenou škálu. */
+.mapa-plocha--pruhledna {
+  fill-opacity: 0.45;
+  stroke-opacity: 0.9;
+}
+
 /* Plocha, o které data hodnotu nemají. Musí být rozpoznatelná od nejnižšího
    kroku rampy — „nezjištěno" není „málo". */
 .mapa-plocha--bez-dat {

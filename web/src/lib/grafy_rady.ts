@@ -129,7 +129,8 @@ export interface SerieRady {
  * Barvu určuje klíč série, ne pořadí; sedmá a další série spadne do „Ostatní".
  */
 export function grafSpojnice(
-  roky: number[],
+  /** Popisky os X v pořadí — roky, měsíce, cokoliv spojitého. */
+  roky: (number | string)[],
   serie: SerieRady[],
   titulek: string,
   jednotka: string | null,
@@ -189,24 +190,26 @@ export function grafSpojnice(
       v: s.hodnoty[i] === null || s.hodnoty[i] === undefined ? 'údaj není' : formatuj(s.hodnoty[i] as number),
     }));
     casti.push(
-      `<g class="g-sloupec" ${tipAtribut(String(rok), radky)} role="img" aria-label="${escSvg(`Rok ${rok}`)}">`,
+      `<g class="g-sloupec" ${tipAtribut(String(rok), radky)} role="img" aria-label="${escSvg(String(rok))}">`,
       `<rect class="g-terc" x="${(x(i) - sirkaTerce / 2).toFixed(1)}" y="${m.t}" width="${sirkaTerce.toFixed(1)}" height="${ph}"/>`,
       '</g>',
     );
     if (i % krokPopisku === 0) {
-      casti.push(`<text class="g-popisek g-popisek--x" x="${x(i).toFixed(1)}" y="${m.t + ph + 24}">${rok}</text>`);
+      casti.push(
+        `<text class="g-popisek g-popisek--x" x="${x(i).toFixed(1)}" y="${m.t + ph + 24}">${escSvg(String(rok))}</text>`,
+      );
     }
   });
 
   return {
     sirka: W,
-    svg: obalSvgGrafu(W, H, casti.join(''), `${titulek}: spojnicový graf, ${serie.length} řad, ${roky.length} let`),
+    svg: obalSvgGrafu(W, H, casti.join(''), `${titulek}: spojnicový graf, ${serie.length} řad, ${roky.length} období`),
     legenda:
       serie.length > 1
         ? serie.map((s, i) => ({ nazev: s.nazev, barva: barva(i), tvar: 'rect' as const }))
         : null,
     tabulka: {
-      hlavicka: [{ nazev: 'Rok' }, ...serie.map((s) => ({ nazev: `${s.nazev}${jednotka ? ` (${jednotka})` : ''}`, cislo: true }))],
+      hlavicka: [{ nazev: 'Období' }, ...serie.map((s) => ({ nazev: `${s.nazev}${jednotka ? ` (${jednotka})` : ''}`, cislo: true }))],
       radky: roky.map((rok, i) => [
         String(rok),
         ...serie.map((s) => (s.hodnoty[i] === null || s.hodnoty[i] === undefined ? 'údaj není' : formatuj(s.hodnoty[i] as number))),

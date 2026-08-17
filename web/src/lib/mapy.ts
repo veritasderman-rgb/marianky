@@ -168,6 +168,13 @@ export interface VrstvaMapy {
    * megabajty HTML. Obsah nesou `<title>` a tabulka pod mapou.
    */
   bezTooltipu?: boolean;
+  /**
+   * Poloprůhledná výplň. Patří vrstvám, které se navzájem překrývají (ochranná
+   * území, katastry) — bez ní by největší polygon všechno pod sebou schoval.
+   * U choroplethu se NEPOUŽÍVÁ: prosvítající pozadí by posunulo barvu a rozbilo
+   * ověřenou škálu.
+   */
+  pruhledna?: boolean;
   legenda: LegendaPolozka[];
   /** Odkud data pocházejí — u map povinné (§3.6). */
   zdroj: string;
@@ -246,7 +253,7 @@ export function mapaSvg(vrstvy: VrstvaMapy[], nastaveni: Nastaveni): Mapa {
     const obsah: string[] = [];
     for (const p of v.prvky) {
       if (p.tvary.length === 0) continue;
-      obsah.push(prvekSvg(p, v.druh, proj, v.bezTooltipu === true));
+      obsah.push(prvekSvg(p, v.druh, proj, v.bezTooltipu === true, v.pruhledna === true));
     }
     if (obsah.length === 0) continue;
     // Barva vrstvy kreslené nalehko sedí na skupině, ne na každém prvku.
@@ -315,9 +322,11 @@ function prvekSvg(
   druh: Druh,
   proj: (lon: number, lat: number) => [number, number],
   nalehko = false,
+  pruhledna = false,
 ): string {
   const tridy = ['mapa-prvek', `mapa-prvek--${druh}`];
   if (p.bezDat) tridy.push('mapa-prvek--bez-dat');
+  const tridaPlochy = pruhledna ? 'mapa-plocha mapa-plocha--pruhledna' : 'mapa-plocha';
 
   // U vrstvy kreslené nalehko nese barvu skupina vrstvy, ne každý prvek —
   // u tisíců bodů ušetří opakovaný atribut stovky kilobajtů HTML.
@@ -343,7 +352,7 @@ function prvekSvg(
         telo.push(
           p.bezDat
             ? `<path class="mapa-plocha mapa-plocha--bez-dat" d="${d}" fill-rule="evenodd"/>`
-            : `<path class="mapa-plocha" d="${d}"${vypln} fill-rule="evenodd"/>`,
+            : `<path class="${tridaPlochy}" d="${d}"${vypln} fill-rule="evenodd"/>`,
         );
       }
     }
