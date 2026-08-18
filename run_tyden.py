@@ -44,6 +44,10 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.pamatky",   "Kulturní památky",               False),
     ("scrapers.uzemni_plan", "Územní plánování",             False),
     ("scrapers.monitor",   "Rozpočet z Monitoru st. pokladny", False),
+    # Komise jsou místo, kde návrh vzniká dřív, než o něm hlasuje rada.
+    # Sběr je pomalý (stovky PDF s tempem šetrným k webu města), proto
+    # není povinný — když se nedoběhne, zbytek běhu tím netrpí.
+    ("scrapers.komise",    "Komise, výbory a zápisy z jednání", False),
 ]
 
 # Pořadí je závazné: propojení a řetěz čtou výstup agregace peněz,
@@ -68,6 +72,7 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     # Schémata čtou hotové výstupy ostatních modulů i seznam kroků z tohohle
     # souboru. Nejsou povinná: bez nich web funguje, jen stránka /diagramy
     # napíše, že se je nepodařilo spočítat.
+    ("pipeline.komise_prehled", "Rozbor zápisů z komisí",       False),
     ("pipeline.diagramy",       "Schémata projektu a města",    False),
 ]
 

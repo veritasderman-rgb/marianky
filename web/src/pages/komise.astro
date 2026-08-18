@@ -1,0 +1,351 @@
+---
+/**
+ * Komise a výbory — kdo v nich sedí a co navrhují.
+ *
+ * Komise jsou místo, kde návrh vzniká dřív, než o něm hlasuje rada. Ze
+ * zápisů se dá vyčíst věta „Komise kultury doporučuje Radě města podpořit
+ * žádost o dotaci…“ — a totéž se pak objeví v usnesení rady, které web už
+ * sleduje. Bez zápisů je vidět rozhodnutí, ale ne to, kde se vzalo.
+ *
+ * Stránka nic nevykládá. Doporučení vypisuje tak, jak je v zápisu, a
+ * netvrdí, že se jím rada řídila.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import CastiPoCastech from '../components/CastiPoCastech.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { nactiJson } from '../lib/data';
+import { cislo, datumKratke, sklonuj } from '../lib/format';
+import { esc } from '../lib/polozka_hlasovani';
+
+interface Osoba {
+  jmeno: string;
+  id: string;
+  role: string | null;
+  url: string;
+}
+
+interface Organ {
+  id: string;
+  nazev: string;
+  druh: string;
+  url: string;
+  cinnost: string | null;
+  osoby: Osoba[];
+  stav: string;
+}
+
+interface Usneseni {
+  text: string;
+  smer: string | null;
+  zdroj?: string;
+  zkraceno?: boolean;
+  hlasovani: { pro: number; proti: number; zdrzel: number } | null;
+}
+
+interface Zapis {
+  id: string;
+  komise: string | null;
+  datum: string | null;
+  cislo_jednani: number | null;
+  url: string;
+  stazeno: number | null;
+  pritomni: string[] | null;
+  omluveni: string[] | null;
+  neomluveni: string[] | null;
+  hoste: string[] | null;
+  body: string[];
+  usneseni: Usneseni[];
+  rozebrano: boolean;
+}
+
+const zOrganu = nactiJson<{ organy: Organ[]; celkem?: number }>('komise/organy.json', { organy: [] });
+const zPrehledu = nactiJson<{
+  souhrn?: Record<string, unknown>;
+  zapisy: Zapis[];
+  nerozebrane?: unknown[];
+}>('komise/prehled.json', { zapisy: [] });
+
+const organy = zOrganu.data?.organy ?? [];
+const zapisy = zPrehledu.data?.zapisy ?? [];
+const souhrn = (zPrehledu.data?.souhrn ?? {}) as Record<string, number>;
+
+/* Návrhy napříč komisemi, od nejnovějšího. Tohle je to, kvůli čemu
+   stránka vznikla — „co navrhují“. */
+interface Navrh {
+  datum: string | null;
+  komise: string | null;
+  cislo_jednani: number | null;
+  url: string;
+  u: Usneseni;
+}
+
+const navrhy: Navrh[] = zapisy
+  .flatMap((z) =>
+    z.usneseni.map((u) => ({
+      datum: z.datum,
+      komise: z.komise,
+      cislo_jednani: z.cislo_jednani,
+      url: z.url,
+      u,
+    })),
+  )
+  .sort((a, b) => (b.datum ?? '').localeCompare(a.datum ?? ''));
+
+const POPIS_SMERU: Record<string, string> = {
+  doporucuje: 'doporučuje',
+  nedoporucuje: 'nedoporučuje',
+  navrhuje: 'navrhuje',
+  zada: 'žádá',
+  uklada: 'ukládá',
+  souhlasi: 'souhlasí',
+  nesouhlasi: 'nesouhlasí',
+  bere_na_vedomi: 'bere na vědomí',
+};
+
+const dlazdice: Polozka[] = [
+  { popisek: 'Komisí a výborů', hodnota: cislo(organy.length), doplnek: 'rady a zastupitelstva' },
+  { popisek: 'Zápisů s textem', hodnota: cislo(zapisy.length), doplnek: 'z jednání komisí' },
+  {
+    popisek: 'Návrhů a usnesení',
+    hodnota: cislo(navrhy.length),
+    doplnek: `z toho ${cislo(souhrn.doporuceni_rade ?? 0)} doporučení radě`,
+  },
+  {
+    popisek: 'Členů v orgánech',
+    hodnota: cislo(organy.reduce((s, o) => s + o.osoby.length, 0)),
+    doplnek: 'jak je uvádí web města',
+  },
+];
+
+/* Návrhy se vypisují po dávkách — 442 položek najednou by na telefonu
+   udělalo z jedné stránky tisíce DOM uzlů. */
+function navrhHtml(n: Navrh): string {
+  const smer = n.u.smer ? POPIS_SMERU[n.u.smer] ?? n.u.smer : null;
+  const hl = n.u.hlasovani;
+  const hlas = hl
+    ? `<span class="rozdeleni-hlasu"><span>pro ${hl.pro}</span><span>proti ${hl.proti}</span>` +
+      `<span>zdrželo se ${hl.zdrzel}</span></span>`
+    : `<span class="stav-dat__zdroj">hlasování zápis neuvádí</span>`;
+  /* Věta z textu není totéž co formální usnesení, o kterém se hlasovalo.
+     Rozdíl musí být vidět, ne schovaný v datech. */
+  const zdroj =
+    n.u.zdroj === 'veta'
+      ? `<span class="znacka">věta ze zápisu</span>`
+      : `<span class="znacka">usnesení komise</span>`;
+  return (
+    `<li class="polozka">` +
+    `<div class="polozka__hlava"><span>${esc(n.komise ?? 'komise neurčena')}</span>` +
+    `<span>${esc(n.datum ? datumKratke(n.datum) : 'datum neuvedeno')}</span>` +
+    (n.cislo_jednani ? `<span class="mono">jednání č. ${n.cislo_jednani}</span>` : '') +
+    `</div>` +
+    `<p class="polozka__nazev">${esc(n.u.text)}</p>` +
+    /* Zkrácený text se musí poznat, aby se necitoval jako celý. */
+    (n.u.zkraceno
+      ? `<p class="stav-dat__zdroj">Text je zkrácený — celé znění je v zápisu.</p>`
+      : '') +
+    `<div class="polozka__meta">` +
+    (smer ? `<span class="znacka znacka--vazba">${esc(smer)}</span>` : '') +
+    `${zdroj}${hlas}` +
+    `<a href="${esc(n.url)}" rel="noreferrer noopener">zápis (PDF)</a>` +
+    `</div></li>`
+  );
+}
+
+const davkyNavrhu = (() => {
+  const NA_DAVKU = 40;
+  const kusy: string[] = [];
+  for (let i = 0; i < navrhy.length; i += NA_DAVKU) {
+    kusy.push(`<ul class="seznam">${navrhy.slice(i, i + NA_DAVKU).map(navrhHtml).join('')}</ul>`);
+  }
+  return kusy;
+})();
+
+/* Kolik zápisů má která komise — pro přehled orgánů. */
+const zapisuKomise = new Map<string, number>();
+for (const z of zapisy) {
+  const k = z.komise ?? '';
+  zapisuKomise.set(k, (zapisuKomise.get(k) ?? 0) + 1);
+}
+
+const komiseRady = organy.filter((o) => o.druh === 'komise-rady');
+const vybory = organy.filter((o) => o.druh !== 'komise-rady');
+---
+
+<Zaklad
+  titulek="Komise a výbory"
+  aktivni="komise"
+  nadpis="Komise a výbory"
+  uvod="Komise rady a výbory zastupitelstva jsou místo, kde návrh vzniká dřív, než o něm rada hlasuje. Zápisy z jednání jsou veřejné a je z nich vidět, co komise doporučila — i kdo na jednání přišel."
+>
+  <StavDat
+    stav={zOrganu.stav}
+    zdroj={zOrganu.zdroj}
+    co="Složení komisí a výborů"
+    prazdno={zOrganu.stav === 'ok' && organy.length === 0}
+    modul="scrapers/komise.py"
+  />
+  <StavDat
+    stav={zPrehledu.stav}
+    zdroj={zPrehledu.zdroj}
+    co="Zápisy z jednání"
+    prazdno={zPrehledu.stav === 'ok' && zapisy.length === 0}
+    modul="pipeline/komise_prehled.py"
+  />
+
+  {organy.length > 0 && <Dlazdice polozky={dlazdice} />}
+
+  {
+    navrhy.length > 0 && (
+      <section>
+        <h2>Co komise navrhují</h2>
+        <p class="uvod">
+          Věty, kterými se komise obracejí na radu, od nejnovější. Vypsané tak, jak stojí
+          v zápisu. Přehled z nich nevyvozuje závěr a netvrdí, že se jimi rada řídila —
+          jestli návrh prošel, je vidět v <a href="/usneseni">usneseních</a>.
+        </p>
+        <CastiPoCastech
+          casti={davkyNavrhu}
+          id="navrhy-komisi"
+          poCastech={1}
+          jednotka="dávek po 40"
+        />
+      </section>
+    )
+  }
+
+  {
+    komiseRady.length > 0 && (
+      <section>
+        <h2>Komise rady</h2>
+        <p class="uvod">
+          Jednání komisí jsou podle usnesení rady č. RM/555/16 veřejná.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Komise</th>
+                <th scope="col">Čím se zabývá</th>
+                <th scope="col" class="cislo">Členů</th>
+                <th scope="col" class="cislo">Zápisů</th>
+              </tr>
+            </thead>
+            <tbody>
+              {komiseRady.map((o) => (
+                <tr>
+                  <td>
+                    <a href={o.url} rel="noreferrer noopener">{o.nazev}</a>
+                  </td>
+                  <td>{o.cinnost ?? 'web města neuvádí'}</td>
+                  <td class="cislo">{o.osoby.length > 0 ? cislo(o.osoby.length) : '—'}</td>
+                  <td class="cislo">
+                    {zapisuKomise.get(o.nazev)
+                      ? cislo(zapisuKomise.get(o.nazev)!)
+                      : 'žádný nezveřejněn'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    vybory.length > 0 && (
+      <section>
+        <h2>Výbory zastupitelstva</h2>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Výbor</th>
+                <th scope="col">Co kontroluje</th>
+                <th scope="col" class="cislo">Členů</th>
+              </tr>
+            </thead>
+            <tbody>
+              {vybory.map((o) => (
+                <tr>
+                  <td>
+                    <a href={o.url} rel="noreferrer noopener">{o.nazev}</a>
+                  </td>
+                  <td>{o.cinnost ?? 'web města neuvádí'}</td>
+                  <td class="cislo">{o.osoby.length > 0 ? cislo(o.osoby.length) : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    organy.some((o) => o.osoby.length > 0) && (
+      <section>
+        <h2>Kdo v komisích sedí</h2>
+        <p class="uvod">
+          Složení tak, jak je uvádí web města. Role se přebírá ze zdroje; kde chybí, je
+          prázdná — doplnit „člen“ by byl dohad.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Orgán</th>
+                <th scope="col">Osoba</th>
+                <th scope="col">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {organy.flatMap((o) =>
+                o.osoby.map((os) => (
+                  <tr>
+                    <td>{o.nazev}</td>
+                    <td>
+                      <a href={os.url} rel="noreferrer noopener">{os.jmeno}</a>
+                    </td>
+                    <td>{os.role ?? '—'}</td>
+                  </tr>
+                )),
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  <JakPocitame>
+    <p>
+      Zápisy z jednání zveřejňuje město v dokumentech úřadu. Sběrač stáhne rejstřík
+      i soubory a převede PDF na text; rozbor pak z textu vytáhne účast, body programu
+      a věty, kterými se komise obrací na radu.
+    </p>
+    <p>
+      <strong>Formální usnesení a věta ze zápisu nejsou totéž.</strong> O usnesení se
+      hlasovalo a zápis u něj uvádí počty. Starší zápisy bloky „Usnesení“ nemají a návrh
+      je v nich běžnou větou („Komise sportu jednohlasně odsouhlasila…“). Obojí se vypisuje,
+      ale je u toho napsané, odkud pochází — bez toho rozlišení by starší jednání vypadala
+      jako schůzky, na kterých komise nic nenavrhla.
+    </p>
+    <p>
+      <strong>Ne všechno se podařilo přečíst.</strong> Z {cislo(zapisy.length)}{' '}
+      {sklonuj(zapisy.length, 'zápisu', 'zápisů', 'zápisů')} s textovou vrstvou se rozbor
+      povedl u {cislo(souhrn.rozebranych ?? 0)}; u {cislo(souhrn.nerozebranych ?? 0)} se
+      nepodařilo najít ani bod programu, ani usnesení. Část dokumentů v rejstříku jsou
+      navíc skeny nebo archivy ZIP, ze kterých se text vytáhnout nedá. Počty jsou v datech,
+      aby se prázdno nepletlo s tím, že komise nic neprojednala.
+    </p>
+    <p>
+      <strong>Přehled nevykládá, co návrh znamená</strong>, a netvrdí, že se jím rada
+      řídila. Spojení konkrétního doporučení s pozdějším usnesením rady zatím neděláme —
+      byl by to odhad a musel by být jako odhad označený.
+    </p>
+  </JakPocitame>
+</Zaklad>
