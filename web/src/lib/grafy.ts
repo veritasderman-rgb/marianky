@@ -173,7 +173,12 @@ export function grafObjemPoLetech(body: BodObjemu[], titulek = 'Objem plateb po 
     legenda: null, // jedna série — legenda by jen zopakovala název grafu
     tabulka: {
       hlavicka: [{ nazev: 'Rok' }, { nazev: 'Objem', cislo: true }, { nazev: 'Smluv', cislo: true }],
-      radky: body.map((b) => [String(b.rok), kc(b.castka), b.smluv === null ? 'v datech není' : cislo(b.smluv)]),
+      // Tabulka jde od NEJNOVĚJŠÍHO roku, graf zůstává chronologicky.
+      // Čtenář hledá nejdřív poslední rok; kdyby výpis začínal rokem 1994,
+      // vidí na prvních řádcích prázdné buňky a musí se prorolovat.
+      radky: [...body]
+        .reverse()
+        .map((b) => [String(b.rok), kc(b.castka), b.smluv === null ? 'v datech není' : cislo(b.smluv)]),
     },
     poznamky: [],
   };
@@ -349,7 +354,10 @@ export function grafSkladany(roky: number[], serie: SerieSkladana[], titulek: st
     })),
     tabulka: {
       hlavicka: [{ nazev: 'Rok' }, ...serie.map((s) => ({ nazev: s.nazev, cislo: true })), { nazev: 'Celkem', cislo: true }],
-      radky: roky.map((rok, i) => [String(rok), ...serie.map((s) => kc(s.hodnoty[i] ?? 0)), kc(soucty[i])]),
+      // Od nejnovějšího roku — viz poznámka u sloupcového grafu.
+      radky: roky
+        .map((rok, i) => [String(rok), ...serie.map((s) => kc(s.hodnoty[i] ?? 0)), kc(soucty[i])])
+        .reverse(),
     },
     poznamky: [],
   };

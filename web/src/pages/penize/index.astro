@@ -262,6 +262,16 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
       <>
         <Dlazdice polozky={dlazdice} />
 
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Grafy ukazují hodnotu smluv podle data podpisu, ne skutečné platby v tom roce.</strong>{' '}
+          U víceletých smluv se tak celý závazek objeví v roce, kdy se podepsal. Nejvýraznější
+          případ: in-house smlouva města s vlastní firmou TDS ze 16. prosince 2025 má hodnotu
+          724,5 milionu — <strong>víc, než činily všechny výdaje města za celý rok 2025</strong>{' '}
+          (624,5 milionu podle Monitoru státní pokladny). Není to chyba v datech ani útrata
+          jediného roku, ale závazek rozložený do dalších let. Sloupec za rok 2025 je proto
+          nutné číst takto, ne jako peníze, které v tom roce odešly.
+        </p>
+
         {kindexZaznam?.popis && <p class="graf-poznamka">K-index {kindexZaznam.stupen}: {kindexZaznam.popis}</p>}
         {bezIca > 0 && (
           <p class="graf-poznamka">

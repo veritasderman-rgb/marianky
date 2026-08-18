@@ -283,22 +283,39 @@ const prazdne = sekce.filter((x) => !x.plna && !x.varovna);
 
 /* ─────────────────────────  Čísla týdne  ──────────────────────────────── */
 
+/* Dlaždice pojmenovává to, CO ČÍSLO JE, ne sekci, ze které pochází.
+   „Peníze města: 1,5 mil. Kč" svádí ke čtení, že tolik má město —
+   přitom je to objem smluv, které za týden přibyly do registru. */
+const POPISEK_DLAZDICE: Record<string, string> = {
+  penize: 'Nové smlouvy v registru',
+  'uredni-deska': 'Úřední deska',
+  akce: 'Co se děje ve městě',
+  media: 'Psali o nás',
+  'z-radnice': 'Z radnice',
+  zpravodaj: 'Ze zpravodaje',
+};
+
 const dlazdice: PolozkaDlazdice[] = [];
 for (const x of plne) {
   if (dlazdice.length >= 4) break;
+  const popisek = POPISEK_DLAZDICE[x.s.id] ?? x.s.nadpis;
   if (x.objem !== null && x.objem > 0) {
-    const sCastkou = x.polozek - x.bezCastky;
+    /* Chybějící cena se přizná, ale lidsky. Původní znění
+       „součet za 4 z 5 záznamů; u 1 částka v datech není" bylo
+       přesné a skoro nesrozumitelné — čtenář neví, co je „záznam",
+       a věta se čte jako omluva místo jako údaj. */
+    const smluv = `${cislo(x.polozek)} ${sklonuj(x.polozek, 'smlouva', 'smlouvy', 'smluv')} za týden`;
     dlazdice.push({
-      popisek: x.s.nadpis,
+      popisek,
       hodnota: kcZkraceno(x.objem, true),
       doplnek:
         x.bezCastky > 0
-          ? `součet za ${cislo(sCastkou)} z ${cislo(x.polozek)} záznamů; u ${cislo(x.bezCastky)} částka v datech není`
-          : `součet za ${cislo(x.polozek)} ${sklonuj(x.polozek, 'záznam', 'záznamy', 'záznamů')}`,
+          ? `${smluv}; u ${x.bezCastky === 1 ? 'jedné' : cislo(x.bezCastky)} registr cenu neuvádí`
+          : smluv,
     });
   } else {
     dlazdice.push({
-      popisek: x.s.nadpis,
+      popisek,
       hodnota: cislo(x.polozek),
       doplnek: x.s.popis ? polidstiData(x.s.popis) : undefined,
     });
