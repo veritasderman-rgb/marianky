@@ -196,10 +196,14 @@ def nacti_vstupy(log: Log) -> tuple[dict, dict[str, dict], dict[str, dict], dict
     # nedají a do propojení nevstupují — párovat je podle názvu by
     # vyrábělo shody, které nikdo neověřil.
     agregace = nacti("penize/agregace/protistrany.json") or {}
-    protistrany = {
-        p["ico"]: p for p in agregace.get("protistrany", [])
-        if p.get("klic_dle") == "ico" and p.get("ico")
-    }
+    # Jedno IČO má v agregaci až TŘI skupiny — co město zaplatilo, co
+    # inkasovalo, a co se určit nedá (nájmy a prodeje majetku, kde registr
+    # vede město jako plátce i tam, kde peníze bere). Indexovat je pouhým
+    # slovníkem podle IČO by dvě z nich tiše zahodilo.
+    protistrany: dict[str, list[dict]] = {}
+    for z in agregace.get("protistrany", []):
+        if z.get("klic_dle") == "ico" and z.get("ico"):
+            protistrany.setdefault(z["ico"], []).append(z)
     bez_ica = sum(1 for p in agregace.get("protistrany", []) if p.get("klic_dle") != "ico")
     log.info("protistrany města z registru smluv", s_icem=len(protistrany), bez_ica=bez_ica)
 
@@ -253,18 +257,33 @@ def kriteria_firmy(f: dict, protistrany: dict[str, dict], holding: dict[str, dic
         })
 
     if ico and ico in protistrany:
-        p = protistrany[ico]
+        skupiny = protistrany[ico]
+        podle_smeru = {z.get("smer"): z for z in skupiny}
+        neurcen = podle_smeru.get("neurcen")
+        hlavni = podle_smeru.get("vydaj") or podle_smeru.get("prijem") or skupiny[0]
+
+        if neurcen and not podle_smeru.get("vydaj") and not podle_smeru.get("prijem"):
+            popis = "smluvní vztah s městem; směr peněz z registru určit nelze"
+        elif neurcen:
+            popis = (("město subjektu platí" if hlavni.get("smer") == "vydaj"
+                      else "město od subjektu inkasuje")
+                     + "; u dalších smluv směr peněz určit nelze")
+        else:
+            popis = ("město subjektu platí" if hlavni.get("smer") == "vydaj"
+                     else "město od subjektu inkasuje")
+
         duvody.append({
             "kod": "obchoduje_s_mestem",
-            "popis": ("město subjektu platí" if p.get("smer") == "vydaj"
-                      else "město od subjektu inkasuje"),
-            "hodnota": p.get("celkem_czk"),
+            "popis": popis,
+            "hodnota": hlavni.get("celkem_czk"),
             "jednotka": "Kč",
-            "smluv": p.get("smluv"),
-            "smluv_bez_ceny": p.get("bez_ceny"),
-            "prvni_rok": p.get("prvni_rok"),
-            "posledni_rok": p.get("posledni_rok"),
-            "vnitromestsky_prevod": p.get("interni"),
+            "smluv": hlavni.get("smluv"),
+            "smluv_bez_ceny": hlavni.get("bez_ceny"),
+            "prvni_rok": hlavni.get("prvni_rok"),
+            "posledni_rok": hlavni.get("posledni_rok"),
+            "vnitromestsky_prevod": hlavni.get("interni"),
+            "smer_neurcen_czk": neurcen.get("celkem_czk") if neurcen else None,
+            "smer_neurcen_smluv": neurcen.get("smluv") if neurcen else None,
             "zdroj": "registr smluv přes Hlídač státu",
         })
 
@@ -605,11 +624,19 @@ def propojeni_s_mestem(firmy: list[dict], protistrany: dict[str, dict],
     """Které firmy ve městě figurují v registru smluv města — párováno podle IČO."""
     ve_meste = {f["ico"]: f for f in firmy if f.get("ico")}
     napojene = []
-    for ico, p in protistrany.items():
+    for ico, skupiny in protistrany.items():
         f = ve_meste.get(ico)
         if f is None:
             continue
+        # Jedno IČO má až tři skupiny (výdaj, příjem, neurčeno). Hlavní je
+        # ta s určeným směrem; skupina „neurčeno" se vede zvlášť, aby se
+        # nájmy nezapočítaly jako platby města.
+        podle = {z.get("smer"): z for z in skupiny}
+        p = podle.get("vydaj") or podle.get("prijem") or skupiny[0]
+        neurcen = podle.get("neurcen")
         napojene.append({
+            "smer_neurcen_czk": neurcen.get("celkem_czk") if neurcen else None,
+            "smer_neurcen_smluv": neurcen.get("smluv") if neurcen else None,
             "ico": ico,
             "nazev_ares": f.get("nazev"),
             "nazev_v_registru": p.get("nazev"),
@@ -631,7 +658,9 @@ def propojeni_s_mestem(firmy: list[dict], protistrany: dict[str, dict],
     napojene.sort(key=lambda z: z.get("celkem_czk") or 0, reverse=True)
     mimo_mesto = len(protistrany) - len(napojene)
     objem_ve_meste = sum(z["celkem_czk"] or 0 for z in napojene)
-    objem_celkem = sum(p.get("celkem_czk") or 0 for p in protistrany.values())
+    objem_celkem = sum(
+        z.get("celkem_czk") or 0 for skupiny in protistrany.values() for z in skupiny
+    )
 
     log.info("firem ve městě napojených na registr smluv", pocet=len(napojene),
              protistran_celkem=len(protistrany))

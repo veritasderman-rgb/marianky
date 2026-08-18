@@ -116,6 +116,14 @@ def agreguj_protistrany(log: Log, k_datu: date | None = None) -> dict:
             smer = s.get("smer")
             if smer not in ("vydaj", "prijem"):
                 continue
+            # Nájmy, pachty a prodeje majetku mají v registru nespolehlivý
+            # směr: zveřejňovatel (město) se zapisuje jako plátce i tam, kde
+            # peníze inkasuje. Z Café Classic tak vycházelo, že jí město platí
+            # 16 milionů, přitom kavárna platí nájem městu. Takové smlouvy
+            # dostávají vlastní směr `neurcen` — nevíme, kdo komu platil,
+            # a tvrdit jedno z toho by bylo horší než to přiznat.
+            if s.get("smer_jistota") == "neprukazne":
+                smer = "neurcen"
             klic = _klic(s)
             h = hromady.setdefault((smer, klic), {
                 "klic_dle": klic[0],
@@ -209,6 +217,10 @@ def agreguj_protistrany(log: Log, k_datu: date | None = None) -> dict:
                          "názvu (klic_dle: 'nazev').",
             "aktivni": f"Podpis smlouvy v posledních {OKNO_AKTIVNI_DNI} dnech "
                        f"(od {hranice_aktivity}).",
+            "smer_neurcen": "Nájem, pacht nebo prodej majetku, kde registr "
+                            "vede město jako plátce i tam, kde peníze inkasuje. "
+                            "Směr peněz z dat určit nelze — do součtů výdajů "
+                            "ani příjmů nevstupuje.",
             "smer": "vydaj = sledovaný subjekt je v registru veden jako plátce; "
                     "prijem = je veden jako příjemce. Směr se přebírá ze zdroje "
                     "a nepřepisuje se — u nájmů a prodejů zveřejňovatelé často "

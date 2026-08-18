@@ -15,6 +15,7 @@ vada na straně zdroje a opravovat ji dohadem by z dat udělalo dohad.
 from __future__ import annotations
 
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -78,6 +79,33 @@ def _cislo(x) -> float | None:
     return v if v != 0 else None
 
 
+# Předměty, u kterých je město typicky VLASTNÍKEM a druhá strana platí jemu.
+# „Kupní smlouva" tu schválně NENÍ — nákup zboží město opravdu platí.
+_MESTO_VLASTNIKEM = re.compile(
+    r"náj[eme]|pronáj|pacht|výpůjč|věcn[éá]\s*břemen|služebnost"
+    r"|prodej\s+(?:pozemk|nemovit|byt|objekt|budov)",
+    re.IGNORECASE,
+)
+
+
+def _smer_jistota(s: dict, smer: str) -> str:
+    """Jak spolehlivý je určený směr peněz.
+
+    Registr rozlišuje strany poli `platce` a `prijemce`, jenže zveřejňovatel
+    (tedy město) se do `platce` zapisuje i tam, kde peníze inkasuje. U nájmů
+    a prodejů majetku pak vychází, že město platí nájemci — ověřeno na
+    smlouvách s Café Classic na Hlavní 131, kde město prostor vlastní
+    a pronajímá, takže platí kavárna jemu.
+
+    Směr proto NEPŘEPISUJEME dohadem: nevíme, kdo je vlastník, a otočit ho
+    podle klíčového slova by jednu domněnku nahradilo druhou. Označíme ho
+    jako neprůkazný a přehledy ho pak nesmí vydávat za zjištěný.
+    """
+    if smer == "vydaj" and _MESTO_VLASTNIKEM.search(s.get("predmet") or ""):
+        return "neprukazne"
+    return "ze-zdroje"
+
+
 def _smer(s: dict, ico: str) -> str:
     """vydaj = sledovaný subjekt platí, prijem = inkasuje."""
     platce = (s.get("platce") or {}).get("ico")
@@ -123,6 +151,7 @@ def prevedi(s: dict, ico: str) -> dict:
         "protistrana_ico": p_ico,
         "protistrana": p_nazev,
         "smer": _smer(s, ico),
+        "smer_jistota": _smer_jistota(s, _smer(s, ico)),
         # POZOR: `sVazbouNaPolitiky` API v2 NEVYPLŇUJE — vrací null v seznamu
         # i v detailu a filtr `sVazbouNaPolitiky:1` nevrací nic. Původně tu
         # bylo bool(...), což z chybějícího údaje udělalo `false`, a všech
