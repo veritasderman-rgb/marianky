@@ -1,0 +1,194 @@
+{
+  "id": "model",
+  "nazev": "Jak jsou data poskládaná",
+  "typ": "erd",
+  "popis": "8 entit a 8 vztahů. Není to databáze — jsou to JSON soubory v data/.",
+  "entity": [
+    {
+      "id": "jednani",
+      "nazev": "Jednání",
+      "soubor": "data/usneseni/{organ}/{rok}/*.json",
+      "klic": "organ + číslo jednání",
+      "pole": [
+        "organ",
+        "cj",
+        "datum",
+        "body[]"
+      ],
+      "souboru": 690
+    },
+    {
+      "id": "usneseni",
+      "nazev": "Bod usnesení",
+      "soubor": "data/usneseni/{organ}/{rok}/*.json",
+      "klic": "organ + cj + bod",
+      "pole": [
+        "bod",
+        "nazev",
+        "cislo_usneseni",
+        "castka_czk",
+        "tagy[]",
+        "url"
+      ],
+      "souboru": 690
+    },
+    {
+      "id": "hlasovani",
+      "nazev": "Hlasování",
+      "soubor": "data/hlasovani/{organ}/{rok}/*.json",
+      "klic": "organ + cj + bod",
+      "pole": [
+        "bod",
+        "vysledek",
+        "pro",
+        "proti",
+        "zdrzel",
+        "jmenovite[]"
+      ],
+      "souboru": 656
+    },
+    {
+      "id": "osoba",
+      "nazev": "Osoba",
+      "soubor": "data/lide/osobnosti.json",
+      "klic": "slug (prijmeni-jmeno)",
+      "pole": [
+        "id",
+        "jmeno",
+        "role[]",
+        "uskupeni",
+        "obdobi"
+      ],
+      "souboru": 1
+    },
+    {
+      "id": "smlouva",
+      "nazev": "Smlouva",
+      "soubor": "data/penize/smlouvy/{ico}.json",
+      "klic": "id smlouvy v registru",
+      "pole": [
+        "datum",
+        "castka_czk",
+        "predmet",
+        "protistrana_ico",
+        "smer",
+        "smer_jistota"
+      ],
+      "souboru": 25
+    },
+    {
+      "id": "subjekt",
+      "nazev": "Firma / subjekt",
+      "soubor": "data/firmy/subjekty.json",
+      "klic": "IČO",
+      "pole": [
+        "ico",
+        "nazev",
+        "pravni_forma",
+        "sidlo",
+        "vznik"
+      ],
+      "souboru": 1
+    },
+    {
+      "id": "retez",
+      "nazev": "Řetěz usnesení → smlouva",
+      "soubor": "data/retez/retezy.json",
+      "klic": "id usnesení + id smlouvy",
+      "pole": [
+        "jistota",
+        "skore",
+        "signaly[]",
+        "odstup_dni"
+      ],
+      "souboru": 1
+    },
+    {
+      "id": "angazma",
+      "nazev": "Angažmá osoby ve firmě",
+      "soubor": "data/propojeni/osoby_firmy.json",
+      "klic": "osoba_id + IČO",
+      "pole": [
+        "vztah_k_mestu",
+        "funkce",
+        "od",
+        "do",
+        "overeni.stav"
+      ],
+      "souboru": 1
+    }
+  ],
+  "vztahy": [
+    {
+      "od": "jednani",
+      "do": "usneseni",
+      "popis": "obsahuje body",
+      "kardinalita": "1:N",
+      "jistota": "jista",
+      "pres": "stejný soubor"
+    },
+    {
+      "od": "usneseni",
+      "do": "hlasovani",
+      "popis": "o bodu se hlasovalo",
+      "kardinalita": "1:1",
+      "jistota": "jista",
+      "pres": "organ + cj + bod"
+    },
+    {
+      "od": "hlasovani",
+      "do": "osoba",
+      "popis": "jmenovité hlasy",
+      "kardinalita": "N:M",
+      "jistota": "jista",
+      "pres": "osoba_id"
+    },
+    {
+      "od": "usneseni",
+      "do": "retez",
+      "popis": "bod vstupuje do řetězu",
+      "kardinalita": "1:N",
+      "jistota": "jista",
+      "pres": "id bodu"
+    },
+    {
+      "od": "retez",
+      "do": "smlouva",
+      "popis": "bod se nejspíš týká této smlouvy",
+      "kardinalita": "N:M",
+      "jistota": "odhad",
+      "pres": "IČO, název, částka, čas"
+    },
+    {
+      "od": "smlouva",
+      "do": "subjekt",
+      "popis": "protistrana smlouvy",
+      "kardinalita": "N:1",
+      "jistota": "jista",
+      "pres": "IČO"
+    },
+    {
+      "od": "osoba",
+      "do": "angazma",
+      "popis": "osoba je ve firmě",
+      "kardinalita": "1:N",
+      "jistota": "overovana",
+      "pres": "jméno → Hlídač → IČO"
+    },
+    {
+      "od": "angazma",
+      "do": "subjekt",
+      "popis": "angažmá se týká firmy",
+      "kardinalita": "N:1",
+      "jistota": "jista",
+      "pres": "IČO"
+    }
+  ],
+  "metodika": [
+    "Data nejsou v databázi. Jsou to JSON soubory a vztahy nedrží cizí klíč — drží je hodnota: IČO, slug osoby, číslo bodu usnesení.",
+    "Vztah označený jako ODHAD nemá ve zdrojích oporu a spočítal ho tenhle projekt. Týká se to vazby usnesení → smlouva, která je nejcennější a zároveň nejméně jistá věc v celém přehledu.",
+    "Vztah označený jako OVĚŘOVANÝ vzniká dohledáním jména v rejstříku. Nese vlastní stav ověření a nejednoznačná shoda se nesmí vydávat za potvrzenou."
+  ],
+  "zdroj": "config/diagramy.json",
+  "stav": "ok"
+}

@@ -11,6 +11,8 @@
  * zdrojového souboru, aby na webu stálo přesně to, podle čeho se párovalo.
  */
 import Zaklad from '../layouts/Zaklad.astro';
+import DiagramKarta from '../components/DiagramKarta.astro';
+import { nactiDiagram } from '../lib/diagramy';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import JakPocitame from '../components/JakPocitame.astro';
@@ -92,6 +94,9 @@ function popisOdstupu(r: Retez): string | null {
     ? `smlouva podepsaná ${cislo(d)} ${tvar} po usnesení`
     : `smlouva podepsaná ${cislo(d)} ${tvar} PŘED usnesením`;
 }
+
+/* Schéma k této sekci. Kompletní sada je na /diagramy. */
+const schemaRetez = nactiDiagram('retez').data;
 ---
 
 <Zaklad
@@ -490,6 +495,19 @@ function popisOdstupu(r: Retez): string | null {
           ))}
         </dl>
       </JakPocitame>
+    )
+  }
+
+  {
+    schemaRetez && (
+      <section>
+        <h2>Kde se řetěz trhá</h2>
+        <p class="uvod">
+          Schéma se kreslí ze stejných dat jako tahle stránka.
+          <a href="/diagramy">Všechna schémata</a>.
+        </p>
+        <DiagramKarta diagram={schemaRetez} uroven="h3" sbalene />
+      </section>
     )
   }
 </Zaklad>

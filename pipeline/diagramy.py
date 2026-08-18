@@ -15,7 +15,7 @@ Vznikají tady, ne v kreslicím nástroji, ze tří důvodů:
 CO JE ZJIŠTĚNÉ A CO TVRZENÉ
 ---------------------------
 Šest diagramů je celé z dat. Dva stojí na `config/diagramy.json`, protože
-mapu „který zdroj plní kterou sekci" a datový model projektu nelze ze sběru
+mapu „který zdroj plní kterou sekci“ a datový model projektu nelze ze sběru
 odvodit — to je znalost o projektu, ne údaj o městě. Každý diagram nese pole
 `zdroj`, kde je napsané, odkud pochází.
 
@@ -72,7 +72,7 @@ def _chybi(diagram_id: str, nazev: str, duvod: str, zdroj: str) -> dict:
 # ═════════════════════════  1. Vlastnická struktura  ══════════════════════
 
 # Jak se jmenují typy subjektů v souhrnu, česky a v pořadí, ve kterém patří
-# do diagramu. Pořadí je od „nejvíc obchodní" po „nejvíc služba".
+# do diagramu. Pořadí je od „nejvíc obchodní“ po „nejvíc služba“.
 SKUPINY_HOLDINGU = [
     ("obchodni_spolecnost", "Obchodní společnosti", "Město drží podíl. Hospodaří samostatně."),
     ("prispevkova_organizace", "Příspěvkové organizace", "Zřízené městem, financované z rozpočtu."),
@@ -312,9 +312,9 @@ def diagram_retez() -> dict:
             "protistrany, shoda částky a časový odstup podpisu.",
             "Nízká jistota znamená, že sedí jen část signálů, nebo že stejně dobře "
             "sedí i jiné usnesení. Takový řetěz je vodítko, ne důkaz.",
-            "„Smlouva podepsaná před usnesením" nemusí být pochybení. Bývá to i "
-            "chyba tohoto párování, nebo dodatek k dřívější smlouvě. Je to podnět "
-            "k ověření u zdroje, ne závěr.",
+            '„Smlouva podepsaná před usnesením“ nemusí být pochybení. Bývá to i '
+            'chyba tohoto párování, nebo dodatek k dřívější smlouvě. Je to podnět '
+            'k ověření u zdroje, ne závěr.',
         ],
         "zdroj": "data/retez/retezy.json, data/retez/nespojene.json",
         "stav": "ok",
@@ -351,7 +351,7 @@ def diagram_propojeni() -> dict:
             "nazev": o.get("jmeno"),
             "popisek": ", ".join(o.get("role") or []) or (o.get("strana") or ""),
             "pocet": len(firmy),
-            # Stav ověření identity. „nejednoznacne" znamená, že jméno sedí na
+            # Stav ověření identity. „nejednoznacne“ znamená, že jméno sedí na
             # víc lidí — vazba se ukazuje, ale nesmí se tvářit jako potvrzená.
             "jistota": ((o.get("overeni") or {}).get("stav") or "neznamo"),
         })
@@ -402,10 +402,13 @@ def diagram_propojeni() -> dict:
         "vlevo": {"nazev": "Osoby", "uzly": vlevo},
         "vpravo": {"nazev": "Firmy", "uzly": sorted(vpravo.values(), key=lambda x: x["nazev"] or "")},
         "hrany": hrany,
+        # Klíče musí být tytéž, jaké nese `vztah_k_mestu` v datech — legenda
+        # se podle nich obarvuje. Dřív tu stálo „dodavatel" a „bez-vazby",
+        # což se s daty nepotkalo a vzorky vyšly bílé.
         "legenda": [
             {"klic": "mestsky-subjekt", "nazev": "firma nebo organizace města"},
-            {"klic": "dodavatel", "nazev": "obchoduje s městem"},
-            {"klic": "bez-vazby", "nazev": "bez vazby na město"},
+            {"klic": "obchoduje-s-mestem", "nazev": "obchoduje s městem"},
+            {"klic": "bez-vazby-na-mesto", "nazev": "bez vazby na město"},
         ],
         "metodika": poznamky,
         "zdroj": "data/propojeni/osoby_firmy.json",
@@ -471,7 +474,7 @@ def diagram_zdroje() -> dict:
             {"klic": "media", "nazev": "média a záznamy"},
         ],
         "metodika": [
-            "Tenhle diagram je AUTORSKÝ, ne zjištěný. Mapa „zdroj → sekce" se ze "
+            "Tenhle diagram je AUTORSKÝ, ne zjištěný. Mapa „zdroj → sekce“ se ze "
             "sběru odvodit nedá, je napsaná v config/diagramy.json.",
             "Sekce, která bere z víc zdrojů, přežije výpadek jednoho z nich — jen "
             "o tom napíše. Sekce s jediným zdrojem při jeho výpadku neví nic.",
@@ -485,22 +488,18 @@ def diagram_zdroje() -> dict:
 
 # ═══════════════════════════  6. Číselník tagů  ═══════════════════════════
 
-NAZVY_SKUPIN = {
-    "majetek": "Majetek a bydlení",
-    "penize": "Peníze a rozpočet",
-    "sluzby": "Služby a provoz",
-    "rozvoj": "Rozvoj a plánování",
-    "lide": "Lidé a společnost",
-    "sprava": "Správa a organizace",
-}
-
-
 def diagram_tagy() -> dict:
     cfg = nacti_config("tagy.json")
     tagy = (cfg or {}).get("tagy") or []
     if not tagy:
         return _chybi("tagy", "Číselník témat",
                       "config/tagy.json nemá žádné tagy.", "config/tagy.json")
+
+    # Názvy skupin se berou z číselníku, ne z vlastní tabulky v tomhle
+    # souboru. Ta se rozešla hned napoprvé: vymyslela klíče „sprava" a
+    # „lide", které v číselníku nejsou, a skupina „radnice" pak v diagramu
+    # zůstala jako holý klíč místo „Chod radnice".
+    nazvy_skupin = {s.get("id"): s.get("nazev") for s in (cfg or {}).get("skupiny") or []}
 
     # Kolikrát se který tag opravdu použil. Tag, který nikdo nepoužil, je
     # v číselníku zbytečný a má být vidět, že je prázdný.
@@ -520,7 +519,7 @@ def diagram_tagy() -> dict:
 
     skupiny_map: dict[str, list[dict]] = defaultdict(list)
     for t in tagy:
-        skupiny_map[t.get("skupina") or "sprava"].append({
+        skupiny_map[t.get("skupina") or "bez-skupiny"].append({
             "id": t.get("id"),
             "nazev": t.get("nazev"),
             "popisek": t.get("popis"),
@@ -534,7 +533,7 @@ def diagram_tagy() -> dict:
         deti.sort(key=lambda d: -(d["hodnota"] or 0))
         vetve.append({
             "id": klic,
-            "nazev": NAZVY_SKUPIN.get(klic, klic),
+            "nazev": nazvy_skupin.get(klic, klic),
             "pocet": len(deti),
             "hodnota": sum(d["hodnota"] or 0 for d in deti) if pouziti else None,
             "deti": deti,
@@ -578,7 +577,7 @@ def diagram_model() -> dict:
                       "config/diagramy.json nemá datový model.", "config/diagramy.json")
 
     # Kolik souborů každé entity na disku opravdu je. Diagram tak neříká jen
-    # „tahle entita existuje", ale i „a je jí tolik".
+    # „tahle entita existuje“, ale i „a je jí tolik“.
     def spocitej(vzor: str) -> int | None:
         cast = vzor.replace("data/", "", 1)
         if "{" in cast:
@@ -640,7 +639,10 @@ def diagram_vedeni() -> dict:
             "id": "zastupitelstvo",
             "nazev": f"Zastupitelstvo — {len(zastupitele)} členů",
             "popis": "Volí se v komunálních volbách. Schvaluje rozpočet a nakládání s majetkem.",
-            "pocet": len(zastupitele),
+            # `pocet` = kolik uzlů se pod skupinou kreslí, ne kolik je členů.
+            # Členů je 21, ale kreslí se sedm uskupení; kdyby tu stálo 21,
+            # diagram by sliboval jednadvacet krabiček a nakreslil sedm.
+            "pocet": len(poc),
             "deti": [
                 {"id": f"u-{i}", "nazev": nazev, "popisek": f"{p} z {len(zastupitele)}",
                  "hodnota": p}
@@ -695,8 +697,8 @@ def diagram_vedeni() -> dict:
             "Uskupení je to, se kterým kandidát prošel do zastupitelstva; klub se "
             "může lišit a web města ho neuvádí.",
             "Web města ukazuje jen aktuální funkci. Kdy funkce začala, se dopočítává "
-            "porovnáním s předchozím během sběrače — u starších to znamená „nevíme", "
-            "ne „platí odjakživa".",
+            "porovnáním s předchozím během sběrače — u starších to znamená „nevíme“, "
+            "ne „platí odjakživa“.",
         ],
         "zdroj": "data/mesto/zastupitele.json, data/mesto/urad.json",
         "stav": "ok",

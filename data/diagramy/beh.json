@@ -1,0 +1,247 @@
+{
+  "id": "beh",
+  "nazev": "Datový tok týdenního běhu",
+  "typ": "tok",
+  "popis": "17 sběračů, 12 navazujících modulů, z toho 7 povinných. Nedělní běh jde zleva doprava.",
+  "vrstvy": [
+    {
+      "id": "zdroje",
+      "nazev": "Vnější zdroje",
+      "popis": "Weby a API mimo projekt. Když nejedou, běh to nahlásí.",
+      "uzly": [
+        {
+          "id": "z-urad",
+          "nazev": "Portál usnesení, web města",
+          "duraz": "zdroj"
+        },
+        {
+          "id": "z-stat",
+          "nazev": "Hlídač, ARES, ČSÚ, volby, RÚIAN",
+          "duraz": "zdroj"
+        },
+        {
+          "id": "z-media",
+          "nazev": "Média a zpravodaj",
+          "duraz": "zdroj"
+        }
+      ]
+    },
+    {
+      "id": "sber",
+      "nazev": "Sběrače",
+      "popis": "Stahují a ukládají syrová data. Deterministické — když zdroj selže, křičí.",
+      "uzly": [
+        {
+          "id": "scrapers.usneseni",
+          "nazev": "Usnesení rady a zastupitelstva",
+          "popisek": "scrapers.usneseni",
+          "duraz": "povinny"
+        },
+        {
+          "id": "scrapers.hlasovani",
+          "nazev": "Jmenovitá hlasování",
+          "popisek": "scrapers.hlasovani",
+          "duraz": "povinny"
+        },
+        {
+          "id": "scrapers.muml",
+          "nazev": "Web města, deska, akce",
+          "popisek": "scrapers.muml",
+          "duraz": "povinny"
+        },
+        {
+          "id": "scrapers.snapshoty",
+          "nazev": "Hlídání změn na webu města",
+          "popisek": "scrapers.snapshoty",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.hlidac",
+          "nazev": "Registr smluv, dotace, zakázky",
+          "popisek": "scrapers.hlidac",
+          "duraz": "povinny"
+        },
+        {
+          "id": "scrapers.zpravodaj",
+          "nazev": "Nové číslo zpravodaje",
+          "popisek": "scrapers.zpravodaj",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.media",
+          "nazev": "Mediální monitoring",
+          "popisek": "scrapers.media",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.lide",
+          "nazev": "Aktualizace osobností",
+          "popisek": "scrapers.lide",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.zaznamy",
+          "nazev": "Záznamy zastupitelstva",
+          "popisek": "scrapers.zaznamy",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.volby",
+          "nazev": "Výsledky voleb po okrscích",
+          "popisek": "scrapers.volby",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.csu",
+          "nazev": "Statistiky ČSÚ o městě",
+          "popisek": "scrapers.csu",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.firmy",
+          "nazev": "Firmy se sídlem ve městě",
+          "popisek": "scrapers.firmy",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.podnikatele",
+          "nazev": "Podnikatelé z rejstříku",
+          "popisek": "scrapers.podnikatele",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.geodata",
+          "nazev": "Geodata a volební okrsky",
+          "popisek": "scrapers.geodata",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.pamatky",
+          "nazev": "Kulturní památky",
+          "popisek": "scrapers.pamatky",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.uzemni_plan",
+          "nazev": "Územní plánování",
+          "popisek": "scrapers.uzemni_plan",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.monitor",
+          "nazev": "Rozpočet z Monitoru st. pokladny",
+          "popisek": "scrapers.monitor",
+          "duraz": "nepovinny"
+        }
+      ]
+    },
+    {
+      "id": "zpracovani",
+      "nazev": "Zpracování",
+      "popis": "Počítají z už stažených dat. Nechodí na síť.",
+      "uzly": [
+        {
+          "id": "pipeline.tagovani",
+          "nazev": "Otagování usnesení",
+          "popisek": "pipeline.tagovani",
+          "duraz": "povinny"
+        },
+        {
+          "id": "pipeline.clanky",
+          "nazev": "Rozbor článků zpravodaje",
+          "popisek": "pipeline.clanky",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.agregace_penez",
+          "nazev": "Agregace peněz po letech",
+          "popisek": "pipeline.agregace_penez",
+          "duraz": "povinny"
+        },
+        {
+          "id": "pipeline.propojeni",
+          "nazev": "Propojení lidí, firem a peněz",
+          "popisek": "pipeline.propojeni",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.profily",
+          "nazev": "Hlasovací profily",
+          "popisek": "pipeline.profily",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.retez",
+          "nazev": "Řetěz usnesení → smlouva → peníze",
+          "popisek": "pipeline.retez",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.prepis",
+          "nazev": "Přepisy jednání",
+          "popisek": "pipeline.prepis",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.casova_osa",
+          "nazev": "Jednotná časová osa",
+          "popisek": "pipeline.casova_osa",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.firmy_prehled",
+          "nazev": "Přehled firem ve městě",
+          "popisek": "pipeline.firmy_prehled",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.podnikatele_prehled",
+          "nazev": "Přehled podnikatelů",
+          "popisek": "pipeline.podnikatele_prehled",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.vydani",
+          "nazev": "Sestavení týdenního vydání",
+          "popisek": "pipeline.vydani",
+          "duraz": "povinny"
+        },
+        {
+          "id": "pipeline.znaky_sekci",
+          "nazev": "Znaky sekcí pro rozcestník",
+          "popisek": "pipeline.znaky_sekci",
+          "duraz": "nepovinny"
+        }
+      ]
+    },
+    {
+      "id": "vystup",
+      "nazev": "Výstup",
+      "popis": "Kontrola před publikací a statický build.",
+      "uzly": [
+        {
+          "id": "kontrola",
+          "nazev": "kontrola.py — brána před publikací",
+          "duraz": "povinny"
+        },
+        {
+          "id": "build",
+          "nazev": "astro build + Pagefind",
+          "duraz": "povinny"
+        },
+        {
+          "id": "vercel",
+          "nazev": "Nasazení na Vercel",
+          "duraz": "nepovinny"
+        }
+      ]
+    }
+  ],
+  "metodika": [
+    "Seznam modulů se čte přímo z run_tyden.py. Diagram se proto nemůže rozejít s tím, co se v neděli opravdu spustí.",
+    "Povinný krok je vykreslený plně: když selže, běh skončí nenulovým návratovým kódem a vydání se nevydá. Nepovinný krok jen chybí a sekce to o sobě napíše.",
+    "Pořadí uvnitř vrstvy je závazné. Řetěz a propojení čtou výstup agregace peněz, časová osa čte oboje, vydání čte úplně všechno."
+  ],
+  "zdroj": "run_tyden.py",
+  "stav": "ok"
+}

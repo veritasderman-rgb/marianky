@@ -139,6 +139,16 @@ Není povinný: bez něj se web sestaví a odkazy fungují, dlaždice rozcestní
 
 Znak je vždy graf ze skutečných dat, nikdy piktogram. Proto se dá i pokazit stejně jako graf, a `kontrola.py` na to má test: **znak nesmí kreslit ve všech bodech stejnou hodnotu.** Přesně to se stalo napoprvé — znak hlasování ukazoval „podíl schválených návrhů", jenže portál zveřejňuje jen schválená hlasování, takže podíl byl u všech 12 349 záznamů 100 %. Obrázek se tvářil, že něco měří, a přitom kreslil konstantu. Teď ukazuje počet hlasování za rok s barevnou špičkou nejednomyslných — a je z něj vidět, že jich ubývá: ze 131 z 471 v roce 2012 na 57 z 968 v roce 2025.
 
+### Schémata
+
+Po znacích sekcí běží `pipeline.diagramy`. Spočítá osm schémat do `data/diagramy/*.json`; web z nich při buildu skládá SVG na `/diagramy` a na stránky sekcí.
+
+Šest schémat je celé z dat města. Dvě — mapa „který zdroj plní kterou sekci" a datový model projektu — stojí na `config/diagramy.json`, protože to je znalost o projektu, ne údaj o městě. **Když se přidá zdroj nebo se změní struktura dat, musí se ten soubor upravit ručně;** sběr to nepozná.
+
+Schéma týdenního běhu si seznam kroků čte přímo z `run_tyden.py`, takže se nemůže rozejít s tím, co se v neděli spustí. Nový modul se v diagramu objeví sám.
+
+Modul není povinný. Bez něj se web sestaví a stránka `/diagramy` napíše, že se schémata nepodařilo spočítat.
+
 Zastaralost se poměřuje **tolerancí podle toho, jak často se zdroj mění** — rada zasedá po dvou týdnech, takže týden bez usnesení je normální stav, kdežto tři týdny bez pohybu na úřední desce nikoliv. Bez tolerance by se hlásil poplach skoro každý druhý týden a přestal by být slyšet.
 
 ---

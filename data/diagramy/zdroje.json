@@ -1,0 +1,363 @@
+{
+  "id": "zdroje",
+  "nazev": "Který zdroj plní kterou sekci",
+  "typ": "sit",
+  "popis": "12 veřejných zdrojů a 13 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
+  "vlevo": {
+    "nazev": "Zdroje",
+    "uzly": [
+      {
+        "id": "usneseni-portal",
+        "nazev": "Portál usnesení města",
+        "popisek": "https://usneseni.muml.cz",
+        "pocet": 3,
+        "vztah": "urad",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "muml",
+        "nazev": "Web města a úřední deska",
+        "popisek": "https://www.muml.cz",
+        "pocet": 3,
+        "vztah": "urad",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "zpravodaj",
+        "nazev": "Městský zpravodaj (PDF)",
+        "popisek": "https://www.muml.cz",
+        "pocet": 3,
+        "vztah": "urad",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "hlidac",
+        "nazev": "Hlídač státu — registr smluv",
+        "popisek": "https://api.hlidacstatu.cz",
+        "pocet": 3,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "ares",
+        "nazev": "ARES — rejstřík subjektů",
+        "popisek": "https://ares.gov.cz",
+        "pocet": 2,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "monitor",
+        "nazev": "Monitor státní pokladny",
+        "popisek": "https://monitor.statnipokladna.gov.cz",
+        "pocet": 2,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "volby",
+        "nazev": "Otevřená data voleb",
+        "popisek": "https://volby.gov.cz/opendata",
+        "pocet": 2,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "csu",
+        "nazev": "ČSÚ — časové řady o obci",
+        "popisek": "https://vdb.czso.cz",
+        "pocet": 1,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "ruian",
+        "nazev": "RÚIAN a geodata",
+        "popisek": "https://vdp.cuzk.cz",
+        "pocet": 2,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "pamatky",
+        "nazev": "Památkový katalog",
+        "popisek": "https://pamatkovykatalog.cz",
+        "pocet": 2,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "media",
+        "nazev": "Mediální monitoring",
+        "popisek": null,
+        "pocet": 1,
+        "vztah": "media",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "zaznamy",
+        "nazev": "Záznamy zastupitelstva",
+        "popisek": null,
+        "pocet": 1,
+        "vztah": "media",
+        "jistota": "potvrzeno"
+      }
+    ]
+  },
+  "vpravo": {
+    "nazev": "Sekce webu",
+    "uzly": [
+      {
+        "id": "usneseni",
+        "nazev": "Usnesení",
+        "popisek": "12 890",
+        "vztah": "sekce"
+      },
+      {
+        "id": "hlasovani",
+        "nazev": "Hlasování",
+        "popisek": "12 349",
+        "vztah": "sekce"
+      },
+      {
+        "id": "retez",
+        "nazev": "Od usnesení k penězům",
+        "popisek": "2 289",
+        "vztah": "sekce"
+      },
+      {
+        "id": "vydani",
+        "nazev": "Týdenní přehled",
+        "popisek": "13",
+        "vztah": "sekce"
+      },
+      {
+        "id": "lide",
+        "nazev": "Lidé",
+        "popisek": "21",
+        "vztah": "sekce"
+      },
+      {
+        "id": "mapa",
+        "nazev": "Mapa",
+        "popisek": "1",
+        "vztah": "sekce"
+      },
+      {
+        "id": "zpravodaj",
+        "nazev": "Zpravodaj",
+        "popisek": "122",
+        "vztah": "sekce"
+      },
+      {
+        "id": "historie",
+        "nazev": "Historie",
+        "popisek": "100",
+        "vztah": "sekce"
+      },
+      {
+        "id": "penize",
+        "nazev": "Peníze města",
+        "popisek": "3,83 mld.",
+        "vztah": "sekce"
+      },
+      {
+        "id": "propojeni",
+        "nazev": "Propojení",
+        "popisek": "75",
+        "vztah": "sekce"
+      },
+      {
+        "id": "firmy",
+        "nazev": "Firmy",
+        "popisek": "4 177",
+        "vztah": "sekce"
+      },
+      {
+        "id": "statistika",
+        "nazev": "Čísla o městě",
+        "popisek": "14 052",
+        "vztah": "sekce"
+      },
+      {
+        "id": "volby",
+        "nazev": "Volby",
+        "popisek": "41",
+        "vztah": "sekce"
+      }
+    ]
+  },
+  "hrany": [
+    {
+      "od": "usneseni-portal",
+      "do": "usneseni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "usneseni-portal",
+      "do": "hlasovani",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "usneseni-portal",
+      "do": "retez",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "muml",
+      "do": "vydani",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "muml",
+      "do": "lide",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "muml",
+      "do": "mapa",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "zpravodaj",
+      "do": "zpravodaj",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "zpravodaj",
+      "do": "historie",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "zpravodaj",
+      "do": "lide",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "hlidac",
+      "do": "penize",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "hlidac",
+      "do": "retez",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "hlidac",
+      "do": "propojeni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "ares",
+      "do": "firmy",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "ares",
+      "do": "propojeni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "monitor",
+      "do": "penize",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "monitor",
+      "do": "statistika",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "volby",
+      "do": "volby",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "volby",
+      "do": "lide",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "csu",
+      "do": "statistika",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "ruian",
+      "do": "mapa",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "ruian",
+      "do": "volby",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "pamatky",
+      "do": "mapa",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "pamatky",
+      "do": "historie",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "media",
+      "do": "vydani",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "zaznamy",
+      "do": "hlasovani",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    }
+  ],
+  "legenda": [
+    {
+      "klic": "urad",
+      "nazev": "úřad města"
+    },
+    {
+      "klic": "stat",
+      "nazev": "státní otevřená data"
+    },
+    {
+      "klic": "media",
+      "nazev": "média a záznamy"
+    }
+  ],
+  "metodika": [
+    "Tenhle diagram je AUTORSKÝ, ne zjištěný. Mapa „zdroj → sekce“ se ze sběru odvodit nedá, je napsaná v config/diagramy.json.",
+    "Sekce, která bere z víc zdrojů, přežije výpadek jednoho z nich — jen o tom napíše. Sekce s jediným zdrojem při jeho výpadku neví nic.",
+    "Nic se nenačítá z cizích serverů za běhu. Všechny zdroje se stahují v nedělním běhu a web se skládá už z uložených dat."
+  ],
+  "zdroj": "config/diagramy.json",
+  "stav": "ok"
+}

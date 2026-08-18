@@ -12,6 +12,8 @@
  * aby na webu stálo přesně to, podle čeho data vznikla.
  */
 import Zaklad from '../layouts/Zaklad.astro';
+import DiagramKarta from '../components/DiagramKarta.astro';
+import { nactiDiagram } from '../lib/diagramy';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import JakPocitame from '../components/JakPocitame.astro';
@@ -119,6 +121,9 @@ function castkaFirmy(f: FirmaOsoby): string {
   if (f.od_mesta_czk === null) return 'v datech není';
   return kc(f.od_mesta_czk);
 }
+
+/* Schéma k této sekci. Kompletní sada je na /diagramy. */
+const schemaPropojeni = nactiDiagram('propojeni').data;
 ---
 
 <Zaklad
@@ -421,4 +426,17 @@ function castkaFirmy(f: FirmaOsoby): string {
       </li>
     </ul>
   </section>
+
+  {
+    schemaPropojeni && (
+      <section>
+        <h2>Totéž jako schéma</h2>
+        <p class="uvod">
+          Schéma se kreslí ze stejných dat jako tahle stránka.
+          <a href="/diagramy">Všechna schémata</a>.
+        </p>
+        <DiagramKarta diagram={schemaPropojeni} uroven="h3" sbalene />
+      </section>
+    )
+  }
 </Zaklad>

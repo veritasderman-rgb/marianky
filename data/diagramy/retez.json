@@ -1,0 +1,103 @@
+{
+  "id": "retez",
+  "nazev": "Od usnesení ke smlouvě",
+  "typ": "tok",
+  "popis": "Z 12 890 bodů usnesení se podařilo spojit se smlouvou 1 349. Vazba je odhad, ne údaj ze zdroje.",
+  "vrstvy": [
+    {
+      "id": "vstup",
+      "nazev": "Co se schválilo",
+      "popis": "Body usnesení rady a zastupitelstva.",
+      "uzly": [
+        {
+          "id": "body-spojene",
+          "nazev": "Body se smlouvou",
+          "hodnota": 1349,
+          "duraz": "povinny"
+        },
+        {
+          "id": "body-bez",
+          "nazev": "Body bez nalezené smlouvy",
+          "hodnota": 11541,
+          "duraz": "nepovinny"
+        }
+      ]
+    },
+    {
+      "id": "vazba",
+      "nazev": "Jak jistá je vazba",
+      "popis": "Společný identifikátor neexistuje. Spojuje se přes IČO, název, částku a čas.",
+      "uzly": [
+        {
+          "id": "j-vysoka",
+          "nazev": "Vysoká jistota",
+          "hodnota": 174,
+          "duraz": "povinny"
+        },
+        {
+          "id": "j-stredni",
+          "nazev": "Střední jistota",
+          "hodnota": 635,
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "j-nizka",
+          "nazev": "Nízká jistota",
+          "hodnota": 1480,
+          "duraz": "slaby"
+        }
+      ]
+    },
+    {
+      "id": "vystup",
+      "nazev": "Co se podepsalo",
+      "popis": "Smlouvy v registru smluv.",
+      "uzly": [
+        {
+          "id": "sml-spojene",
+          "nazev": "Smlouvy s usnesením",
+          "hodnota": 1664,
+          "duraz": "povinny"
+        },
+        {
+          "id": "sml-bez",
+          "nazev": "Smlouvy bez usnesení",
+          "hodnota": 4600,
+          "duraz": "nepovinny"
+        }
+      ]
+    },
+    {
+      "id": "varovani",
+      "nazev": "Co stojí za pozornost",
+      "popis": "Případy, které řetěz našel a které nemusí být v pořádku.",
+      "uzly": [
+        {
+          "id": "predbeh",
+          "nazev": "Smlouva podepsaná před usnesením",
+          "hodnota": 204,
+          "duraz": "varovani"
+        },
+        {
+          "id": "velke-bez",
+          "nazev": "Velké smlouvy bez usnesení",
+          "hodnota": 378,
+          "duraz": "varovani"
+        },
+        {
+          "id": "usn-bez",
+          "nazev": "Usnesení bez smlouvy",
+          "hodnota": 362,
+          "duraz": "varovani"
+        }
+      ]
+    }
+  ],
+  "metodika": [
+    "Registr smluv a portál usnesení nemají společný identifikátor. Vazba se odhaduje ze čtyř signálů: IČO v textu usnesení, shoda názvu protistrany, shoda částky a časový odstup podpisu.",
+    "Nízká jistota znamená, že sedí jen část signálů, nebo že stejně dobře sedí i jiné usnesení. Takový řetěz je vodítko, ne důkaz.",
+    "„Smlouva podepsaná před usnesením“ nemusí být pochybení. Bývá to i chyba tohoto párování, nebo dodatek k dřívější smlouvě. Je to podnět k ověření u zdroje, ne závěr."
+  ],
+  "zdroj": "data/retez/retezy.json, data/retez/nespojene.json",
+  "stav": "ok"
+}

@@ -1,15 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Značka „Naše Mariánky v přehledech" — kolonáda.
+
+    Pět sloupů pod jedním obloukem arkády. Čte se dvojím způsobem naráz:
+    sloupy kolonády a sloupce grafu. Výšky nejsou vymyšlené — drží poměr
+    smluv města v registru za roky 2022–2026 (634, 608, 786, 792, 445).
+    Je to značka, ne graf: poměr je z dat, ale zůstává pevný, aby se
+    logo neměnilo každý týden.
+
+    Favicon nemůže dědit barvu ze stránky, proto má vlastní sadu a přepíná
+    ji podle prefers-color-scheme. Odstíny jsou tytéž tokeny jako na webu:
+    --accent #1f5540 na papíru #f5f7f4, v tmavém #6fc79c na #0e1210.
+
+    Podoba pro web (dědí barvu přes currentColor) je v src/components/Znacka.astro.
+    Když se změní jedno, musí se změnit druhé.
+  -->
   <style>
     .p { fill: #f5f7f4 }
     .i { fill: #1f5540 }
+    .o { stroke: #1f5540 }
     @media (prefers-color-scheme: dark) {
-      .p { fill: #151b17 }
+      .p { fill: #0e1210 }
       .i { fill: #6fc79c }
+      .o { stroke: #6fc79c }
     }
   </style>
-  <rect class="p" width="32" height="32" rx="6"/>
-  <rect class="i" x="6" y="17" width="4" height="9" rx="1"/>
-  <rect class="i" x="12" y="12" width="4" height="14" rx="1"/>
-  <rect class="i" x="18" y="8" width="4" height="18" rx="1"/>
-  <rect class="i" x="24" y="14" width="3" height="12" rx="1"/>
+  <rect class="p" width="64" height="64" rx="12"/>
+  <path class="o" d="M12.6 32.8 Q32 6 55.8 38.5" fill="none" stroke-width="2.8" stroke-linecap="round"/>
+  <rect class="i" x="9.4" y="32.8" width="6.4" height="19.2" rx="1"/>
+  <rect class="i" x="20.2" y="33.6" width="6.4" height="18.4" rx="1"/>
+  <rect class="i" x="31.0" y="28.2" width="6.4" height="23.8" rx="1"/>
+  <rect class="i" x="41.8" y="28.0" width="6.4" height="24.0" rx="1"/>
+  <rect class="i" x="52.6" y="38.5" width="6.4" height="13.5" rx="1"/>
+  <rect class="i" x="7.9" y="52.0" width="52.6" height="3.2" rx="1.6"/>
 </svg>

@@ -1,0 +1,50 @@
+---
+/**
+ * Značka webu — kolonáda.
+ *
+ * Pět sloupů pod jedním obloukem arkády; čte se zároveň jako sloupce grafu.
+ * Výšky drží poměr smluv města v registru za roky 2022–2026
+ * (634, 608, 786, 792, 445). Je to značka, ne graf — poměr pochází z dat,
+ * ale zůstává pevný, aby se logo neměnilo každý týden.
+ *
+ * Kreslí se přes `currentColor`, takže si bere barvu z místa, kde stojí,
+ * a funguje ve všech třech paletách i v tmavém motivu bez druhé varianty.
+ *
+ * Tentýž tvar má `public/favicon.svg`, jen s natvrdo zapsanými barvami —
+ * favicon nemá odkud barvu zdědit. Když se změní jedno, musí se i druhé.
+ *
+ * Pro čtečku je značka `aria-hidden`: hned vedle ní stojí jméno webu jako
+ * text, takže by se přečetla dvakrát.
+ */
+export interface Props {
+  /** Velikost hrany ve `em`, aby značka rostla s písmem okolo. */
+  velikost?: string;
+  trida?: string;
+}
+
+const { velikost = '1.55em', trida } = Astro.props;
+---
+
+<svg
+  class={trida}
+  viewBox="0 0 64 64"
+  width={velikost}
+  height={velikost}
+  aria-hidden="true"
+  focusable="false"
+  style="display:block;flex:none"
+>
+  <path
+    d="M12.6 32.8 Q32 6 55.8 38.5"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.8"
+    stroke-linecap="round"
+  />
+  <rect x="9.4" y="32.8" width="6.4" height="19.2" rx="1" fill="currentColor" />
+  <rect x="20.2" y="33.6" width="6.4" height="18.4" rx="1" fill="currentColor" />
+  <rect x="31.0" y="28.2" width="6.4" height="23.8" rx="1" fill="currentColor" />
+  <rect x="41.8" y="28.0" width="6.4" height="24.0" rx="1" fill="currentColor" />
+  <rect x="52.6" y="38.5" width="6.4" height="13.5" rx="1" fill="currentColor" />
+  <rect x="7.9" y="52.0" width="52.6" height="3.2" rx="1.6" fill="currentColor" />
+</svg>

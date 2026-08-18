@@ -1,0 +1,75 @@
+{
+  "metodika": {
+    "co_to_je": "Schémata projektu a města. Kreslí se při buildu jako SVG z těchhle souborů — proto se přepočítají s daty, umí tmavý motiv a nenačítá se k nim nic z cizího serveru.",
+    "zjistene_vs_tvrzene": "Šest diagramů je celé z dat. Mapa zdrojů a datový model stojí na config/diagramy.json, protože to je znalost o projektu, ne údaj o městě. Každý diagram to má napsané v poli `zdroj`.",
+    "prazdno": "Diagram bez dat se nekreslí prázdný — má stav `chybi` a napíše proč."
+  },
+  "diagramu": 8,
+  "chybejicich": 0,
+  "diagramy": [
+    {
+      "id": "holding",
+      "nazev": "Vlastnická struktura města",
+      "typ": "strom",
+      "popis": "Město a 23 subjektů, které zřizuje nebo v nich drží podíl. Číslo u subjektu je počet jeho smluv v registru.",
+      "stav": "ok",
+      "zdroj": "data/penize/agregace/souhrn.json"
+    },
+    {
+      "id": "vedeni",
+      "nazev": "Kdo řídí město",
+      "typ": "strom",
+      "popis": "Zastupitelstvo (21), vedení města (4) a 13 odborů úřadu.",
+      "stav": "ok",
+      "zdroj": "data/mesto/zastupitele.json, data/mesto/urad.json"
+    },
+    {
+      "id": "beh",
+      "nazev": "Datový tok týdenního běhu",
+      "typ": "tok",
+      "popis": "17 sběračů, 12 navazujících modulů, z toho 7 povinných. Nedělní běh jde zleva doprava.",
+      "stav": "ok",
+      "zdroj": "run_tyden.py"
+    },
+    {
+      "id": "retez",
+      "nazev": "Od usnesení ke smlouvě",
+      "typ": "tok",
+      "popis": "Z 12 890 bodů usnesení se podařilo spojit se smlouvou 1 349. Vazba je odhad, ne údaj ze zdroje.",
+      "stav": "ok",
+      "zdroj": "data/retez/retezy.json, data/retez/nespojene.json"
+    },
+    {
+      "id": "propojeni",
+      "nazev": "Kdo sedí v jakých firmách",
+      "typ": "sit",
+      "popis": "25 veřejně činných osob a 54 firem. Čára je doložené angažmá.",
+      "stav": "ok",
+      "zdroj": "data/propojeni/osoby_firmy.json"
+    },
+    {
+      "id": "zdroje",
+      "nazev": "Který zdroj plní kterou sekci",
+      "typ": "sit",
+      "popis": "12 veřejných zdrojů a 13 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
+      "stav": "ok",
+      "zdroj": "config/diagramy.json"
+    },
+    {
+      "id": "tagy",
+      "nazev": "Číselník témat",
+      "typ": "mysl",
+      "popis": "33 pevných témat v 6 skupinách. Číslo je počet bodů usnesení, které téma dostaly.",
+      "stav": "ok",
+      "zdroj": "config/tagy.json + data/usneseni"
+    },
+    {
+      "id": "model",
+      "nazev": "Jak jsou data poskládaná",
+      "typ": "erd",
+      "popis": "8 entit a 8 vztahů. Není to databáze — jsou to JSON soubory v data/.",
+      "stav": "ok",
+      "zdroj": "config/diagramy.json"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+---
+/**
+ * Karta jednoho diagramu: nadpis, schéma, metodika a tabulkový pohled.
+ *
+ * Tabulka je povinná, ne doplněk. Schéma se nedá přečíst čtečkou, nedá se
+ * vytisknout na úzký papír a na telefonu se roluje do strany — tabulka
+ * nese totéž a je čitelná vždycky. Je to stejné pravidlo jako u grafů
+ * (DESIGN.md §2), jen tu má silnější důvod.
+ *
+ * Diagram bez dat se nekreslí prázdný. Prázdné schéma by tvrdilo, že
+ * struktura je prázdná; ono se jen nepodařilo spočítat.
+ */
+import { kresliDiagram, tabulkaDiagramu, type Diagram } from '../lib/diagramy';
+
+export interface Props {
+  diagram: Diagram | null;
+  /** Úroveň nadpisu podle místa na stránce. */
+  uroven?: 'h2' | 'h3';
+  /** Zabalit do `<details>` — na stránkách sekcí, kde je diagram doplněk. */
+  sbalene?: boolean;
+}
+
+const { diagram, uroven = 'h2', sbalene = false } = Astro.props;
+
+const kresba = kresliDiagram(diagram);
+const tabulka = diagram ? tabulkaDiagramu(diagram) : null;
+const Nadpis = uroven;
+const id = diagram?.id ?? 'diagram';
+---
+
+{
+  diagram && (
+    <section class="diagram" aria-labelledby={`${id}-nadpis`}>
+      <Nadpis class="diagram__nadpis" id={`${id}-nadpis`}>{diagram.nazev}</Nadpis>
+      <p class="diagram__popis">{diagram.popis}</p>
+
+      {diagram.stav !== 'ok' && (
+        <p class="stav-dat stav-dat--chybi">
+          <strong class="stav-dat__nadpis">Schéma zatím nejde nakreslit</strong>
+          {diagram.popis}
+          <span class="stav-dat__zdroj">{diagram.zdroj}</span>
+        </p>
+      )}
+
+      {diagram.legenda && diagram.legenda.length > 0 && (
+        <ul class="legenda diagram__legenda">
+          {diagram.legenda.map((l) => (
+            <li class="legenda__polozka">
+              <span class={`legenda__vzorek legenda__vzorek--${l.klic}`} aria-hidden="true" />
+              {l.nazev}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {kresba.svg && (
+        <div class="diagram-plocha" tabindex="0" role="group" aria-label={`Schéma: ${diagram.nazev}`}>
+          <Fragment set:html={kresba.svg} />
+        </div>
+      )}
+
+      {tabulka && tabulka.radky.length > 0 && (
+        <details class="tabulkovy-pohled">
+          <summary>Totéž v tabulce ({tabulka.radky.length.toLocaleString('cs-CZ')} řádků)</summary>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  {tabulka.hlavicka.map((h) => (
+                    <th scope="col">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {tabulka.radky.map((r) => (
+                  <tr>
+                    {r.map((b) => (
+                      <td>{b}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
+
+      {diagram.metodika && diagram.metodika.length > 0 && (
+        <details class="metodika" open={!sbalene && uroven === 'h2'}>
+          <summary>Jak to čtěte</summary>
+          <ul>
+            {diagram.metodika.map((m) => (
+              <li>{m}</li>
+            ))}
+          </ul>
+        </details>
+      )}
+
+      <p class="diagram__zdroj">
+        Zdroj dat: <span class="mono">{diagram.zdroj}</span>
+      </p>
+    </section>
+  )
+}

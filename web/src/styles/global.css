@@ -341,7 +341,13 @@ kbd,
   padding: 0.85rem 0;
 }
 
+/* Značka webu: kolonáda + jméno serifem.
+   Značka bere barvu akcentu, jméno barvu textu — obojí přes tokeny, takže
+   to drží ve všech třech paletách. */
 .znacka-webu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 600;
@@ -349,7 +355,12 @@ kbd,
   text-decoration: none;
   white-space: nowrap;
 }
-.znacka-webu span {
+
+.znacka-webu__znak {
+  color: var(--accent);
+}
+
+.znacka-webu__slova span {
   color: var(--ink-faint);
   font-weight: 400;
 }
@@ -2003,6 +2014,161 @@ th.cislo {
 }
 .metodika-blok__obsah > :last-child {
   margin-bottom: 0;
+}
+
+/* ═══════════════════════════  Diagramy  ═════════════════════════════
+ *
+ * Schémata projektu a města. Kreslí se při buildu z data/diagramy/*.json,
+ * barvy berou z tokenů, takže totéž SVG obslouží všechny tři palety.
+ *
+ * Diagram je širší než sloupec textu a to je v pořádku — popisky se nesmí
+ * scvrknout pod čitelnost. Plocha proto roluje do strany, stejně jako
+ * u grafů. Roluje se v kontejneru, nikdy celá stránka.
+ */
+
+.diagram {
+  margin: 2.25rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.diagram:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.diagram__nadpis {
+  margin: 0 0 0.3rem;
+}
+
+.diagram__popis {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  max-width: 46rem;
+}
+
+.diagram-plocha {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0 0.75rem;
+  /* Rolovatelná oblast musí být dosažitelná klávesnicí, jinak se k pravé
+     části schématu bez myši nikdo nedostane. */
+  scrollbar-width: thin;
+}
+
+.diagram-plocha:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.diagram__kresba {
+  display: block;
+  /* Šířku určuje atribut width v SVG — schéma se nezmenšuje, roluje se. */
+  max-width: none;
+  height: auto;
+}
+
+/* Písmo ve schématu je sans, i pro čísla. Serif do grafu nepatří
+   (DESIGN.md §1) a diagram je graf. */
+.diagram__nazev,
+.diagram__popisek,
+.diagram__vrstva,
+.diagram__pole {
+  font-family: var(--font-sans);
+  fill: var(--ink);
+}
+
+.diagram__nazev {
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.diagram__popisek {
+  font-size: 10px;
+  fill: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.diagram__vrstva {
+  font-size: 12px;
+  font-weight: 600;
+  fill: var(--ink);
+}
+
+.diagram__pole {
+  font-size: 10px;
+  fill: var(--ink-soft);
+  font-family: var(--font-mono);
+}
+
+.diagram__nazev--vlevo,
+.diagram__popisek--vlevo {
+  text-anchor: start;
+}
+
+.diagram__legenda {
+  margin-bottom: 0.75rem;
+}
+
+.diagram__zdroj {
+  margin: 0.6rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+/* Vzorky legendy sítě. Barvy odpovídají `barvaUzlu` v lib/diagramy.ts —
+   když se změní jedno, musí se změnit druhé. */
+.legenda__vzorek--mestsky-subjekt,
+.legenda__vzorek--urad {
+  background: var(--accent);
+}
+
+.legenda__vzorek--obchoduje-s-mestem,
+.legenda__vzorek--stat {
+  background: var(--g1);
+}
+
+.legenda__vzorek--media {
+  background: var(--g4);
+}
+
+.legenda__vzorek--bez-vazby-na-mesto {
+  background: var(--ink-soft);
+}
+
+/* Rozcestník diagramů na /diagramy. */
+.diagramy-obsah {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.6rem;
+  margin: 1.25rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.diagramy-obsah a {
+  display: block;
+  padding: 0.7rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.diagramy-obsah a:hover {
+  background: var(--surface-2);
+}
+
+.diagramy-obsah strong {
+  display: block;
+  font-weight: 600;
+}
+
+.diagramy-obsah span {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
 }
 
 /* ════════════════════════════  Tisk  ════════════════════════════════ */

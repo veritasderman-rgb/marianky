@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SEKCE_HLEDAT, SEKCE_UVOD, SKUPINY, skupinaSekce } from '../lib/sekce';
 import { kresliZnak, nactiZnaky } from '../lib/znaky';
+import Znacka from '../components/Znacka.astro';
 
 export interface Props {
   titulek: string;
@@ -88,7 +89,10 @@ const svgZnaku =
 
     <header class="hlavicka-webu">
       <div class="obal hlavicka-webu__radek">
-        <a href="/" class="znacka-webu">Naše Mariánky <span>v přehledech</span></a>
+        <a href="/" class="znacka-webu">
+          <Znacka trida="znacka-webu__znak" />
+          <span class="znacka-webu__slova">Naše Mariánky <span>v přehledech</span></span>
+        </a>
         <nav class="navigace" aria-label="Hlavní navigace">
           <a
             class="navigace__odkaz"

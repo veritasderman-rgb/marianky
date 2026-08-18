@@ -1,0 +1,105 @@
+---
+/**
+ * Schémata — osm diagramů, které vysvětlují to, co z tabulky vidět není.
+ *
+ * Šest je celé z dat města, dva (mapa zdrojů, datový model) stojí na
+ * `config/diagramy.json`, protože to je znalost o projektu, ne údaj
+ * o městě. U každého je to napsané.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import DiagramKarta from '../components/DiagramKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import { nactiDiagram, nactiRejstrikDiagramu, type Diagram } from '../lib/diagramy';
+
+const zRejstriku = nactiRejstrikDiagramu();
+/* Pořadí je od města k projektu: nejdřív jak je poskládané město, pak jak
+   se to sbírá. Čtenář přišel kvůli městu, ne kvůli našemu běhu. */
+const PORADI = ['holding', 'vedeni', 'propojeni', 'retez', 'tagy', 'zdroje', 'beh', 'model'];
+
+const diagramy: Diagram[] = PORADI.map((id) => nactiDiagram(id).data).filter(
+  (d): d is Diagram => Boolean(d),
+);
+
+const bezDat = diagramy.filter((d) => d.stav !== 'ok').length;
+---
+
+<Zaklad
+  titulek="Schémata"
+  aktivni="diagramy"
+  nadpis="Schémata"
+  uvod="Osm diagramů o tom, co z tabulky vidět není: jak je poskládaný městský holding, kdo sedí v jakých firmách, kolik schválených usnesení se podařilo spojit se smlouvou. Kreslí se ze stejných dat jako zbytek webu, takže se s nimi mění."
+>
+  <StavDat
+    stav={zRejstriku.stav}
+    zdroj={zRejstriku.zdroj}
+    co="Schémata"
+    prazdno={zRejstriku.stav === 'ok' && diagramy.length === 0}
+    modul="pipeline/diagramy.py"
+    poznamky={[
+      'Schémata se přepočítávají při týdenním běhu. Nejsou to obrázky nakreslené jednou — když do holdingu přibude firma, přibude v diagramu uzel.',
+    ]}
+  />
+
+  {
+    diagramy.length > 0 && (
+      <ul class="diagramy-obsah">
+        {diagramy.map((d) => (
+          <li>
+            <a href={`#${d.id}-nadpis`}>
+              <strong>{d.nazev}</strong>
+              <span>{d.stav === 'ok' ? d.popis : 'zatím bez dat'}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {diagramy.map((d) => <DiagramKarta diagram={d} uroven="h2" />)}
+
+  <JakPocitame>
+    <p>
+      Schémata nevznikají v kreslicím nástroji. Počítá je modul
+      <code>pipeline/diagramy.py</code> ze stejných dat, ze kterých stojí zbytek webu, a web
+      z nich při sestavení skládá SVG. Má to tři důvody, a všechny jsou praktické:
+    </p>
+    <ul>
+      <li>
+        <strong>Schéma se přepočítá s daty.</strong> Obrázek nakreslený jednou by za měsíc
+        tvrdil něco, co už neplatí — a nikdo by si toho nevšiml.
+      </li>
+      <li>
+        <strong>Funguje v tmavém motivu.</strong> Barvy jsou tokeny, ne obrázek. Totéž schéma
+        obslouží zelenou identitu, lázeňskou paletu i tmavý režim.
+      </li>
+      <li>
+        <strong>Nenačítá se nic z cizího serveru.</strong> Web to má napsané v patičce a platí
+        to i pro schémata.
+      </li>
+    </ul>
+    <p>
+      <strong>Šest schémat je celé z dat</strong> města: vlastnická struktura, vedení,
+      propojení osob a firem, řetěz usnesení → smlouva, číselník témat a týdenní běh (ten se
+      čte přímo z <code>run_tyden.py</code>, takže se nemůže rozejít s tím, co se v neděli
+      spustí).
+    </p>
+    <p>
+      <strong>Dvě jsou autorská.</strong> Mapa „který zdroj plní kterou sekci" a datový model
+      projektu se ze sběru odvodit nedají — jsou napsané v
+      <code>config/diagramy.json</code>. U obou je to uvedené i u schématu samotného, aby se
+      tvrzené nepletlo se zjištěným.
+    </p>
+    <p>
+      Ke každému schématu patří tabulka s týmiž údaji. Není to doplněk: schéma se nedá přečíst
+      čtečkou, nedá se vytisknout na úzký papír a na telefonu se roluje do strany. Tabulka nese
+      totéž a je čitelná vždycky.
+    </p>
+    {bezDat > 0 && (
+      <p>
+        Z {diagramy.length} schémat jich {bezDat} zatím nemá data. Nekreslí se prázdná — prázdné
+        schéma by tvrdilo, že struktura je prázdná, přitom se ji jen nepodařilo spočítat.
+      </p>
+    )}
+  </JakPocitame>
+</Zaklad>

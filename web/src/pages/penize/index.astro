@@ -1,5 +1,7 @@
 ---
 import Zaklad from '../../layouts/Zaklad.astro';
+import DiagramKarta from '../../components/DiagramKarta.astro';
+import { nactiDiagram } from '../../lib/diagramy';
 import StavDat from '../../components/StavDat.astro';
 import GrafKarta from '../../components/GrafKarta.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
@@ -240,6 +242,9 @@ const variantyVazby: Varianta[] = [
 /* ── Přehled protistran pod grafy ─────────────────────────────────────── */
 
 const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0)).slice(0, 200);
+
+/* Schéma k této sekci. Kompletní sada je na /diagramy. */
+const schemaHolding = nactiDiagram('holding').data;
 ---
 
 <Zaklad
@@ -489,6 +494,19 @@ const prehled = [...protistrany].sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_
           </ul>
         </JakPocitame>
       </>
+    )
+  }
+
+  {
+    schemaHolding && (
+      <section>
+        <h2>Kdo do „města" patří</h2>
+        <p class="uvod">
+          Schéma se kreslí ze stejných dat jako tahle stránka.
+          <a href="/diagramy">Všechna schémata</a>.
+        </p>
+        <DiagramKarta diagram={schemaHolding} uroven="h3" sbalene />
+      </section>
     )
   }
 </Zaklad>

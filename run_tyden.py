@@ -65,6 +65,10 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     # úplně poslední. Nejsou povinné: web bez nich funguje, jen dlaždice
     # rozcestníku nemají obrázek dat.
     ("pipeline.znaky_sekci",    "Znaky sekcí pro rozcestník",   False),
+    # Schémata čtou hotové výstupy ostatních modulů i seznam kroků z tohohle
+    # souboru. Nejsou povinná: bez nich web funguje, jen stránka /diagramy
+    # napíše, že se je nepodařilo spočítat.
+    ("pipeline.diagramy",       "Schémata projektu a města",    False),
 ]
 
 

@@ -32,6 +32,17 @@ Tmavý režim (deklarovat pod `@media (prefers-color-scheme: dark)` s guardem `:
 
 **Pravidlo:** žádná barva nesmí být definovaná jen uvnitř media query nebo `[data-theme]` bloku. Vše přes tokeny, jinak se stránka rozbije ve výchozím „system" režimu.
 
+### Značka
+
+Kolonáda: pět sloupů pod jedním obloukem arkády. Čte se dvojím způsobem naráz — sloupy kolonády a sloupce grafu. Výšky drží poměr smluv města v registru za roky 2022–2026 (634, 608, 786, 792, 445).
+
+**Je to značka, ne graf.** Poměr pochází z dat, ale zůstává pevný. Logo, které se mění každý týden, není logo.
+
+- Kreslí se přes `currentColor` (`src/components/Znacka.astro`), takže bere barvu z místa, kde stojí, a funguje ve všech třech paletách i v tmavém motivu bez druhé varianty.
+- `public/favicon.svg` má tentýž tvar s natvrdo zapsanými barvami — favicon nemá odkud barvu zdědit. **Když se změní jedno, musí se i druhé.**
+- V hlavičce stojí značka vlevo od jména; jméno se dál sází serifem („Naše Mariánky" plus slabší „v přehledech"). Značka jméno nenahrazuje.
+- Držet čitelnost v 16 px. Kdo přidá detail, který se v této velikosti slije, značku zhorší.
+
 ### Lázeňská paleta — volitelná, ne výchozí
 
 Druhá světlá sada v barvách města: modrá, žlutá, bílá. Aktivuje se stampem `data-paleta="lazne"` na `:root` a přepínač motivu ji nabízí jako čtvrtý stav (podle systému → světlý → lázeňský → tmavý).
@@ -175,6 +186,23 @@ Nepřekročitelná pravidla:
 - **Sekce bez dat dostane přerušovaný rám**, ne prázdnou plochu. Prázdná plocha by tvrdila, že sekce je prázdná — přitom jen nevíme.
 - **Druhá série se kreslí na vrcholu sloupce**, ne vedle něj, když je částí celku (nejednomyslná hlasování z celkových). Vedle by to byly dvě veličiny a součet by přestal platit.
 - **Žádný runtime JavaScript.** SVG vzniká při buildu z `data/znaky/sekce.json`, který počítá `pipeline/znaky_sekci.py`.
+
+### 3.9 Schémata
+
+Osm diagramů na `/diagramy`, plus výběr na stránkách sekcí. Data počítá `pipeline/diagramy.py`, SVG skládá `web/src/lib/diagramy.ts` při buildu.
+
+Typy: `strom` (holding, vedení), `tok` (týdenní běh, řetěz usnesení → smlouva), `sit` (osoby ↔ firmy, zdroje ↔ sekce), `mysl` (číselník témat), `erd` (datový model).
+
+Nepřekročitelná pravidla:
+
+- **Schéma se nekreslí v kreslicím nástroji.** Obrázek nakreslený jednou by za měsíc tvrdil něco, co už neplatí, neuměl by tmavý motiv a musel by se odněkud načíst. Schéma vzniká z dat při buildu.
+- **Ke každému schématu patří tabulka s týmiž údaji.** Není to doplněk jako u grafů — schéma se nedá přečíst čtečkou, vytisknout na úzký papír ani zobrazit na telefonu bez rolování. Tabulka nese totéž a je čitelná vždycky.
+- **Zjištěné se nesmí plést s tvrzeným.** Šest schémat je z dat města; mapa zdrojů a datový model stojí na `config/diagramy.json`, což je znalost o projektu. U obou je to napsané.
+- **Přerušovaný obrys znamená „nepatří do celku" nebo „je to odhad".** Nemocnice mimo holding, nízká jistota u řetězu, nejednoznačná identita u propojení. Totéž pravidlo jako u značek na časové ose (§3.7).
+- **Barvy jsou tokeny, nikdy hexy**, a legenda musí používat tytéž klíče, jaké nesou data. (Vzniklo z chyby: legenda měla klíče `dodavatel` a `bez-vazby`, data `obchoduje-s-mestem` a `bez-vazby-na-mesto` — vzorky vyšly bílé.)
+- **Schéma se nezmenšuje pod čitelnost popisků.** Kreslí se na pevnou šířku a plocha roluje do strany (`.diagram-plocha`), stejně jako grafy. Rolovatelná oblast musí být dosažitelná klávesnicí.
+- **Sloupce sítě se řadí barycentricky**, ne abecedně. Abecední pořadí vyrobilo z 72 čar klubko, ve kterém nešlo nic sledovat. Pořadí je pouze vizuální — nic neskrývá.
+- **Cizí data jdou do SVG výhradně přes `esc()`.** Názvy firem, jména a odbory pocházejí z cizích zdrojů.
 
 ### 3.4 Dlaždice nad grafy
 Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se stavovou barvou a **vždy i textovým popiskem**, ne barvou samotnou).

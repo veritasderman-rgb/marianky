@@ -1,5 +1,7 @@
 ---
 import Zaklad from '../../layouts/Zaklad.astro';
+import DiagramKarta from '../../components/DiagramKarta.astro';
+import { nactiDiagram } from '../../lib/diagramy';
 import StavDat from '../../components/StavDat.astro';
 import { nactiHlasovani, nactiLidi } from '../../lib/data';
 import { zplostiHlasovani } from '../../lib/prehledy';
@@ -65,6 +67,9 @@ const znameId = new Set(lide.map((o) => o.id));
 const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.osoba_id)))]
   .filter((id) => id && !znameId.has(id))
   .sort(orderCs);
+
+/* Schéma k této sekci. Kompletní sada je na /diagramy. */
+const schemaVedeni = nactiDiagram('vedeni').data;
 ---
 
 <Zaklad
@@ -120,6 +125,19 @@ const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.
           {chybejici.length > 12 ? ' a další' : ''}.
         </span>
       </div>
+    )
+  }
+
+  {
+    schemaVedeni && (
+      <section>
+        <h2>Kdo město řídí</h2>
+        <p class="uvod">
+          Schéma se kreslí ze stejných dat jako tahle stránka.
+          <a href="/diagramy">Všechna schémata</a>.
+        </p>
+        <DiagramKarta diagram={schemaVedeni} uroven="h3" sbalene />
+      </section>
     )
   }
 </Zaklad>

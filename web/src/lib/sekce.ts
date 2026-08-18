@@ -122,6 +122,12 @@ export const SKUPINY: SkupinaSekci[] = [
         kratce: 'Čísla',
         popis: 'Obyvatelé, práce, cestovní ruch',
       },
+      {
+        klic: 'diagramy',
+        cesta: '/diagramy',
+        nazev: 'Schémata',
+        popis: 'Jak je poskládané město a odkud se to bere',
+      },
     ],
   },
   {
