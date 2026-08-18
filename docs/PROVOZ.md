@@ -45,7 +45,34 @@ yt-dlp --js-runtimes node --list-subs "https://www.youtube.com/watch?v=ml3vq41Wp
 - **Titulky jsou** → stáhnou se zdarma a hned, hotovo za odpoledne.
 - **Titulky nejsou** → přijde na řadu Whisper a 94 záznamů po 2–5 hodinách je zhruba 350 hodin zvuku. To je práce na dny strojového času, ne na odpoledne.
 
-Skript rozliší „video nemá titulky" od „YouTube nás odmítl" — druhé je chyba prostředí, ne zdroje, a řeší se spuštěním odjinud nebo předáním cookies (`--cookies-from-browser`).
+Skript rozliší „video nemá titulky" od „YouTube nás odmítl" — druhé je chyba prostředí, ne zdroje.
+
+#### Co přesně blokuje a co s tím nepomůže
+
+Ověřeno měřením, ne odhadem: požadavek na stránku videa se přesměruje na `google.com/sorry/index`, což je **antiabuzní blokace Googlu**, a se souhlasovou cookie přijde `HTTP 429` s hláškou o neobvyklém provozu.
+
+Blokace tedy sedí na **odchozí IP adrese**, ne na použité metodě. Z toho plyne praktický důsledek:
+
+- **Nástroj běžící ve stejném prostředí nepomůže** — ať jde o `yt-dlp`, knihovnu pro přepisy nebo jinou obálku, všechny nakonec sáhnou na tutéž adresu z téže IP a dostanou tentýž 429. Souhlasová cookie ani jiná hlavička na tom nic nemění.
+- **Pomůže cokoliv, co běží jinde** — spuštění z vlastní sítě, nebo služba, která přepis stáhne na svých serverech a vrátí hotový text.
+
+#### Tři cesty, jak přepis pořídit
+
+Pipeline je schválně nenáročná na to, odkud text přijde. Stačí soubor v `data/zaznamy/titulky/` pojmenovaný podle identifikátoru videa:
+
+| formát | přípona | odkud |
+|---|---|---|
+| titulky WebVTT | `.vtt` | `yt-dlp`, stažení z vlastní sítě |
+| titulky SubRip | `.srt` | Whisper a většina přepisovacích nástrojů |
+| **prostý přepis** | `.txt` | **tlačítko „Zobrazit přepis" přímo na YouTube — zkopírovat a vložit** |
+
+Poslední řádek je záměrná pojistka: prostý přepis se střídavými řádky „čas / text" **nepotřebuje žádný nástroj, přihlášení ani průchodnou IP adresu**. Když všechno ostatní selže, přepis se dá pořídit ručně a pipeline ho zpracuje stejně — rozdělí na bloky, přiřadí řečníky a udělá odkazy na vteřinu záznamu.
+
+```bash
+# ať už přepis vznikl jakkoliv:
+cp muj-prepis.txt data/zaznamy/titulky/ml3vq41WpEs.txt
+python3 -m pipeline.prepis
+```
 
 ### 2. Aktuální úřední deska
 

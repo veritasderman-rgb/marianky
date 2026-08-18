@@ -76,6 +76,56 @@ def vtt_na_segmenty(cesta: Path) -> list[dict]:
     return ocistene
 
 
+# Prostý přepis: střídá se řádek s časem a řádek s textem. Přesně tak
+# vypadá to, co dá zkopírovat tlačítko „Zobrazit přepis" přímo na YouTube.
+# Je to záměrně nejhloupější možný vstup — nepotřebuje nástroj, přihlášení
+# ani průchodnou IP adresu, takže přepisy jdou pořídit i tehdy, když
+# automatické stahování selže.
+_CAS_RADEK = re.compile(r"^\s*(?:(\d{1,2}):)?(\d{1,2}):(\d{2})\s*$")
+
+
+def text_na_segmenty(cesta: Path) -> list[dict]:
+    """Rozparsuje prostý přepis ve tvaru „čas / text" na segmenty.
+
+    Konec segmentu se odvozuje ze začátku následujícího; u posledního se
+    odhaduje. Přesnost je nižší než u VTT, ale pro vyhledávání a odkaz na
+    vteřinu záznamu to stačí.
+    """
+    radky = cesta.read_text(encoding="utf-8", errors="replace").splitlines()
+    syrove: list[tuple[int, str]] = []
+    cas: int | None = None
+    buffer: list[str] = []
+
+    for radek in radky:
+        m = _CAS_RADEK.match(radek)
+        if m:
+            if cas is not None and buffer:
+                syrove.append((cas, " ".join(buffer).strip()))
+            h, mi, sec = m.groups()
+            cas = int(h or 0) * 3600 + int(mi) * 60 + int(sec)
+            buffer = []
+        elif radek.strip():
+            buffer.append(radek.strip())
+
+    if cas is not None and buffer:
+        syrove.append((cas, " ".join(buffer).strip()))
+
+    segmenty = []
+    for i, (od, text) in enumerate(syrove):
+        do = syrove[i + 1][0] if i + 1 < len(syrove) else od + 5
+        t = cistit(text)
+        if t:
+            segmenty.append({"od": od, "do": do, "text": t})
+    return segmenty
+
+
+def nacti_prepis(cesta: Path) -> list[dict]:
+    """Načte přepis podle přípony. VTT má přednost, prostý text je záloha."""
+    if cesta.suffix.lower() in (".vtt", ".srt"):
+        return vtt_na_segmenty(cesta)
+    return text_na_segmenty(cesta)
+
+
 def sluc(segmenty: list[dict], min_znaku: int = MIN_ZNAKU) -> list[dict]:
     """Sloučí drobné segmenty do odstavců vhodných pro vyhledávání.
 
@@ -175,7 +225,7 @@ def priradit_recniky(bloky: list[dict], osoby: list[dict]) -> list[dict]:
 
 
 def zpracuj_zaznam(zaznam: dict, vtt: Path, osoby: list[dict]) -> dict:
-    segmenty = vtt_na_segmenty(vtt)
+    segmenty = nacti_prepis(vtt)
     if not segmenty:
         raise ValueError(f"z {vtt.name} nevznikly žádné segmenty")
 
@@ -216,7 +266,10 @@ def main() -> None:
     hotovo = 0
 
     for z in zaznamy:
-        vtt_soubory = sorted(titulky_dir.glob(f"{z['video_id']}*.vtt"))
+        vtt_soubory = sorted(
+            f for pripona in ("vtt", "srt", "txt")
+            for f in titulky_dir.glob(f"{z['video_id']}*.{pripona}")
+        )
         if not vtt_soubory:
             log.info("bez titulků, přeskočeno", video=z["video_id"])
             continue
