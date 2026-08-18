@@ -99,7 +99,23 @@ npm run build      # astro build + pagefind
 npm run preview
 ```
 
-Deploy na **Vercel**: Root Directory = `web`, zapnuté *„Include source files outside of the Root Directory"* — build čte `../data` a `../config`. Cestu jde přebít proměnnou `MARIANKY_DATA`.
+### Nasazení na Vercel
+
+Konfigurace je ve **dvou souborech schválně**. Vercel čte `vercel.json` z adresáře nastaveného jako Root Directory:
+
+| Root Directory | přečte se | výsledek |
+|---|---|---|
+| kořen repozitáře (výchozí) | `/vercel.json` | build se spustí ve `web/`, výstup `web/dist` |
+| `web` | `/web/vercel.json` | build se spustí přímo tam |
+
+Obojí vede ke stejnému výsledku, takže nasazení **nezávisí na tom, jestli si někdo v administraci vzpomene Root Directory přepnout**. Bez kořenové konfigurace Vercel na kořeni nenajde žádný framework, nenasadí nic a každá adresa vrátí `404 NOT_FOUND`.
+
+Build musí běžet **s celým checkoutem** — web čte `data/` a `config/` z kořene repozitáře, ne z `web/`. Cestu jde přebít proměnnou `MARIANKY_DATA`.
+
+**Dvě věci, na kterých to spadlo v praxi:**
+
+1. **Chybějící větev `main`.** Vercel má výchozí produkční větev `main`; když v repozitáři není, neproběhne žádné produkční nasazení a produkční adresa vrací 404 — i když se deploy „povede". Buď musí `main` existovat, nebo se v *Settings → Git → Production Branch* nastaví jiná.
+2. **`vercel.json` nesmí obsahovat cizí klíče.** JSON nemá komentáře a Vercel schéma odmítá i klíč typu `_comment` chybou *„should NOT have additional property"*. Vysvětlivky patří sem do dokumentace, ne do konfigurace.
 
 Když adresář s daty není vidět, build projde, ale do logu vypíše `[mariánky] POZOR: adresář s daty neexistuje`. Bez toho by prázdný web vypadal jako stav světa, ne jako špatná konfigurace.
 
