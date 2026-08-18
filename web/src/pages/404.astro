@@ -1,5 +1,6 @@
 ---
 import Zaklad from '../layouts/Zaklad.astro';
+import Rozcestnik from '../components/Rozcestnik.astro';
 ---
 
 <Zaklad titulek="Stránka nenalezena" nadpis="Tady nic není">
@@ -7,9 +8,9 @@ import Zaklad from '../layouts/Zaklad.astro';
     Adresa neexistuje, nebo k ní zatím nejsou data. Přehled má stránku jen pro záznamy,
     které jsou opravdu ve zdrojích — nic se nevymýšlí dopředu.
   </p>
-  <p>
-    <a href="/">Poslední vydání</a> · <a href="/usneseni">Usnesení</a> ·
-    <a href="/hlasovani">Hlasování</a> · <a href="/penize">Peníze</a> ·
-    <a href="/hledat">Hledat</a>
-  </p>
+
+  {/* Místo pěti odkazů v řádku celý rozcestník: kdo přišel na neplatnou
+      adresu, obvykle neví, jak se sekce jmenuje, a hledá ji podle toho,
+      co v ní je. */}
+  <Rozcestnik nadpis="Kam dál" uroven="h2" />
 </Zaklad>

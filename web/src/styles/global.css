@@ -161,6 +161,66 @@
   --stin-nabidka: 0 8px 24px rgb(0 0 0 / 46%);
 }
 
+/* ═══════════  Tokeny — lázeňská paleta (volitelná světlá sada)  ═════════
+ *
+ * Barvy Mariánských Lázní: modrá, žlutá, bílá. Aktivuje se stampem
+ * `data-paleta="lazne"` na :root a je to VOLBA, ne výchozí stav — zelená
+ * identita kolonády zůstává tím, jak přehled vypadá bez zásahu.
+ *
+ * Co se NEMĚNÍ: barvy grafů (--g1…--g6, --r1…--r8). Jsou ověřené validátorem
+ * na barvoslepost a na kontrast proti #FFFFFF a #151B17. Přebarvit je kvůli
+ * ladění s modrou by tu validaci zahodilo.
+ *
+ * Žlutá nikdy nenese text — jen linky, podtržení a plochy. Na bílém papíru
+ * má kontrast pod 3:1 a jako barva písma by byla nečitelná.
+ *
+ * Paleta je světlá. V kombinaci s tmavým motivem by vznikl modrý text na
+ * tmavém pozadí, proto se `data-paleta` a `data-theme="dark"` vylučují —
+ * hlídá to přepínač v layoutu.
+ */
+
+:root[data-paleta='lazne'] {
+  color-scheme: light;
+
+  /* Povrchy: chladná bílá místo zeleného papíru */
+  --paper: #f4f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef3f9;
+
+  /* Inkoust: neutrální chladná šedá */
+  --ink: #131922;
+  --ink-soft: #48525f;
+  --ink-faint: #76818f;
+  --rule: #d7e0ea;
+  --rule-soft: #e6ecf3;
+
+  /* Modrá je hlavní akcent — odkazy, hlavní tlačítka, focus */
+  --accent: #1a4e8f;
+  --accent-kontrast: #ffffff;
+
+  /* Žlutá je druhý akcent. Nikdy nenese text. */
+  --zlata: #e9a900;
+  --zlata-svetla: #fbeec2;
+  --modra-svetla: #dfeaf7;
+
+  /* Stín v chladné modré, aby na bílém papíru nešedivěl */
+  --stin: 0 1px 2px rgb(19 25 34 / 5%), 0 4px 14px rgb(19 25 34 / 4%);
+  --stin-nabidka: 0 8px 24px rgb(19 25 34 / 13%);
+}
+
+/* Žlutá jako značka aktivního místa. Jediné, co v lázeňské paletě přibývá
+   navíc oproti zelené — v ostatních paletách nese aktivní položku podtržení
+   akcentem, tady je pod ním ještě žlutý pruh hlavičky. */
+:root[data-paleta='lazne'] .hlavicka-webu {
+  border-bottom-color: var(--zlata);
+  border-bottom-width: 2px;
+}
+
+:root[data-paleta='lazne'] .uvod {
+  border-left: 3px solid var(--zlata);
+  padding-left: 0.85rem;
+}
+
 /* ════════════════════════════  Základ  ══════════════════════════════ */
 
 *,
@@ -513,6 +573,213 @@ main {
   margin: 0 0 1rem;
   color: var(--ink-soft);
   font-size: 0.92rem;
+}
+
+/* ═══════════════════════  Hlava sekce  ══════════════════════════════
+ *
+ * Nadpis stránky se znakem sekce. Znak je tentýž obrázek jako na
+ * rozcestníku — čtenář podle něj pozná, že je tam, kam klikl.
+ * Na úzkých obrazovkách se nekreslí: nadpis a úvodní odstavec jsou tam
+ * důležitější než opakování obrázku z předchozí stránky.
+ */
+
+.hlava-sekce__znak {
+  display: none;
+}
+
+.hlava-sekce__text > h1 {
+  margin-top: 0;
+}
+
+@media (min-width: 44rem) {
+  .hlava-sekce {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+
+  .hlava-sekce__znak {
+    display: block;
+    flex: 0 0 4rem;
+    width: 4rem;
+    margin-top: 0.55rem;
+    padding: 0.4rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+  }
+
+  .hlava-sekce__text {
+    min-width: 0;
+  }
+}
+
+/* ═══════════════════════  Rozcestník sekcí  ═════════════════════════
+ *
+ * Grafická navigace. Na telefonu nese význam obraz a krátký název, na
+ * širších obrazovkách přibývá popis a věta o tom, co znak ukazuje.
+ *
+ * Znak je miniaturní graf ze skutečných dat sekce, ne ikona — projekt
+ * ikonovou sadu nemá a mít nemá (DESIGN.md, „Pozadí a obrazy"). Proto se
+ * s ním zachází jako s grafem: nikdy nenese sám žádnou informaci, vždy je
+ * vedle něj číslo a slovo.
+ */
+
+.rozcestnik {
+  margin: 2rem 0 1rem;
+}
+
+.rozcestnik__nadpis {
+  margin: 0 0 0.9rem;
+}
+
+.rozcestnik__mrizka {
+  display: grid;
+  /* Na nejužších telefonech dva sloupce, dál se dopočítá samo. Fixní počet
+     sloupců by na 320px vyrobil dlaždici užší než její vlastní číslo. */
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rozcestnik__polozka {
+  margin: 0;
+}
+
+.rozcestnik__dlazdice {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  height: 100%;
+  padding: 0.85rem 0.85rem 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--stin);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.rozcestnik__dlazdice:hover {
+  background: var(--surface-2);
+}
+
+/* Sekce bez dat: přerušovaný rám. Odkaz zůstává funkční — stránka existuje,
+   jen na ní zatím nic není. */
+.rozcestnik__dlazdice[data-stav='chybi'] {
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.znak {
+  display: block;
+}
+
+.znak__kresba {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Znak je čtvercový a nesmí se roztáhnout do výšky dlaždice. */
+  aspect-ratio: 1 / 1;
+}
+
+.rozcestnik__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.rozcestnik__nazev {
+  font-weight: 600;
+  line-height: 1.25;
+  /* Dlouhý název („Kdo sedí v jakých firmách") se na úzké dlaždici zalomí
+     kdekoliv; bez tohohle by přetekl. */
+  overflow-wrap: anywhere;
+}
+
+.rozcestnik__nazev-siroky {
+  display: none;
+}
+
+.rozcestnik__cislo {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.rozcestnik__jednotka {
+  /* Na telefonu se jednotka nevejde vedle čísla a rozbila by řádek. */
+  display: none;
+  margin-left: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.rozcestnik__popis,
+.rozcestnik__veta {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.rozcestnik__veta {
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+}
+
+.rozcestnik__vysvetleni {
+  margin: 0.9rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  max-width: 46rem;
+}
+
+/* Od 34rem výš se vejde i text. Dlaždice se změní z „obraz + jméno" na
+   „obraz vedle popisu": grafika vlevo, slova vpravo, tak jak si to čtenář
+   na velké obrazovce může přečíst celé. */
+@media (min-width: 34rem) {
+  .rozcestnik__mrizka {
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    gap: 0.9rem;
+  }
+
+  .rozcestnik__dlazdice {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1rem;
+  }
+
+  .znak {
+    flex: 0 0 4.75rem;
+    width: 4.75rem;
+  }
+
+  .rozcestnik__nazev-uzky {
+    display: none;
+  }
+
+  .rozcestnik__nazev-siroky {
+    display: inline;
+  }
+
+  .rozcestnik__jednotka,
+  .rozcestnik__popis,
+  .rozcestnik__veta {
+    display: block;
+  }
+
+  .rozcestnik__jednotka {
+    display: inline;
+  }
+
+  .rozcestnik__popis {
+    margin-top: 0.2rem;
+  }
 }
 
 /* ═══════════════════════════  Dlaždice  ═════════════════════════════ */

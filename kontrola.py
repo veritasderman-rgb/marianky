@@ -267,6 +267,45 @@ def kontrola_souradnic(v: Vysledek) -> None:
         v.projde(f"všech {celkem} bodů padlo do okolí Mariánských Lázní")
 
 
+def kontrola_znaku(v: Vysledek) -> None:
+    """Znak sekce nesmí kreslit konstantu a vydávat ji za vývoj.
+
+    Stalo se: znak hlasování ukazoval „podíl schválených návrhů" — jenže
+    zdroj zveřejňuje jen schválená hlasování, takže podíl byl vždy 100 %.
+    Mřížka vyšla ve všech letech stejně sytá a budila dojem, že se něco
+    měří. Kontrola hlídá, že každý znak má v datech aspoň dvě různé
+    hodnoty; jinak není co kreslit a patří tam číslo, ne graf.
+    """
+    cesta = DATA / "znaky" / "sekce.json"
+    if not cesta.exists():
+        v.varovani("znaky sekcí zatím nejsou spočítané "
+                   "(pipeline/znaky_sekci.py) — rozcestník bude bez obrázků")
+        return
+    try:
+        znaky = (json.loads(cesta.read_text(encoding="utf-8")) or {}).get("znaky") or {}
+    except (json.JSONDecodeError, OSError) as e:
+        v.chyba(f"data/znaky/sekce.json nejde přečíst: {e}")
+        return
+
+    ploche: list[str] = []
+    for klic, z in znaky.items():
+        if z.get("stav") != "ok":
+            continue
+        hodnoty = [h for h in (z.get("hodnoty") or []) if h is not None]
+        hodnoty += [b.get("v") for b in (z.get("bunky") or []) if b.get("v") is not None]
+        hodnoty += [b.get("v") for b in (z.get("policka") or []) if b.get("v") is not None]
+        # Tvary bez číselné řady (mapa, řetěz, síť, úseky, tečky) se neměří —
+        # jejich obsahem není vývoj v čase.
+        if len(hodnoty) >= 3 and len(set(hodnoty)) == 1:
+            ploche.append(klic)
+
+    if ploche:
+        v.chyba("znak kreslí ve všech bodech stejnou hodnotu, takže tvrdí vývoj, "
+                f"který v datech není: {', '.join(sorted(ploche))}")
+    else:
+        v.projde(f"znaky sekcí ({len(znaky)}) nekreslí konstantu")
+
+
 KONTROLY = [
     ("částky v usneseních", kontrola_castek),
     ("falešné nuly", kontrola_falesnych_nul),
@@ -275,6 +314,7 @@ KONTROLY = [
     ("číselník tagů", kontrola_tagu),
     ("týdenní vydání", kontrola_vydani),
     ("souřadnice", kontrola_souradnic),
+    ("znaky sekcí", kontrola_znaku),
 ]
 
 

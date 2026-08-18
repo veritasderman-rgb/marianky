@@ -298,7 +298,7 @@ const POPISEK_DLAZDICE: Record<string, string> = {
 const dlazdice: PolozkaDlazdice[] = [];
 for (const x of plne) {
   if (dlazdice.length >= 4) break;
-  const popisek = POPISEK_DLAZDICE[x.s.id] ?? x.s.nadpis;
+  const popisek = (x.s.id ? POPISEK_DLAZDICE[x.s.id] : undefined) ?? x.s.nadpis;
   if (x.objem !== null && x.objem > 0) {
     /* Chybějící cena se přizná, ale lidsky. Původní znění
        „součet za 4 z 5 záznamů; u 1 částka v datech není" bylo

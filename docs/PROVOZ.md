@@ -131,6 +131,14 @@ Každá sekce vydání nese stav:
 
 Tohle je páteř celé důvěryhodnosti. Kdyby „nic se nedělo" splynulo s „nepodařilo se načíst", přehled by tiše lhal právě v tom týdnu, kdy by na tom nejvíc záleželo.
 
+### Znaky sekcí
+
+Poslední krok běhu je `pipeline.znaky_sekci`. Spočítá z hotových dat miniaturní grafiku, kterou má na webu každá sekce — sloupce ročních výdajů u peněz, hranici katastru u mapy, 21 teček u zastupitelstva. Vzniká `data/znaky/sekce.json`, web z něj při buildu skládá SVG.
+
+Není povinný: bez něj se web sestaví a odkazy fungují, dlaždice rozcestníku jen nemají obrázek dat a na stránce je o tom napsaná hláška.
+
+Znak je vždy graf ze skutečných dat, nikdy piktogram. Proto se dá i pokazit stejně jako graf, a `kontrola.py` na to má test: **znak nesmí kreslit ve všech bodech stejnou hodnotu.** Přesně to se stalo napoprvé — znak hlasování ukazoval „podíl schválených návrhů", jenže portál zveřejňuje jen schválená hlasování, takže podíl byl u všech 12 349 záznamů 100 %. Obrázek se tvářil, že něco měří, a přitom kreslil konstantu. Teď ukazuje počet hlasování za rok s barevnou špičkou nejednomyslných — a je z něj vidět, že jich ubývá: ze 131 z 471 v roce 2012 na 57 z 968 v roce 2025.
+
 Zastaralost se poměřuje **tolerancí podle toho, jak často se zdroj mění** — rada zasedá po dvou týdnech, takže týden bez usnesení je normální stav, kdežto tři týdny bez pohybu na úřední desce nikoliv. Bez tolerance by se hlásil poplach skoro každý druhý týden a přestal by být slyšet.
 
 ---

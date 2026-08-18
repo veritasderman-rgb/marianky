@@ -61,6 +61,10 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.firmy_prehled",  "Přehled firem ve městě",       False),
     ("pipeline.podnikatele_prehled", "Přehled podnikatelů",     False),
     ("pipeline.vydani",         "Sestavení týdenního vydání",   True),
+    # Znaky sekcí čtou hotové výstupy všech ostatních modulů, takže stojí
+    # úplně poslední. Nejsou povinné: web bez nich funguje, jen dlaždice
+    # rozcestníku nemají obrázek dat.
+    ("pipeline.znaky_sekci",    "Znaky sekcí pro rozcestník",   False),
 ]
 
 

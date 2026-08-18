@@ -3,6 +3,7 @@ import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import VydaniKarta from '../components/Vydani.astro';
 import Sledovat from '../components/Sledovat.astro';
+import Rozcestnik from '../components/Rozcestnik.astro';
 import {
   nactiCiselnikTagu,
   nactiCisla,
@@ -157,6 +158,7 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
 <Zaklad
   titulek="Poslední vydání"
   aktivni="vydani"
+  bezZnaku
   nadpis="Naše Mariánky v přehledech"
   uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když se zdroj v daném týdnu nepodaří přečíst, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
 >
@@ -209,6 +211,12 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
     )
   }
 
+  <Rozcestnik
+    nadpis="Kam dál"
+    krome="vydani"
+    uroven="h2"
+  />
+
   <section class="sledovana" id="sledovana">
     <h2>Vaše sledovaná témata</h2>
     <p class="uvod">
@@ -251,11 +259,12 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
   </section>
 
   <section>
-    <h2>Co v přehledu už je</h2>
+    <h2>Stav sběru dat</h2>
     <p class="uvod">
-      Každou sekci plní vlastní sběr dat. Tabulka rozlišuje „ještě se nesbíralo",
-      „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou tři různé věci a nesmějí
-      vypadat stejně.
+      Rozcestník výše říká, co v které sekci je. Tahle tabulka říká, jak se to tam
+      dostalo: každou sekci plní vlastní sběr a ten může selhat. Rozlišuje se
+      „ještě se nesbíralo", „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou
+      tři různé věci a nesmějí vypadat stejně.
     </p>
     <div class="tabulka-obal">
       <table>

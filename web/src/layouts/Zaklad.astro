@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { SEKCE_HLEDAT, SEKCE_UVOD, SKUPINY, skupinaSekce } from '../lib/sekce';
+import { kresliZnak, nactiZnaky } from '../lib/znaky';
 
 export interface Props {
   titulek: string;
@@ -11,69 +13,38 @@ export interface Props {
   nadpis?: string;
   /** Vypne obal `<h1>` — stránka si nadpis řeší sama. */
   bezNadpisu?: boolean;
+  /** Nekreslit znak sekce u nadpisu (úvodní stránka má celý rozcestník). */
+  bezZnaku?: boolean;
 }
 
-const { titulek, uvod, aktivni, nadpis, bezNadpisu = false } = Astro.props;
+const { titulek, uvod, aktivni, nadpis, bezNadpisu = false, bezZnaku = false } = Astro.props;
 
 /* ── Navigace ─────────────────────────────────────────────────────────────
    Odkazy jsou seskupené podle toho, čeho se týkají — čtrnáct rovnocenných
    položek v jedné řadě se nedalo přečíst. Popisky mluví o obsahu, ne
    o názvu souboru: „/retez" je pro čtenáře „Od usnesení k penězům".
-   ADRESY SE NEMĚNÍ, mění se jen to, co je na nich napsané. */
+   ADRESY SE NEMĚNÍ, mění se jen to, co je na nich napsané.
 
-interface Odkaz {
-  klic: string;
-  cesta: string;
-  nazev: string;
-  /** Jednou větou, co za odkazem je. Ukazuje se v rozbalené skupině. */
-  popis?: string;
-}
+   Samotný seznam sekcí žije v `lib/sekce.ts`, protože ho kromě nabídky
+   používá i grafický rozcestník. Dvě kopie by se rozešly. */
 
-const odkazUvod: Odkaz = { klic: 'vydani', cesta: '/', nazev: 'Týdenní přehled' };
-const odkazHledat: Odkaz = { klic: 'hledat', cesta: '/hledat', nazev: 'Hledat' };
-
-const skupinyNavigace: { nazev: string; odkazy: Odkaz[] }[] = [
-  {
-    nazev: 'Radnice',
-    odkazy: [
-      { klic: 'usneseni', cesta: '/usneseni', nazev: 'Usnesení', popis: 'Co rada a zastupitelstvo schválily' },
-      { klic: 'hlasovani', cesta: '/hlasovani', nazev: 'Hlasování', popis: 'Kdo jak hlasoval' },
-    ],
-  },
-  {
-    nazev: 'Peníze',
-    odkazy: [
-      { klic: 'penize', cesta: '/penize', nazev: 'Peníze města', popis: 'Komu město platí a kolik' },
-      { klic: 'retez', cesta: '/retez', nazev: 'Od usnesení k penězům', popis: 'Co se schválilo, co se podepsalo, co se zaplatilo' },
-    ],
-  },
-  {
-    nazev: 'Lidé a firmy',
-    odkazy: [
-      { klic: 'lide', cesta: '/lide', nazev: 'Lidé', popis: 'Kdo ve městě rozhoduje' },
-      { klic: 'firmy', cesta: '/firmy', nazev: 'Firmy', popis: 'Firmy ve městě podle rejstříku' },
-      { klic: 'propojeni', cesta: '/propojeni', nazev: 'Kdo sedí v jakých firmách', popis: 'Vazby samosprávy na firmy' },
-    ],
-  },
-  {
-    nazev: 'Město',
-    odkazy: [
-      { klic: 'volby', cesta: '/volby', nazev: 'Volby', popis: 'Výsledky a účast po okrscích' },
-      { klic: 'mapa', cesta: '/mapa', nazev: 'Mapa', popis: 'Památky, prameny a další vrstvy' },
-      { klic: 'statistika', cesta: '/statistika', nazev: 'Čísla o městě', popis: 'Obyvatelé, práce, cestovní ruch' },
-    ],
-  },
-  {
-    nazev: 'Archiv',
-    odkazy: [
-      { klic: 'zpravodaj', cesta: '/zpravodaj', nazev: 'Zpravodaj', popis: 'Archiv čísel a článků' },
-      { klic: 'historie', cesta: '/historie', nazev: 'Historie města', popis: 'Dějiny po obdobích' },
-    ],
-  },
-];
+const skupinyNavigace = SKUPINY;
+const odkazUvod = SEKCE_UVOD;
+const odkazHledat = SEKCE_HLEDAT;
 
 /** Ve které skupině leží právě otevřená stránka — ta se označí. */
-const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic === aktivni))?.nazev;
+const aktivniSkupina = skupinaSekce(aktivni);
+
+/* ── Znak sekce vedle nadpisu ────────────────────────────────────────────
+   Tentýž obrázek, jaký má sekce na rozcestníku. Není to ozdoba: čtenář,
+   který přišel z rozcestníku, podle něj pozná, že je tam, kam klikl.
+   Na úvodní stránce se nekreslí — tam je rozcestník celý. */
+const zZnaku = nactiZnaky();
+const znakSekce = aktivni && !bezZnaku ? zZnaku.data?.znaky?.[aktivni] : undefined;
+const svgZnaku =
+  znakSekce && znakSekce.stav === 'ok'
+    ? kresliZnak(znakSekce, `${nadpis ?? titulek}: ${znakSekce.hodnota} ${znakSekce.jednotka}`.trim())
+    : '';
 ---
 
 <!doctype html>
@@ -99,6 +70,11 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
           var m = localStorage.getItem('motiv');
           if (m === 'dark' || m === 'light') {
             document.documentElement.setAttribute('data-theme', m);
+          } else if (m === 'lazne') {
+            /* Lázeňská paleta je světlá sada. Musí přebít systémový tmavý
+               režim, jinak by se modrý text vykreslil na tmavém pozadí. */
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.setAttribute('data-paleta', 'lazne');
           }
         } catch (e) {
           /* privátní režim — zůstane "system" */
@@ -130,7 +106,7 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
                   <span class="navigace__sipka" aria-hidden="true" />
                 </summary>
                 <ul class="navigace__nabidka">
-                  {s.odkazy.map((o) => (
+                  {s.sekce.map((o) => (
                     <li>
                       <a href={o.cesta} aria-current={aktivni === o.klic ? 'page' : undefined}>
                         <span class="navigace__polozka-nazev">{o.nazev}</span>
@@ -164,8 +140,24 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
     </header>
 
     <main id="obsah" class="obal" data-pagefind-body>
-      {!bezNadpisu && <h1>{nadpis ?? titulek}</h1>}
-      {uvod && <p class="uvod">{uvod}</p>}
+      {
+        !bezNadpisu &&
+          (svgZnaku ? (
+            <div class="hlava-sekce">
+              <span class="hlava-sekce__znak znak" aria-hidden="true" set:html={svgZnaku} />
+              <div class="hlava-sekce__text">
+                <h1>{nadpis ?? titulek}</h1>
+                {uvod && <p class="uvod">{uvod}</p>}
+              </div>
+            </div>
+          ) : (
+            <Fragment>
+              <h1>{nadpis ?? titulek}</h1>
+              {uvod && <p class="uvod">{uvod}</p>}
+            </Fragment>
+          ))
+      }
+      {bezNadpisu && uvod && <p class="uvod">{uvod}</p>}
       <slot />
     </main>
 
@@ -186,7 +178,7 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
             skupinyNavigace.map((s) => (
               <div>
                 <strong>{s.nazev}</strong>
-                {s.odkazy.map((o) => (
+                {s.sekce.map((o) => (
                   <a href={o.cesta}>{o.nazev}</a>
                 ))}
               </div>
@@ -240,7 +232,15 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
         });
       }
 
-      /* ── Přepínač motivu: system → světlý → tmavý → system ───────────── */
+      /* ── Přepínač motivu ──────────────────────────────────────────────
+         Čtyři stavy v jednom tlačítku:
+           podle systému → světlý → lázeňský → tmavý → podle systému
+
+         „Lázeňský" je světlá sada v barvách města (modrá, žlutá, bílá).
+         Je to varianta světlého motivu, ne pátý motiv — proto při něm
+         zůstává `data-theme="light"` a přibývá jen `data-paleta`. Kdyby
+         se mohl potkat s tmavým motivem, vznikl by modrý text na tmavém
+         pozadí; tenhle přepínač to nedovolí. */
       {
         const koren = document.documentElement;
         const tlacitko = document.getElementById('prepinac-motivu');
@@ -248,34 +248,48 @@ const aktivniSkupina = skupinyNavigace.find((s) => s.odkazy.some((o) => o.klic =
         const nazvy: Record<string, string> = {
           system: 'Motiv: podle systému',
           light: 'Motiv: světlý',
+          lazne: 'Motiv: lázeňský',
           dark: 'Motiv: tmavý',
+        };
+        const dalsiStav: Record<string, string> = {
+          system: 'light',
+          light: 'lazne',
+          lazne: 'dark',
+          dark: 'system',
         };
 
         function precti(): string {
+          if (koren.getAttribute('data-paleta') === 'lazne') return 'lazne';
           const a = koren.getAttribute('data-theme');
           return a === 'dark' || a === 'light' ? a : 'system';
         }
 
         function zobraz() {
-          if (popisek) popisek.textContent = nazvy[precti()];
+          if (popisek) popisek.textContent = nazvy[precti()] ?? nazvy.system;
+        }
+
+        function uloz(hodnota: string | null) {
+          try {
+            if (hodnota === null) localStorage.removeItem('motiv');
+            else localStorage.setItem('motiv', hodnota);
+          } catch {
+            /* privátní režim — volba se neuloží, ale stránka funguje */
+          }
         }
 
         tlacitko?.addEventListener('click', () => {
-          const dalsi = { system: 'light', light: 'dark', dark: 'system' }[precti()] ?? 'system';
+          const dalsi = dalsiStav[precti()] ?? 'system';
+          koren.removeAttribute('data-paleta');
           if (dalsi === 'system') {
             koren.removeAttribute('data-theme');
-            try {
-              localStorage.removeItem('motiv');
-            } catch {
-              /* ignoruj */
-            }
+            uloz(null);
+          } else if (dalsi === 'lazne') {
+            koren.setAttribute('data-theme', 'light');
+            koren.setAttribute('data-paleta', 'lazne');
+            uloz('lazne');
           } else {
             koren.setAttribute('data-theme', dalsi);
-            try {
-              localStorage.setItem('motiv', dalsi);
-            } catch {
-              /* ignoruj */
-            }
+            uloz(dalsi);
           }
           zobraz();
         });

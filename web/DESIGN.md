@@ -32,6 +32,24 @@ Tmavý režim (deklarovat pod `@media (prefers-color-scheme: dark)` s guardem `:
 
 **Pravidlo:** žádná barva nesmí být definovaná jen uvnitř media query nebo `[data-theme]` bloku. Vše přes tokeny, jinak se stránka rozbije ve výchozím „system" režimu.
 
+### Lázeňská paleta — volitelná, ne výchozí
+
+Druhá světlá sada v barvách města: modrá, žlutá, bílá. Aktivuje se stampem `data-paleta="lazne"` na `:root` a přepínač motivu ji nabízí jako čtvrtý stav (podle systému → světlý → lázeňský → tmavý).
+
+```css
+--paper: #F4F7FB;  --surface: #FFFFFF;  --surface-2: #EEF3F9;
+--ink: #131922;  --ink-soft: #48525F;  --ink-faint: #76818F;
+--rule: #D7E0EA;  --rule-soft: #E6ECF3;  --accent: #1A4E8F;
+--zlata: #E9A900;  --zlata-svetla: #FBEEC2;  --modra-svetla: #DFEAF7;
+```
+
+Pravidla, která u ní platí:
+
+- **Barvy grafů se nemění.** `--g1…--g6` a `--r1…--r8` jsou ověřené validátorem; přebarvit je kvůli sladění s modrou by tu validaci zahodilo.
+- **Žlutá nikdy nenese text.** Na bílém papíru má kontrast pod 3:1. Smí být linka, podtržení a plocha — ne písmo.
+- **Je to světlá sada.** S tmavým motivem se vylučuje, jinak by vznikl modrý text na tmavém pozadí. Hlídá to přepínač: při volbě „lázeňský" se nastaví `data-theme="light"` a `data-paleta="lazne"` zároveň.
+- **Zelená identita zůstává výchozí.** Bez zásahu čtenáře vypadá web tak, jak popisuje odstavec výše.
+
 ### Typografie
 
 - Nadpisy: `"Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif`
@@ -142,6 +160,21 @@ Odlišuj **tvarem, ne jen barvou** — barva sama nesmí nést význam.
 Když je na ose hodně událostí, nekresli je jako jednotlivé značky: **900 překrytých koleček neříká nic**. Shlukuj je a velikost značky odvoď od počtu.
 
 U osy jedné entity (osoba, firma, téma) uvádět, z jakých zdrojů se skládá — jinak vypadá jako úplný obraz, ačkoliv obsahuje jen to, co je v našich datech.
+
+### 3.8 Znaky sekcí a grafický rozcestník
+
+Rozcestník je grafická navigace na úvodní stránce. Na telefonu nese význam obraz a krátký název, od 34 rem výš přibývá popis. Znak sekce se opakuje u nadpisu té stránky, aby čtenář poznal, že je tam, kam klikl.
+
+**Znak není ikona.** Projekt nemá ikonovou sadu a mít ji nemá — obrazová složka je výhradně datová. Znak je miniaturní graf ze skutečných dat té sekce: sloupce ročních výdajů u peněz, skutečná hranice katastru z RÚIAN u mapy, 21 teček u zastupitelstva. Kdo sem vloží piktogram, mění identitu, ne detail.
+
+Nepřekročitelná pravidla:
+
+- **Znak nesmí kreslit konstantu.** Když má řada ve všech bodech stejnou hodnotu, netvrdí vývoj — patří tam číslo, ne graf. Hlídá to `kontrola.py`. (Vzniklo z chyby: znak hlasování ukazoval „podíl schválených návrhů", jenže zdroj zveřejňuje jen schválená hlasování, takže podíl byl vždy 100 %.)
+- **`null` je mezera, nula je nula.** Chybějící hodnota dostane tečkovanou patku u osy, aby mezera nešla přečíst jako konec dat. Nulová hodnota dostane 1px proužek, aby se nula a neznámo nekreslily stejně, tedy nijak.
+- **Znak sám nikdy nenese informaci.** Vedle něj je vždy číslo a slovo; pro čtečku je `aria-hidden`, protože totéž je vedle napsané.
+- **Sekce bez dat dostane přerušovaný rám**, ne prázdnou plochu. Prázdná plocha by tvrdila, že sekce je prázdná — přitom jen nevíme.
+- **Druhá série se kreslí na vrcholu sloupce**, ne vedle něj, když je částí celku (nejednomyslná hlasování z celkových). Vedle by to byly dvě veličiny a součet by přestal platit.
+- **Žádný runtime JavaScript.** SVG vzniká při buildu z `data/znaky/sekce.json`, který počítá `pipeline/znaky_sekci.py`.
 
 ### 3.4 Dlaždice nad grafy
 Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se stavovou barvou a **vždy i textovým popiskem**, ne barvou samotnou).

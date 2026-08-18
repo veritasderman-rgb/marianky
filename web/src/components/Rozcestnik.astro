@@ -1,0 +1,113 @@
+---
+/**
+ * Grafický rozcestník sekcí.
+ *
+ * PROČ: na telefonu je rozbalovací nabídka s pěti skupinami a čtrnácti
+ * položkami pomalá — než čtenář najde „Kdo sedí v jakých firmách", třikrát
+ * něco rozbalí. Rozcestník dá všechny sekce na jednu obrazovku a odliší je
+ * obrazem, který se pozná dřív, než se stihne přečíst popisek.
+ *
+ * CO JE NA DLAŽDICI:
+ *   – telefon: znak + krátký název + hlavní číslo. Popis se nevejde a
+ *     dlaždice by z něj byla sloupec textu, tedy přesně to, co má nahradit.
+ *   – od 34rem výš: znak + název + číslo s jednotkou + věta, co v sekci je.
+ *
+ * Znak NENÍ ikona: je to graf ze skutečných dat té sekce (viz
+ * `pipeline/znaky_sekci.py`). Sekce bez dat dostane přerušovaný rám a
+ * hlášku — prázdná dlaždice by tvrdila, že sekce je prázdná, přitom jen
+ * nevíme.
+ */
+import { VSECHNY_SEKCE, type Sekce } from '../lib/sekce';
+import { kresliZnak, nactiZnaky, type Znak } from '../lib/znaky';
+
+export interface Props {
+  /** Nadpis nad rozcestníkem. Když chybí, rozcestník žádný nemá. */
+  nadpis?: string;
+  /** Klíč sekce, která se má vynechat (na stránce, kde už čtenář je). */
+  krome?: string;
+  /** Úroveň nadpisu — na úvodní stránce h2, jinde může být h3. */
+  uroven?: 'h2' | 'h3';
+}
+
+const { nadpis, krome, uroven = 'h2' } = Astro.props;
+
+const zZnaku = nactiZnaky();
+const znaky = zZnaku.data?.znaky ?? {};
+
+interface Dlazdice {
+  sekce: Sekce;
+  znak: Znak | undefined;
+  svg: string;
+}
+
+const dlazdice: Dlazdice[] = VSECHNY_SEKCE.filter((s) => s.klic !== krome).map((sekce) => {
+  const znak = znaky[sekce.klic];
+  return {
+    sekce,
+    znak,
+    /* Popis pro čtečku říká, co graf ukazuje. Nezní „graf sekce Peníze",
+       protože to čtenáři nic nedá — zní číslem, které z grafu plyne. */
+    svg: kresliZnak(
+      znak ?? { tvar: 'chybi', hodnota: '—', jednotka: '', veta: '', stav: 'chybi', zdroj: '—' },
+      znak && znak.stav === 'ok'
+        ? `${sekce.nazev}: ${znak.hodnota} ${znak.jednotka}`.trim()
+        : `${sekce.nazev}: data zatím nejsou`,
+    ),
+  };
+});
+
+const Nadpis = uroven;
+const bezDat = dlazdice.filter((d) => !d.znak || d.znak.stav !== 'ok').length;
+---
+
+<nav class="rozcestnik" aria-label="Sekce přehledu">
+  {nadpis && <Nadpis class="rozcestnik__nadpis">{nadpis}</Nadpis>}
+
+  {
+    zZnaku.stav !== 'ok' && (
+      <p class="stav-dat stav-dat--chybi">
+        <strong class="stav-dat__nadpis">Znaky sekcí zatím nejsou spočítané</strong>
+        Rozcestník odkazuje správně, jen u dlaždic chybí obrázek dat. Doplní ho modul
+        <code>pipeline/znaky_sekci.py</code> při nejbližším týdenním běhu.
+        <span class="stav-dat__zdroj">data/znaky/sekce.json</span>
+      </p>
+    )
+  }
+
+  <ul class="rozcestnik__mrizka">
+    {
+      dlazdice.map(({ sekce, znak, svg }) => (
+        <li class="rozcestnik__polozka">
+          <a
+            class="rozcestnik__dlazdice"
+            href={sekce.cesta}
+            data-stav={znak?.stav === 'ok' ? undefined : 'chybi'}
+          >
+            <span class="znak" aria-hidden="true" set:html={svg} />
+            <span class="rozcestnik__text">
+              <span class="rozcestnik__nazev">
+                <span class="rozcestnik__nazev-uzky">{sekce.kratce ?? sekce.nazev}</span>
+                <span class="rozcestnik__nazev-siroky">{sekce.nazev}</span>
+              </span>
+              <span class="rozcestnik__cislo cislo">
+                {znak?.hodnota ?? '—'}
+                {znak?.jednotka && <span class="rozcestnik__jednotka">{znak.jednotka}</span>}
+              </span>
+              <span class="rozcestnik__popis">{sekce.popis}</span>
+              {znak?.veta && znak.stav === 'ok' && (
+                <span class="rozcestnik__veta">{znak.veta}</span>
+              )}
+              {znak?.stav !== 'ok' && <span class="rozcestnik__veta">Data zatím nejsou sebraná.</span>}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="rozcestnik__vysvetleni">
+    Obrázek na dlaždici není ikona — je to graf ze skutečných dat té sekce.
+    Mezera v grafu znamená, že údaj neznáme; nula se kreslí jako nula.
+    {bezDat > 0 && ` Ze ${dlazdice.length} sekcí zatím ${bezDat} data nemá.`}
+  </p>
+</nav>
