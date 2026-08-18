@@ -1,0 +1,103 @@
+---
+/**
+ * Tabulka, která se vypisuje po částech.
+ *
+ * PROČ: profil dlouho sloužícího zastupitele vypisoval všech ~10 000 jeho
+ * hlasování a měl 101 896 DOM uzlů. Stránka se načetla, ale na telefonu
+ * trvala vteřiny a scrollování drhlo — a tabulku s deseti tisíci řádky
+ * stejně nikdo celou nečte.
+ *
+ * Server vysází první část, zbytek zůstane v HTML jako neaktivní řádky?
+ * Ne — to by uzly nezachránilo. Zbytek se proto vůbec nevykreslí a je
+ * dostupný přes tlačítko, které přidá další část.
+ *
+ * Na rozdíl od seznamu hlasování tu není datový ostrůvek: řádky se
+ * vykreslují při buildu do `<template>`… i to by stálo uzly. Řešíme to
+ * nejjednodušeji, jak to jde — server vysází HTML všech řádků do jednoho
+ * `<script type="application/json">` jako pole hotových řetězců a skript
+ * je přidává po částech. Text je levný, uzly ne.
+ *
+ * BEZ JAVASCRIPTU je vidět první část a je napsané, kolik řádků zbývá.
+ */
+export interface Props {
+  /** Hotové `<tr>…</tr>` řetězce. Escapování si hlídá volající. */
+  radky: string[];
+  /** Hlavička tabulky se vkládá jako slot. */
+  id: string;
+  /** Kolik řádků vysází server a po kolika se pak přidává. */
+  poCastech?: number;
+  /** Co se v tabulce vypisuje — do hlášky „zobrazeno X z Y". */
+  jednotka?: string;
+}
+
+const { radky, id, poCastech = 200, jednotka = 'řádků' } = Astro.props;
+
+const prvni = radky.slice(0, poCastech).join('');
+const zbytek = radky.slice(poCastech);
+const data = JSON.stringify(zbytek).replace(/</g, '\\u003c');
+---
+
+<div class="tabulka-obal">
+  <table id={id} data-tabulka-po-castech data-po-castech={poCastech}>
+    <slot name="hlavicka" />
+    <tbody set:html={prvni} />
+  </table>
+</div>
+
+{
+  zbytek.length > 0 && (
+    <p class="radek-akci" data-tabulka-vic={id}>
+      <button type="button" class="tlacitko" data-tabulka-vic-tlacitko>
+        Načíst dalších {Math.min(poCastech, zbytek.length)}
+      </button>
+      <span class="stav-dat__zdroj" data-tabulka-stav>
+        zobrazeno {poCastech.toLocaleString('cs-CZ')} z {radky.length.toLocaleString('cs-CZ')} {jednotka}
+      </span>
+    </p>
+  )
+}
+
+{zbytek.length > 0 && <script is:inline type="application/json" id={`${id}-data`} data-pagefind-ignore set:html={data} />}
+
+<script>
+  /* Přidávání řádků po částech. Řádky jsou hotové HTML řetězce v ostrůvku —
+     vykreslí se, až když o ně někdo požádá. */
+  for (const tabulka of Array.from(document.querySelectorAll<HTMLElement>('[data-tabulka-po-castech]'))) {
+    const id = tabulka.id;
+    const telo = tabulka.querySelector('tbody');
+    const ostruvek = document.getElementById(`${id}-data`);
+    const radekVic = document.querySelector<HTMLElement>(`[data-tabulka-vic="${id}"]`);
+    const tlacitko = radekVic?.querySelector<HTMLButtonElement>('[data-tabulka-vic-tlacitko]');
+    const stav = radekVic?.querySelector<HTMLElement>('[data-tabulka-stav]');
+    const poCastech = Number(tabulka.dataset.poCastech) || 200;
+    if (!telo || !ostruvek || !tlacitko) continue;
+
+    let zbytek: string[] = [];
+    try {
+      zbytek = JSON.parse(ostruvek.textContent ?? '[]');
+    } catch {
+      zbytek = [];
+    }
+    /* Když se ostrůvek nepodaří přečíst, zůstane první část a tlačítko
+       zmizí. Prázdná tabulka by tvrdila, že další záznamy nejsou. */
+    if (!zbytek.length) {
+      radekVic!.hidden = true;
+      continue;
+    }
+
+    let pridano = 0;
+    const celkem = telo.querySelectorAll('tr').length + zbytek.length;
+
+    tlacitko.addEventListener('click', () => {
+      const cast = zbytek.slice(pridano, pridano + poCastech);
+      telo.insertAdjacentHTML('beforeend', cast.join(''));
+      pridano += cast.length;
+      const vykresleno = celkem - (zbytek.length - pridano);
+      if (stav) {
+        stav.textContent = `zobrazeno ${vykresleno.toLocaleString('cs-CZ')} z ${celkem.toLocaleString('cs-CZ')}`;
+      }
+      if (pridano >= zbytek.length) radekVic!.hidden = true;
+      else tlacitko.textContent = `Načíst dalších ${Math.min(poCastech, zbytek.length - pridano)}`;
+    });
+  }
+</script>

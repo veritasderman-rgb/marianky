@@ -1,0 +1,83 @@
+---
+/**
+ * Obecný výpis, který se dávkuje.
+ *
+ * Dostane hotové kusy HTML a vysází jen prvních pár; zbytek nechá v datovém
+ * ostrůvku a přidá ho, až o něj někdo požádá. Text je levný, DOM uzly ne —
+ * a právě jejich počet dělal ze stránek s tisíci záznamy nepoužitelné
+ * (stránka tématu „Pronájmy a pachty" měla 54 170 uzlů).
+ *
+ * Kusem může být cokoliv — odstavec, sekce, celý ročník. Escapování si
+ * hlídá volající, protože jen on ví, co je v datech cizí text.
+ *
+ * BEZ JAVASCRIPTU je vidět první dávka a je napsané, kolik zbývá.
+ */
+export interface Props {
+  /** Hotové kusy HTML, v pořadí, ve kterém se mají vypsat. */
+  casti: string[];
+  id: string;
+  /** Kolik kusů vysází server a po kolika se pak přidává. */
+  poCastech?: number;
+  /** Text tlačítka a hlášky — „ročníků", „záznamů", … */
+  jednotka?: string;
+}
+
+const { casti, id, poCastech = 3, jednotka = 'částí' } = Astro.props;
+
+const prvni = casti.slice(0, poCastech).join('');
+const zbytek = casti.slice(poCastech);
+const data = JSON.stringify(zbytek).replace(/</g, '\\u003c');
+---
+
+<div id={id} data-casti-po-castech set:html={prvni} />
+
+{
+  zbytek.length > 0 && (
+    <p class="radek-akci" data-casti-vic={id}>
+      <button type="button" class="tlacitko" data-casti-vic-tlacitko>Zobrazit další</button>
+      <span class="stav-dat__zdroj" data-casti-stav>
+        zobrazeno {poCastech.toLocaleString('cs-CZ')} z {casti.length.toLocaleString('cs-CZ')} {jednotka}
+      </span>
+    </p>
+  )
+}
+
+{zbytek.length > 0 && <script is:inline type="application/json" id={`${id}-data`} data-pagefind-ignore set:html={data} />}
+
+<script>
+  for (const obal of Array.from(document.querySelectorAll<HTMLElement>('[data-casti-po-castech]'))) {
+    const id = obal.id;
+    const ostruvek = document.getElementById(`${id}-data`);
+    const radek = document.querySelector<HTMLElement>(`[data-casti-vic="${id}"]`);
+    const tlacitko = radek?.querySelector<HTMLButtonElement>('[data-casti-vic-tlacitko]');
+    const stav = radek?.querySelector<HTMLElement>('[data-casti-stav]');
+    if (!ostruvek || !tlacitko || !radek) continue;
+
+    let zbytek: string[] = [];
+    try {
+      zbytek = JSON.parse(ostruvek.textContent ?? '[]');
+    } catch {
+      zbytek = [];
+    }
+    /* Nečitelný ostrůvek: zůstane první dávka a tlačítko zmizí. Prázdný
+       výpis by tvrdil, že další záznamy nejsou. */
+    if (!zbytek.length) {
+      radek.hidden = true;
+      continue;
+    }
+
+    const naDavku = Math.max(1, obal.children.length);
+    const celkem = naDavku + zbytek.length;
+    let pridano = 0;
+
+    tlacitko.addEventListener('click', () => {
+      const davka = zbytek.slice(pridano, pridano + naDavku);
+      obal.insertAdjacentHTML('beforeend', davka.join(''));
+      pridano += davka.length;
+      if (stav) {
+        stav.textContent = `zobrazeno ${(naDavku + pridano).toLocaleString('cs-CZ')} z ${celkem.toLocaleString('cs-CZ')}`;
+      }
+      if (pridano >= zbytek.length) radek.hidden = true;
+    });
+  }
+</script>

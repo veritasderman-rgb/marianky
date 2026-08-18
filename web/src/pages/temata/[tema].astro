@@ -3,6 +3,8 @@ import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
 import Sledovat from '../../components/Sledovat.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
+import CastiPoCastech from '../../components/CastiPoCastech.astro';
+import { esc } from '../../lib/polozka_hlasovani';
 import { nactiCiselnikTagu, nactiClanky, nactiHlasovani, nactiUsneseni, type Tag } from '../../lib/data';
 import { zplostiHlasovani, zplostiUsneseni } from '../../lib/prehledy';
 import { nactiOsuTagu, popisModulu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
@@ -132,6 +134,32 @@ const zdrojeOsy =
   moduly.length > 0
     ? moduly
     : [...new Set(zeZaznamu.map((u) => u.zdroj).filter((x): x is string => Boolean(x)))];
+
+/* ── Ročníky se skládají jako HTML řetězce ──────────────────────────────
+   Stránka tématu vypisovala všechny záznamy najednou; u „Pronájmů a pachtů"
+   to bylo 54 170 DOM uzlů. Ročníky se proto vysázejí do řetězců a stránka
+   ukáže tři nejnovější, zbytek na vyžádání.
+
+   Cizí data (nadpisy, popisy, odkazy) jdou do HTML přes `esc()`. */
+const rocniky = roky.map((rok) => {
+  const vRoce = udalosti.filter((u) => u.datum.startsWith(rok));
+  const polozky = vRoce
+    .map((u) => {
+      const nadpis = u.odkaz
+        ? `<a href="${esc(u.odkaz)}"${u.odkaz.startsWith('http') ? ' rel="noreferrer noopener"' : ''}>${esc(u.nadpis)}</a>`
+        : esc(u.nadpis);
+      const popis = u.popis ? `<p>${esc(u.popis)}</p>` : '';
+      return (
+        `<li class="polozka"><div class="polozka__hlava">` +
+        `<span>${esc(nazvyDruhu[u.druh])}</span>` +
+        `<span>${esc(datumKratke(u.datum))}</span>` +
+        `<span>${esc(u.meta ?? '')}</span></div>` +
+        `<h3 class="polozka__nazev">${nadpis}</h3>${popis}</li>`
+      );
+    })
+    .join('');
+  return `<section><h2>${esc(rok)}</h2><ul class="seznam">${polozky}</ul></section>`;
+});
 ---
 
 <Zaklad titulek={`Téma: ${tag.nazev}`} aktivni="usneseni" nadpis={tag.nazev} uvod={tag.popis}>
@@ -169,28 +197,10 @@ const zdrojeOsy =
     )
   }
 
-  {
-    roky.map((rok) => (
-      <section>
-        <h2>{rok}</h2>
-        <ul class="seznam">
-          {udalosti
-            .filter((u) => u.datum.startsWith(rok))
-            .map((u) => (
-              <li class="polozka">
-                <div class="polozka__hlava">
-                  <span>{nazvyDruhu[u.druh]}</span>
-                  <span>{datumKratke(u.datum)}</span>
-                  <span>{u.meta}</span>
-                </div>
-                <h3 class="polozka__nazev">
-                  {u.odkaz ? <a href={u.odkaz} rel={u.odkaz.startsWith('http') ? 'noreferrer noopener' : undefined}>{u.nadpis}</a> : u.nadpis}
-                </h3>
-                {u.popis && <p>{u.popis}</p>}
-              </li>
-            ))}
-        </ul>
-      </section>
-    ))
-  }
+  <CastiPoCastech
+    casti={rocniky}
+    id={`rocniky-${tag.id}`}
+    poCastech={3}
+    jednotka="ročníků"
+  />
 </Zaklad>

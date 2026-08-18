@@ -1,11 +1,11 @@
 ---
 import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
-import Znacky from '../../components/Znacky.astro';
 import Dlazdice from '../../components/Dlazdice.astro';
 import GrafKarta from '../../components/GrafKarta.astro';
 import Vazby from '../../components/Vazby.astro';
 import CasovaOsa from '../../components/CasovaOsa.astro';
+import TabulkaPoCastech from '../../components/TabulkaPoCastech.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
 import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
@@ -25,6 +25,7 @@ import {
   type ShodaSOsobou,
 } from '../../lib/vazby';
 import { cislo, datumKratke, kc, nazevHlasu, nazevOrganu, nazevVysledku, sklonuj } from '../../lib/format';
+import { esc } from '../../lib/polozka_hlasovani';
 
 export async function getStaticPaths() {
   const { data: lide } = jednou('lide', nactiLidi);
@@ -302,6 +303,38 @@ const zdrojeOsy =
 
 const hlasovaniMimoOsu =
   zOsy.data.hlasovaniVSouhrnu !== null && zOsy.data.hlasovaniVSouhrnu > 0 ? zOsy.data.hlasovaniVSouhrnu : null;
+
+/* ── Řádky hlasovací historie ────────────────────────────────────────────
+   Skládají se jako HTML řetězce, aby se daly vypisovat po částech. Profil
+   dlouho sloužícího zastupitele má přes 10 000 hlasování a celá tabulka
+   dělala 101 896 DOM uzlů — stránka se sice načetla, ale na telefonu to
+   trvalo vteřiny a scrollování drhlo.
+
+   Cizí data (názvy bodů) jdou do HTML přes `esc()`. */
+const maVazby = vazbyOsoby.length > 0;
+
+const radkyHistorie = st.zaznamy.map((u) => {
+  const omluven = u.h.jmenovite.find((j) => j.osoba_id === osoba.id)?.omluven === true;
+  const znacky = u.h.tagy.length
+    ? `<span class="znacky">${u.h.tagy
+        .map((t) => {
+          const nazev = ciselnik.get(t)?.nazev ?? t;
+          return `<a class="znacka" href="/temata/${esc(t)}">${esc(nazev)}</a>`;
+        })
+        .join('')}</span>`
+    : '';
+  const vazba = maVazby
+    ? `<td>${idSVazbou.has(u.h.id) ? '<span class="znacka znacka--vazba">vazba na dotčenou firmu</span>' : ''}</td>`
+    : '';
+  return (
+    `<tr><td class="cislo">${esc(datumKratke(u.h.datum))}</td>` +
+    `<td>${esc(nazevOrganu(u.h.organ))}</td>` +
+    `<td>${esc(u.h.nazev)}</td>` +
+    `<td>${esc(nazevHlasu(u.hlas))}${omluven ? '<span class="stav-dat__zdroj"> (omluven)</span>' : ''}</td>` +
+    `<td>${esc(nazevVysledku(u.h.vysledek))}</td>` +
+    `<td>${znacky}</td>${vazba}</tr>`
+  );
+});
 ---
 
 <Zaklad titulek={osoba.jmeno} aktivni="lide" nadpis={osoba.jmeno}>
@@ -730,47 +763,19 @@ const hlasovaniMimoOsu =
           Všechna zaznamenaná jmenovitá hlasování, od nejnovějšího.
           {vazbyOsoby.length > 0 && ' Sloupec „Vazba“ označuje body, u kterých zdroj eviduje vazbu na dotčenou firmu.'}
         </p>
-        <div class="tabulka-obal">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Datum</th>
-                <th scope="col">Orgán</th>
-                <th scope="col">Bod</th>
-                <th scope="col">Hlas</th>
-                <th scope="col">Výsledek</th>
-                <th scope="col">Téma</th>
-                {vazbyOsoby.length > 0 && <th scope="col">Vazba</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {st.zaznamy.map((u) => (
-                <tr>
-                  <td class="cislo">{datumKratke(u.h.datum)}</td>
-                  <td>{nazevOrganu(u.h.organ)}</td>
-                  <td>{u.h.nazev}</td>
-                  <td>
-                    {nazevHlasu(u.hlas)}
-                    {u.h.jmenovite.find((j) => j.osoba_id === osoba.id)?.omluven === true && (
-                      <span class="stav-dat__zdroj"> (omluven)</span>
-                    )}
-                  </td>
-                  <td>{nazevVysledku(u.h.vysledek)}</td>
-                  <td><Znacky tagy={u.h.tagy} ciselnik={ciselnik} /></td>
-                  {vazbyOsoby.length > 0 && (
-                    <td>
-                      {idSVazbou.has(u.h.id) ? (
-                        <span class="znacka znacka--vazba">vazba na dotčenou firmu</span>
-                      ) : (
-                        ''
-                      )}
-                    </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <TabulkaPoCastech radky={radkyHistorie} id={`historie-${osoba.id}`} jednotka="hlasování">
+          <thead slot="hlavicka">
+            <tr>
+              <th scope="col">Datum</th>
+              <th scope="col">Orgán</th>
+              <th scope="col">Bod</th>
+              <th scope="col">Hlas</th>
+              <th scope="col">Výsledek</th>
+              <th scope="col">Téma</th>
+              {maVazby && <th scope="col">Vazba</th>}
+            </tr>
+          </thead>
+        </TabulkaPoCastech>
       </section>
     )
   }
