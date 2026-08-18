@@ -1,0 +1,284 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "sasko-martin",
+    "jmeno": "Martin Sasko",
+    "role": [
+      "bývalý zastupitel"
+    ],
+    "kategorie": "politika",
+    "strana": "Piráti",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-10-05",
+    "do": "2020-02-18",
+    "prvni_rok": 2018,
+    "posledni_rok": 2020,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 10,
+    "dolozenych": 10,
+    "odhadu": 0,
+    "dle_typu": {
+      "volby": 1,
+      "funkce": 3,
+      "hlasovani": 5,
+      "zpravodaj": 1
+    },
+    "dle_jistoty": {
+      "fakt": 10
+    },
+    "hlasovani_celkem": 285,
+    "hlasovani_v_ose": 5,
+    "hlasovani_v_souhrnu": 280
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2018,
+      "celkem": 38,
+      "pro": 37,
+      "zdrzel": 1
+    },
+    {
+      "rok": 2019,
+      "celkem": 181,
+      "pro": 178,
+      "nehlasoval": 3
+    },
+    {
+      "rok": 2020,
+      "celkem": 66,
+      "pro": 33,
+      "zdrzel": 1,
+      "nepritomen": 32
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "volby:zvolen:kv2018:sasko-martin",
+      "datum": "2018-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-05",
+      "rok": 2018,
+      "typ": "volby",
+      "nadpis": "Martin Sasko zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Česká pirátská strana s 769 hlasy (4.9 %), 6. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:sasko-martin:0",
+      "datum": "2018-11",
+      "datum_do": "2020-05",
+      "presnost": "obdobi",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Martin Sasko — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2018-11 – 2020-05).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:sasko-martin:1",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Martin Sasko — člen Komise pro IT a elektronizaci veřejné správy",
+      "popis": "člen Komise pro IT a elektronizaci veřejné správy (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:sasko-martin:2",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Martin Sasko — člen Komise kultury",
+      "popis": "člen Komise kultury (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2018-2-30",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "hlasovani",
+      "nadpis": "Stanovení výše odměn neuvolněným členům ZM",
+      "popis": "Zastupitelstvo města, bod 2/30. Pro 18, proti 0, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-007",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKUJI VÁM",
+      "popis": "Ing. Zbyněk Martinek (VPL) Zvolen za Volba pro lidi. Povoláním zahradník, stáří 67 let. Celoživotní zájem o politiku s naivní představou o prospěšnosti pro cele",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-6-12",
+      "datum": "2019-05-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-05-21",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Memorandum o spolupráci mezi Městem Mariánské Lázně a společností Veolia Energie ČR, a.s.",
+      "popis": "Zastupitelstvo města, bod 6/12. Pro 18, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/6.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-8-23",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru prodeje poz. parcely č. 8/1 zahrada k.ú. Úšovice",
+      "popis": "Zastupitelstvo města, bod 8/23. Pro 15, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-8-32",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Zastávka Poliklinika",
+      "popis": "Zastupitelstvo města, bod 8/32. Pro 13, proti 0, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-11-12",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Fond kultury 2020 - přidělení dotací",
+      "popis": "Zastupitelstvo města, bod 11/12. Pro 14, proti 0, zdrželo se 5, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "jadlovsky-lukas",
+    "jmeno": "Lukáš Jadlovský",
+    "role": [
+      "bývalý zastupitel",
+      "bývalý radní"
+    ],
+    "kategorie": "politika",
+    "strana": "Piráti",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-10-05",
+    "do": "2022-06-21",
+    "prvni_rok": 2018,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 17,
+    "dolozenych": 17,
+    "odhadu": 0,
+    "dle_typu": {
+      "volby": 1,
+      "funkce": 5,
+      "zpravodaj": 1,
+      "hlasovani": 10
+    },
+    "dle_jistoty": {
+      "fakt": 17
+    },
+    "hlasovani_celkem": 1105,
+    "hlasovani_v_ose": 10,
+    "hlasovani_v_souhrnu": 1095
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2018,
+      "celkem": 38,
+      "pro": 38
+    },
+    {
+      "rok": 2019,
+      "celkem": 181,
+      "pro": 180,
+      "proti": 1
+    },
+    {
+      "rok": 2020,
+      "celkem": 156,
+      "pro": 151,
+      "zdrzel": 4,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2021,
+      "celkem": 143,
+      "pro": 143
+    },
+    {
+      "rok": 2022,
+      "celkem": 587,
+      "pro": 566,
+      "zdrzel": 2,
+      "proti": 1,
+      "nehlasoval": 1,
+      "nepritomen": 17
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "volby:zvolen:kv2018:jadlovsky-lukas",
+      "datum": "2018-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-05",
+      "rok": 2018,
+      "typ": "volby",
+      "nadpis": "Lukáš Jadlovský zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Česká pirátská strana s 744 hlasy (4.74 %), 5. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:jadlovsky-lukas:0",
+      "datum": "2018-11",
+      "datum_do": "2022",
+      "presnost": "obdobi",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Lukáš Jadlovský — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2018-11 – 2022).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:jadlovsky-lukas:2",
+      "datum": "2018-11",
+      "datum_do": "2022",
+      "presnost": "obdobi",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Lukáš Jadlovský — člen Finančního výboru",
+      "popis": "člen Finančního výboru (2018-11 – 2022).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:jadlovsky-lukas:3",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Lukáš Jadlovský — člen Komise pro IT a elektronizaci veřejné správy",
+      "popis": "člen Komise pro IT a elektronizaci veřejné správy (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-007",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKUJI VÁM",
+      "popis": "Ing. Zbyněk Martinek (VPL) Zvolen za Volba pro lidi. Povoláním zahradník, stáří 67 let. Celoživotní zájem o politiku s naivní představou o prospěšnosti pro cele",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "funkce:jadlovsky-lukas:4",
+      "datum": "2019-06",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2019-06-01",
+      "rok": 2019,
+      "typ": "funkce",
+      "nadpis": "Lukáš Jadlovský — člen dozorčí rady — KIS Mariánské Lázně s.r.o.",
+      "popis": "člen dozorčí rady — KIS Mariánské Lázně s.r.o. (2019-06 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2019-8-21",
+      "datum": "2019-09-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-09-16",
+      "rok": 2019,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru prodat část p.p.č. 116/2 v k.ú. Chotěnov u Mariánských Lázní",
+      "popis": "Zastupitelstvo města, bod 8/21. Pro 13, proti 4, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2019/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-11-29",
+      "datum": "2020-02-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-02-18",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Volba přísedících Okresního soudu v Chebu",
+      "popis": "Zastupitelstvo města, bod 11/29. Pro 18, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/11.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-13-31",
+      "datum": "2020-05-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-05-19",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Pracovní skupina – škody a následky COVID-19",
+      "popis": "Zastupitelstvo města, bod 13/31. Pro 17, proti 0, zdrželo se 3, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-16-20",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Kontrola plnění usnesení rok 2019",
+      "popis": "Zastupitelstvo města, bod 16/20. Pro 19, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-17-12",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Rozhodnutí o námitce proti zápisu z 15. ZM",
+      "popis": "Zastupitelstvo města, bod 17/12. Pro 14, proti 2, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-17-18",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření - Fond sportu",
+      "popis": "Zastupitelstvo města, bod 17/18. Pro 17, proti 1, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "funkce:jadlovsky-lukas:1",
+      "datum": "2022-02",
+      "datum_do": "2022-10",
+      "presnost": "obdobi",
+      "razeni": "2022-02-01",
+      "rok": 2022,
+      "typ": "funkce",
+      "nadpis": "Lukáš Jadlovský — člen rady města",
+      "popis": "člen rady města (2022-02 – 2022-10).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:rada-2022-138-22",
+      "datum": "2022-02-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-02-15",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Projektová dokumentace Úprava ulice U Zastávky",
+      "popis": "Rada města, bod 138/22. Pro 4, proti 0, zdrželo se 2, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2022/138.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-18",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnéní záměru prodeje parcel v k. ú. Chotěnov u Mar. Lázní (Skláře)",
+      "popis": "Zastupitelstvo města, bod 28/18. Pro 13, proti 7, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-24",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Projekt STOP NÁSILÍ",
+      "popis": "Zastupitelstvo města, bod 28/24. Pro 15, proti 1, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-9",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Individuální dotace pro TCF SCHICHT z.s.",
+      "popis": "Zastupitelstvo města, bod 28/9. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

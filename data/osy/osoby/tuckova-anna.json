@@ -1,0 +1,409 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "tuckova-anna",
+    "jmeno": "Anna Tučková",
+    "role": [
+      "bývalá zastupitelka"
+    ],
+    "kategorie": "politika",
+    "strana": "Piráti",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-12",
+    "do": "2022-09-13",
+    "prvni_rok": 2018,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 15,
+    "dolozenych": 15,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 2,
+      "hlasovani": 13
+    },
+    "dle_jistoty": {
+      "fakt": 15
+    },
+    "hlasovani_celkem": 314,
+    "hlasovani_v_ose": 13,
+    "hlasovani_v_souhrnu": 301
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2020,
+      "celkem": 40,
+      "pro": 37,
+      "proti": 1,
+      "zdrzel": 2
+    },
+    {
+      "rok": 2021,
+      "celkem": 143,
+      "nehlasoval": 3,
+      "pro": 138,
+      "zdrzel": 2
+    },
+    {
+      "rok": 2022,
+      "celkem": 131,
+      "pro": 112,
+      "proti": 4,
+      "nepritomen": 14,
+      "nehlasoval": 1
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "funkce:tuckova-anna:1",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Anna Tučková — členka Komise kultury",
+      "popis": "členka Komise kultury (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:tuckova-anna:0",
+      "datum": "2020-11",
+      "datum_do": "2022",
+      "presnost": "obdobi",
+      "razeni": "2020-11-01",
+      "rok": 2020,
+      "typ": "funkce",
+      "nadpis": "Anna Tučková — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2020-11 – 2022).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-16-18",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Nesouhlas se zveřejněním záměru prodeje parcel v k. ú. Úšovice v lokalitě za \"Klasem\"",
+      "popis": "Zastupitelstvo města, bod 16/18. Pro 16, proti 1, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-16-2",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Narovnání zápisu z 15. zasedání ZM",
+      "popis": "Zastupitelstvo města, bod 16/2. Pro 13, proti 1, zdrželo se 6, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-17-18",
+      "datum": "2020-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-12-15",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření - Fond sportu",
+      "popis": "Zastupitelstvo města, bod 17/18. Pro 17, proti 1, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/17.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-18-1",
+      "datum": "2021-02-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-02-16",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Program 18.ZM",
+      "popis": "Zastupitelstvo města, bod 18/1. Pro 18, proti 0, zdrželo se 0, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/18.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-19-18",
+      "datum": "2021-04-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-04-13",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Udělení Čestného občanství R.T.",
+      "popis": "Zastupitelstvo města, bod 19/18. Pro 17, proti 0, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/19.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-20-15",
+      "datum": "2021-06-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-22",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Letní městská slavnost 2021",
+      "popis": "Zastupitelstvo města, bod 20/15. Pro 17, proti 0, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/20.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-23-1",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "Program 23.ZM",
+      "popis": "Zastupitelstvo města, bod 23/1. Pro 20, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2021-23-16",
+      "datum": "2021-12-14",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-12-14",
+      "rok": 2021,
+      "typ": "hlasovani",
+      "nadpis": "ZŠ JIH - převod DHM majetku",
+      "popis": "Zastupitelstvo města, bod 23/16. Pro 19, proti 0, zdrželo se 0, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2021/23.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-26-31",
+      "datum": "2022-04-12",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-04-12",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "PD - semafor u OC Billa",
+      "popis": "Zastupitelstvo města, bod 26/31. Pro 13, proti 1, zdrželo se 4, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/26.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-11",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Projektová dokumentace k vybudování venkovní učebny a galerie v ZUŠ F. Chopina ML",
+      "popis": "Zastupitelstvo města, bod 28/11. Pro 18, proti 1, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-18",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnéní záměru prodeje parcel v k. ú. Chotěnov u Mar. Lázní (Skláře)",
+      "popis": "Zastupitelstvo města, bod 28/18. Pro 13, proti 7, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-24",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Projekt STOP NÁSILÍ",
+      "popis": "Zastupitelstvo města, bod 28/24. Pro 15, proti 1, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-29-14",
+      "datum": "2022-09-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-09-13",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Navýšení provozní dotace pro KIS ML s.r.o.",
+      "popis": "Zastupitelstvo města, bod 29/14. Pro 17, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/29.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

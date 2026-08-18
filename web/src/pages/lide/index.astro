@@ -30,7 +30,34 @@ const nazvyKategorii: Record<string, string> = {
   podnikani: 'Podnikání',
 };
 
-const kategorie = [...new Set(lide.map((o) => o.kategorie ?? 'ostatni'))].sort(orderCs);
+/* Pořadí kategorií je VÝSLOVNÉ, ne abecední. Abecedně by „Historické
+   osobnosti" vyšly hned na druhé místo a čtenář by na úvodu stránky
+   „Kdo je kdo" našel Goetha dřív než současného starostu.
+   Řadí se od těch, kdo o městě rozhodují dnes, k těm, kdo ho utvářeli. */
+const PORADI_KATEGORII = [
+  'politika',
+  'urad',
+  'mestske-firmy',
+  'kultura',
+  'sport',
+  'veda',
+  'podnikani',
+  'historie',
+];
+const poradiKategorie = (k: string) => {
+  const i = PORADI_KATEGORII.indexOf(k);
+  return i === -1 ? PORADI_KATEGORII.length : i; // neznámá kategorie až nakonec
+};
+
+const kategorie = [...new Set(lide.map((o) => o.kategorie ?? 'ostatni'))].sort(
+  (a, b) => poradiKategorie(a) - poradiKategorie(b) || orderCs(a, b),
+);
+
+/* Uvnitř kategorie žijící napřed. Týká se hlavně kategorií, kde se obojí
+   míchá — mezi podnikateli i v kultuře jsou lidé žijící i zemřelí. */
+const zijiciNapred = (a: { zijici?: boolean; jmeno?: string }, b: typeof a) =>
+  Number(a.zijici === false) - Number(b.zijici === false) ||
+  orderCs(a.jmeno ?? '', b.jmeno ?? '');
 
 /* Lidé, kteří hlasují, ale v osobnostech nejsou — na to je potřeba upozornit,
    ne to zamlčet. */
@@ -56,7 +83,7 @@ const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.
 
   {
     kategorie.map((k) => {
-      const skupina = lide.filter((o) => (o.kategorie ?? 'ostatni') === k);
+      const skupina = lide.filter((o) => (o.kategorie ?? 'ostatni') === k).sort(zijiciNapred);
       return skupina.length > 0 ? (
         <section>
           <h2>{nazvyKategorii[k] ?? 'Ostatní'}</h2>

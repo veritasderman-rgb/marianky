@@ -1,0 +1,196 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "nykles-karel",
+    "jmeno": "Karel Nykles",
+    "role": [
+      "bývalý zastupitel"
+    ],
+    "kategorie": "politika",
+    "strana": "Piráti",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2017-02",
+    "do": "2022-06-21",
+    "prvni_rok": 2017,
+    "posledni_rok": 2022,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 6,
+    "dolozenych": 6,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 1,
+      "funkce": 2,
+      "hlasovani": 3
+    },
+    "dle_jistoty": {
+      "fakt": 6
+    },
+    "hlasovani_celkem": 364,
+    "hlasovani_v_ose": 3,
+    "hlasovani_v_souhrnu": 361
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2020,
+      "celkem": 90,
+      "pro": 89,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2021,
+      "celkem": 143,
+      "pro": 143
+    },
+    {
+      "rok": 2022,
+      "celkem": 131,
+      "pro": 129,
+      "proti": 1,
+      "zdrzel": 1
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2017-02-031",
+      "datum": "2017-02",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2017-02-01",
+      "rok": 2017,
+      "typ": "zpravodaj",
+      "nadpis": "Arnika pomalu ožívá",
+      "popis": "Tři dekády čeká na vdechnutí nového života. Řeč je o mariánskolázeňské Arnice, která je jen pár metrů od Kolonády, hlavního turistického lákadla. Nezastavěná pa",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=b1352f9c%7C1079#page=13",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2017-02/031.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "funkce:nykles-karel:1",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Karel Nykles — člen Komise pro IT a elektronizaci veřejné správy",
+      "popis": "člen Komise pro IT a elektronizaci veřejné správy (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:nykles-karel:0",
+      "datum": "2020-06",
+      "datum_do": "2022",
+      "presnost": "obdobi",
+      "razeni": "2020-06-01",
+      "rok": 2020,
+      "typ": "funkce",
+      "nadpis": "Karel Nykles — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2020-06 – 2022).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2020-16-17",
+      "datum": "2020-11-03",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-11-03",
+      "rok": 2020,
+      "typ": "hlasovani",
+      "nadpis": "Kupní smlouva 13 modelů miniatur",
+      "popis": "Zastupitelstvo města, bod 16/17. Pro 12, proti 6, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2020/16.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-18",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnéní záměru prodeje parcel v k. ú. Chotěnov u Mar. Lázní (Skláře)",
+      "popis": "Zastupitelstvo města, bod 28/18. Pro 13, proti 7, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2022-28-24",
+      "datum": "2022-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2022-06-21",
+      "rok": 2022,
+      "typ": "hlasovani",
+      "nadpis": "Projekt STOP NÁSILÍ",
+      "popis": "Zastupitelstvo města, bod 28/24. Pro 15, proti 1, zdrželo se 4, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2022/28.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "kozlikova-pavla",
+    "jmeno": "Pavla Kozlíková",
+    "role": [
+      "bývalá zastupitelka"
+    ],
+    "kategorie": "politika",
+    "strana": "ČSSD",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2006",
+    "do": "2013-12-10",
+    "prvni_rok": 2006,
+    "posledni_rok": 2013,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 18,
+    "dolozenych": 18,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 1,
+      "volby": 2,
+      "hlasovani": 15
+    },
+    "dle_jistoty": {
+      "fakt": 18
+    },
+    "hlasovani_celkem": 330,
+    "hlasovani_v_ose": 15,
+    "hlasovani_v_souhrnu": 315
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2012,
+      "celkem": 155,
+      "nepritomen": 68,
+      "pro": 77,
+      "zdrzel": 6,
+      "proti": 3,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2013,
+      "celkem": 175,
+      "pro": 63,
+      "proti": 1,
+      "nepritomen": 109,
+      "zdrzel": 2
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "funkce:kozlikova-pavla:0",
+      "datum": "2006",
+      "datum_do": "2013-12",
+      "presnost": "obdobi",
+      "razeni": "2006-01-01",
+      "rok": 2006,
+      "typ": "funkce",
+      "nadpis": "Pavla Kozlíková — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2006 – 2013-12).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2006:kozlikova-pavla",
+      "datum": "2006-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-10-20",
+      "rok": 2006,
+      "typ": "volby",
+      "nadpis": "Pavla Kozlíková zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Česká strana sociálně demokratická s 600 hlasy (5.79 %), 3. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2010:kozlikova-pavla",
+      "datum": "2010-10-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2010-10-15",
+      "rok": 2010,
+      "typ": "volby",
+      "nadpis": "Pavla Kozlíková zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Česká strana sociálně demokratická s 626 hlasy (5.42 %), 4. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-10-18",
+      "datum": "2012-02-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-02-21",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Zohlednění technického stavu ve výši kupních cen byt.jednotek Hlavní 314",
+      "popis": "Zastupitelstvo města, bod 10/18. Pro 5, proti 7, zdrželo se 4, nepřítomno 4.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/10.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nepritomen",
+        "proslo": false,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-12-12",
+      "datum": "2012-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-19",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Revitalizace vojenského území Hamrníky",
+      "popis": "Zastupitelstvo města, bod 12/12. Pro 15, proti 1, zdrželo se 3, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-12-13",
+      "datum": "2012-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-19",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Regenerace a revitalizace brownfields - V. etapa",
+      "popis": "Zastupitelstvo města, bod 12/13. Pro 16, proti 1, zdrželo se 2, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-12-29",
+      "datum": "2012-06-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-06-19",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Souhlas s prodejem akcií v majetku společnosti KIS ML s.r.o.",
+      "popis": "Zastupitelstvo města, bod 12/29. Pro 12, proti 2, zdrželo se 6, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-10",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Odpis pohledávky - František Jára",
+      "popis": "Zastupitelstvo města, bod 13/10. Pro 18, proti 2, zdrželo se 0, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-12",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Prominutí pohledávky obec Prameny",
+      "popis": "Zastupitelstvo města, bod 13/12. Pro 12, proti 6, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-13",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření- úklid a údržba komunikací, ost.služby",
+      "popis": "Zastupitelstvo města, bod 13/13. Pro 16, proti 3, zdrželo se 2, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-21",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Změna názvu investiční akce",
+      "popis": "Zastupitelstvo města, bod 13/21. Pro 19, proti 0, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-27",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Záměr prodeje stavebních parcel pod garážemi v ul. Dřevěná a Husova",
+      "popis": "Zastupitelstvo města, bod 13/27. Pro 6, proti 9, zdrželo se 3, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "pro",
+        "proslo": false,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-34",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Předkupní právo - jednotka č. 131/2, Hlavní ulice",
+      "popis": "Zastupitelstvo města, bod 13/34. Pro 13, proti 3, zdrželo se 4, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-8",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Odpis pohledávky - Vojtěch Pospíšil, Jaroslav Vojta",
+      "popis": "Zastupitelstvo města, bod 13/8. Pro 17, proti 2, zdrželo se 1, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2012-13-9",
+      "datum": "2012-09-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2012-09-25",
+      "rok": 2012,
+      "typ": "hlasovani",
+      "nadpis": "Odpis pohledávky - Milan Lúžkový",
+      "popis": "Zastupitelstvo města, bod 13/9. Pro 19, proti 1, zdrželo se 0, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2012/13.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2013-15-15",
+      "datum": "2013-03-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-03-05",
+      "rok": 2013,
+      "typ": "hlasovani",
+      "nadpis": "Rozpočtové opatření - parkoviště Kladská - autobusy",
+      "popis": "Zastupitelstvo města, bod 15/15. Pro 13, proti 3, zdrželo se 3, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2013/15.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2013-19-27",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "hlasovani",
+      "nadpis": "Prodej byt.jednotky č.133/14, Hlavní tř.čp.133",
+      "popis": "Zastupitelstvo města, bod 19/27. Pro 14, proti 0, zdrželo se 1, nepřítomno 6.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2013-19-28",
+      "datum": "2013-12-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2013-12-10",
+      "rok": 2013,
+      "typ": "hlasovani",
+      "nadpis": "Prodej byt.jednotky č.166/1, Hlavní tř.čp.166",
+      "popis": "Zastupitelstvo města, bod 19/28. Pro 13, proti 0, zdrželo se 1, nepřítomno 6.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2013/19.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    }
+  ]
+}

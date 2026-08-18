@@ -1,0 +1,560 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "simanek-antonin",
+    "jmeno": "Antonín Šimánek",
+    "role": [
+      "bývalý zastupitel",
+      "bývalý radní"
+    ],
+    "kategorie": "politika",
+    "strana": "VOLBY 94",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2002",
+    "do": "2025-04",
+    "prvni_rok": 2002,
+    "posledni_rok": 2025,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 22,
+    "dolozenych": 22,
+    "odhadu": 0,
+    "dle_typu": {
+      "funkce": 3,
+      "volby": 3,
+      "hlasovani": 15,
+      "zpravodaj": 1
+    },
+    "dle_jistoty": {
+      "fakt": 22
+    },
+    "hlasovani_celkem": 1047,
+    "hlasovani_v_ose": 15,
+    "hlasovani_v_souhrnu": 1032
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2014,
+      "celkem": 150,
+      "pro": 130,
+      "nepritomen": 17,
+      "zdrzel": 2,
+      "nehlasoval": 1
+    },
+    {
+      "rok": 2015,
+      "celkem": 843,
+      "nepritomen": 266,
+      "pro": 566,
+      "proti": 5,
+      "nehlasoval": 2,
+      "zdrzel": 4
+    },
+    {
+      "rok": 2016,
+      "celkem": 54,
+      "nepritomen": 12,
+      "pro": 41,
+      "nehlasoval": 1
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "funkce:simanek-antonin:0",
+      "datum": "2002",
+      "datum_do": "2010",
+      "presnost": "obdobi",
+      "razeni": "2002-01-01",
+      "rok": 2002,
+      "typ": "funkce",
+      "nadpis": "Antonín Šimánek — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2002 – 2010).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2002:simanek-antonin",
+      "datum": "2002-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2002-11-01",
+      "rok": 2002,
+      "typ": "volby",
+      "nadpis": "Antonín Šimánek zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Občanská demokratická strana s 1448 hlasy (8.56 %), 1. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2006:simanek-antonin",
+      "datum": "2006-10-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2006-10-20",
+      "rok": 2006,
+      "typ": "volby",
+      "nadpis": "Antonín Šimánek zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Občanská demokratická strana s 1313 hlasy (6.42 %), 3. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2014:simanek-antonin",
+      "datum": "2014-10-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-10-10",
+      "rok": 2014,
+      "typ": "volby",
+      "nadpis": "Antonín Šimánek zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za VOLBY 94 - 2014 s 494 hlasy (12.62 %), 1. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:simanek-antonin:1",
+      "datum": "2014-11",
+      "datum_do": "2016-03",
+      "presnost": "obdobi",
+      "razeni": "2014-11-01",
+      "rok": 2014,
+      "typ": "funkce",
+      "nadpis": "Antonín Šimánek — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2014-11 – 2016-03).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:simanek-antonin:2",
+      "datum": "2014-11",
+      "datum_do": "2016-01",
+      "presnost": "obdobi",
+      "razeni": "2014-11-01",
+      "rok": 2014,
+      "typ": "funkce",
+      "nadpis": "Antonín Šimánek — člen rady města",
+      "popis": "člen rady města (2014-11 – 2016-01).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:rada-2014-2-2",
+      "datum": "2014-11-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-11-25",
+      "rok": 2014,
+      "typ": "hlasovani",
+      "nadpis": "Personální obsazení přísedících RM - předsedové komisí",
+      "popis": "Rada města, bod 2/2. Pro 6, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2014/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:rada-2014-3-17",
+      "datum": "2014-12-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-09",
+      "rok": 2014,
+      "typ": "hlasovani",
+      "nadpis": "Smlouvou o právu k provedení stavby v areálu Boheminium Mariánské Lázně",
+      "popis": "Rada města, bod 3/17. Pro 5, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2014/3.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2014-3-8",
+      "datum": "2014-12-16",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2014-12-16",
+      "rok": 2014,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru směnit parcely u areálu Viktoria a v ul. Dobrovského",
+      "popis": "Zastupitelstvo města, bod 3/8. Pro 18, proti 0, zdrželo se 0, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2014/3.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-5-15",
+      "datum": "2015-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-10",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Úprava finančního vztahu se státním rozpočtem",
+      "popis": "Zastupitelstvo města, bod 5/15. Pro 15, proti 1, zdrželo se 0, nepřítomno 5.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/5.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-5-19",
+      "datum": "2015-02-10",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-10",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejňování zápisů ze ZM",
+      "popis": "Zastupitelstvo města, bod 5/19. Pro 15, proti 0, zdrželo se 0, nepřítomno 5.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/5.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:rada-2015-12-5",
+      "datum": "2015-02-24",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-02-24",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Udělení výjimky na povolení instalace velkoplošného reklamního poutače",
+      "popis": "Rada města, bod 12/5. Pro 5, proti 2, zdrželo se 0, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2015/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:rada-2015-20-14",
+      "datum": "2015-04-28",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-04-28",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Sanace vlhkosti 1 etapa ZŠPaS - výzva ZPŘ, komise",
+      "popis": "Rada města, bod 20/14. Pro 5, proti 1, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2015/20.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:rada-2015-24-1",
+      "datum": "2015-05-26",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-05-26",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru pronájmu části st.p.č.398 k.ú.Úšovice- KROKUS",
+      "popis": "Rada města, bod 24/1. Pro 6, proti 0, zdrželo se 1, nepřítomno 0.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2015/24.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-8-27",
+      "datum": "2015-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-23",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Pozůstalostní řízení - Václav Bernklau",
+      "popis": "Zastupitelstvo města, bod 8/27. Pro 18, proti 0, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-8-34",
+      "datum": "2015-06-23",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-06-23",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Strategický plán",
+      "popis": "Zastupitelstvo města, bod 8/34. Pro 18, proti 0, zdrželo se 0, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/8.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-9-7",
+      "datum": "2015-09-08",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-09-08",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Navýšení provozního příspěvku MŠ Hlavní a MŠ Vora",
+      "popis": "Zastupitelstvo města, bod 9/7. Pro 18, proti 0, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/9.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-10-6",
+      "datum": "2015-10-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-10-13",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Pořízení sněžného vozidla",
+      "popis": "Zastupitelstvo města, bod 10/6. Pro 17, proti 0, zdrželo se 2, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/10.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2015-12-15",
+      "datum": "2015-12-15",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-15",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Provozní příspěvek pro klub Na Rampě z rozpočtu města na r. 2016",
+      "popis": "Zastupitelstvo města, bod 12/15. Pro 17, proti 1, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2015/12.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:rada-2015-49-25",
+      "datum": "2015-12-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2015-12-22",
+      "rok": 2015,
+      "typ": "hlasovani",
+      "nadpis": "Rámcová smlouva o partnerství a vzájemné spolupráci - MAS 21, o.p.s.",
+      "popis": "Rada města, bod 49/25. Pro 4, proti 1, zdrželo se 0, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/rada/2015/49.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "proti",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2016-15-1",
+      "datum": "2016-03-22",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2016-03-22",
+      "rok": 2016,
+      "typ": "hlasovani",
+      "nadpis": "Organizační opatření 15.ZM",
+      "popis": "Zastupitelstvo města, bod 15/1. Pro 16, proti 0, zdrželo se 0, nepřítomno 4.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2016/15.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2025-04-039",
+      "datum": "2025-04",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2025-04-01",
+      "rok": 2025,
+      "typ": "zpravodaj",
+      "nadpis": "Mariánské Lázně ocenily nejlepší sportovce během jubilejního 20. Společenského plesu sportovců",
+      "popis": "V sobotu 15. března se v reprezentativních prostorách Společenského domu Casino v Mariánských Lázních konal již 20. ročník Společenského plesu sportovců. Vrchol",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=e3b47ab8%7C4524#page=32",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2025-04/039.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}

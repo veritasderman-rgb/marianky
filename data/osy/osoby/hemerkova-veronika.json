@@ -1,0 +1,249 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "hemerkova-veronika",
+    "jmeno": "Veronika Hemerková",
+    "role": [
+      "bývalá zastupitelka"
+    ],
+    "kategorie": "politika",
+    "strana": "KSČM",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2018-10-05",
+    "do": "2019-01",
+    "prvni_rok": 2018,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 9,
+    "dolozenych": 9,
+    "odhadu": 0,
+    "dle_typu": {
+      "volby": 1,
+      "funkce": 3,
+      "hlasovani": 4,
+      "zpravodaj": 1
+    },
+    "dle_jistoty": {
+      "fakt": 9
+    },
+    "hlasovani_celkem": 38,
+    "hlasovani_v_ose": 4,
+    "hlasovani_v_souhrnu": 34
+  },
+  "hlasovani_po_letech": [
+    {
+      "rok": 2018,
+      "celkem": 38,
+      "pro": 34,
+      "zdrzel": 3,
+      "nehlasoval": 1
+    }
+  ],
+  "udalosti": [
+    {
+      "id": "volby:zvolen:kv2018:hemerkova-veronika",
+      "datum": "2018-10-05",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-10-05",
+      "rok": 2018,
+      "typ": "volby",
+      "nadpis": "Veronika Hemerková zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za Komunistická strana Čech a Moravy s 340 hlasy (6.02 %), 2. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:hemerkova-veronika:0",
+      "datum": "2018-11",
+      "datum_do": "2018-12",
+      "presnost": "obdobi",
+      "razeni": "2018-11-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Veronika Hemerková — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2018-11 – 2018-12).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2018-1-4",
+      "datum": "2018-11-19",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-11-19",
+      "rok": 2018,
+      "typ": "hlasovani",
+      "nadpis": "Volba 1. místostarosty",
+      "popis": "Zastupitelstvo města, bod 1/4. Pro 12, proti 0, zdrželo se 8, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2018/1.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "funkce:hemerkova-veronika:1",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Veronika Hemerková — členka Komise sociálních věcí a zdravotnictví",
+      "popis": "členka Komise sociálních věcí a zdravotnictví (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "funkce:hemerkova-veronika:2",
+      "datum": "2018-12",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2018-12-01",
+      "rok": 2018,
+      "typ": "funkce",
+      "nadpis": "Veronika Hemerková — členka Komise Zdravého města a místní Agendy 21",
+      "popis": "členka Komise Zdravého města a místní Agendy 21 (2018-12 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2018-2-11",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru bezúplatného převodu st.p.č.3361 k.ú.Úšovice oddělení GP - ČKS",
+      "popis": "Zastupitelstvo města, bod 2/11. Pro 18, proti 0, zdrželo se 0, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "nehlasoval",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2018-2-14",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "hlasovani",
+      "nadpis": "Zveřejnění záměru směnit p.p.č. 1002/1 za část st.p.č. 310/1 obě v k.ú. Mariánské Lázně",
+      "popis": "Zastupitelstvo města, bod 2/14. Pro 17, proti 0, zdrželo se 3, nepřítomno 1.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "hlasovani:zastupitelstvo-2018-2-26",
+      "datum": "2018-12-20",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2018-12-20",
+      "rok": 2018,
+      "typ": "hlasovani",
+      "nadpis": "Navýšení příspěvku pro Domov pro seniory a DPS",
+      "popis": "Zastupitelstvo města, bod 2/26. Pro 18, proti 0, zdrželo se 1, nepřítomno 2.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "hlasovani",
+      "zdroj_soubor": "data/hlasovani/zastupitelstvo/2018/2.json",
+      "role": {
+        "vztah": "hlasoval",
+        "hlas": "zdrzel",
+        "proslo": true,
+        "vazba_na_firmu": null
+      }
+    },
+    {
+      "id": "zpravodaj:2019-01-007",
+      "datum": "2019-01",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2019-01-01",
+      "rok": 2019,
+      "typ": "zpravodaj",
+      "nadpis": "DĚKUJI VÁM",
+      "popis": "Ing. Zbyněk Martinek (VPL) Zvolen za Volba pro lidi. Povoláním zahradník, stáří 67 let. Celoživotní zájem o politiku s naivní představou o prospěšnosti pro cele",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=56c59d68%7C1786#page=2",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2019-01/007.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    }
+  ]
+}
