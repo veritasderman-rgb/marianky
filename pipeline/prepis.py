@@ -3,9 +3,18 @@
 Cíl: aby šlo hledat v tom, co na zastupitelstvu skutečně zaznělo, a z
 výsledku skočit rovnou na tu vteřinu videa.
 
-Postup je odstupňovaný podle ceny:
-  1. automatické titulky z YouTube — hotové, zdarma, stačí stáhnout
-  2. Whisper — až když titulky nejsou; 350 hodin záznamů je hodně strojového času
+OVĚŘENO 18. 8. 2026: město má u svých záznamů titulky VYPNUTÉ. Osm testovaných
+jednání napříč roky 2024-2026 vrátilo shodně `TranscriptDisabledError`, zatímco
+kontrolní video s titulky prošlo — takže nejde o blokaci prostředí, ale
+o nastavení kanálu. Žádný nástroj na stahování přepisů proto nepomůže,
+není co stahovat.
+
+Zbývá jediná cesta: přepis ze zvuku Whisperem. Je to 93 záznamů, dohromady
+312 hodin, medián 3,5 hodiny na jednání. Modul zpracuje každý záznam
+samostatně, takže se dá přidávat postupně a nemusí běžet vcelku.
+
+Vstupem je soubor v data/zaznamy/titulky/ pojmenovaný podle videa — ať už
+vznikl Whisperem (.srt), stažením titulků (.vtt), nebo ručně (.txt).
 
 Rozpoznání řečníka je záměrně skromné. Diarizace by vyžadovala další model
 a stejně nezná jména; předsedající ale mluvčí zpravidla vyvolává ("slovo má

@@ -36,14 +36,31 @@ python3 scrapers/zaznamy.py     # seznam záznamů + spárování s usneseními
 python3 -m pipeline.prepis      # titulky → prohledávatelné bloky s odkazem na vteřinu
 ```
 
-**Nejdřív zjisti, jestli má město zapnuté automatické titulky** — na tom závisí, jestli je to práce na odpoledne, nebo na dny:
+#### Titulky NEJSOU — ověřeno, cesta vede jen přes Whisper
 
-```bash
-yt-dlp --js-runtimes node --list-subs "https://www.youtube.com/watch?v=ml3vq41WpEs"
-```
+Tohle je zjištěné, ne odhadnuté, a **ruší dřívější předpoklad, že stačí stáhnout automatické titulky**.
 
-- **Titulky jsou** → stáhnou se zdarma a hned, hotovo za odpoledne.
-- **Titulky nejsou** → přijde na řadu Whisper a 94 záznamů po 2–5 hodinách je zhruba 350 hodin zvuku. To je práce na dny strojového času, ne na odpoledne.
+Knihovnou `youtube-transcript` bylo otestováno osm záznamů zastupitelstva napříč roky 2024–2026. Výsledek: **0 z 8**, u všech `TranscriptDisabledError`. Kontrolní video s titulky přitom prošlo (61 segmentů), takže **nejde o blokaci prostředí** — město má u svých záznamů titulky prostě vypnuté.
+
+Z toho plyne, že žádný nástroj na stahování přepisů nepomůže. Není co stahovat.
+
+**Zbývá tedy jediná cesta: přepis ze zvuku (Whisper).** Rozsah je změřený z playlistu:
+
+| | |
+|---|---|
+| záznamů | 93 (delších než 10 minut) |
+| celkem zvuku | **312 hodin** |
+| medián délky | 3,5 h |
+| nejdelší | 7,3 h |
+
+To je práce na dny strojového času, ne na odpoledne. Rozumný postup:
+
+1. **Začni jedním záznamem**, ať víš, jaká je kvalita přepisu u sálového zvuku a jestli dává smysl pokračovat.
+2. Použij `faster-whisper` s modelem `small` nebo `medium` a češtinou (`--language cs`); `large` je přesnější, ale na 312 hodin neúměrně pomalý.
+3. **Na GPU to trvá hodiny, na CPU dny.** Dá se to rozložit — pipeline zpracuje každý záznam samostatně, takže se dá přidávat postupně.
+4. Stahování zvuku (`yt-dlp`) musí běžet z tvé sítě, kontejner má IP blokovanou.
+
+Priority podle užitku: nejnovější volební období napřed, starší záznamy až potom.
 
 Skript rozliší „video nemá titulky" od „YouTube nás odmítl" — druhé je chyba prostředí, ne zdroje.
 
