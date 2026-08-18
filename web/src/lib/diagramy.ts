@@ -479,9 +479,13 @@ export function kresliSit(d: Diagram): { svg: string; sirka: number } {
     /* Nejednoznačná identita = přerušovaná čára. Vazba se ukazuje, ale
        nesmí se tvářit jako potvrzená. */
     const nejisty = h.jistota === 'nejednoznacne' || h.jistota === 'nenalezeno';
+    /* `data-od` a `data-do` nesou identitu hrany. Podle nich skript pozná,
+       které čáry patří k vybranému uzlu — bez nich by šlo zvýraznit jen
+       to, na co se zrovna klepne, a ne celé okolí. */
     kusy.push(
-      `<path d="M${x1} ${y1} C${stred} ${y1} ${stred} ${y2} ${x2} ${y2}" fill="none" ` +
-        `stroke="var(--graf-osa)" stroke-width="1.1" opacity=".75"` +
+      `<path class="sit-hrana" data-od="${esc(h.od)}" data-do="${esc(h.do)}" ` +
+        `d="M${x1} ${y1} C${stred} ${y1} ${stred} ${y2} ${x2} ${y2}" fill="none" ` +
+        `stroke="var(--graf-osa)" stroke-width="1.1"` +
         (nejisty ? ' stroke-dasharray="4 3"' : '') +
         `/>`,
     );
@@ -492,24 +496,45 @@ export function kresliSit(d: Diagram): { svg: string; sirka: number } {
     `<text x="${xP}" y="${yHlava}" class="diagram__vrstva">${esc(d.vpravo?.nazev ?? '')}</text>`,
   );
 
-  vlevo.forEach((u, i) => {
-    const y = yUzly + i * (hUzel + mezera);
-    kusy.push(
-      krabice({ x: xL, y, w: wUzel, h: hUzel }, u.nazev ?? '', u.popisek, {
+  /* Kolik hran z uzlu vede. Číslo se píše do popisu pro čtečku, aby ten,
+     kdo obrázek nevidí, věděl, co klepnutím dostane. */
+  const stupen = new Map<string, number>();
+  for (const h of hrany) {
+    stupen.set(String(h.od), (stupen.get(String(h.od)) ?? 0) + 1);
+    stupen.set(String(h.do), (stupen.get(String(h.do)) ?? 0) + 1);
+  }
+
+  /**
+   * Uzel jako klikatelná skupina.
+   *
+   * `role="button"` a `tabindex` proto, že výběr musí jít i klávesnicí —
+   * jinak by se k propojení nedostal nikdo, kdo nepoužívá myš. Popis pro
+   * čtečku říká i počet vazeb; samotné jméno by neneslo, o co jde.
+   */
+  function uzelSkupina(u: Uzel, x: number, y: number, strana: 'vlevo' | 'vpravo'): string {
+    const id = String(u.id);
+    const vazeb = stupen.get(id) ?? 0;
+    const popis =
+      `${u.nazev ?? id} — ${vazeb} ${vazeb === 1 ? 'vazba' : vazeb >= 2 && vazeb <= 4 ? 'vazby' : 'vazeb'}` +
+      `. Klepnutím zvýrazníte spojení.`;
+    return (
+      `<g class="sit-uzel" data-uzel="${esc(id)}" data-strana="${strana}" ` +
+      `role="button" tabindex="0" aria-label="${esc(popis)}">` +
+      `<title>${esc(popis)}</title>` +
+      krabice({ x, y, w: wUzel, h: hUzel }, u.nazev ?? '', u.popisek, {
         barva: barvaUzlu(u),
         slaby: u.jistota === 'nejednoznacne' || u.jistota === 'nenalezeno',
         naRadek: 34,
-      }),
+      }) +
+      `</g>`
     );
+  }
+
+  vlevo.forEach((u, i) => {
+    kusy.push(uzelSkupina(u, xL, yUzly + i * (hUzel + mezera), 'vlevo'));
   });
   vpravo.forEach((u, i) => {
-    const y = yUzly + i * (hUzel + mezera);
-    kusy.push(
-      krabice({ x: xP, y, w: wUzel, h: hUzel }, u.nazev ?? '', u.popisek, {
-        barva: barvaUzlu(u),
-        naRadek: 34,
-      }),
-    );
+    kusy.push(uzelSkupina(u, xP, yUzly + i * (hUzel + mezera), 'vpravo'));
   });
 
   return { svg: svg(sirka, vyska, kusy.join(''), `${d.nazev}: ${d.popis}`), sirka };

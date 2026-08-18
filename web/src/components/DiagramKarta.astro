@@ -53,8 +53,24 @@ const id = diagram?.id ?? 'diagram';
         </ul>
       )}
 
+      {diagram.typ === 'sit' && kresba.svg && (
+        <p class="diagram-vyber" data-vyber-pro={id}>
+          <span class="diagram-vyber__text" data-vyber-text aria-live="polite">
+            Klepnutím na jméno nebo firmu zvýrazníte její spojení.
+          </span>
+          <button type="button" class="tlacitko" data-vyber-zrusit hidden>Zrušit výběr</button>
+        </p>
+      )}
+
       {kresba.svg && (
-        <div class="diagram-plocha" tabindex="0" role="group" aria-label={`Schéma: ${diagram.nazev}`}>
+        <div
+          class="diagram-plocha"
+          tabindex="0"
+          role="group"
+          aria-label={`Schéma: ${diagram.nazev}`}
+          data-diagram={id}
+          data-typ={diagram.typ}
+        >
           <Fragment set:html={kresba.svg} />
         </div>
       )}
@@ -102,3 +118,117 @@ const id = diagram?.id ?? 'diagram';
     </section>
   )
 }
+
+<script>
+  /* ── Zvýraznění spojení v síti ──────────────────────────────────────
+     Klepnutí na uzel označí jeho hrany a protějšky, zbytek ztlumí. Funguje
+     oběma směry: klepnutí na firmu ukáže lidi, kteří v ní jsou vedení.
+
+     Proč vůbec: 25 osob proti 54 firmám dělá 72 čar, které se uprostřed
+     svazují. Barycentrické řazení klubko zmenšilo, ale jednu konkrétní
+     osobu v něm pořád nešlo sledovat.
+
+     Klávesnice funguje stejně jako myš — uzel je `role="button"` s
+     `tabindex`, Enter i mezerník vybírají, Escape ruší. Bez toho by se
+     k propojení nedostal nikdo, kdo nepoužívá myš.
+
+     Ztlumení je jediná výjimka z pravidla „nic se nezeslabuje opacitou".
+     Je to prvek grafu a bez ztlumení nemá výběr žádný účinek. */
+  for (const plocha of Array.from(document.querySelectorAll<HTMLElement>('[data-diagram][data-typ="sit"]'))) {
+    const id = plocha.dataset.diagram;
+    const svg = plocha.querySelector('svg');
+    if (!svg || !id) continue;
+
+    const radek = document.querySelector<HTMLElement>(`[data-vyber-pro="${id}"]`);
+    const popis = radek?.querySelector<HTMLElement>('[data-vyber-text]');
+    const zrusit = radek?.querySelector<HTMLButtonElement>('[data-vyber-zrusit]');
+    const uzly = Array.from(svg.querySelectorAll<SVGGElement>('.sit-uzel'));
+    const hrany = Array.from(svg.querySelectorAll<SVGPathElement>('.sit-hrana'));
+    if (!uzly.length) continue;
+
+    const vychozi = popis?.textContent ?? '';
+    let vybrany: string | null = null;
+
+    function zrus() {
+      vybrany = null;
+      svg!.classList.remove('sit--vyber');
+      for (const u of uzly) {
+        u.removeAttribute('data-zvyrazneno');
+        u.removeAttribute('aria-pressed');
+      }
+      for (const h of hrany) h.removeAttribute('data-zvyrazneno');
+      if (popis) popis.textContent = vychozi;
+      if (zrusit) zrusit.hidden = true;
+    }
+
+    function vyber(uzelId: string) {
+      /* Druhé klepnutí na týž uzel výběr ruší. Je to jediné chování, které
+         čtenář zkusí sám od sebe. */
+      if (vybrany === uzelId) {
+        zrus();
+        return;
+      }
+      vybrany = uzelId;
+      svg!.classList.add('sit--vyber');
+
+      const sousede = new Set<string>([uzelId]);
+      let vazeb = 0;
+      for (const h of hrany) {
+        const od = h.dataset.od ?? '';
+        const doo = h.dataset.do ?? '';
+        if (od === uzelId || doo === uzelId) {
+          h.setAttribute('data-zvyrazneno', '');
+          sousede.add(od);
+          sousede.add(doo);
+          vazeb++;
+        } else {
+          h.removeAttribute('data-zvyrazneno');
+        }
+      }
+
+      let jmeno = uzelId;
+      for (const u of uzly) {
+        const uid = u.dataset.uzel ?? '';
+        const patri = sousede.has(uid);
+        if (patri) u.setAttribute('data-zvyrazneno', '');
+        else u.removeAttribute('data-zvyrazneno');
+        u.setAttribute('aria-pressed', uid === uzelId ? 'true' : 'false');
+        if (uid === uzelId) {
+          /* Jméno se bere z popisu uzlu, ne z SVG textu — ten je rozsekaný
+             na řádky a slepený by dal „Miloslav Chad im". */
+          jmeno = (u.getAttribute('aria-label') ?? uid).split(' — ')[0];
+        }
+      }
+
+      if (popis) {
+        popis.textContent =
+          vazeb > 0
+            ? `${jmeno}: ${vazeb} ${vazeb === 1 ? 'vazba' : vazeb >= 2 && vazeb <= 4 ? 'vazby' : 'vazeb'}. Ostatní jsou ztlumené, nezmizely.`
+            : `${jmeno}: v datech není žádná vazba.`;
+      }
+      if (zrusit) zrusit.hidden = false;
+    }
+
+    for (const u of uzly) {
+      const uid = u.dataset.uzel;
+      if (!uid) continue;
+      u.addEventListener('click', () => vyber(uid));
+      u.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          vyber(uid);
+        }
+      });
+    }
+
+    zrusit?.addEventListener('click', () => zrus());
+
+    /* Klepnutí do prázdna uvnitř schématu i Escape ruší výběr. */
+    svg.addEventListener('click', (e) => {
+      if (!(e.target instanceof Element) || !e.target.closest('.sit-uzel')) zrus();
+    });
+    plocha.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') zrus();
+    });
+  }
+</script>

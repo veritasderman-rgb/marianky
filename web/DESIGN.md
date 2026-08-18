@@ -201,6 +201,7 @@ Nepřekročitelná pravidla:
 - **Přerušovaný obrys znamená „nepatří do celku" nebo „je to odhad".** Nemocnice mimo holding, nízká jistota u řetězu, nejednoznačná identita u propojení. Totéž pravidlo jako u značek na časové ose (§3.7).
 - **Barvy jsou tokeny, nikdy hexy**, a legenda musí používat tytéž klíče, jaké nesou data. (Vzniklo z chyby: legenda měla klíče `dodavatel` a `bez-vazby`, data `obchoduje-s-mestem` a `bez-vazby-na-mesto` — vzorky vyšly bílé.)
 - **Schéma se nezmenšuje pod čitelnost popisků.** Kreslí se na pevnou šířku a plocha roluje do strany (`.diagram-plocha`), stejně jako grafy. Rolovatelná oblast musí být dosažitelná klávesnicí.
+- **V síti se dá klepnout na uzel** a zvýraznit jeho spojení; funguje to oběma směry a klávesnicí (`role="button"`, Enter i mezerník, Escape ruší). Nevybrané uzly se **ztlumí, nezmizí** — skryté by tvrdily, že tam nic není, a je to napsané i v textu nad schématem. Je to jediná výjimka z pravidla „nic se nezeslabuje opacitou": bez ztlumení nemá výběr žádný účinek. Barvu uzlu výběr nemění, protože barva nese vztah firmy k městu.
 - **Sloupce sítě se řadí barycentricky**, ne abecedně. Abecední pořadí vyrobilo z 72 čar klubko, ve kterém nešlo nic sledovat. Pořadí je pouze vizuální — nic neskrývá.
 - **Cizí data jdou do SVG výhradně přes `esc()`.** Názvy firem, jména a odbory pocházejí z cizích zdrojů.
 
