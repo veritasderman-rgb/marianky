@@ -1,0 +1,81 @@
+---
+/**
+ * Datový ostrůvek pro jmenovitá hlasování.
+ *
+ * PROČ EXISTUJE
+ * Stránka /hlasovani měla 28,8 MB HTML a telefon se na ní zasekl. Stahování
+ * to nebylo — Vercel posílá 1,2 MB brotli. Zabíjelo to prohlížeč tím, že
+ * z toho vzniklo kolem 400 000 DOM uzlů, a z toho 58 % připadalo na rozpisy
+ * jmenovitých hlasů: 12 349 hlasování × 21 jmen, každé jméno jako odkaz.
+ *
+ * Rozpisy se proto do HTML nevykreslují. Jsou tady, v jednom <script> jako
+ * kompaktní JSON — pro prohlížeč jeden textový uzel místo čtvrt milionu
+ * elementů. Rozpis se poskládá až ve chvíli, kdy ho někdo rozbalí.
+ *
+ * FORMÁT (šetří se schválně, jde o stovky tisíc položek)
+ *   l — tabulka lidí: [osoba_id, jméno, strana|null]
+ *   h — hlasování: { id: [[indexy pro], [proti], [zdrželi], [ostatní]] }
+ *
+ * Indexy místo jmen zmenší rozpis zhruba dvacetkrát. Jméno se opakuje
+ * u každého hlasování, kterého se člověk účastnil — u 56 lidí a 121 935
+ * hlasů je tabulka jednoznačně levnější.
+ *
+ * BEZ JAVASCRIPTU se rozpis nezobrazí. Je to vědomý ústupek: filtry na téže
+ * stránce JavaScript stejně vyžadují a <noscript> na to upozorňuje. Kdo ho
+ * nemá, má jmenovité hlasy na stránce každého člověka, která je statická.
+ */
+import type { PolozkaHlasovani } from '../lib/prehledy';
+
+export interface Props {
+  /** Hlasování, jejichž rozpisy má ostrůvek obsahovat. */
+  polozky: PolozkaHlasovani[];
+}
+
+const { polozky } = Astro.props;
+
+/* Tabulka lidí se staví průchodem přes všechna hlasování. Pořadí je dané
+   prvním výskytem, takže je při stejných datech vždy stejné — build je
+   deterministický a diff v gitu se nezaplní přeházenými indexy. */
+const poradi = new Map<string, number>();
+const lide: [string, string, string | null][] = [];
+
+function index(osobaId: string, jmeno: string, strana: string | null): number {
+  const nalezeny = poradi.get(osobaId);
+  if (nalezeny !== undefined) return nalezeny;
+  const i = lide.length;
+  poradi.set(osobaId, i);
+  lide.push([osobaId, jmeno, strana]);
+  return i;
+}
+
+const hlasovani: Record<string, [number[], number[], number[], number[]]> = {};
+
+for (const h of polozky) {
+  if (!h.jmenovite.length) continue;
+  const pro: number[] = [];
+  const proti: number[] = [];
+  const zdrzel: number[] = [];
+  const ostatni: number[] = [];
+  for (const j of h.jmenovite) {
+    const i = index(j.osoba_id, j.jmeno, j.strana ?? null);
+    if (j.hlas === 'pro') pro.push(i);
+    else if (j.hlas === 'proti') proti.push(i);
+    else if (j.hlas === 'zdrzel') zdrzel.push(i);
+    else ostatni.push(i);
+  }
+  hlasovani[h.id] = [pro, proti, zdrzel, ostatni];
+}
+
+/* Vkládá se přes set:html do <script type="application/json">, takže se to
+   neparsuje jako JavaScript. `<` se přesto escapuje — kdyby se v názvu
+   strany objevilo „</script>", ukončilo by to element uprostřed dat. */
+const json = JSON.stringify({ l: lide, h: hlasovani }).replace(/</g, '\\u003c');
+---
+
+<script
+  is:inline
+  type="application/json"
+  id="data-jmenovite"
+  data-pagefind-ignore
+  set:html={json}
+/>

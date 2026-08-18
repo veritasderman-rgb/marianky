@@ -1,0 +1,196 @@
+---
+/**
+ * Seznam hlasování, který se vykresluje po částech.
+ *
+ * PROČ: /hlasovani vypisovalo všech 12 349 hlasování rovnou do HTML —
+ * 14,9 MB a 250 289 DOM uzlů. Po drátě to bylo 1,2 MB (brotli), takže to
+ * nebylo o stahování: prohlížeč se zasekl na stavbě čtvrt milionu elementů.
+ *
+ * Teď server vysází první stránku a zbytek nechá v `<script type="application/json">`
+ * jako data. Prohlížeč z nich skládá další položky, až když jsou potřeba —
+ * při filtrování nebo po klepnutí na „načíst další". V DOM je tak řádově
+ * tisíc uzlů místo čtvrt milionu.
+ *
+ * BEZ JAVASCRIPTU je vidět první stránka a odkaz na stránky témat, které
+ * jsou statické. Filtry JavaScript vyžadovaly odjakživa.
+ *
+ * Serverovou i klientskou položku staví jedna funkce (`polozkaHtml`
+ * v lib/polozka_hlasovani.ts), takže se nemůžou rozejít.
+ */
+import type { Tag } from '../lib/data';
+import type { PolozkaHlasovani } from '../lib/prehledy';
+import type { VazbaHlasovani } from '../lib/vazby';
+import { polozkaHtml, zaznamZPolozky } from '../lib/polozka_hlasovani';
+import JmenoviteData from './JmenoviteData.astro';
+
+export interface Props {
+  polozky: PolozkaHlasovani[];
+  ciselnik: Map<string, Tag>;
+  vazby: Map<string, VazbaHlasovani[]>;
+  /** IČO protistran, na které vede stránka `/penize/[ico]`. */
+  zname?: Set<string>;
+  /** Id seznamu — skript filtrů si ho hledá podle něj. */
+  id?: string;
+  /** Kolik položek vysází server a po kolika se pak přidává. */
+  naStranku?: number;
+}
+
+const { polozky, ciselnik, vazby, zname, id = 'seznam-hlasovani', naStranku = 60 } = Astro.props;
+
+const nazvyTagu: Record<string, string> = {};
+for (const [klic, tag] of ciselnik) nazvyTagu[klic] = tag.nazev;
+
+const zaznamy = polozky.map((h) => zaznamZPolozky(h, vazby.get(h.id) ?? [], zname));
+
+/* První stránka jde do HTML: stránka je něčím vyplněná hned, funguje bez
+   JavaScriptu a Pagefind má co indexovat. */
+const prvni = zaznamy.slice(0, naStranku).map((z) => polozkaHtml(z, nazvyTagu)).join('');
+
+/* `<` se escapuje i uvnitř JSON — kdyby se v názvu bodu objevilo „</script>",
+   ukončilo by to element uprostřed dat. */
+const data = JSON.stringify({ tn: nazvyTagu, z: zaznamy }).replace(/</g, '\\u003c');
+---
+
+<ul class="seznam" id={id} data-seznam-hlasovani data-na-stranku={naStranku} set:html={prvni} />
+
+<p class="radek-akci" data-seznam-vic={id} hidden={zaznamy.length <= naStranku}>
+  <button type="button" class="tlacitko" data-seznam-vic-tlacitko>Načíst další</button>
+  <span class="stav-dat__zdroj" data-seznam-stav></span>
+</p>
+
+<script is:inline type="application/json" id={`${id}-data`} data-pagefind-ignore set:html={data} />
+
+{/* Rozpisy jmenovitých hlasů. Patří k seznamu, proto se vkládají tady a ne
+    na každé stránce zvlášť — jinak by se dalo na jedné zapomenout a rozpisy
+    by mlčky zůstaly prázdné. */}
+<JmenoviteData polozky={polozky} />
+
+<noscript>
+  <p class="stav-dat">
+    Bez JavaScriptu je vidět prvních {naStranku} hlasování z {zaznamy.length}. Celé sady po
+    tématech jsou na vlastních stránkách, například
+    <a href="/hlasovani/tag/rozpocet">/hlasovani/tag/rozpocet</a>, a hlasy jednotlivých lidí
+    na <a href="/lide">stránkách osob</a>.
+  </p>
+</noscript>
+
+<script>
+  /* ── Vykreslování seznamu hlasování po částech ──────────────────────
+     Data jsou v JSON ostrůvku, ne v DOM. Skript z nich skládá jen tolik
+     položek, kolik je vidět. Filtrování běží nad daty — na 12 349 záznamech
+     je to zlomek milisekundy, kdežto procházení stejného počtu DOM uzlů
+     zaseklo telefon.
+
+     HTML položky staví `polozkaHtml`, tedy tatáž funkce, kterou při buildu
+     použil server. Jedna definice, dvě místa použití. */
+  import { polozkaHtml, type ZaznamHlasovani } from '../lib/polozka_hlasovani';
+
+  interface Ostruvek {
+    tn: Record<string, string>;
+    z: ZaznamHlasovani[];
+  }
+
+  export interface VyberHlasovani {
+    tema: string;
+    organ: string;
+    rok: string;
+    vysledek: string;
+    text: string;
+    jenVazba: boolean;
+  }
+
+  const PRAZDNY: VyberHlasovani = {
+    tema: '', organ: '', rok: '', vysledek: '', text: '', jenVazba: false,
+  };
+
+  for (const seznam of Array.from(document.querySelectorAll<HTMLElement>('[data-seznam-hlasovani]'))) {
+    const id = seznam.id;
+    const ostruvekEl = document.getElementById(`${id}-data`);
+    const naStranku = Number(seznam.dataset.naStranku) || 60;
+    const radekVic = document.querySelector<HTMLElement>(`[data-seznam-vic="${id}"]`);
+    const tlacitko = radekVic?.querySelector<HTMLButtonElement>('[data-seznam-vic-tlacitko]');
+    const stav = radekVic?.querySelector<HTMLElement>('[data-seznam-stav]');
+
+    let data: Ostruvek | null = null;
+    try {
+      data = ostruvekEl?.textContent ? JSON.parse(ostruvekEl.textContent) : null;
+    } catch {
+      data = null;
+    }
+    /* Bez dat zůstane to, co vysázel server. Je to míň, ale je to pravda —
+       prázdný seznam by tvrdil, že nic neodpovídá. */
+    if (!data) continue;
+
+    const vsechny = data.z;
+    let vybrane: ZaznamHlasovani[] = vsechny;
+    let vykresleno = Math.min(naStranku, vsechny.length);
+
+    function bezDiakritiky(s: string): string {
+      return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    /* `data-hledat` si nese sama položka, takže se hledaný text nemusí
+       skládat znovu — a hledá se přesně v tom, co je vidět. */
+    const hledatel = new Map<string, string>();
+    function hledat(z: ZaznamHlasovani): string {
+      let h = hledatel.get(z.id);
+      if (h === undefined) {
+        const tagy = z.tagy.map((t) => data!.tn[t] ?? t).join(' ');
+        h = bezDiakritiky(`${z.nazev} ${z.bod} ${tagy}`);
+        hledatel.set(z.id, h);
+      }
+      return h;
+    }
+
+    function vyhovuje(z: ZaznamHlasovani, v: VyberHlasovani): boolean {
+      return (
+        (!v.tema || z.tagy.includes(v.tema)) &&
+        (!v.organ || z.organ === v.organ) &&
+        (!v.rok || String(z.rok ?? '') === v.rok) &&
+        (!v.vysledek || z.vysledek === v.vysledek) &&
+        (!v.jenVazba || z.vazby.length > 0) &&
+        (!v.text || hledat(z).includes(v.text))
+      );
+    }
+
+    function vykresli(od: number, do_: number, pripoj: boolean) {
+      const html = vybrane.slice(od, do_).map((z) => polozkaHtml(z, data!.tn)).join('');
+      if (pripoj) seznam.insertAdjacentHTML('beforeend', html);
+      else seznam.innerHTML = html;
+    }
+
+    function obnovTlacitko() {
+      if (!radekVic) return;
+      const zbyva = vybrane.length - vykresleno;
+      radekVic.hidden = zbyva <= 0;
+      if (stav) {
+        stav.textContent = zbyva > 0
+          ? `zobrazeno ${vykresleno.toLocaleString('cs-CZ')} z ${vybrane.length.toLocaleString('cs-CZ')}`
+          : '';
+      }
+    }
+
+    tlacitko?.addEventListener('click', () => {
+      const do_ = Math.min(vybrane.length, vykresleno + naStranku);
+      vykresli(vykresleno, do_, true);
+      vykresleno = do_;
+      obnovTlacitko();
+    });
+
+    /* Filtr sedí ve stránce, seznam v komponentě. Spojuje je událost —
+       stránka pošle, co je zvolené, seznam se překreslí. */
+    seznam.addEventListener('hlasovani:filtr', (e) => {
+      const v = { ...PRAZDNY, ...((e as CustomEvent).detail ?? {}) } as VyberHlasovani;
+      v.text = bezDiakritiky(v.text.trim());
+      vybrane = vsechny.filter((z) => vyhovuje(z, v));
+      vykresleno = Math.min(naStranku, vybrane.length);
+      vykresli(0, vykresleno, false);
+      obnovTlacitko();
+      seznam.dispatchEvent(
+        new CustomEvent('hlasovani:vysledek', { bubbles: true, detail: { pocet: vybrane.length } }),
+      );
+    });
+
+    obnovTlacitko();
+  }
+</script>

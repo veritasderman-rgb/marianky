@@ -297,6 +297,94 @@ const svgZnaku =
         zobraz();
       }
 
+      /* ── Rozpis jmenovitých hlasů na vyžádání ─────────────────────────
+         Rozpisy nejsou v HTML, ale v JSON ostrůvku (JmenoviteData.astro).
+         Stránka /hlasovani z nich měla 28,8 MB a asi 400 000 DOM uzlů —
+         telefon na tom zamrzl dřív, než se stihla vykreslit. Teď se rozpis
+         poskládá až ve chvíli, kdy ho někdo rozbalí, a jen ten jeden.
+
+         Jména jdou do DOM přes textContent, nikdy přes innerHTML. Jsou to
+         cizí data z portálu města. */
+      {
+        const ostruvek = document.getElementById('data-jmenovite');
+        let data: { l: [string, string, string | null][]; h: Record<string, number[][]> } | null =
+          null;
+
+        function nacti() {
+          if (data || !ostruvek?.textContent) return data;
+          try {
+            data = JSON.parse(ostruvek.textContent);
+          } catch {
+            data = null;
+          }
+          return data;
+        }
+
+        const NADPISY = ['Pro', 'Proti', 'Zdrželi se', 'Ostatní'];
+
+        function poskladej(cil: HTMLElement, skupiny: number[][], lide: [string, string, string | null][]) {
+          for (let i = 0; i < skupiny.length; i++) {
+            const kdo = skupiny[i];
+            if (!kdo?.length) continue;
+            const blok = document.createElement('div');
+            const nadpis = document.createElement('strong');
+            nadpis.textContent = `${NADPISY[i]} (${kdo.length})`;
+            blok.appendChild(nadpis);
+
+            const seznam = document.createElement('ul');
+            for (const idx of kdo) {
+              const clovek = lide[idx];
+              if (!clovek) continue;
+              const [osobaId, jmeno, strana] = clovek;
+              const radek = document.createElement('li');
+              const odkaz = document.createElement('a');
+              odkaz.href = `/lide/${osobaId}`;
+              odkaz.textContent = jmeno;
+              radek.appendChild(odkaz);
+              if (strana) {
+                const kde = document.createElement('span');
+                kde.className = 'stav-dat__zdroj';
+                kde.textContent = ` · ${strana}`;
+                radek.appendChild(kde);
+              }
+              seznam.appendChild(radek);
+            }
+            blok.appendChild(seznam);
+            cil.appendChild(blok);
+          }
+        }
+
+        /* Jeden posluchač na celý dokument. Položek bývají tisíce a tisíc
+           posluchačů by stálo víc než rozpisy samotné. */
+        document.addEventListener(
+          'toggle',
+          (e) => {
+            const el = e.target;
+            if (!(el instanceof HTMLDetailsElement) || !el.open) return;
+            const id = el.dataset.jmenovite;
+            if (!id || el.dataset.hotovo === '1') return;
+
+            const cil = el.querySelector<HTMLElement>('[data-jmenovite-obsah]');
+            if (!cil) return;
+            el.dataset.hotovo = '1';
+
+            const d = nacti();
+            const skupiny = d?.h?.[id];
+            if (!d || !skupiny) {
+              /* Chybějící rozpis se přizná. Prázdný blok by tvrdil, že se
+                 jmenovitě nehlasovalo — a to je něco jiného. */
+              const hlaska = document.createElement('p');
+              hlaska.className = 'stav-dat stav-dat--chyba';
+              hlaska.textContent = 'Rozpis se nepodařilo načíst. Jmenovité hlasy jsou i na stránce každého člověka.';
+              cil.appendChild(hlaska);
+              return;
+            }
+            poskladej(cil, skupiny, d.l);
+          },
+          true, /* toggle nebublá, musí se odchytit při zachytávání */
+        );
+      }
+
       /* ── Tooltipy grafů ───────────────────────────────────────────────
          Hodnoty se do DOM vkládají přes textContent, nikdy přes innerHTML —
          názvy firem jsou cizí data. Tooltip nic negatuje: každé číslo je

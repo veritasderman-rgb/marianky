@@ -1,7 +1,7 @@
 ---
 import Zaklad from '../../../layouts/Zaklad.astro';
 import StavDat from '../../../components/StavDat.astro';
-import PolozkaHlasovaniKarta from '../../../components/PolozkaHlasovani.astro';
+import SeznamHlasovani from '../../../components/SeznamHlasovani.astro';
 import Sledovat from '../../../components/Sledovat.astro';
 import { nactiCiselnikTagu, nactiHlasovani, nactiProtistrany, type Tag } from '../../../lib/data';
 import { mapaTagu, spocitejTagy, zplostiHlasovani, type PolozkaHlasovani } from '../../../lib/prehledy';
@@ -70,11 +70,13 @@ const roky = [...new Set(polozky.map((p) => p.rok).filter((r): r is number => r 
 
   {
     polozky.length > 0 && (
-      <ul class="seznam">
-        {polozky.map((h) => (
-          <PolozkaHlasovaniKarta h={h} ciselnik={ciselnikMapa} vazby={vazby.get(h.id) ?? []} zname={zname} />
-        ))}
-      </ul>
+      <SeznamHlasovani
+        polozky={polozky}
+        ciselnik={ciselnikMapa}
+        vazby={vazby}
+        zname={zname}
+        id={`seznam-${tag.id}`}
+      />
     )
   }
 

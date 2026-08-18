@@ -1253,6 +1253,26 @@ th.cislo {
 
 /* ════════════════════════════  Seznamy  ═════════════════════════════ */
 
+/* Dlouhé seznamy — proč je tu content-visibility
+ *
+ * Stránka /hlasovani vypisuje 12 349 položek. Prohlížeč z nich postavil
+ * kolem 150 000 uzlů a na telefonu se zasekl dřív, než se stihlo něco
+ * vykreslit; stahování to nebylo, po brotli jde po drátě 1,2 MB.
+ *
+ * `content-visibility: auto` řekne prohlížeči, ať pro položku mimo obrazovku
+ * nepočítá rozvržení ani ji nekreslí. Uzly zůstávají v DOM, takže filtry,
+ * hledání v prohlížeči i odkazy fungují dál — jen se nedělá práce, kterou
+ * stejně nikdo nevidí.
+ *
+ * `contain-intrinsic-size: auto 9rem` je odhad výšky, dokud se položka
+ * poprvé nevykreslí; `auto` znamená, že si prohlížeč zapamatuje skutečnou
+ * výšku a posuvník pak neposkakuje.
+ */
+.seznam > .polozka {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 9rem;
+}
+
 .seznam {
   list-style: none;
   margin: 0;

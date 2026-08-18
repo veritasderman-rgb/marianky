@@ -1,7 +1,7 @@
 ---
 import Zaklad from '../../layouts/Zaklad.astro';
 import StavDat from '../../components/StavDat.astro';
-import PolozkaHlasovaniKarta from '../../components/PolozkaHlasovani.astro';
+import SeznamHlasovani from '../../components/SeznamHlasovani.astro';
 import { nactiCiselnikTagu, nactiHlasovani, nactiProtistrany } from '../../lib/data';
 import { mapaTagu, seradRoky, spocitejTagy, zplostiHlasovani } from '../../lib/prehledy';
 import { nactiVazbyHlasovani, vazbyPodleHlasovani } from '../../lib/vazby';
@@ -146,27 +146,20 @@ const skupiny = zTagu.data?.skupiny ?? [];
           <span>Žádné hlasování nesplňuje zvolenou kombinaci filtrů. Zkuste některý uvolnit.</span>
         </div>
 
-        <ul class="seznam" id="seznam-hlasovani">
-          {polozky.map((h) => (
-            <PolozkaHlasovaniKarta h={h} ciselnik={ciselnik} vazby={vazby.get(h.id) ?? []} zname={zname} />
-          ))}
-        </ul>
-
-        <noscript>
-          <p class="stav-dat">
-            Filtry potřebují JavaScript. Bez něj je vidět celý seznam — jednotlivá témata mají
-            i vlastní stránky, například <a href="/hlasovani/tag/rozpocet">/hlasovani/tag/rozpocet</a>.
-          </p>
-        </noscript>
+        <SeznamHlasovani polozky={polozky} ciselnik={ciselnik} vazby={vazby} zname={zname} />
       </>
     )
   }
 </Zaklad>
 
 <script>
-  /* Filtrování hlasování. Vše je předrenderované, skript jen skrývá položky —
-     žádné dotahování dat, funguje i offline. Zvolené filtry jdou do adresy,
-     aby se dal výběr poslat odkazem. */
+  /* Filtrování hlasování.
+
+     Filtr nesahá do DOM — pošle zvolené hodnoty seznamu a ten se z dat
+     překreslí. Dřív se procházelo 12 349 vykreslených položek a každá se
+     skrývala zvlášť; při 250 000 uzlech to telefon nezvládl.
+
+     Zvolené filtry jdou do adresy, aby se dal výběr poslat odkazem. */
   {
     const form = document.getElementById('filtry-hlasovani') as HTMLFormElement | null;
     const seznam = document.getElementById('seznam-hlasovani');
@@ -174,7 +167,6 @@ const skupiny = zTagu.data?.skupiny ?? [];
     const prazdno = document.getElementById('prazdny-vyber');
 
     if (form && seznam) {
-      const polozky = Array.from(seznam.querySelectorAll<HTMLElement>('[data-hlasovani]'));
       const pole = {
         tema: document.getElementById('f-tema') as HTMLSelectElement,
         organ: document.getElementById('f-organ') as HTMLSelectElement,
@@ -184,43 +176,34 @@ const skupiny = zTagu.data?.skupiny ?? [];
         vazba: document.getElementById('f-vazba') as HTMLInputElement | null,
       };
 
-      const bezDiakritiky = (s: string) =>
-        s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      /* Počet výsledků hlásí seznam — jen on ví, kolik jich po filtru zbylo. */
+      seznam.addEventListener('hlasovani:vysledek', (e) => {
+        const n = (e as CustomEvent).detail?.pocet ?? 0;
+        // „hlasování" má stejný tvar v jednotném i množném čísle, skloňovat není co
+        if (pocet) pocet.textContent = `${n.toLocaleString('cs-CZ')} hlasování`;
+        if (prazdno) prazdno.hidden = n !== 0;
+      });
 
       function pouzij(zapsatDoUrl = true) {
-        const tema = pole.tema.value;
-        const organ = pole.organ.value;
-        const rok = pole.rok.value;
-        const vysledek = pole.vysledek.value;
-        const text = bezDiakritiky(pole.text.value.trim());
-        const jenVazba = Boolean(pole.vazba?.checked);
+        const vyber = {
+          tema: pole.tema.value,
+          organ: pole.organ.value,
+          rok: pole.rok.value,
+          vysledek: pole.vysledek.value,
+          text: pole.text.value,
+          jenVazba: Boolean(pole.vazba?.checked),
+        };
 
-        let videno = 0;
-        for (const li of polozky) {
-          const tagy = (li.dataset.tagy ?? '').split(' ').filter(Boolean);
-          const ok =
-            (!tema || tagy.includes(tema)) &&
-            (!organ || li.dataset.organ === organ) &&
-            (!rok || li.dataset.rok === rok) &&
-            (!vysledek || li.dataset.vysledek === vysledek) &&
-            (!jenVazba || li.dataset.vazba === '1') &&
-            (!text || (li.dataset.hledat ?? '').includes(text));
-          li.hidden = !ok;
-          if (ok) videno++;
-        }
-
-        // „hlasování" má stejný tvar v jednotném i množném čísle, skloňovat není co
-        if (pocet) pocet.textContent = `${videno.toLocaleString('cs-CZ')} hlasování`;
-        if (prazdno) prazdno.hidden = videno !== 0;
+        seznam!.dispatchEvent(new CustomEvent('hlasovani:filtr', { detail: vyber }));
 
         if (zapsatDoUrl) {
           const q = new URLSearchParams();
-          if (tema) q.set('tema', tema);
-          if (organ) q.set('organ', organ);
-          if (rok) q.set('rok', rok);
-          if (vysledek) q.set('vysledek', vysledek);
-          if (jenVazba) q.set('vazba', '1');
-          if (pole.text.value.trim()) q.set('text', pole.text.value.trim());
+          if (vyber.tema) q.set('tema', vyber.tema);
+          if (vyber.organ) q.set('organ', vyber.organ);
+          if (vyber.rok) q.set('rok', vyber.rok);
+          if (vyber.vysledek) q.set('vysledek', vyber.vysledek);
+          if (vyber.jenVazba) q.set('vazba', '1');
+          if (vyber.text.trim()) q.set('text', vyber.text.trim());
           const adresa = q.toString() ? `?${q}` : location.pathname;
           history.replaceState(null, '', adresa);
         }
@@ -246,7 +229,10 @@ const skupiny = zTagu.data?.skupiny ?? [];
         pouzij();
       });
 
-      pouzij(false);
+      /* Překreslí se jen tehdy, když adresa nějaký filtr nese. Bez toho by
+         se zahodila první stránka, kterou vysázel server, a nahradila se
+         stejnou — zbytečná práce hned při načtení. */
+      if ([...q.keys()].length > 0) pouzij(false);
     }
   }
 </script>

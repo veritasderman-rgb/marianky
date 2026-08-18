@@ -14,10 +14,23 @@ export interface Props {
   vazby?: VazbaHlasovani[];
   /** Klíče protistran, na které vede stránka `/penize/[ico]`. */
   zname?: Set<string>;
+  /**
+   * Odkud se vezme rozpis jmenovitých hlasů.
+   *
+   *  `ostruvek` (výchozí) — z JSON ostrůvku, poskládá ho prohlížeč při
+   *      rozbalení. Seznam s tisíci hlasováními se jinak nedá otevřít:
+   *      12 349 rozpisů vydá na 230 000 DOM uzlů a telefon na tom zamrzne.
+   *  `primo`  — rovnou do HTML. Jen tam, kde je hlasování pár, a má to
+   *      fungovat i bez JavaScriptu.
+   *
+   * Při `ostruvek` musí být na stránce komponenta `JmenoviteData`, jinak
+   * rozpis zůstane prázdný a napíše to.
+   */
+  jmenovite?: 'ostruvek' | 'primo';
 }
 
-const { h, ciselnik, vazby = [], zname } = Astro.props;
-const skupiny = souhrnHlasu(h);
+const { h, ciselnik, vazby = [], zname, jmenovite = 'ostruvek' } = Astro.props;
+const skupiny = jmenovite === 'primo' ? souhrnHlasu(h) : null;
 const nazvyTagu = h.tagy.map((t) => ciselnik.get(t)?.nazev ?? t).join(' ');
 const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.organ)}`);
 ---
@@ -57,36 +70,45 @@ const hledat = bezDiakritiky(`${h.nazev} ${h.bod} ${nazvyTagu} ${nazevOrganu(h.o
   <Vazby vazby={vazby} zname={zname} />
 
   {
-    h.jmenovite.length > 0 && (
-      <details class="tabulkovy-pohled">
-        <summary>Jmenovité hlasování ({h.jmenovite.length})</summary>
-        <div class="mrizka-2">
-          {(
-            [
-              ['Pro', skupiny.pro],
-              ['Proti', skupiny.proti],
-              ['Zdrželi se', skupiny.zdrzel],
-              ['Ostatní', skupiny.ostatni],
-            ] as const
-          ).map(([nadpis, lide]) =>
-            lide.length > 0 ? (
-              <div>
-                <strong>
-                  {nadpis} ({lide.length})
-                </strong>
-                <ul>
-                  {lide.map((j) => (
-                    <li>
-                      <a href={`/lide/${j.osoba_id}`}>{j.jmeno}</a>
-                      {j.strana && <span class="stav-dat__zdroj"> · {j.strana}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null,
-          )}
-        </div>
-      </details>
-    )
+    h.jmenovite.length > 0 &&
+      (skupiny ? (
+        <details class="tabulkovy-pohled">
+          <summary>Jmenovité hlasování ({h.jmenovite.length})</summary>
+          <div class="mrizka-2">
+            {(
+              [
+                ['Pro', skupiny.pro],
+                ['Proti', skupiny.proti],
+                ['Zdrželi se', skupiny.zdrzel],
+                ['Ostatní', skupiny.ostatni],
+              ] as const
+            ).map(([nadpis, lide]) =>
+              lide.length > 0 ? (
+                <div>
+                  <strong>
+                    {nadpis} ({lide.length})
+                  </strong>
+                  <ul>
+                    {lide.map((j) => (
+                      <li>
+                        <a href={`/lide/${j.osoba_id}`}>{j.jmeno}</a>
+                        {j.strana && <span class="stav-dat__zdroj"> · {j.strana}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null,
+            )}
+          </div>
+        </details>
+      ) : (
+        /* Rozpis se poskládá z ostrůvku až při rozbalení. Do té doby je tu
+           jeden prázdný <div> místo dvaceti odkazů — právě to drží stránku
+           s tisíci hlasováními otevíratelnou. */
+        <details class="tabulkovy-pohled" data-jmenovite={h.id}>
+          <summary>Jmenovité hlasování ({h.jmenovite.length})</summary>
+          <div class="mrizka-2" data-jmenovite-obsah />
+        </details>
+      ))
   }
 </li>

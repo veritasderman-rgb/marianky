@@ -152,7 +152,11 @@ function rokZ(datum: string | null): number | null {
 
 /* ═══════════════════════  propojeni/osoby_firmy.json  ══════════════════ */
 
-export type VztahKMestu = 'mestsky-subjekt' | 'obchoduje-s-mestem' | 'bez-vazby-na-mesto' | null;
+/* Typ i popis žijí v `vztahy.ts`, protože je potřebuje i skript v prohlížeči
+   a tenhle soubor sahá na disk. Re-export je tu, aby se nemusely přepisovat
+   importy po celém webu. */
+export { popisVztahu, type VztahKMestu } from './vztahy';
+import type { VztahKMestu } from './vztahy';
 
 export interface FirmaOsoby {
   ico: string | null;
@@ -346,14 +350,6 @@ export function popisOvereni(stav: string | null): string {
     nenalezeno: 'osoba se v rejstříku nenašla',
   };
   return stav ? (m[stav] ?? stav) : 'stav ověření v datech není';
-}
-
-/** Popis vztahu firmy k městu. */
-export function popisVztahu(v: VztahKMestu): string {
-  if (v === 'mestsky-subjekt') return 'městská organizace nebo firma města';
-  if (v === 'obchoduje-s-mestem') return 'obchoduje s městem';
-  if (v === 'bez-vazby-na-mesto') return 's městem neobchoduje';
-  return 'v datech není uvedeno';
 }
 
 /* ═════════════════════  propojeni/hlasovani_vazby.json  ════════════════ */
