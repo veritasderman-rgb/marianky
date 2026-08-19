@@ -18,17 +18,24 @@
 :root {
   color-scheme: light dark;
 
-  /* Identita (web/DESIGN.md §1) */
-  --paper: #f5f7f4;
+  /* Identita — lázeňská sada v barvách města (web/DESIGN.md §1).
+     Modrá pramene, zlatá kolonády, bílý papír. */
+  --paper: #f4f7fb;
   --surface: #ffffff;
-  --surface-2: #edf1ec;
-  --ink: #141a16;
-  --ink-soft: #4a544d;
-  --ink-faint: #78837b;
-  --rule: #d6ded8;
-  --rule-soft: #e4eae4;
-  --accent: #1f5540;
+  --surface-2: #eef3f9;
+  --ink: #131922;
+  --ink-soft: #48525f;
+  --ink-faint: #76818f;
+  --rule: #d7e0ea;
+  --rule-soft: #e6ecf3;
+  --accent: #1a4e8f;
   --accent-kontrast: #ffffff;
+
+  /* Zlatá je druhý akcent. NIKDY nenese text — na bílém papíru má kontrast
+     pod 3:1. Smí být linka, podtržení a plocha. */
+  --zlata: #e9a900;
+  --zlata-svetla: #fbeec2;
+  --modra-svetla: #dfeaf7;
 
   /* Kategorie grafů — ověřeno validátorem, neměnit (web/DESIGN.md §2) */
   --g1: #2a78d6;
@@ -75,6 +82,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    /* Zlatá se v tmavém motivu ztlumí — na tmavém podkladu by svítila. */
+    --zlata: #b98c17;
+    --zlata-svetla: #3a3520;
+    --modra-svetla: #1d2836;
     --paper: #0e1210;
     --surface: #151b17;
     --surface-2: #1c231e;
@@ -120,6 +131,10 @@
 /* ═════════════  Tokeny — tmavý režim, deklarace 2/2 (výslovná volba)  ══════ */
 
 :root[data-theme="dark"] {
+  /* Zlatá se v tmavém motivu ztlumí — na tmavém podkladu by svítila. */
+  --zlata: #b98c17;
+  --zlata-svetla: #3a3520;
+  --modra-svetla: #1d2836;
   --paper: #0e1210;
   --surface: #151b17;
   --surface-2: #1c231e;
@@ -161,64 +176,88 @@
   --stin-nabidka: 0 8px 24px rgb(0 0 0 / 46%);
 }
 
-/* ═══════════  Tokeny — lázeňská paleta (volitelná světlá sada)  ═════════
+/* ═══════════════  Lázeňská identita — detaily, ne jen barvy  ══════════════
  *
- * Barvy Mariánských Lázní: modrá, žlutá, bílá. Aktivuje se stampem
- * `data-paleta="lazne"` na :root a je to VOLBA, ne výchozí stav — zelená
- * identita kolonády zůstává tím, jak přehled vypadá bez zásahu.
+ * Lázeňská sada JE výchozí (tokeny v holém `:root`). Tady jsou prvky, které
+ * z ní dělají lázeňský vzhled a ne jen jinou modrou: zlatý pruh pod
+ * hlavičkou, zlatá linka u úvodního odstavce a oblouk kolonády jako předěl.
  *
- * Co se NEMĚNÍ: barvy grafů (--g1…--g6, --r1…--r8). Jsou ověřené validátorem
- * na barvoslepost a na kontrast proti #FFFFFF a #151B17. Přebarvit je kvůli
- * ladění s modrou by tu validaci zahodilo.
+ * Zlatá nikdy nenese text — na bílém papíru má kontrast pod 3:1. Smí být
+ * linka, podtržení a plocha.
  *
- * Žlutá nikdy nenese text — jen linky, podtržení a plochy. Na bílém papíru
- * má kontrast pod 3:1 a jako barva písma by byla nečitelná.
- *
- * Paleta je světlá. V kombinaci s tmavým motivem by vznikl modrý text na
- * tmavém pozadí, proto se `data-paleta` a `data-theme="dark"` vylučují —
- * hlídá to přepínač v layoutu.
+ * V tmavém motivu se zlatá ztlumí: na tmavém podkladu svítí a přebíjela by
+ * obsah. Barvy grafů se nemění ani v jedné paletě — jsou ověřené
+ * validátorem a přebarvit je kvůli sladění by tu validaci zahodilo.
  */
 
-:root[data-paleta='lazne'] {
-  color-scheme: light;
-
-  /* Povrchy: chladná bílá místo zeleného papíru */
-  --paper: #f4f7fb;
-  --surface: #ffffff;
-  --surface-2: #eef3f9;
-
-  /* Inkoust: neutrální chladná šedá */
-  --ink: #131922;
-  --ink-soft: #48525f;
-  --ink-faint: #76818f;
-  --rule: #d7e0ea;
-  --rule-soft: #e6ecf3;
-
-  /* Modrá je hlavní akcent — odkazy, hlavní tlačítka, focus */
-  --accent: #1a4e8f;
-  --accent-kontrast: #ffffff;
-
-  /* Žlutá je druhý akcent. Nikdy nenese text. */
-  --zlata: #e9a900;
-  --zlata-svetla: #fbeec2;
-  --modra-svetla: #dfeaf7;
-
-  /* Stín v chladné modré, aby na bílém papíru nešedivěl */
-  --stin: 0 1px 2px rgb(19 25 34 / 5%), 0 4px 14px rgb(19 25 34 / 4%);
-  --stin-nabidka: 0 8px 24px rgb(19 25 34 / 13%);
-}
-
-/* Žlutá jako značka aktivního místa. Jediné, co v lázeňské paletě přibývá
-   navíc oproti zelené — v ostatních paletách nese aktivní položku podtržení
-   akcentem, tady je pod ním ještě žlutý pruh hlavičky. */
-:root[data-paleta='lazne'] .hlavicka-webu {
+.hlavicka-webu {
   border-bottom-color: var(--zlata);
   border-bottom-width: 2px;
 }
 
-:root[data-paleta='lazne'] .uvod {
+.uvod {
   border-left: 3px solid var(--zlata);
   padding-left: 0.85rem;
+}
+
+/* Oblouk kolonády jako předěl mezi sekcemi. Tvar je odvozený ze značky
+   (Q-křivka 12.6 32.8 → 32 6 → 55.8 38.5), takže logo a předěl mluví týmž
+   jazykem. Je to ORNAMENT — nese ho `aria-hidden` a maskuje se
+   `background`, aby nepřidal ani jeden DOM uzel navíc. */
+.kolonada-predel {
+  height: 1.15rem;
+  margin: 2.25rem 0;
+  border: 0;
+  /* Arkáda: oblouky na sloupcích, jako podloubí kolonády. Kreslí se maskou,
+     aby barvu brala z `--zlata` a fungovala i v tmavém motivu — obrázek
+     s napevno zapsanou barvou by v jednom z motivů svítil nebo zmizel. */
+  background: var(--zlata);
+  --arkada: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M0 12V7a6 6 0 0 1 12 0v5M12 12V7a6 6 0 0 1 12 0v5' fill='none' stroke='%23000' stroke-width='1.1'/%3E%3C/svg%3E");
+  mask: var(--arkada) repeat-x 50% 100% / 2.3rem 1.15rem;
+  -webkit-mask: var(--arkada) repeat-x 50% 100% / 2.3rem 1.15rem;
+  opacity: 0.85;
+}
+
+/* Zlatý vlas pod nadpisem sekce — druhý lázeňský detail. Je to jen linka,
+   text zlatá nenese nikdy. */
+main h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--zlata-svetla);
+}
+main .karta h2,
+main h2.karta__nadpis {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Sekce, která nese lázeňský detail: zlatý vlas nahoře místo plné linky. */
+.karta--lazenska {
+  border-top: 2px solid var(--zlata);
+}
+
+/* Zelená identita kolonády zůstává dostupná jako volba. Je to původní
+   sada projektu; kdo ji má radši, přepne se na ni v přepínači motivu. */
+:root[data-paleta='kolonada'] {
+  color-scheme: light;
+
+  --paper: #f5f7f4;
+  --surface: #ffffff;
+  --surface-2: #edf1ec;
+  --ink: #141a16;
+  --ink-soft: #4a544d;
+  --ink-faint: #78837b;
+  --rule: #d6ded8;
+  --rule-soft: #e4eae4;
+  --accent: #1f5540;
+  --accent-kontrast: #ffffff;
+
+  /* Zlatá ustupuje mechové zelené, ať pruh pod hlavičkou nekřičí. */
+  --zlata: #7d9a6f;
+  --zlata-svetla: #e2ebdd;
+  --modra-svetla: #e4eae4;
+
+  --stin: 0 1px 2px rgb(20 26 22 / 5%), 0 4px 14px rgb(20 26 22 / 4%);
+  --stin-nabidka: 0 8px 24px rgb(20 26 22 / 13%);
 }
 
 /* ════════════════════════════  Základ  ══════════════════════════════ */

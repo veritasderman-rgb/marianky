@@ -221,6 +221,12 @@ const serazene = [...retezy].sort(
     (b.usneseni.datum ?? '').localeCompare(a.usneseni.datum ?? ''),
 );
 
+/* Nízká jistota se na veřejné stránce nerozbaluje sama. Měřením vyšlo, že
+   zhruba každé druhé takové spojení je vedle; vedle jistějších by se četlo
+   jako rovnocenné zjištění. */
+const silne = serazene.filter((s) => s.jistota !== 'nizka');
+const slabe = serazene.filter((s) => s.jistota === 'nizka');
+
 const projednaniSerazene = [...projednani].sort((a, b) =>
   (b.usneseni.datum ?? '').localeCompare(a.usneseni.datum ?? ''),
 );
@@ -323,11 +329,41 @@ const sOdhadem = new Set(retezy.map((s) => s.doporuceni.id)).size;
           </p>
         )}
         <CastiPoCastech
-          casti={davky(serazene, spojeniHtml, 25)}
+          casti={davky(silne, spojeniHtml, 25)}
           id="komise-odhady"
           poCastech={1}
           jednotka="dávek po 25"
         />
+        {slabe.length > 0 && (
+          <details class="vazby">
+            <summary>
+              Zobrazit i {cislo(slabe.length)}{' '}
+              {sklonuj(slabe.length, 'spojení', 'spojení', 'spojení')} s nízkou jistotou
+              {zmereno?.dle_jistoty?.nizka && (
+                <>
+                  {' '}— z posouzeného vzorku jich sedělo{' '}
+                  {cislo(zmereno.dle_jistoty.nizka.sedi)} z{' '}
+                  {cislo(zmereno.dle_jistoty.nizka.posouzeno)}
+                </>
+              )}
+            </summary>
+            {/* Nízká jistota je zabalená schválně. Přehled je veřejný, spojení
+                se dá vyfotit bez štítku „odhad“ — a zhruba každé druhé z nich
+                je vedle. Kdo je chce vidět, rozklikne; komu se ukážou samy,
+                přečte je jako zjištění. */}
+            <p class="uvod">
+              Tahle spojení drží jen shoda tématu. Nejsou to zjištění a nedá se z nich
+              vyvozovat, že se rada doporučením řídila — jsou tu proto, aby šlo dohledat,
+              kde by souvislost mohla být.
+            </p>
+            <CastiPoCastech
+              casti={davky(slabe, spojeniHtml, 25)}
+              id="komise-odhady-nizka"
+              poCastech={1}
+              jednotka="dávek po 25"
+            />
+          </details>
+        )}
       </section>
     )
   }

@@ -120,6 +120,8 @@ const sObchodem = stopy.filter((s) => s.obchod_s_mestem);
       <p class="uvod">
         Zápis u hosta uvádí organizaci v závorce. Když se táž firma objeví v registru
         smluv, je vidět na obou místech — a to je stopa, kterou z usnesení vyčíst nejde.
+        <strong> Jméno hosta tu není záměrně:</strong> stopa je o organizaci, ne o člověku,
+        a jméno vedle částky ze smluv jeho zaměstnavatele by bylo narážkou, ne zjištěním.
         <strong> Není to obvinění.</strong> Jednání komisí jsou veřejná, hosté bývají
         zváni a přehled z účasti žádný závěr nedělá.
       </p>
@@ -129,7 +131,7 @@ const sObchodem = stopy.filter((s) => s.obchod_s_mestem);
             <tr>
               <th scope="col">Kdy</th>
               <th scope="col">Komise</th>
-              <th scope="col">Host a organizace</th>
+              <th scope="col">Organizace</th>
               <th scope="col">V registru smluv</th>
             </tr>
           </thead>
@@ -139,12 +141,11 @@ const sObchodem = stopy.filter((s) => s.obchod_s_mestem);
                 <td>{s.datum ? datumKratke(s.datum) : '—'}</td>
                 <td>{s.komise ?? '—'}</td>
                 <td>
-                  {/* Jméno, ne celá věta ze zápisu. Zápisy sem dávají
-                      „přizvané hosty a předal slovo p. Hulákovi (…)“
-                      a vypsat půl věty jako jméno hosta nikomu nepomůže. */}
-                  {s.host_jmeno ?? <span class="stav-dat__zdroj">jméno se nepodařilo přečíst</span>}
-                  <br />
-                  <span class="stav-dat__zdroj">{s.organizace}</span>
+                  {/* JMÉNO HOSTA SE NEUVÁDÍ. Zápis ho zveřejňuje a v datech
+                      zůstává, ale na veřejné stránce by stálo jméno konkrétní
+                      osoby vedle částky ze smluv jejího zaměstnavatele — a to
+                      je narážka, ne zjištění. Stopa je o organizaci; ta tu je. */}
+                  {s.organizace}
                 </td>
                 <td>
                   {s.obchod_s_mestem ? (

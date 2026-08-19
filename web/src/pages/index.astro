@@ -160,8 +160,34 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
   aktivni="vydani"
   bezZnaku
   nadpis="Naše Mariánky v přehledech"
-  uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když se zdroj v daném týdnu nepodaří přečíst, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
+  uvod="Radnice zveřejňuje. Tenhle přehled to čte za vás. Usnesení, jmenovitá hlasování, smlouvy z registru, rozpočet, zápisy z komisí i odpovědi na žádosti o informace — všechno veřejné, všechno v PDF, jedno po druhém. Tady se v tom dá hledat, filtrovat a proklikat od jména k hlasování, od hlasování k usnesení a od usnesení ke smlouvě."
 >
+  <section class="karta karta--lazenska" id="o-prehledu">
+    <h2 class="karta__nadpis">Město slíbilo portál občana. Tohle je přehled, který zatím chybí.</h2>
+    <p class="karta__podnadpis">Ze stejných veřejných dokumentů, jen čitelně.</p>
+    <p>
+      Všechno, co je tu vidět, je veřejné už dnes. Leží to ale ve dvaceti PDF na
+      pěti různých místech: usnesení na portálu rady, smlouvy v registru,
+      rozpočet v Monitoru státní pokladny, zápisy z komisí v dokumentech úřadu,
+      zpravodaj ve skenech. <strong>Kdo to má projít, projde jeden dokument a vzdá to.</strong>
+    </p>
+    <p>
+      Přehled je čte strojově a skládá dohromady: {cislo(prehled[0].pocet)}{' '}
+      {sklonuj(prehled[0].pocet, 'bod usnesení', 'body usnesení', 'bodů usnesení')},{' '}
+      {cislo(prehled[1].pocet)} {sklonuj(prehled[1].pocet, 'hlasování', 'hlasování', 'hlasování')}{' '}
+      se jmény, {cislo(prehled[2].pocet)}{' '}
+      {sklonuj(prehled[2].pocet, 'protistrana', 'protistrany', 'protistran')} v registru smluv.
+      Na jedno hledání místo dvaceti stažených souborů.
+    </p>
+    <hr class="kolonada-predel" aria-hidden="true" />
+    <p>
+      <strong>A u každého čísla je vidět, odkud je a kde data končí.</strong> Kde se
+      zdroj nepodařilo přečíst, je to napsané. Kde je spojení jen odhad, je označené
+      jako odhad — a u řetězu komise → rada je i změřené, jak často takový odhad
+      sedí. Co nevíme, se tu netváří jako nula.
+    </p>
+  </section>
+
   {
     posledni ? (
       <>

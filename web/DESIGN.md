@@ -43,9 +43,9 @@ Kolonáda: pět sloupů pod jedním obloukem arkády. Čte se dvojím způsobem 
 - V hlavičce stojí značka vlevo od jména; jméno se dál sází serifem („Naše Mariánky" plus slabší „v přehledech"). Značka jméno nenahrazuje.
 - Držet čitelnost v 16 px. Kdo přidá detail, který se v této velikosti slije, značku zhorší.
 
-### Lázeňská paleta — volitelná, ne výchozí
+### Lázeňská paleta — výchozí
 
-Druhá světlá sada v barvách města: modrá, žlutá, bílá. Aktivuje se stampem `data-paleta="lazne"` na `:root` a přepínač motivu ji nabízí jako čtvrtý stav (podle systému → světlý → lázeňský → tmavý).
+Barvy města: modrá pramene, zlatá kolonády, bílý papír. **Je to výchozí sada** — tokeny stojí v holém `:root`. Původní zelená identita zůstává dostupná jako volba pod stampem `data-paleta="kolonada"`; přepínač motivu ji nabízí jako čtvrtý stav (podle systému → světlý → zelená kolonáda → tmavý).
 
 ```css
 --paper: #F4F7FB;  --surface: #FFFFFF;  --surface-2: #EEF3F9;
@@ -59,7 +59,9 @@ Pravidla, která u ní platí:
 - **Barvy grafů se nemění.** `--g1…--g6` a `--r1…--r8` jsou ověřené validátorem; přebarvit je kvůli sladění s modrou by tu validaci zahodilo.
 - **Žlutá nikdy nenese text.** Na bílém papíru má kontrast pod 3:1. Smí být linka, podtržení a plocha — ne písmo.
 - **Je to světlá sada.** S tmavým motivem se vylučuje, jinak by vznikl modrý text na tmavém pozadí. Hlídá to přepínač: při volbě „lázeňský" se nastaví `data-theme="light"` a `data-paleta="lazne"` zároveň.
-- **Zelená identita zůstává výchozí.** Bez zásahu čtenáře vypadá web tak, jak popisuje odstavec výše.
+- **Zelená identita zůstává dostupná.** Kdo ji má radši, přepne se na ni; zlatá v ní ustupuje mechové zelené, ať pruh pod hlavičkou nekřičí.
+- **Detail dělá lázeňský vzhled, ne jen barva.** Zlatý pruh pod hlavičkou, zlatá linka u úvodního odstavce, zlatý vlas pod nadpisem sekce a **arkáda kolonády jako předěl** (`.kolonada-predel`). Arkáda se kreslí maskou nad `--zlata`, takže barvu bere z palety a funguje i v tmavém motivu — obrázek s napevno zapsanou barvou by v jednom z motivů svítil nebo zmizel.
+- **V tmavém motivu se zlatá ztlumí** na `#b98c17`. Na tmavém podkladu by jinak svítila víc než obsah.
 
 ### Typografie
 
@@ -235,6 +237,9 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 
 - Astro, statický výstup, deploy na **Vercel**.
 - Fulltext **Pagefind** — musí zvládat českou diakritiku.
-- **Bez přihlášení a bez hesla.** Neveřejnost zajišťuje neznámá adresa.
+- **Veřejný přehled, bez přihlášení.** Dřív neveřejnost zajišťovala neznámá adresa a v hlavičce stálo `noindex`; portál je teď veřejný záměrně — kdo hledá, jak zastupitel hlasoval, má sem dojít z vyhledávače. `robots.txt` pouští roboty dovnitř, `astro.config.mjs` má `site` a generuje se sitemap.
+- **Co veřejnost mění v obsahu.** Dvě věci se kvůli ní drží jinak:
+  - **Jméno hosta komise se nezobrazuje.** V datech zůstává, na stránce ne. Stopa je o organizaci; jméno konkrétní osoby vedle částky ze smluv jejího zaměstnavatele by bylo narážkou, ne zjištěním.
+  - **Spojení s nízkou jistotou se nerozbaluje samo.** Měřením vyšlo, že zhruba každé druhé je vedle. Vedle jistějších by se četlo jako rovnocenné zjištění a dá se vyfotit bez štítku „odhad" — proto je pod `<details>` a v jeho popisku stojí naměřená úspěšnost.
 - `robots.txt` s `Disallow: /` a `<meta name="robots" content="noindex, nofollow">` na každé stránce, aby se adresa nedostala do vyhledávačů sama od sebe.
 - Respektovat `prefers-reduced-motion`, viditelný stav focusu, tabulky ve vlastním `overflow-x: auto` kontejneru.

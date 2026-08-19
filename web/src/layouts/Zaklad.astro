@@ -20,6 +20,21 @@ export interface Props {
 
 const { titulek, uvod, aktivni, nadpis, bezNadpisu = false, bezZnaku = false } = Astro.props;
 
+/* Popis pro vyhledávače a náhledy při sdílení. Bere se úvodní odstavec
+   stránky — je psaný pro čtenáře, takže funguje i tady. Když stránka úvod
+   nemá, použije se popis celého přehledu; prázdný description je horší než
+   obecný. */
+const POPIS_WEBU =
+  'Usnesení, hlasování, smlouvy, rozpočet i zápisy z komisí Mariánských Lázní ' +
+  'na jednom místě — prohledávatelné, propojené a s odkazem na zdroj u každého čísla.';
+const popisStranky = (uvod ?? POPIS_WEBU).replace(/\s+/g, ' ').slice(0, 300);
+
+/* Na úvodní stránce je nadpis rovnou jméno webu; přilepit ho podruhé by
+   dalo „Naše Mariánky v přehledech — Naše Mariánky v přehledech". */
+const NAZEV_WEBU = 'Naše Mariánky v přehledech';
+const ogNadpis = nadpis ?? titulek;
+const ogTitulek = ogNadpis === NAZEV_WEBU ? ogNadpis : `${ogNadpis} — ${NAZEV_WEBU}`;
+
 /* ── Navigace ─────────────────────────────────────────────────────────────
    Odkazy jsou seskupené podle toho, čeho se týkají — čtrnáct rovnocenných
    položek v jedné řadě se nedalo přečíst. Popisky mluví o obsahu, ne
@@ -53,11 +68,17 @@ const svgZnaku =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Neveřejnost zajišťuje neznámá adresa. Tohle jen brání tomu, aby se
-         adresa dostala do vyhledávačů sama od sebe. -->
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
-    <meta name="referrer" content="no-referrer" />
+    <!-- Veřejný přehled. Vyhledávače smí dovnitř; to je celý smysl —
+         kdo hledá „kdo hlasoval pro prodej", má sem dojít. -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>{titulek} — Naše Mariánky v přehledech</title>
+    <meta name="description" content={popisStranky} />
+    <meta property="og:site_name" content="Naše Mariánky v přehledech" />
+    <meta property="og:title" content={ogTitulek} />
+    <meta property="og:description" content={popisStranky} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!--
@@ -71,11 +92,11 @@ const svgZnaku =
           var m = localStorage.getItem('motiv');
           if (m === 'dark' || m === 'light') {
             document.documentElement.setAttribute('data-theme', m);
-          } else if (m === 'lazne') {
-            /* Lázeňská paleta je světlá sada. Musí přebít systémový tmavý
-               režim, jinak by se modrý text vykreslil na tmavém pozadí. */
+          } else if (m === 'kolonada') {
+            /* Zelená sada je světlá. Musí přebít systémový tmavý režim,
+               jinak by se zelený text vykreslil na tmavém pozadí. */
             document.documentElement.setAttribute('data-theme', 'light');
-            document.documentElement.setAttribute('data-paleta', 'lazne');
+            document.documentElement.setAttribute('data-paleta', 'kolonada');
           }
         } catch (e) {
           /* privátní režim — zůstane "system" */
@@ -251,19 +272,19 @@ const svgZnaku =
         const popisek = document.getElementById('prepinac-motivu-popisek');
         const nazvy: Record<string, string> = {
           system: 'Motiv: podle systému',
-          light: 'Motiv: světlý',
-          lazne: 'Motiv: lázeňský',
+          light: 'Motiv: světlý (lázeňský)',
+          kolonada: 'Motiv: zelená kolonáda',
           dark: 'Motiv: tmavý',
         };
         const dalsiStav: Record<string, string> = {
           system: 'light',
-          light: 'lazne',
-          lazne: 'dark',
+          light: 'kolonada',
+          kolonada: 'dark',
           dark: 'system',
         };
 
         function precti(): string {
-          if (koren.getAttribute('data-paleta') === 'lazne') return 'lazne';
+          if (koren.getAttribute('data-paleta') === 'kolonada') return 'kolonada';
           const a = koren.getAttribute('data-theme');
           return a === 'dark' || a === 'light' ? a : 'system';
         }
@@ -287,10 +308,12 @@ const svgZnaku =
           if (dalsi === 'system') {
             koren.removeAttribute('data-theme');
             uloz(null);
-          } else if (dalsi === 'lazne') {
+          } else if (dalsi === 'kolonada') {
+            /* Zelená sada je světlá. Musí přebít systémový tmavý režim,
+               jinak by se zelený text vykreslil na tmavém pozadí. */
             koren.setAttribute('data-theme', 'light');
-            koren.setAttribute('data-paleta', 'lazne');
-            uloz('lazne');
+            koren.setAttribute('data-paleta', 'kolonada');
+            uloz('kolonada');
           } else {
             koren.setAttribute('data-theme', dalsi);
             uloz(dalsi);
