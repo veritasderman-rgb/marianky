@@ -262,13 +262,18 @@ knihovna v prohlížeči.
 Napiš `kontrola.py`, které se pouští před každým nasazením a které **řve, když
 data nedávají smysl** — ne když spadne kód. Osvědčené kontroly:
 
-- žádná částka nepřesahuje řádově možné maximum (obecní rozpočet nemá miliardy),
+- žádná částka nepřesahuje **strop odvozený z rozpočtu té konkrétní obce**
+  (a zapsaný v `config/`, ne natvrdo v kódu). Vesnice s rozpočtem 40 milionů
+  a Brno mají jiný řád; univerzální „obec nemá miliardy" by Praze, Brnu nebo
+  Ostravě zablokovalo publikaci na správných datech,
 - neznámé údaje nejsou uložené jako nula,
 - data jsou čerstvá (poslední jednání není starší než N dní),
 - každý, kdo hlasoval, má profil (jinak jsou odkazy slepé),
 - všechny tagy jsou z číselníku,
 - všechny geo body padly do okolí obce,
-- odhady nemíří zpátky v čase (doporučení komise nemůže předcházet… naopak),
+- odhady nemíří zpátky v čase: **datum usnesení rady nesmí být dřívější než
+  datum doporučení komise**, které na něj má navazovat. Platný sled je
+  komise → rada; obrácené pořadí znamená, že se pár spároval špatně,
 - rozpočet DOM uzlů nad `dist/`.
 
 Kontrola, která jen loguje, není kontrola — musí umět build zastavit.
