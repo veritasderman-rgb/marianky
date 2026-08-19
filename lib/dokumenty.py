@@ -23,6 +23,7 @@ from __future__ import annotations
 import html
 import re
 import tempfile
+import unicodedata
 import zipfile
 from pathlib import Path
 from urllib.parse import urljoin
@@ -185,12 +186,22 @@ _PRIZNAK_UTF8 = 0x800
 
 
 def jmeno_v_archivu(info: zipfile.ZipInfo) -> str:
+    """Jméno souboru v archivu, čitelné a v NFC.
+
+    Sjednocení do NFC není kosmetika. Archivy zabalené na macOS nesou
+    jména v NFD — „Zápis" je tam Z + a + kombinující čárka — a vzor
+    `z[áa]pis` se do toho netrefí. Kvůli tomu vypadl soubor
+    „Zápis_23.KS_20.07.2017.pdf" ze třídy zápisů a vybíral se jako
+    „jediný nepřílohový".
+    """
     if info.flag_bits & _PRIZNAK_UTF8:
-        return info.filename
-    try:
-        return info.filename.encode("cp437").decode("cp852")
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return info.filename
+        jmeno = info.filename
+    else:
+        try:
+            jmeno = info.filename.encode("cp437").decode("cp852")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            jmeno = info.filename
+    return unicodedata.normalize("NFC", jmeno)
 
 
 def je_archiv(cesta: Path) -> bool:
@@ -300,6 +311,14 @@ def text_z_archivu(cesta: Path) -> dict:
             f"archiv {cesta.name} nemá čitelný dokument "
             f"(je v něm: {', '.join(sorted({p['typ'] or 'bez přípony' for p in polozky}))})"
         )
+
+    # Náhradník se hledá JEN ve třídě, ze které vzešel první kandidát.
+    # Bez toho propadl výběr ze zápisu, který je sken, na cizí soubor:
+    # u jednání KLCR z 26. 5. 2020 se jako zápis uložila prezentace
+    # „Sasková Andrea_lazne jako dovolena.pdf", zatímco skutečný (jen
+    # naskenovaný) zápis skončil mezi přílohami. Radši archiv vynechat.
+    trida = poradi[0][1]
+    poradi = [(p, t) for p, t in poradi if t == trida]
 
     chyby: list[str] = []
     with zipfile.ZipFile(cesta) as z:
