@@ -16,12 +16,18 @@
  * jako zaštítit se jím.
  */
 import Zaklad from '../layouts/Zaklad.astro';
-import { nactiJson } from '../lib/data';
+import { nactiAdresar, nactiJson } from '../lib/data';
 import { cislo, sklonuj } from '../lib/format';
 
 /* ── Čísla z dat ──────────────────────────────────────────────────────────
    Každé číslo níž má vlastní pojistku: když zdroj chybí, je `null` a věta
-   se sází bez něj. Nula by tu byla lež — „nezjištěno" není „nic". */
+   se sází bez něj. Nula by tu byla lež — „nezjištěno" není „nic".
+
+   DVĚ ČÍSLA, NE JEDNO. „Kolik je v registru" a „kolik jsme z toho sklidili"
+   jsou různé věci a rozdíl je někde propastný: dotací je v registru 707,
+   sklizeno je 50 největších. Napsat sem jen to větší by z téhle stránky
+   udělalo přesně tu chybu, před kterou zbytek webu varuje — dílčí data
+   vydaná za úplná. Proto se vždycky sází pár „sklizeno / v registru". */
 
 interface Statistiky {
   pokryti?: {
@@ -32,15 +38,41 @@ interface Statistiky {
   kindex?: { rok?: number; stupen?: string; popis?: string }[];
 }
 
+interface SouhrnAgregace {
+  celkem?: { smluv?: number | null };
+  dotace?: { pocet?: number | null };
+}
+
 const zPenez = nactiJson<Statistiky>('penize/statistiky.json', {});
+const zAgregace = nactiJson<SouhrnAgregace>('penize/agregace/souhrn.json', {});
 const pokryti = zPenez.data?.pokryti ?? {};
 
 const kladne = (x: unknown): number | null =>
   typeof x === 'number' && Number.isFinite(x) && x > 0 ? x : null;
 
-const smluv = kladne(pokryti.smluv_v_registru);
-const dotaci = kladne(pokryti.dotaci_v_registru);
-const zakazek = kladne(pokryti.zakazek_v_registru);
+/* Zakázky nemají v souhrnu vlastní počet, tak se sečtou ze sklizně. Je to
+   dvacet čtyři malých souborů a čte se to jednou při buildu. */
+const zZakazek = nactiAdresar<{ zakazky?: unknown[] }>('penize/zakazky');
+const sklizenoZakazek = kladne(
+  zZakazek.data.reduce((s, f) => s + (Array.isArray(f?.zakazky) ? f.zakazky.length : 0), 0)
+);
+
+/** Pár „sklizeno / v registru". Sází se jen tehdy, když je známé obojí. */
+interface Pokryto {
+  sklizeno: number;
+  vRegistru: number;
+}
+const par = (sklizeno: number | null, vRegistru: number | null): Pokryto | null =>
+  sklizeno !== null && vRegistru !== null && vRegistru >= sklizeno
+    ? { sklizeno, vRegistru }
+    : null;
+
+const smlouvy = par(kladne(zAgregace.data?.celkem?.smluv), kladne(pokryti.smluv_v_registru));
+const dotace = par(kladne(zAgregace.data?.dotace?.pocet), kladne(pokryti.dotaci_v_registru));
+const zakazky = par(sklizenoZakazek, kladne(pokryti.zakazek_v_registru));
+
+/** Odkaz na subjekt města u Hlídače, ať jde každé číslo ověřit u zdroje. */
+const HLIDAC_MESTO = 'https://www.hlidacstatu.cz/subjekt/00254061';
 
 /* Nejnovější K-index. Je to hodnocení Hlídače, ne naše — a tak je i psané. */
 const kindex = [...(zPenez.data?.kindex ?? [])]
@@ -95,33 +127,49 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
 
   <section class="karta">
     <h2 class="karta__nadpis">Co z Hlídače stojí na tomhle webu</h2>
-    <p class="karta__podnadpis">Konkrétně, ať je vidět rozsah.</p>
+    <p class="karta__podnadpis">
+      Sklizeno ze všeho, co je v registru — a ten rozdíl je tu schválně vidět.
+    </p>
 
     <ul>
       {
-        smluv && (
+        smlouvy && (
           <li>
-            <strong>{cislo(smluv)}</strong>{' '}
-            {sklonuj(smluv, 'smlouva', 'smlouvy', 'smluv')} z registru smluv za
-            sledovanými subjekty města — celá sekce{' '}
-            <a href="/penize">Peníze města</a> i řetěz{' '}
-            <a href="/retez">od usnesení k penězům</a>.
+            <strong>{cislo(smlouvy.sklizeno)}</strong>{' '}
+            {sklonuj(smlouvy.sklizeno, 'smlouva', 'smlouvy', 'smluv')} z{' '}
+            {cislo(smlouvy.vRegistru)}, které registr vede za sledovanými subjekty
+            města. Stojí na nich celá sekce <a href="/penize">Peníze města</a> i řetěz{' '}
+            <a href="/retez">od usnesení k penězům</a>. Zdroj:{' '}
+            <a href={HLIDAC_MESTO} rel="noopener">
+              subjekt města u Hlídače
+            </a>
+            .
           </li>
         )
       }
       {
-        dotaci && (
+        dotace && (
           <li>
-            <strong>{cislo(dotaci)}</strong> {sklonuj(dotaci, 'dotace', 'dotace', 'dotací')}{' '}
-            ze státních a evropských programů.
+            <strong>{cislo(dotace.sklizeno)}</strong>{' '}
+            {sklonuj(dotace.sklizeno, 'dotace', 'dotace', 'dotací')} ze státních
+            a evropských programů — ale registr jich vede{' '}
+            <strong>{cislo(dotace.vRegistru)}</strong>. Sklizené jsou ty největší
+            objemem, ne náhodný výběr; drobné dotace tu tedy nehledejte.
           </li>
         )
       }
       {
-        zakazek && (
+        zakazky && (
           <li>
-            <strong>{cislo(zakazek)}</strong>{' '}
-            {sklonuj(zakazek, 'veřejná zakázka', 'veřejné zakázky', 'veřejných zakázek')}.
+            <strong>{cislo(zakazky.sklizeno)}</strong>{' '}
+            {sklonuj(
+              zakazky.sklizeno,
+              'veřejná zakázka',
+              'veřejné zakázky',
+              'veřejných zakázek'
+            )}{' '}
+            z <strong>{cislo(zakazky.vRegistru)}</strong>. Zase ty největší —
+            pokrytí je tady zdaleka nejmenší z celé stránky.
           </li>
         )
       }
@@ -135,7 +183,11 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
             <strong>K-index {kindex.stupen}</strong>
             {kindex.rok ? ` za rok ${kindex.rok}` : ''} pro město. Je to
             <strong> hodnocení Hlídače, ne naše</strong> — přebíráme ho i s jeho
-            zdůvodněním a nepřepočítáváme.
+            zdůvodněním a nepřepočítáváme. Ověřit se dá{' '}
+            <a href={HLIDAC_MESTO} rel="noopener">
+              na jeho stránce subjektu
+            </a>
+            .
           </li>
         )
       }
@@ -144,8 +196,9 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
     <p>
       Data se berou přes veřejné API Hlídače (token je zdarma po registraci).
       <strong> Co Hlídač nemá, nemáme ani my</strong> — a co má, ale my jsme
-      nesklidili, je vypsané u každé sekce zvlášť, aby se dílčí výběr nedal číst
-      jako úplný.
+      nesklidili, je vidět z čísel výš i podrobně rozepsané{' '}
+      <a href="/penize">u peněz města</a>. Dílčí výběr se nesmí číst jako úplný,
+      takže tu nikde nestojí jen to větší z těch dvou čísel.
     </p>
   </section>
 
@@ -155,13 +208,30 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
 
     <p>
       Usnesení rady a zastupitelstva, jmenovitá hlasování, rozpočet, úřední deska,
-      Městský zpravodaj{zapisu ? `, ${cislo(zapisu)} ${sklonuj(zapisu, 'zápis', 'zápisy', 'zápisů')} z komisí` : ', zápisy z komisí'}
-      {zadosti
-        ? ` i ${cislo(zadosti)} ${sklonuj(zadosti, 'záznam', 'záznamy', 'záznamů')} v rejstříku žádostí o informace`
-        : ' i rejstřík žádostí o informace'}{' '}
+      Městský zpravodaj,{' '}
+      {zapisu ? (
+        <a href="/komise">
+          {cislo(zapisu)} {sklonuj(zapisu, 'zápis', 'zápisy', 'zápisů')} z komisí
+        </a>
+      ) : (
+        <a href="/komise">zápisy z komisí</a>
+      )}{' '}
+      i{' '}
+      {zadosti ? (
+        <a href="/informace">
+          {cislo(zadosti)} {sklonuj(zadosti, 'záznam', 'záznamy', 'záznamů')} v rejstříku
+          žádostí o informace
+        </a>
+      ) : (
+        <a href="/informace">rejstřík žádostí o informace</a>
+      )}{' '}
       — tohle všechno město zveřejňuje samo a někdo na úřadě to tam po jednotlivých
       souborech nahrává. Není to samozřejmost a bez toho by tenhle web neexistoval,
       protože <strong>nemáme jediný vlastní zdroj</strong>. Díky.
+    </p>
+    <p>
+      Obě čísla vedou na sekci, kde je u každé položky odkaz na původní dokument
+      na webu města — číslo se dá rozebrat až na jednotlivá PDF.
     </p>
 
     <p>
