@@ -155,7 +155,19 @@ Pozor i na tituly: vzor `p` bez pravé hranice slova sežral první písmeno z �
 
 Všechny stažené zápisy textovou vrstvu mají; nejchudší má 450 znaků. Chybí jim struktura — číslované body a blok „Usnesení“. Každý nerozebraný zápis proto nese `duvod`, protože „nepodařilo se to přečíst“ bez důvodu je jen omluva.
 
-Rejstřík je širší než to, z čeho máme text, a chybí to ze tří různých důvodů: **archivy ZIP se neotvírají vůbec** (66 z 469 položek), u části PDF nevrátí `pdftotext` nic (to jsou skutečné skeny — tam by OCR pomohlo) a zbytek text má.
+Rejstřík je širší než to, z čeho máme text. **Archivy ZIP se otevírají** — město v nich zveřejňuje zápis spolu s podklady jednání (66 z 469 položek rejstříku, 200 souborů uvnitř). Zápis se z archivu vytáhne, přílohy zůstávají jen vypsané: jsou to rozpočty, žádosti o dotace a prezenční listiny, tedy podklady, ne zápis.
+
+Tři věci, na kterých to stojí:
+
+- **Přípona na disku nic neříká.** Sběrač ukládá všechno stažené pod klíčem z URL s koncovkou `.pdf`, takže se rozhoduje podle prvních dvou bajtů (`PK`).
+- **Jména v ZIPu bez příznaku UTF-8 leží v CP852**, ne v CP437, jak je dekóduje Python. Bez převodu by v datech stálo „Zápis z jednání ƒ.24_KLCR“ místo „č.24“.
+- **Jména se sjednocují do NFC.** Archivy zabalené na macOS je nesou v NFD — „Zápis“ je tam `Z` + `a` + kombinující čárka — a vzor `z[áa]pis` se do toho netrefí. Kvůli tomu vypadl soubor „Zápis_23.KS_20.07.2017.pdf“ ze třídy zápisů.
+- **Který soubor je zápis, rozhoduje jméno, ne velikost.** Příloha bývá naskenovaná a tím pádem několikanásobně větší; první verze proto z „zápisových“ souborů brala ten největší a vybrala „Zapis_07.KS — příloha č. 1“ místo zápisu. Soubor s „příloha“, „prezenční listina“, „žádost“ nebo „rozpočet“ v názvu se za zápis nevydá nikdy — **raději archiv vynechat než uložit žádost o dotaci jako jednání komise**.
+- **Náhradník se hledá jen ve třídě prvního kandidáta.** Když je zápis sken, zkusí se další zápis — nikdy soubor z jiné třídy. Bez toho propadl výběr u jednání KLCR z 26. 5. 2020 na prezentaci „Sasková Andrea_lazne jako dovolena.pdf“, která se uložila jako text jednání, zatímco skutečný (naskenovaný) zápis skončil mezi přílohami.
+
+Soubory `.docx` čte `lib.core.docx_na_text` (docx je ZIP s XML); starý binární `.doc` přečíst nejde a nepředstírá se to. Rejstřík navíc jeden `.docx` vede jako `.zip` — pozná se podle `word/document.xml` uvnitř.
+
+Co zbývá, jsou **skeny**: PDF, ze kterých `pdftotext` nevrátí nic, ať leží v rejstříku samostatně nebo uvnitř archivu. Tam by OCR pomohlo.
 
 ### Návaznost komise → rada
 

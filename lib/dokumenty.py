@@ -22,10 +22,22 @@ from __future__ import annotations
 
 import html
 import re
+import tempfile
+import unicodedata
+import zipfile
 from pathlib import Path
 from urllib.parse import urljoin
 
-from lib.core import CACHE, Log, ZdrojSelhal, fetch, parse_datum
+from lib.core import (  # noqa: E402
+    CACHE,
+    Log,
+    ZdrojSelhal,
+    docx_na_text,
+    fetch,
+    parse_datum,
+    pdf_na_text,
+    potrebuje_ocr,
+)
 
 ZAKLAD = "https://www.muml.cz"
 
@@ -157,6 +169,195 @@ def klic_dokumentu(polozka: dict) -> str:
     v každém názvu; při shodě by se dokumenty přepisovaly navzájem.
     """
     return re.sub(r"[^0-9a-zA-Z]+", "-", polozka["url"].split("file=")[-1]).strip("-")[:48]
+
+
+# ── archivy ZIP ─────────────────────────────────────────────────────────
+#
+# Část zápisů z komisí město nezveřejňuje jako PDF, ale jako ZIP se
+# zápisem a přílohami. Sběrač je stahoval a `pdftotext` na nich padal,
+# takže 66 jednání z rejstříku nebylo v datech vůbec — a přitom je
+# v archivech 200 souborů.
+
+# Jména v ZIPu bez příznaku UTF-8 leží v DOS kódování. Python je dekóduje
+# jako CP437 a česká písmena z toho vyjdou jako „ƒ" a „²"; skutečné
+# kódování je CP852. Bez převodu by v datech stálo „Zápis z jednání
+# ƒ.24_KLCR" místo „č.24".
+_PRIZNAK_UTF8 = 0x800
+
+
+def jmeno_v_archivu(info: zipfile.ZipInfo) -> str:
+    """Jméno souboru v archivu, čitelné a v NFC.
+
+    Sjednocení do NFC není kosmetika. Archivy zabalené na macOS nesou
+    jména v NFD — „Zápis" je tam Z + a + kombinující čárka — a vzor
+    `z[áa]pis` se do toho netrefí. Kvůli tomu vypadl soubor
+    „Zápis_23.KS_20.07.2017.pdf" ze třídy zápisů a vybíral se jako
+    „jediný nepřílohový".
+    """
+    if info.flag_bits & _PRIZNAK_UTF8:
+        jmeno = info.filename
+    else:
+        try:
+            jmeno = info.filename.encode("cp437").decode("cp852")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            jmeno = info.filename
+    return unicodedata.normalize("NFC", jmeno)
+
+
+def je_archiv(cesta: Path) -> bool:
+    """Je to ZIP? Podle obsahu, ne podle přípony.
+
+    Sběrač ukládá všechno stažené pod jménem `.pdf`, takže přípona
+    o typu souboru neříká nic.
+    """
+    try:
+        with cesta.open("rb") as f:
+            return f.read(2) == b"PK"
+    except OSError:
+        return False
+
+
+def je_docx(cesta: Path) -> bool:
+    """Je ten „archiv" ve skutečnosti dokument Wordu?
+
+    Formáty Office jsou ZIP; rejstřík je někdy vede jako .zip. Pozná se
+    to podle `word/document.xml` uvnitř.
+    """
+    try:
+        with zipfile.ZipFile(cesta) as z:
+            return "word/document.xml" in z.namelist()
+    except (zipfile.BadZipFile, OSError):
+        return False
+
+
+def obsah_archivu(cesta: Path) -> list[dict]:
+    """Soubory v archivu: jméno, velikost, přípona. Adresáře se vynechají."""
+    try:
+        with zipfile.ZipFile(cesta) as z:
+            return [
+                {
+                    "jmeno": jmeno_v_archivu(i),
+                    "bajtu": i.file_size,
+                    "typ": (re.search(r"\.(\w{1,5})$", jmeno_v_archivu(i).lower())
+                            or [None, ""])[1],
+                    "_klic": i.filename,
+                }
+                for i in z.infolist()
+                if not i.is_dir() and i.file_size > 0
+            ]
+    except (zipfile.BadZipFile, OSError) as e:
+        raise ZdrojSelhal(f"archiv {cesta.name} nejde otevřít: {e}") from e
+
+
+# Co v archivu je zápis a co příloha. Rozhoduje JMÉNO souboru, ne
+# velikost: příloha bývá naskenovaná a tím pádem mnohem větší než zápis.
+# První verze brala z „zápisových" souborů ten největší a vybrala tak
+# „Zapis_07.KS_25.09.2019 - příloha č. 1.pdf" místo samotného zápisu.
+_JE_ZAPIS = re.compile(r"(?i)z[áa]pis")
+_JE_PRILOHA = re.compile(
+    r"(?i)p[řr][íi]loh|prezen[čc]n[íi]\s*listin|pozv[áa]nk|prezentac|tabulk|"
+    r"[žz][áa]dost|rozpo[čc]et"
+)
+CITELNE_TYPY = ("pdf", "docx")
+
+
+def poradi_kandidatu(polozky: list[dict]) -> list[tuple[dict, str]]:
+    """Čitelné dokumenty od nejpravděpodobnějšího zápisu, s důvodem výběru.
+
+    Vrací se celé pořadí, ne jen vítěz: když je vybraný soubor sken bez
+    textové vrstvy, má smysl zkusit další v řadě — ale JEN v rámci téže
+    třídy. Sáhnout na přílohu a uložit ji jako zápis by znamenalo číst
+    žádost o dotaci jako jednání komise.
+    """
+    citelne = [p for p in polozky if p["typ"] in CITELNE_TYPY]
+    zapisy = [p for p in citelne if _JE_ZAPIS.search(p["jmeno"])
+              and not _JE_PRILOHA.search(p["jmeno"])]
+    jine = [p for p in citelne
+            if p not in zapisy and not _JE_PRILOHA.search(p["jmeno"])]
+    poradi: list[tuple[dict, str]] = []
+    poradi += [(p, "jmeno-souboru") for p in sorted(zapisy, key=lambda p: -p["bajtu"])]
+    poradi += [(p, "jediny-neprilohovy") for p in sorted(jine, key=lambda p: -p["bajtu"])]
+    return poradi
+
+
+def hlavni_dokument(polozky: list[dict]) -> tuple[dict | None, str]:
+    """(zápis, podle čeho se vybral). `None` = v archivu není nic čitelného."""
+    poradi = poradi_kandidatu(polozky)
+    return poradi[0] if poradi else (None, "nic-citelneho")
+
+
+def text_z_archivu(cesta: Path) -> dict:
+    """Text zápisu z archivu ZIP a soupis toho, co v něm ještě je.
+
+    Vrací `text`, vybraný `zapis`, podle čeho se vybral, a `prilohy`.
+    Přílohy se NEČTOU — jsou to rozpočty, žádosti o dotace a prezentace,
+    tedy podklady jednání, ne zápis. Jejich seznam ale stojí za uložení:
+    co měla komise na stole, je samo o sobě údaj.
+    """
+    # Soubor .docx je taky ZIP. Rejstřík ho někdy vede jako .zip a bez
+    # téhle výjimky by vyšel jako „archiv bez čitelného dokumentu".
+    if je_docx(cesta):
+        text = docx_na_text(cesta)
+        return {
+            "text": text, "stran": None,
+            "zapis": {"jmeno": cesta.name, "bajtu": cesta.stat().st_size, "typ": "docx"},
+            "vybrano_podle": "sam-je-docx", "prilohy": [],
+        }
+
+    polozky = obsah_archivu(cesta)
+    poradi = poradi_kandidatu(polozky)
+    if not poradi:
+        raise ZdrojSelhal(
+            f"archiv {cesta.name} nemá čitelný dokument "
+            f"(je v něm: {', '.join(sorted({p['typ'] or 'bez přípony' for p in polozky}))})"
+        )
+
+    # Náhradník se hledá JEN ve třídě, ze které vzešel první kandidát.
+    # Bez toho propadl výběr ze zápisu, který je sken, na cizí soubor:
+    # u jednání KLCR z 26. 5. 2020 se jako zápis uložila prezentace
+    # „Sasková Andrea_lazne jako dovolena.pdf", zatímco skutečný (jen
+    # naskenovaný) zápis skončil mezi přílohami. Radši archiv vynechat.
+    trida = poradi[0][1]
+    poradi = [(p, t) for p, t in poradi if t == trida]
+
+    chyby: list[str] = []
+    with zipfile.ZipFile(cesta) as z:
+        for hlavni, podle in poradi:
+            data = z.read(hlavni["_klic"])
+            if hlavni["typ"] == "docx":
+                text, stran = docx_na_text(data), None
+            else:
+                # pdftotext umí jen soubor na disku, ne proud.
+                with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+                    tmp.write(data)
+                    docasny = Path(tmp.name)
+                try:
+                    text = pdf_na_text(docasny)
+                except ZdrojSelhal as e:
+                    chyby.append(f"{hlavni['jmeno']}: {e}")
+                    continue
+                finally:
+                    docasny.unlink(missing_ok=True)
+                stran = text.count("\f") + 1
+                # Sken. Zkusí se další kandidát — ale jen zápis, nikdy
+                # příloha; ta by se uložila jako jednání komise.
+                if potrebuje_ocr(text, stran):
+                    chyby.append(f"{hlavni['jmeno']}: nemá textovou vrstvu")
+                    continue
+            return {
+                "text": text,
+                "stran": stran,
+                "zapis": {k: v for k, v in hlavni.items() if k != "_klic"},
+                "vybrano_podle": podle,
+                "prilohy": [
+                    {k: v for k, v in p.items() if k != "_klic"}
+                    for p in polozky if p["_klic"] != hlavni["_klic"]
+                ],
+            }
+
+    raise ZdrojSelhal(
+        f"v archivu {cesta.name} není čitelný zápis ({'; '.join(chyby[:3])})"
+    )
 
 
 def cesta_ke_stazenemu(polozka: dict, podadresar: str) -> Path:

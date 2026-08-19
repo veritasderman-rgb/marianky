@@ -7,12 +7,15 @@ vyhodí chybu. Nikdy nevrací prázdná data tvářící se jako úspěch.
 from __future__ import annotations
 
 import hashlib
+import html as html_modul
+import io
 import json
 import os
 import re
 import subprocess
 import time
 import unicodedata
+import zipfile
 from dataclasses import asdict, is_dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -286,6 +289,30 @@ def pdf_na_text(pdf: Path, *, prvni: int | None = None, posledni: int | None = N
     if r.returncode != 0:
         raise ZdrojSelhal(f"pdftotext selhal na {pdf.name}: {r.stderr.decode()[:200]}")
     return r.stdout.decode("utf-8", errors="replace")
+
+
+def docx_na_text(data: bytes | Path) -> str:
+    """Text z .docx. Bez knihovny — docx je ZIP s XML uvnitř.
+
+    Zápisy komisí bývají v archivu jako Word, ne PDF. Bez tohohle by se
+    z takového archivu nedal přečíst ani zápis, ani přílohy.
+
+    Formát .doc (starý binární Word) se tímhle přečíst NEDÁ a nepředstírá
+    se to — vrací se `ZdrojSelhal`.
+    """
+    try:
+        with zipfile.ZipFile(io.BytesIO(data) if isinstance(data, bytes) else data) as z:
+            xml = z.read("word/document.xml").decode("utf-8", errors="replace")
+    except (zipfile.BadZipFile, KeyError, OSError) as e:
+        raise ZdrojSelhal(f"nejde přečíst jako .docx: {e}") from e
+
+    # Odstavec a zalomení řádku dělají nový řádek, tabulátor mezeru.
+    xml = re.sub(r"</w:p>|<w:br\b[^>]*/?>", "\n", xml)
+    xml = re.sub(r"<w:tab\b[^>]*/?>", "\t", xml)
+    text = html_modul.unescape(re.sub(r"<[^>]+>", "", xml))
+    # Word sype prázdné odstavce; víc než dva prázdné řádky za sebou nic
+    # neznamenají a jen ředí text.
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def pdf_pocet_stran(pdf: Path) -> int:

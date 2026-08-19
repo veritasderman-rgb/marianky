@@ -491,9 +491,24 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
       <strong>Ne všechno se podařilo přečíst — a chybí to ze tří různých důvodů.</strong>{' '}
       Rejstřík města má {cislo(souhrn.v_rejstriku ?? 0)} dokumentů:{' '}
       {cislo(typy.pdf ?? 0)} PDF, {cislo(typy.zip ?? 0)} archivů ZIP a{' '}
-      {cislo(typy.docx ?? 0)} dokument Wordu. <strong>Archivy ZIP se neotvírají vůbec.</strong>
-      {' '}Z PDF se text podařilo vytáhnout u {cislo(souhrn.s_textem ?? 0)}; u zbytku
-      nevrátil převod nic — <strong>to jsou skutečné skeny</strong> a tam by pomohlo OCR.
+      {cislo(typy.docx ?? 0)} dokument Wordu. Text se podařilo vytáhnout z{' '}
+      {cislo(souhrn.s_textem ?? 0)} z nich, z toho {cislo(souhrn.z_archivu ?? 0)}{' '}
+      <strong>z archivů</strong> — město v nich zveřejňuje zápis spolu s podklady
+      jednání. Vedle zápisů v nich leželo {cislo(souhrn.priloh_v_archivech ?? 0)}{' '}
+      {sklonuj(souhrn.priloh_v_archivech ?? 0, 'příloha', 'přílohy', 'příloh')}: rozpočty,
+      žádosti o dotace, prezenční listiny. Ty se nečtou — jsou to podklady, ne zápis.
+    </p>
+    <p>
+      <strong>Který soubor v archivu je zápis, rozhoduje jeho jméno, ne velikost.</strong>{' '}
+      Příloha bývá naskenovaná, a tím pádem několikrát větší než samotný zápis. Soubor
+      s „příloha“, „prezenční listina“, „žádost“ nebo „rozpočet“ v názvu se za zápis
+      nevydává nikdy — raději archiv vynechat, než uložit žádost o dotaci jako jednání
+      komise.
+    </p>
+    <p>
+      <strong>Co zbývá, jsou skeny.</strong> PDF, ze kterých převod nevrátí nic — ať leží
+      v rejstříku samostatně, nebo uvnitř archivu. Tam by pomohlo OCR a zatím na ně
+      nedosáhneme.
     </p>
     <p>
       <strong>Zápisy, které rozbor nezvládl, ale skeny nejsou.</strong> U{' '}

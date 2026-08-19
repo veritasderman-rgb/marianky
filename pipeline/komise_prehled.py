@@ -1137,6 +1137,9 @@ def main() -> None:
         for p in polozky
     )
 
+    z_archivu = sum(1 for z in zapisy if z.get("z_archivu"))
+    priloh = sum(len(z.get("prilohy") or []) for z in zapisy)
+
     nerozebrano = [r for r in rozebrane if not r["rozebrano"]]
     duvody_nerozebrani: Counter[str] = Counter(
         r["duvod_nerozebrani"] for r in nerozebrano if r["duvod_nerozebrani"]
@@ -1195,10 +1198,19 @@ def main() -> None:
                 "přečíst“ bez důvodu je jen omluva."
             ),
             "rejstrik_vs_text": (
-                "Rejstřík je širší než to, z čeho máme text, a chybí to ze tří různých "
-                "důvodů: archivy ZIP se neotvírají vůbec, u části PDF nevrátí pdftotext "
-                "nic (to jsou skutečné skeny a tam by OCR pomohlo) a zbytek text má. "
-                "Počty jsou v `souhrn.rejstrik_dle_typu` a `souhrn.s_textem`."
+                "Rejstřík je širší než to, z čeho máme text. Archivy ZIP se otevírají "
+                "a zápis se z nich vytáhne; přílohy zůstávají jen vypsané, protože jsou "
+                "to podklady jednání, ne zápis. Co chybí, jsou skeny — PDF, ze kterých "
+                "pdftotext nevrátí nic, ať leží samostatně nebo uvnitř archivu. Tam by "
+                "OCR pomohlo. Počty jsou v `souhrn.rejstrik_dle_typu`, `s_textem` "
+                "a `z_archivu`."
+            ),
+            "vyber_v_archivu": (
+                "Který soubor v archivu je zápis, rozhoduje JMÉNO, ne velikost: příloha "
+                "bývá naskenovaná a tím pádem větší. Soubor s „příloha“, „prezenční "
+                "listina“, „žádost“ nebo „rozpočet“ v názvu se za zápis nevydává nikdy — "
+                "raději archiv vynechat než uložit žádost o dotaci jako jednání komise. "
+                "Podle čeho se vybíralo, nese pole `vybrano_podle`."
             ),
             "uspesnost": (
                 "Zápis, ze kterého nešlo vytáhnout ani bod, ani usnesení, je v `nerozebrane`. "
@@ -1228,6 +1240,11 @@ def main() -> None:
             # nevrátí (to jsou skutečné skeny). Držet to zvlášť brání
             # tvrzení „nerozebrané zápisy jsou skeny" — nejsou.
             "v_rejstriku": rejstrik_celkem,
+            # Zápisy vytažené z archivu ZIP a přílohy, které v něm ležely
+            # vedle nich. Přílohy se nečtou — jsou to podklady jednání,
+            # ne zápis — ale kolik jich bylo, je samo o sobě údaj.
+            "z_archivu": z_archivu,
+            "priloh_v_archivech": priloh,
             "rejstrik_dle_typu": dict(dle_typu.most_common()),
             "s_textem": len(rozebrane),
         },
