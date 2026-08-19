@@ -48,6 +48,9 @@ KROKY: list[tuple[str, str, bool]] = [
     # Sběr je pomalý (stovky PDF s tempem šetrným k webu města), proto
     # není povinný — když se nedoběhne, zbytek běhu tím netrpí.
     ("scrapers.komise",    "Komise, výbory a zápisy z jednání", False),
+    # Poskytnuté informace podle stovky šestky. Jediný zdroj, kde je vidět
+    # POPTÁVKA po informacích, ne jen to, co úřad zveřejnit chtěl.
+    ("scrapers.informace106", "Žádosti podle zákona 106/1999", False),
 ]
 
 # Pořadí je závazné: propojení a řetěz čtou výstup agregace peněz,
@@ -73,6 +76,7 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     # souboru. Nejsou povinná: bez nich web funguje, jen stránka /diagramy
     # napíše, že se je nepodařilo spočítat.
     ("pipeline.komise_prehled", "Rozbor zápisů z komisí",       False),
+    ("pipeline.informace106_prehled", "Rozbor žádostí o informace", False),
     ("pipeline.diagramy",       "Schémata projektu a města",    False),
 ]
 

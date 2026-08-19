@@ -1,0 +1,246 @@
+---
+/**
+ * Žádosti o informace podle zákona 106/1999 Sb.
+ *
+ * Je to jediné místo, kde je vidět POPTÁVKA po informacích — všude jinde
+ * je vidět jen nabídka. Z předmětů žádostí se dá vyčíst, co lidi o městě
+ * zajímá natolik, že si o to museli napsat.
+ *
+ * ŽADATEL SE NEZVEŘEJŇUJE. Jméno fyzické osoby odstraňuje už sběrač, takže
+ * v datech ani na stránce není. Ptát se úřadu je zákonné právo a přehled
+ * z jeho výkonu nedělá veřejnou stopu.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import CastiPoCastech from '../components/CastiPoCastech.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import { nactiJson } from '../lib/data';
+import { grafVodorovny } from '../lib/grafy';
+import { cislo, datumKratke, sklonuj } from '../lib/format';
+import { esc } from '../lib/polozka_hlasovani';
+
+interface Zadost {
+  id: string;
+  nadpis: string | null;
+  vlozeno: string | null;
+  url: string;
+  stazeno: number | null;
+  cislo_jednaci: string | null;
+  predmet: string | null;
+  odpoved: string | null;
+  poskytl: string | null;
+  odbor: string | null;
+  odmitnuto: boolean;
+  zadatel_skryt: boolean;
+  rozebrano: boolean;
+}
+
+interface Souhrn {
+  v_rejstriku?: number;
+  s_textem?: number;
+  rozebranych?: number;
+  odmitnuto?: number;
+  se_skrytym_zadatelem?: number;
+  po_odborech?: Record<string, number>;
+  po_letech?: Record<string, number>;
+}
+
+const z = nactiJson<{ souhrn?: Souhrn; zadosti: Zadost[] }>('informace106/prehled.json', {
+  zadosti: [],
+});
+const zadosti = z.data?.zadosti ?? [];
+const souhrn = z.data?.souhrn ?? {};
+
+const dlazdice: Polozka[] = [
+  {
+    popisek: 'Zveřejněných odpovědí',
+    hodnota: cislo(souhrn.v_rejstriku ?? 0),
+    doplnek: `${cislo(souhrn.s_textem ?? 0)} z nich má čitelný text`,
+  },
+  {
+    /* Datum je datum ZVEŘEJNĚNÍ na webu města, ne datum žádosti. U starších
+       záznamů se liší: žádost z roku 2013 bývá vložená až v roce 2017, kdy
+       web vznikl. Popisek to musí říct, jinak by dlaždice tvrdila, že dřív
+       se nikdo neptal. */
+    popisek: 'Nejstarší zveřejnění',
+    hodnota: Object.keys(souhrn.po_letech ?? {})[0] ?? '—',
+    doplnek: 'datum vložení na web, ne datum žádosti',
+  },
+  {
+    popisek: 'Odmítnuto nebo částečně',
+    hodnota: cislo(souhrn.odmitnuto ?? 0),
+    doplnek: 'podle slovesa v odpovědi',
+  },
+  {
+    popisek: 'Se skrytým jménem',
+    hodnota: cislo(souhrn.se_skrytym_zadatelem ?? 0),
+    doplnek: 'žadatele nezveřejňujeme',
+  },
+];
+
+/* Kolik odpovědí město ročně zveřejnilo. POZOR: je to rok vložení na web,
+   ne rok žádosti — u starších záznamů se liší. Graf proto neříká, jak
+   rostl zájem lidí, ale jak město zveřejňovalo. */
+const roky = Object.entries(souhrn.po_letech ?? {}).sort(([a], [b]) => a.localeCompare(b));
+const varianty: Varianta[] =
+  roky.length > 1
+    ? [
+        {
+          klic: 'po-letech',
+          popisek: 'Po letech',
+          graf: grafVodorovny(
+            roky.map(([rok, pocet]) => ({ nazev: rok, hodnota: pocet })),
+            'Zveřejněno odpovědí (podle data vložení na web)',
+          ),
+        },
+      ]
+    : [];
+
+function zadostHtml(za: Zadost): string {
+  const odbor = za.odbor
+    ? `<span class="znacka">${esc(za.odbor)}</span>`
+    : `<span class="stav-dat__zdroj">odbor odpověď neuvádí</span>`;
+  const odmitnuto = za.odmitnuto
+    ? `<span class="znacka znacka--vazba">odmítnuto nebo částečně</span>`
+    : '';
+  return (
+    `<li class="polozka">` +
+    `<div class="polozka__hlava">` +
+    `<span>${esc(za.vlozeno ? datumKratke(za.vlozeno) : 'datum neuvedeno')}</span>` +
+    (za.cislo_jednaci ? `<span class="mono">č. j. ${esc(za.cislo_jednaci)}</span>` : '') +
+    `</div>` +
+    `<p class="polozka__nazev">${esc(za.predmet ?? za.nadpis ?? 'předmět žádosti se nepodařilo přečíst')}</p>` +
+    (za.odpoved ? `<p>${esc(za.odpoved)}</p>` : '') +
+    `<div class="polozka__meta">${odbor}${odmitnuto}` +
+    `<a href="${esc(za.url)}" rel="noreferrer noopener">odpověď (PDF)</a>` +
+    `</div></li>`
+  );
+}
+
+const davky = (() => {
+  const NA_DAVKU = 30;
+  const kusy: string[] = [];
+  for (let i = 0; i < zadosti.length; i += NA_DAVKU) {
+    kusy.push(`<ul class="seznam">${zadosti.slice(i, i + NA_DAVKU).map(zadostHtml).join('')}</ul>`);
+  }
+  return kusy;
+})();
+
+const odbory = Object.entries(souhrn.po_odborech ?? {})
+  .filter(([k]) => k !== 'odbor neuveden')
+  .sort(([, a], [, b]) => b - a);
+const neuvedeno = souhrn.po_odborech?.['odbor neuveden'] ?? 0;
+---
+
+<Zaklad
+  titulek="Žádosti o informace"
+  aktivni="informace"
+  nadpis="Žádosti o informace"
+  uvod="Na co se lidé úřadu ptali podle zákona 106/1999 Sb. a co jim odpověděl. Je to jediné místo, kde je vidět poptávka po informacích — všude jinde je vidět jen to, co úřad zveřejnit chtěl."
+>
+  <StavDat
+    stav={z.stav}
+    zdroj={z.zdroj}
+    co="Poskytnuté informace podle zákona 106/1999 Sb."
+    prazdno={z.stav === 'ok' && zadosti.length === 0}
+    modul="scrapers/informace106.py"
+  />
+
+  {zadosti.length > 0 && <Dlazdice polozky={dlazdice} />}
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Kdo se ptal, se tu nedozvíte</h2>
+    <p class="karta__podnadpis">Je to záměr, ne mezera v datech.</p>
+    <p>
+      Web města u starších záznamů uvádí jméno žadatele v názvu souboru i v textu
+      odpovědi. Tenhle přehled ho <strong>neukládá ani nezveřejňuje</strong> — odstraňuje
+      se už při sběru, ne až při zobrazení, protože zdrojová data projektu jsou veřejná.
+      Ptát se úřadu je zákonné právo a přehled z jeho výkonu nedělá dohledatelnou stopu.
+    </p>
+    <p>
+      <strong>Názvy organizací zůstávají.</strong> Žádost spolku, advokátní kanceláře nebo
+      komory je jednání instituce, ne soukromá věc — a bývá to podstatná část příběhu.
+      Zůstává i jméno úředníka, který informaci poskytl: to je výkon funkce.
+    </p>
+  </section>
+
+  {varianty.length > 0 && <GrafKarta
+      nadpis="Kolik odpovědí město ročně zveřejnilo"
+      popis="Rok je datum vložení dokumentu na web města, ne datum žádosti. U starších záznamů se obojí liší — žádost z roku 2013 bývá vložená až později."
+      varianty={varianty}
+      id="i106-roky"
+    />}
+
+  {
+    zadosti.length > 0 && (
+      <section>
+        <h2>Na co se lidé ptali</h2>
+        <p class="uvod">
+          Předmět žádosti a odpověď úřadu tak, jak stojí ve zveřejněném dokumentu, od
+          nejnovější.
+        </p>
+        <CastiPoCastech casti={davky} id="zadosti-106" poCastech={1} jednotka="dávek po 30" />
+      </section>
+    )
+  }
+
+  {
+    odbory.length > 0 && (
+      <section>
+        <h2>Který útvar odpovídal</h2>
+        <p class="uvod">
+          Útvar se přiřazuje k seznamu odborů úřadu, nehádá se z textu. U{' '}
+          {cislo(neuvedeno)} {sklonuj(neuvedeno, 'odpovědi', 'odpovědí', 'odpovědí')} ho
+          dokument neuvádí a zůstává prázdný.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Útvar</th>
+                <th scope="col" class="cislo">Odpovědí</th>
+              </tr>
+            </thead>
+            <tbody>
+              {odbory.map(([nazev, pocet]) => (
+                <tr>
+                  <td>{nazev}</td>
+                  <td class="cislo">{cislo(pocet)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )
+  }
+
+  <JakPocitame>
+    <p>
+      Úřad má podle § 5 odst. 3 zákona 106/1999 Sb. povinnost zveřejnit informaci, kterou
+      poskytl. Zveřejněné odpovědi mají pravidelnou stavbu — předmět žádosti, poskytnutá
+      informace, kdo ji poskytl — a z té se dají údaje vytáhnout strojově.
+    </p>
+    <p>
+      <strong>Ne všechno je čitelné.</strong> Web města má v rejstříku{' '}
+      {cislo(souhrn.v_rejstriku ?? 0)}{' '}
+      {sklonuj(souhrn.v_rejstriku ?? 0, 'dokument', 'dokumenty', 'dokumentů')}, textovou
+      vrstvu má {cislo(souhrn.s_textem ?? 0)}. Zbytek jsou skeny — bez OCR z nich text
+      nedostaneme a nepředstírá se, že v nich nic není.
+    </p>
+    <p>
+      <strong>„Odmítnuto“ je vodítko, ne právní závěr.</strong> Poznává se ze slovesa
+      v textu odpovědi („odmítnuto“, „neposkytnuto“, „nevyhověno“). Úplný výrok
+      rozhodnutí je v PDF a přehled ho nepřepisuje.
+    </p>
+    <p>
+      <strong>Co tu chybí a chybět bude:</strong> žádosti, které úřad nezveřejnil, a
+      odpovědi starší než nejstarší zveřejněný záznam. Přehled umí ukázat jen to, co je
+      zveřejněné — o zbytku neví nic a netvrdí, že neexistuje.
+    </p>
+  </JakPocitame>
+</Zaklad>

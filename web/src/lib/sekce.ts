@@ -63,6 +63,13 @@ export const SKUPINY: SkupinaSekci[] = [
         kratce: 'Komise',
         popis: 'Co komise navrhují radě',
       },
+      {
+        klic: 'informace',
+        cesta: '/informace',
+        nazev: 'Žádosti o informace',
+        kratce: 'Žádosti',
+        popis: 'Na co se lidé ptali podle stovky šestky',
+      },
     ],
   },
   {
