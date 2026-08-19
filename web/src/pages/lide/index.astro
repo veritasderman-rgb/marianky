@@ -3,9 +3,10 @@ import Zaklad from '../../layouts/Zaklad.astro';
 import DiagramKarta from '../../components/DiagramKarta.astro';
 import { nactiDiagram } from '../../lib/diagramy';
 import StavDat from '../../components/StavDat.astro';
-import { nactiHlasovani, nactiLidi } from '../../lib/data';
+import { nactiHlasovani, nactiJson, nactiLidi, spojStavy, type Osobnost } from '../../lib/data';
+import { nactiZastupitele } from '../../lib/volby';
 import { zplostiHlasovani } from '../../lib/prehledy';
-import { cislo, orderCs, orez } from '../../lib/format';
+import { cislo, orderCs, orez, sklonuj } from '../../lib/format';
 
 const zLidi = nactiLidi();
 const zHlasovani = nactiHlasovani();
@@ -51,15 +52,159 @@ const poradiKategorie = (k: string) => {
   return i === -1 ? PORADI_KATEGORII.length : i; // neznámá kategorie až nakonec
 };
 
-const kategorie = [...new Set(lide.map((o) => o.kategorie ?? 'ostatni'))].sort(
-  (a, b) => poradiKategorie(a) - poradiKategorie(b) || orderCs(a, b),
-);
+/* „Politika" se tu už nevypisuje jako kategorie — má nad tímhle seznamem
+   vlastní bloky členěné po volebních obdobích. Jeden a týž člověk dvakrát
+   na jedné stránce je zbytečný šum. */
+const kategorie = [...new Set(lide.map((o) => o.kategorie ?? 'ostatni'))]
+  .filter((k) => k !== 'politika')
+  .sort((a, b) => poradiKategorie(a) - poradiKategorie(b) || orderCs(a, b));
 
 /* Uvnitř kategorie žijící napřed. Týká se hlavně kategorií, kde se obojí
    míchá — mezi podnikateli i v kultuře jsou lidé žijící i zemřelí. */
 const zijiciNapred = (a: { zijici?: boolean; jmeno?: string }, b: typeof a) =>
   Number(a.zijici === false) - Number(b.zijici === false) ||
   orderCs(a.jmeno ?? '', b.jmeno ?? '');
+
+/* ── Zastupitelstvo po volebních obdobích ─────────────────────────────────
+   Dva různé zdroje a JE MEZI NIMI ROZDÍL, který se nesmí setřít:
+
+     – `mesto/zastupitele.json` je aktuální obsazení z webu města. Odpovídá
+       na „kdo v zastupitelstvu sedí teď".
+     – `opendata/volby/zastupitele.json` jsou výsledky komunálních voleb od
+       ČSÚ. Odpovídají na „kdo byl ve volbách zvolen" — což NENÍ totéž.
+       Kdo odejde uprostřed období, v seznamu zvolených zůstane; kdo po něm
+       nastoupí jako náhradník, tam nikdy nebyl.
+
+   Náhradníci se proto dohledávají zvlášť, z funkcí v profilech, a jsou
+   u nich označení. Bez toho by seznam „období 2018–2022" tiše vynechal tři
+   lidi, kteří v zastupitelstvu skutečně seděli. */
+
+interface SoucasniZastupitele {
+  volebni_obdobi?: string;
+  celkem?: number;
+  zastupitele?: { id: string; jmeno: string; uskupeni?: string; funkce?: string }[];
+}
+const zSoucasnych = nactiJson<SoucasniZastupitele>('mesto/zastupitele.json', {});
+const zZvolenych = nactiZastupitele();
+
+const podleId = new Map(lide.map((o) => [o.id, o]));
+
+/* Aktuální obsazení. Období si bere ze zdroje, nedopočítává se z dnešního
+   data — kdyby web města zaostal za volbami, ať je vidět jeho údaj. */
+const soucasni = (zSoucasnych.data?.zastupitele ?? []).map((z) => ({
+  ...z,
+  profil: podleId.get(z.id) ?? null,
+}));
+const obdobiSoucasne = (zSoucasnych.data?.volebni_obdobi ?? '').replace('-', '–');
+
+/* Volební cykly sestupně. Konec období je začátek toho dalšího; u nejnovějšího
+   se přičtou čtyři roky, protože tak dlouhé je období ze zákona. */
+const rokyVoleb = [...new Set(zZvolenych.data.map((z) => z.rok).filter((r): r is number => !!r))].sort(
+  (a, b) => b - a,
+);
+const konecObdobi = (rok: number, i: number) => (i > 0 ? rokyVoleb[i - 1] : rok + 4);
+
+/** Datum z profilu („2020-11", „2014") na porovnatelné číslo. */
+const naCislo = (s?: string | null): number | null => {
+  const m = /^(\d{4})(?:-(\d{2}))?/.exec(s ?? '');
+  if (!m) return null;
+  const rok = Number(m[1]);
+  const mesic = m[2] ? Number(m[2]) : null;
+  return mesic ? rok + (mesic - 1) / 12 : rok;
+};
+
+/** Funkce, která znamená mandát v zastupitelstvu. */
+const jeMandat = (nazev: string) => {
+  const n = nazev.toLowerCase();
+  return n.startsWith('zastupitel') || n.includes('zastupitelstv');
+};
+
+/* Kdo má v profilu mandát překrývající se s obdobím. Slouží jen k dohledání
+   náhradníků — zvolené bere ČSÚ. */
+const mandatyOsob = lide
+  .filter((o) => o.kategorie === 'politika')
+  .map((o) => ({
+    osoba: o,
+    useky: (o.funkce ?? [])
+      .filter((f) => jeMandat(f.nazev))
+      .map((f) => ({ od: naCislo(f.od), do: naCislo(f.do) }))
+      .filter((u) => u.od !== null),
+  }))
+  .filter((z) => z.useky.length > 0);
+
+interface RadekObdobi {
+  id: string | null;
+  jmeno: string;
+  strana: string | null;
+  profil: Osobnost | null;
+  /** Nastoupil až během období — ve volbách zvolený nebyl. */
+  nahradnik: boolean;
+}
+
+const obdobi = rokyVoleb.map((rok, i) => {
+  const do_ = konecObdobi(rok, i);
+  const zvoleni = zZvolenych.data
+    .filter((z) => z.rok === rok)
+    .sort((a, b) => (a.poradiMandatu ?? 999) - (b.poradiMandatu ?? 999));
+  const zvoleniId = new Set(zvoleni.map((z) => z.osoba_id).filter(Boolean));
+
+  const nahradnici = mandatyOsob
+    .filter(
+      (z) =>
+        !zvoleniId.has(z.osoba.id) &&
+        z.useky.some((u) => (u.od as number) < do_ && (u.do === null || u.do > rok)),
+    )
+    .map(
+      (z): RadekObdobi => ({
+        id: z.osoba.id,
+        jmeno: z.osoba.jmeno,
+        strana: z.osoba.strana ?? null,
+        profil: z.osoba,
+        nahradnik: true,
+      }),
+    )
+    .sort((a, b) => orderCs(a.jmeno, b.jmeno));
+
+  return {
+    rok,
+    do_,
+    radky: [
+      ...zvoleni.map(
+        (z): RadekObdobi => ({
+          id: z.osoba_id,
+          jmeno: z.jmeno,
+          strana: z.strana,
+          profil: z.osoba_id ? (podleId.get(z.osoba_id) ?? null) : null,
+          nahradnik: false,
+        }),
+      ),
+      ...nahradnici,
+    ],
+    zvolenych: zvoleni.length,
+    nahradniku: nahradnici.length,
+  };
+});
+
+/** Věta pod nadpisem období. Skládá se celá, aby tečka seděla u posledního slova. */
+function shrnutiObdobi(zvolenych: number, rok: number, nahradniku: number): string {
+  const zaklad = `${cislo(zvolenych)} ${sklonuj(zvolenych, 'zvolený', 'zvolení', 'zvolených')} ve volbách ${rok}`;
+  if (nahradniku === 0) return `${zaklad}.`;
+  const kdo = sklonuj(
+    nahradniku,
+    'člen, který nastoupil',
+    'členové, kteří nastoupili',
+    'členů, kteří nastoupili',
+  );
+  return `${zaklad} a ${cislo(nahradniku)} ${kdo} až během období.`;
+}
+
+/* Kdo z politiky nespadl do žádného období — starostové z let před rokem
+   2002, kam otevřená data ČSÚ nesahají, a jeden profil bez data nástupu.
+   Nesmí ze stránky zmizet a nesmí se dohadovat, kam patří. */
+const vObdobich = new Set(obdobi.flatMap((o) => o.radky.map((r) => r.id).filter(Boolean)));
+const mimoObdobi = lide
+  .filter((o) => o.kategorie === 'politika' && !vObdobich.has(o.id))
+  .sort((a, b) => orderCs(a.jmeno, b.jmeno));
 
 /* Lidé, kteří hlasují, ale v osobnostech nejsou — na to je potřeba upozornit,
    ne to zamlčet. */
@@ -70,6 +215,11 @@ const chybejici = [...new Set(hlasovani.flatMap((h) => h.jmenovite.map((j) => j.
 
 /* Schéma k této sekci. Kompletní sada je na /diagramy. */
 const schemaVedeni = nactiDiagram('vedeni').data;
+
+/* Stav se hlásí za všechny tři zdroje stránky, ne jen za profily. Kdyby
+   vypadl seznam zastupitelů nebo výsledky voleb, byla by ta sekce prostě
+   prázdná a nikdo by nepoznal, že chybí data. */
+const stavStranky = spojStavy(zLidi, zSoucasnych, zZvolenych);
 ---
 
 <Zaklad
@@ -79,12 +229,104 @@ const schemaVedeni = nactiDiagram('vedeni').data;
   uvod="Lidé, kteří ve městě rozhodují nebo ho reprezentují. U zastupitelů a radních je k profilu připojená hlasovací historie z dat, ne z převyprávění."
 >
   <StavDat
-    stav={zLidi.stav}
+    stav={stavStranky.stav}
     zdroj={zLidi.zdroj}
     co="Profily osobností"
     prazdno={zLidi.stav === 'ok' && lide.length === 0}
     modul="B1 Kdo je kdo"
   />
+
+  {
+    soucasni.length > 0 && (
+      <section>
+        <h2>
+          Současní zastupitelé{obdobiSoucasne ? ` (${obdobiSoucasne})` : ''}
+        </h2>
+        <p class="uvod">
+          Aktuální obsazení podle webu města — {cislo(soucasni.length)}{' '}
+          {sklonuj(soucasni.length, 'člen', 'členové', 'členů')} zastupitelstva.
+          U každého je hlasovací historie z dat.
+        </p>
+        <ul class="seznam">
+          {soucasni.map((z) => (
+            <li class="polozka">
+              <h3 class="polozka__nazev">
+                {z.profil ? <a href={`/lide/${z.id}`}>{z.profil.jmeno}</a> : z.jmeno}
+              </h3>
+              <div class="polozka__hlava">
+                {z.funkce && <span>{z.funkce}</span>}
+                {z.uskupeni && <span>{z.uskupeni}</span>}
+                {(pocetHlasu.get(z.id) ?? 0) > 0 && (
+                  <span>{cislo(pocetHlasu.get(z.id) ?? 0)} zaznamenaných hlasů</span>
+                )}
+              </div>
+              {z.profil?.popis && <p>{orez(z.profil.popis, 220)}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    obdobi.length > 0 && (
+      <section>
+        <h2>Zastupitelé</h2>
+        <p class="uvod">
+          Kdo byl zvolen v jednotlivých komunálních volbách, podle výsledků Českého
+          statistického úřadu. <strong>„Zvolený" není totéž co „seděl celé období"</strong>{' '}
+          — kdo odejde uprostřed, v seznamu zvolených zůstává, a kdo po něm nastoupí
+          jako náhradník, tam nikdy nebyl. Náhradníci jsou proto dohledaní z profilů
+          a označení; zachytí se jen ti, kdo tu profil mají.
+        </p>
+
+        {obdobi.map((o) => (
+          <>
+            <h3>
+              Volební období {o.rok}–{o.do_}
+            </h3>
+            {/* Celá věta se skládá jako řetězec — kdyby tečka stála v JSX na
+                vlastním řádku, vyrobí se před ní mezera. */}
+            <p class="uvod">{shrnutiObdobi(o.zvolenych, o.rok, o.nahradniku)}</p>
+            <ul class="seznam-temat">
+              {o.radky.map((r) => (
+                <li class="seznam-temat__polozka">
+                  {r.profil ? <a href={`/lide/${r.id}`}>{r.jmeno}</a> : <span>{r.jmeno}</span>}
+                  {r.strana && <span class="polozka__hlava">{r.strana}</span>}
+                  {/* Doložená značka, ne odhad: datum nástupu stojí v profilu.
+                      Přerušovaná linka (`znacka--odhad`) by tvrdila, že je to
+                      náš dohad — viz web/DESIGN.md §3.7. */}
+                  {r.nahradnik && (
+                    <span class="znacka znacka--dolozeno">nastoupil během období</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        ))}
+
+        {mimoObdobi.length > 0 && (
+          <>
+            <h3>Bez zařazení do období</h3>
+            <p class="uvod">
+              Otevřená data ČSÚ sahají k volbám 2002; starostové z devadesátých let
+              tedy do žádného ze seznamů výš nespadnou. U jednoho profilu chybí datum
+              nástupu — <strong>zařadit ho odhadem by z údaje udělalo dohad</strong>,
+              tak zůstává tady.
+            </p>
+            <ul class="seznam-temat">
+              {mimoObdobi.map((o) => (
+                <li class="seznam-temat__polozka">
+                  <a href={`/lide/${o.id}`}>{o.jmeno}</a>
+                  {o.role && o.role.length > 0 && <span class="polozka__hlava">{o.role[0]}</span>}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    )
+  }
 
   {
     kategorie.map((k) => {
