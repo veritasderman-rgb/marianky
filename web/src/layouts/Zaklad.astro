@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { SEKCE_HLEDAT, SEKCE_UVOD, SKUPINY, skupinaSekce } from '../lib/sekce';
 import { kresliZnak, nactiZnaky } from '../lib/znaky';
 import Znacka from '../components/Znacka.astro';
+import Analytics from '@vercel/analytics/astro';
 
 export interface Props {
   titulek: string;
@@ -116,6 +117,7 @@ const svgZnaku =
         }
       })();
     </script>
+    <Analytics />
   </head>
 
   <body>

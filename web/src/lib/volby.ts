@@ -16,7 +16,7 @@
  *     pro voliče. Proto je „platných hlasů" mnohonásobně víc než voličů —
  *     každý volič má tolik hlasů, kolik se volí zastupitelů.
  */
-import { nactiAdresarSoubory, nactiJson, slug, type Nacteno } from './data';
+import { nactiAdresarSoubory, nactiConfig, nactiJson, slug, type Nacteno } from './data';
 import { sestavRegistr, type RegistrBarev } from './barvy';
 import { cisloOkrsku, type GeoSoubor, type PrvekZdroje } from './geodata';
 import { tvaryZGeometrie } from './mapy';
@@ -335,16 +335,51 @@ export interface ZastupitelZaznam extends Zvoleny {
   datum: string | null;
 }
 
+/**
+ * Sjednocení `osoba_id` u lidí, které zdroje vedou pod dvěma jmény.
+ *
+ * ČSÚ bere jméno z kandidátní listiny, web města a profily z pozdějšího
+ * úřadování — u „Samuel Zabolotnij" versus „Samuel Zabolotný" se liší i po
+ * odstranění diakritiky, takže je automatika nespáruje a týž člověk by se
+ * na stránce objevil dvakrát: jednou jako zvolený, podruhé (mylně) jako
+ * někdo, kdo nastoupil až během období.
+ *
+ * Sloučení je proto RUČNÍ a stojí v `config/tataz_osoba.json` i s dokladem.
+ * Spojit dva lidi do jednoho je horší chyba než je nechat nespárované, tak
+ * se sem nic nepřidává odhadem. Správné místo pro opravu je sběrač, který
+ * `osoba_id` přiděluje; tohle je záplata do té doby.
+ */
+interface TatazOsoba {
+  aliasy?: { id?: string; jina_id?: string[] }[];
+}
+function prevodIdOsob(): Map<string, string> {
+  const v = nactiConfig<TatazOsoba>('tataz_osoba.json', {});
+  const mapa = new Map<string, string>();
+  for (const a of v.data?.aliasy ?? []) {
+    if (!a?.id) continue;
+    for (const jine of a.jina_id ?? []) if (jine) mapa.set(jine, a.id);
+  }
+  return mapa;
+}
+
 export function nactiZastupitele(): Nacteno<ZastupitelZaznam[]> {
   const v = nactiJson<unknown>('opendata/volby/zastupitele.json', null);
   const surove = Array.isArray(v.data) ? v.data.filter(jeObjekt) : [];
+  const prevod = prevodIdOsob();
   return {
     ...v,
     data: surove
       .map((z) => {
         const zaklad = zvolenyZe(z);
         if (!zaklad) return null;
-        return { ...zaklad, cyklus: txt(z, 'cyklus') ?? '', rok: cis(z, 'rok'), datum: txt(z, 'datum') };
+        const id = zaklad.osoba_id;
+        return {
+          ...zaklad,
+          osoba_id: id ? (prevod.get(id) ?? id) : id,
+          cyklus: txt(z, 'cyklus') ?? '',
+          rok: cis(z, 'rok'),
+          datum: txt(z, 'datum'),
+        };
       })
       .filter((x): x is ZastupitelZaznam => x !== null),
   };
