@@ -18,6 +18,11 @@ CO SE SBÍRÁ
 2. Zápisy: rejstřík dokumentů na /urad/dokumenty/zapisy-z-komisi/
    (24 stránek po 20 položkách) a k nim PDF převedená na text.
 
+   Část jednání město zveřejňuje jako ZIP se zápisem a přílohami, ne jako
+   samotné PDF. Přípona na disku o typu nic neříká — soubory se ukládají
+   pod klíčem z URL — takže se rozhoduje podle obsahu. Zápis se z archivu
+   vytáhne, přílohy se jen vypíšou: jsou to podklady jednání, ne zápis.
+
 Rozbor textu na účast, body a doporučení dělá `pipeline/komise_prehled.py`.
 Tenhle modul jen stahuje a nic si nedomýšlí.
 
@@ -34,6 +39,7 @@ from urllib.parse import urljoin
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from lib.dokumenty import je_archiv, text_z_archivu  # noqa: E402
 from lib.core import (  # noqa: E402
     CACHE,
     Log,
@@ -333,26 +339,47 @@ def stahni_texty(zapisy: list[dict], log: Log, strop: int | None = None) -> int:
         if hotovo:
             continue
 
-        pdf = _cesta_pdf(z)
+        soubor = _cesta_pdf(z)
+        navic: dict = {}
         try:
-            if not pdf.exists():
-                data = fetch(z["url"], cache_key=f"komise-{pdf.stem}", max_age=0, binary=True)
+            if not soubor.exists():
+                data = fetch(z["url"], cache_key=f"komise-{soubor.stem}", max_age=0,
+                             binary=True)
                 assert isinstance(data, bytes)
-                pdf.parent.mkdir(parents=True, exist_ok=True)
-                pdf.write_bytes(data)
-            text = pdf_na_text(pdf)
+                soubor.parent.mkdir(parents=True, exist_ok=True)
+                soubor.write_bytes(data)
+            # Přípona na disku je vždycky .pdf, protože se ukládá pod klíčem
+            # z URL. Co to doopravdy je, řekne až obsah — a 66 jednání
+            # z rejstříku je ZIP se zápisem a přílohami.
+            if je_archiv(soubor):
+                z_archivu = text_z_archivu(soubor)
+                text, stran = z_archivu["text"], z_archivu["stran"]
+                navic = {
+                    "z_archivu": True,
+                    "soubor_v_archivu": z_archivu["zapis"],
+                    "vybrano_podle": z_archivu["vybrano_podle"],
+                    # Co ještě komise na stole měla. Přílohy se nečtou —
+                    # jsou to podklady jednání, ne zápis — ale jejich
+                    # seznam je sám o sobě údaj.
+                    "prilohy": z_archivu["prilohy"],
+                }
+            else:
+                text = pdf_na_text(soubor)
+                stran = text.count("\f") + 1
         except ZdrojSelhal as e:
             log.chyba(f"{z['nadpis']}: {e}")
             continue
 
-        stran = text.count("\f") + 1
-        if potrebuje_ocr(text, stran):
+        # `stran` je None u .docx — počet stránek z něj nevyčteme a nula
+        # by lhala. Kontrola na sken se pak dělat nedá, ale u Wordu nemá
+        # co kontrolovat: textovou vrstvu má z podstaty.
+        if stran is not None and potrebuje_ocr(text, stran):
             # Sken bez textové vrstvy. Neukládá se prázdný text, který by
             # vypadal jako zápis bez obsahu.
             log.chyba(f"{z['nadpis']}: PDF nemá textovou vrstvu (potřeboval by OCR)")
             continue
 
-        uloz(cil, {**z, "stran": stran, "text": text})
+        uloz(cil, {**z, "stran": stran, "text": text, **navic})
         novych += 1
     return novych
 
