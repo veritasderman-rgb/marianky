@@ -74,14 +74,35 @@ export interface Spojeni {
   usneseni: BodUsneseni;
 }
 
+export interface Overeni {
+  stav: string;
+  posouzeno?: number;
+  sedi?: number;
+  dle_jistoty?: Record<string, { posouzeno: number; sedi: number }>;
+  zastaralych_ve_vzorku?: number;
+}
+
 interface Props {
+  overeni?: Overeni | null;
   projednani: Projednani[];
   retezy: Spojeni[];
   bezOdezvy: Doporuceni[];
   navrhuCelkem: number;
 }
 
-const { projednani, retezy, bezOdezvy, navrhuCelkem } = Astro.props as Props;
+const { projednani, retezy, bezOdezvy, navrhuCelkem, overeni } = Astro.props as Props;
+
+/* Změřená přesnost. Stupeň jistoty bez čísla je jen slovo — a čtenář
+   nemá jak poznat, co si od „nízké jistoty“ slíbit. */
+const zmereno = overeni?.stav === 'ok' && (overeni.posouzeno ?? 0) > 0 ? overeni : null;
+const POPIS_UROVNE: Record<string, string> = {
+  vysoka: 'vysoká',
+  stredni: 'střední',
+  nizka: 'nízká',
+};
+const urovne = ['vysoka', 'stredni', 'nizka']
+  .map((k) => [k, zmereno?.dle_jistoty?.[k]] as const)
+  .filter((x): x is readonly [string, { posouzeno: number; sedi: number }] => Boolean(x[1]));
 
 const POPIS_JISTOTY: Record<string, string> = {
   vysoka: 'odhad, vysoká jistota',
@@ -275,6 +296,32 @@ const sOdhadem = new Set(retezy.map((s) => s.doporuceni.id)).size;
           ne doklad: spojení drží shoda neobvyklých slov, případně částka a čas. Řazeno
           od nejjistějšího.
         </p>
+        {zmereno && (
+          <p class="uvod">
+            <strong>Jak často to sedí, jsme změřili.</strong> Na vzorku{' '}
+            {cislo(zmereno.posouzeno ?? 0)}{' '}
+            {sklonuj(zmereno.posouzeno ?? 0, 'spojení', 'spojení', 'spojení')} — všechna
+            s vysokou a střední jistotou a každé čtvrté s nízkou — jsme ručně porovnali
+            text doporučení s usnesením. Sedělo {cislo(zmereno.sedi ?? 0)} z{' '}
+            {cislo(zmereno.posouzeno ?? 0)}
+            {urovne.length > 0 && (
+              <>
+                {': '}
+                {urovne.map(([klic, u], i) => (
+                  <>
+                    {i > 0 ? ', ' : ''}
+                    {POPIS_UROVNE[klic] ?? klic} jistota {cislo(u.sedi)} z{' '}
+                    {cislo(u.posouzeno)}
+                  </>
+                ))}
+              </>
+            )}
+            . Verdikt u každé dvojice i s důvodem je v{' '}
+            <code>config/vzorek_retez_komise.json</code>, takže se dá překontrolovat.{' '}
+            <strong>U nízké jistoty počítej s tím, že zhruba každé druhé spojení je
+            vedle</strong> — proto je označená jako domněnka.
+          </p>
+        )}
         <CastiPoCastech
           casti={davky(serazene, spojeniHtml, 25)}
           id="komise-odhady"

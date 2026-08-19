@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -278,7 +279,7 @@ def kontrola_znaku(v: Vysledek) -> None:
     """
     cesta = DATA / "znaky" / "sekce.json"
     if not cesta.exists():
-        v.varovani("znaky sekcí zatím nejsou spočítané "
+        v.varuj("znaky sekcí zatím nejsou spočítané "
                    "(pipeline/znaky_sekci.py) — rozcestník bude bez obrázků")
         return
     try:
@@ -318,7 +319,7 @@ def kontrola_retezu_komisi(v: Vysledek) -> None:
     """
     cesta = DATA / "retez" / "komise_rada.json"
     if not cesta.exists():
-        v.varovani("řetěz komise → rada zatím není spočítaný "
+        v.varuj("řetěz komise → rada zatím není spočítaný "
                    "(pipeline/retez_komise.py) — sekce komisí bude bez návaznosti")
         return
     try:
@@ -354,8 +355,90 @@ def kontrola_retezu_komisi(v: Vysledek) -> None:
                 + ", ".join(bez_slova[:5]))
         return
 
+    # Vzorek zastarává: když se párování změní, posouzené dvojice zmizí
+    # a měřená přesnost přestane platit pro to, co web ukazuje.
+    o = d.get("overeni") or {}
+    if o.get("stav") == "ok":
+        zastaralych, posouzeno = o.get("zastaralych_ve_vzorku", 0), o.get("posouzeno", 0)
+        if posouzeno and zastaralych > posouzeno * 0.2:
+            v.varuj(
+                f"ručně posouzený vzorek zastaral — {zastaralych} z "
+                f"{zastaralych + posouzeno} dvojic už párování nevrací. Měřená "
+                "přesnost platí pro jinou verzi; posuď vzorek znovu "
+                "(config/vzorek_retez_komise.json)."
+            )
+        elif not posouzeno:
+            v.varuj("ručně posouzený vzorek nesedí na žádné dnešní spojení — "
+                    "přesnost odhadu se neměří")
+
     v.projde(f"řetěz komise → rada: {len(projednani)} doložených projednání, "
              f"{len(retezy)} odhadů, žádný nemíří zpátky v čase")
+
+
+# Rozpočet vykreslených uzlů na jednu stránku. Web se čte na telefonu
+# a prohlížeč musí každý uzel postavit dřív, než se něco ukáže.
+#
+# Čísla nejsou vycucaná: stránka /hlasovani měla 250 289 uzlů a NENAČETLA
+# SE. Strop je pětinásobná rezerva pod tou hranicí, práh varování sedí
+# kousek nad dnešním maximem (/retez, ~30 tisíc), aby bylo vidět, která
+# stránka se k rozpočtu blíží.
+STROP_UZLU = 45_000
+VAROVANI_UZLU = 25_000
+
+# Komprese tenhle problém schová: 3 MB HTML se pošle jako 200 kB, ale
+# uzlů je pořád 250 tisíc. Velikost na drátě proto NENÍ měřítko.
+_OTEVIRACI_TAG = re.compile(r"<[a-zA-Z]")
+
+
+def kontrola_dom(v: Vysledek) -> None:
+    """Žádná stránka nesmí přerůst rozpočet vykreslených uzlů.
+
+    Stalo se: /hlasovani vykreslovalo všech 12 349 hlasování naráz,
+    250 289 uzlů, a stránka se na telefonu nenačetla vůbec. Opravou bylo
+    dávkové vykreslování; tahle kontrola hlídá, aby se to nevrátilo —
+    a hlídá to na SESTAVENÉM webu, protože v datech to vidět není.
+    """
+    dist = Path(__file__).resolve().parent / "web" / "dist"
+    if not dist.exists():
+        v.varuj("web není sestavený (web/dist chybí) — rozpočet DOM uzlů se nekontroloval")
+        return
+
+    stranky: list[tuple[int, str]] = []
+    for cesta in dist.rglob("*.html"):
+        try:
+            html = cesta.read_text(encoding="utf-8", errors="replace")
+        except OSError as e:
+            v.chyba(f"{cesta} nejde přečíst: {e}")
+            return
+        stranky.append((len(_OTEVIRACI_TAG.findall(html)), str(cesta.relative_to(dist))))
+
+    if not stranky:
+        v.varuj("web/dist neobsahuje žádné HTML — rozpočet DOM uzlů se nekontroloval")
+        return
+
+    stranky.sort(reverse=True)
+
+    def mezerou(n: int) -> str:
+        return f"{n:,}".replace(",", " ")
+
+    pres_strop = [(n, c) for n, c in stranky if n > STROP_UZLU]
+    if pres_strop:
+        vypis = ", ".join(f"{c} ({mezerou(n)} uzlů)" for n, c in pres_strop[:5])
+        v.chyba(
+            f"stránka přerůstá rozpočet {mezerou(STROP_UZLU)} uzlů a na telefonu se "
+            f"nemusí načíst: {vypis}. Vykresluj po dávkách (CastiPoCastech), "
+            "ne všechno naráz."
+        )
+        return
+
+    blizko = [(n, c) for n, c in stranky if n > VAROVANI_UZLU]
+    nejvic, kde = stranky[0]
+    if blizko:
+        vypis = ", ".join(f"{c} ({mezerou(n)} uzlů)" for n, c in blizko[:5])
+        v.varuj(f"stránka se blíží rozpočtu {mezerou(STROP_UZLU)} uzlů: {vypis}")
+    else:
+        v.projde(f"žádná z {len(stranky)} stránek nepřerůstá rozpočet uzlů "
+                 f"(nejvíc {mezerou(nejvic)} v {kde})")
 
 
 KONTROLY = [
@@ -368,6 +451,7 @@ KONTROLY = [
     ("souřadnice", kontrola_souradnic),
     ("znaky sekcí", kontrola_znaku),
     ("řetěz komise → rada", kontrola_retezu_komisi),
+    ("rozpočet DOM uzlů", kontrola_dom),
 ]
 
 

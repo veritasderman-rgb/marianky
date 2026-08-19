@@ -7,6 +7,7 @@
     "zpusob": "`usneseni` = rada o zápisu přijala usnesení. `program` = zápis je uvedený jen na programu jednání a samostatné usnesení o něm zdroj nezveřejnil. Obojí je citace ze zdroje, ale není to totéž — účast na programu není rozhodnutí.",
     "neprijate_navrhy": "Návrh, u kterého zápis říká, že neprošel, do řetězu nevstupuje. Doporučení, které komise zamítla, žádné doporučení není.",
     "na_zaklade_doporuceni": "Příznak u projednání: usnesení samo přiznává důvod („na základě doporučení Komise…“, „v souladu s doporučením komise“). Je to jediné místo, kde rada říká, odkud návrh vzala.",
+    "overeni": "Přesnost odhadu je změřená, ne odhadnutá: na reprodukovatelném vzorku (všechna spojení s vysokou a střední jistotou, každé čtvrté s nízkou) je u každé dvojice lidský verdikt v config/vzorek_retez_komise.json. Výsledek je v poli `overeni`.",
     "odhad": "Domněnka. Mezi zápisem komise a usnesením rady neexistuje společný identifikátor — spojení drží jen shoda neobvyklých slov, případně částka a čas. Web to MUSÍ označit jako odhad.",
     "prah_shody": "Uloží se jen dvojice se dvěma společnými slovy, která jsou v usneseních vzácná (nejvýš 45 výskytů), nebo s jedním velmi vzácným (nejvýš 15) doplněným sedící částkou. Jedno společné slovo je náhoda.",
     "cas": "Hledá se usnesení do 365 dní po jednání komise. Do 60 dní je to běžný průběh, nad 180 dní už čas nic nedokazuje.",
@@ -35,6 +36,27 @@
       "Komise sociální a zdravotní": 3,
       "Komise školství": 1
     }
+  },
+  "overeni": {
+    "stav": "ok",
+    "posouzeno": 35,
+    "sedi": 23,
+    "dle_jistoty": {
+      "nizka": {
+        "posouzeno": 19,
+        "sedi": 10
+      },
+      "stredni": {
+        "posouzeno": 13,
+        "sedi": 10
+      },
+      "vysoka": {
+        "posouzeno": 3,
+        "sedi": 3
+      }
+    },
+    "zastaralych_ve_vzorku": 0,
+    "zdroj": "config/vzorek_retez_komise.json"
   },
   "projednani": [
     {

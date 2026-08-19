@@ -139,6 +139,24 @@ Není povinný: bez něj se web sestaví a odkazy fungují, dlaždice rozcestní
 
 Znak je vždy graf ze skutečných dat, nikdy piktogram. Proto se dá i pokazit stejně jako graf, a `kontrola.py` na to má test: **znak nesmí kreslit ve všech bodech stejnou hodnotu.** Přesně to se stalo napoprvé — znak hlasování ukazoval „podíl schválených návrhů", jenže portál zveřejňuje jen schválená hlasování, takže podíl byl u všech 12 349 záznamů 100 %. Obrázek se tvářil, že něco měří, a přitom kreslil konstantu. Teď ukazuje počet hlasování za rok s barevnou špičkou nejednomyslných — a je z něj vidět, že jich ubývá: ze 131 z 471 v roce 2012 na 57 z 968 v roce 2025.
 
+### Docházka, členství a hosté z komisí
+
+`pipeline.komise_prehled` kromě rozboru zápisů skládá ještě tři soubory:
+
+- **`data/komise/ucast.json`** — kdo na jednání chodil. **Jmenovatel je počet jednání, na kterých zápis toho člověka uvádí, ne počet všech jednání komise.** Složení se v čase mění a rozcestník samosprávy uvádí jen to dnešní; jinak by členovi jmenovanému letos vyšly absence z let, kdy v komisi nebyl. „Nepřítomen“ a „omluven“ se nesčítají — důvod rozliší jen část zápisů.
+- **`data/komise/clenstvi.json`** — totéž po osobách, spárované s rejstříkem osobností podle **množiny slov jména**, ne podle pořadí: Komise lázeňství píše „Richter Jiří“, ostatní „Jiří Richter“. Docházka se bere jen z té komise, o kterou jde — první verze ji kopírovala podle jména a přiřadila účast z Komise kultury i Finančnímu výboru, který zápisy vůbec nemá.
+- **`data/komise/hoste.json`** — firmy, které přišly na komisi, dohledané v registru smluv. `shoda: ico` je doklad, `nazev` a `nazev-bez-formy` odhad. Město samo se mezi hosty nepočítá; úředník na komisi vlastního města není stopa.
+
+**Hlavička zápisu je křehká.** „Nepřítomni:“ nebyla mezi rozpoznávanými nadpisy, takže seznam přítomných pokračoval přes ni dál a vznikala jména typu „Vladimír Kafka Nepřítomni: Patricie Irlveková“ — přítomný člen slepený s nepřítomným. Kontrola jména teď takové slepence pozná, zahodí a zápis z docházky vyřadí celý; **přisoudit někomu cizí absenci je horší než účast neuvádět**. Komise lázeňství navíc píše hlavičky verzálkami („PŘÍTOMNI:“) — bez case-insensitive vzoru vypadlo 83 z jejích 87 zápisů.
+
+Pozor i na tituly: vzor `p` bez pravé hranice slova sežral první písmeno z „Petr“ a „Dr“ z „Drexler“.
+
+### Nerozebrané zápisy NEJSOU skeny
+
+Všechny stažené zápisy textovou vrstvu mají; nejchudší má 450 znaků. Chybí jim struktura — číslované body a blok „Usnesení“. Každý nerozebraný zápis proto nese `duvod`, protože „nepodařilo se to přečíst“ bez důvodu je jen omluva.
+
+Rejstřík je širší než to, z čeho máme text, a chybí to ze tří různých důvodů: **archivy ZIP se neotvírají vůbec** (66 z 469 položek), u části PDF nevrátí `pdftotext` nic (to jsou skutečné skeny — tam by OCR pomohlo) a zbytek text má.
+
 ### Návaznost komise → rada
 
 `pipeline.retez_komise` skládá `data/retez/komise_rada.json`: co komise navrhly radě a co s tím rada udělala. Jsou to **dvě různě jisté věci a nesmí se slít**:
@@ -151,6 +169,12 @@ Modul netvrdí kauzalitu: že zápis ležel radě na stole, neznamená, že se j
 Práh je schválně tvrdý: dvě sdílená slova, která jsou v usneseních vzácná, nebo jedno velmi vzácné se sedící částkou. Napoprvé stačila dvě mírně neobvyklá slova a doporučení o parkovacích stáních se spojilo s investicí do golfového areálu přes „vybudovat" a „režim".
 
 Kontrolu má `kontrola.py` (`řetěz komise → rada`): hlídá, že se doložené a odhadnuté nezaměnily v poli ani v jistotě a že žádné spojení nemíří zpátky v čase.
+
+**Přesnost odhadu je změřená, ne odhadnutá.** `config/vzorek_retez_komise.json` drží lidský verdikt nad reprodukovatelným vzorkem — všechna spojení s vysokou a střední jistotou a každé čtvrté s nízkou. Dnes: vysoká 3/3, střední 10/13, nízká 10/19, celkem 23 z 35. **U nízké jistoty je tedy zhruba každé druhé spojení vedle** a web to říká čtenáři rovnou. Vzorek zastarává: když se párování změní, posouzené dvojice zmizí a měření přestane platit — `kontrola.py` hlásí, když jich chybí přes pětinu.
+
+### Rozpočet DOM uzlů
+
+Poslední kontrola běží nad **sestaveným webem**, ne nad daty: spočítá otevírací tagy v každém `web/dist/**/*.html` a spadne, když stránka přeroste 45 000 uzlů; nad 25 000 varuje. Čísla nejsou vycucaná — `/hlasovani` mělo 250 289 uzlů a nenačetlo se. Komprese ten problém schová (3 MB HTML jde po drátě jako 200 kB), takže **velikost přenosu není měřítko**. Kontrola se přeskočí s varováním, když `web/dist` neexistuje; pusť ji tedy až po `npm run build`.
 
 ### Schémata
 
