@@ -1,6 +1,6 @@
 # Naše Mariánky v přehledech
 
-Neveřejný přehled dění v Mariánských Lázních. Jednou týdně vyjde jedno číslo o tom, co se ve městě stalo — radnice, peníze, městské firmy, akce, média. Vedle toho web drží trvalý prohledávatelný archiv.
+Veřejný přehled dění v Mariánských Lázních. Jednou týdně vyjde jedno číslo o tom, co se ve městě stalo — radnice, peníze, městské firmy, akce, média. Vedle toho web drží trvalý prohledávatelný archiv.
 
 Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám procházet úřední desku, usnesení rady a registr smluv.
 
@@ -76,4 +76,4 @@ Fáze 1 až 4 hotové. Dvě věci musí proběhnout z jiné sítě, než ve kter
 - **Přepisy jednání zastupitelstva** — kód je hotový a otestovaný, ale YouTube vracel kontejneru `429`. Ověřeno, že záznamů je 94 a mají v názvu datum, takže se spárují s usneseními.
 - **Aktuální úřední deska** — `www.muml.cz` nám resetuje spojení; data končí v květnu 2025 a vydání to přiznává stavem `zastarale`.
 
-**Neveřejnost zajišťuje neznámá adresa**, ne heslo. Web má `noindex` a `robots.txt` s `Disallow: /`, aby se adresa nedostala do vyhledávačů sama od sebe — ale kdo ji dostane, dostane se dovnitř.
+**Portál je veřejný**, bez hesla a bez přihlášení. `robots.txt` pouští vyhledávače dovnitř a generuje se sitemap — kdo hledá, jak zastupitel hlasoval, má sem dojít. Není to web města ani jeho oficiální kanál.

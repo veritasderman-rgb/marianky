@@ -90,6 +90,19 @@ const svgZnaku =
       (function () {
         try {
           var m = localStorage.getItem('motiv');
+          /* Dřív byla lázeňská paleta volbou uloženou jako „lazne"; dnes je
+             výchozí. Kdo si ji tehdy zvolil, chtěl přesně to, co teď vidí
+             bez zásahu — ale zvolil si to VÝSLOVNĚ, takže mu nesmí systémový
+             tmavý režim přepnout web do tmy. Hodnota se proto překlopí na
+             „light" a rovnou i přepíše, ať se migruje jen jednou. */
+          if (m === 'lazne') {
+            m = 'light';
+            try {
+              localStorage.setItem('motiv', m);
+            } catch (e) {
+              /* privátní režim — překlopí se znovu při příští návštěvě */
+            }
+          }
           if (m === 'dark' || m === 'light') {
             document.documentElement.setAttribute('data-theme', m);
           } else if (m === 'kolonada') {
@@ -191,10 +204,11 @@ const svgZnaku =
     <footer class="paticka-webu">
       <div class="obal">
         <p>
-          Neveřejný přehled dění v Mariánských Lázních. Data pocházejí z veřejných
-          zdrojů — portálu usnesení města, Městského zpravodaje, registru smluv,
-          Hlídače státu, rejstříku ARES, volebních výsledků a otevřených dat
-          o městě. Čísla a jména se propisují z dat, ne z generovaného textu.
+          Veřejný přehled dění v Mariánských Lázních. Není to web města ani jeho
+          oficiální kanál — data pocházejí z veřejných zdrojů: portálu usnesení
+          města, Městského zpravodaje, registru smluv, Hlídače státu, rejstříku
+          ARES, volebních výsledků a otevřených dat o městě. Čísla a jména se
+          propisují z dat, ne z generovaného textu.
         </p>
         <nav class="paticka-webu__odkazy" aria-label="Přehled sekcí">
           <div>
