@@ -82,7 +82,8 @@ const zRetezu = nactiJson<{
 
 const organy = zOrganu.data?.organy ?? [];
 const zapisy = zPrehledu.data?.zapisy ?? [];
-const souhrn = (zPrehledu.data?.souhrn ?? {}) as Record<string, number>;
+const souhrn = (zPrehledu.data?.souhrn ?? {}) as Record<string, unknown> &
+  Record<string, number>;
 const projednani = zRetezu.data?.projednani ?? [];
 const odhady = zRetezu.data?.retezy ?? [];
 const bezOdezvy = zRetezu.data?.bez_odezvy ?? [];
@@ -222,12 +223,14 @@ const davkyNavrhu = (() => {
   return kusy;
 })();
 
-/* Kolik zápisů má která komise — pro přehled orgánů. */
-const zapisuKomise = new Map<string, number>();
-for (const z of zapisy) {
-  const k = z.komise ?? '';
-  zapisuKomise.set(k, (zapisuKomise.get(k) ?? 0) + 1);
-}
+/* Kolik zápisů má který orgán. Klíčem je název z rozcestníku samosprávy,
+   ne z rejstříku zápisů — ty se u jedné komise liší („Komise lázeňství,
+   CR a UNESCO“ × „…cestovního ruchu…“) a spojení přes přesnou shodu
+   tvrdilo u té nejaktivnější z nich „žádný nezveřejněn“. Párování dělá
+   pipeline/komise_prehled.py, tady se jen čte. */
+const zapisuKomise = new Map<string, number>(
+  Object.entries((souhrn.po_organech ?? {}) as unknown as Record<string, number>),
+);
 
 const komiseRady = organy.filter((o) => o.druh === 'komise-rady');
 const vybory = organy.filter((o) => o.druh !== 'komise-rady');
