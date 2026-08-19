@@ -19,9 +19,14 @@ Zveřejněná odpověď má pravidelnou stavbu:
 Z toho jde vyčíst téma dotazu, který odbor odpovídal a kdy. Rozbor textu
 dělá `pipeline/informace106_prehled.py`; tenhle modul jen stahuje.
 
+POZOR NA PŘÍKLADY V KOMENTÁŘÍCH. Ukázky formátů níže používají SMYŠLENÁ
+jména („Jan Novák"). První verze tohohle souboru citovala skutečné žadatele
+z rejstříku — jméno se tak dostalo do repozitáře přes komentář v kódu, který
+měl přesně tomu bránit. Ověřeno: jinde v datech už nebylo.
+
 ŽADATEL SE NEZVEŘEJŇUJE. Texty odpovědí ho neuvádějí (ověřeno na všech
 98 stažených), ale starší záznamy ho mají v NÁZVU: „žádost ze dne
-06.09.2016 Jiří Škroch". Jméno fyzické osoby se proto odstraňuje už při
+06.09.2016 Jan Novák". Jméno fyzické osoby se proto odstraňuje už při
 sběru — ne až při zobrazení, protože repozitář projektu je veřejný.
 
 Ptát se úřadu je zákonné právo a přehled z jeho výkonu nedělá veřejnou
@@ -48,7 +53,7 @@ REJSTRIK = f"{ZAKLAD}/urad/dokumenty/poskytnute-informace-106-1999-sb/"
 
 # ── Jméno žadatele ──────────────────────────────────────────────────────
 # Starší záznamy mají žadatele přímo v názvu: „žádost ze dne 06.09.2016
-# Jiří Škroch". Novější ne — jmenují se „Žádost podle § 106 id MUMLX…".
+# Jan Novák". Novější ne — jmenují se „Žádost podle § 106 id MUMLX…".
 # Ověřeno na celé sklizni: ze 127 dokumentů má jméno v názvu 20 a v textu
 # samotných odpovědí není žadatel uvedený ani jednou.
 #
@@ -78,13 +83,13 @@ _ORGANIZACE = re.compile(
 )
 
 
-# Název bez data, ale se jménem: „žádost podle § 106 Roman Míka".
+# Název bez data, ale se jménem: „žádost podle § 106 Jan Novák".
 _NAZEV_SE_JMENEM = re.compile(
     r"(?i)^\s*(?P<hlava>žádost(?:\s+podle)?\s*(?:§\s*106|dle\s*§\s*106)?)\s*"
     r"(?P<kdo>[^\n]{2,80})$"
 )
 
-# Řádek, na kterém bývá žadatel: „Žádost: č.j. FIN/22/5933/LP – paní Renata Jokl".
+# Řádek, na kterém bývá žadatel: „Žádost: č.j. FIN/22/5933/LP – paní Eva Nováková".
 # Číslo jednací se ponechá, jméno za pomlčkou ne.
 _RADEK_ZADOSTI = re.compile(
     r"(?im)^(?P<hlava>\s*žádost\s*:?[^\n]*?č\.\s?j\.[^\n–—-]{0,60})"
@@ -95,7 +100,7 @@ _OSLOVENI = re.compile(r"(?i)\b(pan[íu]?)\s+(?:[A-ZÁ-Ž][\wá-žÁ-Ž]+\s+){1,
 
 
 # Jméno fyzické osoby, případně s akademickými tituly:
-# „JUDr. Ing. Pavel Cink, LL.M., MBA – advokát". Slovo „advokát" u něj
+# „JUDr. Ing. Jan Novák, LL.M., MBA – advokát". Slovo „advokát" u něj
 # neznamená firmu — je to člověk vykonávající profesi, a jeho jméno do
 # přehledu nepatří o nic víc než jméno kohokoliv jiného.
 _JE_OSOBA = re.compile(
@@ -167,7 +172,7 @@ def verejny_nadpis(nadpis: str) -> tuple[str, bool]:
             return f"žádost ze dne {m.group(1)} — {kdo}", False
         return f"žádost ze dne {m.group(1)}", True
 
-    # Druhý formát: „žádost podle § 106 Roman Míka" — bez data.
+    # Druhý formát: „žádost podle § 106 Jan Novák" — bez data.
     # Identifikátory („id MUMLX…", „e.č. ML-…") nejsou jména a zůstávají.
     m2 = _NAZEV_SE_JMENEM.match(nadpis or "")
     if m2:
@@ -230,7 +235,7 @@ def main() -> None:
         nazev, upraveno = verejny_nadpis(d["nadpis"])
         d["nadpis"] = nazev
         d["zadatel_odstranen"] = upraveno
-        # Název souboru nese jméno taky („žádost … Jiří Škroch.pdf").
+        # Název souboru nese jméno taky („žádost … Jan Novák.pdf").
         if upraveno:
             d["soubor"] = None
         anonymizovano += 1 if upraveno else 0
