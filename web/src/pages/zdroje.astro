@@ -1,0 +1,214 @@
+---
+/**
+ * Zdroje a poděkování.
+ *
+ * Tenhle přehled nic nevytváří. Sbírá, propojuje a překresluje to, co
+ * zveřejnil někdo jiný — a ten někdo jiný má být jmenovaný, ne schovaný
+ * v patičce mezi ostatními.
+ *
+ * ČÍSLA JSOU ŽIVÁ. Kdyby se poděkování psalo natvrdo („zpracovali jsme
+ * tisíce smluv"), za měsíc by lhalo. Bere se proto z týchž souborů,
+ * ze kterých se kreslí zbytek webu; když soubor chybí, číslo se prostě
+ * nenapíše a věta zůstane pravdivá.
+ *
+ * Poslední oddíl je tu schválně: žádná z jmenovaných institucí za tímhle
+ * přehledem nestojí a nesmí to tak vyznít. Poděkovat někomu není totéž
+ * jako zaštítit se jím.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import { nactiJson } from '../lib/data';
+import { cislo, sklonuj } from '../lib/format';
+
+/* ── Čísla z dat ──────────────────────────────────────────────────────────
+   Každé číslo níž má vlastní pojistku: když zdroj chybí, je `null` a věta
+   se sází bez něj. Nula by tu byla lež — „nezjištěno" není „nic". */
+
+interface Statistiky {
+  pokryti?: {
+    smluv_v_registru?: number | null;
+    dotaci_v_registru?: number | null;
+    zakazek_v_registru?: number | null;
+  };
+  kindex?: { rok?: number; stupen?: string; popis?: string }[];
+}
+
+const zPenez = nactiJson<Statistiky>('penize/statistiky.json', {});
+const pokryti = zPenez.data?.pokryti ?? {};
+
+const kladne = (x: unknown): number | null =>
+  typeof x === 'number' && Number.isFinite(x) && x > 0 ? x : null;
+
+const smluv = kladne(pokryti.smluv_v_registru);
+const dotaci = kladne(pokryti.dotaci_v_registru);
+const zakazek = kladne(pokryti.zakazek_v_registru);
+
+/* Nejnovější K-index. Je to hodnocení Hlídače, ne naše — a tak je i psané. */
+const kindex = [...(zPenez.data?.kindex ?? [])]
+  .filter((k) => k?.stupen)
+  .sort((a, b) => (b.rok ?? 0) - (a.rok ?? 0))[0];
+
+interface Prehled {
+  souhrn?: { zapisu?: number; v_rejstriku?: number };
+}
+const zKomisi = nactiJson<Prehled>('komise/prehled.json', {});
+const z106 = nactiJson<Prehled>('informace106/prehled.json', {});
+const zapisu = kladne(zKomisi.data?.souhrn?.zapisu);
+const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
+---
+
+<Zaklad
+  titulek="Zdroje a poděkování"
+  nadpis="Odkud se to bere a komu za to patří dík"
+  uvod="Tenhle přehled nic nevytváří. Všechno, co je na něm vidět, někdo jiný sebral, vydal nebo propojil — a bez těch lidí a institucí by tu nebylo vůbec nic."
+>
+  <section class="karta">
+    <h2 class="karta__nadpis">Hlídač státu</h2>
+    <p class="karta__podnadpis">Watchdog, který data spojuje.</p>
+
+    <p>
+      <a href="https://www.hlidacstatu.cz" rel="noopener">Hlídač státu</a> je česká
+      nezisková organizace, která od roku 2016 shromažďuje, propojuje a zveřejňuje
+      data o hospodaření českého státu. Začala nad <strong>registrem smluv</strong> —
+      zákonnou databází, do které musí veřejné instituce publikovat smlouvy nad
+      zákonný limit, jinak smlouva pozbývá účinnosti — a postupně nabalila další
+      zdroje: státní a evropské dotace, veřejné zakázky, insolvenční rejstřík,
+      rejstřík trestů právnických osob, sponzorské dary politickým stranám
+      z výročních zpráv, platy politiků a vysokých úředníků, rozhodnutí Úřadu pro
+      ochranu hospodářské soutěže i legislativu v přípravě (VeKLEP).
+    </p>
+
+    <p>
+      Klíčové slovo je <strong>propojuje</strong>. Jednotlivé rejstříky existují
+      i samostatně, ale Hlídač je indexuje přes IČO a jména osob, takže se dá ptát
+      „ukaž mi všechno o téhle firmě“ — což je přesně otázka, kterou si klade člověk
+      před podpisem smlouvy. Tenhle přehled dělá nad městem totéž, o patro níž;
+      spodní patro postavil Hlídač.
+    </p>
+
+    <p>
+      Podstatná je ještě jedna vlastnost: Hlídač data nejen zrcadlí, ale
+      <strong>počítá nad nimi vlastní analýzy</strong>. Nejznámější je
+      <strong>K-index</strong> — Index klíčových rizik, roční známka A až F pro
+      úřady a veřejné instituce podle toho, jak rizikově nakládají se smlouvami.
+    </p>
+  </section>
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Co z Hlídače stojí na tomhle webu</h2>
+    <p class="karta__podnadpis">Konkrétně, ať je vidět rozsah.</p>
+
+    <ul>
+      {
+        smluv && (
+          <li>
+            <strong>{cislo(smluv)}</strong>{' '}
+            {sklonuj(smluv, 'smlouva', 'smlouvy', 'smluv')} z registru smluv za
+            sledovanými subjekty města — celá sekce{' '}
+            <a href="/penize">Peníze města</a> i řetěz{' '}
+            <a href="/retez">od usnesení k penězům</a>.
+          </li>
+        )
+      }
+      {
+        dotaci && (
+          <li>
+            <strong>{cislo(dotaci)}</strong> {sklonuj(dotaci, 'dotace', 'dotace', 'dotací')}{' '}
+            ze státních a evropských programů.
+          </li>
+        )
+      }
+      {
+        zakazek && (
+          <li>
+            <strong>{cislo(zakazek)}</strong>{' '}
+            {sklonuj(zakazek, 'veřejná zakázka', 'veřejné zakázky', 'veřejných zakázek')}.
+          </li>
+        )
+      }
+      <li>
+        Napojení lidí na firmy a sponzorské dary politickým stranám, ze kterých žije
+        stránka <a href="/propojeni">Kdo sedí v jakých firmách</a>.
+      </li>
+      {
+        kindex?.stupen && (
+          <li>
+            <strong>K-index {kindex.stupen}</strong>
+            {kindex.rok ? ` za rok ${kindex.rok}` : ''} pro město. Je to
+            <strong> hodnocení Hlídače, ne naše</strong> — přebíráme ho i s jeho
+            zdůvodněním a nepřepočítáváme.
+          </li>
+        )
+      }
+    </ul>
+
+    <p>
+      Data se berou přes veřejné API Hlídače (token je zdarma po registraci).
+      <strong> Co Hlídač nemá, nemáme ani my</strong> — a co má, ale my jsme
+      nesklidili, je vypsané u každé sekce zvlášť, aby se dílčí výběr nedal číst
+      jako úplný.
+    </p>
+  </section>
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Město a úředníci, kteří to nahrávají</h2>
+    <p class="karta__podnadpis">Taky dík — a jeden dovětek.</p>
+
+    <p>
+      Usnesení rady a zastupitelstva, jmenovitá hlasování, rozpočet, úřední deska,
+      Městský zpravodaj{zapisu ? `, ${cislo(zapisu)} ${sklonuj(zapisu, 'zápis', 'zápisy', 'zápisů')} z komisí` : ', zápisy z komisí'}
+      {zadosti
+        ? ` i ${cislo(zadosti)} ${sklonuj(zadosti, 'záznam', 'záznamy', 'záznamů')} v rejstříku žádostí o informace`
+        : ' i rejstřík žádostí o informace'}{' '}
+      — tohle všechno město zveřejňuje samo a někdo na úřadě to tam po jednotlivých
+      souborech nahrává. Není to samozřejmost a bez toho by tenhle web neexistoval,
+      protože <strong>nemáme jediný vlastní zdroj</strong>. Díky.
+    </p>
+
+    <p>
+      A dovětek, o kterém nejspíš tušíte, že přijde: ještě lepší by bylo, kdyby ta
+      informace byla <strong>mimo PDF a rovnou prohledávatelná</strong>. Sken zápisu
+      splní zákon a nikomu neodpoví. Většinu práce, kterou tenhle přehled dělá, dělá
+      jen proto, aby se z dokumentů dostalo ven to, co v nich odjakživa je — a kdyby
+      radnice vydávala rovnou data, celá tahle mezivrstva by mohla zmizet. To by byl
+      dobrý konec projektu.
+    </p>
+  </section>
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Ostatní zdroje</h2>
+
+    <ul>
+      <li>
+        <strong>ARES</strong> a veřejný rejstřík — názvy firem, sídla a statutární
+        orgány.
+      </li>
+      <li>
+        <strong>Český statistický úřad</strong> — volební výsledky po okrscích
+        a čísla o městě.
+      </li>
+      <li>
+        <strong>Otevřená geodata</strong> — mapové vrstvy. Zdroj a licenci uvádí
+        každá mapa u sebe.
+      </li>
+      <li>
+        <strong>Městský zpravodaj</strong> — archiv čísel a článků.
+      </li>
+    </ul>
+  </section>
+
+  <section class="karta">
+    <h2 class="karta__nadpis">Za co nikdo z nich nemůže</h2>
+
+    <p>
+      Poděkovat někomu není totéž jako zaštítit se jím.
+      <strong> Žádná z jmenovaných institucí za tímhle přehledem nestojí</strong>,
+      nekontrolovala ho a neodpovídá za něj. Není to web města ani projekt Hlídače
+      státu. Výběr, propojení, dopočty i odhady jsou naše — a kde jde o odhad, je to
+      u něj napsané.
+    </p>
+    <p>
+      Když si všimnete, že je tu něco špatně, chyba je skoro jistě na téhle straně.
+      U každého čísla proto stojí odkaz na zdroj, ať se dá ověřit bez nás.
+    </p>
+  </section>
+</Zaklad>
