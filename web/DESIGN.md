@@ -34,14 +34,27 @@ Tmavý režim (deklarovat pod `@media (prefers-color-scheme: dark)` s guardem `:
 
 ### Značka
 
-Kolonáda: pět sloupů pod jedním obloukem arkády. Čte se dvojím způsobem naráz — sloupy kolonády a sloupce grafu. Výšky drží poměr smluv města v registru za roky 2022–2026 (634, 608, 786, 792, 445).
+Kolonáda: klenutý oblouk s kupolí, dva krajní pilíře a mezi nimi pět sloupů. Čte se dvojím způsobem naráz — sloupy kolonády a sloupce grafu. Výšky drží poměr smluv města v registru za roky 2022–2026 (634, 608, 786, 792, 445).
 
 **Je to značka, ne graf.** Poměr pochází z dat, ale zůstává pevný. Logo, které se mění každý týden, není logo.
 
-- Kreslí se přes `currentColor` (`src/components/Znacka.astro`), takže bere barvu z místa, kde stojí, a funguje ve všech třech paletách i v tmavém motivu bez druhé varianty.
+**Zlatá je rytmus, ne údaj.** Druhý a čtvrtý sloup mají jinou barvu jen proto, aby se pětice nečetla jako jeden blok. Nic to neznamená a nesmí se to tak vykládat — význam nesou výšky. Kdyby zlatá měla někdy znamenat kategorii, musí to říct legenda, ne logo.
+
+Konstrukce ve `viewBox 0 0 64 64` (obě kopie ji sdílejí):
+
+| díl | geometrie |
+| --- | --- |
+| základna | `x 3.6, y 56, š 56.8, v 3.4, rx 1.7` |
+| oblouk | `M9.4 30 A22.6 22.6 0 0 1 54.6 30`, tah 3.1; archivolta `M14.2 30 A17.8 17.8 0 0 1 49.8 30`, tah 1.1 |
+| kupole | makovice `cy 1.15 r 0.95`, klenba `y 4.2`, sokl `y 4.1` — **nad** vnější hranou oblouku (`y 5.85`), jinak se schová za něj |
+| pilíře | dřík `x 6.8 / 52.0, š 5.2, y 30.5–53.5`; hlavice a patka `x 5.4 / 50.6, š 8.0, v 1.9` |
+| sloupy | `x 15.8` s krokem `6.8`, šířka `5.2`, patka na `y 56`, nejvyšší 26 jednotek |
+
+- Kreslí se přes `currentColor` (`src/components/Znacka.astro`), takže bere barvu z místa, kde stojí, a funguje ve všech třech paletách i v tmavém motivu bez druhé varianty. Zlatá jde přes `var(--zlata, currentColor)` — kdyby token chyběl, značka zůstane celá, jen jednobarevná.
 - `public/favicon.svg` má tentýž tvar s natvrdo zapsanými barvami — favicon nemá odkud barvu zdědit. **Když se změní jedno, musí se i druhé.**
+- **Favicon musí být platné XML.** Komentář v SVG nesmí obsahovat `--`, takže se v něm názvy tokenů píšou bez prefixu (`zlata`, ne `--zlata`). Předchozí verze byla kvůli tomu měsíce nevalidní a prohlížeč ji vůbec nevykreslil; chyba je tichá. Ověřit `python3 -c "import xml.dom.minidom,sys; xml.dom.minidom.parse('web/public/favicon.svg')"`.
 - V hlavičce stojí značka vlevo od jména; jméno se dál sází serifem („Naše Mariánky" plus slabší „v přehledech"). Značka jméno nenahrazuje.
-- Držet čitelnost v 16 px. Kdo přidá detail, který se v této velikosti slije, značku zhorší.
+- Držet čitelnost v 16 px. Kdo přidá detail, který se v této velikosti slije, značku zhorší. Proto jsou hlavice sloupů schválně tlusté (1.8 jednotky) — cokoliv jemnějšího zmizí.
 
 ### Lázeňská paleta — výchozí
 
