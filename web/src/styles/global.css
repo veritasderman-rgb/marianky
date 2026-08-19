@@ -260,6 +260,129 @@ main h2.karta__nadpis {
   --stin-nabidka: 0 8px 24px rgb(20 26 22 / 13%);
 }
 
+/* ══════════════════════════════  Hero  ═══════════════════════════════
+ *
+ * Úvodní blok domovské stránky. Nese lázeňský detail nejvíc ze všech
+ * míst na webu: zlatá arkáda, zlatý vlas, serifový titulek přes dva
+ * řádky. Je to jediné místo, kde se to smí — na dalších stránkách by
+ * ornament přebíjel data.
+ *
+ * Čísla jsou odkazy. Kdo přijde z vyhledávače, má se odsud dostat do
+ * sekce jedním kliknutím, ne přes menu.
+ */
+
+.hero {
+  margin: 0 0 2.5rem;
+  padding: 2rem 0 0;
+}
+
+.hero__nadhled {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.hero__nadpis {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.2vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.hero__uvod {
+  max-width: 46rem;
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.hero__mezinadpis {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.hero__pocty {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__pocty a {
+  display: block;
+  height: 100%;
+  padding: 0.8rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--zlata);
+  border-radius: var(--radius, 8px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero__pocty a:hover,
+.hero__pocty a:focus-visible {
+  border-color: var(--accent);
+  border-top-color: var(--zlata);
+}
+
+.hero__pocty strong {
+  display: block;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__pocty span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+.hero__akce {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  margin: 0;
+}
+
+.hero__tlacitko {
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  background: var(--accent);
+  color: var(--accent-kontrast);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero__tlacitko:hover,
+.hero__tlacitko:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Předěl uvnitř hera je div, ne <hr> — ornament nemá dělit obsah
+   sémanticky, jen opticky. */
+.hero .kolonada-predel {
+  margin: 1.9rem 0 1.5rem;
+}
+
 /* ════════════════════════════  Základ  ══════════════════════════════ */
 
 *,

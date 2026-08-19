@@ -1,0 +1,64 @@
+---
+/**
+ * Úvodní blok domovské stránky.
+ *
+ * MÁ ODPOVĚDĚT NA JEDNU OTÁZKU: co tenhle web je a proč sem někdo přišel.
+ * Návštěvník z vyhledávače nemá kontext — ví jen, že hledal jméno
+ * zastupitele nebo název firmy. Hero mu musí říct, že je na přehledu
+ * veřejných dokumentů města, ne na webu radnice.
+ *
+ * Čísla jsou ŽIVÁ, z dat. Kdyby se psala do textu ručně, za měsíc by
+ * lhala — a celý projekt stojí na tom, že čísla nelžou.
+ *
+ * Zároveň nesmí slibovat víc, než web unese: ne „všechno o městě", ale
+ * „co radnice zveřejní". Skeny, které se nepodařilo přečíst, a komise,
+ * které nezveřejňují nic, jsou přiznané o kus níž.
+ */
+import { cislo } from '../lib/format';
+
+export interface PolozkaHero {
+  pocet: number;
+  popis: string;
+  cesta: string;
+}
+
+interface Props {
+  polozky: PolozkaHero[];
+}
+
+const { polozky } = Astro.props as Props;
+---
+
+<section class="hero" aria-labelledby="hero-nadpis">
+  <p class="hero__nadhled">Naše Mariánky v přehledech</p>
+  <h1 id="hero-nadpis" class="hero__nadpis">
+    Radnice to zveřejní.<br />Tady je z toho přehled.
+  </h1>
+  <p class="hero__uvod">
+    Usnesení, jmenovitá hlasování, smlouvy z registru, rozpočet, zápisy z komisí
+    i odpovědi na žádosti o informace. Všechno veřejné, všechno v PDF, jedno po
+    druhém — <strong>tady se v tom dá hledat a proklikat</strong> od jména
+    k hlasování, od hlasování k usnesení a od usnesení ke smlouvě.
+  </p>
+
+  <div class="kolonada-predel" role="presentation"></div>
+
+  <h2 class="hero__mezinadpis">Indexujeme pro vás</h2>
+  <ul class="hero__pocty">
+    {
+      polozky.map((p) => (
+        <li>
+          <a href={p.cesta}>
+            <strong>{cislo(p.pocet)}</strong>
+            <span>{p.popis}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="hero__akce">
+    <a class="hero__tlacitko" href="/hledat">Hledat ve všem</a>
+    <a href="#o-prehledu">Jak to funguje a co v tom chybí</a>
+  </p>
+</section>

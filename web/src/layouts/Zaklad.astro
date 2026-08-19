@@ -182,7 +182,9 @@ const svgZnaku =
             </Fragment>
           ))
       }
-      {bezNadpisu && uvod && <p class="uvod">{uvod}</p>}
+      {/* Stránka bez nadpisu si řeší úvod sama (domovská má hero). `uvod`
+          se u ní používá jen jako popis pro vyhledávače a náhledy při
+          sdílení — vytisknout ho ještě jednou by text zdvojilo. */}
       <slot />
     </main>
 
