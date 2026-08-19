@@ -1466,6 +1466,28 @@ th.cislo {
   color: var(--ink);
 }
 
+/* §3.7 platí i mimo osu: odhad se nesmí tvářit jako doložený fakt.
+   Plná linka = tvrdí to zdroj, přerušovaná = tvrdíme to my. Rozdíl drží
+   tvar čáry, ne barva — na monochromatickém displeji i při barvosleposti
+   zůstane čitelný. */
+.znacka--dolozeno {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+.znacka--odhad {
+  border-style: dashed;
+  border-color: var(--ink-faint);
+  color: var(--ink-soft);
+}
+
+/* Šipka mezi doporučením komise a usnesením rady. Je to jen vodítko pro
+   oko, obsah nese text — proto aria-hidden a tlumená barva. */
+.retez-komise__sipka {
+  margin: 0.35rem 0;
+  color: var(--ink-faint);
+  line-height: 1;
+}
+
 .vazby {
   margin-top: 0.75rem;
   border-top: 1px solid var(--rule-soft);

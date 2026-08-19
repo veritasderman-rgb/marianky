@@ -1,0 +1,307 @@
+---
+/**
+ * Co se stalo s tím, co komise navrhla.
+ *
+ * DVĚ RŮZNĚ JISTÉ VĚCI, KTERÉ SE NESMÍ SLÉVAT:
+ *
+ *   Doložené — usnesení rady samo říká „bere na vědomí zápis z jednání
+ *   Komise kultury ze dne 13. 03. 2023“. Ten zápis v datech je a datum
+ *   sedí, takže spojení není odhad, ale citace ze zdroje.
+ *
+ *   Odhad — komise něco doporučila a rada pak rozhodla o něčem, co zní
+ *   stejně. Společný identifikátor mezi zápisem komise a usnesením rady
+ *   neexistuje; spojení drží jen shoda neobvyklých slov, částky a času.
+ *
+ * Odhad je vidět jako odhad: přerušovaný štítek, slovní jistota a důvod
+ * u každé položky. Bez toho by se domněnka četla jako zjištění.
+ *
+ * NETVRDÍ SE KAUZALITA. Ani doložené projednání neříká, že rada rozhodla
+ * PROTOŽE komise doporučila — jen že se o zápisu jednalo.
+ */
+import CastiPoCastech from './CastiPoCastech.astro';
+import { datumKratke, cislo, sklonuj } from '../lib/format';
+import { esc } from '../lib/polozka_hlasovani';
+
+export interface BodUsneseni {
+  organ: string;
+  datum: string | null;
+  bod: string;
+  cislo_usneseni: string | null;
+  nazev: string;
+  castka_czk: number | null;
+  url: string | null;
+}
+
+export interface Doporuceni {
+  id: string;
+  komise: string | null;
+  datum: string | null;
+  cislo_jednani: number | null;
+  text: string;
+  zkraceno?: boolean;
+  smer: string | null;
+  url: string | null;
+  poznamka?: string;
+}
+
+export interface Projednani {
+  id: string;
+  zpusob: 'usneseni' | 'program';
+  na_zaklade_doporuceni: boolean;
+  odstup_dni: number;
+  duvod: string;
+  zapis: {
+    id: string;
+    komise: string | null;
+    datum: string | null;
+    cislo_jednani: number | null;
+    url: string | null;
+    navrhu_pro_radu: number;
+  };
+  usneseni: BodUsneseni;
+}
+
+export interface Spojeni {
+  id: string;
+  jistota: 'vysoka' | 'stredni' | 'nizka';
+  skore: number;
+  signaly: string[];
+  spolecna_slova: string[];
+  duvod: string;
+  odstup_dni: number;
+  kandidatu_usneseni: number;
+  doporuceni: Doporuceni;
+  usneseni: BodUsneseni;
+}
+
+interface Props {
+  projednani: Projednani[];
+  retezy: Spojeni[];
+  bezOdezvy: Doporuceni[];
+  navrhuCelkem: number;
+}
+
+const { projednani, retezy, bezOdezvy, navrhuCelkem } = Astro.props as Props;
+
+const POPIS_JISTOTY: Record<string, string> = {
+  vysoka: 'odhad, vysoká jistota',
+  stredni: 'odhad, střední jistota',
+  nizka: 'odhad, nízká jistota',
+};
+
+const ORGAN: Record<string, string> = {
+  rada: 'rada',
+  zastupitelstvo: 'zastupitelstvo',
+};
+
+function odkazNaUsneseni(u: BodUsneseni): string {
+  const popis =
+    `${esc(ORGAN[u.organ] ?? u.organ)} ${esc(u.datum ? datumKratke(u.datum) : '')}` +
+    (u.cislo_usneseni ? ` <span class="mono">${esc(u.cislo_usneseni)}</span>` : '');
+  return u.url
+    ? `<a href="${esc(u.url)}" rel="noreferrer noopener">${popis}</a>`
+    : popis;
+}
+
+/* ── Doložená projednání ────────────────────────────────────────────── */
+function projednaniHtml(p: Projednani): string {
+  /* „Usnesení o zápisu“ a „jen na programu jednání“ jsou dva různě silné
+     doklady. Zdroj u druhého žádné usnesení nezveřejnil — zápis ležel na
+     stole, ale rozhodnutí o něm v datech není. */
+  const zpusob =
+    p.zpusob === 'usneseni'
+      ? `<span class="znacka znacka--dolozeno">usnesení o zápisu</span>`
+      : `<span class="znacka">jen na programu jednání</span>`;
+  const duvod = p.na_zaklade_doporuceni
+    ? `<span class="znacka znacka--dolozeno">rada uvádí doporučení komise jako důvod</span>`
+    : '';
+  /* Nadpis položky musí říct, CO SE STALO. U usnesení o zápisu je to jeho
+     název; u programu jednání by to byl řádek „Program 121. RM", který
+     čtenáři neřekne nic — tam se název bodu odsune dolů jako doklad. */
+  const nadpis =
+    p.zpusob === 'usneseni'
+      ? esc(p.usneseni.nazev)
+      : 'Zápis byl na programu jednání rady';
+  const doklad =
+    p.zpusob === 'program'
+      ? `<p class="stav-dat__zdroj">v bodě „${esc(p.usneseni.nazev)}“</p>`
+      : '';
+  return (
+    `<li class="polozka">` +
+    `<div class="polozka__hlava">` +
+    `<span>${esc(p.zapis.komise ?? 'komise neurčena')}</span>` +
+    `<span>zápis z ${esc(p.zapis.datum ? datumKratke(p.zapis.datum) : 'neuvedeného data')}</span>` +
+    (p.zapis.cislo_jednani ? `<span class="mono">jednání č. ${p.zapis.cislo_jednani}</span>` : '') +
+    `</div>` +
+    `<p class="polozka__nazev">${nadpis}</p>` +
+    `<p class="polozka__meta">${odkazNaUsneseni(p.usneseni)}` +
+    `<span>${esc(String(p.odstup_dni))} ${esc(sklonuj(p.odstup_dni, 'den', 'dny', 'dní'))} po jednání komise</span>` +
+    `</p>` +
+    doklad +
+    `<div class="polozka__meta">${zpusob}${duvod}` +
+    (p.zapis.url
+      ? `<a href="${esc(p.zapis.url)}" rel="noreferrer noopener">zápis komise (PDF)</a>`
+      : '') +
+    `</div></li>`
+  );
+}
+
+/* ── Odhady ─────────────────────────────────────────────────────────── */
+function spojeniHtml(s: Spojeni): string {
+  /* Společná slova se nevypisují zvlášť — stojí hned v první části
+     `duvod`. Dvakrát totéž pod sebou vypadá jako dva různé doklady. */
+  return (
+    `<li class="polozka">` +
+    `<div class="polozka__hlava">` +
+    `<span>${esc(s.doporuceni.komise ?? 'komise neurčena')}</span>` +
+    `<span>${esc(s.doporuceni.datum ? datumKratke(s.doporuceni.datum) : 'datum neuvedeno')}</span>` +
+    `</div>` +
+    `<p class="polozka__nazev">${esc(s.doporuceni.text)}</p>` +
+    `<p class="retez-komise__sipka" aria-hidden="true">↓</p>` +
+    `<p>${odkazNaUsneseni(s.usneseni)} — ${esc(s.usneseni.nazev)}</p>` +
+    `<div class="polozka__meta">` +
+    `<span class="znacka znacka--odhad">${esc(POPIS_JISTOTY[s.jistota] ?? s.jistota)}</span>` +
+    `</div>` +
+    `<p class="stav-dat__zdroj">${esc(s.duvod)}</p>` +
+    `</li>`
+  );
+}
+
+/* ── Doporučení bez nalezené odezvy ─────────────────────────────────── */
+function bezOdezvyHtml(d: Doporuceni): string {
+  return (
+    `<li class="polozka">` +
+    `<div class="polozka__hlava">` +
+    `<span>${esc(d.komise ?? 'komise neurčena')}</span>` +
+    `<span>${esc(d.datum ? datumKratke(d.datum) : 'datum neuvedeno')}</span>` +
+    `</div>` +
+    `<p class="polozka__nazev">${esc(d.text)}</p>` +
+    (d.poznamka ? `<p class="stav-dat__zdroj">${esc(d.poznamka)}</p>` : '') +
+    (d.url
+      ? `<div class="polozka__meta"><a href="${esc(d.url)}" rel="noreferrer noopener">zápis (PDF)</a></div>`
+      : '') +
+    `</li>`
+  );
+}
+
+function davky<T>(polozky: T[], html: (p: T) => string, naDavku: number): string[] {
+  const kusy: string[] = [];
+  for (let i = 0; i < polozky.length; i += naDavku) {
+    kusy.push(`<ul class="seznam">${polozky.slice(i, i + naDavku).map(html).join('')}</ul>`);
+  }
+  return kusy;
+}
+
+/* Nejjistější nahoře — čtenář má první vidět to, co drží nejlíp. */
+const PORADI: Record<string, number> = { vysoka: 0, stredni: 1, nizka: 2 };
+const serazene = [...retezy].sort(
+  (a, b) =>
+    PORADI[a.jistota] - PORADI[b.jistota] ||
+    (b.usneseni.datum ?? '').localeCompare(a.usneseni.datum ?? ''),
+);
+
+const projednaniSerazene = [...projednani].sort((a, b) =>
+  (b.usneseni.datum ?? '').localeCompare(a.usneseni.datum ?? ''),
+);
+const bezSerazene = [...bezOdezvy].sort((a, b) =>
+  (b.datum ?? '').localeCompare(a.datum ?? ''),
+);
+
+const usnesenim = projednani.filter((p) => p.zpusob === 'usneseni').length;
+const naProgramu = projednani.length - usnesenim;
+const sDuvodem = projednani.filter((p) => p.na_zaklade_doporuceni).length;
+const zapisu = new Set(projednani.map((p) => p.zapis.id)).size;
+const sOdhadem = new Set(retezy.map((s) => s.doporuceni.id)).size;
+---
+
+<section id="co-s-tim-rada-udelala">
+  <h2>Co s tím rada udělala</h2>
+  <p class="uvod">
+    Zápis komise a usnesení rady spolu nemají žádné společné číslo. Část spojení jde
+    přesto doložit — usnesení samo jmenuje komisi i datum jejího jednání. Zbytek je
+    odhad podle tématu a je tak i označený.
+  </p>
+
+  <section class="karta">
+    <h3 class="karta__nadpis">Doložené a odhadnuté není totéž</h3>
+    <p class="karta__podnadpis">Rozdíl je v tom, kdo to tvrdí.</p>
+    <p>
+      <strong>Doložené</strong> znamená, že to říká zdroj: „Rada města bere na vědomí
+      zápis z jednání Komise kultury ze dne 13. 03. 2023.“ Tenhle zápis v datech máme
+      a datum sedí, takže se nic nedohaduje. U {cislo(sDuvodem)}{' '}
+      {sklonuj(sDuvodem, 'usnesení', 'usnesení', 'usnesení')} jde rada ještě dál a sama
+      uvádí doporučení komise jako důvod svého rozhodnutí.
+    </p>
+    <p>
+      <strong>Odhad</strong> znamená, že to tvrdíme my: komise něco doporučila a rada pak
+      rozhodla o něčem, co zní stejně. Drží to jen shoda neobvyklých slov, případně
+      částka a čas. Proto je u každého odhadu napsané, jak silný je a z čeho vyšel.
+    </p>
+    <p>
+      <strong>Ani jedno neříká, proč rada rozhodla.</strong> Že se o zápisu jednalo,
+      neznamená, že se jím rada řídila — a shoda tématu to neznamená vůbec.
+    </p>
+  </section>
+
+  {
+    projednani.length > 0 && (
+      <section>
+        <h3>Zápisy, které se dostaly na jednání rady</h3>
+        <p class="uvod">
+          {cislo(projednani.length)}{' '}
+          {sklonuj(projednani.length, 'spojení', 'spojení', 'spojení')} u{' '}
+          {cislo(zapisu)} {sklonuj(zapisu, 'zápisu', 'zápisů', 'zápisů')}. U{' '}
+          {cislo(usnesenim)} z nich rada přijala usnesení o zápisu; u {cislo(naProgramu)}{' '}
+          je zápis jen na programu jednání a samostatné usnesení o něm zdroj nezveřejnil.
+        </p>
+        <CastiPoCastech
+          casti={davky(projednaniSerazene, projednaniHtml, 30)}
+          id="komise-projednani"
+          poCastech={1}
+          jednotka="dávek po 30"
+        />
+      </section>
+    )
+  }
+
+  {
+    serazene.length > 0 && (
+      <section>
+        <h3>Doporučení a pozdější usnesení — odhad</h3>
+        <p class="uvod">
+          Pro {cislo(sOdhadem)} z {cislo(navrhuCelkem)}{' '}
+          {sklonuj(navrhuCelkem, 'doporučení', 'doporučení', 'doporučení')} se našlo
+          usnesení rady nebo zastupitelstva o téže věci. <strong>Je to domněnka</strong>,
+          ne doklad: spojení drží shoda neobvyklých slov, případně částka a čas. Řazeno
+          od nejjistějšího.
+        </p>
+        <CastiPoCastech
+          casti={davky(serazene, spojeniHtml, 25)}
+          id="komise-odhady"
+          poCastech={1}
+          jednotka="dávek po 25"
+        />
+      </section>
+    )
+  }
+
+  {
+    bezSerazene.length > 0 && (
+      <section>
+        <h3>Doporučení, ke kterým jsme nic nenašli</h3>
+        <p class="uvod">
+          <strong>Není to seznam přehlížených návrhů.</strong> Rozhodnutí může být
+          zapsané jinými slovy, může patřit stavebnímu úřadu místo radě, může být teprve
+          před námi — nebo ho tohle párování prostě nenašlo. Je to seznam k dohledání,
+          ne obvinění.
+        </p>
+        <CastiPoCastech
+          casti={davky(bezSerazene, bezOdezvyHtml, 30)}
+          id="komise-bez-odezvy"
+          poCastech={1}
+          jednotka="dávek po 30"
+        />
+      </section>
+    )
+  }
+</section>

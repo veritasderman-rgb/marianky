@@ -168,6 +168,8 @@ Rozdíl mezi `sporne` a odhadem je podstatný: **sporný údaj je doložený, je
 
 Odlišuj **tvarem, ne jen barvou** — barva sama nesmí nést význam.
 
+Totéž platí i mimo osu, kdekoliv stojí odhad vedle doloženého údaje. Na `/komise` je vedle sebe „usnesení rady jmenuje tuhle komisi i datum jejího jednání" (citace ze zdroje) a „komise doporučila něco, co zní jako pozdější usnesení" (náš dohad). Rozdíl nese **tvar rámečku štítku**: `znacka--dolozeno` má plnou linku, `znacka--odhad` přerušovanou — a slovo „odhad" je i v textu štítku, ne jen v jeho vzhledu. Kdo štítek nevidí, musí se to dočíst.
+
 Když je na ose hodně událostí, nekresli je jako jednotlivé značky: **900 překrytých koleček neříká nic**. Shlukuj je a velikost značky odvoď od počtu.
 
 U osy jedné entity (osoba, firma, téma) uvádět, z jakých zdrojů se skládá — jinak vypadá jako úplný obraz, ačkoliv obsahuje jen to, co je v našich datech.
@@ -222,6 +224,7 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 | `/lide` · `/lide/[id]` | Kdo je kdo, profil s hlasovací historií a sekcí „Kde je aktivní" |
 | `/propojeni` | Kdo ze samosprávy sedí ve kterých firmách |
 | `/retez` | Řetěz usnesení → smlouva → peníze, vždy s uvedenou jistotou |
+| `/komise` | Komise a výbory, co navrhly a co s tím rada udělala — doložené odděleně od odhadu |
 | `/penize` | Dashboard s grafy výše |
 | `/penize/[ico]` | Detail protistrany — co dostala a kdy |
 | `/zpravodaj` · `/zpravodaj/[id]` | Archiv článků |

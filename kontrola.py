@@ -306,6 +306,58 @@ def kontrola_znaku(v: Vysledek) -> None:
         v.projde(f"znaky sekcí ({len(znaky)}) nekreslí konstantu")
 
 
+def kontrola_retezu_komisi(v: Vysledek) -> None:
+    """Doložené projednání a odhad se nesmí slít do jedné hromady.
+
+    Stalo se by se snadno: obojí je „spojení komise s radou“ a obojí jde
+    do stejného souboru. Jenže projednání je citace ze zdroje („bere na
+    vědomí zápis Komise kultury ze dne 13. 03. 2023“), kdežto odhad drží
+    jen shoda slov. Kontrola hlídá, že si nezaměnily pole ani jistotu a
+    že žádné spojení nemíří zpátky v čase — rada nemůže rozhodnout dřív,
+    než komise doporučila.
+    """
+    cesta = DATA / "retez" / "komise_rada.json"
+    if not cesta.exists():
+        v.varovani("řetěz komise → rada zatím není spočítaný "
+                   "(pipeline/retez_komise.py) — sekce komisí bude bez návaznosti")
+        return
+    try:
+        d = json.loads(cesta.read_text(encoding="utf-8")) or {}
+    except (json.JSONDecodeError, OSError) as e:
+        v.chyba(f"data/retez/komise_rada.json nejde přečíst: {e}")
+        return
+
+    projednani = d.get("projednani") or []
+    retezy = d.get("retezy") or []
+    if not projednani:
+        v.chyba("řetěz komise → rada nemá ani jedno doložené projednání zápisu; "
+                "usnesení rady je citují pravidelně, takže je párování rozbité")
+        return
+
+    spatna_jistota = [p["id"] for p in projednani if p.get("jistota") != "dolozeno"]
+    spatna_jistota += [r["id"] for r in retezy
+                       if r.get("jistota") not in {"vysoka", "stredni", "nizka"}]
+    if spatna_jistota:
+        v.chyba("spojení komise → rada má jistotu mimo číselník: "
+                + ", ".join(spatna_jistota[:5]))
+        return
+
+    zpetne = [z["id"] for z in projednani + retezy if (z.get("odstup_dni") or 0) < 0]
+    if zpetne:
+        v.chyba("rada rozhodla dřív, než komise jednala, u spojení: "
+                + ", ".join(zpetne[:5]))
+        return
+
+    bez_slova = [r["id"] for r in retezy if not r.get("spolecna_slova")]
+    if bez_slova:
+        v.chyba("odhadnuté spojení bez jediného společného rozlišujícího slova: "
+                + ", ".join(bez_slova[:5]))
+        return
+
+    v.projde(f"řetěz komise → rada: {len(projednani)} doložených projednání, "
+             f"{len(retezy)} odhadů, žádný nemíří zpátky v čase")
+
+
 KONTROLY = [
     ("částky v usneseních", kontrola_castek),
     ("falešné nuly", kontrola_falesnych_nul),
@@ -315,6 +367,7 @@ KONTROLY = [
     ("týdenní vydání", kontrola_vydani),
     ("souřadnice", kontrola_souradnic),
     ("znaky sekcí", kontrola_znaku),
+    ("řetěz komise → rada", kontrola_retezu_komisi),
 ]
 
 

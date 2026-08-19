@@ -1,0 +1,98 @@
+{
+  "id": "komise-rada",
+  "nazev": "Od doporučení komise k usnesení rady",
+  "typ": "tok",
+  "popis": "Komise poslaly radě 216 doporučení. Pozdější usnesení o téže věci se podařilo najít u 53 z nich — a i to je odhad, ne údaj ze zdroje.",
+  "vrstvy": [
+    {
+      "id": "zapisy",
+      "nazev": "Zápisy z komisí",
+      "popis": "Dokumenty, které město zveřejnilo v rejstříku zápisů.",
+      "uzly": [
+        {
+          "id": "z-rozebrane",
+          "nazev": "Rozebraných zápisů",
+          "hodnota": 317,
+          "duraz": "povinny"
+        },
+        {
+          "id": "z-nerozebrane",
+          "nazev": "Nešly přečíst",
+          "hodnota": 47,
+          "duraz": "varovani"
+        }
+      ]
+    },
+    {
+      "id": "navrhy",
+      "nazev": "Co komise navrhly",
+      "popis": "Věty, kterými se komise obrací na radu: doporučuje, žádá, ukládá.",
+      "uzly": [
+        {
+          "id": "n-rade",
+          "nazev": "Doporučení pro radu",
+          "hodnota": 216,
+          "duraz": "povinny"
+        },
+        {
+          "id": "n-neprijate",
+          "nazev": "Doporučení, která komise nepřijala",
+          "hodnota": 6,
+          "duraz": "nepovinny"
+        }
+      ]
+    },
+    {
+      "id": "navaznost",
+      "nazev": "Jak jistá je návaznost",
+      "popis": "Doložené = usnesení samo jmenuje komisi a datum jejího jednání. Odhad = shoduje se jen téma.",
+      "uzly": [
+        {
+          "id": "d-usnesenim",
+          "nazev": "Usnesení o zápisu komise",
+          "hodnota": 58,
+          "duraz": "povinny"
+        },
+        {
+          "id": "d-program",
+          "nazev": "Zápis jen na programu jednání",
+          "hodnota": 91,
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "o-silny",
+          "nazev": "Odhad, vysoká a střední jistota",
+          "hodnota": 15,
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "o-nizky",
+          "nazev": "Odhad, nízká jistota",
+          "hodnota": 70,
+          "duraz": "slaby"
+        }
+      ]
+    },
+    {
+      "id": "nenalezeno",
+      "nazev": "Co jsme nenašli",
+      "popis": "Doporučení, ke kterému se žádné usnesení nepodařilo dohledat.",
+      "uzly": [
+        {
+          "id": "bez-odezvy",
+          "nazev": "Doporučení bez nalezeného usnesení",
+          "hodnota": 163,
+          "duraz": "varovani"
+        }
+      ]
+    }
+  ],
+  "metodika": [
+    "Zápis komise a usnesení rady nemají žádné společné číslo. Část spojení jde přesto doložit: usnesení samo říká „bere na vědomí zápis z jednání Komise kultury ze dne 13. 03. 2023“ a ten zápis v datech je.",
+    "Zbytek je odhad ze shody neobvyklých slov, částky a času. Nízká jistota znamená, že sedí jen téma — je to vodítko, ne doklad.",
+    "„Doporučení bez nalezeného usnesení“ NENÍ seznam přehlížených návrhů. Rozhodnutí může být zapsané jinými slovy, může patřit stavebnímu úřadu místo radě, nebo ho tohle párování nenašlo.",
+    "Diagram netvrdí kauzalitu. Že zápis ležel radě na stole, neznamená, že se jím řídila."
+  ],
+  "zdroj": "data/retez/komise_rada.json, data/komise/prehled.json",
+  "stav": "ok"
+}

@@ -1,10 +1,10 @@
 {
   "metodika": {
     "co_to_je": "Schémata projektu a města. Kreslí se při buildu jako SVG z těchhle souborů — proto se přepočítají s daty, umí tmavý motiv a nenačítá se k nim nic z cizího serveru.",
-    "zjistene_vs_tvrzene": "Šest diagramů je celé z dat. Mapa zdrojů a datový model stojí na config/diagramy.json, protože to je znalost o projektu, ne údaj o městě. Každý diagram to má napsané v poli `zdroj`.",
+    "zjistene_vs_tvrzene": "Sedm diagramů je celé z dat. Mapa zdrojů a datový model stojí na config/diagramy.json, protože to je znalost o projektu, ne údaj o městě. Každý diagram to má napsané v poli `zdroj`.",
     "prazdno": "Diagram bez dat se nekreslí prázdný — má stav `chybi` a napíše proč."
   },
-  "diagramu": 8,
+  "diagramu": 9,
   "chybejicich": 0,
   "diagramy": [
     {
@@ -27,7 +27,7 @@
       "id": "beh",
       "nazev": "Datový tok týdenního běhu",
       "typ": "tok",
-      "popis": "19 sběračů, 15 navazujících modulů, z toho 7 povinných. Nedělní běh jde zleva doprava.",
+      "popis": "19 sběračů, 16 navazujících modulů, z toho 7 povinných. Nedělní běh jde zleva doprava.",
       "stav": "ok",
       "zdroj": "run_tyden.py"
     },
@@ -38,6 +38,14 @@
       "popis": "Z 12 890 bodů usnesení se podařilo spojit se smlouvou 1 349. Vazba je odhad, ne údaj ze zdroje.",
       "stav": "ok",
       "zdroj": "data/retez/retezy.json, data/retez/nespojene.json"
+    },
+    {
+      "id": "komise-rada",
+      "nazev": "Od doporučení komise k usnesení rady",
+      "typ": "tok",
+      "popis": "Komise poslaly radě 216 doporučení. Pozdější usnesení o téže věci se podařilo najít u 53 z nich — a i to je odhad, ne údaj ze zdroje.",
+      "stav": "ok",
+      "zdroj": "data/retez/komise_rada.json, data/komise/prehled.json"
     },
     {
       "id": "propojeni",
@@ -51,7 +59,7 @@
       "id": "zdroje",
       "nazev": "Který zdroj plní kterou sekci",
       "typ": "sit",
-      "popis": "12 veřejných zdrojů a 13 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
+      "popis": "12 veřejných zdrojů a 15 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
       "stav": "ok",
       "zdroj": "config/diagramy.json"
     },

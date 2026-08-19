@@ -67,15 +67,37 @@ _HLASOVANI = re.compile(
     re.IGNORECASE,
 )
 
+# Návrh, který komise NEPŘIJALA. Zápis to říká až za hlasováním („PRO: 4
+# PROTI: 2 … Navržené usnesení nebylo přijato."), takže se hledá i kus za
+# koncem bloku. Bez tohohle by se nepřijatý návrh četl jako doporučení
+# komise — tvrdil by pravý opak toho, co komise rozhodla.
+_NEPRIJATO = re.compile(
+    r"(?i)(usnesen[ií]\s+neb\w*\s+p[řr]ijat|nebylo\s+p[řr]ijato\s+[žz][áa]dn|"
+    r"n[áa]vrh\w*\s+usnesen\w*\s+neb\w*\s+p[řr]ijat|nebyl[oa]?\s+p[řr]ijat)"
+)
+
+# Zbytek sloupce s hlasováním, který zůstal viset na konci textu.
+# pdftotext bez -layout míchá sloupce a věta pak končí „…pro použití. Pro:".
+_ZBYTEK_HLASOVANI = re.compile(r"(?i)\s*(pro|proti|zdr[žz]el(\s+se)?)\s*:?\s*\d*\s*$")
+
+
 # Komise doporučuje / nedoporučuje / žádá / ukládá — sloveso nese směr.
+#
+# POŘADÍ JE SOUČÁST VÝZNAMU. Záporný tvar musí stát PŘED kladným, jinak ho
+# kladný vzor spolkne: „nesouhlasí" obsahuje „souhlasí" a vyšlo by z toho
+# opačné tvrzení, než co komise řekla.
+#
+# HRANICE SLOVA TAKY. První verze hledala „zad[áa]" bez hranic a trefila se
+# do slova „Zadávací" — třináct usnesení tak vyšlo jako „komise žádá",
+# přestože komise souhlasila se zadávací dokumentací.
 _SMER = [
     ("nedoporucuje", r"nedoporu[čc]uj"),
     ("doporucuje", r"doporu[čc]uj"),
-    ("zada", r"[žz][áa]d[áa]"),
-    ("uklada", r"ukl[áa]d[áa]"),
+    ("zada", r"\b[žz][áa]d[áa](?:j[íi]|me|te)?\b"),
+    ("uklada", r"\bukl[áa]d[áa](?:j[íi]|me)?\b"),
     ("bere_na_vedomi", r"bere\s+na\s+v[ěe]dom[ií]"),
-    ("souhlasi", r"souhlas[ií]"),
     ("nesouhlasi", r"nesouhlas[ií]"),
+    ("souhlasi", r"souhlas[ií]"),
 ]
 
 # Nejdelší text usnesení, který se ještě bere celý. Delší bývá slepenec
@@ -180,17 +202,30 @@ def _usneseni_z_textu(text: str) -> list[dict]:
         # nadpis hlasování. Původně se bralo až po další bod, a když bod
         # nenásledoval, spolklo usnesení půl stránky textu — jedno mělo
         # 1 200 znaků a končilo uprostřed slova.
+        # Řádek hvězdiček je v zápisech Komise školství oddělovač bodů. Bez
+        # něj usnesení pokračovalo přes hvězdičky do dalšího bodu a vznikaly
+        # slepence typu „trvá. - vyjádření RM - NE ***** Komise školství…".
         hranice = [len(zbytek[:PSANY_STROP])]
-        for vzor in (r"\n[ \t]*\n", r"(?m)^\s*\d{1,2}[.)]\s+\S", r"Hlasov[áa]n[ií]"):
+        # „PRO:" je začátek hlasování i tam, kde nadpis „Hlasování" chybí.
+        # KLCR za ním jmenuje, kdo jak hlasoval; bez téhle hranice se roll
+        # call slepil s usnesením a jména členů pak vypadala jako jeho téma.
+        for vzor in (r"\n[ \t]*\n", r"(?m)^\s*\d{1,2}[.)]\s+\S", r"Hlasov[áa]n[ií]",
+                     r"\*{5,}", r"(?i)\bPRO\s*:"):
             k = re.search(vzor, zbytek)
             if k:
                 hranice.append(k.start())
         blok = zbytek[: min(hranice)]
 
-        h = _HLASOVANI.search(zbytek[: min(hranice) + 200])
-        veta = re.sub(r"\s+", " ", blok).strip()
+        okoli = zbytek[: min(hranice) + 250]
+        h = _HLASOVANI.search(okoli)
+        veta = re.sub(r"\s+", " ", blok).strip(" *–—-\t")
         # Nadpis hlasování patří k hlasování, ne k usnesení.
         veta = re.sub(r"\s*Hlasov[áa]n[ií]\s*:?\s*$", "", veta).strip()
+        while True:
+            oriznute = _ZBYTEK_HLASOVANI.sub("", veta).strip(" .,;")
+            if oriznute == veta:
+                break
+            veta = oriznute
         if len(veta) < 12:
             continue
 
@@ -211,6 +246,9 @@ def _usneseni_z_textu(text: str) -> list[dict]:
             # Formální usnesení, ne věta z textu. Rozdíl je podstatný:
             # o usnesení se hlasovalo, věta může být převyprávění.
             "zdroj": "usneseni",
+            # Zdroj říká, že návrh neprošel. `None` = zdroj mlčí; „přijato"
+            # se nedopočítává z hlasování, kvórum komisí odsud nevidíme.
+            "prijato": (False if _NEPRIJATO.search(okoli) else None),
             "hlasovani": (
                 {"pro": int(h.group(1)), "proti": int(h.group(2)), "zdrzel": int(h.group(3))}
                 if h else None
@@ -243,6 +281,7 @@ def _vety_komise(text: str, uz_mame: list[dict]) -> list[dict]:
     ven: list[dict] = []
     for m in _VETA_KOMISE.finditer(text):
         veta = re.sub(r"\s+", " ", m.group(1)).strip()
+        okoli = text[m.start(): m.end() + 250]
         if len(veta) < 25:
             continue
         klic = veta[:80]
@@ -262,6 +301,7 @@ def _vety_komise(text: str, uz_mame: list[dict]) -> list[dict]:
             "smer": smer,
             "hlasovani": None,
             "zdroj": "veta",
+            "prijato": (False if _NEPRIJATO.search(okoli) else None),
         })
     return ven
 
@@ -382,12 +422,19 @@ def main() -> None:
     po_komisich: Counter[str] = Counter()
     usneseni_celkem = 0
     doporuceni = 0
+    neprijato = 0
     z_bloku = 0
     for r in rozebrane:
         po_komisich[r["komise"] or "neurčeno"] += 1
         usneseni_celkem += len(r["usneseni"])
         z_bloku += sum(1 for u in r["usneseni"] if u.get("zdroj") == "usneseni")
-        doporuceni += sum(1 for u in r["usneseni"] if u["smer"] in {"doporucuje", "nedoporucuje"})
+        # Nepřijatý návrh se do doporučení NEPOČÍTÁ. „Komise doporučuje…
+        # PRO: 4 PROTI: 2 … Navržené usnesení nebylo přijato" je zápis
+        # o tom, že komise návrh zamítla, ne o tom, že ho doporučila.
+        doporuceni += sum(1 for u in r["usneseni"]
+                          if u["smer"] in {"doporucuje", "nedoporucuje"}
+                          and u.get("prijato") is not False)
+        neprijato += sum(1 for u in r["usneseni"] if u.get("prijato") is False)
 
     nerozebrano = [r for r in rozebrane if not r["rozebrano"]]
 
@@ -405,7 +452,14 @@ def main() -> None:
             ),
             "co_to_neni": (
                 "Nevykládá, co doporučení znamená, a netvrdí, že se jím rada řídila. "
-                "Spojení s pozdějším usnesením rady tenhle modul nedělá."
+                "Spojení s pozdějším usnesením rady dělá až pipeline/retez_komise.py "
+                "a ukládá ho jako odhad."
+            ),
+            "prijato": (
+                "`prijato: false` znamená, že zápis sám říká, že návrh neprošel "
+                "(„Navržené usnesení nebylo přijato“). `null` znamená, že zápis o "
+                "přijetí mlčí — z počtu hlasů se to nedopočítává, kvórum komisí "
+                "odsud vidět není. Nepřijatý návrh se nepočítá mezi doporučení."
             ),
             "prazdno": (
                 "Chybějící sekce hlavičky je `null`, ne prázdný seznam: „nikdo nebyl "
@@ -428,6 +482,7 @@ def main() -> None:
             "z_formalnich_usneseni": z_bloku,
             "z_vet_v_textu": usneseni_celkem - z_bloku,
             "doporuceni_rade": doporuceni,
+            "neprijatych_navrhu": neprijato,
             "hostu_s_organizaci": len(stopy),
             "po_komisich": dict(po_komisich.most_common()),
         },
