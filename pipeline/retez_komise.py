@@ -86,7 +86,7 @@ PRAH_VYSOKA = 88
 
 # Směry, které jsou návrhem PRO RADU. „bere na vědomí" ani „souhlasí"
 # radu o nic nežádají, do řetězu tedy nevstupují.
-SMERY_NAVRHU = {"doporucuje", "nedoporucuje", "zada", "uklada"}
+SMERY_NAVRHU = {"doporucuje", "nedoporucuje", "zada", "uklada", "navrhuje"}
 
 
 # --------------------------------------------------------------------------

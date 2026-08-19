@@ -3,7 +3,8 @@
     "co_to_je": "Rozbor zápisů z jednání komisí rady a výborů zastupitelstva. Vytahuje účast, body programu a bloky „Usnesení“ s hlasováním.",
     "zdroj_navrhu": "`usneseni` = formální blok „Usnesení“, o kterém se hlasovalo. `veta` = běžná věta v textu („Komise sportu odsouhlasila…“). Starší zápisy bloky nemají a bez tohohle rozlišení by vypadaly jako jednání, na kterých komise nic nenavrhla.",
     "co_to_neni": "Nevykládá, co doporučení znamená, a netvrdí, že se jím rada řídila. Spojení s pozdějším usnesením rady dělá až pipeline/retez_komise.py a ukládá ho jako odhad.",
-    "prijato": "`prijato: false` znamená, že zápis sám říká, že návrh neprošel („Navržené usnesení nebylo přijato“). `null` znamená, že zápis o přijetí mlčí — z počtu hlasů se to nedopočítává, kvórum komisí odsud vidět není. Nepřijatý návrh se nepočítá mezi doporučení.",
+    "prijato": "Co o osudu návrhu říká zápis. `false` = „Navržené usnesení nebylo přijato“, `true` = „K tomuto bodu bylo přijato usnesení“, `null` = zápis o přijetí mlčí. Z počtu hlasů se to NEDOPOČÍTÁVÁ — kvórum komisí odsud vidět není. Výsledek se hledá jen v okolí téhož bodu; pevné okno přetékalo do dalšího bodu a přijaté doporučení kvůli tomu vycházelo jako zamítnuté. Nepřijatý návrh se nepočítá mezi doporučení.",
+    "duplicity": "Zápis, který nad usnesením uvádí stavovou větu, zachytí tentýž návrh dvakrát — s ní a bez ní. Slučuje se jen tehdy, když je delší text přesně stavová věta plus ten kratší; jinak by se zahodil případ, kdy blok spolkl dvě různá usnesení.",
     "prazdno": "Chybějící sekce hlavičky je `null`, ne prázdný seznam: „nikdo nebyl omluven“ a „zápis to neuvádí“ jsou dvě různá tvrzení.",
     "hoste": "Organizace hosta se bere jen ze závorky v zápisu. Shoda s rejstříkem firem je odhad — stejný název může mít firma jinde.",
     "uspesnost": "Zápis, ze kterého nešlo vytáhnout ani bod, ani usnesení, je v `nerozebrane`. Bez toho by se dalo číst, že komise nic nenavrhly."
@@ -12,11 +13,11 @@
     "zapisu": 364,
     "rozebranych": 317,
     "nerozebranych": 47,
-    "usneseni": 428,
-    "z_formalnich_usneseni": 365,
+    "usneseni": 392,
+    "z_formalnich_usneseni": 329,
     "z_vet_v_textu": 63,
-    "doporuceni_rade": 209,
-    "neprijatych_navrhu": 39,
+    "doporuceni_rade": 210,
+    "neprijatych_navrhu": 3,
     "hostu_s_organizaci": 6,
     "po_komisich": {
       "Komise lázeňství, cestovního ruchu a UNESCO": 87,
@@ -910,7 +911,7 @@
         {
           "text": "Členové komise navrhují do funkce předsedy komise paní Janu Vaňkovou",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": {
@@ -2604,7 +2605,7 @@
         {
           "text": "KŠ navrhuje v rámci: zlepšení kvality vzdělávání v běžných českých třídách zlepšení klimatu ve třídách uvolněnější atmosféry pro vyučující zvládnutí společného problému na jednom místě (cizí jazyk) zvládnutí nedostatku – školní nezralosti – v souvislosti s jazykovou bariérou vyčlenění dětí z UA a začlenění do tříd pro jazykovou přípravu (TJP) - (kmenově by byli součástí běžných školních tříd)",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": {
@@ -3731,7 +3732,7 @@
         {
           "text": "Komise: - schvaluje program jednání bez připomínek a bere na vědomí informace z rady města a vzetí zápisu komise ze dne 18. 10. 2024 na vědomí. - navrhuje radě města odvolání pana Viktora Osičky z komise lázeňství, cestovního ruchu a UNESCO z důvodu jeho dlouhodobé neúčasti na jednáních. Pan Osička telefonicky potvrdil svůj nezájem ve funkci člena pokračovat, a to především z důvodu změny trvalého bydliště – rezignaci nezaslal",
           "zkraceno": false,
-          "smer": "bere_na_vedomi",
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": {
@@ -4039,14 +4040,6 @@
             "proti": 0,
             "zdrzel": 2
           }
-        },
-        {
-          "text": "nebylo přijato Paní Tintěrová a pan Kozler kteří mohli poskytnout více informací o tématu se omluvili",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
         }
       ],
       "rozebrano": true
@@ -4121,14 +4114,6 @@
             "proti": 0,
             "zdrzel": 2
           }
-        },
-        {
-          "text": "nebylo přijato Paní Tintěrová a pan Kozler kteří mohli poskytnout více informací o tématu se omluvili",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
         }
       ],
       "rozebrano": true
@@ -4528,11 +4513,7 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": {
-            "pro": 7,
-            "proti": 0,
-            "zdrzel": 0
-          }
+          "hlasovani": null
         },
         {
           "text": "Komise považuje za nutné minimalizovat počet užívaných log městem při prezentaci Mariánských Lázní",
@@ -5059,7 +5040,7 @@
         {
           "text": "Komise školství navrhuje, aby se v budoucnu do akce „Zdravé školní fórum“ připojili i žáci nižšího stupně víceletého gymnázia (prima – kvarta VG)",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": {
@@ -5633,24 +5614,7 @@
         "6. bude věnován Mateřským a Základním školám. V sobotu 15. 6. bude akce určena pro širokou",
         "Termíny jednání komise"
       ],
-      "usneseni": [
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. •",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        }
-      ],
+      "usneseni": [],
       "rozebrano": true
     },
     {
@@ -5810,7 +5774,7 @@
         {
           "text": "KK navrhuje RM zabývat se vytvořením koncepce kultury",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": null
@@ -5988,22 +5952,6 @@
         "Termíny jednání komise"
       ],
       "usneseni": [
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. •",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
         {
           "text": "Komise schvaluje nahrazení členů Komise sociálních věcí a zdravotnictví novými členy",
           "zkraceno": false,
@@ -6364,52 +6312,16 @@
       ],
       "usneseni": [
         {
-          "text": "K tomuto bodu bylo přijato usnesení. Usnesení: Komise doporučuje radě města zahájit jednání s organizací Komunitní centrum Chebsko ve věci finanční podpory připravované akce Den zdraví a bezpečí 2024 v Mariánských Lázních",
-          "zkraceno": false,
-          "smer": "doporucuje",
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": {
-            "pro": 4,
-            "proti": 0,
-            "zdrzel": 0
-          }
-        },
-        {
           "text": "Komise doporučuje radě města zahájit jednání s organizací Komunitní centrum Chebsko ve věci finanční podpory připravované akce Den zdraví a bezpečí 2024 v Mariánských Lázních",
           "zkraceno": false,
           "smer": "doporucuje",
           "zdroj": "usneseni",
-          "prijato": false,
+          "prijato": true,
           "hlasovani": {
             "pro": 4,
             "proti": 0,
             "zdrzel": 0
           }
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. •",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. •",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
         }
       ],
       "rozebrano": true
@@ -8569,31 +8481,11 @@
           "zkraceno": false,
           "smer": null,
           "zdroj": "usneseni",
-          "prijato": false,
+          "prijato": null,
           "hlasovani": {
             "pro": 9,
             "proti": 0,
             "zdrzel": 0
-          }
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3 Rozdělení Fondu z pobytu 2023 Členům bylo zasláno prosincové usnesení ZM o rozdělení Fondu z pobytu v roce 2023, vč. orientační tabulky. Komisi bylo na jednání předloženo podrobné rozdělení položek. Současně komise obdržela i údaje k 11.1.2023 ohledně vybraného poplatku z pobytu a na to navazující závazek města vůči KDA Živý kraj. Usnesení: K tomuto bodu nebylo přijato žádné usnesení. 4 Příspěvek do destinační agentury ŽK Členové komise diskutovali o činnosti KDA Živý kraj a výši příspěvku města ML. Na další jednání komise (15.2.2023) budou přizváni – ředitel agentury, nový zástupce města ve VH (ZM 02/2023 teprve projedná – v návrhu p. starosta",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 4 Příspěvek do destinační agentury ŽK Členové komise diskutovali o činnosti KDA Živý kraj a výši příspěvku města ML. Na další jednání komise (15.2.2023) budou přizváni – ředitel agentury, nový zástupce města ve VH (ZM 02/2023 teprve projedná – v návrhu p. starosta), zástupce ve správní radě (Bc. Tintěrová) a kontrolní komisi (p. Král). Usnesení: Komise doporučuje radě města vstoupit v jednání s krajskou destinační agenturou (resp. ostatními členy VH KDA) a najít shodu ve snížení výše členského příspěvku, která by byla od roku 2024 zakotvena ve stanovách agentury",
-          "zkraceno": false,
-          "smer": "doporucuje",
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": {
-            "pro": 8,
-            "proti": 0,
-            "zdrzel": 1
           }
         },
         {
@@ -8607,22 +8499,6 @@
             "proti": 0,
             "zdrzel": 1
           }
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 7 UNESCO – site manager Informace komisi předal p. Kajlik. Usnesení: K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
         },
         {
           "text": "Komise doporučuje radě města zadat příslušnému oddělení prověření možností řešení k zajištění vjezdu/parkování elektromobilů do lázeňského území bez nutnosti poplatku či prokázání se dokladem o výjimce z příslušné OZV",
@@ -8732,38 +8608,6 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 4",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 5.2. Lesy a lesní stezky Členové komise znovu upozorňují na tristní stav lesních cest a stezek, na něž upozorňují sami hosté a návštěvníci města. 5.3. p. Richter Pan Jiří Richter zmínil několik záležitostí, které dlouhodobě nemají řešení: - duplicita kulturních akcí - nádraží – špatná zpětná vazba od cestujících, nejede trolejbus, není kontakt na taxi, není kudy ven - veřejné záchodky - zrušený poplatek za psy 5.4. Kalendář akcí na 2023 Hoteliéři a cestovní kanceláře požadují již nyní přehled akcí na rok 2023. KIS se pokusí shrnout co nejdříve, avšak organizátoři často ještě nevědí, zda akci pořádat budou",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         }
       ],
@@ -8896,14 +8740,6 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         },
         {
@@ -9299,22 +9135,6 @@
           "hlasovani": null
         },
         {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
           "text": "KLCR se připojuje k vyjádření společnosti Ensana zaslanému Krajskému úřadu KV kraje dne 3.3.22 a jednoznačně podporuje zachování obou samostatných subjektů – Hotelové školy Mariánské Lázně a víceletého Gymnázia a Obchodní akademie Mariánské Lázně",
           "zkraceno": false,
           "smer": null,
@@ -9487,35 +9307,11 @@
           "hlasovani": null
         },
         {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
           "text": "KLCR žádá vedení města o prověření jednotlivých záměrů, aby mohla být využita celá výše dotace; současně podporuje záměr PD na Zpívající fontánu, kterou vnímá jako symbol ML a zahrnutí této aktivity do způsobilého dotačního programu podporuje stejně tak jako další náměty uvedené v zápisu",
           "zkraceno": false,
           "smer": "zada",
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 5",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         }
       ],
@@ -9602,14 +9398,6 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         },
         {
@@ -9979,14 +9767,6 @@
           "hlasovani": null
         },
         {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
           "text": "KLCR doporučuje Radě města neměnit brand Mariánky jsou super, nebrání se však případným modifikacím. Dále doporučuje pokračovat ve spolupráci se stávající agenturou i v následujících letech (oslovit ji ve výběrovém řízení)",
           "zkraceno": false,
           "smer": "doporucuje",
@@ -10024,14 +9804,6 @@
           "smer": "doporucuje",
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 4",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         }
       ],
@@ -10161,14 +9933,6 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. Taxislužba v ML Pí. Sorokina informovala o špatném jednání a tím vizitce města - taxislužby Centrální taxi. Špatné chování, vystupování, opilost. P. Pelc si zapsal jméno taxikáře. Jednání bylo ukončeno v 15:50 hodin. Příští jednání: 21. 09. 2021 ve 14 hodin, budova Terezián",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         }
       ],
@@ -10301,14 +10065,6 @@
           "smer": null,
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 3",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         },
         {
@@ -10469,22 +10225,6 @@
           "smer": "doporucuje",
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 4",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato žádné usnesení. 5",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         },
         {
@@ -10844,7 +10584,7 @@
         {
           "text": "Komise sportu navrhuje mimořádnou odměnu pro pracovnici odboru školství Bc.",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "hlasovani": null,
           "zdroj": "veta",
           "prijato": null
@@ -11282,43 +11022,11 @@
           "hlasovani": null
         },
         {
-          "text": "K tomuto bodu nebylo přijato usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": {
-            "pro": 0,
-            "proti": 0,
-            "zdrzel": 0
-          }
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
-          "hlasovani": {
-            "pro": 0,
-            "proti": 0,
-            "zdrzel": 0
-          }
-        },
-        {
           "text": "Komise souhlasí s navrženou variantou a doporučuje Radě města prostřednictvím odboru RLCR vyjmout z objednávky na organizaci akce ZLS u společnosti KIS ML organizaci tiskové konference, resp. vystavit novou objednávku bez této podmínky. Dále souhlasí s realizací jarního press tripu v rámci komunikační strategie prostřednictvím KIS ML místo tiskové konference. Tato aktivita je zahrnuta v rozpočtu na komunikační strategii",
           "zkraceno": false,
           "smer": "doporucuje",
           "zdroj": "usneseni",
           "prijato": null,
-          "hlasovani": null
-        },
-        {
-          "text": "K tomuto bodu nebylo přijato usnesení",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": false,
           "hlasovani": null
         },
         {
@@ -12230,7 +11938,7 @@
         {
           "text": "Komise navrhuje, aby rada města prověřila v jakém stavu je koncepce rodinné politiky města a kdo je za ně odpovědný. Komise byla ukončena v 15:50",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": null
@@ -12318,40 +12026,24 @@
           "zkraceno": false,
           "smer": "doporucuje",
           "zdroj": "usneseni",
-          "prijato": null,
+          "prijato": true,
           "hlasovani": {
             "pro": 6,
             "proti": 0,
             "zdrzel": 0
           }
-        },
-        {
-          "text": "bylo přijato",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": null,
-          "hlasovani": null
         },
         {
           "text": "​Komise doporučuje radě města vyslání zástupce Komise Zdravého města a místní Agendy 21 na konferenci Partnerství pro sociální podnikání, která se koná 5.9. v Praze (viz. přiložený materiál)",
           "zkraceno": false,
           "smer": "doporucuje",
           "zdroj": "usneseni",
-          "prijato": null,
+          "prijato": true,
           "hlasovani": {
             "pro": 6,
             "proti": 0,
             "zdrzel": 0
           }
-        },
-        {
-          "text": "bylo přijato",
-          "zkraceno": false,
-          "smer": null,
-          "zdroj": "usneseni",
-          "prijato": null,
-          "hlasovani": null
         }
       ],
       "rozebrano": true
@@ -14802,7 +14494,7 @@
         {
           "text": "Komise navrhuje, aby se tímto opětovně zabývala rada města.",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "hlasovani": null,
           "zdroj": "veta",
           "prijato": null
@@ -15143,7 +14835,7 @@
         {
           "text": "KUaD č.72 /2016 Komise UaD navrhuje zřízení podélných parkovacích stání (nahrazení 5 kolmých stání za 4 podélná) a doplnění zeleně. Místo pro přecházení přes ulici Na vycházce, na které navazuje chodník z recyklátu, navrhuje komise ve shodě se svým návrhem z 30.6.2016. Ulice Na vycházce bude navržena jako zóna s max. povolenou rychlostí 30 km/hod. Ad 2) Polyfunkční dům “Palác Bergmann”- stanovisko k dokumentaci pro vydání rozhodnutí o umístění stavby Usnesení KUaD č.73 /2016 Komise UaD požaduje předložení studie, která bude respektovat regulativy územního plánu a splňovat podmínky pro začlenění novostavby do památkové zóny. Navržený objekt dle předložené DUR přesahuje na městský pozemek p.č",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": null
@@ -15199,7 +14891,7 @@
         {
           "text": "Komise navrhuje vypracovat variantní řešení křižovatky s ul.",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "hlasovani": null,
           "zdroj": "veta",
           "prijato": null
@@ -15289,7 +14981,7 @@
         {
           "text": "KUaD č.69/2016 Komise se domnívá, že před zahájením opravy/rekonstrukce muzea by byla vhodná širší diskuze nad současným stavem a zejména nad možnostmi rozvoje muzea pro potřeby 21.století. Komise proto navrhuje společné jednání KLCR, KK, KUaD o budoucnosti a rozvoji muzea za účelem upřesnění uvažované rekonstrukce muzea. Navrhovaný termín 25.8.2016 v 16 hodin bude konzultován s předsedy ostatních komisí. Ad 3) Sociologický průzkum o budoucnosti správní budovy Usnesení KUaD č.70/2016 Na základě předchozího usnesení komise UaD č. 55/2016 ze dne 31.3.2016 a z důvodu potřeby pokračování diskuse o možnostech rekonstrukce radnice, resp. vybudování nové správní budovy, a na základě dnešního seznám…",
           "zkraceno": true,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": null
@@ -15704,7 +15396,7 @@
         {
           "text": "Komise navrhuje uspořádat sběr dat (dotazníkové šetření) ve spolupráci s Demokracií 2.",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "hlasovani": null,
           "zdroj": "veta",
           "prijato": null
@@ -16192,7 +15884,7 @@
         {
           "text": "Komise sportu navrhuje Radě města přidělit do Fondu sportu na rok 2016 částku ve výši 5.",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "hlasovani": null,
           "zdroj": "veta",
           "prijato": null
@@ -16245,7 +15937,7 @@
         {
           "text": "KUaD č.33 /2015 Komise navrhuje prodej v ulici Bad Homburg řešit ve spolupráci s Léčebné lázně Mariánské Lázně a.s. Ke stánkům před kolonádou Karolinina pramene trvá usnesení Usnesení KUaD č. 24/2015 ze 7. jednání KUaD",
           "zkraceno": false,
-          "smer": null,
+          "smer": "navrhuje",
           "zdroj": "usneseni",
           "prijato": null,
           "hlasovani": null

@@ -67,13 +67,28 @@ _HLASOVANI = re.compile(
     re.IGNORECASE,
 )
 
-# Návrh, který komise NEPŘIJALA. Zápis to říká až za hlasováním („PRO: 4
-# PROTI: 2 … Navržené usnesení nebylo přijato."), takže se hledá i kus za
-# koncem bloku. Bez tohohle by se nepřijatý návrh četl jako doporučení
-# komise — tvrdil by pravý opak toho, co komise rozhodla.
+# Jestli návrh prošel. Zápis to říká až za hlasováním („PRO: 4 PROTI: 2 …
+# Navržené usnesení nebylo přijato."), takže se hledá i kus za koncem
+# bloku. Bez toho by se nepřijatý návrh četl jako doporučení komise —
+# tvrdil by pravý opak toho, co komise rozhodla.
+#
+# OKNO MUSÍ SKONČIT NA HRANICI BODU. První verze brala pevných 250 znaků
+# a přetekla do dalšího bodu: u zápisu Komise sociální a zdravotní
+# z 1. 11. 2023 stálo nad usnesením „K tomuto bodu bylo přijato usnesení"
+# a hlasování 4–0–0, ale o dva body dál „K tomuto bodu nebylo přijato
+# žádné usnesení" — a přijaté doporučení kvůli tomu vyšlo jako zamítnuté.
 _NEPRIJATO = re.compile(
     r"(?i)(usnesen[ií]\s+neb\w*\s+p[řr]ijat|nebylo\s+p[řr]ijato\s+[žz][áa]dn|"
     r"n[áa]vrh\w*\s+usnesen\w*\s+neb\w*\s+p[řr]ijat|nebyl[oa]?\s+p[řr]ijat)"
+)
+# Opačný doklad: zápis říká, že usnesení přijato BYLO. Zápor je vyloučený
+# pohledem zpět — „nebylo přijato" obsahuje „bylo přijato".
+_PRIJATO = re.compile(r"(?i)(?<!ne)\bbyl[oa]?\s+p[řr]ijat|p[řr]ijat[oa]?\s+usnesen")
+
+# Začátek dalšího bodu. Okno pro hledání výsledku hlasování končí tady,
+# ať se stav jednoho bodu nepřilepí k usnesení bodu předchozího.
+_DALSI_BOD = re.compile(
+    r"(?im)^[ \t]*(?:K\s+tomuto\s+bodu\b|Usnesen[ií]\s*:|Ad\s*\d|\d{1,2}[.)]\s+\S)|\*{5,}"
 )
 
 # Zbytek sloupce s hlasováním, který zůstal viset na konci textu.
@@ -95,6 +110,11 @@ _SMER = [
     ("doporucuje", r"doporu[čc]uj"),
     ("zada", r"\b[žz][áa]d[áa](?:j[íi]|me|te)?\b"),
     ("uklada", r"\bukl[áa]d[áa](?:j[íi]|me)?\b"),
+    # „Navrhuje" je návrh jako každý jiný — „KK navrhuje RM zabývat se
+    # vytvořením koncepce kultury". Vzor pro věty ho hledal odjakživa,
+    # ale směr mu nikdo nepřiřadil, takže takové návrhy vypadly z řetězu
+    # na radu i ze seznamu těch, ke kterým se nic nenašlo.
+    ("navrhuje", r"navrhuj"),
     ("bere_na_vedomi", r"bere\s+na\s+v[ěe]dom[ií]"),
     ("nesouhlasi", r"nesouhlas[ií]"),
     ("souhlasi", r"souhlas[ií]"),
@@ -188,6 +208,90 @@ def _organizace_hosta(host: str, rejstrik: dict[str, dict]) -> str | None:
     return None
 
 
+# Jak daleko za koncem bloku se ještě smí hledat výsledek hlasování.
+OKNO_VYSLEDKU = 250
+
+
+def _konec_okoli(zbytek: str, od: int) -> int:
+    """Konec okna, ve kterém se hledá hlasování a výsledek.
+
+    Okno začíná na konci bloku usnesení a končí na nejbližší hranici
+    dalšího bodu, nejdál po `OKNO_VYSLEDKU` znacích. Pevné okno bez téhle
+    hranice přetéká do dalšího bodu a přenáší na usnesení cizí výsledek.
+    """
+    strop = od + OKNO_VYSLEDKU
+    dalsi = _DALSI_BOD.search(zbytek, od)
+    return min(strop, dalsi.start()) if dalsi else strop
+
+
+# Stavová věta nad usnesením: „K tomuto bodu bylo přijato usnesení."
+# Není to návrh, je to hlavička bodu — a zápisy Komise sociální a zdravotní
+# ji mají nad každým usnesením, takže tentýž návrh vyjde jednou s ní
+# a jednou bez ní.
+_STAVOVA_VETA = re.compile(
+    r"(?i)^\s*K\s+tomuto\s+bodu\b[^.]{0,90}\.?\s*(?:Usnesen[ií]\s*:)?[\s•·*–—-]*$"
+)
+
+
+# Blok, který začíná stavem bodu — ať už celou větou („K tomuto bodu…"),
+# nebo holým výsledkem hlasování („bylo přijato"). Za ním už neběží
+# usnesení, ale vyprávění o dalším bodu.
+_ZACATEK_STAVU = re.compile(r"(?i)^\s*(?:K\s+tomuto\s+bodu\b|(?:ne)?byl[oa]?\s+p[řr]ijat)")
+
+# Stav bodu napsaný NAD usnesením („K tomuto bodu bylo přijato usnesení.
+# Usnesení: Komise doporučuje…"). Zápisy Komise sociální a zdravotní to
+# tak píšou vždycky. Hledá se jen těsně před značkou usnesení a jen jako
+# celá stavová věta na konci — dál zpátky už by to byl stav bodu jiného.
+_STAV_PRED = re.compile(r"(?i)K\s+tomuto\s+bodu\b[^.]{0,90}\.\s*$")
+DOSAH_STAVU_PRED = 160
+
+
+def _slouc_duplicity(usneseni: list[dict]) -> list[dict]:
+    """Sloučí usnesení zachycené v zápisu dvakrát — se stavovou větou a bez ní.
+
+    Slučuje se jen tehdy, když je delší text přesně stavová věta + kratší
+    text. Kdyby stačilo prosté „jeden je koncem druhého", zahodily by se
+    i případy, kdy blok spolkl dvě RŮZNÁ usnesení a to druhé žije jen
+    uvnitř toho delšího.
+
+    Zůstává kratší, čistý text; příznaky (přijetí, hlasování) se z delšího
+    přenesou, protože tam je stavová věta a s ní i doklad o výsledku.
+    """
+    dle_textu = {u["text"]: u for u in usneseni}
+    zahodit: set[str] = set()
+    for u in usneseni:
+        for v in usneseni:
+            if u is v or len(v["text"]) >= len(u["text"]):
+                continue
+            if not u["text"].endswith(v["text"]):
+                continue
+            if not _STAVOVA_VETA.match(u["text"][: len(u["text"]) - len(v["text"])]):
+                continue
+            cil = dle_textu[v["text"]]
+            if cil.get("prijato") is None:
+                cil["prijato"] = u.get("prijato")
+            if cil.get("hlasovani") is None:
+                cil["hlasovani"] = u.get("hlasovani")
+            zahodit.add(u["text"])
+            break
+    return [u for u in usneseni if u["text"] not in zahodit]
+
+
+def _prijato(okoli: str) -> bool | None:
+    """Prošel návrh? `None` = zápis o tom mlčí.
+
+    Zápor má přednost: „nebylo přijato žádné usnesení" je jednoznačné
+    tvrzení, kdežto slovo „přijato" se v okolí najde i v jiných větách.
+    Z počtu hlasů se přijetí NEDOPOČÍTÁVÁ — kvórum komisí odsud vidět
+    není a dohad by tu vypadal jako údaj ze zápisu.
+    """
+    if _NEPRIJATO.search(okoli):
+        return False
+    if _PRIJATO.search(okoli):
+        return True
+    return None
+
+
 def _usneseni_z_textu(text: str) -> list[dict]:
     """Bloky „Usnesení" s doporučením a hlasováním.
 
@@ -216,7 +320,8 @@ def _usneseni_z_textu(text: str) -> list[dict]:
                 hranice.append(k.start())
         blok = zbytek[: min(hranice)]
 
-        okoli = zbytek[: min(hranice) + 250]
+        okoli = zbytek[: _konec_okoli(zbytek, min(hranice))]
+        pred = _STAV_PRED.search(text[max(0, m.start() - DOSAH_STAVU_PRED): m.start()])
         h = _HLASOVANI.search(okoli)
         veta = re.sub(r"\s+", " ", blok).strip(" *–—-\t")
         # Nadpis hlasování patří k hlasování, ne k usnesení.
@@ -226,7 +331,20 @@ def _usneseni_z_textu(text: str) -> list[dict]:
             if oriznute == veta:
                 break
             veta = oriznute
-        if len(veta) < 12:
+        # Blok začínající stavem bodu končí tím stavem. Za ním už běží
+        # vyprávění o dalším bodu — a když v něm padne slovo „doporučuje",
+        # vydával se cizí odstavec za usnesení, o kterém zápis přitom říká,
+        # že přijato nebylo. Ořez musí přijít PŘED kontrolou délky, jinak
+        # se do dat dostane usnesení s prázdným textem.
+        if _ZACATEK_STAVU.match(veta):
+            # Bez tečky za stavem není co zachránit — zbytek je text
+            # dalšího bodu, který se sem přilepil.
+            tecka = veta.find(".")
+            veta = veta[: tecka + 1] if tecka > 0 else ""
+        # Blok, ve kterém zbyla jen hlavička bodu, žádný návrh nenese.
+        # Ukládat ho jako „usnesení komise" by nafouklo počty o body,
+        # na kterých se komise právě že neusnesla.
+        if len(veta) < 12 or _STAVOVA_VETA.match(veta):
             continue
 
         smer = None
@@ -248,7 +366,9 @@ def _usneseni_z_textu(text: str) -> list[dict]:
             "zdroj": "usneseni",
             # Zdroj říká, že návrh neprošel. `None` = zdroj mlčí; „přijato"
             # se nedopočítává z hlasování, kvórum komisí odsud nevidíme.
-            "prijato": (False if _NEPRIJATO.search(okoli) else None),
+            # Stav bodu bývá pod usnesením i nad ním; bere se ten, který
+            # se najde, a zápor má přednost.
+            "prijato": _prijato(okoli + " " + (pred.group(0) if pred else "")),
             "hlasovani": (
                 {"pro": int(h.group(1)), "proti": int(h.group(2)), "zdrzel": int(h.group(3))}
                 if h else None
@@ -281,7 +401,7 @@ def _vety_komise(text: str, uz_mame: list[dict]) -> list[dict]:
     ven: list[dict] = []
     for m in _VETA_KOMISE.finditer(text):
         veta = re.sub(r"\s+", " ", m.group(1)).strip()
-        okoli = text[m.start(): m.end() + 250]
+        okoli = text[m.start(): m.end() + _konec_okoli(text[m.end():], 0)]
         if len(veta) < 25:
             continue
         klic = veta[:80]
@@ -301,7 +421,7 @@ def _vety_komise(text: str, uz_mame: list[dict]) -> list[dict]:
             "smer": smer,
             "hlasovani": None,
             "zdroj": "veta",
-            "prijato": (False if _NEPRIJATO.search(okoli) else None),
+            "prijato": _prijato(okoli),
         })
     return ven
 
@@ -338,6 +458,7 @@ def rozeber(zapis: dict, rejstrik_firem: dict[str, dict] | None = None) -> dict:
     hlavicka = _hlavicka(text)
     usneseni = _usneseni_z_textu(text)
     usneseni += _vety_komise(text, usneseni)
+    usneseni = _slouc_duplicity(usneseni)
     body = _body(text)
 
     hoste = hlavicka.get("hoste") or []
@@ -456,10 +577,19 @@ def main() -> None:
                 "a ukládá ho jako odhad."
             ),
             "prijato": (
-                "`prijato: false` znamená, že zápis sám říká, že návrh neprošel "
-                "(„Navržené usnesení nebylo přijato“). `null` znamená, že zápis o "
-                "přijetí mlčí — z počtu hlasů se to nedopočítává, kvórum komisí "
-                "odsud vidět není. Nepřijatý návrh se nepočítá mezi doporučení."
+                "Co o osudu návrhu říká zápis. `false` = „Navržené usnesení nebylo "
+                "přijato“, `true` = „K tomuto bodu bylo přijato usnesení“, `null` = "
+                "zápis o přijetí mlčí. Z počtu hlasů se to NEDOPOČÍTÁVÁ — kvórum "
+                "komisí odsud vidět není. Výsledek se hledá jen v okolí téhož bodu; "
+                "pevné okno přetékalo do dalšího bodu a přijaté doporučení kvůli "
+                "tomu vycházelo jako zamítnuté. Nepřijatý návrh se nepočítá mezi "
+                "doporučení."
+            ),
+            "duplicity": (
+                "Zápis, který nad usnesením uvádí stavovou větu, zachytí tentýž "
+                "návrh dvakrát — s ní a bez ní. Slučuje se jen tehdy, když je delší "
+                "text přesně stavová věta plus ten kratší; jinak by se zahodil "
+                "případ, kdy blok spolkl dvě různá usnesení."
             ),
             "prazdno": (
                 "Chybějící sekce hlavičky je `null`, ne prázdný seznam: „nikdo nebyl "
