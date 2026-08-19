@@ -14,7 +14,9 @@ import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import CastiPoCastech from '../components/CastiPoCastech.astro';
 import RetezKomise from '../components/RetezKomise.astro';
-import type { Projednani, Spojeni, Doporuceni } from '../components/RetezKomise.astro';
+import UcastKomisi from '../components/UcastKomisi.astro';
+import type { RadekUcasti, Stopa } from '../components/UcastKomisi.astro';
+import type { Projednani, Spojeni, Doporuceni, Overeni } from '../components/RetezKomise.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
@@ -78,7 +80,15 @@ const zRetezu = nactiJson<{
   retezy: Spojeni[];
   bez_odezvy: Doporuceni[];
   statistika?: { navrhu_pro_radu?: number };
+  overeni?: Overeni;
 }>('retez/komise_rada.json', { projednani: [], retezy: [], bez_odezvy: [] });
+
+const zUcasti = nactiJson<{
+  po_komisich: Record<string, RadekUcasti[]>;
+  zapisu_pouzito?: number;
+  zapisu_celkem?: number;
+}>('komise/ucast.json', { po_komisich: {} });
+const zHostu = nactiJson<{ stopy: Stopa[] }>('komise/hoste.json', { stopy: [] });
 
 const organy = zOrganu.data?.organy ?? [];
 const zapisy = zPrehledu.data?.zapisy ?? [];
@@ -87,6 +97,25 @@ const souhrn = (zPrehledu.data?.souhrn ?? {}) as Record<string, unknown> &
 const projednani = zRetezu.data?.projednani ?? [];
 const odhady = zRetezu.data?.retezy ?? [];
 const bezOdezvy = zRetezu.data?.bez_odezvy ?? [];
+const ucast = zUcasti.data?.po_komisich ?? {};
+const stopy = zHostu.data?.stopy ?? [];
+
+/* Orgány, které v rejstříku nemají ani jeden zápis. Není to mezera
+   v datech — je to údaj o tom, jak která komise zveřejňuje. */
+const typy = (souhrn.rejstrik_dle_typu ?? {}) as unknown as Record<string, number>;
+const duvody = Object.entries(
+  (souhrn.duvody_nerozebrani ?? {}) as unknown as Record<string, number>,
+).sort(([, a], [, b]) => b - a);
+
+/* Stejná slova jako v pipeline/komise_prehled.py. */
+const POPIS_DUVODU: Record<string, string> = {
+  'navrh-jen-ve-vypraveni': 'zápis o návrzích mluví, ale ne větou, kterou by šlo vzít celou',
+  'body-nejsou-cislovane': 'body programu nejsou číslované a chybí blok „Usnesení“',
+  'souvisly-text-bez-struktury': 'souvislé vyprávění bez bodů i bez usnesení',
+  'bez-textove-vrstvy': 'dokument nemá text, je to sken',
+};
+
+const bezZapisu = organy.filter((o) => !((souhrn.po_organech ?? {}) as Record<string, number>)[o.nazev]);
 
 /* Nejlepší nalezená odezva ke každému doporučení — pro štítek u položky
    v seznamu návrhů. Klíč „id zápisu + pořadí usnesení v zápisu“ skládá
@@ -257,6 +286,13 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
     modul="pipeline/komise_prehled.py"
   />
   <StavDat
+    stav={zUcasti.stav}
+    zdroj={zUcasti.zdroj}
+    co="Docházka do komisí"
+    prazdno={zUcasti.stav === 'ok' && Object.keys(ucast).length === 0}
+    modul="pipeline/komise_prehled.py"
+  />
+  <StavDat
     stav={zRetezu.stav}
     zdroj={zRetezu.zdroj}
     co="Návaznost komise → rada"
@@ -292,7 +328,44 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
         retezy={odhady}
         bezOdezvy={bezOdezvy}
         navrhuCelkem={zRetezu.data?.statistika?.navrhu_pro_radu ?? bezOdezvy.length}
+        overeni={zRetezu.data?.overeni ?? null}
       />
+    )
+  }
+
+  {
+    Object.keys(ucast).length > 0 && (
+      <UcastKomisi
+        poKomisich={ucast}
+        zapisuPouzito={zUcasti.data?.zapisu_pouzito ?? 0}
+        zapisuCelkem={zUcasti.data?.zapisu_celkem ?? 0}
+        stopy={stopy}
+      />
+    )
+  }
+
+  {
+    bezZapisu.length > 0 && (
+      <section class="karta">
+        <h2 class="karta__nadpis">Které komise zápisy nezveřejňují</h2>
+        <p class="karta__podnadpis">Prázdná buňka v tabulce je taky údaj.</p>
+        <p>
+          {bezZapisu.map((o, i) => (
+            <>
+              {i > 0 ? ', ' : ''}
+              <strong>{o.nazev}</strong>
+            </>
+          ))}{' '}
+          {sklonuj(bezZapisu.length, 'nemá', 'nemají', 'nemá')} v rejstříku dokumentů ani
+          jeden zápis. Neznamená to, že se nescházejí — jednání komisí jsou podle usnesení
+          rady č. RM/555/16 veřejná. Znamená to, že se z nich veřejně nedozvíme nic:
+          <strong> co projednaly, co doporučily radě a kdo tam byl, zůstává mimo dosah.</strong>
+        </p>
+        <p>
+          U ostatních komisí je z čeho číst, a rozdíl je vidět na první pohled — Komise
+          lázeňství zveřejnila 87 zápisů, Komise školství 16.
+        </p>
+      </section>
     )
   }
 
@@ -415,12 +488,30 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
       jako schůzky, na kterých komise nic nenavrhla.
     </p>
     <p>
-      <strong>Ne všechno se podařilo přečíst.</strong> Z {cislo(zapisy.length)}{' '}
-      {sklonuj(zapisy.length, 'zápisu', 'zápisů', 'zápisů')} s textovou vrstvou se rozbor
-      povedl u {cislo(souhrn.rozebranych ?? 0)}; u {cislo(souhrn.nerozebranych ?? 0)} se
-      nepodařilo najít ani bod programu, ani usnesení. Část dokumentů v rejstříku jsou
-      navíc skeny nebo archivy ZIP, ze kterých se text vytáhnout nedá. Počty jsou v datech,
-      aby se prázdno nepletlo s tím, že komise nic neprojednala.
+      <strong>Ne všechno se podařilo přečíst — a chybí to ze tří různých důvodů.</strong>{' '}
+      Rejstřík města má {cislo(souhrn.v_rejstriku ?? 0)} dokumentů:{' '}
+      {cislo(typy.pdf ?? 0)} PDF, {cislo(typy.zip ?? 0)} archivů ZIP a{' '}
+      {cislo(typy.docx ?? 0)} dokument Wordu. <strong>Archivy ZIP se neotvírají vůbec.</strong>
+      {' '}Z PDF se text podařilo vytáhnout u {cislo(souhrn.s_textem ?? 0)}; u zbytku
+      nevrátil převod nic — <strong>to jsou skutečné skeny</strong> a tam by pomohlo OCR.
+    </p>
+    <p>
+      <strong>Zápisy, které rozbor nezvládl, ale skeny nejsou.</strong> U{' '}
+      {cislo(souhrn.nerozebranych ?? 0)} zápisů se nepodařilo najít ani bod programu, ani
+      usnesení — přestože text mají. Chybí jim struktura: jednání je zapsané jako souvislé
+      vyprávění bez číslovaných bodů a bez bloku „Usnesení“.{' '}
+      {duvody.length > 0 && (
+        <>
+          Konkrétně:{' '}
+          {duvody.map(([duvod, pocet], i) => (
+            <>
+              {i > 0 ? ', ' : ''}
+              {cislo(pocet)}× {POPIS_DUVODU[duvod] ?? duvod}
+            </>
+          ))}.
+        </>
+      )}{' '}
+      Ke každému je důvod i v datech — „nepodařilo se to přečíst“ bez důvodu je jen omluva.
     </p>
     <p>
       <strong>Návrh, který komise nepřijala, není doporučení.</strong> Zápisy to říkají

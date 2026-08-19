@@ -1,0 +1,183 @@
+---
+/**
+ * Docházka do komisí a hosté z firem.
+ *
+ * DOCHÁZKA SE POČÍTÁ JEN Z JEDNÁNÍ, KDE JE ČLOVĚK JMENOVANÝ. Složení
+ * komisí se v čase mění a rozcestník samosprávy uvádí jen to dnešní;
+ * kdyby se za absenci brala každá schůze, na které člen není v přítomných,
+ * měl by člen jmenovaný letos absence z let, kdy v komisi vůbec nebyl.
+ *
+ * „Nepřítomen“ a „omluven“ se nesčítají. Omluvu od neomluvené absence
+ * rozliší jen část zápisů a dopočítat důvod by byl dohad.
+ */
+import CastiPoCastech from './CastiPoCastech.astro';
+import { cislo, datumKratke, sklonuj } from '../lib/format';
+import { esc } from '../lib/polozka_hlasovani';
+
+export interface RadekUcasti {
+  jmeno: string;
+  jmenovan_na: number;
+  pritomen: number;
+  omluven: number;
+  neomluven: number;
+  nepritomen: number;
+}
+
+export interface Stopa {
+  datum: string | null;
+  komise: string | null;
+  host: string;
+  host_jmeno: string | null;
+  organizace: string;
+  ico: string | null;
+  jistota: string;
+  url: string | null;
+  obchod_s_mestem: {
+    nazev: string | null;
+    ico: string | null;
+    celkem_czk: number;
+    smluv: number;
+    prvni_rok: number | null;
+    posledni_rok: number | null;
+    shoda: string;
+    zaznamu_v_registru?: number;
+    nazvy_v_registru?: string[];
+  } | null;
+}
+
+interface Props {
+  poKomisich: Record<string, RadekUcasti[]>;
+  zapisuPouzito: number;
+  zapisuCelkem: number;
+  stopy: Stopa[];
+}
+
+const { poKomisich, zapisuPouzito, zapisuCelkem, stopy } = Astro.props as Props;
+
+/* Nejaktivnější komise nahoře — kde je jednání nejvíc, tam docházka
+   nejvíc znamená. */
+const komise = Object.entries(poKomisich).sort(
+  ([, a], [, b]) => (b[0]?.jmenovan_na ?? 0) - (a[0]?.jmenovan_na ?? 0),
+);
+
+const POPIS_SHODY: Record<string, string> = {
+  ico: 'shoda podle IČO',
+  nazev: 'shoda podle názvu — odhad',
+  'nazev-bez-formy': 'shoda podle názvu bez právní formy — odhad',
+};
+
+function castka(kc: number): string {
+  return cislo(Math.round(kc)) + ' Kč';
+}
+
+function tabulkaKomise(nazev: string, radky: RadekUcasti[]): string {
+  const bunky = radky
+    .map(
+      (r) =>
+        `<tr><td>${esc(r.jmeno)}</td>` +
+        `<td class="cislo">${cislo(r.jmenovan_na)}</td>` +
+        `<td class="cislo">${cislo(r.pritomen)}</td>` +
+        `<td class="cislo">${r.omluven ? cislo(r.omluven) : '—'}</td>` +
+        `<td class="cislo">${r.neomluven ? cislo(r.neomluven) : '—'}</td>` +
+        `<td class="cislo">${r.nepritomen ? cislo(r.nepritomen) : '—'}</td></tr>`,
+    )
+    .join('');
+  return (
+    `<h4>${esc(nazev)}</h4>` +
+    `<div class="tabulka-obal"><table>` +
+    `<thead><tr><th scope="col">Člen</th>` +
+    `<th scope="col" class="cislo">Jmenován na</th>` +
+    `<th scope="col" class="cislo">Přítomen</th>` +
+    `<th scope="col" class="cislo">Omluven</th>` +
+    `<th scope="col" class="cislo">Neomluven</th>` +
+    `<th scope="col" class="cislo">Nepřítomen</th></tr></thead>` +
+    `<tbody>${bunky}</tbody></table></div>`
+  );
+}
+
+const casti = komise.map(([nazev, radky]) => tabulkaKomise(nazev, radky));
+const osob = komise.reduce((s, [, r]) => s + r.length, 0);
+const sObchodem = stopy.filter((s) => s.obchod_s_mestem);
+---
+
+<section id="ucast-v-komisich">
+  <h2>Kdo na komise chodí</h2>
+  <p class="uvod">
+    Docházka {cislo(osob)} {sklonuj(osob, 'člena', 'členů', 'členů')} v{' '}
+    {cislo(komise.length)} {sklonuj(komise.length, 'komisi', 'komisích', 'komisích')},
+    spočítaná z {cislo(zapisuPouzito)} {sklonuj(zapisuPouzito, 'zápisu', 'zápisů', 'zápisů')}
+    {' '}z {cislo(zapisuCelkem)}. <strong>„Jmenován na“ není počet všech jednání komise</strong>
+    {' '}— je to počet těch, na kterých zápis toho člověka uvádí. Složení komisí se v čase
+    mění a jinak by členovi jmenovanému letos vyšly absence z let, kdy v komisi nebyl.
+  </p>
+  <CastiPoCastech casti={casti} id="ucast-komise" poCastech={2} jednotka="komisí" />
+</section>
+
+{
+  stopy.length > 0 && (
+    <section id="hoste-z-firem">
+      <h2>Firmy, které přišly na komisi</h2>
+      <p class="uvod">
+        Zápis u hosta uvádí organizaci v závorce. Když se táž firma objeví v registru
+        smluv, je vidět na obou místech — a to je stopa, kterou z usnesení vyčíst nejde.
+        <strong> Není to obvinění.</strong> Jednání komisí jsou veřejná, hosté bývají
+        zváni a přehled z účasti žádný závěr nedělá.
+      </p>
+      <div class="tabulka-obal">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Kdy</th>
+              <th scope="col">Komise</th>
+              <th scope="col">Host a organizace</th>
+              <th scope="col">V registru smluv</th>
+            </tr>
+          </thead>
+          <tbody>
+            {stopy.map((s) => (
+              <tr>
+                <td>{s.datum ? datumKratke(s.datum) : '—'}</td>
+                <td>{s.komise ?? '—'}</td>
+                <td>
+                  {/* Jméno, ne celá věta ze zápisu. Zápisy sem dávají
+                      „přizvané hosty a předal slovo p. Hulákovi (…)“
+                      a vypsat půl věty jako jméno hosta nikomu nepomůže. */}
+                  {s.host_jmeno ?? <span class="stav-dat__zdroj">jméno se nepodařilo přečíst</span>}
+                  <br />
+                  <span class="stav-dat__zdroj">{s.organizace}</span>
+                </td>
+                <td>
+                  {s.obchod_s_mestem ? (
+                    <>
+                      <strong>{castka(s.obchod_s_mestem.celkem_czk)}</strong> ve{' '}
+                      {cislo(s.obchod_s_mestem.smluv)}{' '}
+                      {sklonuj(s.obchod_s_mestem.smluv, 'smlouvě', 'smlouvách', 'smlouvách')}
+                      <br />
+                      <span class="znacka znacka--odhad">
+                        {POPIS_SHODY[s.obchod_s_mestem.shoda] ?? s.obchod_s_mestem.shoda}
+                      </span>
+                      {(s.obchod_s_mestem.zaznamu_v_registru ?? 1) > 1 && (
+                        <span class="stav-dat__zdroj">
+                          {' '}registr firmu vede pod{' '}
+                          {cislo(s.obchod_s_mestem.zaznamu_v_registru!)} názvy:{' '}
+                          {(s.obchod_s_mestem.nazvy_v_registru ?? []).join(', ')}
+                        </span>
+                      )}
+                    </>
+                  ) : (
+                    <span class="stav-dat__zdroj">v registru jsme ji nenašli</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="stav-dat__zdroj">
+        Dohledáno {cislo(sObchodem.length)} z {cislo(stopy.length)}. Prázdno znamená „v
+        registru jsme ji nenašli“, ne „s městem neobchoduje“ — skloňovaný název ze zápisu
+        se s prvním pádem v registru nepotká.
+      </p>
+    </section>
+  )
+}

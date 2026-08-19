@@ -8,7 +8,7 @@ import CasovaOsa from '../../components/CasovaOsa.astro';
 import TabulkaPoCastech from '../../components/TabulkaPoCastech.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
-import { nactiCiselnikTagu, nactiHlasovani, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
+import { nactiCiselnikTagu, nactiHlasovani, nactiJson, nactiLidi, nactiProtistrany, type Osobnost } from '../../lib/data';
 import { mapaTagu, zplostiHlasovani } from '../../lib/prehledy';
 import { jednou } from '../../lib/cache';
 import { nactiOsuOsoby, popisModulu, slucUdalosti, udalost, type UdalostOsy } from '../../lib/osa';
@@ -56,6 +56,28 @@ export async function getStaticPaths() {
 
 const { osoba, maProfil } = Astro.props;
 
+interface ClenstviVKomisi {
+  komise: string;
+  role: string | null;
+  url_komise: string | null;
+  /* `null` = ke členovi se nenašel ani jeden zápis s čitelnou hlavičkou.
+     Není to nulová účast — orgán, který zápisy nezveřejňuje, docházku mít
+     nemůže. */
+  dochazka: {
+    jmenovan_na: number;
+    pritomen: number;
+    omluven: number;
+    neomluven: number;
+    nepritomen: number;
+  } | null;
+}
+
+/* Členství v komisích. Rozcestník samosprávy říká DNEŠNÍ složení a roli,
+   zápisy docházku za celou dobu — kdo v komisi byl dřív, tu není. */
+const zKomisi = nactiJson<{
+  dle_osoby: Record<string, ClenstviVKomisi[]>;
+}>('komise/clenstvi.json', { dle_osoby: {} });
+
 const zHlasovani = jednou('hlasovani', nactiHlasovani);
 const zTagu = jednou('tagy', nactiCiselnikTagu);
 const zOsobFirem = jednou('propojeni', nactiOsobyFirmy);
@@ -77,6 +99,7 @@ const jmenaLidi = jednou('lide-jmena', () => new Map((zLidi.data ?? []).map((o) 
    se základ přímo z hlasovacích dat, ať stránka není prázdná. */
 
 const profil = zProfilu.data.profily.get(osoba.id) ?? null;
+const komise: ClenstviVKomisi[] = zKomisi.data?.dle_osoby?.[osoba.id] ?? [];
 const st = statistikyOsoby(vsechna, osoba.id);
 const celkem = st.zaznamy.length;
 const rez: Rez | null = profil?.celek ?? null;
@@ -604,6 +627,69 @@ const radkyHistorie = st.zaznamy.map((u) => {
   }
 
   <h2 id="kde-je-aktivni">Kde je aktivní</h2>
+
+  {
+    komise.length > 0 && (
+      <section class="karta">
+        <h3 class="karta__nadpis">V komisích a výborech</h3>
+        <p class="karta__podnadpis">
+          Složení a role z rozcestníku samosprávy, docházka ze zápisů z jednání.
+        </p>
+        <div class="tabulka-obal">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Orgán</th>
+                <th scope="col">Role</th>
+                <th scope="col" class="cislo">Jmenován na</th>
+                <th scope="col" class="cislo">Přítomen</th>
+                <th scope="col">Neúčast</th>
+              </tr>
+            </thead>
+            <tbody>
+              {komise.map((k) => (
+                <tr>
+                  <td>
+                    {k.url_komise ? (
+                      <a href={k.url_komise} rel="noreferrer noopener">{k.komise}</a>
+                    ) : (
+                      k.komise
+                    )}
+                  </td>
+                  <td>{k.role ?? '—'}</td>
+                  <td class="cislo">{k.dochazka ? cislo(k.dochazka.jmenovan_na) : '—'}</td>
+                  <td class="cislo">{k.dochazka ? cislo(k.dochazka.pritomen) : '—'}</td>
+                  <td>
+                    {k.dochazka ? (
+                      [
+                        k.dochazka.omluven ? `${cislo(k.dochazka.omluven)}× omluven` : null,
+                        k.dochazka.neomluven ? `${cislo(k.dochazka.neomluven)}× neomluven` : null,
+                        k.dochazka.nepritomen
+                          ? `${cislo(k.dochazka.nepritomen)}× nepřítomen`
+                          : null,
+                      ]
+                        .filter(Boolean)
+                        .join(', ') || 'žádná'
+                    ) : (
+                      <span class="stav-dat__zdroj">zápisy z jednání nejsou</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="stav-dat__zdroj">
+          „Jmenován na“ je počet jednání, na kterých zápis toho člověka uvádí —{' '}
+          <strong>ne počet všech jednání orgánu</strong>. Složení komisí se v čase mění
+          a jinak by členovi jmenovanému letos vyšly absence z let, kdy v orgánu nebyl.
+          Kde je pomlčka, orgán zápisy nezveřejňuje nebo se z nich hlavička nedala
+          přečíst; není to nulová účast. Podrobnosti jsou v{' '}
+          <a href="/komise#ucast-v-komisich">přehledu komisí</a>.
+        </p>
+      </section>
+    )
+  }
 
   <StavDat
     stav={zOsobFirem.stav}

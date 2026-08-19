@@ -46,6 +46,7 @@ Meze zdroje
 from __future__ import annotations
 
 import glob
+import json
 import re
 import sys
 import unicodedata
@@ -55,7 +56,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lib.core import DATA, Log, ZdrojSelhal, nacti, uloz  # noqa: E402
+from lib.core import CONFIG, DATA, Log, ZdrojSelhal, nacti, uloz  # noqa: E402
 
 # --------------------------------------------------------------------------
 # Prahy a konstanty
@@ -676,6 +677,57 @@ def _retez(n: dict, b: dict, h: dict, kandidatu: int) -> dict:
 
 
 # --------------------------------------------------------------------------
+# Měření: jak často odhad sedí
+# --------------------------------------------------------------------------
+
+def overeni(retezy: list[dict], log: Log) -> dict:
+    """Kolik spojení z ručně posouzeného vzorku skutečně sedí.
+
+    Stupně jistoty jsou bez měření jen slova. `config/vzorek_retez_komise.json`
+    drží lidský verdikt nad reprodukovatelným vzorkem — všechna spojení
+    s vysokou a střední jistotou a každé čtvrté s nízkou.
+
+    VZOREK ZASTARÁVÁ. Když se párování změní, část posouzených dvojic
+    zmizí a měření přestane platit pro to, co web ukazuje. Kolik jich
+    chybí, je proto ve výstupu a hlídá to `kontrola.py`.
+    """
+    cesta = CONFIG / "vzorek_retez_komise.json"
+    if not cesta.exists():
+        return {"stav": "neposouzeno",
+                "poznamka": "config/vzorek_retez_komise.json chybí — přesnost se neměří"}
+    try:
+        vzorek = json.loads(cesta.read_text(encoding="utf-8")).get("posouzeno") or []
+    except (json.JSONDecodeError, OSError) as e:  # noqa: BLE001
+        log.chyba(f"vzorek nejde přečíst: {e}")
+        return {"stav": "neposouzeno", "poznamka": str(e)}
+
+    zive = {r["id"] for r in retezy}
+    dle_jistoty: dict[str, dict[str, int]] = {}
+    chybi = 0
+    for z in vzorek:
+        if z["id"] not in zive:
+            chybi += 1
+            continue
+        stav = dle_jistoty.setdefault(z["jistota"], {"posouzeno": 0, "sedi": 0})
+        stav["posouzeno"] += 1
+        stav["sedi"] += 1 if z.get("sedi") else 0
+    posouzeno = sum(v["posouzeno"] for v in dle_jistoty.values())
+    sedi = sum(v["sedi"] for v in dle_jistoty.values())
+
+    log.info("ověření vzorku", posouzeno=posouzeno, sedi=sedi, zastaralych=chybi)
+    return {
+        "stav": "ok",
+        "posouzeno": posouzeno,
+        "sedi": sedi,
+        "dle_jistoty": dle_jistoty,
+        # Kolik posouzených dvojic už párování nevrací. Nad pár kusů to
+        # znamená, že vzorek patří k jiné verzi a je třeba posoudit znovu.
+        "zastaralych_ve_vzorku": chybi,
+        "zdroj": "config/vzorek_retez_komise.json",
+    }
+
+
+# --------------------------------------------------------------------------
 # Kontrola a běh
 # --------------------------------------------------------------------------
 
@@ -728,6 +780,12 @@ METODIKA = {
         "Příznak u projednání: usnesení samo přiznává důvod („na základě doporučení "
         "Komise…“, „v souladu s doporučením komise“). Je to jediné místo, kde rada "
         "říká, odkud návrh vzala."
+    ),
+    "overeni": (
+        "Přesnost odhadu je změřená, ne odhadnutá: na reprodukovatelném vzorku "
+        "(všechna spojení s vysokou a střední jistotou, každé čtvrté s nízkou) je "
+        "u každé dvojice lidský verdikt v config/vzorek_retez_komise.json. Výsledek "
+        "je v poli `overeni`."
     ),
     "odhad": (
         "Domněnka. Mezi zápisem komise a usnesením rady neexistuje společný "
@@ -800,11 +858,15 @@ def main() -> int:
         log.info("hotovo", **{k: v for k, v in stat.items()
                               if isinstance(v, int)})
 
+        mereni = overeni(retezy, log)
         uloz("retez/komise_rada.json", {
             "generovano": datetime.now(timezone.utc).date().isoformat(),
             "zdroj": "data/komise/prehled.json + data/usneseni/**",
             "metodika": METODIKA,
             "statistika": stat,
+            # Kolik z ručně posouzeného vzorku doopravdy sedí. Bez měření
+            # jsou stupně jistoty jen slova.
+            "overeni": mereni,
             "projednani": projednane,
             "retezy": retezy,
             "bez_odezvy": bez,
