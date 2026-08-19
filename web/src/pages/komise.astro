@@ -13,6 +13,8 @@
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import CastiPoCastech from '../components/CastiPoCastech.astro';
+import RetezKomise from '../components/RetezKomise.astro';
+import type { Projednani, Spojeni, Doporuceni } from '../components/RetezKomise.astro';
 import Dlazdice from '../components/Dlazdice.astro';
 import JakPocitame from '../components/JakPocitame.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
@@ -42,6 +44,9 @@ interface Usneseni {
   smer: string | null;
   zdroj?: string;
   zkraceno?: boolean;
+  /* `false` = zápis říká, že návrh neprošel. `null` = zápis o přijetí mlčí.
+     Nepřijatý návrh se nesmí číst jako doporučení komise — tvrdil by opak. */
+  prijato?: boolean | null;
   hlasovani: { pro: number; proti: number; zdrzel: number } | null;
 }
 
@@ -68,13 +73,36 @@ const zPrehledu = nactiJson<{
   nerozebrane?: unknown[];
 }>('komise/prehled.json', { zapisy: [] });
 
+const zRetezu = nactiJson<{
+  projednani: Projednani[];
+  retezy: Spojeni[];
+  bez_odezvy: Doporuceni[];
+  statistika?: { navrhu_pro_radu?: number };
+}>('retez/komise_rada.json', { projednani: [], retezy: [], bez_odezvy: [] });
+
 const organy = zOrganu.data?.organy ?? [];
 const zapisy = zPrehledu.data?.zapisy ?? [];
 const souhrn = (zPrehledu.data?.souhrn ?? {}) as Record<string, number>;
+const projednani = zRetezu.data?.projednani ?? [];
+const odhady = zRetezu.data?.retezy ?? [];
+const bezOdezvy = zRetezu.data?.bez_odezvy ?? [];
+
+/* Nejlepší nalezená odezva ke každému doporučení — pro štítek u položky
+   v seznamu návrhů. Klíč „id zápisu + pořadí usnesení v zápisu“ skládá
+   pipeline/retez_komise.py stejně, takže se obojí potká. */
+const PORADI_JISTOT: Record<string, number> = { vysoka: 0, stredni: 1, nizka: 2 };
+const odezvaNavrhu = new Map<string, Spojeni>();
+for (const s of odhady) {
+  const stav = odezvaNavrhu.get(s.doporuceni.id);
+  if (!stav || PORADI_JISTOT[s.jistota] < PORADI_JISTOT[stav.jistota]) {
+    odezvaNavrhu.set(s.doporuceni.id, s);
+  }
+}
 
 /* Návrhy napříč komisemi, od nejnovějšího. Tohle je to, kvůli čemu
    stránka vznikla — „co navrhují“. */
 interface Navrh {
+  id: string;
   datum: string | null;
   komise: string | null;
   cislo_jednani: number | null;
@@ -84,7 +112,10 @@ interface Navrh {
 
 const navrhy: Navrh[] = zapisy
   .flatMap((z) =>
-    z.usneseni.map((u) => ({
+    z.usneseni.map((u, i) => ({
+      /* Stejný klíč skládá pipeline/retez_komise.py — proto se návrh
+         a nalezená odezva potkají bez dalšího párování. */
+      id: `${z.id}-${i}`,
       datum: z.datum,
       komise: z.komise,
       cislo_jednani: z.cislo_jednani,
@@ -93,6 +124,14 @@ const navrhy: Navrh[] = zapisy
     })),
   )
   .sort((a, b) => (b.datum ?? '').localeCompare(a.datum ?? ''));
+
+/* Stejná slova jako v RetezKomise.astro. Odhad se musí jmenovat odhadem
+   všude, kde se ukáže. */
+const POPIS_JISTOTY: Record<string, string> = {
+  vysoka: 'odhad, vysoká jistota',
+  stredni: 'odhad, střední jistota',
+  nizka: 'odhad, nízká jistota',
+};
 
 const POPIS_SMERU: Record<string, string> = {
   doporucuje: 'doporučuje',
@@ -114,9 +153,9 @@ const dlazdice: Polozka[] = [
     doplnek: `z toho ${cislo(souhrn.doporuceni_rade ?? 0)} doporučení radě`,
   },
   {
-    popisek: 'Členů v orgánech',
-    hodnota: cislo(organy.reduce((s, o) => s + o.osoby.length, 0)),
-    doplnek: 'jak je uvádí web města',
+    popisek: 'Zápisů na jednání rady',
+    hodnota: cislo(new Set(projednani.map((p) => p.zapis.id)).size),
+    doplnek: 'doloženo textem usnesení',
   },
 ];
 
@@ -135,6 +174,24 @@ function navrhHtml(n: Navrh): string {
     n.u.zdroj === 'veta'
       ? `<span class="znacka">věta ze zápisu</span>`
       : `<span class="znacka">usnesení komise</span>`;
+  /* Návrh, který komise sama neschválila, se nesmí číst jako její
+     doporučení — bez tohohle štítku by tvrdil pravý opak. */
+  const neprijato =
+    n.u.prijato === false
+      ? `<span class="znacka znacka--vazba">komise návrh nepřijala</span>`
+      : '';
+  /* Co s tím rada udělala. Odhad, proto přerušovaný štítek a slovo
+     „odhad“ přímo v textu, ne jen v barvě. */
+  const o = odezvaNavrhu.get(n.id);
+  const odezva = o
+    ? `<p class="polozka__meta">` +
+      `<span class="znacka znacka--odhad">${esc(POPIS_JISTOTY[o.jistota] ?? o.jistota)}</span>` +
+      (o.usneseni.url
+        ? `<a href="${esc(o.usneseni.url)}" rel="noreferrer noopener">${esc(o.usneseni.nazev)}</a>`
+        : `<span>${esc(o.usneseni.nazev)}</span>`) +
+      `<span>${esc(o.usneseni.datum ? datumKratke(o.usneseni.datum) : '')}</span>` +
+      `</p>`
+    : '';
   return (
     `<li class="polozka">` +
     `<div class="polozka__hlava"><span>${esc(n.komise ?? 'komise neurčena')}</span>` +
@@ -148,9 +205,11 @@ function navrhHtml(n: Navrh): string {
       : '') +
     `<div class="polozka__meta">` +
     (smer ? `<span class="znacka znacka--vazba">${esc(smer)}</span>` : '') +
-    `${zdroj}${hlas}` +
+    `${neprijato}${zdroj}${hlas}` +
     `<a href="${esc(n.url)}" rel="noreferrer noopener">zápis (PDF)</a>` +
-    `</div></li>`
+    `</div>` +
+    odezva +
+    `</li>`
   );
 }
 
@@ -194,6 +253,13 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
     prazdno={zPrehledu.stav === 'ok' && zapisy.length === 0}
     modul="pipeline/komise_prehled.py"
   />
+  <StavDat
+    stav={zRetezu.stav}
+    zdroj={zRetezu.zdroj}
+    co="Návaznost komise → rada"
+    prazdno={zRetezu.stav === 'ok' && projednani.length === 0 && odhady.length === 0}
+    modul="pipeline/retez_komise.py"
+  />
 
   {organy.length > 0 && <Dlazdice polozky={dlazdice} />}
 
@@ -213,6 +279,17 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
           jednotka="dávek po 40"
         />
       </section>
+    )
+  }
+
+  {
+    (projednani.length > 0 || odhady.length > 0) && (
+      <RetezKomise
+        projednani={projednani}
+        retezy={odhady}
+        bezOdezvy={bezOdezvy}
+        navrhuCelkem={zRetezu.data?.statistika?.navrhu_pro_radu ?? bezOdezvy.length}
+      />
     )
   }
 
@@ -343,9 +420,19 @@ const vybory = organy.filter((o) => o.druh !== 'komise-rady');
       aby se prázdno nepletlo s tím, že komise nic neprojednala.
     </p>
     <p>
-      <strong>Přehled nevykládá, co návrh znamená</strong>, a netvrdí, že se jím rada
-      řídila. Spojení konkrétního doporučení s pozdějším usnesením rady zatím neděláme —
-      byl by to odhad a musel by být jako odhad označený.
+      <strong>Návrh, který komise nepřijala, není doporučení.</strong> Zápisy to říkají
+      až za hlasováním („PRO: 4 PROTI: 2 … Navržené usnesení nebylo přijato“). Takový bod
+      je označený a mezi doporučení se nepočítá — bez toho by tvrdil pravý opak toho, co
+      komise rozhodla. Kde zápis o přijetí mlčí, zůstává to prázdné: kvórum komisí odsud
+      vidět není a dopočítávat ho z počtu hlasů by byl dohad.
+    </p>
+    <p>
+      <strong>Návaznost na radu je dvojí.</strong> Když usnesení samo jmenuje komisi
+      i datum jejího jednání, je spojení doložené — jen se cituje zdroj. Když se shoduje
+      jen téma, je to odhad, u kterého je napsané, jak silný je a z čeho vyšel. Ani
+      jedno neříká, <em>proč</em> rada rozhodla: že zápis ležel na stole, neznamená, že
+      se jím rada řídila. Postup je popsaný v{' '}
+      <code>pipeline/retez_komise.py</code>.
     </p>
   </JakPocitame>
 </Zaklad>

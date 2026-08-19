@@ -139,11 +139,24 @@ Není povinný: bez něj se web sestaví a odkazy fungují, dlaždice rozcestní
 
 Znak je vždy graf ze skutečných dat, nikdy piktogram. Proto se dá i pokazit stejně jako graf, a `kontrola.py` na to má test: **znak nesmí kreslit ve všech bodech stejnou hodnotu.** Přesně to se stalo napoprvé — znak hlasování ukazoval „podíl schválených návrhů", jenže portál zveřejňuje jen schválená hlasování, takže podíl byl u všech 12 349 záznamů 100 %. Obrázek se tvářil, že něco měří, a přitom kreslil konstantu. Teď ukazuje počet hlasování za rok s barevnou špičkou nejednomyslných — a je z něj vidět, že jich ubývá: ze 131 z 471 v roce 2012 na 57 z 968 v roce 2025.
 
+### Návaznost komise → rada
+
+`pipeline.retez_komise` skládá `data/retez/komise_rada.json`: co komise navrhly radě a co s tím rada udělala. Jsou to **dvě různě jisté věci a nesmí se slít**:
+
+- **Doložené projednání.** Usnesení rady samo říká „bere na vědomí zápis z jednání Komise kultury ze dne 13. 03. 2023". Ten zápis v datech máme a datum sedí — je to citace, ne odhad. Slabší varianta je zápis, který stojí jen na programu jednání; usnesení o něm zdroj nezveřejnil, a je to u něj napsané.
+- **Odhad podle tématu.** Mezi zápisem komise a usnesením rady **neexistuje společné číslo**. Spojení drží jen shoda neobvyklých slov, případně částka a čas — a nese `jistota` jako řetěz na smlouvy.
+
+Modul netvrdí kauzalitu: že zápis ležel radě na stole, neznamená, že se jím řídila. A `bez_odezvy` **není seznam přehlížených návrhů** — rozhodnutí může být zapsané jinými slovy, může patřit stavebnímu úřadu místo radě, nebo ho párování nenašlo.
+
+Práh je schválně tvrdý: dvě sdílená slova, která jsou v usneseních vzácná, nebo jedno velmi vzácné se sedící částkou. Napoprvé stačila dvě mírně neobvyklá slova a doporučení o parkovacích stáních se spojilo s investicí do golfového areálu přes „vybudovat" a „režim".
+
+Kontrolu má `kontrola.py` (`řetěz komise → rada`): hlídá, že se doložené a odhadnuté nezaměnily v poli ani v jistotě a že žádné spojení nemíří zpátky v čase.
+
 ### Schémata
 
-Po znacích sekcí běží `pipeline.diagramy`. Spočítá osm schémat do `data/diagramy/*.json`; web z nich při buildu skládá SVG na `/diagramy` a na stránky sekcí.
+Po znacích sekcí běží `pipeline.diagramy`. Spočítá devět schémat do `data/diagramy/*.json`; web z nich při buildu skládá SVG na `/diagramy` a na stránky sekcí.
 
-Šest schémat je celé z dat města. Dvě — mapa „který zdroj plní kterou sekci" a datový model projektu — stojí na `config/diagramy.json`, protože to je znalost o projektu, ne údaj o městě. **Když se přidá zdroj nebo se změní struktura dat, musí se ten soubor upravit ručně;** sběr to nepozná.
+Sedm schémat je celé z dat města. Dvě — mapa „který zdroj plní kterou sekci" a datový model projektu — stojí na `config/diagramy.json`, protože to je znalost o projektu, ne údaj o městě. **Když se přidá zdroj nebo se změní struktura dat, musí se ten soubor upravit ručně;** sběr to nepozná.
 
 Schéma týdenního běhu si seznam kroků čte přímo z `run_tyden.py`, takže se nemůže rozejít s tím, co se v neděli spustí. Nový modul se v diagramu objeví sám.
 
@@ -215,3 +228,8 @@ Věci ověřené v praxi, které vypadají jako chyba, ale nejsou — nebo naopa
 - **TDS je městská firma**, ne cizí dodavatel. Peníze, které jí od města tečou, jsou vnitřní převod a musí být takto označené.
 - **Nemocnice už městu nepatří.** Sleduje se dál, ale do součtů holdingu nevstupuje.
 - **Řetěz usnesení → smlouva** je odhad. Vysokou a střední jistotu lze publikovat jako zjištění, **nízkou jen jako označenou domněnku**.
+- **Návrh, který komise nepřijala, není doporučení.** Zápisy to říkají až za hlasováním („PRO: 4 PROTI: 2 … Navržené usnesení nebylo přijato"). Takový bod má `prijato: false`, mezi doporučení se nepočítá a do řetězu na radu nevstupuje — jinak by tvrdil pravý opak toho, co komise rozhodla. Opačný doklad („K tomuto bodu bylo přijato usnesení") dává `true`; kde zápis mlčí, zůstává `null`: **kvórum komisí odsud vidět není** a dopočítávat přijetí z počtu hlasů by byl dohad.
+  **Výsledek se hledá jen v okolí téhož bodu.** První verze brala pevných 250 znaků za blokem a přetekla do dalšího bodu: u zápisu Komise sociální a zdravotní z 1. 11. 2023 stálo nad usnesením „K tomuto bodu bylo přijato usnesení" a hlasování 4–0–0, ale o dva body dál „K tomuto bodu nebylo přijato žádné usnesení" — a přijaté doporučení kvůli tomu vyšlo jako zamítnuté. Okno teď končí na hranici dalšího bodu.
+- **Stavová věta nad usnesením zdvojuje záznam.** Zápisy Komise sociální a zdravotní píšou „K tomuto bodu bylo přijato usnesení. Usnesení: Komise doporučuje…", takže tentýž návrh vyjde jednou s hlavičkou a jednou bez ní. Slučuje se jen tehdy, když je delší text **přesně** stavová věta plus ten kratší — jinak by se zahodil případ, kdy blok spolkl dvě různá usnesení a to druhé žije jen uvnitř toho delšího.
+- **Zápisy komisí máme od roku 2015**, usnesení rady od 2012. U starších usnesení „doporučení komise nenalezeno" neznamená nic. Zápisy navíc zveřejňuje jen sedm komisí ze sedmnácti orgánů — u zbytku přehled nevidí, co navrhly.
+- **Zkratky komisí (KS, KK, KŠ) jsou v usneseních dvojznačné** — KS je Komise sportu i Komise smart city. Doložené projednání se proto uloží jen tehdy, když se kromě názvu trefí i **datum konkrétního zápisu**; když téhož dne jednaly dvě komise a usnesení nerozlišuje která, spojení se zahodí.

@@ -1,21 +1,130 @@
 {
   "_comment": "Autorská část diagramů. Většina diagramů se počítá z dat (pipeline/diagramy.py), ale dvě věci se ze sběru odvodit nedají a musí být napsané: KTERÝ ZDROJ PLNÍ KTEROU SEKCI a JAK JSOU DATA POSKLÁDANÁ. Obojí je znalost o projektu, ne údaj o městě. Je to tady schválně odděleně, aby bylo poznat, co je zjištěné a co tvrzené — a aby se to dalo opravit na jednom místě, když se projekt změní.",
-
   "zdroje": [
-    { "id": "usneseni-portal", "nazev": "Portál usnesení města", "url": "https://usneseni.muml.cz", "druh": "urad", "plni": ["usneseni", "hlasovani", "retez"] },
-    { "id": "muml", "nazev": "Web města a úřední deska", "url": "https://www.muml.cz", "druh": "urad", "plni": ["vydani", "lide", "mapa"] },
-    { "id": "zpravodaj", "nazev": "Městský zpravodaj (PDF)", "url": "https://www.muml.cz", "druh": "urad", "plni": ["zpravodaj", "historie", "lide"] },
-    { "id": "hlidac", "nazev": "Hlídač státu — registr smluv", "url": "https://api.hlidacstatu.cz", "druh": "stat", "plni": ["penize", "retez", "propojeni"] },
-    { "id": "ares", "nazev": "ARES — rejstřík subjektů", "url": "https://ares.gov.cz", "druh": "stat", "plni": ["firmy", "propojeni"] },
-    { "id": "monitor", "nazev": "Monitor státní pokladny", "url": "https://monitor.statnipokladna.gov.cz", "druh": "stat", "plni": ["penize", "statistika"] },
-    { "id": "volby", "nazev": "Otevřená data voleb", "url": "https://volby.gov.cz/opendata", "druh": "stat", "plni": ["volby", "lide"] },
-    { "id": "csu", "nazev": "ČSÚ — časové řady o obci", "url": "https://vdb.czso.cz", "druh": "stat", "plni": ["statistika"] },
-    { "id": "ruian", "nazev": "RÚIAN a geodata", "url": "https://vdp.cuzk.cz", "druh": "stat", "plni": ["mapa", "volby"] },
-    { "id": "pamatky", "nazev": "Památkový katalog", "url": "https://pamatkovykatalog.cz", "druh": "stat", "plni": ["mapa", "historie"] },
-    { "id": "media", "nazev": "Mediální monitoring", "url": null, "druh": "media", "plni": ["vydani"] },
-    { "id": "zaznamy", "nazev": "Záznamy zastupitelstva", "url": null, "druh": "media", "plni": ["hlasovani"] }
+    {
+      "id": "usneseni-portal",
+      "nazev": "Portál usnesení města",
+      "url": "https://usneseni.muml.cz",
+      "druh": "urad",
+      "plni": [
+        "usneseni",
+        "hlasovani",
+        "retez"
+      ]
+    },
+    {
+      "id": "muml",
+      "nazev": "Web města a úřední deska",
+      "url": "https://www.muml.cz",
+      "druh": "urad",
+      "plni": [
+        "vydani",
+        "lide",
+        "mapa",
+        "komise",
+        "informace"
+      ]
+    },
+    {
+      "id": "zpravodaj",
+      "nazev": "Městský zpravodaj (PDF)",
+      "url": "https://www.muml.cz",
+      "druh": "urad",
+      "plni": [
+        "zpravodaj",
+        "historie",
+        "lide"
+      ]
+    },
+    {
+      "id": "hlidac",
+      "nazev": "Hlídač státu — registr smluv",
+      "url": "https://api.hlidacstatu.cz",
+      "druh": "stat",
+      "plni": [
+        "penize",
+        "retez",
+        "propojeni"
+      ]
+    },
+    {
+      "id": "ares",
+      "nazev": "ARES — rejstřík subjektů",
+      "url": "https://ares.gov.cz",
+      "druh": "stat",
+      "plni": [
+        "firmy",
+        "propojeni"
+      ]
+    },
+    {
+      "id": "monitor",
+      "nazev": "Monitor státní pokladny",
+      "url": "https://monitor.statnipokladna.gov.cz",
+      "druh": "stat",
+      "plni": [
+        "penize",
+        "statistika"
+      ]
+    },
+    {
+      "id": "volby",
+      "nazev": "Otevřená data voleb",
+      "url": "https://volby.gov.cz/opendata",
+      "druh": "stat",
+      "plni": [
+        "volby",
+        "lide"
+      ]
+    },
+    {
+      "id": "csu",
+      "nazev": "ČSÚ — časové řady o obci",
+      "url": "https://vdb.czso.cz",
+      "druh": "stat",
+      "plni": [
+        "statistika"
+      ]
+    },
+    {
+      "id": "ruian",
+      "nazev": "RÚIAN a geodata",
+      "url": "https://vdp.cuzk.cz",
+      "druh": "stat",
+      "plni": [
+        "mapa",
+        "volby"
+      ]
+    },
+    {
+      "id": "pamatky",
+      "nazev": "Památkový katalog",
+      "url": "https://pamatkovykatalog.cz",
+      "druh": "stat",
+      "plni": [
+        "mapa",
+        "historie"
+      ]
+    },
+    {
+      "id": "media",
+      "nazev": "Mediální monitoring",
+      "url": null,
+      "druh": "media",
+      "plni": [
+        "vydani"
+      ]
+    },
+    {
+      "id": "zaznamy",
+      "nazev": "Záznamy zastupitelstva",
+      "url": null,
+      "druh": "media",
+      "plni": [
+        "hlasovani"
+      ]
+    }
   ],
-
   "model": {
     "_comment": "Datový model repozitáře. Není to databáze — data jsou JSON soubory v data/. Vztahy nedrží cizí klíč, drží je hodnota (IČO, slug osoby, číslo bodu), a některé jsou proto ODHAD, ne vazba. To je u vztahu vyznačené polem `jistota`.",
     "entity": [
@@ -24,67 +133,172 @@
         "nazev": "Jednání",
         "soubor": "data/usneseni/{organ}/{rok}/*.json",
         "klic": "organ + číslo jednání",
-        "pole": ["organ", "cj", "datum", "body[]"]
+        "pole": [
+          "organ",
+          "cj",
+          "datum",
+          "body[]"
+        ]
       },
       {
         "id": "usneseni",
         "nazev": "Bod usnesení",
         "soubor": "data/usneseni/{organ}/{rok}/*.json",
         "klic": "organ + cj + bod",
-        "pole": ["bod", "nazev", "cislo_usneseni", "castka_czk", "tagy[]", "url"]
+        "pole": [
+          "bod",
+          "nazev",
+          "cislo_usneseni",
+          "castka_czk",
+          "tagy[]",
+          "url"
+        ]
       },
       {
         "id": "hlasovani",
         "nazev": "Hlasování",
         "soubor": "data/hlasovani/{organ}/{rok}/*.json",
         "klic": "organ + cj + bod",
-        "pole": ["bod", "vysledek", "pro", "proti", "zdrzel", "jmenovite[]"]
+        "pole": [
+          "bod",
+          "vysledek",
+          "pro",
+          "proti",
+          "zdrzel",
+          "jmenovite[]"
+        ]
       },
       {
         "id": "osoba",
         "nazev": "Osoba",
         "soubor": "data/lide/osobnosti.json",
         "klic": "slug (prijmeni-jmeno)",
-        "pole": ["id", "jmeno", "role[]", "uskupeni", "obdobi"]
+        "pole": [
+          "id",
+          "jmeno",
+          "role[]",
+          "uskupeni",
+          "obdobi"
+        ]
       },
       {
         "id": "smlouva",
         "nazev": "Smlouva",
         "soubor": "data/penize/smlouvy/{ico}.json",
         "klic": "id smlouvy v registru",
-        "pole": ["datum", "castka_czk", "predmet", "protistrana_ico", "smer", "smer_jistota"]
+        "pole": [
+          "datum",
+          "castka_czk",
+          "predmet",
+          "protistrana_ico",
+          "smer",
+          "smer_jistota"
+        ]
       },
       {
         "id": "subjekt",
         "nazev": "Firma / subjekt",
         "soubor": "data/firmy/subjekty.json",
         "klic": "IČO",
-        "pole": ["ico", "nazev", "pravni_forma", "sidlo", "vznik"]
+        "pole": [
+          "ico",
+          "nazev",
+          "pravni_forma",
+          "sidlo",
+          "vznik"
+        ]
       },
       {
         "id": "retez",
         "nazev": "Řetěz usnesení → smlouva",
         "soubor": "data/retez/retezy.json",
         "klic": "id usnesení + id smlouvy",
-        "pole": ["jistota", "skore", "signaly[]", "odstup_dni"]
+        "pole": [
+          "jistota",
+          "skore",
+          "signaly[]",
+          "odstup_dni"
+        ]
       },
       {
         "id": "angazma",
         "nazev": "Angažmá osoby ve firmě",
         "soubor": "data/propojeni/osoby_firmy.json",
         "klic": "osoba_id + IČO",
-        "pole": ["vztah_k_mestu", "funkce", "od", "do", "overeni.stav"]
+        "pole": [
+          "vztah_k_mestu",
+          "funkce",
+          "od",
+          "do",
+          "overeni.stav"
+        ]
       }
     ],
     "vztahy": [
-      { "od": "jednani", "do": "usneseni", "popis": "obsahuje body", "kardinalita": "1:N", "jistota": "jista", "pres": "stejný soubor" },
-      { "od": "usneseni", "do": "hlasovani", "popis": "o bodu se hlasovalo", "kardinalita": "1:1", "jistota": "jista", "pres": "organ + cj + bod" },
-      { "od": "hlasovani", "do": "osoba", "popis": "jmenovité hlasy", "kardinalita": "N:M", "jistota": "jista", "pres": "osoba_id" },
-      { "od": "usneseni", "do": "retez", "popis": "bod vstupuje do řetězu", "kardinalita": "1:N", "jistota": "jista", "pres": "id bodu" },
-      { "od": "retez", "do": "smlouva", "popis": "bod se nejspíš týká této smlouvy", "kardinalita": "N:M", "jistota": "odhad", "pres": "IČO, název, částka, čas" },
-      { "od": "smlouva", "do": "subjekt", "popis": "protistrana smlouvy", "kardinalita": "N:1", "jistota": "jista", "pres": "IČO" },
-      { "od": "osoba", "do": "angazma", "popis": "osoba je ve firmě", "kardinalita": "1:N", "jistota": "overovana", "pres": "jméno → Hlídač → IČO" },
-      { "od": "angazma", "do": "subjekt", "popis": "angažmá se týká firmy", "kardinalita": "N:1", "jistota": "jista", "pres": "IČO" }
+      {
+        "od": "jednani",
+        "do": "usneseni",
+        "popis": "obsahuje body",
+        "kardinalita": "1:N",
+        "jistota": "jista",
+        "pres": "stejný soubor"
+      },
+      {
+        "od": "usneseni",
+        "do": "hlasovani",
+        "popis": "o bodu se hlasovalo",
+        "kardinalita": "1:1",
+        "jistota": "jista",
+        "pres": "organ + cj + bod"
+      },
+      {
+        "od": "hlasovani",
+        "do": "osoba",
+        "popis": "jmenovité hlasy",
+        "kardinalita": "N:M",
+        "jistota": "jista",
+        "pres": "osoba_id"
+      },
+      {
+        "od": "usneseni",
+        "do": "retez",
+        "popis": "bod vstupuje do řetězu",
+        "kardinalita": "1:N",
+        "jistota": "jista",
+        "pres": "id bodu"
+      },
+      {
+        "od": "retez",
+        "do": "smlouva",
+        "popis": "bod se nejspíš týká této smlouvy",
+        "kardinalita": "N:M",
+        "jistota": "odhad",
+        "pres": "IČO, název, částka, čas"
+      },
+      {
+        "od": "smlouva",
+        "do": "subjekt",
+        "popis": "protistrana smlouvy",
+        "kardinalita": "N:1",
+        "jistota": "jista",
+        "pres": "IČO"
+      },
+      {
+        "od": "osoba",
+        "do": "angazma",
+        "popis": "osoba je ve firmě",
+        "kardinalita": "1:N",
+        "jistota": "overovana",
+        "pres": "jméno → Hlídač → IČO"
+      },
+      {
+        "od": "angazma",
+        "do": "subjekt",
+        "popis": "angažmá se týká firmy",
+        "kardinalita": "N:1",
+        "jistota": "jista",
+        "pres": "IČO"
+      }
     ]
   }
 }

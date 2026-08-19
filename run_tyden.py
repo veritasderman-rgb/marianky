@@ -77,6 +77,7 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     # napíše, že se je nepodařilo spočítat.
     ("pipeline.komise_prehled", "Rozbor zápisů z komisí",       False),
     ("pipeline.informace106_prehled", "Rozbor žádostí o informace", False),
+    ("pipeline.retez_komise",   "Řetěz komise → rada",          False),
     ("pipeline.diagramy",       "Schémata projektu a města",    False),
 ]
 

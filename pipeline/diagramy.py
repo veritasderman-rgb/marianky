@@ -321,6 +321,98 @@ def diagram_retez() -> dict:
     }
 
 
+def diagram_komise_rada() -> dict:
+    """Od doporučení komise k usnesení rady.
+
+    Trychtýř, který schválně končí uzlem „nenašli jsme nic". Bez něj by
+    diagram tvrdil, že komise navrhne a rada rozhodne — přitom u většiny
+    doporučení pozdější usnesení nenajdeme a NEVÍME, jestli žádné není,
+    nebo ho jen neumíme dohledat.
+    """
+    r = nacti("retez/komise_rada.json")
+    if not r:
+        return _chybi("komise-rada", "Od doporučení komise k usnesení rady",
+                      "Návaznost zatím není spočítaná.", "data/retez/komise_rada.json")
+    k = nacti("komise/prehled.json") or {}
+
+    st = r.get("statistika") or {}
+    souhrn = k.get("souhrn") or {}
+    jistoty = st.get("dle_jistoty") or {}
+    projednani = r.get("projednani") or []
+    usnesenim = sum(1 for p in projednani if p.get("zpusob") == "usneseni")
+    na_programu = len(projednani) - usnesenim
+    odhad_silny = (_cely(jistoty.get("vysoka")) or 0) + (_cely(jistoty.get("stredni")) or 0)
+
+    navrhu = _cely(st.get("navrhu_pro_radu"))
+    s_odhadem = _cely(st.get("doporuceni_s_odhadem"))
+
+    return {
+        "id": "komise-rada",
+        "nazev": "Od doporučení komise k usnesení rady",
+        "typ": "tok",
+        "popis": (
+            f"Komise poslaly radě {_mezerou(navrhu)} doporučení. Pozdější usnesení "
+            f"o téže věci se podařilo najít u {_mezerou(s_odhadem)} z nich — a i to "
+            "je odhad, ne údaj ze zdroje."
+        ),
+        "vrstvy": [
+            {"id": "zapisy", "nazev": "Zápisy z komisí",
+             "popis": "Dokumenty, které město zveřejnilo v rejstříku zápisů.",
+             "uzly": [
+                 {"id": "z-rozebrane", "nazev": "Rozebraných zápisů",
+                  "hodnota": _cely(souhrn.get("rozebranych")), "duraz": "povinny"},
+                 {"id": "z-nerozebrane", "nazev": "Nešly přečíst",
+                  "hodnota": _cely(souhrn.get("nerozebranych")), "duraz": "varovani"},
+             ]},
+            {"id": "navrhy", "nazev": "Co komise navrhly",
+             "popis": "Věty, kterými se komise obrací na radu: doporučuje, žádá, ukládá.",
+             "uzly": [
+                 {"id": "n-rade", "nazev": "Doporučení pro radu",
+                  "hodnota": navrhu, "duraz": "povinny"},
+                 # Jen návrhy směřující na radu, které komise zamítla. Celkový
+                 # počet nepřijatých usnesení v zápisech je vyšší (patří tam
+                 # i body, které radu o nic nežádaly) a vedle „doporučení pro
+                 # radu" by se četl jako jejich část.
+                 {"id": "n-neprijate", "nazev": "Doporučení, která komise nepřijala",
+                  "hodnota": _cely(st.get("neprijatych_navrhu")), "duraz": "nepovinny"},
+             ]},
+            {"id": "navaznost", "nazev": "Jak jistá je návaznost",
+             "popis": ("Doložené = usnesení samo jmenuje komisi a datum jejího jednání. "
+                       "Odhad = shoduje se jen téma."),
+             "uzly": [
+                 {"id": "d-usnesenim", "nazev": "Usnesení o zápisu komise",
+                  "hodnota": usnesenim or None, "duraz": "povinny"},
+                 {"id": "d-program", "nazev": "Zápis jen na programu jednání",
+                  "hodnota": na_programu or None, "duraz": "nepovinny"},
+                 {"id": "o-silny", "nazev": "Odhad, vysoká a střední jistota",
+                  "hodnota": odhad_silny or None, "duraz": "nepovinny"},
+                 {"id": "o-nizky", "nazev": "Odhad, nízká jistota",
+                  "hodnota": _cely(jistoty.get("nizka")), "duraz": "slaby"},
+             ]},
+            {"id": "nenalezeno", "nazev": "Co jsme nenašli",
+             "popis": "Doporučení, ke kterému se žádné usnesení nepodařilo dohledat.",
+             "uzly": [
+                 {"id": "bez-odezvy", "nazev": "Doporučení bez nalezeného usnesení",
+                  "hodnota": _cely(st.get("bez_odezvy")), "duraz": "varovani"},
+             ]},
+        ],
+        "metodika": [
+            "Zápis komise a usnesení rady nemají žádné společné číslo. Část spojení "
+            "jde přesto doložit: usnesení samo říká „bere na vědomí zápis z jednání "
+            "Komise kultury ze dne 13. 03. 2023“ a ten zápis v datech je.",
+            "Zbytek je odhad ze shody neobvyklých slov, částky a času. Nízká jistota "
+            "znamená, že sedí jen téma — je to vodítko, ne doklad.",
+            "„Doporučení bez nalezeného usnesení“ NENÍ seznam přehlížených návrhů. "
+            "Rozhodnutí může být zapsané jinými slovy, může patřit stavebnímu úřadu "
+            "místo radě, nebo ho tohle párování nenašlo.",
+            "Diagram netvrdí kauzalitu. Že zápis ležel radě na stole, neznamená, že "
+            "se jím řídila.",
+        ],
+        "zdroj": "data/retez/komise_rada.json, data/komise/prehled.json",
+        "stav": "ok",
+    }
+
+
 # ══════════════════════  4. Osoba ↔ firma ↔ peníze  ═══════════════════════
 
 # Kolik firem se u jedné osoby vypíše, než se zbytek shrne do jednoho uzlu.
@@ -712,6 +804,7 @@ STAVITELE = [
     ("vedeni", diagram_vedeni),
     ("beh", diagram_beh),
     ("retez", diagram_retez),
+    ("komise-rada", diagram_komise_rada),
     ("propojeni", diagram_propojeni),
     ("zdroje", diagram_zdroje),
     ("tagy", diagram_tagy),
@@ -750,7 +843,7 @@ def main() -> None:
                 "se k nim nic z cizího serveru."
             ),
             "zjistene_vs_tvrzene": (
-                "Šest diagramů je celé z dat. Mapa zdrojů a datový model stojí na "
+                "Sedm diagramů je celé z dat. Mapa zdrojů a datový model stojí na "
                 "config/diagramy.json, protože to je znalost o projektu, ne údaj "
                 "o městě. Každý diagram to má napsané v poli `zdroj`."
             ),

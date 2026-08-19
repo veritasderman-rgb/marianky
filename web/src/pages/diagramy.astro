@@ -15,7 +15,7 @@ import { nactiDiagram, nactiRejstrikDiagramu, type Diagram } from '../lib/diagra
 const zRejstriku = nactiRejstrikDiagramu();
 /* Pořadí je od města k projektu: nejdřív jak je poskládané město, pak jak
    se to sbírá. Čtenář přišel kvůli městu, ne kvůli našemu běhu. */
-const PORADI = ['holding', 'vedeni', 'propojeni', 'retez', 'tagy', 'zdroje', 'beh', 'model'];
+const PORADI = ['holding', 'vedeni', 'propojeni', 'retez', 'komise-rada', 'tagy', 'zdroje', 'beh', 'model'];
 
 const diagramy: Diagram[] = PORADI.map((id) => nactiDiagram(id).data).filter(
   (d): d is Diagram => Boolean(d),
