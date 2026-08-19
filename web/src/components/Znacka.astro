@@ -2,16 +2,31 @@
 /**
  * Značka webu — kolonáda.
  *
- * Pět sloupů pod jedním obloukem arkády; čte se zároveň jako sloupce grafu.
- * Výšky drží poměr smluv města v registru za roky 2022–2026
- * (634, 608, 786, 792, 445). Je to značka, ne graf — poměr pochází z dat,
- * ale zůstává pevný, aby se logo neměnilo každý týden.
+ * Oblouk arkády s kupolí, dva krajní pilíře a mezi nimi pět sloupů, které
+ * se čtou zároveň jako sloupce grafu. VÝŠKY JSOU Z DAT: drží poměr smluv
+ * města v registru za roky 2022–2026 (634, 608, 786, 792, 445). Je to
+ * značka, ne graf — poměr pochází z dat, ale zůstává pevný, aby se logo
+ * neměnilo každý týden.
  *
- * Kreslí se přes `currentColor`, takže si bere barvu z místa, kde stojí,
- * a funguje ve všech třech paletách i v tmavém motivu bez druhé varianty.
+ * ZLATÁ JE RYTMUS, NE ÚDAJ. Druhý a čtvrtý sloup mají jinou barvu proto,
+ * aby se pětice nečetla jako jeden blok. Nic to neznamená a nesmí se to
+ * tak vykládat — význam nesou výšky.
+ *
+ * Konstrukce (viewBox 64 × 64):
+ *   základna y 56, sloupy široké 5.2 s krokem 6.8, nejvyšší 26 jednotek
+ *   oblouk: střed (32, 30), poloměr 22.6 → vrchol y 7.4
+ *   kupole a hrot nad vrcholem, pilíře pod patami oblouku
+ *
+ * Barvy: konstrukce jede přes `currentColor`, takže si bere barvu z místa,
+ * kde značka stojí, a funguje ve všech paletách i v tmavém motivu. Zlatá
+ * má fallback na `currentColor` — kdyby token chyběl, značka zůstane celá,
+ * jen jednobarevná.
  *
  * Tentýž tvar má `public/favicon.svg`, jen s natvrdo zapsanými barvami —
  * favicon nemá odkud barvu zdědit. Když se změní jedno, musí se i druhé.
+ *
+ * DRŽET ČITELNOST V 16 px. Hlavice sloupů jsou schválně tlusté (1.8
+ * jednotky); cokoliv jemnějšího se v té velikosti slije do šedi.
  *
  * Pro čtečku je značka `aria-hidden`: hned vedle ní stojí jméno webu jako
  * text, takže by se přečetla dvakrát.
@@ -23,6 +38,18 @@ export interface Props {
 }
 
 const { velikost = '1.55em', trida } = Astro.props;
+
+/* Pět sloupů: x, y (horní hrana), výška. Spočítané z poměru smluv
+   2022–2026; `zlaty` je jen rytmus, viz komentář výše. */
+const SLOUPY = [
+  { x: 15.8, y: 35.2, h: 20.8, zlaty: false },
+  { x: 22.6, y: 36.0, h: 20.0, zlaty: true },
+  { x: 29.4, y: 30.2, h: 25.8, zlaty: false },
+  { x: 36.2, y: 30.0, h: 26.0, zlaty: true },
+  { x: 43.0, y: 41.4, h: 14.6, zlaty: false },
+];
+const SIRKA = 5.2;
+const HLAVICE = 1.4; // přesah hlavice na každou stranu
 ---
 
 <svg
@@ -34,17 +61,48 @@ const { velikost = '1.55em', trida } = Astro.props;
   focusable="false"
   style="display:block;flex:none"
 >
+  {/* Kupole s makovicí NAD vrcholem oblouku. Vnější hrana oblouku je
+      v y 5.85 (30 − 22.6 − 3.1/2), takže kupole musí začít nad ní —
+      první verze ji měla v y 8.4 a schovala se celá za oblouk. */}
+  <circle cx="32" cy="1.15" r="0.95" fill="currentColor" />
+  <path d="M29.5 4.2a2.5 2.5 0 0 1 5 0z" fill="currentColor" />
+  <rect x="28.4" y="4.1" width="7.2" height="1.8" rx="0.7" fill="currentColor" />
+
+  {/* Oblouk arkády — vnější pás a tenká archivolta uvnitř */}
   <path
-    d="M12.6 32.8 Q32 6 55.8 38.5"
+    d="M9.4 30A22.6 22.6 0 0 1 54.6 30"
     fill="none"
     stroke="currentColor"
-    stroke-width="2.8"
+    stroke-width="3.1"
     stroke-linecap="round"
   />
-  <rect x="9.4" y="32.8" width="6.4" height="19.2" rx="1" fill="currentColor" />
-  <rect x="20.2" y="33.6" width="6.4" height="18.4" rx="1" fill="currentColor" />
-  <rect x="31.0" y="28.2" width="6.4" height="23.8" rx="1" fill="currentColor" />
-  <rect x="41.8" y="28.0" width="6.4" height="24.0" rx="1" fill="currentColor" />
-  <rect x="52.6" y="38.5" width="6.4" height="13.5" rx="1" fill="currentColor" />
-  <rect x="7.9" y="52.0" width="52.6" height="3.2" rx="1.6" fill="currentColor" />
+  <path
+    d="M14.2 30A17.8 17.8 0 0 1 49.8 30"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.1"
+    stroke-linecap="round"
+  />
+
+  {/* Krajní pilíře: hlavice, dřík, patka */}
+  <rect x="5.4" y="28.6" width="8.0" height="1.9" rx="0.8" fill="currentColor" />
+  <rect x="6.8" y="30.5" width="5.2" height="23.0" fill="currentColor" />
+  <rect x="5.4" y="53.5" width="8.0" height="1.9" rx="0.8" fill="currentColor" />
+  <rect x="50.6" y="28.6" width="8.0" height="1.9" rx="0.8" fill="currentColor" />
+  <rect x="52.0" y="30.5" width="5.2" height="23.0" fill="currentColor" />
+  <rect x="50.6" y="53.5" width="8.0" height="1.9" rx="0.8" fill="currentColor" />
+
+  {/* Pět sloupů = sloupce grafu. Hlavice je součást sloupu, ne ozdoba:
+      bez ní by se dřík ztratil proti pilířům. */}
+  {
+    SLOUPY.map((s) => (
+      <g fill={s.zlaty ? 'var(--zlata, currentColor)' : 'currentColor'}>
+        <rect x={s.x - HLAVICE} y={s.y} width={SIRKA + HLAVICE * 2} height="1.8" rx="0.7" />
+        <rect x={s.x} y={s.y + 1.8} width={SIRKA} height={s.h - 1.8} />
+      </g>
+    ))
+  }
+
+  {/* Základna, na které celá kolonáda stojí */}
+  <rect x="3.6" y="56.0" width="56.8" height="3.4" rx="1.7" fill="currentColor" />
 </svg>

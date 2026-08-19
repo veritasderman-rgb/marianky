@@ -2,35 +2,73 @@
   <!--
     Značka „Naše Mariánky v přehledech" — kolonáda.
 
-    Pět sloupů pod jedním obloukem arkády. Čte se dvojím způsobem naráz:
-    sloupy kolonády a sloupce grafu. Výšky nejsou vymyšlené — drží poměr
-    smluv města v registru za roky 2022–2026 (634, 608, 786, 792, 445).
-    Je to značka, ne graf: poměr je z dat, ale zůstává pevný, aby se
-    logo neměnilo každý týden.
+    Oblouk arkády s kupolí, dva krajní pilíře a mezi nimi pět sloupů, které
+    se čtou zároveň jako sloupce grafu. VÝŠKY JSOU Z DAT: drží poměr smluv
+    města v registru za roky 2022–2026 (634, 608, 786, 792, 445). Je to
+    značka, ne graf — poměr je z dat, ale zůstává pevný, aby se logo
+    neměnilo každý týden.
+
+    ZLATÁ JE RYTMUS, NE ÚDAJ. Druhý a čtvrtý sloup mají jinou barvu proto,
+    aby se pětice nečetla jako jeden blok. Význam nesou výšky.
 
     Favicon nemůže dědit barvu ze stránky, proto má vlastní sadu a přepíná
-    ji podle prefers-color-scheme. Odstíny jsou tytéž tokeny jako na webu:
-    --accent #1f5540 na papíru #f5f7f4, v tmavém #6fc79c na #0e1210.
+    ji podle prefers-color-scheme. Odstíny jsou tytéž tokeny jako na webu
+    (accent a zlatá): #1a4e8f a #e9a900 na papíru #f4f7fb, v tmavém
+    #7fb0e8 a #b98c17 na #10151c.
+
+    POZOR: v XML komentáři nesmí být dvě spojovací čárky za sebou. Název
+    tokenu se sem proto nepíše s prefixem. Předchozí verze ho tam měla
+    a celý favicon byl kvůli tomu nevalidní XML — prohlížeč ho nevykreslil
+    vůbec a v panelu byla prázdná ikona.
 
     Podoba pro web (dědí barvu přes currentColor) je v src/components/Znacka.astro.
     Když se změní jedno, musí se změnit druhé.
   -->
   <style>
-    .p { fill: #f5f7f4 }
-    .i { fill: #1f5540 }
-    .o { stroke: #1f5540 }
+    .p { fill: #f4f7fb }
+    .i { fill: #1a4e8f }
+    .z { fill: #e9a900 }
+    .o { stroke: #1a4e8f }
     @media (prefers-color-scheme: dark) {
-      .p { fill: #0e1210 }
-      .i { fill: #6fc79c }
-      .o { stroke: #6fc79c }
+      .p { fill: #10151c }
+      .i { fill: #7fb0e8 }
+      .z { fill: #b98c17 }
+      .o { stroke: #7fb0e8 }
     }
   </style>
   <rect class="p" width="64" height="64" rx="12"/>
-  <path class="o" d="M12.6 32.8 Q32 6 55.8 38.5" fill="none" stroke-width="2.8" stroke-linecap="round"/>
-  <rect class="i" x="9.4" y="32.8" width="6.4" height="19.2" rx="1"/>
-  <rect class="i" x="20.2" y="33.6" width="6.4" height="18.4" rx="1"/>
-  <rect class="i" x="31.0" y="28.2" width="6.4" height="23.8" rx="1"/>
-  <rect class="i" x="41.8" y="28.0" width="6.4" height="24.0" rx="1"/>
-  <rect class="i" x="52.6" y="38.5" width="6.4" height="13.5" rx="1"/>
-  <rect class="i" x="7.9" y="52.0" width="52.6" height="3.2" rx="1.6"/>
+
+  <!-- Kresba je shodná se Znacka.astro do posledního čísla; dlaždice ji
+       jen zmenší a vycentruje, aby měla okraj. Souřadnice se tu nesmí
+       přepisovat, jinak se obě podoby rozejdou. Střed kresby je
+       (32, 29.8), ne (32, 32) — nahoře je kupole, dole širší základna. -->
+  <g transform="translate(32 32) scale(0.88) translate(-32 -29.8)">
+
+  <circle class="i" cx="32" cy="1.15" r="0.95"/>
+  <path class="i" d="M29.5 4.2a2.5 2.5 0 0 1 5 0z"/>
+  <rect class="i" x="28.4" y="4.1" width="7.2" height="1.8" rx="0.7"/>
+
+  <path class="o" d="M9.4 30A22.6 22.6 0 0 1 54.6 30" fill="none" stroke-width="3.1" stroke-linecap="round"/>
+  <path class="o" d="M14.2 30A17.8 17.8 0 0 1 49.8 30" fill="none" stroke-width="1.1" stroke-linecap="round"/>
+
+  <rect class="i" x="5.4" y="28.6" width="8.0" height="1.9" rx="0.8"/>
+  <rect class="i" x="6.8" y="30.5" width="5.2" height="23.0"/>
+  <rect class="i" x="5.4" y="53.5" width="8.0" height="1.9" rx="0.8"/>
+  <rect class="i" x="50.6" y="28.6" width="8.0" height="1.9" rx="0.8"/>
+  <rect class="i" x="52.0" y="30.5" width="5.2" height="23.0"/>
+  <rect class="i" x="50.6" y="53.5" width="8.0" height="1.9" rx="0.8"/>
+
+  <rect class="i" x="14.4" y="35.2" width="8.0" height="1.8" rx="0.7"/>
+  <rect class="i" x="15.8" y="37.0" width="5.2" height="19.0"/>
+  <rect class="z" x="21.2" y="36.0" width="8.0" height="1.8" rx="0.7"/>
+  <rect class="z" x="22.6" y="37.8" width="5.2" height="18.2"/>
+  <rect class="i" x="28.0" y="30.2" width="8.0" height="1.8" rx="0.7"/>
+  <rect class="i" x="29.4" y="32.0" width="5.2" height="24.0"/>
+  <rect class="z" x="34.8" y="30.0" width="8.0" height="1.8" rx="0.7"/>
+  <rect class="z" x="36.2" y="31.8" width="5.2" height="24.2"/>
+  <rect class="i" x="41.6" y="41.4" width="8.0" height="1.8" rx="0.7"/>
+  <rect class="i" x="43.0" y="43.2" width="5.2" height="12.8"/>
+
+  <rect class="i" x="3.6" y="56.0" width="56.8" height="3.4" rx="1.7"/>
+  </g>
 </svg>
