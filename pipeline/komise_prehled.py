@@ -489,6 +489,48 @@ def rozeber(zapis: dict, rejstrik_firem: dict[str, dict] | None = None) -> dict:
     }
 
 
+# ── párování komisí mezi dvěma zdroji ───────────────────────────────────
+# Rozcestník samosprávy a rejstřík zápisů píšou tytéž komise jinak:
+#   „Komise lázeňství, CR a UNESCO"  ×  „Komise lázeňství, cestovního ruchu a UNESCO"
+# Spojení přes přesnou shodu názvu proto u té nejaktivnější komise tvrdilo
+# „žádný zápis nezveřejněn", ačkoliv jich má 87. Páruje se na významových
+# slovech; zkratky („CR") se do porovnání nepočítají, protože v druhém
+# zdroji stojí rozepsané.
+_BEZ_VYZNAMU = {"komise", "komisi", "vybor", "vyboru", "mesta", "a", "pro", "ve", "na"}
+
+
+def _klicova_slova(nazev: str) -> set[str]:
+    return {
+        w for w in re.sub(r"[^a-z0-9]+", " ", _bez_diakritiky(nazev)).split()
+        if len(w) >= 4 and w not in _BEZ_VYZNAMU
+    }
+
+
+def _sparuj_organy(organy: list[dict], komise_v_zapisech: set[str]) -> dict[str, str]:
+    """Název komise ze zápisů → název orgánu v rozcestníku samosprávy.
+
+    Páruje se jen tehdy, když je vítěz jednoznačný. Dvojznačnou shodu je
+    lepší nechat nespárovanou a přiznat to než ji přiřadit napůl náhodně —
+    stejná zásada jako u řetězů.
+    """
+    kandidati = [(o.get("nazev") or "", _klicova_slova(o.get("nazev") or "")) for o in organy]
+    parovani: dict[str, str] = {}
+    for komise in komise_v_zapisech:
+        slova = _klicova_slova(komise)
+        if not slova:
+            continue
+        skore = sorted(
+            ((len(slova & k), nazev) for nazev, k in kandidati if slova & k),
+            reverse=True,
+        )
+        if not skore:
+            continue
+        if len(skore) > 1 and skore[0][0] == skore[1][0]:
+            continue  # dvě stejně dobré shody — hádat se tu nemá co
+        parovani[komise] = skore[0][1]
+    return parovani
+
+
 def _firmy_podle_nazvu() -> dict[str, dict]:
     """Rejstřík firem ve městě podle normalizovaného názvu."""
     s = nacti("firmy/subjekty.json") or {}
@@ -557,6 +599,20 @@ def main() -> None:
                           and u.get("prijato") is not False)
         neprijato += sum(1 for u in r["usneseni"] if u.get("prijato") is False)
 
+    # Zápisy přiřazené k orgánům z rozcestníku samosprávy. Web tím plní
+    # sloupec „Zápisů" v tabulce komisí; bez párování by u komise, kterou
+    # zdroje pojmenovávají různě, stálo „žádný nezveřejněn".
+    organy = (nacti("komise/organy.json") or {}).get("organy") or []
+    parovani = _sparuj_organy(organy, {k for k in po_komisich if k != "neurčeno"})
+    po_organech: Counter[str] = Counter()
+    for komise, pocet in po_komisich.items():
+        cil = parovani.get(komise)
+        if cil:
+            po_organech[cil] += pocet
+    nesparovane = sorted(k for k in po_komisich if k != "neurčeno" and k not in parovani)
+    if nesparovane:
+        log.info("komise ze zápisů bez orgánu v rozcestníku", komise=nesparovane)
+
     nerozebrano = [r for r in rozebrane if not r["rozebrano"]]
 
     uloz("komise/prehled.json", {
@@ -599,6 +655,12 @@ def main() -> None:
                 "Organizace hosta se bere jen ze závorky v zápisu. Shoda s rejstříkem "
                 "firem je odhad — stejný název může mít firma jinde."
             ),
+            "parovani_organu": (
+                "Rozcestník samosprávy a rejstřík zápisů píšou tytéž komise jinak "
+                "(„Komise lázeňství, CR a UNESCO“ × „…cestovního ruchu…“). Páruje se "
+                "na významových slovech názvu a jen při jednoznačném vítězi; co se "
+                "nespárovalo, je v `komise_bez_organu`."
+            ),
             "uspesnost": (
                 "Zápis, ze kterého nešlo vytáhnout ani bod, ani usnesení, je v `nerozebrane`. "
                 "Bez toho by se dalo číst, že komise nic nenavrhly."
@@ -615,6 +677,12 @@ def main() -> None:
             "neprijatych_navrhu": neprijato,
             "hostu_s_organizaci": len(stopy),
             "po_komisich": dict(po_komisich.most_common()),
+            # Klíčem je název orgánu tak, jak ho uvádí rozcestník samosprávy
+            # (data/komise/organy.json) — web podle něj plní tabulku komisí.
+            "po_organech": dict(po_organech.most_common()),
+            # Komise, které mají zápisy, ale v rozcestníku se nenašly.
+            # Prázdný seznam znamená, že sedí všechny.
+            "komise_bez_organu": nesparovane,
         },
         "nerozebrane": [
             {"komise": r["komise"], "datum": r["datum"], "url": r["url"]} for r in nerozebrano
