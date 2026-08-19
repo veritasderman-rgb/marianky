@@ -230,7 +230,12 @@ Build musí běžet **s celým checkoutem** — web čte `data/` a `config/` z k
 
 Když adresář s daty není vidět, build projde, ale do logu vypíše `[mariánky] POZOR: adresář s daty neexistuje`. Bez toho by prázdný web vypadal jako stav světa, ne jako špatná konfigurace.
 
-**Neveřejnost zajišťuje neznámá adresa** — žádné heslo, žádné přihlášení. Web má `robots.txt` s `Disallow: /` a `noindex` na každé stránce, aby se adresa nedostala do vyhledávačů sama od sebe. To ale **není ochrana**: kdo adresu dostane, dostane se dovnitř, a kdyby ji někde zveřejnil, je veřejná. Ber to podle toho, komu ji dáváš.
+**Portál je veřejný** — žádné heslo, žádné přihlášení, indexace povolená. Dřív neveřejnost zajišťovala neznámá adresa (`robots.txt` s `Disallow: /` a `noindex` na každé stránce); to skončilo. Kdo hledá, jak zastupitel hlasoval nebo kam tečou peníze města, má sem dojít z vyhledávače.
+
+Z veřejnosti plynou dvě pravidla pro obsah, která jinak nutná nebyla:
+
+- **Jméno hosta komise se nezobrazuje.** V datech zůstává, na stránce ne. Stopa je o organizaci; jméno konkrétní osoby vedle částky ze smluv jejího zaměstnavatele je narážka, ne zjištění.
+- **Spojení s nízkou jistotou se nerozbaluje samo.** Zhruba každé druhé je vedle (měřeno). Vedle jistějších by se četlo jako rovnocenné zjištění a dá se vyfotit bez štítku „odhad“ — je proto pod `<details>` s naměřenou úspěšností v popisku.
 
 Do gitu jde **extrahovaný text zpravodaje, ne PDF** — originály mají 1,7 GB. Bez toho textu by web na Vercelu neměl z čeho archiv postavit.
 

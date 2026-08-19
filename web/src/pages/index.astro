@@ -4,6 +4,9 @@ import StavDat from '../components/StavDat.astro';
 import VydaniKarta from '../components/Vydani.astro';
 import Sledovat from '../components/Sledovat.astro';
 import Rozcestnik from '../components/Rozcestnik.astro';
+import Hero from '../components/Hero.astro';
+import type { PolozkaHero } from '../components/Hero.astro';
+import { nactiJson } from '../lib/data';
 import {
   nactiCiselnikTagu,
   nactiCisla,
@@ -62,6 +65,25 @@ const prehled: Radek[] = [
   { nazev: 'Zpravodaj', cesta: '/zpravodaj', pocet: (zCisel.data ?? []).length, jednotka: 'čísel', zdroj: zCisel, modul: 'A2' },
   { nazev: 'Články ze zpravodaje', cesta: '/zpravodaj', pocet: (zClanku.data ?? []).length, jednotka: 'článků', zdroj: zClanku, modul: 'A2' },
 ];
+
+/* Co všechno přehled indexuje — živě z dat. Napsat ta čísla do textu
+   ručně by znamenalo, že za měsíc lžou. */
+const zKomisi = nactiJson<{ souhrn?: { zapisu?: number } }>('komise/prehled.json', {});
+const z106 = nactiJson<{ souhrn?: { s_textem?: number } }>('informace106/prehled.json', {});
+
+const heroPolozky: PolozkaHero[] = [
+  { pocet: prehled[0].pocet, popis: 'bodů usnesení rady a zastupitelstva', cesta: '/usneseni' },
+  { pocet: prehled[1].pocet, popis: 'hlasování se jmény', cesta: '/hlasovani' },
+  { pocet: prehled[2].pocet, popis: 'protistran v registru smluv', cesta: '/penize' },
+  { pocet: zKomisi.data?.souhrn?.zapisu ?? 0, popis: 'zápisů z komisí', cesta: '/komise' },
+  { pocet: prehled[5].pocet, popis: 'článků ze zpravodaje', cesta: '/zpravodaj' },
+  { pocet: z106.data?.souhrn?.s_textem ?? 0, popis: 'odpovědí na žádosti o informace', cesta: '/informace' },
+  { pocet: prehled[3].pocet, popis: 'profilů lidí a firem', cesta: '/lide' },
+]
+  .filter((p) => p.pocet > 0)
+  /* Šest, ne sedm. Sedmá dlaždice zůstane na řádku sama a vypadá jako
+     nedopatření; šestka se rozloží na 6 × 1, 3 × 2 i 2 × 3. */
+  .slice(0, 6);
 
 function stavText(r: Radek): string {
   if (r.zdroj.stav === 'chyba') return 'zdroj se nepodařilo načíst';
@@ -159,9 +181,35 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
   titulek="Poslední vydání"
   aktivni="vydani"
   bezZnaku
+  bezNadpisu
   nadpis="Naše Mariánky v přehledech"
-  uvod="Neveřejný přehled dění ve městě. Každé tvrzení má odkaz na zdroj a čísla se propisují z dat, ne z převyprávění. Když se zdroj v daném týdnu nepodaří přečíst, je to na stránce napsané — nesmí to vypadat, že se nic nedělo."
+  uvod="Radnice zveřejňuje. Tenhle přehled to čte za vás. Usnesení, jmenovitá hlasování, smlouvy z registru, rozpočet, zápisy z komisí i odpovědi na žádosti o informace — všechno veřejné, všechno v PDF, jedno po druhém. Tady se v tom dá hledat, filtrovat a proklikat od jména k hlasování, od hlasování k usnesení a od usnesení ke smlouvě."
 >
+  <Hero polozky={heroPolozky} />
+
+  <section class="karta karta--lazenska" id="o-prehledu">
+    <h2 class="karta__nadpis">Město slíbilo portál občana. Tohle je přehled, který zatím chybí.</h2>
+    <p class="karta__podnadpis">Ze stejných veřejných dokumentů, jen čitelně.</p>
+    <p>
+      Všechno, co je tu vidět, je veřejné už dnes. Leží to ale ve dvaceti PDF na
+      pěti různých místech: usnesení na portálu rady, smlouvy v registru,
+      rozpočet v Monitoru státní pokladny, zápisy z komisí v dokumentech úřadu,
+      zpravodaj ve skenech. <strong>Kdo to má projít, projde jeden dokument a vzdá to.</strong>
+    </p>
+    <p>
+      Přehled je čte strojově a skládá dohromady — na jedno hledání místo dvaceti
+      stažených souborů. Sběr běží každý týden a co se nepodařilo přečíst, se
+      nezamlčuje: u každé sekce je vidět, kdy naposledy zdroj odpověděl.
+    </p>
+    <hr class="kolonada-predel" aria-hidden="true" />
+    <p>
+      <strong>A u každého čísla je vidět, odkud je a kde data končí.</strong> Kde se
+      zdroj nepodařilo přečíst, je to napsané. Kde je spojení jen odhad, je označené
+      jako odhad — a u řetězu komise → rada je i změřené, jak často takový odhad
+      sedí. Co nevíme, se tu netváří jako nula.
+    </p>
+  </section>
+
   {
     posledni ? (
       <>
