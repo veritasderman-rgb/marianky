@@ -226,8 +226,17 @@ zveřejníš** — filtrovat až při zobrazení je pozdě.
   „podezřelý", „klientelismus", „netransparentní" na něm nemají co dělat —
   jednak to není doložené, jednak to čtenáře odvádí od dat.
 - **Napiš viditelně, že to není web obce.** Do patičky i na stránku o zdrojích.
-- **Nesbírej nic o čtenáři.** Žádná analytika, žádná cizí písma, žádné cookies.
-  Je to jednodušší a je to jediný způsob, jak nemuset řešit lištu se souhlasem.
+- **O čtenáři sbírej co nejmíň — a co sbíráš, napiš na web.** Žádná cizí písma,
+  žádné cookies. Nulová analytika je nejjednodušší a je to jistý způsob, jak
+  nemuset řešit lištu se souhlasem.
+
+  Referenční implementace to nakonec nedodržela: měří návštěvnost přes Vercel
+  Web Analytics, protože běží na jejich hostingu zdarma. Je to bez cookies
+  a bez profilů napříč návštěvami, ale ukládá se u toho i přibližné místo
+  a verze prohlížeče. **Podstatné je, že to na webu stojí napsané** — věta
+  „o čtenáři se nic nesbírá" v patičce přežila zapnutí měření o několik hodin
+  a byla to nejhorší chyba dne. Na webu, který stojí na ověřitelnosti, se
+  nelže ani o sobě: buď neměř, nebo měření popiš dřív, než ho zapneš.
 
 ---
 
