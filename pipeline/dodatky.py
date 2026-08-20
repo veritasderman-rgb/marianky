@@ -51,9 +51,15 @@ from lib.core import DATA, Log, nacti, nacti_config, uloz  # noqa: E402
 VYSTUP = "penize/dodatky.json"
 VZOREK = "vzorek_dodatky.json"
 
-# Předmět, který o sobě říká, že je dodatek. Hranice slova je nutná —
-# bez ní matchne „dodatky zboží" a podobné nesmysly.
-JE_DODATEK = re.compile(r"\bdodat(?:ek|ku|kem|ky|kem)\b|\bdodatk\w*\s*č", re.I)
+# Předmět, který o sobě říká, že je dodatek.
+#
+# Hranice slova ZA kmenem tu být nesmí: v datech je „Dodatekč.10 ke smlouvě
+# o převzetí odpadu" (bez mezery) a `\b` po „dodatek" na „č" nesedne, takže
+# se takový záznam tvářil jako originál a jiné dodatky se na něj vázaly.
+#
+# Kmen „dodat(ek|k)" naopak nechytá „dodatečný" ani sloveso „dodat" —
+# po „dodat" tam následuje „eč", ne „ek" ani „k".
+JE_DODATEK = re.compile(r"\bdodat(?:ek|k)", re.I)
 
 # Úvodní fráze dodatku, která nenese nic o tom, čeho se týká. Odstraní se,
 # aby zbyl jen předmět původního díla („rekonstrukce zpívající fontány").
@@ -139,12 +145,24 @@ def _cislo_dodatku(predmet: str) -> int | None:
 
 
 def nacti_smlouvy() -> list[dict]:
-    """Všechny smlouvy sledovaných subjektů, obohacené o `subjekt_ico`."""
+    """Všechny smlouvy sledovaných subjektů, každá právě jednou.
+
+    DEDUPLIKACE JE NUTNÁ. Smlouva uvnitř holdingu (např. město ↔ TDS) leží
+    v souboru obou stran, takže se načte dvakrát. Ze 6 521 řádků je jen
+    6 264 různých smluv — 257 duplicit. Bez deduplikace se týž dodatek
+    dostane do řetězu dvakrát a nafoukne počty i naivní součet, tedy přesně
+    tu chybu, kterou má tenhle modul odstraňovat.
+    """
     ven: list[dict] = []
+    videne: set[str] = set()
     adr = DATA / "penize" / "smlouvy"
     for f in sorted(adr.glob("*.json")):
         d = nacti(f"penize/smlouvy/{f.name}", {}) or {}
         for s in d.get("smlouvy") or []:
+            klic = str(s.get("id"))
+            if klic in videne:
+                continue
+            videne.add(klic)
             ven.append({**s, "subjekt_ico": d.get("ico"), "subjekt": d.get("nazev")})
     return ven
 
@@ -153,12 +171,22 @@ def sparuj(smlouvy: list[dict], log: Log) -> dict:
     """Přiřadí každému dodatku původní smlouvu téže protistrany."""
     vahy = idf(smlouvy)
 
-    # Protistrana je klíč: dodatek se hledá jen mezi smlouvami téhož partnera.
-    # Bez toho by „Dodatek č. 1, změna rozsahu díla" sedl na kohokoliv.
-    podle_protistrany: dict[str, list[dict]] = defaultdict(list)
+    # Klíč je DVOJICE STRAN, ne jen protistrana. Kdyby stačila protistrana,
+    # slily by se do jednoho koše všechny smlouvy, kde je druhou stranou
+    # město — a dotace KIS 2024 by posbírala dodatky k dotaci ZSO, protože
+    # obojí je „Smlouva o poskytnutí neinvestiční dotace" od města. Přesně
+    # to se stalo v první verzi.
+    #
+    # Množina, ne dvojice: smlouva uvnitř holdingu je vedená u obou stran
+    # a směr se mezi jejich soubory obrací.
+    def _klic(s: dict) -> frozenset:
+        a = s.get("subjekt_ico") or "?"
+        b = s.get("protistrana_ico") or ("nazev:" + (s.get("protistrana") or "?"))
+        return frozenset({a, b})
+
+    podle_protistrany: dict[frozenset, list[dict]] = defaultdict(list)
     for s in smlouvy:
-        klic = s.get("protistrana_ico") or ("nazev:" + (s.get("protistrana") or "?"))
-        podle_protistrany[klic].append(s)
+        podle_protistrany[_klic(s)].append(s)
 
     retezy: list[dict] = []
     nesparovane: list[dict] = []
@@ -311,7 +339,10 @@ def main() -> int:
             "objem nadhodnocuje. Registr vazbu dodatku na původní smlouvu "
             "neuvádí (`navazanyZaznam` i `souvisejiciSmlouvy` jsou prázdné), "
             "takže se spojení POČÍTÁ z předmětu a je to odhad. Platná částka "
-            "řetězu je částka posledního dodatku."
+            "řetězu je NEJVYŠŠÍ uvedená částka v řetězu, ne poslední: dodatky "
+            "míchají přepsanou celkovou cenu s pouhým přírůstkem a umí mít "
+            "i nulu. Skutečná hodnota leží mezi `castka_platna_czk` "
+            "a `castka_naivni_soucet_czk` a z registru se přesně určit nedá."
         ),
         "souhrn": {
             "retezu": len(vysledek["retezy"]),
