@@ -10,6 +10,7 @@ Co modul umí (každá funkce zapisuje jeden soubor do ``data/mesto/``):
     novinky()       → data/mesto/novinky.json
     akce()          → data/mesto/akce.json
     zastupitele()   → data/mesto/zastupitele.json
+    rada()          → data/mesto/rada.json
     urad()          → data/mesto/urad.json
     spolecnosti()   → data/mesto/spolecnosti.json
 
@@ -971,6 +972,90 @@ def zastupitele() -> dict:
 
 
 # --------------------------------------------------------------------------
+# 4b. Rada města
+# --------------------------------------------------------------------------
+
+RADA_URL = f"{BASE}/samosprava/rada/"
+
+
+def rada() -> dict:
+    """Rada města — kdo v ní sedí a která místa jsou prázdná.
+
+    KOLIK MÍST RADA MÁ, SE Z WEBU NEVYČTE. Stránka ukazuje jen obsazená
+    místa, takže se uloží počet nalezených a nic se nedopočítává. Že je
+    rada neúplná, se pozná jinak: z historie funkcí zastupitelů, kde je
+    zaznamenaná funkce, která skončila a na stránce rady už není. Tak se
+    v srpnu 2026 pozná prázdné místo 1. místostarosty po rezignaci
+    v červnu 2026.
+
+    Radní jsou vždycky i zastupitelé (§ 99 zákona o obcích), takže `id`
+    sedí na `mesto/zastupitele.json` i na profily.
+    """
+    log = core.Log("muml-rada")
+    node = _hlavni(_stahni(RADA_URL), RADA_URL)
+    blok = node.css_first(".contacts-block.persons")
+    if blok is None:
+        raise ZdrojSelhal(f"Na {RADA_URL} chybí blok s osobami")
+
+    osoby = _osoby_bloku(blok)
+    if not osoby:
+        raise ZdrojSelhal("Seznam členů rady je prázdný")
+    if not 5 <= len(osoby) <= 11:
+        log.chyba(f"rada má mít 5 až 11 členů, načteno {len(osoby)} — ověřit ručně")
+
+    clenove = [{
+        "id": o["id"],
+        "jmeno": o["jmeno"],
+        "funkce": o["funkce"],
+        "uskupeni": _uskupeni(o["uskupeni_zdroj"] or ""),
+        "uskupeni_zdroj": o["uskupeni_zdroj"],
+        "url": o["url"],
+    } for o in osoby]
+    clenove.sort(key=lambda z: core.slug(z["id"]))
+
+    # Prázdná místa: funkce, kterou naše data znají jako ukončenou a kterou
+    # stránka rady dnes neuvádí. Nedohaduje se — bere se ze zaznamenané
+    # historie, ne z toho, co by v radě „mělo být".
+    obsazene = {(c["funkce"] or "").strip().lower() for c in clenove}
+    zast = (core.nacti("mesto/zastupitele.json", {}) or {}).get("zastupitele", [])
+    prazdna = []
+    for z in zast:
+        for f in z.get("funkce_historie") or []:
+            nazev = (f.get("nazev") or "").strip()
+            if not nazev or not f.get("do"):
+                continue
+            if nazev.lower() in obsazene:
+                continue
+            prazdna.append({
+                "funkce": nazev,
+                "uvolneno": f.get("do"),
+                "posledni_drzitel": z["id"],
+                "zdroj": f.get("zdroj"),
+            })
+    prazdna.sort(key=lambda x: (x["uvolneno"], x["funkce"]))
+
+    log.info("rada", clenu=len(clenove), prazdnych_mist=len(prazdna))
+
+    vysledek = {
+        **_hlavicka(RADA_URL),
+        "volebni_obdobi": VOLEBNI_OBDOBI,
+        "poznamka": (
+            "Web města ukazuje jen obsazená místa; kolik jich rada má mít, "
+            "z něj nevyplývá a nedopočítává se. `prazdna_mista` jsou funkce, "
+            "které naše data znají jako ukončené a stránka rady je dnes "
+            "neuvádí."
+        ),
+        "celkem": len(clenove),
+        "clenove": clenove,
+        "prazdna_mista": prazdna,
+    }
+    core.uloz("mesto/rada.json", vysledek)
+    log.pricti(len(clenove))
+    log.uzavri()
+    return vysledek
+
+
+# --------------------------------------------------------------------------
 # 5. Úřad — vedení města a vedoucí odborů
 # --------------------------------------------------------------------------
 
@@ -1243,6 +1328,7 @@ SBERACE = {
     "novinky": novinky,
     "akce": akce,
     "zastupitele": zastupitele,
+    "rada": rada,
     "urad": urad,
     "spolecnosti": spolecnosti,
 }

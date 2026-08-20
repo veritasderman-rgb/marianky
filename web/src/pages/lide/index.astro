@@ -97,6 +97,43 @@ const soucasni = (zSoucasnych.data?.zastupitele ?? []).map((z) => ({
 }));
 const obdobiSoucasne = (zSoucasnych.data?.volebni_obdobi ?? '').replace('-', '–');
 
+/* ── Rada města ───────────────────────────────────────────────────────────
+   Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva — a přesně
+   proto tu má být vidět zvlášť. Radní jsou vždycky i zastupitelé, takže se
+   výš objeví ještě jednou; tady jde o to, kdo z těch jedenadvaceti sedí
+   i v radě.
+
+   PRÁZDNÉ MÍSTO SE NEMLČÍ. Web města ukazuje jen obsazená místa, takže
+   z počtu členů se neúplnost nepozná. Sběrač ji dohledává z historie
+   funkcí a předává sem — bez toho by šestičlenná rada vypadala jako
+   normální stav. */
+interface Rada {
+  celkem?: number;
+  clenove?: { id: string; jmeno: string; funkce?: string | null; uskupeni?: string | null }[];
+  prazdna_mista?: { funkce?: string; uvolneno?: string; posledni_drzitel?: string }[];
+}
+const zRady = nactiJson<Rada>('mesto/rada.json', {});
+const radni = zRady.data?.clenove ?? [];
+const prazdnaMista = zRady.data?.prazdna_mista ?? [];
+
+/**
+ * Rok a měsíc („2026-06") na české „červnu 2026".
+ *
+ * Tvary jsou v 6. pádě, protože se to sází za předložku „v" — nominativ by
+ * dal „v červen 2026". Kdo sem sáhne, ať to nechá v 6. pádě, nebo změní
+ * i větu okolo.
+ */
+const MESICE_V = [
+  'lednu', 'únoru', 'březnu', 'dubnu', 'květnu', 'červnu',
+  'červenci', 'srpnu', 'září', 'říjnu', 'listopadu', 'prosinci',
+];
+function vMesiciRoku(s?: string): string | null {
+  const m = /^(\d{4})-(\d{2})/.exec(s ?? '');
+  if (!m) return s ?? null;
+  const i = Number(m[2]) - 1;
+  return MESICE_V[i] ? `${MESICE_V[i]} ${m[1]}` : m[1];
+}
+
 /* ── Hranice období ───────────────────────────────────────────────────────
    Období končí DNEM VOLEB, ne 1. lednem. Kdo nastoupil jako náhradník
    v lednu volebního roku, patří ještě do končícího období: Libor Haas
@@ -280,6 +317,13 @@ const schemaVedeni = nactiDiagram('vedeni').data;
     modul="scrapers/mesto.py"
   />
   <StavDat
+    stav={zRady.stav}
+    zdroj={zRady.zdroj}
+    co="Složení rady města"
+    prazdno={zRady.stav === 'ok' && radni.length === 0}
+    modul="scrapers/muml.py"
+  />
+  <StavDat
     stav={zZvolenych.stav}
     zdroj={zZvolenych.zdroj}
     co="Zvolení zastupitelé podle výsledků voleb"
@@ -315,6 +359,55 @@ const schemaVedeni = nactiDiagram('vedeni').data;
             </li>
           ))}
         </ul>
+      </section>
+    )
+  }
+
+  {
+    radni.length > 0 && (
+      <section>
+        <h2>Rada města</h2>
+        <p class="uvod">
+          Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva. Radní jsou
+          vždycky i zastupitelé, takže je najdete i v seznamu výš —{' '}
+          <strong>
+            {cislo(radni.length)} {sklonuj(radni.length, 'člen', 'členové', 'členů')}
+          </strong>
+          {soucasni.length > 0 ? ` z ${cislo(soucasni.length)}` : ''}.
+        </p>
+
+        <ul class="seznam-temat">
+          {radni.map((r) => (
+            <li class="seznam-temat__polozka">
+              <a href={`/lide/${r.id}`}>{r.jmeno}</a>
+              {r.funkce && <span class="polozka__hlava">{r.funkce}</span>}
+              {r.uskupeni && <span class="polozka__hlava">{r.uskupeni}</span>}
+            </li>
+          ))}
+        </ul>
+
+        {prazdnaMista.length > 0 && (
+          <p class="uvod">
+            {prazdnaMista.map((m) => {
+              /* Text se skládá jako řetězce v `{}`. Kdyby stál přímo v JSX,
+                 zalomení řádků ve zdrojáku se propíšou do HTML jako mezery
+                 a vyjde „2026 , do té doby Samuel Zabolotný ." */
+              const kdo = m.posledni_drzitel ? podleId.get(m.posledni_drzitel) : undefined;
+              return (
+                <>
+                  <strong>{`Místo „${m.funkce}" je neobsazené`}</strong>
+                  {m.uvolneno ? ` — uvolnilo se v ${vMesiciRoku(m.uvolneno)}` : ''}
+                  {/* Bez slovesa, aby věta seděla na muže i na ženu — rod se
+                      z dat nedá zjistit a „skončil" by u radní byla chyba. */}
+                  {kdo ? (
+                    <>{', do té doby '}<a href={`/lide/${m.posledni_drzitel}`}>{kdo.jmeno}</a></>
+                  ) : ''}
+                  {'. Rada proto jede v neúplném složení; z počtu členů na webu města by to nikdo nepoznal. '}
+                </>
+              );
+            })}
+          </p>
+        )}
       </section>
     )
   }
