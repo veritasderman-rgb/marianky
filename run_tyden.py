@@ -68,10 +68,6 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.firmy_prehled",  "Přehled firem ve městě",       False),
     ("pipeline.podnikatele_prehled", "Přehled podnikatelů",     False),
     ("pipeline.vydani",         "Sestavení týdenního vydání",   True),
-    # Znaky sekcí čtou hotové výstupy všech ostatních modulů, takže stojí
-    # úplně poslední. Nejsou povinné: web bez nich funguje, jen dlaždice
-    # rozcestníku nemají obrázek dat.
-    ("pipeline.znaky_sekci",    "Znaky sekcí pro rozcestník",   False),
     # Schémata čtou hotové výstupy ostatních modulů i seznam kroků z tohohle
     # souboru. Nejsou povinná: bez nich web funguje, jen stránka /diagramy
     # napíše, že se je nepodařilo spočítat.
@@ -79,6 +75,14 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.informace106_prehled", "Rozbor žádostí o informace", False),
     ("pipeline.retez_komise",   "Řetěz komise → rada",          False),
     ("pipeline.diagramy",       "Schémata projektu a města",    False),
+    # Znaky sekcí čtou hotové výstupy VŠECH ostatních modulů — včetně
+    # přehledu komisí, žádostí a rejstříku schémat — takže stojí úplně
+    # poslední. (Dřív běžely dřív a znaky těch sekcí byly o týden pozadu.)
+    # Jediný háček: diagram „zdroje“ si ze znaků bere popisky sekcí, čte je
+    # tedy z minulého běhu; je to jen doprovodný text uzlu a chybějící
+    # popisek diagram snese. Nejsou povinné: web bez nich funguje, jen
+    # dlaždice rozcestníku nemají obrázek dat.
+    ("pipeline.znaky_sekci",    "Znaky sekcí pro rozcestník",   False),
 ]
 
 

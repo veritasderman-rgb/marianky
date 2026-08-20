@@ -236,6 +236,98 @@ def znak_hlasovani() -> dict:
     }
 
 
+def znak_komise() -> dict:
+    """Komise a výbory — zápisy z jednání po letech."""
+    prehled = nacti("komise/prehled.json")
+    if not prehled:
+        return _chybi("komise", "data/komise/prehled.json",
+                      "Zápisy komisí zatím nejsou rozebrané.")
+
+    poc: Counter[int] = Counter()
+    for z in prehled.get("zapisy") or []:
+        r = _rok((z.get("datum") or "")[:4])
+        if r is not None:
+            poc[r] += 1
+    if not poc:
+        return _chybi("komise", "data/komise/prehled.json",
+                      "V přehledu komisí není žádný zápis s datem.")
+
+    souhrn = prehled.get("souhrn") or {}
+    doporuceni = _cely(souhrn.get("doporuceni_rade"))
+    return _sloupce_z_let(
+        poc,
+        hodnota=_mezerou(sum(poc.values())),
+        jednotka="zápisů z jednání",
+        veta=("Sloupec je jeden rok zápisů."
+              + (f" Komise z nich radě daly {_mezerou(doporuceni)} doporučení."
+                 if doporuceni else "")),
+        zdroj="data/komise/prehled.json",
+    )
+
+
+def znak_informace() -> dict:
+    """Žádosti o informace (zákon 106/1999) — rozebrané žádosti po letech."""
+    prehled = nacti("informace106/prehled.json")
+    if not prehled:
+        return _chybi("informace", "data/informace106/prehled.json",
+                      "Žádosti o informace zatím nejsou rozebrané.")
+
+    poc: Counter[int] = Counter()
+    for z in prehled.get("zadosti") or []:
+        # Jen skutečně rozebrané žádosti — přehled nese i pár stažených,
+        # ale nerozebraných, a znak by jinak hlásil víc „rozebraných",
+        # než kolik jich souhrn přiznává.
+        if not z.get("rozebrano"):
+            continue
+        r = _rok((z.get("vlozeno") or "")[:4])
+        if r is not None:
+            poc[r] += 1
+    if not poc:
+        return _chybi("informace", "data/informace106/prehled.json",
+                      "V přehledu není žádná rozebraná žádost s datem.")
+
+    v_rejstriku = _cely((prehled.get("souhrn") or {}).get("v_rejstriku"))
+    return _sloupce_z_let(
+        poc,
+        hodnota=_mezerou(sum(poc.values())),
+        jednotka="rozebraných žádostí",
+        veta=("Sloupec je jeden rok žádostí podle stovky šestky."
+              + (f" Rejstřík úřadu jich vede {_mezerou(v_rejstriku)}."
+                 if v_rejstriku else "")),
+        zdroj="data/informace106/prehled.json",
+    )
+
+
+def znak_diagramy() -> dict:
+    """Schémata — jedna tečka za diagram, skupina je typ diagramu."""
+    index = nacti("diagramy/index.json")
+    if not index:
+        return _chybi("diagramy", "data/diagramy/index.json",
+                      "Schémata zatím nejsou spočítaná.")
+
+    poc: Counter[str] = Counter()
+    for d in index.get("diagramy") or []:
+        if d.get("stav") == "ok":
+            poc[(d.get("typ") or "jiný").strip()] += 1
+    if not poc:
+        return _chybi("diagramy", "data/diagramy/index.json",
+                      "V rejstříku není žádné vykreslitelné schéma.")
+
+    skupiny = [{"nazev": n, "pocet": p}
+               for n, p in sorted(poc.items(), key=lambda kv: (-kv[1], kv[0]))]
+    celkem = sum(poc.values())
+    return {
+        "tvar": "body",
+        "skupiny": skupiny,
+        "pocet": celkem,
+        "hodnota": _mezerou(celkem),
+        "jednotka": "schémat z dat",
+        "veta": f"Jedna tečka je jedno schéma, barva je typ ({len(skupiny)} typů).",
+        "stav": "ok",
+        "zdroj": "data/diagramy/index.json",
+    }
+
+
 def znak_penize() -> dict:
     """Peníze — výdaje města po letech ze souhrnu registru smluv."""
     souhrn = nacti("penize/agregace/souhrn.json")
@@ -745,9 +837,12 @@ def main() -> None:
         ("vydani", znak_vydani),
         ("usneseni", znak_usneseni),
         ("hlasovani", znak_hlasovani),
+        ("komise", znak_komise),
+        ("informace", znak_informace),
         ("penize", znak_penize),
         ("hospodareni", znak_hospodareni),
         ("retez", znak_retez),
+        ("diagramy", znak_diagramy),
         ("lide", znak_lide),
         ("firmy", znak_firmy),
         ("propojeni", znak_propojeni),

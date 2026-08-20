@@ -430,17 +430,23 @@ export function grafHeatmapa(
   };
 
   pasma.forEach((p, pi) => {
+    // Osa smí běžet oběma směry (heatmapa má nejnovější rok vlevo) — hranice
+    // pásma se proto berou jako min/max indexů, ne jako od/do.
     const iOd = roky.indexOf(p.odRok);
     const iDo = roky.indexOf(p.doRok);
     if (iOd < 0 || iDo < 0) return;
-    const x0 = SIRKA_POPISKU + iOd * (CW + MEZERA);
-    const x1 = SIRKA_POPISKU + iDo * (CW + MEZERA) + CW;
+    const i1 = Math.min(iOd, iDo);
+    const i2 = Math.max(iOd, iDo);
+    const x0 = SIRKA_POPISKU + i1 * (CW + MEZERA);
+    const x1 = SIRKA_POPISKU + i2 * (CW + MEZERA) + CW;
     const stred = (x0 + x1) / 2;
     // Střídavý podklad jen odděluje sousední pásma; význam nese text.
     if (pi % 2 === 0) {
       casti.push(`<rect class="g-pasmo" x="${x0.toFixed(1)}" y="2" width="${(x1 - x0).toFixed(1)}" height="${VYSKA_PASEM - 6}" rx="3"/>`);
     }
-    if (pi > 0) {
+    // Předěl na levé hraně pásma — kreslí se u každého, které nezačíná
+    // na kraji mřížky, takže funguje při vzestupné i sestupné ose.
+    if (i1 > 0) {
       casti.push(
         `<line class="g-predel" x1="${(x0 - MEZERA / 2).toFixed(1)}" y1="2" x2="${(x0 - MEZERA / 2).toFixed(1)}" y2="${(H - SPODEK).toFixed(1)}"/>`,
       );

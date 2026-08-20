@@ -131,6 +131,8 @@ Skládaný sloupcový graf po letech: **6 největších dodavatelů + „Ostatn�
 ### 3.3 Časová osa protistran — kdo kdy začal a kdy přestal
 **Heatmapa.** Řádky = protistrana (řazeno od **nejnovější poslední smlouvy**, při shodě podle objemu), sloupce = rok, sytost buňky = objem (sekvenční ramp). Původně se řadilo od roku první smlouvy; tím ale nahoře stály firmy z devadesátých let a čtenář, kterého zajímá dnešek, musel k současným dodavatelům rolovat na konec.
 
+**Osa let běží od aktuálního roku doleva doprava do minulosti** (2026, 2025, …, 1994). Je to vědomá výjimka z pravidla „čas zleva doprava" (§3.7) a platí JEN pro tuhle heatmapu: graf je široký přes tři obrazovky telefonu a vidět je z něj jen levý kraj — kdyby tam stál rok 1994, čtenář by se k současnosti musel dorolovat, a přesně na současnost se ptá. Směr osy musí být napsaný v popisu grafu; časové osy a spojnicové grafy trendů zůstávají chronologické, tam by obrácení lhalo o vývoji.
+
 Nad osou let jsou **pásma volebních období** se jmény starostů. Tři pravidla:
 
 - **Význam nesou roky a jména (text), ne barva.** Střídavý podklad pásma jen odděluje sousedy; kompletní jména se stranami stojí ve větě pod grafem.
