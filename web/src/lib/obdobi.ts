@@ -88,8 +88,10 @@ function mandatyStarostu(lide: Osobnost[]): Mandat[] {
  */
 export function volebniObdobi(roky: number[], lide: Osobnost[]): PasmoObdobi[] {
   if (roky.length === 0) return [];
-  const prvni = roky[0];
-  const posledni = roky[roky.length - 1];
+  // Osa může běžet i od nejnovějšího roku doleva — rozsah se bere z min/max,
+  // ne z krajních prvků pole.
+  const prvni = Math.min(...roky);
+  const posledni = Math.max(...roky);
   const mandaty = mandatyStarostu(lide);
 
   const ven: PasmoObdobi[] = [];

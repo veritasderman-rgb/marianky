@@ -143,13 +143,19 @@ const variantySkladany: Varianta[] = maData
 
 /* ── 3.3 Heatmapa — kdo kdy začal a kdy přestal dostávat peníze ───────── */
 
+/* Osa heatmapy běží od AKTUÁLNÍHO roku doleva — na telefonu je z širokého
+   grafu vidět jen levý kraj a čtenáře zajímá dnešek, ne rok 1994. Je to
+   vědomá výjimka z pravidla „čas zleva doprava" (DESIGN §3.3); hodnoty
+   se mapují přes tuhle osu, takže data zůstávají u správných let. */
+const rokyHeatmapy = [...roky].reverse();
+
 function variantaHeatmapy(smer: Smer, popisek: string): Varianta | null {
   const mnozina = smer === 'vydaj' ? vydaje : prijmy;
   if (mnozina.length === 0) return null;
-  const { radky, vynechano } = radkyHeatmapy(mnozina, roky, (p, rok) =>
+  const { radky, vynechano } = radkyHeatmapy(mnozina, rokyHeatmapy, (p, rok) =>
     smluvProtistranyZaRok(indexSmluv, smer, p, rok),
   );
-  const graf = grafHeatmapa(roky, radky, pasmaObdobi);
+  const graf = grafHeatmapa(rokyHeatmapy, radky, pasmaObdobi);
 
   if (pasmaObdobi.length > 0) {
     graf.poznamky.push(
@@ -325,7 +331,7 @@ const schemaHolding = nactiDiagram('holding').data;
           <GrafKarta
             id="heatmapa"
             nadpis="Kdo kdy začal a kdy přestal dostávat peníze"
-            popis="Řádek je protistrana, sloupec rok, sytost buňky objem. Řazeno od protistran s nejnovější smlouvou — co se děje teď, je nahoře; historie devadesátých let je dole. Pásma nad osou vyznačují volební období, aby bylo vidět, za kterého vedení peníze tekly. Kliknutím na buňku se otevře detail protistrany."
+            popis="Řádek je protistrana, sloupec rok, sytost buňky objem. Aktuální rok je první sloupec vlevo a čas běží doprava do minulosti — současnost je tak vidět hned, i na telefonu bez rolování. Řádky jsou řazené od protistran s nejnovější smlouvou. Pásma nad osou vyznačují volební období, aby bylo vidět, za kterého vedení peníze tekly. Kliknutím na buňku se otevře detail protistrany."
             varianty={variantyHeatmapy}
           />
         )}
