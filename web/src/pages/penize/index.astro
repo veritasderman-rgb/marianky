@@ -8,7 +8,8 @@ import Dlazdice from '../../components/Dlazdice.astro';
 import JakPocitame from '../../components/JakPocitame.astro';
 import type { Varianta } from '../../components/GrafKarta.astro';
 import type { Polozka } from '../../components/Dlazdice.astro';
-import { nactiProtistrany, nactiSouhrn, nactiSmlouvy, posledniKindex, spojStavy } from '../../lib/data';
+import { nactiLidi, nactiProtistrany, nactiSouhrn, nactiSmlouvy, posledniKindex, spojStavy } from '../../lib/data';
+import { popisObdobi, volebniObdobi } from '../../lib/obdobi';
 import { dodavateleZOsob, nactiDodavatelePolitiky, nactiOsobyFirmy } from '../../lib/vazby';
 import { grafHeatmapa, grafObjemPoLetech, grafSkladany, type BodObjemu } from '../../lib/grafy';
 import {
@@ -38,6 +39,11 @@ const indexSmluv = indexujSmlouvy(zSmluv.data ?? []);
 
 const maData = protistrany.length > 0;
 const roky = maData ? rokyZProtistran(protistrany) : [];
+
+/* Volební období pro heatmapu — kdo vedl město, když se smlouvy podepisovaly.
+   Jména se čtou z přehledu osobností; roky voleb jsou pevný čtyřletý cyklus. */
+const pasmaObdobi = volebniObdobi(roky, nactiLidi().data);
+const vetaObdobi = popisObdobi(pasmaObdobi);
 
 const vydaje = podleSmeru(protistrany, 'vydaj');
 const prijmy = podleSmeru(protistrany, 'prijem');
@@ -143,7 +149,14 @@ function variantaHeatmapy(smer: Smer, popisek: string): Varianta | null {
   const { radky, vynechano } = radkyHeatmapy(mnozina, roky, (p, rok) =>
     smluvProtistranyZaRok(indexSmluv, smer, p, rok),
   );
-  const graf = grafHeatmapa(roky, radky);
+  const graf = grafHeatmapa(roky, radky, pasmaObdobi);
+
+  if (pasmaObdobi.length > 0) {
+    graf.poznamky.push(
+      'Pásma nad osou jsou volební období. Rok voleb se počítá do končícího období — komunální volby jsou na podzim, takže většinu roku voleb úřadovalo ještě staré vedení a smlouvy toho roku jdou převážně za ním.',
+    );
+    if (vetaObdobi) graf.poznamky.push(vetaObdobi);
+  }
 
   if (!indexSmluv.dostupny || !indexSmluv.smery.has(smer)) {
     graf.poznamky.push('Počet smluv za jednotlivé roky tady v datech není — po najetí na buňku se ukáže jen částka.');
@@ -312,7 +325,7 @@ const schemaHolding = nactiDiagram('holding').data;
           <GrafKarta
             id="heatmapa"
             nadpis="Kdo kdy začal a kdy přestal dostávat peníze"
-            popis="Řádek je protistrana, sloupec rok, sytost buňky objem. Řazeno podle roku první smlouvy. Kliknutím na buňku se otevře detail protistrany."
+            popis="Řádek je protistrana, sloupec rok, sytost buňky objem. Řazeno od protistran s nejnovější smlouvou — co se děje teď, je nahoře; historie devadesátých let je dole. Pásma nad osou vyznačují volební období, aby bylo vidět, za kterého vedení peníze tekly. Kliknutím na buňku se otevře detail protistrany."
             varianty={variantyHeatmapy}
           />
         )}

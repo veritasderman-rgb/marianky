@@ -1243,6 +1243,28 @@ th.cislo {
   stroke: var(--ink);
   stroke-width: 2;
 }
+/* Pásmo volebního období nad osou let. Význam nese text (roky a jména),
+   podklad jen odděluje sousední pásma — proto se střídá s průhledností
+   a nikdy nezasahuje do buněk s hodnotami. */
+.g-pasmo {
+  fill: var(--surface-2);
+}
+.g-popisek--pasmo {
+  text-anchor: middle;
+  font-size: 10.5px;
+}
+/* Svislý předěl mezi volebními obdobími přes celou výšku mřížky. */
+.g-predel {
+  stroke: var(--rule);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  shape-rendering: crispEdges;
+}
+/* Vyznačené období na časové ose (covid apod.) — podklad pod sloupci.
+   Popisek k němu je vždy text v barvě popisků, nikdy jen barva. */
+.g-udobi {
+  fill: var(--surface-2);
+}
 
 /* ══════════════════════════  Legenda  ═══════════════════════════════ */
 

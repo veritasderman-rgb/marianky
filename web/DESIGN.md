@@ -129,7 +129,13 @@ Sloupcový graf, **jedna série**, bez legendy. Osa Y v Kč (zkracovat na „12,
 Skládaný sloupcový graf po letech: **6 největších dodavatelů + „Ostatní"**. Legenda povinná. Mezi segmenty **2px mezera v barvě povrchu**. Přepínač dodavatelé / odběratelé (`smer: vydaj` / `prijem`).
 
 ### 3.3 Časová osa protistran — kdo kdy začal a kdy přestal
-**Heatmapa.** Řádky = protistrana (řazeno podle `prvni_rok`), sloupce = rok, sytost buňky = objem (sekvenční ramp).
+**Heatmapa.** Řádky = protistrana (řazeno od **nejnovější poslední smlouvy**, při shodě podle objemu), sloupce = rok, sytost buňky = objem (sekvenční ramp). Původně se řadilo od roku první smlouvy; tím ale nahoře stály firmy z devadesátých let a čtenář, kterého zajímá dnešek, musel k současným dodavatelům rolovat na konec.
+
+Nad osou let jsou **pásma volebních období** se jmény starostů. Tři pravidla:
+
+- **Význam nesou roky a jména (text), ne barva.** Střídavý podklad pásma jen odděluje sousedy; kompletní jména se stranami stojí ve větě pod grafem.
+- **Podklad pásma nikdy nezasahuje do buněk** — tónovat celé sloupce by posunulo vnímané odstíny rampy a heatmapa by lhala o částkách. Mezi obdobími je jen tenký svislý předěl.
+- **Rok voleb patří končícímu období.** Komunální volby jsou na podzim, většinu roku úřadovalo staré vedení — a musí to být napsané u grafu, ne jen v kódu (`web/src/lib/obdobi.ts`).
 
 Tohle je hlavní graf celého dashboardu a rozhoduje o něm jeden detail:
 
@@ -242,6 +248,7 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 | `/komise` | Komise a výbory, co navrhly a co s tím rada udělala — doložené odděleně od odhadu |
 | `/penize` | Dashboard s grafy výše |
 | `/penize/[ico]` | Detail protistrany — co dostala a kdy |
+| `/hospodareni` | Rozpočet města z Monitoru státní pokladny: příjmy a výdaje po letech, saldo, struktura, plnění plánu, majetek a dluhy, výkazy organizací. Covidová léta 2020–2021 jsou v grafech vyznačená pásmem s popiskem a větou s čísly. Vše po konsolidaci; rozpracovaný rok se do meziročních grafů nekreslí |
 | `/zpravodaj` · `/zpravodaj/[id]` | Archiv článků |
 | `/temata/[tema]` | Časové osy témat |
 | `/hledat` | Fulltext přes vše (Pagefind) |

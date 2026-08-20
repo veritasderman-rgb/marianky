@@ -85,6 +85,12 @@ export function grafRadaPoLetech(
       casti.push(
         `<circle class="g-chybi" cx="${(x + bw / 2).toFixed(1)}" cy="${(m.t + ph - 5).toFixed(1)}" r="2.5"/>`,
       );
+    } else {
+      // Vykázaná nula dostane 1px proužek — nula a neznámo se nesmí kreslit
+      // stejně, tedy nijak (stejné pravidlo jako u znaků sekcí, DESIGN §3.8).
+      casti.push(
+        `<rect class="g-vypln" x="${x.toFixed(1)}" y="${(m.t + ph - 1).toFixed(1)}" width="${bw}" height="1" fill="var(--g1)"/>`,
+      );
     }
     casti.push('</g>');
 

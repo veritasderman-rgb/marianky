@@ -137,7 +137,10 @@ export function registrProSmer(ps: Protistrana[], smer: Smer): RegistrBarev {
 }
 
 /**
- * Řádky heatmapy: řazeno podle `prvni_rok` (DESIGN §3.3), při shodě podle objemu.
+ * Řádky heatmapy: řazeno od protistran s NEJNOVĚJŠÍ smlouvou (DESIGN §3.3),
+ * při shodě podle objemu. Dřív se řadilo od roku první smlouvy — jenže tím
+ * stály nahoře firmy z devadesátých let a čtenář, kterého zajímá dnešek,
+ * musel k současným dodavatelům rolovat na konec.
  * Nula v `hodnoty` znamená „v tom roce žádné peníze" — vykresluje se jako
  * prázdná buňka, ne jako nejsvětlejší krok rampy.
  */
@@ -153,7 +156,7 @@ export function radkyHeatmapy(
   const vybrane = [...ps]
     .sort((a, b) => (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0))
     .slice(0, limit)
-    .sort((a, b) => (a.prvni_rok ?? 0) - (b.prvni_rok ?? 0) || (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0));
+    .sort((a, b) => (b.posledni_rok ?? 0) - (a.posledni_rok ?? 0) || (b.celkem_czk ?? 0) - (a.celkem_czk ?? 0));
 
   return {
     radky: vybrane.map((p) => ({
