@@ -20,7 +20,7 @@ import GrafKarta from '../components/GrafKarta.astro';
 import JakPocitame from '../components/JakPocitame.astro';
 import type { Varianta } from '../components/GrafKarta.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
-import { spojStavy } from '../lib/data';
+import type { Nacteno } from '../lib/data';
 import {
   beziciObdobi,
   nactiKrytiSmlouvami,
@@ -55,7 +55,19 @@ const zOrganizaci = nactiOrganizaceVykazy();
 const zKryti = nactiKrytiSmlouvami();
 const zSouhrnu = nactiRozpocetSouhrn();
 
-const { poznamky } = spojStavy(zOsy, zStruktury, zPlanu, zMajetku, zOrganizaci, zKryti);
+/*
+ * Pomocné zdroje (struktura, plán, majetek, krytí) mají každý vlastní stavovou
+ * hlášku POD hlavní — když jeden z nich vypadne a osa let drží, stránka se
+ * ukáže, ale chybějící karta nesmí zmizet mlčky. Sloučit stavy do jednoho by
+ * tenhle rozdíl zamaskovalo: hlavní hláška se kreslí jen při výpadku osy.
+ * Výkazy organizací mají hlášku ve své sekci níž.
+ */
+const pomocneZdroje: { z: Nacteno<unknown>; co: string }[] = [
+  { z: zStruktury, co: 'Struktura výdajů (karta „Kam peníze jdou“)' },
+  { z: zPlanu, co: 'Plnění rozpočtu (karta „Jak se plán potkává se skutečností“)' },
+  { z: zMajetku, co: 'Rozvaha a účty (karta „Majetek, peníze na účtech a dluhy“ a dlaždice)' },
+  { z: zKryti, co: 'Srovnání s registrem smluv (karta „Kolik výdajů má stopu v registru smluv“)' },
+].filter(({ z }) => z.stav !== 'ok');
 
 const uzavrene = uzavreneRoky(zOsy.data.roky ?? []);
 const bezici = beziciObdobi(zOsy.data.roky ?? []);
@@ -224,7 +236,7 @@ const variantySalda: Varianta[] = maData
             uzavrene.map((r) => ({
               rok: r.rok,
               hodnota: sk(r.saldo),
-              doplnky: r.saldo.schvaleny !== null ? [{ l: 'Plánované saldo', v: kc(r.saldo.schvaleny) }] : [],
+              plan: r.saldo.schvaleny,
             })),
             'Saldo hospodaření města po letech',
             COVID,
@@ -320,9 +332,11 @@ const variantyStruktury: Varianta[] = maData
               klic: 'oddily',
               popisek: `Největší oblasti (${posledniStruktura.rok})`,
               graf: (() => {
-                const top = posledniStruktura.oddily
+                // Všechny oddíly s výdaji, ne jen výběr — kdyby se pro graf
+                // ořezaly, ořezala by se s nimi i povinná tabulka a poznámka
+                // „kompletní členění je v tabulce" by přestala platit.
+                const oddily = posledniStruktura.oddily
                   .filter((o) => o.skutecnost_bez_prevodu > 0)
-                  .slice(0, 12)
                   .map((o) => ({
                     nazev: o.nazev ?? `oddíl ${o.kod}`,
                     hodnota: o.skutecnost_bez_prevodu,
@@ -331,9 +345,9 @@ const variantyStruktury: Varianta[] = maData
                         ? [{ l: 'Podíl na výdajích', v: procenta(o.podil_bez_prevodu_pct) }]
                         : [],
                   }));
-                const g = grafVodorovny(top, `Největší oblasti výdajů ${posledniStruktura.rok}`, (v) => kcZkraceno(v, true));
+                const g = grafVodorovny(oddily, `Oblasti výdajů ${posledniStruktura.rok}`, (v) => kcZkraceno(v, true));
                 g.poznamky.push(
-                  `Zobrazeno ${cislo(top.length)} největších oddílů rozpočtové skladby z ${cislo(posledniStruktura.oddily.length)}, bez převodů vlastním fondům. Kompletní členění je v tabulce.`,
+                  `Všech ${cislo(oddily.length)} oddílů rozpočtové skladby s výdaji v roce ${posledniStruktura.rok}, bez převodů vlastním fondům. Jemnější členění po paragrafech nabízí rozklikávací rozpočet v Monitoru státní pokladny (odkaz dole).`,
                 );
                 return g;
               })(),
@@ -615,8 +629,13 @@ const overeniUsneseni = zOsy.data.overeni_proti_usnesenim ?? overeni?.schvaleny_
     co="Rozpočet města z Monitoru státní pokladny"
     prazdno={zOsy.stav === 'ok' && !maData}
     modul="Monitor státní pokladny"
-    poznamky={poznamky.filter((p) => p !== zOsy.poznamka)}
   />
+
+  {
+    pomocneZdroje.map(({ z, co }) => (
+      <StavDat stav={z.stav} zdroj={z.zdroj} co={co} modul="Monitor státní pokladny" poznamky={z.poznamka ? [z.poznamka] : []} />
+    ))
+  }
 
   {
     maData && posledni && (

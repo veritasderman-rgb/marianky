@@ -190,7 +190,9 @@ export interface BodSalda {
   rok: number;
   /** `null` = údaj není (mezera), ne nula. */
   hodnota: number | null;
-  /** Doplňkové řádky do tooltipu (plánované saldo apod.). */
+  /** Plánované (schválené) saldo — jde do tooltipu I do tabulky. */
+  plan?: number | null;
+  /** Doplňkové řádky jen do tooltipu. */
   doplnky?: TipRadek[];
 }
 
@@ -235,6 +237,7 @@ export function grafSaldoPoLetech(
     const radky: TipRadek[] = [
       { l: 'Saldo', v: b.hodnota === null ? 'údaj není' : kc(b.hodnota) },
       ...(b.hodnota !== null ? [{ l: 'Výsledek', v: b.hodnota >= 0 ? 'přebytek' : 'schodek' }] : []),
+      ...(b.plan !== undefined ? [{ l: 'Plánované saldo', v: b.plan === null ? 'údaj není' : kc(b.plan) }] : []),
       ...(b.doplnky ?? []),
     ];
     casti.push(
@@ -263,18 +266,27 @@ export function grafSaldoPoLetech(
   });
 
   const chybejicich = body.filter((b) => b.hodnota === null).length;
+  // Plánované saldo patří i do tabulky, ne jen do tooltipu — kdo tabulku
+  // otevře místo najíždění myší, musí mít stejné srovnání plánu a výsledku.
+  const maPlan = body.some((b) => b.plan !== undefined);
   return {
     sirka: W,
     svg: obalSvgGrafu(W, H, casti.join(''), `${titulek}: sloupcový graf salda, ${body.length} let`),
     legenda: null,
     tabulka: {
-      hlavicka: [{ nazev: 'Rok' }, { nazev: 'Saldo', cislo: true }, { nazev: 'Výsledek' }],
+      hlavicka: [
+        { nazev: 'Rok' },
+        { nazev: 'Saldo', cislo: true },
+        { nazev: 'Výsledek' },
+        ...(maPlan ? [{ nazev: 'Plánované saldo', cislo: true }] : []),
+      ],
       radky: [...body]
         .reverse()
         .map((b) => [
           String(b.rok),
           b.hodnota === null ? 'údaj není' : kc(b.hodnota),
           b.hodnota === null ? '—' : b.hodnota >= 0 ? 'přebytek' : 'schodek',
+          ...(maPlan ? [b.plan === null || b.plan === undefined ? 'údaj není' : kc(b.plan)] : []),
         ]),
     },
     poznamky: chybejicich
