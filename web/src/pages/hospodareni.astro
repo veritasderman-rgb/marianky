@@ -23,13 +23,17 @@ import type { Polozka } from '../components/Dlazdice.astro';
 import type { Nacteno } from '../lib/data';
 import {
   beziciObdobi,
+  nactiDotacePrehled,
   nactiKrytiSmlouvami,
   nactiMajetekZadluzenost,
   nactiOrganizaceVykazy,
   nactiPlanVsSkutecnost,
+  nactiPoplatekPobytu,
   nactiRozpocetPoLetech,
   nactiRozpocetSouhrn,
+  nactiSrovnaniMest,
   nactiVydajeStrukturu,
+  nactiZaverky,
   uzavreneRoky,
   type Trojice,
 } from '../lib/rozpocet';
@@ -54,6 +58,10 @@ const zMajetku = nactiMajetekZadluzenost();
 const zOrganizaci = nactiOrganizaceVykazy();
 const zKryti = nactiKrytiSmlouvami();
 const zSouhrnu = nactiRozpocetSouhrn();
+const zPoplatku = nactiPoplatekPobytu();
+const zSrovnani = nactiSrovnaniMest();
+const zDotaci = nactiDotacePrehled();
+const zZaverek = nactiZaverky();
 
 /*
  * Pomocné zdroje (struktura, plán, majetek, krytí) mají každý vlastní stavovou
@@ -67,6 +75,7 @@ const pomocneZdroje: { z: Nacteno<unknown>; co: string }[] = [
   { z: zPlanu, co: 'Plnění rozpočtu (karta „Jak se plán potkává se skutečností“)' },
   { z: zMajetku, co: 'Rozvaha a účty (karta „Majetek, peníze na účtech a dluhy“ a dlaždice)' },
   { z: zKryti, co: 'Srovnání s registrem smluv (karta „Kolik výdajů má stopu v registru smluv“)' },
+  { z: zPoplatku, co: 'Poplatek z pobytu (karta „Kolik nechají hosté městu“)' },
 ].filter(({ z }) => z.stav !== 'ok');
 
 const uzavrene = uzavreneRoky(zOsy.data.roky ?? []);
@@ -500,6 +509,146 @@ const variantyKryti: Varianta[] = krytiRoky.length > 0
     ]
   : [];
 
+/* ── Poplatek z pobytu — nejcitlivější ukazatel lázeňského města ──────── */
+
+const poplatekUzavrene = uzavreneRoky(zPoplatku.data.roky ?? []);
+const poplatekBezici = beziciObdobi(zPoplatku.data.roky ?? []);
+const pop19 = sk(poplatekUzavrene.find((r) => r.rok === 2019)?.celkem);
+const pop20 = sk(poplatekUzavrene.find((r) => r.rok === 2020)?.celkem);
+
+const variantyPoplatku: Varianta[] = poplatekUzavrene.length > 0
+  ? [
+      {
+        klic: 'poplatek',
+        popisek: 'Poplatek z pobytu',
+        graf: (() => {
+          const g = grafRadyKc(
+            poplatekUzavrene.map((r) => r.rok),
+            [
+              {
+                klic: 'poplatek',
+                nazev: 'Poplatek z pobytu hostů',
+                barva: 'var(--g1)',
+                hodnoty: poplatekUzavrene.map((r) => sk(r.celkem)),
+              },
+            ],
+            'Poplatek z pobytu hostů po letech',
+            COVID,
+          );
+          if (pop19 && pop20) {
+            g.poznamky.push(
+              `Poplatek platí hosté za každou noc pobytu — je to nejpřímější rozpočtový otisk návštěvnosti. V covidovém roce 2020 spadl z ${kcZkraceno(pop19, true)} na ${kcZkraceno(pop20, true)}, tedy o ${(((pop19 - pop20) / pop19) * 100).toFixed(0)} %.`,
+            );
+          }
+          g.poznamky.push(
+            'Do roku 2019 je řada součtem poplatku za lázeňský pobyt a poplatku z ubytovací kapacity; od roku 2020 je oba slučuje jediný poplatek z pobytu (zákon 278/2019 Sb.). Skok po roce 2021 je z velké části zvýšená sazba, ne jen návrat hostů — sazbu určuje vyhláška města.',
+          );
+          if (poplatekBezici) {
+            g.poznamky.push(
+              `Rozpracovaný rok ${poplatekBezici.rok} (k období ${poplatekBezici.obdobi}): zatím ${kcZkraceno(sk(poplatekBezici.celkem), true)} — do grafu celých roků nepatří.`,
+            );
+          }
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── Srovnání s podobnými městy ───────────────────────────────────────── */
+
+const srovnaniRoky = (zSrovnani.data.roky ?? []).filter((r) => r.koncove);
+const mestaSrovnani = zSrovnani.data.mesta ?? [];
+const maSrovnani = zSrovnani.stav === 'ok' && srovnaniRoky.length > 0 && mestaSrovnani.length > 0;
+
+/** Řada jednoho ukazatele pro všechna města. Barva se váže na pořadí města
+ *  v konfiguraci (naše město je první a má --g1) — je stálé, filtr ani
+ *  přepínač ho nemění, takže barvy nikdy nerotují. */
+function serieSrovnani(pole: 'vydaje_na_obyvatele' | 'prijmy_na_obyvatele'): SerieKc[] {
+  return mestaSrovnani.slice(0, 6).map((m, i) => ({
+    klic: m.ico,
+    nazev: m.moje ? `${m.nazev} (naše město)` : m.nazev,
+    barva: `var(--g${i + 1})`,
+    hodnoty: srovnaniRoky.map((r) => {
+      const zaznam = r.mesta.find((x) => x.ico === m.ico);
+      return zaznam ? zaznam[pole] : null;
+    }),
+  }));
+}
+
+function variantaSrovnani(pole: 'vydaje_na_obyvatele' | 'prijmy_na_obyvatele', popisek: string): Varianta {
+  const g = grafRadyKc(
+    srovnaniRoky.map((r) => r.rok),
+    serieSrovnani(pole),
+    `${popisek} — srovnání měst`,
+  );
+  for (const m of zSrovnani.data.metodika ?? []) g.poznamky.push(m);
+  return { klic: pole, popisek, graf: g };
+}
+
+const variantySrovnani: Varianta[] = maSrovnani
+  ? [
+      variantaSrovnani('vydaje_na_obyvatele', 'Výdaje na obyvatele'),
+      variantaSrovnani('prijmy_na_obyvatele', 'Příjmy na obyvatele'),
+    ]
+  : [];
+
+/* ── Dotace pro město a holding ───────────────────────────────────────── */
+
+const dotaceMesto = zDotaci.data.po_letech_mesto ?? [];
+const dotaceHolding = zDotaci.data.po_letech_holding ?? [];
+const rozpisDotaci = zDotaci.data.rozpis?.polozky ?? [];
+const maDotace = zDotaci.stav === 'ok' && (dotaceMesto.length > 0 || rozpisDotaci.length > 0);
+
+function variantaDotaci(rada: typeof dotaceMesto, klic: string, popisek: string): Varianta | null {
+  if (rada.length === 0) return null;
+  const body: BodRady[] = rada.map((r) => ({
+    rok: r.rok,
+    hodnota: r.czk,
+    poznamka: `${cislo(r.pocet)} ${sklonuj(r.pocet, 'dotace', 'dotace', 'dotací')}`,
+  }));
+  const g = grafRadaPoLetech(body, `Přiznané dotace po letech — ${popisek.toLowerCase()}`, 'Přiznáno', (v) => kcZkraceno(v, true));
+  g.poznamky.push(
+    'Souhrnná řada ze statistik Hlídače státu pokrývá jen poslední roky — starší dotace v ní nejsou, protože je okno zdroje nenese. Není to tvrzení, že dřív město dotace nebralo.',
+  );
+  return { klic, popisek, graf: g };
+}
+
+const variantyDotaci: Varianta[] = maDotace
+  ? ([
+      variantaDotaci(dotaceHolding, 'holding', 'Město a jeho organizace'),
+      variantaDotaci(dotaceMesto, 'mesto', 'Jen město'),
+    ].filter(Boolean) as Varianta[])
+  : [];
+
+const topDotace = rozpisDotaci.slice(0, 20);
+
+/* ── Závěrky městských s.r.o. ve sbírce listin ────────────────────────── */
+
+const firmyZaverek = (zZaverek.data.firmy ?? []).filter((f) => !f.stav);
+const firmyZaverekChyba = (zZaverek.data.firmy ?? []).filter((f) => f.stav === 'chybi');
+
+/** Mezery UVNITŘ vlastní řady závěrek — mezi první a poslední založenou.
+ *  Poslední rok se neposuzuje: lhůta pro založení čerstvé závěrky může
+ *  ještě běžet a „chybí 2025“ by byla křivda, ne zjištění. */
+function mezeryZaverek(f: (typeof firmyZaverek)[number]): number[] {
+  const roky = f.roky_s_ucetni_zaverkou ?? [];
+  if (roky.length < 2) return [];
+  const ven: number[] = [];
+  for (let r = roky[0] + 1; r < roky[roky.length - 1]; r++) {
+    if (!roky.includes(r)) ven.push(r);
+  }
+  return ven;
+}
+
+const NAZVY_VLASTNICTVI: Record<string, string> = {
+  mesto: 'organizace města',
+  mesto_100: 'městská (100 %)',
+  mesto_cast: 'městská (podíl)',
+  mimo_mesto: 'mimo město — kontext',
+};
+
+const firmySMezerami = firmyZaverek.filter((f) => mezeryZaverek(f).length > 0);
+
 /* ── 7. Organizace města ──────────────────────────────────────────────── */
 
 const organizace = (zOrganizaci.data.organizace ?? []).filter((o) => o.ico !== MESTO_ICO);
@@ -736,6 +885,174 @@ const overeniUsneseni = zOsy.data.overeni_proti_usnesenim ?? overeni?.schvaleny_
           />
         )}
 
+        {variantyPoplatku.length > 0 && (
+          <GrafKarta
+            id="poplatek"
+            nadpis="Kolik nechají hosté městu: poplatek z pobytu"
+            popis="Místní poplatek, který platí každý ubytovaný host za každou noc — nejpřímější otisk lázeňského provozu v rozpočtu města. Covidová léta jsou podbarvená; propad roku 2020 je tu hlubší než kdekoliv jinde v rozpočtu."
+            varianty={variantyPoplatku}
+          />
+        )}
+
+        {zSrovnani.stav !== 'ok' && (
+          <StavDat
+            stav={zSrovnani.stav}
+            zdroj={zSrovnani.zdroj}
+            co="Srovnání s podobnými městy (scrapers/srovnani.py)"
+            modul="Monitor státní pokladny + ČSÚ"
+            poznamky={zSrovnani.poznamka ? [zSrovnani.poznamka] : []}
+          />
+        )}
+        {variantySrovnani.length > 0 && (
+          <GrafKarta
+            id="srovnani"
+            nadpis="Jak si stojíme vedle podobných měst"
+            popis="Skutečné příjmy a výdaje na obyvatele — Mariánské Lázně vedle dalších lázeňských měst, všechna ze stejného zdroje (Monitor státní pokladny) a stejné metodiky. Přepočet na obyvatele srovnává města různých velikostí; není to žebříček hospodárnosti."
+            varianty={variantySrovnani}
+          />
+        )}
+
+        <section class="karta" id="dotace">
+          <h2 class="karta__nadpis">Dotace: co si město přitáhlo zvenčí</h2>
+          <p class="karta__podnadpis">
+            Peníze od státu, kraje a EU pro město a jeho organizace podle Hlídače státu.
+            Dotace tu stojí zvlášť od transferů ve výkazech: částka dotace platí zpravidla
+            pro celý (i víceletý) projekt, zatímco transfery ve FIN jsou peníze skutečně
+            přijaté v daném roce.
+          </p>
+
+          <StavDat
+            stav={zDotaci.stav}
+            zdroj={zDotaci.zdroj}
+            co="Dotace podle Hlídače státu"
+            prazdno={zDotaci.stav === 'ok' && !maDotace}
+            modul="Hlídač státu"
+            poznamky={zDotaci.poznamka ? [zDotaci.poznamka] : []}
+          />
+
+          {variantyDotaci.length > 0 && (
+            <GrafKarta
+              id="dotace-graf"
+              nadpis="Přiznané dotace po letech"
+              popis="Součet dotací přiznaných v daném roce podle statistik Hlídače státu. Řada pokrývá jen okno zdroje (od roku 2023) — starší dotace jsou v rozpisu níže."
+              varianty={variantyDotaci}
+            />
+          )}
+
+          {topDotace.length > 0 && (
+            <>
+              <p class="graf-poznamka">
+                Největší jednotlivé dotace z registrů DotInfo a CEDR — výběr{' '}
+                {cislo(zDotaci.data.rozpis.polozek)}{' '}
+                {sklonuj(zDotaci.data.rozpis.polozek, 'velké dotace', 'velkých dotací', 'velkých dotací')} za{' '}
+                {kcZkraceno(zDotaci.data.rozpis.celkem_czk, true)} celkem, ne úplný registr.
+                {zDotaci.data.rozpis.bez_roku > 0 &&
+                  ` U ${cislo(zDotaci.data.rozpis.bez_roku)} ${sklonuj(zDotaci.data.rozpis.bez_roku, 'záznamu', 'záznamů', 'záznamů')} zdroj neuvádí rok.`}
+              </p>
+              <div class="tabulka-obal">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Dotace</th>
+                      <th scope="col">Příjemce</th>
+                      <th scope="col">Poskytovatel</th>
+                      <th scope="col" class="cislo">Rok</th>
+                      <th scope="col" class="cislo">Částka</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {topDotace.map((d) => (
+                      <tr>
+                        <td>{d.url ? <a href={d.url} rel="noopener">{d.nazev ?? 'bez názvu'}</a> : (d.nazev ?? 'bez názvu')}</td>
+                        <td>{d.prijemce ?? d.prijemce_ico}</td>
+                        <td>{d.poskytovatel ?? '—'}</td>
+                        <td class="cislo">{d.rok ?? 'neuvedeno'}</td>
+                        <td class="cislo">{kc(d.castka_czk)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </section>
+
+        <section class="karta" id="zaverky">
+          <h2 class="karta__nadpis">Závěrky městských firem ve sbírce listin</h2>
+          <p class="karta__podnadpis">
+            Obchodní společnosti města (TDS, Lázeňské lesy, Infocentrum…) státu výkazy
+            nepodávají — jejich hospodaření je vidět jen v účetních závěrkách, které mají
+            ze zákona ukládat do sbírky listin obchodního rejstříku. Tady je vidět,
+            kdo je ukládá a za které roky; k číslům se čtenář prokliká přímo do sbírky.
+          </p>
+
+          <StavDat
+            stav={zZaverek.stav}
+            zdroj={zZaverek.zdroj}
+            co="Sbírka listin obchodního rejstříku"
+            prazdno={zZaverek.stav === 'ok' && firmyZaverek.length === 0}
+            modul="or.justice.cz"
+          />
+
+          {firmyZaverek.length > 0 && (
+            <>
+              {firmySMezerami.length > 0 && (
+                <p class="graf-poznamka">
+                  {firmySMezerami.length === 1 ? 'Mezeru v řadě závěrek má' : 'Mezery v řadě závěrek mají'}{' '}
+                  {firmySMezerami
+                    .map((f) => `${f.nazev} (chybí ${mezeryZaverek(f).join(', ')})`)
+                    .join('; ')}
+                  . Povinnost založit závěrku ukládá zákon o účetnictví — chybějící rok znamená,
+                  že ve sbírce prostě není.
+                </p>
+              )}
+              <div class="tabulka-obal">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Firma</th>
+                      <th scope="col">Vlastnictví</th>
+                      <th scope="col" class="cislo">Listin</th>
+                      <th scope="col">Účetní závěrky</th>
+                      <th scope="col">Chybějící roky</th>
+                      <th scope="col">Sbírka listin</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {firmyZaverek.map((f) => {
+                      const roky = f.roky_s_ucetni_zaverkou ?? [];
+                      const mezery = mezeryZaverek(f);
+                      return (
+                        <tr>
+                          <td>{f.nazev}</td>
+                          <td>{NAZVY_VLASTNICTVI[f.vlastnictvi ?? ''] ?? (f.vlastnictvi || 'v datech není')}</td>
+                          <td class="cislo">{cislo(f.listin_celkem)}</td>
+                          <td class="cislo">{roky.length > 0 ? `${roky[0]}–${roky[roky.length - 1]}` : 'žádná'}</td>
+                          <td>{mezery.length > 0 ? mezery.join(', ') : 'bez mezer'}</td>
+                          <td>{f.sbirka_listin_url && <a href={f.sbirka_listin_url} rel="noopener">otevřít</a>}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <p class="graf-poznamka">
+                Mezery se posuzují jen uvnitř vlastní řady — mezi první a poslední založenou
+                závěrkou. Nejnovější rok se nehodnotí: lhůta pro jeho založení může ještě běžet.
+                Čísla z PDF závěrek se nečtou — jsou to skeny i strojová PDF v mnoha šablonách
+                a deterministický parser na ně neexistuje; proto odkaz, ne graf.
+              </p>
+            </>
+          )}
+          {firmyZaverekChyba.length > 0 && (
+            <p class="graf-poznamka">
+              U {cislo(firmyZaverekChyba.length)}{' '}
+              {sklonuj(firmyZaverekChyba.length, 'firmy', 'firem', 'firem')} se sbírku listin
+              nepodařilo načíst: {firmyZaverekChyba.map((f) => f.nazev).join(', ')}.
+            </p>
+          )}
+        </section>
+
         <section class="karta">
           <h2 class="karta__nadpis">Hospodaření organizací města</h2>
           <p class="karta__podnadpis">
@@ -798,7 +1115,7 @@ const overeniUsneseni = zOsy.data.overeni_proti_usnesenim ?? overeni?.schvaleny_
               {cislo(bezVykazu.length)} {sklonuj(bezVykazu.length, 'subjekt města', 'subjekty města', 'subjektů města')} v
               Monitoru není: {bezVykazu.map((s) => s.nazev).join(', ')}. Obchodní společnosti (s.r.o., o.p.s.)
               nejsou vybrané účetní jednotky a státu výkazy nepodávají — jejich závěrky vede sbírka listin
-              obchodního rejstříku. Je to mezera zdroje, ne sběru; napojení na sbírku listin je v plánu.
+              obchodního rejstříku, viz <a href="#zaverky">Závěrky městských firem</a> níže.
             </p>
           )}
         </section>
@@ -846,7 +1163,9 @@ const overeniUsneseni = zOsy.data.overeni_proti_usnesenim ?? overeni?.schvaleny_
           <p>
             Zdrojem jsou otevřená data Monitoru státní pokladny: výkaz FIN 2-12 M (plnění rozpočtu),
             rozvaha a výkaz zisku a ztráty. Částky jsou v celých korunách tak, jak je město vykázalo;
-            nic se nepřepočítává na dnešní ceny.
+            nic se nepřepočítává na dnešní ceny. Srovnání měst bere tytéž výkazy ostatních měst
+            a počty obyvatel z otevřených dat ČSÚ; dotace pocházejí z Hlídače státu a přehled
+            závěrek městských firem ze sbírky listin obchodního rejstříku.
           </p>
           <ul>
             <li>

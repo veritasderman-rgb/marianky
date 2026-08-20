@@ -44,6 +44,10 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.pamatky",   "Kulturní památky",               False),
     ("scrapers.uzemni_plan", "Územní plánování",             False),
     ("scrapers.monitor",   "Rozpočet z Monitoru st. pokladny", False),
+    # Srovnání čte tytéž extrakty FIN jako monitor — když běží po něm,
+    # najde je v cache a nestahuje podruhé.
+    ("scrapers.srovnani",  "Srovnání rozpočtů s podobnými městy", False),
+    ("scrapers.zaverky",   "Závěrky městských s.r.o. ve sbírce listin", False),
     # Komise jsou místo, kde návrh vzniká dřív, než o něm hlasuje rada.
     # Sběr je pomalý (stovky PDF s tempem šetrným k webu města), proto
     # není povinný — když se nedoběhne, zbytek běhu tím netrpí.
@@ -62,6 +66,12 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.propojeni",      "Propojení lidí, firem a peněz", False),
     ("pipeline.profily",        "Hlasovací profily",            False),
     ("pipeline.retez",          "Řetěz usnesení → smlouva → peníze", False),
+    # Přehledy rozpočtu čtou výkazy z Monitoru (scrapers.monitor) a srovnání
+    # měst (scrapers.srovnani); krytí smlouvami navíc agregaci peněz — proto
+    # stojí až tady. (Do 8/2026 tu krok chyběl a přehledy rozpočtu se
+    # přepočítávaly jen ručně.)
+    ("pipeline.rozpocet",       "Přehledy rozpočtu z Monitoru",  False),
+    ("pipeline.dotace_prehled", "Přehled dotací pro město a holding", False),
     ("pipeline.prepis",         "Přepisy jednání",              False),
     # Osa čte výstup řetězu i propojení, proto stojí až za nimi.
     ("pipeline.casova_osa",     "Jednotná časová osa",          False),

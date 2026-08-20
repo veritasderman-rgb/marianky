@@ -242,6 +242,112 @@ export interface RozpocetSouhrn {
   };
 }
 
+export interface RokPoplatku {
+  rok: number;
+  obdobi: string;
+  koncove: boolean;
+  celkem: Trojice;
+  plneni_pct: number | null;
+  slozky: {
+    pobyt_1342: Trojice;
+    /** Jen do roku 2019; od 2020 je poplatek sloučený (zákon 278/2019 Sb.). */
+    ubytovaci_kapacita_1345_do_2019: Trojice | null;
+  };
+}
+
+export interface PoplatekPobytu {
+  metodika?: string[];
+  roky: RokPoplatku[];
+}
+
+export interface MestoSrovnani {
+  ico: string;
+  nazev: string;
+  moje: boolean;
+  poznamka?: string | null;
+}
+
+export interface RokSrovnani {
+  rok: number;
+  obdobi: string;
+  koncove: boolean;
+  mesta: {
+    ico: string;
+    nazev: string;
+    moje: boolean;
+    obyvatel: number | null;
+    prijmy: number | null;
+    vydaje: number | null;
+    saldo: number | null;
+    prijmy_na_obyvatele: number | null;
+    vydaje_na_obyvatele: number | null;
+  }[];
+}
+
+export interface SrovnaniMest {
+  stav?: 'ok' | 'chybi' | string;
+  duvod?: string;
+  metodika?: string[];
+  mesta: MestoSrovnani[];
+  roky: RokSrovnani[];
+}
+
+export interface DotaceRok {
+  rok: number;
+  pocet: number;
+  czk: number;
+}
+
+export interface DotacePolozka {
+  id: string;
+  rok: number | null;
+  castka_czk: number | null;
+  poskytovatel: string | null;
+  poskytovatel_ico?: string | null;
+  kategorie?: string | null;
+  program?: string | null;
+  nazev: string | null;
+  url?: string | null;
+  prijemce: string | null;
+  prijemce_ico: string | null;
+}
+
+export interface DotacePrehled {
+  stav?: 'ok' | 'chybi' | string;
+  duvod?: string;
+  metodika?: string[];
+  po_letech_mesto: DotaceRok[];
+  po_letech_holding: DotaceRok[];
+  rozpis: {
+    subjektu: number;
+    polozek: number;
+    bez_roku: number;
+    celkem_czk: number;
+    polozky: DotacePolozka[];
+  };
+}
+
+export interface FirmaZaverky {
+  ico: string;
+  nazev: string;
+  typ: string | null;
+  vlastnictvi: string | null;
+  stav?: string;
+  duvod?: string;
+  sbirka_listin_url?: string;
+  listin_celkem?: number;
+  roky_s_ucetni_zaverkou?: number[];
+  posledni_zaverka?: number | null;
+  roky_podle_druhu?: Record<string, number[]>;
+}
+
+export interface ZaverkyListiny {
+  metodika?: string[];
+  firem: number;
+  selhani: number;
+  firmy: FirmaZaverky[];
+}
+
 /* ─────────────────────────────  Loadery  ────────────────────────────── */
 
 const PREHLED = 'rozpocet/prehled';
@@ -280,6 +386,54 @@ export function nactiKrytiSmlouvami(): Nacteno<KrytiSmlouvami> {
 
 export function nactiRozpocetSouhrn(): Nacteno<RozpocetSouhrn> {
   return nactiJson<RozpocetSouhrn>(`${PREHLED}/souhrn.json`, {});
+}
+
+export function nactiPoplatekPobytu(): Nacteno<PoplatekPobytu> {
+  return nactiJson<PoplatekPobytu>(`${PREHLED}/poplatek_pobytu.json`, { roky: [] });
+}
+
+export function nactiSrovnaniMest(): Nacteno<SrovnaniMest> {
+  const v = nactiJson<SrovnaniMest>(`${PREHLED}/srovnani_mest.json`, { mesta: [], roky: [] });
+  // Soubor se stavem `chybi` znamená, že scraper srovnání ještě neproběhl —
+  // pro stránku je to totéž jako chybějící soubor a nesmí to splynout s „ok".
+  if (v.stav === 'ok' && v.data.stav === 'chybi') {
+    return { stav: 'chybi', data: v.data, zdroj: v.zdroj, poznamka: v.data.duvod ?? 'srovnání zatím není sebrané' };
+  }
+  return v;
+}
+
+export function nactiDotacePrehled(): Nacteno<DotacePrehled> {
+  const prazdny: DotacePrehled = {
+    po_letech_mesto: [],
+    po_letech_holding: [],
+    rozpis: { subjektu: 0, polozek: 0, bez_roku: 0, celkem_czk: 0, polozky: [] },
+  };
+  const v = nactiJson<DotacePrehled>('penize/agregace/dotace.json', prazdny);
+  if (v.stav === 'ok' && v.data.stav === 'chybi') {
+    return { stav: 'chybi', data: prazdny, zdroj: v.zdroj, poznamka: v.data.duvod ?? 'dotace zatím nejsou sebrané' };
+  }
+  if (v.stav === 'ok') {
+    v.data.po_letech_mesto ??= [];
+    v.data.po_letech_holding ??= [];
+    v.data.rozpis ??= prazdny.rozpis;
+  }
+  return v;
+}
+
+export function nactiZaverky(): Nacteno<ZaverkyListiny> {
+  const v = nactiJson<ZaverkyListiny>('zaverky/listiny.json', { firem: 0, selhani: 0, firmy: [] });
+  // Sběrač zapíše platný soubor i tehdy, když sbírka listin nevrátila NIC —
+  // každá firma pak nese `stav: "chybi"`. To není „načteno a prázdno",
+  // to je výpadek zdroje, a stránka to tak musí říct.
+  if (v.stav === 'ok' && v.data.firmy.length > 0 && v.data.firmy.every((f) => f.stav === 'chybi')) {
+    return {
+      stav: 'chyba',
+      data: v.data,
+      zdroj: v.zdroj,
+      poznamka: `Sbírku listin se nepodařilo načíst pro žádnou z ${v.data.firmy.length} firem — or.justice.cz nejspíš neodpovídal.`,
+    };
+  }
+  return v;
 }
 
 /* ─────────────────────────────  Pomocníci  ──────────────────────────── */
