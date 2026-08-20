@@ -390,6 +390,51 @@ VAROVANI_UZLU = 25_000
 _OTEVIRACI_TAG = re.compile(r"<[a-zA-Z]")
 
 
+def kontrola_dodatku(v: Vysledek) -> None:
+    """Dodatky ke smlouvám se nesmí sčítat s původní smlouvou.
+
+    Dodatek se v registru zveřejňuje jako samostatný záznam a uvádí novou
+    CELKOVOU cenu, ne přírůstek. Prostý součet proto objem nadhodnocuje —
+    u rekonstrukce Palackého ulice trojnásobně, u dotace ZSO 2024 taky.
+    Kontrola hlídá dvě věci: že je spojení vůbec spočítané, a že se
+    nesloučené dodatky nezametly pod koberec.
+    """
+    cesta = DATA / "penize" / "dodatky.json"
+    if not cesta.exists():
+        v.varuj("dodatky ke smlouvám nejsou spojené (pipeline/dodatky.py) — "
+                "součty za protistrany budou nadhodnocené o dodatky")
+        return
+    try:
+        d = json.loads(cesta.read_text(encoding="utf-8")) or {}
+    except (json.JSONDecodeError, OSError) as e:
+        v.chyba(f"data/penize/dodatky.json nejde přečíst: {e}")
+        return
+
+    souhrn = d.get("souhrn") or {}
+    dvojite = souhrn.get("dvojite_zapocteno_czk") or 0
+    nesparovanych = souhrn.get("nesparovanych") or 0
+    objem_ns = souhrn.get("objem_nesparovanych_czk") or 0
+
+    retezy = d.get("retezy") or []
+    # Řetěz, kde je platná částka vyšší než naivní součet, znamená chybu
+    # ve výpočtu — maximum nemůže překročit součet kladných čísel.
+    spatne = [r for r in retezy
+              if (r.get("castka_platna_czk") or 0) > (r.get("castka_naivni_soucet_czk") or 0)]
+    if spatne:
+        v.chyba(f"{len(spatne)} řetězů má platnou částku vyšší než součet všech článků — "
+                "chyba ve výpočtu, ne v datech")
+        return
+
+    v.projde(f"dodatky: {len(retezy)} řetězů, prostý součet by nadhodnotil o "
+             f"{dvojite / 1e6:.0f} mil Kč")
+
+    if nesparovanych:
+        v.varuj(f"{nesparovanych} dodatků se nepodařilo spojit s původní smlouvou "
+                f"({objem_ns / 1e6:.0f} mil Kč). Jejich předmět popisuje jen změnu "
+                "(„mění se rozsah plnění“), takže na text není co chytit — "
+                "objem u nich zůstává nadhodnocený")
+
+
 def kontrola_dom(v: Vysledek) -> None:
     """Žádná stránka nesmí přerůst rozpočet vykreslených uzlů.
 
@@ -451,6 +496,7 @@ KONTROLY = [
     ("souřadnice", kontrola_souradnic),
     ("znaky sekcí", kontrola_znaku),
     ("řetěz komise → rada", kontrola_retezu_komisi),
+    ("dodatky ke smlouvám", kontrola_dodatku),
     ("rozpočet DOM uzlů", kontrola_dom),
 ]
 
