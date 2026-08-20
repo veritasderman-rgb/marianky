@@ -23,7 +23,9 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Týdenní vydání** — jedno číslo za týden, s archivem zpět.
 
-**Peníze** — kdo od města bere peníze a kdy. Heatmapa ukazuje, kdy která firma začala a kdy přestala; skládaný graf rozděluje objem po letech. Platby vlastním firmám města jsou označené jako vnitřní převod, ne jako plnění cizímu dodavateli.
+**Peníze** — kdo od města bere peníze a kdy. Heatmapa ukazuje, kdy která firma začala a kdy přestala — řazená od současnosti a s vyznačenými volebními obdobími, aby bylo vidět, za kterého vedení peníze tekly; skládaný graf rozděluje objem po letech. Platby vlastním firmám města jsou označené jako vnitřní převod, ne jako plnění cizímu dodavateli.
+
+**Hospodaření** — rozpočet města z Monitoru státní pokladny od roku 2010: příjmy a výdaje po konsolidaci, saldo, kam peníze jdou a odkud přicházejí, plnění plánu, majetek, dluhy a výkazy příspěvkových organizací. Covidová léta 2020–2021 jsou v grafech vyznačená a popsaná čísly. Čísla ověřená dvěma nezávislými kontrolami — proti souhrnům výkazů a proti usnesením zastupitelstva.
 
 **Hlasování podle témat** — 12 349 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
 

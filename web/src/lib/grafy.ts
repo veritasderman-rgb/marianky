@@ -16,6 +16,7 @@
  */
 import { cssKrokRampy, krokRampy, KROKU_RAMPY } from './barvy';
 import { cislo, kc, kcZkraceno } from './format';
+import type { PasmoObdobi } from './obdobi';
 
 /* ───────────────────────────────  Typy  ─────────────────────────────── */
 
@@ -384,12 +385,24 @@ export interface HeatmapaVysledek extends Graf {
   rampaDo: number;
 }
 
-export function grafHeatmapa(roky: number[], radky: RadekHeatmapy[]): HeatmapaVysledek {
+export function grafHeatmapa(
+  roky: number[],
+  radky: RadekHeatmapy[],
+  /**
+   * Pásma volebních období nad osou let. Nesou význam textem (roky a jména),
+   * ne barvou — střídavý podklad pásma jen odděluje sousedy. Podklad se kreslí
+   * POUZE v hlavičce: tónovat celé sloupce by posunulo vnímané odstíny rampy
+   * a heatmapa by lhala o částkách.
+   */
+  obdobi: PasmoObdobi[] = [],
+): HeatmapaVysledek {
   const SIRKA_POPISKU = 226;
   const CW = 34;
   const CH = 21;
   const MEZERA = 3;
-  const HLAVICKA = 30;
+  const pasma = obdobi.filter((p) => roky.includes(p.odRok) || roky.includes(p.doRok));
+  const VYSKA_PASEM = pasma.length > 0 ? 34 : 0;
+  const HLAVICKA = 30 + VYSKA_PASEM;
   const SPODEK = 8;
 
   const W = SIRKA_POPISKU + roky.length * (CW + MEZERA) + 12;
@@ -403,6 +416,40 @@ export function grafHeatmapa(roky: number[], radky: RadekHeatmapy[]): HeatmapaVy
   const rampaDo = kladne.length ? Math.max(...kladne) : 0;
 
   const casti: string[] = [];
+
+  // Pásma volebních období: podklad + dva řádky textu (roky, starostové)
+  // a svislý předěl mezi obdobími přes celou výšku mřížky.
+  // Text pásma se musí vejít do jeho šířky — oříznuté pásmo na kraji osy má
+  // třeba jen jeden sloupec a přetékající popisek by se slil se sousedním.
+  // Úplný výčet jmen se stranami nese věta pod grafem, tady je jen zkratka.
+  const doSirky = (s: string, sirkaPx: number): string | null => {
+    const max = Math.floor(sirkaPx / 6.5); // ~šířka znaku při 10,5px sans
+    if (max < 5) return null;
+    const cely = s.replace(/\s+/g, ' ').trim();
+    return cely.length <= max ? cely : `${cely.slice(0, max - 1).trimEnd()}…`;
+  };
+
+  pasma.forEach((p, pi) => {
+    const iOd = roky.indexOf(p.odRok);
+    const iDo = roky.indexOf(p.doRok);
+    if (iOd < 0 || iDo < 0) return;
+    const x0 = SIRKA_POPISKU + iOd * (CW + MEZERA);
+    const x1 = SIRKA_POPISKU + iDo * (CW + MEZERA) + CW;
+    const stred = (x0 + x1) / 2;
+    // Střídavý podklad jen odděluje sousední pásma; význam nese text.
+    if (pi % 2 === 0) {
+      casti.push(`<rect class="g-pasmo" x="${x0.toFixed(1)}" y="2" width="${(x1 - x0).toFixed(1)}" height="${VYSKA_PASEM - 6}" rx="3"/>`);
+    }
+    if (pi > 0) {
+      casti.push(
+        `<line class="g-predel" x1="${(x0 - MEZERA / 2).toFixed(1)}" y1="2" x2="${(x0 - MEZERA / 2).toFixed(1)}" y2="${(H - SPODEK).toFixed(1)}"/>`,
+      );
+    }
+    const radek1 = doSirky(p.nazev, x1 - x0);
+    const radek2 = doSirky(p.starostove, x1 - x0);
+    if (radek1) casti.push(`<text class="g-popisek g-popisek--pasmo" x="${stred.toFixed(1)}" y="14">${esc(radek1)}</text>`);
+    if (radek2) casti.push(`<text class="g-popisek g-popisek--pasmo" x="${stred.toFixed(1)}" y="26">${esc(radek2)}</text>`);
+  });
 
   roky.forEach((rok, i) => {
     const x = SIRKA_POPISKU + i * (CW + MEZERA) + CW / 2;

@@ -271,6 +271,50 @@ def znak_penize() -> dict:
     return znak
 
 
+def znak_hospodareni() -> dict:
+    """Hospodaření — skutečné výdaje města po konsolidaci, po letech.
+
+    Čte se z přehledu Monitoru státní pokladny. Berou se jen UZAVŘENÉ roky
+    (`koncove: true`) — rozpracovaný rok je stav k měsíci a vedle celých roků
+    by ve znaku vypadal jako propad, který se nestal.
+    """
+    osa = nacti("rozpocet/prehled/po_letech.json")
+    if not osa:
+        return _chybi("hospodareni", "data/rozpocet/prehled",
+                      "Přehled rozpočtu zatím není spočítaný.")
+
+    po_letech: dict[int, float] = {}
+    for r in osa.get("roky") or []:
+        if not r.get("koncove"):
+            continue
+        rok = _rok(r.get("rok"))
+        vydaje = ((r.get("vydaje") or {}).get("skutecnost"))
+        if rok is None or vydaje is None:
+            continue
+        po_letech[rok] = float(vydaje)
+
+    if not po_letech:
+        return _chybi("hospodareni", "data/rozpocet/prehled",
+                      "V přehledu rozpočtu není žádný uzavřený rok.")
+
+    posledni = max(po_letech)
+    znak = _sloupce_z_let(
+        Counter(),  # naplní se ručně, hodnoty jsou desetinné
+        hodnota=_zkraceno(po_letech[posledni]),
+        jednotka=f"Kč výdajů města v roce {posledni}",
+        veta="Sloupec je jeden uzavřený rok skutečných výdajů po konsolidaci.",
+        zdroj="data/rozpocet/prehled/po_letech.json",
+        pocet=len(po_letech),
+    )
+    roky = sorted(po_letech)[-LET_V_ZNAKU:]
+    znak["osa"] = [str(r) for r in roky]
+    # Rok bez dat uvnitř rozsahu by byl neznámo (None), ne nula — v datech
+    # Monitoru ale žádný takový není a `roky_bez_dat` to hlídá.
+    znak["hodnoty"] = [po_letech.get(r) for r in roky]
+    znak["stav"] = "ok"
+    return znak
+
+
 def znak_retez() -> dict:
     """Od usnesení k penězům — tři navazující kroky se skutečnými počty."""
     retez = nacti("retez/retezy.json")
@@ -702,6 +746,7 @@ def main() -> None:
         ("usneseni", znak_usneseni),
         ("hlasovani", znak_hlasovani),
         ("penize", znak_penize),
+        ("hospodareni", znak_hospodareni),
         ("retez", znak_retez),
         ("lide", znak_lide),
         ("firmy", znak_firmy),

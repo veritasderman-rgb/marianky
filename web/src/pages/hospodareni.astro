@@ -1,0 +1,881 @@
+---
+/**
+ * Hospodaření města — rozpočet, plnění plánu, majetek, dluhy a výkazy
+ * příspěvkových organizací. Zdrojem je Monitor státní pokladny (MF ČR),
+ * data počítá `pipeline/rozpocet.py`.
+ *
+ * Tři pravidla, na kterých stránka stojí (podrobně v hlavičce pipeline):
+ *
+ *   1. Příjmy a výdaje se ukazují PO KONSOLIDACI — bez převodů mezi
+ *      vlastními fondy města. Před konsolidací by v roce 2025 vyšlo
+ *      1,7 mld. výdajů, z toho 1,1 mld. jen přesuny mezi vlastními účty.
+ *   2. Rozpracovaný rok (koncove: false) se do meziročních grafů nekreslí —
+ *      půlrok vedle celých roků by vypadal jako propad.
+ *   3. `null` je „výkaz neuvádí", ne nula. Kde chybí, je mezera.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import type { Nacteno } from '../lib/data';
+import {
+  beziciObdobi,
+  nactiKrytiSmlouvami,
+  nactiMajetekZadluzenost,
+  nactiOrganizaceVykazy,
+  nactiPlanVsSkutecnost,
+  nactiRozpocetPoLetech,
+  nactiRozpocetSouhrn,
+  nactiVydajeStrukturu,
+  uzavreneRoky,
+  type Trojice,
+} from '../lib/rozpocet';
+import { grafSkladany, grafVodorovny, type SerieSkladana } from '../lib/grafy';
+import { grafRadaPoLetech, type BodRady } from '../lib/grafy_rady';
+import {
+  grafProcentaPoLetech,
+  grafRadyKc,
+  grafSaldoPoLetech,
+  procenta,
+  type SerieKc,
+  type UdobiOsy,
+} from '../lib/grafy_rozpocet';
+import { cislo, kc, kcZkraceno, sklonuj } from '../lib/format';
+
+const MESTO_ICO = '00254061';
+
+const zOsy = nactiRozpocetPoLetech();
+const zStruktury = nactiVydajeStrukturu();
+const zPlanu = nactiPlanVsSkutecnost();
+const zMajetku = nactiMajetekZadluzenost();
+const zOrganizaci = nactiOrganizaceVykazy();
+const zKryti = nactiKrytiSmlouvami();
+const zSouhrnu = nactiRozpocetSouhrn();
+
+/*
+ * Pomocné zdroje (struktura, plán, majetek, krytí) mají každý vlastní stavovou
+ * hlášku POD hlavní — když jeden z nich vypadne a osa let drží, stránka se
+ * ukáže, ale chybějící karta nesmí zmizet mlčky. Sloučit stavy do jednoho by
+ * tenhle rozdíl zamaskovalo: hlavní hláška se kreslí jen při výpadku osy.
+ * Výkazy organizací mají hlášku ve své sekci níž.
+ */
+const pomocneZdroje: { z: Nacteno<unknown>; co: string }[] = [
+  { z: zStruktury, co: 'Struktura výdajů (karta „Kam peníze jdou“)' },
+  { z: zPlanu, co: 'Plnění rozpočtu (karta „Jak se plán potkává se skutečností“)' },
+  { z: zMajetku, co: 'Rozvaha a účty (karta „Majetek, peníze na účtech a dluhy“ a dlaždice)' },
+  { z: zKryti, co: 'Srovnání s registrem smluv (karta „Kolik výdajů má stopu v registru smluv“)' },
+].filter(({ z }) => z.stav !== 'ok');
+
+const uzavrene = uzavreneRoky(zOsy.data.roky ?? []);
+const bezici = beziciObdobi(zOsy.data.roky ?? []);
+const maData = uzavrene.length > 0;
+const roky = uzavrene.map((r) => r.rok);
+const posledni = maData ? uzavrene[uzavrene.length - 1] : null;
+
+/**
+ * Covid — vyznačené období 2020–2021. Pásmo v grafu je jen podklad;
+ * co se tehdy stalo s penězi, říkají věty s čísly spočítanými níž.
+ */
+const COVID: UdobiOsy[] = [{ odRok: 2020, doRok: 2021, popisek: 'covid' }];
+
+const sk = (t: Trojice | undefined | null) => t?.skutecnost ?? null;
+
+/* Čísla do covidových vět — počítají se z dat, nezapisují se natvrdo. */
+const r2019 = uzavrene.find((r) => r.rok === 2019);
+const r2020 = uzavrene.find((r) => r.rok === 2020);
+const dan19 = sk(r2019?.prijmy_struktura.danove);
+const dan20 = sk(r2020?.prijmy_struktura.danove);
+const kap19 = sk(r2019?.vydaje_struktura.kapitalove_vydaje);
+const kap20 = sk(r2020?.vydaje_struktura.kapitalove_vydaje);
+const covidVeta =
+  dan19 && dan20 && kap19 && kap20
+    ? `Covid v číslech města: daňové příjmy spadly z ${kcZkraceno(dan19, true)} (2019) na ${kcZkraceno(dan20, true)} (2020), tedy o ${(((dan19 - dan20) / dan19) * 100).toFixed(0)} %. Město zareagovalo zmrazením investic — kapitálové výdaje klesly z ${kcZkraceno(kap19, true)} na ${kcZkraceno(kap20, true)}. Místo plánovaného schodku ${kcZkraceno(r2020?.saldo.schvaleny ?? null, true)} tak rok 2020 skončil přebytkem ${kcZkraceno(r2020?.saldo.skutecnost ?? null, true)}; část výpadku dorovnal stát vyššími transfery.`
+    : null;
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+const majetkove = uzavreneRoky(zMajetku.data.roky ?? []);
+const posledniMajetek = majetkove.length > 0 ? majetkove[majetkove.length - 1] : null;
+
+// Od kterého roku je město bez úvěrů — čte se z dat, ne z paměti.
+const rokySUverem = majetkove.filter((r) => (r.uvery_celkem ?? 0) > 0).map((r) => r.rok);
+const bezUveruOd = rokySUverem.length > 0 ? Math.max(...rokySUverem) + 1 : null;
+const uveryTed = posledniMajetek?.uvery_celkem ?? null;
+
+const dlazdice: Polozka[] = maData && posledni
+  ? [
+      {
+        popisek: `Příjmy ${posledni.rok}`,
+        hodnota: kcZkraceno(sk(posledni.prijmy), true),
+        doplnek: 'skutečnost po konsolidaci',
+      },
+      {
+        popisek: `Výdaje ${posledni.rok}`,
+        hodnota: kcZkraceno(sk(posledni.vydaje), true),
+        doplnek: 'skutečnost po konsolidaci',
+      },
+      {
+        popisek: `Saldo ${posledni.rok}`,
+        hodnota: kcZkraceno(sk(posledni.saldo), true),
+        doplnek:
+          sk(posledni.saldo) !== null
+            ? (sk(posledni.saldo) as number) >= 0
+              ? 'přebytek'
+              : 'schodek, krytý penězi na účtech'
+            : undefined,
+      },
+      {
+        popisek: 'Bankovní úvěry',
+        hodnota: uveryTed !== null ? kcZkraceno(uveryTed, true) : '—',
+        doplnek:
+          uveryTed === 0 && bezUveruOd
+            ? `město je od roku ${bezUveruOd} bez bankovních úvěrů`
+            : posledniMajetek
+              ? `stav ke konci roku ${posledniMajetek.rok}`
+              : undefined,
+        stav:
+          uveryTed === null
+            ? undefined
+            : uveryTed === 0
+              ? { uroven: 'dobre', text: 'bez dluhu u bank' }
+              : { uroven: 'pozor', text: 'město splácí úvěr' },
+      },
+      {
+        popisek: 'Peníze na účtech',
+        hodnota: kcZkraceno(posledniMajetek?.bankovni_ucty?.bezne_ucty_celkem.koncovy_stav ?? null, true),
+        doplnek: posledniMajetek ? `ke konci roku ${posledniMajetek.rok}` : undefined,
+      },
+      {
+        popisek: 'Majetek města',
+        hodnota: kcZkraceno(posledniMajetek?.rozvaha.aktiva ?? null, true),
+        doplnek: 'aktiva netto podle rozvahy',
+      },
+    ]
+  : [];
+
+/* ── 1. Příjmy a výdaje po letech ─────────────────────────────────────── */
+
+function radaZ(vyber: (r: (typeof uzavrene)[number]) => number | null): (number | null)[] {
+  return uzavrene.map(vyber);
+}
+
+// Barva patří veličině a drží se napříč variantami: příjmy --g1, výdaje --g2,
+// upravený rozpočet --g3, schválený --g4.
+const variantyPrijmyVydaje: Varianta[] = maData
+  ? [
+      {
+        klic: 'skutecnost',
+        popisek: 'Skutečnost',
+        graf: (() => {
+          const g = grafRadyKc(
+            roky,
+            [
+              { klic: 'prijmy', nazev: 'Příjmy', barva: 'var(--g1)', hodnoty: radaZ((r) => sk(r.prijmy)) },
+              { klic: 'vydaje', nazev: 'Výdaje', barva: 'var(--g2)', hodnoty: radaZ((r) => sk(r.vydaje)) },
+            ],
+            'Příjmy a výdaje města po letech',
+            COVID,
+          );
+          if (covidVeta) g.poznamky.push(covidVeta);
+          return g;
+        })(),
+      },
+      {
+        klic: 'vydaje-plan',
+        popisek: 'Výdaje: plán a skutečnost',
+        graf: (() => {
+          const g = grafRadyKc(
+            roky,
+            [
+              { klic: 'schvaleny', nazev: 'Schválený rozpočet', barva: 'var(--g4)', hodnoty: radaZ((r) => r.vydaje.schvaleny) },
+              { klic: 'upraveny', nazev: 'Upravený rozpočet', barva: 'var(--g3)', hodnoty: radaZ((r) => r.vydaje.upraveny) },
+              { klic: 'skutecnost', nazev: 'Skutečnost', barva: 'var(--g2)', hodnoty: radaZ((r) => sk(r.vydaje)) },
+            ],
+            'Výdaje: plán a skutečnost',
+            COVID,
+          );
+          g.poznamky.push(
+            'Schválený rozpočet je plán z prosince předchozího roku; upravený je tentýž plán po rozpočtových opatřeních během roku. Skutečnost bývá pod upraveným rozpočtem — město do plánu vkládá rezervy a investice, které se nestihnou.',
+          );
+          return g;
+        })(),
+      },
+      {
+        klic: 'prijmy-plan',
+        popisek: 'Příjmy: plán a skutečnost',
+        graf: (() => {
+          const g = grafRadyKc(
+            roky,
+            [
+              { klic: 'schvaleny', nazev: 'Schválený rozpočet', barva: 'var(--g4)', hodnoty: radaZ((r) => r.prijmy.schvaleny) },
+              { klic: 'upraveny', nazev: 'Upravený rozpočet', barva: 'var(--g3)', hodnoty: radaZ((r) => r.prijmy.upraveny) },
+              { klic: 'skutecnost', nazev: 'Skutečnost', barva: 'var(--g1)', hodnoty: radaZ((r) => sk(r.prijmy)) },
+            ],
+            'Příjmy: plán a skutečnost',
+            COVID,
+          );
+          g.poznamky.push('Příjmy město dlouhodobě plánuje opatrně — skutečnost je téměř každý rok nad schváleným rozpočtem.');
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 2. Saldo hospodaření ─────────────────────────────────────────────── */
+
+const variantySalda: Varianta[] = maData
+  ? [
+      {
+        klic: 'saldo',
+        popisek: 'Saldo',
+        graf: (() => {
+          const g = grafSaldoPoLetech(
+            uzavrene.map((r) => ({
+              rok: r.rok,
+              hodnota: sk(r.saldo),
+              plan: r.saldo.schvaleny,
+            })),
+            'Saldo hospodaření města po letech',
+            COVID,
+          );
+          g.poznamky.push(
+            'Sloupec nad nulou je přebytek, pod nulou schodek. Město skoro každý rok plánuje schodek (v plánu jsou rezervy a investice), ale skutečnost končí lépe — plánované saldo je v tooltipu a v tabulce.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 3. Kam jdou peníze a odkud přicházejí ────────────────────────────── */
+
+const strukturaUzavrene = uzavreneRoky(zStruktury.data.roky ?? []);
+const posledniStruktura = strukturaUzavrene.length > 0 ? strukturaUzavrene[strukturaUzavrene.length - 1] : null;
+
+/** Skládané série výdajů podle skupin rozpočtové skladby (1–6). */
+function serieSkupin(): SerieSkladana[] {
+  const podleKodu = new Map<string, { nazev: string | null; poRoce: Map<number, number> }>();
+  for (const r of strukturaUzavrene) {
+    for (const s of r.skupiny) {
+      const z = podleKodu.get(s.kod) ?? { nazev: s.nazev, poRoce: new Map() };
+      z.nazev = z.nazev ?? s.nazev;
+      // Do grafu patří hodnota BEZ převodů vlastním fondům — jinak by
+      // největší kapitolou vyšlo přesouvání peněz mezi vlastními účty.
+      z.poRoce.set(r.rok, s.skutecnost_bez_prevodu);
+      podleKodu.set(s.kod, z);
+    }
+  }
+  const rokyStruktury = strukturaUzavrene.map((r) => r.rok);
+  return [...podleKodu.entries()]
+    .sort((a, b) => (b[1].poRoce.get(rokyStruktury[rokyStruktury.length - 1]) ?? 0) - (a[1].poRoce.get(rokyStruktury[rokyStruktury.length - 1]) ?? 0))
+    .map(([kod, z]) => ({
+      klic: null,
+      nazev: z.nazev ?? `skupina ${kod}`,
+      // Skupin rozpočtové skladby je šest — barva se váže na kód skupiny,
+      // takže filtr ani řazení ji nikdy nepřebarví.
+      barva: `var(--g${Number(kod) >= 1 && Number(kod) <= 6 ? Number(kod) : 6})`,
+      hodnoty: rokyStruktury.map((rok) => z.poRoce.get(rok) ?? 0),
+    }));
+}
+
+/** Příjmy podle tříd; transfery po odečtení převodů z vlastních fondů. */
+function seriePrijmovychTrid(): SerieSkladana[] {
+  const rada = (vyber: (r: (typeof uzavrene)[number]) => number | null) =>
+    uzavrene.map((r) => vyber(r) ?? 0);
+  return [
+    { klic: null, nazev: 'Daňové příjmy', barva: 'var(--g1)', hodnoty: rada((r) => sk(r.prijmy_struktura.danove)) },
+    { klic: null, nazev: 'Nedaňové příjmy', barva: 'var(--g2)', hodnoty: rada((r) => sk(r.prijmy_struktura.nedanove)) },
+    { klic: null, nazev: 'Kapitálové příjmy (prodeje majetku)', barva: 'var(--g3)', hodnoty: rada((r) => sk(r.prijmy_struktura.kapitalove_prijmy)) },
+    {
+      klic: null,
+      nazev: 'Transfery (dotace od státu a kraje)',
+      barva: 'var(--g4)',
+      // Třída transferů je před konsolidací a obsahuje i převody z vlastních
+      // fondů města (v roce 2025 přes miliardu). Odečítá se konsolidace
+      // příjmů, která je celá tvořena právě těmihle převody (položky 413x) —
+      // pravidlo ověřené pipeline na všech uzavřených ročnících.
+      hodnoty: uzavrene.map((r) => {
+        const t = sk(r.prijmy_struktura.transfery);
+        const k = sk(r.prijmy_struktura.minus_konsolidace);
+        return t === null ? 0 : t - (k ?? 0);
+      }),
+    },
+  ];
+}
+
+const variantyStruktury: Varianta[] = maData
+  ? [
+      ...(strukturaUzavrene.length > 0
+        ? [
+            {
+              klic: 'vydaje-skupiny',
+              popisek: 'Kam peníze jdou',
+              graf: (() => {
+                const g = grafSkladany(strukturaUzavrene.map((r) => r.rok), serieSkupin(), 'Výdaje podle skupin rozpočtové skladby');
+                g.poznamky.push(
+                  'Členění je bez převodů vlastním fondům města (paragraf 6330) — to jsou vnitřní přesuny peněz, ne výdaje. Proto je součet skupin nižší než celkové výdaje před konsolidací.',
+                );
+                g.poznamky.push(
+                  '„Služby pro fyzické osoby“ zahrnují školství, kulturu, sport i bydlení — je to největší skupina; podrobnější členění po oddílech je v přepínači vedle.',
+                );
+                return g;
+              })(),
+            },
+          ]
+        : []),
+      ...(posledniStruktura
+        ? [
+            {
+              klic: 'oddily',
+              popisek: `Největší oblasti (${posledniStruktura.rok})`,
+              graf: (() => {
+                // Všechny oddíly s výdaji, ne jen výběr — kdyby se pro graf
+                // ořezaly, ořezala by se s nimi i povinná tabulka a poznámka
+                // „kompletní členění je v tabulce" by přestala platit.
+                const oddily = posledniStruktura.oddily
+                  .filter((o) => o.skutecnost_bez_prevodu > 0)
+                  .map((o) => ({
+                    nazev: o.nazev ?? `oddíl ${o.kod}`,
+                    hodnota: o.skutecnost_bez_prevodu,
+                    doplnky:
+                      o.podil_bez_prevodu_pct !== null
+                        ? [{ l: 'Podíl na výdajích', v: procenta(o.podil_bez_prevodu_pct) }]
+                        : [],
+                  }));
+                const g = grafVodorovny(oddily, `Oblasti výdajů ${posledniStruktura.rok}`, (v) => kcZkraceno(v, true));
+                g.poznamky.push(
+                  `Všech ${cislo(oddily.length)} oddílů rozpočtové skladby s výdaji v roce ${posledniStruktura.rok}, bez převodů vlastním fondům. Jemnější členění po paragrafech nabízí rozklikávací rozpočet v Monitoru státní pokladny (odkaz dole).`,
+                );
+                return g;
+              })(),
+            },
+          ]
+        : []),
+      {
+        klic: 'prijmy-tridy',
+        popisek: 'Odkud přicházejí',
+        graf: (() => {
+          const g = grafSkladany(roky, seriePrijmovychTrid(), 'Příjmy podle tříd rozpočtové skladby');
+          g.poznamky.push(
+            'Transfery jsou dotace od státu, kraje a EU — po odečtení převodů z vlastních fondů města, které nejsou skutečným příjmem. V covidovém roce 2020 transfery skokově narostly (kompenzace státu), zatímco daňové příjmy spadly.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 4. Plán proti skutečnosti ────────────────────────────────────────── */
+
+const planUzavrene = uzavreneRoky(zPlanu.data.roky ?? []);
+const posledniPlan = planUzavrene.length > 0 ? planUzavrene[planUzavrene.length - 1] : null;
+
+const variantyPlneni: Varianta[] = planUzavrene.length > 0
+  ? [
+      {
+        klic: 'plneni',
+        popisek: 'Plnění upraveného rozpočtu',
+        graf: (() => {
+          const g = grafProcentaPoLetech(
+            planUzavrene.map((r) => r.rok),
+            [
+              { klic: 'prijmy', nazev: 'Příjmy', barva: 'var(--g1)', hodnoty: planUzavrene.map((r) => r.prijmy.plneni_pct) },
+              { klic: 'vydaje', nazev: 'Výdaje', barva: 'var(--g2)', hodnoty: planUzavrene.map((r) => r.vydaje.plneni_pct) },
+            ],
+            'Plnění upraveného rozpočtu',
+            COVID,
+          );
+          g.poznamky.push(
+            'Linka na 100 % znamená plán splněný přesně. Příjmy nad 100 % = vybralo se víc, než se čekalo; výdaje pod 100 % = neutratilo se všechno, co bylo v plánu (typicky odložené investice).',
+          );
+          return g;
+        })(),
+      },
+      {
+        klic: 'zmeny',
+        popisek: 'O kolik se rozpočet během roku změnil',
+        graf: (() => {
+          const g = grafProcentaPoLetech(
+            planUzavrene.map((r) => r.rok),
+            [
+              { klic: 'prijmy', nazev: 'Příjmy', barva: 'var(--g1)', hodnoty: planUzavrene.map((r) => r.prijmy.navyseni_rozpoctu_pct) },
+              { klic: 'vydaje', nazev: 'Výdaje', barva: 'var(--g2)', hodnoty: planUzavrene.map((r) => r.vydaje.navyseni_rozpoctu_pct) },
+            ],
+            'Navýšení rozpočtu během roku (upravený proti schválenému)',
+            COVID,
+          );
+          g.poznamky.push(
+            'Kolik procent zastupitelstvo během roku k původnímu plánu přidalo (záporné číslo = ubralo). Velká čísla znamenají, že prosincový rozpočet byl spíš výchozí odhad než závazný plán.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 5. Majetek, účty, dluhy ──────────────────────────────────────────── */
+
+const variantyMajetku: Varianta[] = majetkove.length > 0
+  ? [
+      {
+        klic: 'majetek',
+        popisek: 'Majetek',
+        graf: (() => {
+          const rokyM = majetkove.map((r) => r.rok);
+          const serie: SerieKc[] = [
+            { klic: 'aktiva', nazev: 'Majetek celkem (aktiva)', barva: 'var(--g1)', hodnoty: majetkove.map((r) => r.rozvaha.aktiva) },
+            { klic: 'vlastni', nazev: 'Vlastní kapitál', barva: 'var(--g3)', hodnoty: majetkove.map((r) => r.rozvaha.vlastni_kapital) },
+            { klic: 'cizi', nazev: 'Cizí zdroje (závazky)', barva: 'var(--g2)', hodnoty: majetkove.map((r) => r.rozvaha.cizi_zdroje) },
+          ];
+          const g = grafRadyKc(rokyM, serie, 'Rozvaha města po letech');
+          g.poznamky.push(
+            'Hodnoty netto podle rozvahy (po odečtení oprávek). Cizí zdroje nejsou dluh u bank — patří sem i běžné závazky vůči dodavatelům; bankovní úvěry jsou ve vedlejším pohledu.',
+          );
+          return g;
+        })(),
+      },
+      {
+        klic: 'ucty',
+        popisek: 'Peníze na účtech',
+        graf: (() => {
+          const body: BodRady[] = majetkove.map((r) => ({
+            rok: r.rok,
+            hodnota: r.bankovni_ucty?.bezne_ucty_celkem.koncovy_stav ?? null,
+          }));
+          const g = grafRadaPoLetech(body, 'Peníze na běžných účtech ke konci roku', 'Stav ke konci roku', (v) => kcZkraceno(v, true));
+          g.poznamky.push('Polštář, ze kterého město kryje plánované schodky. Součet běžných účtů podle výkazu FIN 2-12 M.');
+          return g;
+        })(),
+      },
+      {
+        klic: 'uvery',
+        popisek: 'Bankovní úvěry',
+        graf: (() => {
+          const body: BodRady[] = majetkove.map((r) => ({ rok: r.rok, hodnota: r.uvery_celkem }));
+          const g = grafRadaPoLetech(body, 'Bankovní úvěry města ke konci roku', 'Úvěry celkem', (v) => kcZkraceno(v, true));
+          if (bezUveruOd) {
+            g.poznamky.push(
+              `Poslední úvěr město splatilo v roce ${bezUveruOd - 1}; od roku ${bezUveruOd} hospodaří bez bankovních dluhů. Nulový rok má v grafu tenký proužek — nula je vykázaný údaj, ne chybějící.`,
+            );
+          }
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 6. Krytí výdajů registrem smluv ──────────────────────────────────── */
+
+const krytiRoky = uzavreneRoky(zKryti.data.roky ?? []).filter((r) => r.stav_registru !== 'mimo_registr');
+const variantyKryti: Varianta[] = krytiRoky.length > 0
+  ? [
+      {
+        klic: 'kryti',
+        popisek: 'Podíl smluv na výdajích',
+        graf: (() => {
+          const g = grafProcentaPoLetech(
+            krytiRoky.map((r) => r.rok),
+            [
+              {
+                klic: 'podil',
+                nazev: 'Hodnota podepsaných smluv proti výdajům roku',
+                barva: 'var(--g1)',
+                hodnoty: krytiRoky.map((r) => r.podil_smluv_na_vydajich_pct),
+              },
+            ],
+            'Hodnota smluv z registru proti výdajům města',
+            COVID,
+          );
+          g.poznamky.push(
+            'TOHLE NENÍ MÍRA TRANSPARENTNOSTI. Hodnota smlouvy platí za celou dobu plnění, ne za rok podpisu — proto může podíl přesáhnout 100 %. Smlouvy do 50 tisíc se nezveřejňují a rok 2016 je jen půlrok (registr běží od 1. 7. 2016).',
+          );
+          const s2016 = krytiRoky.find((r) => r.stav_registru === 'castecny_rok');
+          if (s2016) g.poznamky.push(`Rok ${s2016.rok} zahrnuje jen smlouvy od července — registr smluv dřív neexistoval.`);
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── 7. Organizace města ──────────────────────────────────────────────── */
+
+const organizace = (zOrganizaci.data.organizace ?? []).filter((o) => o.ico !== MESTO_ICO);
+const bezVykazu = zOrganizaci.data.subjekty_bez_vykazu ?? [];
+
+/** Poslední uzavřený rok, ve kterém má organizace výkaz zisku a ztráty. */
+function posledniVykaz(o: (typeof organizace)[number]) {
+  return [...o.obdobi].reverse().find((x) => x.koncove && x.vyzz) ?? null;
+}
+
+const rokOrganizaci = Math.max(0, ...organizace.map((o) => posledniVykaz(o)?.rok ?? 0));
+
+interface RadekOrganizace {
+  nazev: string;
+  typ: string | null;
+  rok: number;
+  naklady: number | null;
+  vynosy: number | null;
+  vysledek: number | null;
+  vysledekDopocet: boolean;
+}
+
+const radkyOrganizaci: RadekOrganizace[] = organizace
+  .map((o) => {
+    const p = posledniVykaz(o);
+    if (!p?.vyzz) return null;
+    return {
+      nazev: o.nazev ?? o.ico,
+      typ: o.typ,
+      rok: p.rok,
+      naklady: p.vyzz.naklady_celkem,
+      vynosy: p.vyzz.vynosy_celkem,
+      vysledek: p.vyzz.vysledek_hospodareni_celkem,
+      vysledekDopocet: p.vyzz.vysledek_zdroj === 'dopocet',
+    };
+  })
+  .filter((x): x is RadekOrganizace => x !== null)
+  .sort((a, b) => (b.naklady ?? 0) - (a.naklady ?? 0));
+
+const aktualniOrganizace = radkyOrganizaci.filter((r) => r.rok === rokOrganizaci);
+
+/* Covid u organizací: propad výnosů z vlastní (hospodářské) činnosti
+   2019 → 2020 — vstupné, pronájmy, služby. Počítá se jen z organizací,
+   které mají údaj za oba roky. */
+function hospVynosy(o: (typeof organizace)[number], rok: number): number | null {
+  const p = o.obdobi.find((x) => x.rok === rok && x.koncove);
+  return p?.vyzz?.hospodarska_cinnost?.vynosy ?? null;
+}
+let hosp19 = 0;
+let hosp20 = 0;
+let hospPocet = 0;
+for (const o of organizace) {
+  const a = hospVynosy(o, 2019);
+  const b = hospVynosy(o, 2020);
+  if (a !== null && b !== null) {
+    hosp19 += a;
+    hosp20 += b;
+    hospPocet++;
+  }
+}
+const covidOrganizace =
+  hospPocet > 0 && hosp19 > 0
+    ? `Covid dopadl i na organizace města: výnosy z vlastní (hospodářské) činnosti — vstupné, pronájmy, kurzy — spadly u ${cislo(hospPocet)} organizací s údaji za oba roky z ${kcZkraceno(hosp19, true)} (2019) na ${kcZkraceno(hosp20, true)} (2020), tedy o ${(((hosp19 - hosp20) / hosp19) * 100).toFixed(0)} %.`
+    : null;
+
+const variantyOrganizaci: Varianta[] = aktualniOrganizace.length > 0
+  ? [
+      {
+        klic: 'naklady',
+        popisek: `Náklady (${rokOrganizaci})`,
+        graf: (() => {
+          const g = grafVodorovny(
+            aktualniOrganizace
+              .filter((r) => r.naklady !== null)
+              .map((r) => ({
+                nazev: r.nazev,
+                hodnota: r.naklady as number,
+                doplnky: [
+                  { l: 'Výnosy', v: kc(r.vynosy) },
+                  { l: 'Výsledek hospodaření', v: kc(r.vysledek) },
+                ],
+              })),
+            `Náklady organizací města ${rokOrganizaci}`,
+            (v) => kcZkraceno(v, true),
+          );
+          g.poznamky.push('Součet hlavní a hospodářské činnosti podle výkazu zisku a ztráty. Výsledek hospodaření každé organizace je v tooltipu a v tabulce níž.');
+          return g;
+        })(),
+      },
+      {
+        klic: 'vynosy',
+        popisek: `Výnosy (${rokOrganizaci})`,
+        graf: grafVodorovny(
+          aktualniOrganizace
+            .filter((r) => r.vynosy !== null)
+            .map((r) => ({
+              nazev: r.nazev,
+              hodnota: r.vynosy as number,
+              doplnky: [
+                { l: 'Náklady', v: kc(r.naklady) },
+                { l: 'Výsledek hospodaření', v: kc(r.vysledek) },
+              ],
+            })),
+          `Výnosy organizací města ${rokOrganizaci}`,
+          (v) => kcZkraceno(v, true),
+        ),
+      },
+    ]
+  : [];
+
+/* ── Ověření ──────────────────────────────────────────────────────────── */
+
+const overeni = zSouhrnu.data.overeni ?? null;
+const kontrolaDopoctu = zOsy.data.kontrola_dopoctu ?? overeni?.dopocet_proti_souhrnum_vykazu ?? null;
+const overeniUsneseni = zOsy.data.overeni_proti_usnesenim ?? overeni?.schvaleny_rozpocet_proti_usnesenim ?? null;
+---
+
+<Zaklad
+  titulek="Hospodaření města"
+  aktivni="hospodareni"
+  nadpis="Hospodaření města"
+  uvod="Rozpočet Mariánských Lázní od roku 2010: kolik město vybere a utratí, kam peníze jdou, jak se plán liší od skutečnosti a co město vlastní a dluží. Zdrojem jsou výkazy z Monitoru státní pokladny Ministerstva financí — stejná čísla, jaká město povinně vykazuje státu."
+>
+  <StavDat
+    stav={zOsy.stav}
+    zdroj={zOsy.zdroj}
+    co="Rozpočet města z Monitoru státní pokladny"
+    prazdno={zOsy.stav === 'ok' && !maData}
+    modul="Monitor státní pokladny"
+  />
+
+  {
+    pomocneZdroje.map(({ z, co }) => (
+      <StavDat stav={z.stav} zdroj={z.zdroj} co={co} modul="Monitor státní pokladny" poznamky={z.poznamka ? [z.poznamka] : []} />
+    ))
+  }
+
+  {
+    maData && posledni && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        {bezici && (
+          <p class="graf-poznamka graf-poznamka--duraz">
+            <strong>Rozpracovaný rok {bezici.rok}</strong> (stav k období {bezici.obdobi}): příjmy zatím{' '}
+            {kcZkraceno(sk(bezici.prijmy), true)}, výdaje {kcZkraceno(sk(bezici.vydaje), true)}. Do meziročních
+            grafů se nekreslí — část roku vedle celých roků by vypadala jako propad, který se nestal.
+          </p>
+        )}
+
+        <GrafKarta
+          id="prijmy-vydaje"
+          nadpis="Příjmy a výdaje po letech"
+          popis="Skutečné příjmy a výdaje města po konsolidaci — bez převodů mezi vlastními fondy, tedy peníze, které do města opravdu přitekly a odtekly. Podbarvené roky 2020–2021 jsou covidová léta. Přepínačem se přidá srovnání s plánem."
+          varianty={variantyPrijmyVydaje}
+        />
+
+        <GrafKarta
+          id="saldo"
+          nadpis="Saldo: přebytek, nebo schodek?"
+          popis="Rozdíl příjmů a výdajů v každém roce. Nula je vodorovná osa — co je nad ní, hospodaření přidalo na účty, co je pod ní, muselo se vzít z úspor."
+          varianty={variantySalda}
+        />
+
+        {variantyStruktury.length > 0 && (
+          <GrafKarta
+            id="struktura"
+            nadpis="Kam peníze jdou a odkud přicházejí"
+            popis="Výdaje podle skupin rozpočtové skladby a příjmy podle tříd. Všechno bez vnitřních převodů mezi fondy města — ukazují se jen skutečné toky ven a dovnitř."
+            varianty={variantyStruktury}
+          />
+        )}
+
+        {variantyPlneni.length > 0 && (
+          <GrafKarta
+            id="plneni"
+            nadpis="Jak se plán potkává se skutečností"
+            popis="Rozpočet se schvaluje v prosinci na příští rok a během roku se rozpočtovými opatřeními mění. Tady je vidět, jak přesný plán bývá — a jak moc se přepisuje."
+            varianty={variantyPlneni}
+          />
+        )}
+
+        {posledniPlan && posledniPlan.nejvetsi_rozchody_oddilu.length > 0 && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Kde se plán a skutečnost rozešly nejvíc ({posledniPlan.rok})</h2>
+            <p class="karta__podnadpis">
+              Oddíly rozpočtové skladby s největším rozdílem mezi schváleným rozpočtem a skutečností,
+              bez převodů vlastním fondům. Kladný rozdíl = utratilo se víc, než prosincový plán čekal.
+            </p>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Oblast</th>
+                    <th scope="col" class="cislo">Schválený</th>
+                    <th scope="col" class="cislo">Upravený</th>
+                    <th scope="col" class="cislo">Skutečnost</th>
+                    <th scope="col" class="cislo">Rozdíl proti schválenému</th>
+                    <th scope="col" class="cislo">Plnění upraveného</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {posledniPlan.nejvetsi_rozchody_oddilu.map((o) => (
+                    <tr>
+                      <td>{o.nazev ?? `oddíl ${o.kod}`}</td>
+                      <td class="cislo">{kcZkraceno(o.schvaleny, true)}</td>
+                      <td class="cislo">{kcZkraceno(o.upraveny, true)}</td>
+                      <td class="cislo">{kcZkraceno(o.skutecnost, true)}</td>
+                      <td class="cislo">{kcZkraceno(o.rozdil_proti_schvalenemu, true)}</td>
+                      <td class="cislo">{o.plneni_pct === null ? '—' : procenta(o.plneni_pct)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {variantyMajetku.length > 0 && (
+          <GrafKarta
+            id="majetek"
+            nadpis="Majetek, peníze na účtech a dluhy"
+            popis="Rozvaha města: co vlastní, co dluží a kolik má na účtech. Mariánské Lázně dnes nemají žádný bankovní úvěr — kdy přesně dluh zmizel, ukazuje třetí pohled."
+            varianty={variantyMajetku}
+          />
+        )}
+
+        {variantyKryti.length > 0 && (
+          <GrafKarta
+            id="kryti"
+            nadpis="Kolik výdajů má stopu v registru smluv"
+            popis="Orientační srovnání dvou různých světů: hodnota smluv podepsaných v daném roce proti skutečným výdajům téhož roku. Smlouva platí na celou dobu plnění, takže to není míra transparentnosti — ale ukazuje, jak velká část peněz města má veřejně dohledatelný smluvní podklad."
+            varianty={variantyKryti}
+          />
+        )}
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Hospodaření organizací města</h2>
+          <p class="karta__podnadpis">
+            Školy, školky, knihovna, muzeum, divadlo a další příspěvkové organizace podávají státu
+            rozvahu a výkaz zisku a ztráty — tady je jejich poslední uzavřený rok.
+            Kdo od města kolik dostává, ukazuje <a href="/penize">sekce Peníze</a>.
+          </p>
+
+          <StavDat
+            stav={zOrganizaci.stav}
+            zdroj={zOrganizaci.zdroj}
+            co="Účetní výkazy organizací města"
+            prazdno={zOrganizaci.stav === 'ok' && organizace.length === 0}
+            modul="Monitor státní pokladny"
+          />
+
+          {covidOrganizace && <p class="graf-poznamka">{covidOrganizace}</p>}
+
+          {variantyOrganizaci.length > 0 && (
+            <GrafKarta
+              id="organizace"
+              nadpis={`Organizace města podle velikosti (${rokOrganizaci})`}
+              popis="Náklady a výnosy za hlavní i hospodářskou činnost dohromady. Řazeno podle nákladů — je vidět, že největší organizací města jsou školy a domov pro seniory."
+              varianty={variantyOrganizaci}
+            />
+          )}
+
+          {radkyOrganizaci.length > 0 && (
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Organizace</th>
+                    <th scope="col">Rok výkazu</th>
+                    <th scope="col" class="cislo">Náklady</th>
+                    <th scope="col" class="cislo">Výnosy</th>
+                    <th scope="col" class="cislo">Výsledek hospodaření</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {radkyOrganizaci.map((r) => (
+                    <tr>
+                      <td>{r.nazev}</td>
+                      <td class="cislo">{r.rok}</td>
+                      <td class="cislo">{kc(r.naklady)}</td>
+                      <td class="cislo">{kc(r.vynosy)}</td>
+                      <td class="cislo">
+                        {kc(r.vysledek)}
+                        {r.vysledekDopocet && <span class="stav-dat__zdroj"> (dopočet)</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {bezVykazu.length > 0 && (
+            <p class="graf-poznamka">
+              {cislo(bezVykazu.length)} {sklonuj(bezVykazu.length, 'subjekt města', 'subjekty města', 'subjektů města')} v
+              Monitoru není: {bezVykazu.map((s) => s.nazev).join(', ')}. Obchodní společnosti (s.r.o., o.p.s.)
+              nejsou vybrané účetní jednotky a státu výkazy nepodávají — jejich závěrky vede sbírka listin
+              obchodního rejstříku. Je to mezera zdroje, ne sběru; napojení na sbírku listin je v plánu.
+            </p>
+          )}
+        </section>
+
+        {(kontrolaDopoctu || overeniUsneseni) && (
+          <section class="karta">
+            <h2 class="karta__nadpis">Proč těm číslům věřit</h2>
+            <p class="karta__podnadpis">
+              Dvě nezávislé kontroly běží při každém přepočtu dat — jejich výsledek se ukládá k datům
+              a stojí tady, ne v dokumentaci.
+            </p>
+            <ul>
+              {overeniUsneseni && (
+                <li>
+                  <strong>Proti usnesením zastupitelstva:</strong> {overeniUsneseni.zaver}
+                  {' '}({cislo(overeniUsneseni.sedi)} {sklonuj(overeniUsneseni.sedi, 'ročník sedí', 'ročníky sedí', 'ročníků sedí')} do
+                  koruny, {cislo(overeniUsneseni.neshod)} neshod).
+                </li>
+              )}
+              {kontrolaDopoctu && (
+                <li>
+                  <strong>Dopočty proti souhrnům výkazu:</strong> {kontrolaDopoctu.zaver}
+                  {' '}(porovnáno {cislo(kontrolaDopoctu.porovnanych_hodnot)} hodnot, {cislo(kontrolaDopoctu.neshod)} neshod).
+                </li>
+              )}
+            </ul>
+          </section>
+        )}
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Kam dál</h2>
+          <ul>
+            <li><a href="/penize">Peníze města</a> — komu město platí, po jednotlivých smlouvách a protistranách.</li>
+            <li><a href="/retez">Od usnesení k penězům</a> — co rada schválila, jaká smlouva se podepsala a kolik odteklo.</li>
+            <li>
+              <a href="https://monitor.statnipokladna.gov.cz/ucetni-jednotka/00254061" rel="noopener">
+                Město v Monitoru státní pokladny
+              </a>{' '}
+              — zdrojová aplikace Ministerstva financí s rozklikávacím rozpočtem do poslední položky.
+            </li>
+          </ul>
+        </section>
+
+        <JakPocitame>
+          <p>
+            Zdrojem jsou otevřená data Monitoru státní pokladny: výkaz FIN 2-12 M (plnění rozpočtu),
+            rozvaha a výkaz zisku a ztráty. Částky jsou v celých korunách tak, jak je město vykázalo;
+            nic se nepřepočítává na dnešní ceny.
+          </p>
+          <ul>
+            <li>
+              <strong>Příjmy a výdaje jsou po konsolidaci</strong> — bez převodů mezi vlastními fondy
+              města. Před konsolidací by v roce 2025 vyšlo přes 1,7 miliardy „výdajů“, z toho přes
+              miliardu tvoří jen přesuny mezi vlastními účty.
+            </li>
+            <li>
+              <strong>Členění výdajů je bez paragrafu 6330</strong> (převody vlastním fondům). Jinak by
+              největší kapitolou města vyšly „finanční operace“ — a byly by to tytéž vnitřní přesuny.
+            </li>
+            <li>
+              <strong>Plnění se měří proti upravenému rozpočtu.</strong> Proti schválenému by měřilo
+              hlavně to, kolikrát se rozpočet během roku měnil.
+            </li>
+            <li>
+              <strong>Chybějící hodnota je mezera, ne nula.</strong> Nula znamená, že výkaz nulu skutečně
+              uvádí — třeba u úvěrů po roce {bezUveruOd ?? 2014}.
+            </li>
+            <li>
+              <strong>Rozpracovaný rok se s celými roky nesrovnává.</strong> Stav k půlce roku je
+              uvedený zvlášť nad grafy.
+            </li>
+            <li>
+              <strong>Ke každému grafu je tabulka</strong> — čísla musí být dostupná i bez barev.
+            </li>
+          </ul>
+        </JakPocitame>
+      </>
+    )
+  }
+</Zaklad>

@@ -82,6 +82,13 @@ export const SKUPINY: SkupinaSekci[] = [
         popis: 'Komu město platí a kolik',
       },
       {
+        klic: 'hospodareni',
+        cesta: '/hospodareni',
+        nazev: 'Hospodaření města',
+        kratce: 'Hospodaření',
+        popis: 'Rozpočet, plnění plánu, majetek a dluhy',
+      },
+      {
         klic: 'retez',
         cesta: '/retez',
         nazev: 'Od usnesení k penězům',

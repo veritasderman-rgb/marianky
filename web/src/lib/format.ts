@@ -147,6 +147,12 @@ const NAZVY_ZDROJU: Record<string, string> = {
   'config/tagy.json': 'seznam témat',
   'zpravodaj/cisla.json': 'archiv Městského zpravodaje',
   'zpravodaj/clanky': 'články z Městského zpravodaje',
+  'rozpocet/prehled/po_letech.json': 'rozpočet města z Monitoru státní pokladny',
+  'rozpocet/prehled/vydaje_struktura.json': 'struktura výdajů z Monitoru státní pokladny',
+  'rozpocet/prehled/plan_vs_skutecnost.json': 'plnění rozpočtu z Monitoru státní pokladny',
+  'rozpocet/prehled/majetek_zadluzenost.json': 'rozvaha města z Monitoru státní pokladny',
+  'rozpocet/prehled/organizace.json': 'výkazy organizací z Monitoru státní pokladny',
+  'rozpocet/prehled/kryti_smlouvami.json': 'srovnání výdajů s registrem smluv',
 };
 
 const NAZVY_SLOZEK: Record<string, string> = {
@@ -160,6 +166,7 @@ const NAZVY_SLOZEK: Record<string, string> = {
   firmy: 'rejstřík firem',
   config: 'nastavení přehledu',
   opendata: 'otevřená data',
+  rozpocet: 'Monitor státní pokladny',
   casova_osa: 'jednotná časová osa',
   volby: 'výsledky voleb',
   media: 'mediální monitoring',
