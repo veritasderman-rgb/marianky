@@ -517,6 +517,44 @@ Souřadnice Mariánských Lázní: **49,9646° N, 12,7010° E**.
 
 ---
 
+## 8b. Srovnání měst — Monitor + ČSÚ (`scrapers/srovnani.py`)
+
+Stejné extrakty FIN 2-12 M jako v §6c, jen se z nich bere **souhrnná tabulka
+(rekapitulace)** i pro srovnávací města ze `config/srovnani.json` — IČO a kódy
+obcí jsou ověřené proti ARES (`sidlo.kodObce` = kód obce RÚIAN = `uzemi_kod`
+v datech ČSÚ). Počty obyvatel jde ze sady ČSÚ 130149 (stav k 31. 12.); sběrač
+ověřuje, že kód obce nese ve zdroji stejné jméno jako konfigurace — jinak
+spadne, místo aby tiše srovnával cizí obec.
+
+Dvě pasti:
+
+- **Od roku 2026 rekapitulace v extraktu není** (výkaz 063). Dopočet z položek
+  by pro cizí města znamenal statisíce řádků; srovnání proto nese jen uzavřené
+  roky do 2025 a píše to v metodice.
+- **ČSÚ zveřejňuje stav obyvatel za rok N až v půlce N+1.** Na obyvatele se
+  proto dělí stavem k 1. lednu (údaj „k 31. 12." předchozího roku) — jinak by
+  poslední uzavřený rozpočet neměl čím dělit.
+
+## 8c. Sbírka listin obchodního rejstříku (`scrapers/zaverky.py`)
+
+Jediné místo, kde je vidět hospodaření městských s.r.o. (nejsou vybrané účetní
+jednotky, Monitor je nezná). `or.justice.cz` je Wicket aplikace:
+
+- vyhledání funguje na `rejstrik-$firma?ico=…` (výsledková stránka
+  `rejstrik-firma.vysledky?ico=…` firmu kupodivu nenese);
+- seznam listin je na `vypis-sl-firma?subjektId=…`, řádky se poznají podle
+  čísla listiny `…/SL…/…`;
+- **rok v hranaté závorce nemusí stát na konci typu**: soudy zapisují
+  i „účetní závěrka [2023] Rozvaha []". Kdo chytá jen závorku na konci,
+  ztratí většinu závěrek (přesně tahle chyba by křivě obvinila TDS
+  z nezveřejňování).
+
+Čísla z PDF závěrek se **nečtou** — skeny i strojová PDF v mnoha šablonách,
+deterministický parser neexistuje. Výstupem je matice „firma × rok: závěrka
+založena / chybí" plus odkazy do sbírky.
+
+---
+
 ## 9. Facebook — proč to nejde
 
 | Cesta | Stav |
@@ -542,5 +580,7 @@ Souřadnice Mariánských Lázní: **49,9646° N, 12,7010° E**.
 | Úřední deska | HTML | střední *(bez RSS)* | ✅ dostupné |
 | Novinky a kalendář | HTML | střední *(bez RSS)* | ✅ dostupné |
 | Počasí | JSON API | nízká | ✅ dostupné |
+| Srovnání měst (Monitor + ČSÚ) | CSV extrakty + CSV | střední *(velké soubory)* | ✅ ověřeno |
+| Sbírka listin (or.justice.cz) | HTML | nízká *(bez čísel z PDF)* | ✅ ověřeno |
 | Média | web search | střední | ✅ dostupné |
 | Facebook | — | **neproveditelné** | ❌ ruční režim |

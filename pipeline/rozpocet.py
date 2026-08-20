@@ -13,6 +13,10 @@ Co se tu počítá
 * **majetek_zadluzenost.json** — rozvaha města, úvěry, peníze na účtech
 * **organizace.json** — účetní výkazy příspěvkových organizací
 * **kryti_smlouvami.json** — kolik z výdajů má protějšek v registru smluv
+* **poplatek_pobytu.json** — poplatek z pobytu hostů po letech (položky
+  1342 + do 2019 i 1345; pozor na změnu významu kódů, viz funkce)
+* **srovnani_mest.json** — rozpočty srovnatelných měst na obyvatele
+  (vstup sbírá `scrapers/srovnani.py`; bez něj má výstup stav `chybi`)
 * **souhrn.json** — čísla pro titulní stranu
 
 Pět věcí, na kterých se dá tenhle přehled rozbít
@@ -964,7 +968,166 @@ def kryti_smlouvami(osa: dict, subjekty: dict) -> dict:
 
 
 # --------------------------------------------------------------------------
-# 7. Souhrn
+# 7. Poplatek z pobytu — nejcitlivější ukazatel lázeňského města
+# --------------------------------------------------------------------------
+
+# Položky místních poplatků za pobyt hostů. POZOR, kódy měnily význam:
+# do konce 2019 platily „poplatek za lázeňský nebo rekreační pobyt" (1342)
+# a „poplatek z ubytovací kapacity" (1345); zákon 278/2019 Sb. je od
+# 1. 1. 2020 sloučil do jediného „poplatku z pobytu" na kódu 1342 — a kód
+# 1345 později dostal ÚPLNĚ JINÝ obsah (poplatek za obecní systém
+# odpadového hospodářství). Kdo by sečetl 1342+1345 přes všechny roky,
+# přičetl by k pobytu hostů odpady. Data zlom potvrzují: v letech
+# 2020–2021 kód 1345 ve výkazech města není vůbec.
+ROK_SLOUCENI_POPLATKU = 2020
+POLOZKA_POBYT = "1342"
+POLOZKA_KAPACITA_DO_2019 = "1345"
+
+
+def poplatek_pobytu(fin: list[dict]) -> dict:
+    roky = []
+    for obd in fin:
+        cast = _rozdel(obd, MESTO)
+        if not cast["prijmy"]:
+            continue
+
+        def soucet_polozky(kod: str) -> dict:
+            return _soucet_sloupcu([r for r in cast["prijmy"]
+                                    if r.get("polozka") == kod])
+
+        pobyt = soucet_polozky(POLOZKA_POBYT)
+        kapacita = (soucet_polozky(POLOZKA_KAPACITA_DO_2019)
+                    if obd["rok"] < ROK_SLOUCENI_POPLATKU else None)
+        celkem = {
+            k: _soucet(pobyt.get(k), (kapacita or {}).get(k))
+            for k in ("schvaleny", "upraveny", "skutecnost")
+        }
+        roky.append({
+            "rok": obd["rok"],
+            "obdobi": obd["obdobi"],
+            "koncove": obd["koncove"],
+            "celkem": celkem,
+            "plneni_pct": _plneni(celkem),
+            "slozky": {
+                "pobyt_1342": pobyt,
+                "ubytovaci_kapacita_1345_do_2019": kapacita,
+            },
+        })
+
+    return {
+        "generovano": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "jednotka": "CZK",
+        "subjekt": {"ico": MESTO, "nazev": "Město Mariánské Lázně"},
+        "zdroj": "FIN 2-12 M, položky 1342 a 1345, Monitor státní pokladny",
+        "metodika": [
+            "Řada skládá poplatky za pobyt hostů: do roku 2019 součet položek "
+            "1342 (lázeňský nebo rekreační pobyt) a 1345 (ubytovací kapacita), "
+            "od roku 2020 jen 1342 — zákon 278/2019 Sb. oba poplatky sloučil "
+            "do jediného poplatku z pobytu.",
+            "Položka 1345 od roku 2022 znamená poplatek za obecní systém "
+            "odpadového hospodářství — do téhle řady NEPATŘÍ. Zlom potvrzují "
+            "sama data: v letech 2020–2021 kód 1345 ve výkazech města není.",
+            "Poplatek platí hosté za každou začatou noc pobytu, vybírají ho "
+            "ubytovatelé — je to nejpřímější rozpočtový otisk návštěvnosti "
+            "lázeňského města.",
+            "Sazbu poplatku určuje vyhláška města a v čase se měnila; skoky "
+            "řady jsou kombinací návštěvnosti A sazby, ne návštěvnosti samotné.",
+            "Období s `koncove: false` je stav k danému měsíci, ne celý rok.",
+        ],
+        "roky": roky,
+    }
+
+
+# --------------------------------------------------------------------------
+# 8. Srovnání s podobnými městy — na obyvatele
+# --------------------------------------------------------------------------
+
+def srovnani_mest() -> dict:
+    """Rozpočty srovnávaných měst přepočtené na obyvatele.
+
+    Vstupy sbírá `scrapers/srovnani.py` (rekapitulace FIN + obyvatelé ČSÚ).
+    Když ještě neproběhl, vrací se stav `chybi` — web pak sekci poctivě
+    označí, místo aby zmizela.
+
+    Obyvatelé: rozpočet roku N se dělí stavem obyvatel K 1. LEDNU roku N,
+    tedy údajem ČSÚ „k 31. 12." roku N−1. Dva důvody: rozpočet se utrácí
+    od ledna, a ČSÚ zveřejňuje stav za rok N až v půlce roku N+1 — s vazbou
+    na konec roku by poslední uzavřený rozpočet neměl čím dělit.
+    """
+    cfg_cesta = Path(__file__).resolve().parent.parent / "config" / "srovnani.json"
+    if not cfg_cesta.exists():
+        return {"stav": "chybi", "duvod": "chybí config/srovnani.json", "roky": []}
+    cfg = json.loads(cfg_cesta.read_text(encoding="utf-8"))
+    mesta = cfg.get("mesta") or []
+
+    obyv = nacti("rozpocet/srovnani/obyvatele.json")
+    fin_slozka = DATA / "rozpocet" / "srovnani" / "fin"
+    if not obyv or not fin_slozka.exists():
+        return {
+            "stav": "chybi",
+            "duvod": ("data/rozpocet/srovnani/ zatím není — nejdřív spusť "
+                      "`python3 scrapers/srovnani.py`"),
+            "roky": [],
+        }
+
+    obyvatele_podle_ica: dict[str, dict[str, int]] = {
+        o["ico"]: o.get("po_letech") or {} for o in obyv.get("obce") or []
+    }
+
+    roky = []
+    for cesta in sorted(fin_slozka.glob("*.json")):
+        obd = json.loads(cesta.read_text(encoding="utf-8"))
+        radek = {"rok": obd["rok"], "obdobi": obd["obdobi"],
+                 "koncove": obd["koncove"], "mesta": []}
+        for m in mesta:
+            rek = (obd.get("rekapitulace") or {}).get(m["ico"])
+            # Stav k 1. lednu roku = ČSÚ „k 31. 12." předchozího roku.
+            obyvatel = obyvatele_podle_ica.get(m["ico"], {}).get(str(obd["rok"] - 1))
+            prijmy = (rek or {}).get(REKAP["prijmy"], {}).get("skutecnost")
+            vydaje = (rek or {}).get(REKAP["vydaje"], {}).get("skutecnost")
+            radek["mesta"].append({
+                "ico": m["ico"],
+                "nazev": m["nazev"],
+                "moje": bool(m.get("moje")),
+                "obyvatel": obyvatel,
+                "prijmy": prijmy,
+                "vydaje": vydaje,
+                "saldo": (rek or {}).get(REKAP["saldo"], {}).get("skutecnost"),
+                "prijmy_na_obyvatele": (round(prijmy / obyvatel, 2)
+                                        if prijmy is not None and obyvatel else None),
+                "vydaje_na_obyvatele": (round(vydaje / obyvatel, 2)
+                                        if vydaje is not None and obyvatel else None),
+            })
+        roky.append(radek)
+
+    return {
+        "generovano": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "stav": "ok",
+        "jednotka": "CZK",
+        "zdroj": ("FIN 2-12 M (rekapitulace) pro všechna města z Monitoru "
+                  "státní pokladny + počty obyvatel ČSÚ (sada 130149)"),
+        "metodika": [
+            "Všechna města ze STEJNÉHO zdroje a stejné metodiky: skutečné "
+            "příjmy a výdaje PO KONSOLIDACI (řádky 4200 a 4430 rekapitulace).",
+            "Na obyvatele se dělí stavem k 1. lednu roku (údaj ČSÚ "
+            "„k 31. 12.\" předchozího roku) — rozpočet se utrácí od ledna "
+            "a stav za běžný rok ČSÚ zveřejňuje až v dalším roce.",
+            "Výdaje na obyvatele nejsou známka hospodárnosti: lázeňské město "
+            "obsluhuje i návštěvníky, které jmenovatel nezná, a město s vlastní "
+            "nemocnicí nebo lázněmi v rozpočtu má jiný rozsah úkolů.",
+            "Karlovy Vary jsou statutární město a řádově větší — jsou tu jako "
+            "sousední kontext, ne jako dvojče.",
+            "Jen uzavřené roky (prosinec); od roku 2026 výkaz rekapitulaci "
+            "nemá a dopočet pro cizí města by vyžadoval položková data.",
+        ],
+        "mesta": [{"ico": m["ico"], "nazev": m["nazev"], "moje": bool(m.get("moje")),
+                   "poznamka": m.get("poznamka")} for m in mesta],
+        "roky": roky,
+    }
+
+
+# --------------------------------------------------------------------------
+# 9. Souhrn
 # --------------------------------------------------------------------------
 
 def souhrn(osa: dict, struktura: dict, majetek: dict, orgs: dict) -> dict:
@@ -1077,8 +1240,15 @@ def main() -> int:
         kryti = kryti_smlouvami(osa, subjekty)
         uloz(f"{VYSTUP}/kryti_smlouvami.json", kryti)
 
+        uloz(f"{VYSTUP}/poplatek_pobytu.json", poplatek_pobytu(fin))
+
+        srovnani = srovnani_mest()
+        uloz(f"{VYSTUP}/srovnani_mest.json", srovnani)
+        if srovnani["stav"] != "ok":
+            log.info(f"srovnání měst: {srovnani['duvod']}")
+
         uloz(f"{VYSTUP}/souhrn.json", souhrn(osa, struktura, majetek, orgs))
-        log.pricti(7)
+        log.pricti(9)
 
         if args.rok:
             kontrolni_vypis(osa, args.rok)
