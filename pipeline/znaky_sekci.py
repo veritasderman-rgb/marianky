@@ -274,12 +274,17 @@ def znak_informace() -> dict:
 
     poc: Counter[int] = Counter()
     for z in prehled.get("zadosti") or []:
+        # Jen skutečně rozebrané žádosti — přehled nese i pár stažených,
+        # ale nerozebraných, a znak by jinak hlásil víc „rozebraných",
+        # než kolik jich souhrn přiznává.
+        if not z.get("rozebrano"):
+            continue
         r = _rok((z.get("vlozeno") or "")[:4])
         if r is not None:
             poc[r] += 1
     if not poc:
         return _chybi("informace", "data/informace106/prehled.json",
-                      "V přehledu není žádná žádost s datem.")
+                      "V přehledu není žádná rozebraná žádost s datem.")
 
     v_rejstriku = _cely((prehled.get("souhrn") or {}).get("v_rejstriku"))
     return _sloupce_z_let(
