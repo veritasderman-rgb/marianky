@@ -421,7 +421,19 @@ export function nactiDotacePrehled(): Nacteno<DotacePrehled> {
 }
 
 export function nactiZaverky(): Nacteno<ZaverkyListiny> {
-  return nactiJson<ZaverkyListiny>('zaverky/listiny.json', { firem: 0, selhani: 0, firmy: [] });
+  const v = nactiJson<ZaverkyListiny>('zaverky/listiny.json', { firem: 0, selhani: 0, firmy: [] });
+  // Sběrač zapíše platný soubor i tehdy, když sbírka listin nevrátila NIC —
+  // každá firma pak nese `stav: "chybi"`. To není „načteno a prázdno",
+  // to je výpadek zdroje, a stránka to tak musí říct.
+  if (v.stav === 'ok' && v.data.firmy.length > 0 && v.data.firmy.every((f) => f.stav === 'chybi')) {
+    return {
+      stav: 'chyba',
+      data: v.data,
+      zdroj: v.zdroj,
+      poznamka: `Sbírku listin se nepodařilo načíst pro žádnou z ${v.data.firmy.length} firem — or.justice.cz nejspíš neodpovídal.`,
+    };
+  }
+  return v;
 }
 
 /* ─────────────────────────────  Pomocníci  ──────────────────────────── */
