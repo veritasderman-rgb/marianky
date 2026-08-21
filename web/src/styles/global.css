@@ -18,24 +18,25 @@
 :root {
   color-scheme: light dark;
 
-  /* Identita — lázeňská sada v barvách města (web/DESIGN.md §1).
-     Modrá pramene, zlatá kolonády, bílý papír. */
-  --paper: #f4f7fb;
+  /* Identita — sdílená s lepsiml.cz (BRAND-TOKENS.md tamtéž):
+     pirátská čerň + tyrkysová, krémový papír, zlato-okrový lokální akcent.
+     Oba weby mluví jednou vizuální řečí, aby bylo vidět, že patří k sobě. */
+  --paper: #faf8f3;
   --surface: #ffffff;
-  --surface-2: #eef3f9;
-  --ink: #131922;
-  --ink-soft: #48525f;
-  --ink-faint: #76818f;
-  --rule: #d7e0ea;
-  --rule-soft: #e6ecf3;
-  --accent: #1a4e8f;
+  --surface-2: #f5efe0;
+  --ink: #1a1a1a;
+  --ink-soft: #6b6b6b;
+  --ink-faint: #767676;
+  --rule: #e8e8e8;
+  --rule-soft: #f0efe9;
+  --accent: #008078;
   --accent-kontrast: #ffffff;
 
-  /* Zlatá je druhý akcent. NIKDY nenese text — na bílém papíru má kontrast
-     pod 3:1. Smí být linka, podtržení a plocha. */
-  --zlata: #e9a900;
-  --zlata-svetla: #fbeec2;
-  --modra-svetla: #dfeaf7;
+  /* Zlatá (spa-gold) je druhý akcent. NIKDY nenese text — na světlém papíru
+     má kontrast pod 3:1. Smí být linka, podtržení a plocha. */
+  --zlata: #d4a24c;
+  --zlata-svetla: #ead7ae;
+  --modra-svetla: #c6f0ec;
 
   /* Kategorie grafů — ověřeno validátorem, neměnit (web/DESIGN.md §2) */
   --g1: #2a78d6;
@@ -67,15 +68,20 @@
   --stav-vazne: #eb6834;
   --stav-neznamo: #78837b;
 
-  /* Typografie */
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Typografie — stejný stack jako lepsiml.cz: Bebas Neue na titulky
+     (vždy uppercase), Inter na text, JetBrains Mono na čísla a metadata.
+     `--font-serif` je historické jméno proměnné; dnes nese display font,
+     aby se nemusely přepisovat všechny komponenty, které na ní stojí. */
+  --font-display: "Bebas Neue", Impact, "Arial Black", sans-serif;
+  --font-serif: var(--font-display);
+  --font-sans: "Inter", Roboto, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --stin: 0 1px 2px rgb(20 26 22 / 6%), 0 4px 14px rgb(20 26 22 / 4%);
+  --stin: 0 1px 2px rgb(0 0 0 / 6%), 0 4px 14px rgb(0 0 0 / 4%);
   /* Vysunutá nabídka leží nad obsahem a potřebuje výraznější stín než karta. */
-  --stin-nabidka: 0 8px 24px rgb(20 26 22 / 14%);
-  --radius: 10px;
+  --stin-nabidka: 0 8px 24px rgb(0 0 0 / 14%);
+  /* Pirátská strohost — ostré hrany jako na lepsiml.cz. */
+  --radius: 0;
 }
 
 /* ══════════════════  Tokeny — tmavý režim, deklarace 1/2 (system)  ═════════ */
@@ -85,17 +91,17 @@
     /* Zlatá se v tmavém motivu ztlumí — na tmavém podkladu by svítila. */
     --zlata: #b98c17;
     --zlata-svetla: #3a3520;
-    --modra-svetla: #1d2836;
-    --paper: #0e1210;
-    --surface: #151b17;
-    --surface-2: #1c231e;
-    --ink: #e4eae5;
-    --ink-soft: #a6b2a9;
-    --ink-faint: #7c8880;
-    --rule: #2a332d;
-    --rule-soft: #212a24;
-    --accent: #6fc79c;
-    --accent-kontrast: #0e1210;
+    --modra-svetla: #143733;
+    --paper: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --ink: #f2f2ef;
+    --ink-soft: #a8a8a8;
+    --ink-faint: #8a8a8a;
+    --rule: #2a2a2a;
+    --rule-soft: #222222;
+    --accent: #00b2a8;
+    --accent-kontrast: #0a0a0a;
 
     --g1: #3987e5;
     --g2: #d95926;
@@ -134,17 +140,17 @@
   /* Zlatá se v tmavém motivu ztlumí — na tmavém podkladu by svítila. */
   --zlata: #b98c17;
   --zlata-svetla: #3a3520;
-  --modra-svetla: #1d2836;
-  --paper: #0e1210;
-  --surface: #151b17;
-  --surface-2: #1c231e;
-  --ink: #e4eae5;
-  --ink-soft: #a6b2a9;
-  --ink-faint: #7c8880;
-  --rule: #2a332d;
-  --rule-soft: #212a24;
-  --accent: #6fc79c;
-  --accent-kontrast: #0e1210;
+  --modra-svetla: #143733;
+  --paper: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1c1c1c;
+  --ink: #f2f2ef;
+  --ink-soft: #a8a8a8;
+  --ink-faint: #8a8a8a;
+  --rule: #2a2a2a;
+  --rule-soft: #222222;
+  --accent: #00b2a8;
+  --accent-kontrast: #0a0a0a;
 
   --g1: #3987e5;
   --g2: #d95926;
@@ -190,9 +196,18 @@
  * validátorem a přebarvit je kvůli sladění by tu validaci zahodilo.
  */
 
+/* Hlavička je VŽDY černá — ve světlém i tmavém motivu, stejně jako na
+   lepsiml.cz. Proto má vlastní lokální tokeny a nebere je z motivu:
+   černý pruh nahoře je poznávací znamení obou webů. */
 .hlavicka-webu {
-  border-bottom-color: var(--zlata);
-  border-bottom-width: 2px;
+  --h-pozadi: #000000;
+  --h-povrch: #101010;
+  --h-text: #ffffff;
+  --h-text-tlumeny: rgba(255, 255, 255, 0.72);
+  --h-hover: rgba(255, 255, 255, 0.08);
+  --h-rule: rgba(255, 255, 255, 0.16);
+  --h-akcent: #00b2a8;
+  --h-akcent-svetly: #7fe0d9;
 }
 
 .uvod {
@@ -235,30 +250,10 @@ main h2.karta__nadpis {
   border-top: 2px solid var(--zlata);
 }
 
-/* Zelená identita kolonády zůstává dostupná jako volba. Je to původní
-   sada projektu; kdo ji má radši, přepne se na ni v přepínači motivu. */
-:root[data-paleta='kolonada'] {
-  color-scheme: light;
-
-  --paper: #f5f7f4;
-  --surface: #ffffff;
-  --surface-2: #edf1ec;
-  --ink: #141a16;
-  --ink-soft: #4a544d;
-  --ink-faint: #78837b;
-  --rule: #d6ded8;
-  --rule-soft: #e4eae4;
-  --accent: #1f5540;
-  --accent-kontrast: #ffffff;
-
-  /* Zlatá ustupuje mechové zelené, ať pruh pod hlavičkou nekřičí. */
-  --zlata: #7d9a6f;
-  --zlata-svetla: #e2ebdd;
-  --modra-svetla: #e4eae4;
-
-  --stin: 0 1px 2px rgb(20 26 22 / 5%), 0 4px 14px rgb(20 26 22 / 4%);
-  --stin-nabidka: 0 8px 24px rgb(20 26 22 / 13%);
-}
+/* Zelená paleta „kolonáda" tu bývala jako třetí volba. S přechodem na
+   společnou identitu s lepsiml.cz zmizela — dvě značky vedle sebe by
+   popíraly, že jde o jeden projekt. Uložená volba se migruje na světlý
+   motiv (skript v layouts/Zaklad.astro). */
 
 /* ══════════════════════════════  Hero  ═══════════════════════════════
  *
@@ -278,18 +273,21 @@ main h2.karta__nadpis {
 
 .hero__nadhled {
   margin: 0 0 0.35rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--accent);
 }
 
 .hero__nadpis {
   margin: 0 0 0.9rem;
-  font-family: var(--font-serif);
-  font-size: clamp(2rem, 5.2vw, 3.1rem);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .hero__uvod {
@@ -302,10 +300,10 @@ main h2.karta__nadpis {
 
 .hero__mezinadpis {
   margin: 0 0 0.9rem;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-soft);
   border-bottom: 0;
@@ -363,12 +361,15 @@ main h2.karta__nadpis {
 
 .hero__tlacitko {
   display: inline-block;
-  padding: 0.5rem 1.1rem;
+  padding: 0.55rem 1.3rem;
   background: var(--accent);
   color: var(--accent-kontrast);
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .hero__tlacitko:hover,
@@ -405,27 +406,40 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Nadpisy po vzoru lepsiml.cz: Bebas Neue, VŽDY uppercase, váha 400
+   (Bebas jinou nemá). Čtvrtá úroveň už je Inter — display font na malé
+   velikosti přestává být čitelný. */
 h1,
 h2,
-h3,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
 h4 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--ink);
   margin: 0 0 0.5em;
   letter-spacing: -0.01em;
 }
 
 h1 {
-  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+  font-size: clamp(2.2rem, 1.4rem + 3vw, 3.4rem);
 }
 h2 {
-  font-size: clamp(1.3rem, 1.05rem + 1vw, 1.65rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.15rem);
   margin-top: 2rem;
 }
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.35rem;
   margin-top: 1.5rem;
 }
 
@@ -445,7 +459,7 @@ a:hover {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 code,
@@ -491,8 +505,17 @@ kbd,
 }
 
 .hlavicka-webu {
-  border-bottom: 1px solid var(--rule);
-  background: var(--surface);
+  background: var(--h-pozadi);
+}
+
+/* Sticky jen na širokém displeji — na telefonu se navigace láme do víc
+   řádků a přilepená by zabrala půlku obrazovky. */
+@media (min-width: 52rem) {
+  .hlavicka-webu {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
 }
 
 .hlavicka-webu__radek {
@@ -503,27 +526,28 @@ kbd,
   padding: 0.85rem 0;
 }
 
-/* Značka webu: kolonáda + jméno serifem.
-   Značka bere barvu akcentu, jméno barvu textu — obojí přes tokeny, takže
-   to drží ve všech třech paletách. */
+/* Značka webu: kolonáda + jméno v display fontu, bíle na černé —
+   zrcadlí hlavičku lepsiml.cz. */
 .znacka-webu {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--ink);
+  gap: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--h-text);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .znacka-webu__znak {
-  color: var(--accent);
+  color: var(--h-akcent);
 }
 
 .znacka-webu__slova span {
-  color: var(--ink-faint);
+  color: var(--h-akcent-svetly);
   font-weight: 400;
 }
 
@@ -545,23 +569,24 @@ kbd,
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 6px;
-  color: var(--ink-soft);
+  padding: 0.4rem 0.65rem;
+  border-radius: 0;
+  color: var(--h-text-tlumeny);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   white-space: nowrap;
   cursor: pointer;
 }
 .navigace__odkaz:hover,
 .navigace__nazev:hover {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--h-hover);
+  color: var(--h-text);
 }
 .navigace__odkaz[aria-current="page"] {
-  background: var(--surface-2);
-  color: var(--ink);
-  font-weight: 600;
+  color: var(--h-akcent);
 }
 
 .navigace__skupina {
@@ -574,12 +599,11 @@ kbd,
   display: none;
 }
 .navigace__skupina[data-aktivni] > summary {
-  color: var(--ink);
-  font-weight: 600;
+  color: var(--h-akcent);
 }
 .navigace__skupina[open] > summary {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--h-hover);
+  color: var(--h-text);
 }
 
 .navigace__sipka {
@@ -593,6 +617,7 @@ kbd,
   transform: rotate(180deg);
 }
 
+/* Vysunutá nabídka zůstává tmavá jako hlavička — je to její součást. */
 .navigace__nabidka {
   list-style: none;
   margin: 0.25rem 0 0.5rem;
@@ -600,26 +625,26 @@ kbd,
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  background: var(--surface);
+  border: 1px solid var(--h-rule);
+  border-radius: 0;
+  background: var(--h-povrch);
 }
 
 .navigace__nabidka a {
   display: block;
   padding: 0.4rem 0.55rem;
-  border-radius: 6px;
-  color: var(--ink-soft);
+  border-radius: 0;
+  color: var(--h-text-tlumeny);
   text-decoration: none;
   font-size: 0.92rem;
 }
 .navigace__nabidka a:hover {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--h-hover);
+  color: var(--h-text);
 }
 .navigace__nabidka a[aria-current="page"] {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--h-hover);
+  color: var(--h-akcent);
 }
 
 .navigace__polozka-nazev {
@@ -630,7 +655,7 @@ kbd,
 }
 .navigace__polozka-popis {
   display: block;
-  color: var(--ink-faint);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.8rem;
   line-height: 1.3;
 }
@@ -668,33 +693,46 @@ kbd,
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid var(--rule);
-  background: var(--surface);
-  color: var(--ink-soft);
-  border-radius: 6px;
+  border: 1px solid var(--h-rule);
+  background: transparent;
+  color: var(--h-text-tlumeny);
+  border-radius: 0;
   padding: 0.3rem 0.6rem;
   font: inherit;
   font-size: 0.85rem;
   cursor: pointer;
 }
 .prepinac-motivu:hover {
-  background: var(--surface-2);
-  color: var(--ink);
+  background: var(--h-hover);
+  color: var(--h-text);
 }
 
 main {
   padding: 2rem 0 4rem;
 }
 
+/* Patička je VŽDY černá jako na lepsiml.cz, s týmž barevným pruhem
+   nahoře (tyrkys 60 % / zlatá 40 %). Vlastní tokeny ze stejného důvodu
+   jako hlavička — nesmí se překlopit s motivem. */
 .paticka-webu {
-  border-top: 1px solid var(--rule);
-  background: var(--surface);
-  color: var(--ink-faint);
+  border-top: 0;
+  background: #000000;
+  color: rgba(255, 255, 255, 0.62);
   font-size: 0.87rem;
-  padding: 1.5rem 0 2.5rem;
+  padding: 0 0 2.5rem;
+}
+.paticka-webu::before {
+  content: "";
+  display: block;
+  height: 6px;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #00b2a8 0% 60%, #d4a24c 60% 100%);
 }
 .paticka-webu a {
-  color: var(--ink-soft);
+  color: rgba(255, 255, 255, 0.85);
+}
+.paticka-webu a:hover {
+  color: #ffffff;
 }
 
 .paticka-webu__odkazy {
@@ -705,15 +743,28 @@ main {
 }
 .paticka-webu__odkazy strong {
   display: block;
-  color: var(--ink);
-  font-size: 0.82rem;
-  letter-spacing: 0.02em;
+  color: #7fe0d9;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
 .paticka-webu__odkazy a {
   display: block;
   padding: 0.1rem 0;
+}
+
+.paticka-webu p strong {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Věta o spolupráci s lepsiml.cz a AI — oddělená vlasovou linkou, aby se
+   nepletla s popisem zdrojů nad ní. */
+.paticka-webu__spoluprace {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 1.1rem;
+  margin-top: 1.25rem;
 }
 
 .uvod {
@@ -739,7 +790,7 @@ main {
 
 .karta__nadpis {
   margin: 0 0 0.15rem;
-  font-size: 1.15rem;
+  font-size: 1.4rem;
 }
 
 .karta__podnadpis {
@@ -779,7 +830,7 @@ main {
     padding: 0.4rem;
     background: var(--surface);
     border: 1px solid var(--rule);
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .hlava-sekce__text {
@@ -1024,7 +1075,7 @@ main {
   border: 1px solid var(--rule);
   border-inline-start: 3px solid var(--ink-faint);
   background: var(--surface-2);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 0.85rem 1rem;
   color: var(--ink-soft);
   font-size: 0.92rem;
@@ -1083,7 +1134,7 @@ a.znacka:hover {
 .tabulka-obal {
   overflow-x: auto;
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--surface);
 }
 
@@ -1145,7 +1196,7 @@ th.cislo {
 
 .graf-karta__nadpis {
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.4rem;
 }
 
 .graf-karta__popis {
@@ -1291,7 +1342,7 @@ th.cislo {
 .legenda__vzorek {
   width: 0.85rem;
   height: 0.85rem;
-  border-radius: 3px;
+  border-radius: 0;
   flex: none;
 }
 .legenda__vzorek--prazdno {
@@ -1321,12 +1372,12 @@ th.cislo {
   height: 0.85rem;
 }
 .legenda-rampa__krok:first-child {
-  border-start-start-radius: 3px;
-  border-end-start-radius: 3px;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
 }
 .legenda-rampa__krok:last-child {
-  border-start-end-radius: 3px;
-  border-end-end-radius: 3px;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
 }
 
 /* ══════════════════════  Rozbalovací tabulka  ═══════════════════════ */
@@ -1389,7 +1440,7 @@ th.cislo {
   color: var(--ink);
   background: var(--surface);
   border: 1px solid var(--rule);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 0.4rem 0.55rem;
   min-height: 2.25rem;
   width: 100%;
@@ -1407,7 +1458,7 @@ th.cislo {
   border: 1px solid var(--rule);
   background: var(--surface);
   color: var(--ink-soft);
-  border-radius: 6px;
+  border-radius: 0;
   padding: 0.42rem 0.85rem;
   min-height: 2.25rem;
   cursor: pointer;
@@ -1429,7 +1480,7 @@ th.cislo {
 .prepinac {
   display: inline-flex;
   border: 1px solid var(--rule);
-  border-radius: 6px;
+  border-radius: 0;
   overflow: hidden;
 }
 .prepinac .tlacitko {
@@ -1725,7 +1776,7 @@ th.cislo {
   gap: 0.15rem;
   background: var(--surface-2);
   border: 1px solid var(--rule-soft);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.6rem 0.75rem;
   font-size: 0.88rem;
 }
@@ -1769,7 +1820,7 @@ th.cislo {
   background: var(--surface);
   color: var(--ink);
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 0;
   box-shadow: var(--stin);
   padding: 0.5rem 0.7rem;
   font-size: 0.85rem;
@@ -1820,7 +1871,7 @@ th.cislo {
   --pagefind-ui-border: var(--rule);
   --pagefind-ui-tag: var(--surface-2);
   --pagefind-ui-border-width: 1px;
-  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-border-radius: 0;
   --pagefind-ui-font: var(--font-sans);
 }
 
@@ -1908,7 +1959,7 @@ th.cislo {
   flex-wrap: wrap;
   gap: 0.25rem 1.25rem;
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0.5rem 0.9rem 0.75rem;
   margin: 0 0 1rem;
 }
@@ -1931,13 +1982,13 @@ th.cislo {
 
 .mapa-doprovod {
   border: 1px solid var(--rule-soft);
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--surface-2);
   padding: 0.9rem 1rem;
   min-width: 0;
 }
 .mapa-doprovod .karta__nadpis {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.2rem;
 }
 .mapa-doprovod .graf-svg {
@@ -2114,8 +2165,9 @@ th.cislo {
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.35rem 0.75rem;
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.05rem;
   margin: 0 0 0.2rem;
 }
 
@@ -2265,7 +2317,7 @@ th.cislo {
 .diagram-plocha:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 .diagram__kresba {
@@ -2424,7 +2476,7 @@ th.cislo {
   padding: 0.7rem 0.85rem;
   background: var(--surface);
   border: 1px solid var(--rule);
-  border-radius: 6px;
+  border-radius: 0;
   color: var(--ink);
   text-decoration: none;
 }
@@ -2464,6 +2516,6 @@ th.cislo {
   border-left: 3px solid var(--accent);
   background: var(--surface);
   padding: 0.85rem 1.1rem;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0;
   color: var(--ink);
 }
