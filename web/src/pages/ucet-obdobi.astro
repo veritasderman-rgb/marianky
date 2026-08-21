@@ -1,0 +1,286 @@
+---
+/**
+ * Účet volebního období — co zastupitelstvo skutečně dělalo od voleb 2022.
+ *
+ * Stránka pro voliče i kandidáta před podzimními volbami 2026: nejtěsněji
+ * schválená hlasování, účast každého zastupitele a jak kdo drží s klubem.
+ *
+ * NEJVĚTŠÍ PAST ZDROJE stojí hned v úvodu stránky, ne pod čarou: portál
+ * města zveřejňuje JEN SCHVÁLENÁ hlasování. Neschválené návrhy — přesně
+ * ty nejspornější — ve veřejných datech nejsou.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { nactiUcetObdobi } from '../lib/radnice';
+import { nactiRozpocetPoLetech, uzavreneRoky } from '../lib/rozpocet';
+import { grafVodorovny } from '../lib/grafy';
+import { cislo, datumKratke, kc, kcZkraceno, sklonuj } from '../lib/format';
+
+const zUctu = nactiUcetObdobi();
+const ucet = zUctu.data;
+const maData = (ucet.zastupitele?.length ?? 0) > 0;
+const obdobi = ucet.obdobi;
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Jednání zastupitelstva',
+        hodnota: cislo(ucet.souhrn.jednani),
+        doplnek: obdobi ? `od ${datumKratke(obdobi.prvni_jednani)} do ${datumKratke(obdobi.posledni_jednani)}` : undefined,
+      },
+      {
+        popisek: 'Zveřejněných hlasování',
+        hodnota: cislo(ucet.souhrn.hlasovani),
+        doplnek: 'jen schválená — neschválené zdroj nezveřejňuje',
+      },
+      {
+        popisek: 'Ne zcela jednomyslných',
+        hodnota: cislo(ucet.souhrn.ne_zcela_jednomyslnych),
+        doplnek: 'aspoň jeden hlas proti nebo zdržel se',
+      },
+      {
+        popisek: 'Zastupitelů v období',
+        hodnota: cislo(ucet.souhrn.zastupitelu),
+        doplnek: 'včetně náhradníků, kteří nastoupili',
+      },
+    ]
+  : [];
+
+/* ── Účast — vodorovné sloupce ────────────────────────────────────────── */
+
+const variantyUcasti: Varianta[] = maData
+  ? [
+      {
+        klic: 'ucast',
+        popisek: 'Účast na hlasováních',
+        graf: (() => {
+          const g = grafVodorovny(
+            [...ucet.zastupitele]
+              .sort((a, b) => (b.ucast_pct ?? 0) - (a.ucast_pct ?? 0))
+              .map((z) => ({
+                nazev: z.jmeno ?? z.osoba_id,
+                hodnota: z.ucast_pct ?? 0,
+                odkaz: `/lide/${z.osoba_id}`,
+                doplnky: [
+                  { l: 'Klub', v: z.strana },
+                  { l: 'Přítomen', v: `${cislo(z.pritomen)} z ${cislo(z.hlasovani)} hlasování` },
+                ],
+              })),
+            'Účast zastupitelů na hlasováních',
+            (v) => `${v.toFixed(1).replace('.', ',')} %`,
+          );
+          g.poznamky.push(
+            'Podíl hlasování, u kterých je zastupitel zapsán jinak než „nepřítomen“. Omluvenou a neomluvenou absenci zdroj u starších zápisů nerozlišuje, proto se nerozlišuje ani tady. Nižší účast mívají i náhradníci, kteří nastoupili v průběhu období — počet hlasování je v tooltipu.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── Rozpočet období — z už spočtených přehledů ───────────────────────── */
+
+const zOsy = nactiRozpocetPoLetech();
+const rokyObdobi = uzavreneRoky(zOsy.data.roky ?? []).filter((r) => r.rok >= 2023);
+const sumaObdobi = (vyber: (r: (typeof rokyObdobi)[number]) => number | null) => {
+  const hodnoty = rokyObdobi.map(vyber).filter((v): v is number => v !== null);
+  return hodnoty.length > 0 ? hodnoty.reduce((a, b) => a + b, 0) : null;
+};
+const vydajeObdobi = sumaObdobi((r) => r.vydaje.skutecnost);
+const investiceObdobi = sumaObdobi((r) => r.vydaje_struktura.kapitalove_vydaje.skutecnost);
+const saldoObdobi = sumaObdobi((r) => r.saldo.skutecnost);
+---
+
+<Zaklad
+  titulek="Účet volebního období"
+  aktivni="ucet-obdobi"
+  nadpis={`Účet volebního období ${obdobi?.volby ?? '2022'}–2026`}
+  uvod="Co zastupitelstvo zvolené na podzim 2022 skutečně dělalo: nejtěsněji schválená hlasování, účast každého zastupitele a jak kdo hlasuje se svým klubem. Fakta z jmenovitých hlasování — úsudek je na čtenáři."
+>
+  <StavDat
+    stav={zUctu.stav}
+    zdroj={zUctu.zdroj}
+    co="Jmenovitá hlasování zastupitelstva za období"
+    prazdno={zUctu.stav === 'ok' && !maData}
+    modul="pipeline/ucet_obdobi.py"
+  />
+
+  {
+    maData && (
+      <>
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Nejdřív omezení zdroje, pak čísla:</strong> portál města zveřejňuje
+          <strong> jen schválená hlasování</strong>. Návrhy, které neprošly — tedy přesně ty
+          nejspornější — ve veřejných datech nejsou. „Klíčová hlasování“ níže proto znamenají
+          <em> nejtěsněji schválená</em>, ne nejspornější vůbec.
+        </p>
+
+        <Dlazdice polozky={dlazdice} />
+
+        {vydajeObdobi !== null && (
+          <p class="graf-poznamka">
+            Rozpočtová stopa období (uzavřené roky 2023–{rokyObdobi[rokyObdobi.length - 1]?.rok}):
+            výdaje {kcZkraceno(vydajeObdobi, true)}, z toho investice {kcZkraceno(investiceObdobi, true)};
+            součet sald {kcZkraceno(saldoObdobi, true)}. Podrobně v <a href="/hospodareni">Hospodaření</a>.
+          </p>
+        )}
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Nejtěsněji schválená hlasování</h2>
+          <p class="karta__podnadpis">
+            {cislo(ucet.klicova_hlasovani.length)} schválených hlasování s nejvíce hlasy proti
+            a zdržel se (z {cislo(ucet.souhrn.s_protihlasy_3plus)} se třemi a více protihlasy).
+            Sloupec „Jak hlasovaly kluby“ ukazuje jen kluby, které nebyly jednotné.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Datum</th>
+                  <th scope="col">Hlasování</th>
+                  <th scope="col" class="cislo">Pro</th>
+                  <th scope="col" class="cislo">Proti</th>
+                  <th scope="col" class="cislo">Zdržel se</th>
+                  <th scope="col">Jak hlasovaly kluby</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ucet.klicova_hlasovani.map((h) => {
+                  const rozdelene = Object.entries(h.kluby).filter(([, hlasy]) => Object.keys(hlasy).length > 1);
+                  return (
+                    <tr>
+                      <td class="cislo">{datumKratke(h.datum)}</td>
+                      <td>
+                        {h.url ? <a href={h.url} rel="noopener">{h.nazev}</a> : h.nazev}
+                        {h.castka_czk !== null && <span class="stav-dat__zdroj"> · {kc(h.castka_czk)}</span>}
+                      </td>
+                      <td class="cislo">{cislo(h.pro)}</td>
+                      <td class="cislo">{cislo(h.proti)}</td>
+                      <td class="cislo">{cislo(h.zdrzel)}</td>
+                      <td>
+                        {rozdelene.length === 0
+                          ? 'všechny kluby jednotné'
+                          : rozdelene.map(([klub, hlasy], i) => (
+                              <>
+                                {i > 0 && '; '}
+                                <strong>{klub}</strong>{' '}
+                                {['pro', 'proti', 'zdrzel']
+                                  .filter((x) => hlasy[x])
+                                  .map((x) => `${hlasy[x]}× ${x === 'zdrzel' ? 'zdržel se' : x}`)
+                                  .join(', ')}
+                              </>
+                            ))}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <GrafKarta
+          id="ucast"
+          nadpis="Kdo chodí hlasovat"
+          popis="Účast na jmenovitých hlasováních za celé období, řazeno od nejvyšší. Kliknutím na jméno se otevře profil zastupitele s celou hlasovací historií."
+          varianty={variantyUcasti}
+        />
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Kdo drží s klubem — a kdo ne</h2>
+          <p class="karta__podnadpis">
+            Shoda s většinou vlastního klubu se počítá <strong>jen z hlasování, kde se klub sám
+            rozdělil</strong> — kde je klub jednotný, je shoda definičně stoprocentní a nic neměří.
+            U zastupitelů s méně než 10 takovými hlasováními se procento neuvádí, bylo by šumem.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Zastupitel</th>
+                  <th scope="col">Klub</th>
+                  <th scope="col" class="cislo">Účast</th>
+                  <th scope="col" class="cislo">Hlasoval s klubem</th>
+                  <th scope="col" class="cislo">Dělených hlasování</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[...ucet.zastupitele]
+                  .sort((a, b) => (b.s_klubem_pct ?? -1) - (a.s_klubem_pct ?? -1))
+                  .map((z) => (
+                    <tr>
+                      <td><a href={`/lide/${z.osoba_id}`}>{z.jmeno ?? z.osoba_id}</a></td>
+                      <td>
+                        {z.strana}
+                        {z.zmena_strany && <span class="stav-dat__zdroj"> (v období pod více kluby)</span>}
+                      </td>
+                      <td class="cislo">{z.ucast_pct === null ? '—' : `${String(z.ucast_pct).replace('.', ',')} %`}</td>
+                      <td class="cislo">{z.s_klubem_pct === null ? 'málo dat' : `${String(z.s_klubem_pct).replace('.', ',')} %`}</td>
+                      <td class="cislo">{cislo(z.klub_delene)}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Soudržnost klubů</h3>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Klub</th>
+                  <th scope="col" class="cislo">Členů v datech</th>
+                  <th scope="col" class="cislo">Soudržnost</th>
+                  <th scope="col" class="cislo">Dělených hlasů</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ucet.kluby.map((k) => (
+                  <tr>
+                    <td>{k.strana}</td>
+                    <td class="cislo">{cislo(k.clenove)}</td>
+                    <td class="cislo">{k.soudrznost_pct === null ? 'málo dat' : `${String(k.soudrznost_pct).replace('.', ',')} %`}</td>
+                    <td class="cislo">{cislo(k.delenych_hlasu)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="graf-poznamka">
+            Dvoučlenné kluby se nikdy „nedělí s většinou“ (dva hlasy většinu nemají), proto u nich
+            soudržnost není — nejde o chybějící data, ale o veličinu, která u dvojice nedává smysl.
+            Seznam zahrnuje každého, kdo v období jmenovitě hlasoval — při střídání náhradníků
+            jich tak může být víc, než je 21 křesel.
+          </p>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Kam dál</h2>
+          <ul>
+            <li><a href="/hlasovani">Všechna hlasování</a> — filtr podle 33 témat.</li>
+            <li><a href="/lide">Kdo je kdo</a> — profil každého zastupitele s celou historií.</li>
+            <li><a href="/slibnik">Slibník</a> — co si radnice uložila a s jakými termíny.</li>
+            <li><a href="/volby">Volby 2022</a> — jak se tohle zastupitelstvo zvolilo.</li>
+          </ul>
+        </section>
+
+        <JakPocitame>
+          <p>
+            Zdrojem jsou jmenovitá hlasování zastupitelstva od {datumKratke(obdobi?.od ?? '2022-10-01')}
+            (usneseni.muml.cz). Všechna pravidla výpočtu jsou v metodice dat.
+          </p>
+          <ul>
+            {(ucet.metodika ?? []).map((m) => <li>{m}</li>)}
+          </ul>
+        </JakPocitame>
+      </>
+    )
+  }
+</Zaklad>

@@ -1,0 +1,284 @@
+---
+/**
+ * Kam šla moje tisícovka — rozpočet města přepočtený na jednoho člověka.
+ *
+ * 624 milionů je abstrakce; 44 tisíc na obyvatele a tisícovka rozdělená
+ * na 446 Kč školství a kultura, 197 Kč doprava… se dá představit. Stránka
+ * NEPOČÍTÁ nic nového — jen jinak podává čísla ze sekce Hospodaření
+ * (výdaje po konsolidaci, struktura bez převodů vlastním fondům,
+ * obyvatelé ČSÚ k 1. lednu roku).
+ *
+ * Dvě věci, které musí být řečené, jinak stránka lže:
+ *   1. Tisícovka NENÍ daň, kterou jste zaplatili vy. Rozpočet města plní
+ *      hlavně sdílené daně přerozdělené státem, dotace a vlastní příjmy.
+ *   2. Přepočet na obyvatele je optika, ne účetnictví — město obsluhuje
+ *      i hosty, které jmenovatel nezná.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { spojStavy } from '../lib/data';
+import {
+  nactiRozpocetPoLetech,
+  nactiSrovnaniMest,
+  nactiVydajeStrukturu,
+  uzavreneRoky,
+} from '../lib/rozpocet';
+import { grafVodorovny } from '../lib/grafy';
+import { grafRadaPoLetech, type BodRady } from '../lib/grafy_rady';
+import { cislo, kc, kcZkraceno } from '../lib/format';
+
+const zOsy = nactiRozpocetPoLetech();
+const zStruktury = nactiVydajeStrukturu();
+const zSrovnani = nactiSrovnaniMest();
+const { stav, poznamky } = spojStavy(zOsy, zStruktury, zSrovnani);
+
+const uzavrene = uzavreneRoky(zOsy.data.roky ?? []);
+const strukturaUzavrene = uzavreneRoky(zStruktury.data.roky ?? []);
+const srovnaniRoky = (zSrovnani.data.roky ?? []).filter((r) => r.koncove);
+
+/** Řádek našeho města v posledním uzavřeném roce srovnání. */
+const posledniSrovnani = srovnaniRoky.length > 0 ? srovnaniRoky[srovnaniRoky.length - 1] : null;
+const nase = posledniSrovnani?.mesta.find((m) => m.moje) ?? null;
+const rok = posledniSrovnani?.rok ?? null;
+
+const struktura = rok !== null ? (strukturaUzavrene.find((s) => s.rok === rok) ?? null) : null;
+const osaRok = rok !== null ? (uzavrene.find((r) => r.rok === rok) ?? null) : null;
+
+const maData = Boolean(nase && struktura && osaRok && nase.obyvatel && nase.vydaje);
+
+/* ── Přepočty ─────────────────────────────────────────────────────────── */
+
+const obyvatel = nase?.obyvatel ?? null;
+const vydajeCelkem = nase?.vydaje ?? null;
+const naObyvatele = nase?.vydaje_na_obyvatele ?? null;
+const prijmyNaObyvatele = nase?.prijmy_na_obyvatele ?? null;
+
+// Investice na obyvatele — kapitálové výdaje jsou před konsolidací, ale
+// převody vlastním fondům jsou běžný výdaj (třída 5), takže kapitálová
+// třída konsolidací netrpí a dělit ji obyvateli je poctivé.
+const investice = osaRok?.vydaje_struktura.kapitalove_vydaje.skutecnost ?? null;
+const investiceNaObyvatele = investice !== null && obyvatel ? investice / obyvatel : null;
+
+/** „Z každé tisícovky výdajů šlo X Kč na…“ — základna jsou výdaje bez
+ *  převodů vlastním fondům, stejná jako v grafech Hospodaření. */
+const zakladna = struktura?.bez_prevodu_vlastnim_fondum.skutecnost ?? null;
+
+function zTisicovky(castka: number): number {
+  return zakladna ? (castka / zakladna) * 1000 : 0;
+}
+
+const kcCele = (v: number) => `${cislo(Math.round(v))} Kč`;
+
+const skupinyTisicovky = (struktura?.skupiny ?? [])
+  .filter((s) => s.skutecnost_bez_prevodu > 0)
+  .map((s) => ({
+    nazev: s.nazev ?? `skupina ${s.kod}`,
+    hodnota: zTisicovky(s.skutecnost_bez_prevodu),
+    doplnky: [
+      { l: 'Na obyvatele za rok', v: obyvatel ? kc(s.skutecnost_bez_prevodu / obyvatel) : '—' },
+      { l: 'Celkem', v: kcZkraceno(s.skutecnost_bez_prevodu, true) },
+    ],
+  }));
+
+const oddilyTisicovky = (struktura?.oddily ?? [])
+  .filter((o) => o.skutecnost_bez_prevodu > 0)
+  .map((o) => ({
+    nazev: o.nazev ?? `oddíl ${o.kod}`,
+    hodnota: zTisicovky(o.skutecnost_bez_prevodu),
+    doplnky: [
+      { l: 'Na obyvatele za rok', v: obyvatel ? kc(o.skutecnost_bez_prevodu / obyvatel) : '—' },
+      { l: 'Celkem', v: kcZkraceno(o.skutecnost_bez_prevodu, true) },
+    ],
+  }));
+
+/* Odkud tisícovka přišla — třídy příjmů; transfery po odečtení převodů
+   z vlastních fondů (stejné pravidlo jako v Hospodaření). */
+const ps = osaRok?.prijmy_struktura ?? null;
+const sk = (t: { skutecnost: number | null } | undefined | null) => t?.skutecnost ?? null;
+const transferyRealne =
+  ps && sk(ps.transfery) !== null ? (sk(ps.transfery) as number) - (sk(ps.minus_konsolidace) ?? 0) : null;
+const prijmyZakladna =
+  ps
+    ? [sk(ps.danove), sk(ps.nedanove), sk(ps.kapitalove_prijmy), transferyRealne]
+        .filter((v): v is number => v !== null)
+        .reduce((a, b) => a + b, 0)
+    : null;
+
+const prijmyTisicovky =
+  ps && prijmyZakladna
+    ? [
+        { nazev: 'Daňové příjmy (sdílené daně, místní poplatky)', hodnota: ((sk(ps.danove) ?? 0) / prijmyZakladna) * 1000 },
+        { nazev: 'Transfery (dotace od státu, kraje a EU)', hodnota: ((transferyRealne ?? 0) / prijmyZakladna) * 1000 },
+        { nazev: 'Nedaňové příjmy (nájmy, služby, pokuty)', hodnota: ((sk(ps.nedanove) ?? 0) / prijmyZakladna) * 1000 },
+        { nazev: 'Kapitálové příjmy (prodeje majetku)', hodnota: ((sk(ps.kapitalove_prijmy) ?? 0) / prijmyZakladna) * 1000 },
+      ].filter((x) => x.hodnota > 0)
+    : [];
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: `Výdaje města na obyvatele (${rok})`,
+        hodnota: naObyvatele !== null ? `${cislo(Math.round(naObyvatele))} Kč` : '—',
+        doplnek: 'za rok, po konsolidaci',
+      },
+      {
+        popisek: 'Příjmy na obyvatele',
+        hodnota: prijmyNaObyvatele !== null ? `${cislo(Math.round(prijmyNaObyvatele))} Kč` : '—',
+        doplnek: 'za rok, po konsolidaci',
+      },
+      {
+        popisek: 'Z toho investice',
+        hodnota: investiceNaObyvatele !== null ? `${cislo(Math.round(investiceNaObyvatele))} Kč` : '—',
+        doplnek: 'kapitálové výdaje na obyvatele',
+      },
+      {
+        popisek: 'Počítáno na',
+        hodnota: `${cislo(obyvatel)} lidí`,
+        doplnek: `obyvatel k 1. lednu ${rok} (ČSÚ)`,
+      },
+    ]
+  : [];
+
+/* ── Grafy ────────────────────────────────────────────────────────────── */
+
+const variantyTisicovky: Varianta[] = maData
+  ? [
+      {
+        klic: 'skupiny',
+        popisek: 'Hlavní oblasti',
+        graf: (() => {
+          const g = grafVodorovny(skupinyTisicovky, `Z každé tisícovky výdajů ${rok}`, kcCele);
+          g.poznamky.push(
+            '„Služby pro fyzické osoby“ jsou školy, kultura, sport a bydlení dohromady — jemnější členění je v přepínači vedle. V tooltipu a tabulce je i částka na obyvatele za rok.',
+          );
+          return g;
+        })(),
+      },
+      {
+        klic: 'oddily',
+        popisek: 'Podrobněji',
+        graf: (() => {
+          const g = grafVodorovny(oddilyTisicovky, `Z každé tisícovky výdajů ${rok} — po oddílech`, kcCele);
+          g.poznamky.push(`Všech ${cislo(oddilyTisicovky.length)} oddílů rozpočtové skladby s výdaji, bez převodů vlastním fondům.`);
+          return g;
+        })(),
+      },
+      ...(prijmyTisicovky.length > 0
+        ? [
+            {
+              klic: 'prijmy',
+              popisek: 'Odkud přišla',
+              graf: (() => {
+                const g = grafVodorovny(prijmyTisicovky, `Odkud přišla každá tisícovka příjmů ${rok}`, kcCele);
+                g.poznamky.push(
+                  'Většinu rozpočtu města plní sdílené daně — podíl na DPH a daních z příjmů, který přerozděluje stát podle zákona. Není to tedy „vaše“ tisícovka z místních poplatků; ty jsou jen částí daňových příjmů.',
+                );
+                return g;
+              })(),
+            },
+          ]
+        : []),
+    ]
+  : [];
+
+/* Vývoj v čase — výdaje na obyvatele po letech (řada našeho města ze srovnání). */
+const bodyVyvoje: BodRady[] = srovnaniRoky.map((r) => ({
+  rok: r.rok,
+  hodnota: r.mesta.find((m) => m.moje)?.vydaje_na_obyvatele ?? null,
+}));
+const variantyVyvoje: Varianta[] = maData
+  ? [
+      {
+        klic: 'vyvoj',
+        popisek: 'Výdaje na obyvatele',
+        graf: (() => {
+          const g = grafRadaPoLetech(bodyVyvoje, 'Výdaje města na obyvatele po letech', 'Na obyvatele', (v) => `${cislo(Math.round(v / 1000))} tis. Kč`);
+          g.poznamky.push('Bez očištění o inflaci — jsou to koruny daného roku. Srovnání s podobnými městy je v sekci Hospodaření.');
+          return g;
+        })(),
+      },
+    ]
+  : [];
+---
+
+<Zaklad
+  titulek="Kam šla moje tisícovka"
+  aktivni="tisicovka"
+  nadpis="Kam šla moje tisícovka"
+  uvod={`Rozpočet města přepočtený na jednoho člověka. Město hospodaří s ${naObyvatele !== null ? `${cislo(Math.round(naObyvatele))} Kč na obyvatele ročně` : 'stovkami milionů'} — a tahle stránka ukazuje, kolik z každé pomyslné tisícovky jde na školy, dopravu, kulturu nebo úřad. Čísla jsou stejná jako v sekci Hospodaření, jen v měřítku, které si jde představit.`}
+>
+  <StavDat
+    stav={stav}
+    zdroj={`${zOsy.zdroj} + ${zSrovnani.zdroj}`}
+    co="Rozpočet a počet obyvatel pro přepočet"
+    prazdno={stav === 'ok' && !maData}
+    modul="Monitor státní pokladny + ČSÚ"
+    poznamky={poznamky}
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Tisícovka je optika, ne vaše daňové přiznání.</strong> Rozpočet města plní hlavně
+          sdílené daně, které přerozděluje stát, dotace a vlastní příjmy města — ne přímá platba
+          od vás. Přepočet na obyvatele dává velikosti rozpočtu lidské měřítko; lázeňské město
+          navíc obsluhuje i tisíce hostů, které jmenovatel nezná.
+        </p>
+
+        <GrafKarta
+          id="tisicovka"
+          nadpis={`Z každé tisícovky výdajů (${rok})`}
+          popis="Skutečné výdaje města rozpočítané na 1 000 Kč — bez vnitřních převodů mezi fondy města, aby se počítaly jen peníze, které opravdu odtekly. Po najetí na sloupec je vidět i částka na obyvatele za celý rok."
+          varianty={variantyTisicovky}
+        />
+
+        <GrafKarta
+          id="vyvoj"
+          nadpis="Jak se částka na obyvatele vyvíjí"
+          popis="Výdaje města na jednoho obyvatele po letech. Růst posledních let je kombinací inflace, vyšších daňových příjmů a rozjezdu investic."
+          varianty={variantyVyvoje}
+        />
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Kam dál</h2>
+          <ul>
+            <li><a href="/hospodareni">Hospodaření města</a> — celé rozpočty, plnění plánu, majetek, dluhy i srovnání s podobnými městy.</li>
+            <li><a href="/penize">Peníze města</a> — komu konkrétně město platí, po smlouvách.</li>
+          </ul>
+        </section>
+
+        <JakPocitame>
+          <p>
+            Výdaje po konsolidaci a členění bez převodů vlastním fondům přebírá stránka ze sekce
+            Hospodaření (Monitor státní pokladny); počet obyvatel je údaj ČSÚ k 1. lednu roku
+            (tj. „k 31. 12.“ roku předchozího). Nic dalšího se nedopočítává.
+          </p>
+          <ul>
+            <li>
+              <strong>Základna tisícovky výdajů</strong> jsou výdaje bez převodů vlastním fondům —
+              stejná řada, na kterou se dělí grafy „kam peníze jdou“ v Hospodaření.
+            </li>
+            <li>
+              <strong>Základna tisícovky příjmů</strong> jsou třídy příjmů s transfery po odečtení
+              převodů z vlastních fondů; proto se obě tisícovky nesčítají s celkovými čísly
+              po konsolidaci do koruny.
+            </li>
+            <li>
+              <strong>Bez inflace.</strong> Částky jsou v korunách daného roku.
+            </li>
+          </ul>
+        </JakPocitame>
+      </>
+    )
+  }
+</Zaklad>

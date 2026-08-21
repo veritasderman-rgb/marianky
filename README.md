@@ -29,6 +29,12 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Hlasování podle témat** — 12 349 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
 
+**Kam šla moje tisícovka** — rozpočet přepočtený na jednoho člověka: kolik z každé pomyslné tisícovky výdajů jde na školy, dopravu nebo úřad. S výslovnou větou, že to není osobní daň.
+
+**Slibník** — úkoly, které si rada uložila („ukládá odboru X do 30. 6.…"), s termíny a doloženými návaznostmi. Netvrdí „nesplněno": kontrola plnění je jen v neveřejné příloze — a že to z veřejných dat nejde zjistit, je zjištění samo o sobě.
+
+**Účet volebního období** — nejtěsněji schválená hlasování od voleb 2022, účast každého zastupitele a shoda s vlastním klubem (počítaná jen z hlasování, kde se klub sám rozdělil). S pastí zdroje řečenou hned v úvodu: portál města zveřejňuje jen schválená hlasování.
+
 **Kdo je kdo** — profily s hlasovací historií, účastí a aktivitou podle témat. U zastupitelů i seznam **všech firem, kde jsou aktivní** — včetně těch, které s městem vůbec neobchodují. To je smyslem: ukázat celý obrázek, ne jen podezřelé věci.
 
 **Propojení** — kdo ze samosprávy sedí ve kterých firmách a kolik ty firmy od města dostaly. Fakta vedle sebe, úsudek na čtenáři.

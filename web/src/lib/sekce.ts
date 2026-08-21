@@ -57,6 +57,19 @@ export const SKUPINY: SkupinaSekci[] = [
         popis: 'Kdo jak hlasoval',
       },
       {
+        klic: 'slibnik',
+        cesta: '/slibnik',
+        nazev: 'Slibník',
+        popis: 'Co si radnice uložila a s jakými termíny',
+      },
+      {
+        klic: 'ucet-obdobi',
+        cesta: '/ucet-obdobi',
+        nazev: 'Účet volebního období',
+        kratce: 'Účet období',
+        popis: 'Jak zastupitelstvo hlasovalo od voleb 2022',
+      },
+      {
         klic: 'komise',
         cesta: '/komise',
         nazev: 'Komise a výbory',
@@ -87,6 +100,13 @@ export const SKUPINY: SkupinaSekci[] = [
         nazev: 'Hospodaření města',
         kratce: 'Hospodaření',
         popis: 'Rozpočet, plnění plánu, majetek a dluhy',
+      },
+      {
+        klic: 'tisicovka',
+        cesta: '/tisicovka',
+        nazev: 'Kam šla moje tisícovka',
+        kratce: 'Tisícovka',
+        popis: 'Rozpočet města přepočtený na jednoho člověka',
       },
       {
         klic: 'retez',

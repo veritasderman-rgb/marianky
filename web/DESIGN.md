@@ -251,6 +251,9 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 | `/penize` | Dashboard s grafy výše |
 | `/penize/[ico]` | Detail protistrany — co dostala a kdy |
 | `/hospodareni` | Rozpočet města z Monitoru státní pokladny: příjmy a výdaje po letech, saldo, struktura, plnění plánu, majetek a dluhy, výkazy organizací. Covidová léta 2020–2021 jsou v grafech vyznačená pásmem s popiskem a větou s čísly. Vše po konsolidaci; rozpracovaný rok se do meziročních grafů nekreslí |
+| `/tisicovka` | Rozpočet přepočtený na jednoho obyvatele a na pomyslnou tisícovku výdajů. Vždy s větou, že to není osobní daň — rozpočet plní hlavně sdílené daně |
+| `/slibnik` | Úkoly z textů usnesení („ukládá…") s termíny a doloženými návaznostmi. NIKDY netvrdí „nesplněno" — kontrola plnění je jen v neveřejné příloze a stránka to říká nahoře, ne pod čarou |
+| `/ucet-obdobi` | Účet volebního období: nejtěsněji schválená hlasování, účast, shoda s klubem (jen z hlasování, kde se klub sám rozdělil; pod 10 dělených hlasování se procento neuvádí). Past zdroje „zveřejňují se jen schválená hlasování" stojí v úvodu stránky |
 | `/zpravodaj` · `/zpravodaj/[id]` | Archiv článků |
 | `/temata/[tema]` | Časové osy témat |
 | `/hledat` | Fulltext přes vše (Pagefind) |
