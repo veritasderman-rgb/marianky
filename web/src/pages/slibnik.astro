@@ -1,0 +1,237 @@
+---
+/**
+ * Slibník — co si rada a zastupitelstvo uložily a co s tím je.
+ *
+ * Jádro poctivosti téhle stránky: NIKDY netvrdit „nesplněno". Kontrola
+ * plnění usnesení existuje, ale její výsledek je vždy jen v příloze,
+ * kterou město nezveřejňuje. „Termín uplynul" znamená přesně to — a že
+ * se výsledek nedá z veřejných dat zjistit, je zjištění samo o sobě.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { nactiSlibnik, type Ukol } from '../lib/radnice';
+import { grafRadaPoLetech, type BodRady } from '../lib/grafy_rady';
+import { souvisleRoky } from '../lib/grafy';
+import { cislo, datumKratke, nazevOrganu, sklonuj } from '../lib/format';
+
+const zSlibniku = nactiSlibnik();
+const souhrn = zSlibniku.data.souhrn;
+const ukoly = zSlibniku.data.ukoly ?? [];
+const maData = ukoly.length > 0;
+
+const NAZVY_STAVU: Record<string, string> = {
+  bezi: 'termín běží',
+  termin_uplynul: 'termín uplynul, výsledek není veřejný',
+  bez_terminu: 'bez termínu',
+};
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Uložených úkolů',
+        hodnota: cislo(souhrn.ukolu),
+        doplnek: 'v usneseních od roku 2012',
+      },
+      {
+        popisek: 'S termínem',
+        hodnota: cislo(souhrn.s_terminem),
+        doplnek: `${cislo(souhrn.bezi)} ${sklonuj(souhrn.bezi, 'běží', 'běží', 'běží')} · ${cislo(souhrn.termin_uplynul)} po termínu`,
+      },
+      {
+        popisek: 'Termín uplynul',
+        hodnota: cislo(souhrn.termin_uplynul),
+        doplnek: 'výsledek není ve veřejných datech',
+        stav: souhrn.termin_uplynul > 0 ? { uroven: 'pozor', text: 'kontrola plnění je neveřejná' } : undefined,
+      },
+      {
+        popisek: 'S doloženou návazností',
+        hodnota: cislo(souhrn.s_navaznosti),
+        doplnek: 'pozdější usnesení se odkazuje číslem',
+      },
+    ]
+  : [];
+
+/* ── Graf úkolů po letech ─────────────────────────────────────────────── */
+
+const rokyDat = Object.keys(souhrn.po_letech ?? {})
+  .map(Number)
+  .filter(Number.isFinite);
+const osa = souvisleRoky(rokyDat);
+const variantyGrafu: Varianta[] = maData
+  ? [
+      {
+        klic: 'ukoly',
+        popisek: 'Úkoly po letech',
+        graf: (() => {
+          const body: BodRady[] = osa.map((rok) => ({
+            rok,
+            hodnota: souhrn.po_letech[String(rok)] ?? 0,
+          }));
+          const g = grafRadaPoLetech(body, 'Uložené úkoly po letech', 'Úkolů');
+          g.poznamky.push(
+            'Rok s nulou znamená, že se v usneseních toho roku slovo „ukládá“ nenašlo — sběr usnesení sahá do roku 2012.',
+          );
+          return g;
+        })(),
+      },
+    ]
+  : [];
+
+/* ── Tabulky ──────────────────────────────────────────────────────────── */
+
+const sTerminem: Ukol[] = ukoly.filter((u) => u.termin !== null);
+const bezTerminu: Ukol[] = ukoly.filter((u) => u.termin === null).slice(0, 80);
+---
+
+<Zaklad
+  titulek="Slibník"
+  aktivni="slibnik"
+  nadpis="Slibník: co si radnice uložila"
+  uvod="Usnesení často zní „rada ukládá odboru X do 30. 6. předložit…“. Slibník tyhle úkoly vytahuje z textů usnesení a hlídá jim termíny. Netvrdí, co bylo splněno — to z veřejných dat nejde zjistit, a právě to je možná nejdůležitější zjištění téhle stránky."
+>
+  <StavDat
+    stav={zSlibniku.stav}
+    zdroj={zSlibniku.zdroj}
+    co="Uložené úkoly z textů usnesení"
+    prazdno={zSlibniku.stav === 'ok' && !maData}
+    modul="pipeline/slibnik.py"
+  />
+
+  {
+    maData && (
+      <>
+        <Dlazdice polozky={dlazdice} />
+
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Proč tu není sloupec „splněno“:</strong> rada plnění svých usnesení kontroluje
+          („Kontrola plnění usnesení…“), ale výsledek kontroly je pokaždé jen v příloze, kterou
+          město nezveřejňuje. Z veřejných dat proto nejde splnění doložit ani vyvrátit —
+          „termín uplynul“ znamená jen to, že termín je pryč a veřejná stopa o výsledku chybí.
+          Kdyby město přílohy kontrol zveřejnilo, tahle stránka by uměla říct víc.
+        </p>
+
+        <GrafKarta
+          id="slibnik-graf"
+          nadpis="Kolik úkolů radnice ukládá"
+          popis="Body usnesení rady a zastupitelstva, jejichž text obsahuje „ukládá“. Většina úkolů termín nemá — i to je vypovídající."
+          varianty={variantyGrafu}
+        />
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Úkoly s termínem ({cislo(sTerminem.length)})</h2>
+          <p class="karta__podnadpis">
+            Od nejnovějších. Stav „termín uplynul“ není obvinění z nesplnění — viz vysvětlení výše.
+            Doložená návaznost znamená, že se pozdější usnesení na úkol výslovně odkazuje číslem.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Uloženo</th>
+                  <th scope="col">Úkol</th>
+                  <th scope="col">Komu</th>
+                  <th scope="col" class="cislo">Termín</th>
+                  <th scope="col">Stav</th>
+                  <th scope="col">Navazující usnesení</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sTerminem.map((u) => (
+                  <tr>
+                    <td class="cislo">
+                      {datumKratke(u.datum_ulozeni)}
+                      <br />
+                      <span class="stav-dat__zdroj">{nazevOrganu(u.organ ?? '')}</span>
+                    </td>
+                    <td>
+                      {u.url ? <a href={u.url} rel="noopener">{u.nazev ?? u.cislo_usneseni}</a> : (u.nazev ?? u.cislo_usneseni)}
+                      <br />
+                      <span class="stav-dat__zdroj">{u.citace.slice(0, 180)}{u.citace.length > 180 ? '…' : ''}</span>
+                    </td>
+                    <td>{u.adresat_typ}</td>
+                    <td class="cislo">{datumKratke(u.termin)}</td>
+                    <td>{NAZVY_STAVU[u.stav] ?? u.stav}</td>
+                    <td>
+                      {u.navazujici.length === 0
+                        ? '—'
+                        : u.navazujici.map((n, i) => (
+                            <>
+                              {i > 0 && ', '}
+                              {n.url ? <a href={n.url} rel="noopener">{n.cislo_usneseni ?? datumKratke(n.datum)}</a> : (n.cislo_usneseni ?? datumKratke(n.datum))}
+                            </>
+                          ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Úkoly bez termínu</h2>
+          <p class="karta__podnadpis">
+            Většina uložených úkolů žádný termín nemá ({cislo(souhrn.bez_terminu)} z {cislo(souhrn.ukolu)}) —
+            „ukládá podepsat smlouvu“, „ukládá zajistit“. Tady je {cislo(bezTerminu.length)} nejnovějších.
+          </p>
+          <details class="tabulkovy-pohled">
+            <summary>Zobrazit úkoly bez termínu</summary>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Uloženo</th>
+                    <th scope="col">Úkol</th>
+                    <th scope="col">Komu</th>
+                    <th scope="col">Navazující</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bezTerminu.map((u) => (
+                    <tr>
+                      <td class="cislo">{datumKratke(u.datum_ulozeni)}</td>
+                      <td>{u.url ? <a href={u.url} rel="noopener">{u.nazev ?? u.cislo_usneseni}</a> : (u.nazev ?? u.cislo_usneseni)}</td>
+                      <td>{u.adresat_typ}</td>
+                      <td>{u.navazujici.length > 0 ? cislo(u.navazujici.length) : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+
+        <JakPocitame>
+          <p>
+            Úkoly se čtou z textů usnesení rady a zastupitelstva (usneseni.muml.cz). Zachycení je
+            textové a konzervativní — „neukládá“ a citace zákonných povinností se vynechávají;
+            u každého úkolu je citace a odkaz na originál, aby šlo všechno ověřit.
+          </p>
+          <ul>
+            <li>
+              <strong>Termín se bere jen z okolí slov, která ho ohlašují</strong> („termín:“,
+              „nejpozději do“) nebo těsně za „ukládá“ — datum jinde v textu (platnost smlouvy,
+              konec nájmu) termín není. Kde termín není plným datem, úkol nese „bez termínu“.
+            </li>
+            <li>
+              <strong>„Termín uplynul“ ≠ „nesplněno“.</strong> Výsledek kontroly plnění město
+              zveřejňuje jen v neveřejné příloze.
+            </li>
+            <li>
+              <strong>Návaznost je jen výslovná</strong> — pozdější usnesení musí úkol jmenovat
+              číslem (např. „RM/145/24“). Úkoly vyřízené beze zmínky číslem tu návaznost nemají,
+              i když vyřízené být mohly.
+            </li>
+          </ul>
+        </JakPocitame>
+      </>
+    )
+  }
+</Zaklad>

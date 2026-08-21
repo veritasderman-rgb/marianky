@@ -236,6 +236,96 @@ def znak_hlasovani() -> dict:
     }
 
 
+def znak_slibnik() -> dict:
+    """Slibník — uložené úkoly po letech."""
+    d = nacti("slibnik/ukoly.json")
+    if not d:
+        return _chybi("slibnik", "data/slibnik/ukoly.json",
+                      "Úkoly z usnesení zatím nejsou vytažené.")
+    poc: Counter[int] = Counter()
+    for rok_s, pocet in (d.get("souhrn") or {}).get("po_letech", {}).items():
+        r = _rok(rok_s)
+        if r is not None:
+            poc[r] = int(pocet)
+    if not poc:
+        return _chybi("slibnik", "data/slibnik/ukoly.json",
+                      "V přehledu není žádný úkol s datem.")
+    s = d.get("souhrn") or {}
+    return _sloupce_z_let(
+        poc,
+        hodnota=_mezerou(_cely(s.get("ukolu"))),
+        jednotka="uložených úkolů",
+        veta=(f"Sloupec je jeden rok úkolů; {_mezerou(_cely(s.get('s_terminem')))} "
+              "z nich má termín."),
+        zdroj="data/slibnik/ukoly.json",
+        pocet=_cely(s.get("ukolu")),
+    )
+
+
+def znak_ucet_obdobi() -> dict:
+    """Účet období — ne zcela jednomyslná hlasování po letech období."""
+    d = nacti("obdobi/ucet.json")
+    if not d:
+        return _chybi("ucet-obdobi", "data/obdobi/ucet.json",
+                      "Účet období zatím není spočítaný.")
+    poc: Counter[int] = Counter()
+    for rok_s, z in ((d.get("souhrn") or {}).get("po_letech") or {}).items():
+        r = _rok(rok_s)
+        if r is not None:
+            poc[r] = int((z or {}).get("ne_zcela_jednomyslnych") or 0)
+    if not poc:
+        return _chybi("ucet-obdobi", "data/obdobi/ucet.json",
+                      "V účtu období nejsou hlasování po letech.")
+    s = d.get("souhrn") or {}
+    return _sloupce_z_let(
+        poc,
+        hodnota=_mezerou(_cely(s.get("hlasovani"))),
+        jednotka="hlasování od voleb 2022",
+        veta=("Sloupec je jeden rok hlasování s aspoň jedním hlasem proti "
+              "nebo zdržel se. Zdroj zveřejňuje jen schválená hlasování."),
+        zdroj="data/obdobi/ucet.json",
+        pocet=_cely(s.get("hlasovani")),
+    )
+
+
+def znak_tisicovka() -> dict:
+    """Tisícovka — výdaje města na obyvatele po letech."""
+    d = nacti("rozpocet/prehled/srovnani_mest.json")
+    if not d or d.get("stav") != "ok":
+        return _chybi("tisicovka", "data/rozpocet/prehled/srovnani_mest.json",
+                      "Přepočet na obyvatele čeká na srovnání měst.")
+    po_letech: dict[int, float] = {}
+    posledni = None
+    for r in d.get("roky") or []:
+        if not r.get("koncove"):
+            continue
+        nase = next((m for m in r.get("mesta") or [] if m.get("moje")), None)
+        hodnota = (nase or {}).get("vydaje_na_obyvatele")
+        rok = _rok(r.get("rok"))
+        if rok is None:
+            continue
+        # None = obyvatelé pro ten rok nejsou — mezera, ne nula.
+        po_letech[rok] = float(hodnota) if hodnota is not None else None
+        if hodnota is not None:
+            posledni = (rok, hodnota)
+    if not any(v is not None for v in po_letech.values()):
+        return _chybi("tisicovka", "data/rozpocet/prehled/srovnani_mest.json",
+                      "Ve srovnání není žádný přepočet na obyvatele.")
+    znak = _sloupce_z_let(
+        Counter(),  # hodnoty jsou desetinné a mohou nést None, plní se ručně
+        hodnota=_zkraceno(posledni[1]) if posledni else "—",
+        jednotka=f"Kč na obyvatele ({posledni[0]})" if posledni else "Kč na obyvatele",
+        veta="Sloupec je jeden rok výdajů města přepočtených na jednoho obyvatele.",
+        zdroj="data/rozpocet/prehled/srovnani_mest.json",
+        pocet=None,
+    )
+    roky = sorted(po_letech)[-LET_V_ZNAKU:]
+    znak["osa"] = [str(r) for r in roky]
+    znak["hodnoty"] = [po_letech.get(r) for r in roky]
+    znak["stav"] = "ok"
+    return znak
+
+
 def znak_komise() -> dict:
     """Komise a výbory — zápisy z jednání po letech."""
     prehled = nacti("komise/prehled.json")
@@ -837,10 +927,13 @@ def main() -> None:
         ("vydani", znak_vydani),
         ("usneseni", znak_usneseni),
         ("hlasovani", znak_hlasovani),
+        ("slibnik", znak_slibnik),
+        ("ucet-obdobi", znak_ucet_obdobi),
         ("komise", znak_komise),
         ("informace", znak_informace),
         ("penize", znak_penize),
         ("hospodareni", znak_hospodareni),
+        ("tisicovka", znak_tisicovka),
         ("retez", znak_retez),
         ("diagramy", znak_diagramy),
         ("lide", znak_lide),

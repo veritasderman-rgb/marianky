@@ -66,6 +66,8 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.propojeni",      "Propojení lidí, firem a peněz", False),
     ("pipeline.profily",        "Hlasovací profily",            False),
     ("pipeline.retez",          "Řetěz usnesení → smlouva → peníze", False),
+    ("pipeline.slibnik",        "Slibník — uložené úkoly a termíny", False),
+    ("pipeline.ucet_obdobi",    "Účet volebního období",         False),
     # Přehledy rozpočtu čtou výkazy z Monitoru (scrapers.monitor) a srovnání
     # měst (scrapers.srovnani); krytí smlouvami navíc agregaci peněz — proto
     # stojí až tady. (Do 8/2026 tu krok chyběl a přehledy rozpočtu se
