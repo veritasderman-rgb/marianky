@@ -82,6 +82,15 @@ const svgZnaku =
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
+    <!-- Google Fonts — stejný stack jako lepsiml.cz (Bebas Neue, Inter,
+         JetBrains Mono), aby oba weby mluvily jednou vizuální řečí. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <!--
       Motiv má tři stavy: "dark", "light" a výchozí "system" (bez stampu).
       Skript běží před vykreslením, aby nebliklo špatné pozadí. Když uživatel
@@ -91,12 +100,13 @@ const svgZnaku =
       (function () {
         try {
           var m = localStorage.getItem('motiv');
-          /* Dřív byla lázeňská paleta volbou uloženou jako „lazne"; dnes je
-             výchozí. Kdo si ji tehdy zvolil, chtěl přesně to, co teď vidí
-             bez zásahu — ale zvolil si to VÝSLOVNĚ, takže mu nesmí systémový
-             tmavý režim přepnout web do tmy. Hodnota se proto překlopí na
-             „light" a rovnou i přepíše, ať se migruje jen jednou. */
-          if (m === 'lazne') {
+          /* Migrace starých voleb. „lazne" byla lázeňská paleta, než se
+             stala výchozí; „kolonada" byla zelená sada, která s přechodem
+             na společnou identitu s lepsiml.cz zanikla. Obě volby byly
+             VÝSLOVNĚ světlé, takže se překlopí na „light" — systémový tmavý
+             režim je nesmí přepnout do tmy. Přepíše se to rovnou, ať se
+             migruje jen jednou. */
+          if (m === 'lazne' || m === 'kolonada') {
             m = 'light';
             try {
               localStorage.setItem('motiv', m);
@@ -106,11 +116,6 @@ const svgZnaku =
           }
           if (m === 'dark' || m === 'light') {
             document.documentElement.setAttribute('data-theme', m);
-          } else if (m === 'kolonada') {
-            /* Zelená sada je světlá. Musí přebít systémový tmavý režim,
-               jinak by se zelený text vykreslil na tmavém pozadí. */
-            document.documentElement.setAttribute('data-theme', 'light');
-            document.documentElement.setAttribute('data-paleta', 'kolonada');
           }
         } catch (e) {
           /* privátní režim — zůstane "system" */
@@ -236,7 +241,20 @@ const svgZnaku =
             <strong>O přehledu</strong>
             <a href="/zdroje">Zdroje a poděkování</a>
           </div>
+          <div>
+            <strong>Za lepší Mariánky</strong>
+            <a href="https://lepsiml.cz" rel="noopener">lepsiml.cz</a>
+            <a href="https://lepsiml.cz/program" rel="noopener">Program</a>
+          </div>
         </nav>
+        <p class="paticka-webu__spoluprace">
+          Přehled je <strong>pokus týmu
+          <a href="https://lepsiml.cz" rel="noopener">Za lepší Mariánské Lázně</a>
+          ve spolupráci s umělou inteligencí</strong> — ukázka toho, jak myslíme
+          transparentní radnici. Skutečný městský dashboard potřebuje přímé napojení
+          na systémy radnice; tohle je poskládané výhradně z veřejných a dostupných
+          zdrojů, se všemi mezerami, které z toho plynou — a které se tu nezamlčují.
+        </p>
         <p>
           Mapy se kreslí z otevřených geodat; zdroj a licenci uvádí každá mapa u sebe.
           Návštěvnost měříme přes Vercel Web Analytics: zobrazení stránek
@@ -283,33 +301,27 @@ const svgZnaku =
       }
 
       /* ── Přepínač motivu ──────────────────────────────────────────────
-         Čtyři stavy v jednom tlačítku:
-           podle systému → světlý → lázeňský → tmavý → podle systému
+         Tři stavy v jednom tlačítku:
+           podle systému → světlý → tmavý → podle systému
 
-         „Lázeňský" je světlá sada v barvách města (modrá, žlutá, bílá).
-         Je to varianta světlého motivu, ne pátý motiv — proto při něm
-         zůstává `data-theme="light"` a přibývá jen `data-paleta`. Kdyby
-         se mohl potkat s tmavým motivem, vznikl by modrý text na tmavém
-         pozadí; tenhle přepínač to nedovolí. */
+         Zelená paleta „kolonáda" zanikla s přechodem na společnou identitu
+         s lepsiml.cz; uloženou volbu migruje skript v hlavičce. */
       {
         const koren = document.documentElement;
         const tlacitko = document.getElementById('prepinac-motivu');
         const popisek = document.getElementById('prepinac-motivu-popisek');
         const nazvy: Record<string, string> = {
           system: 'Motiv: podle systému',
-          light: 'Motiv: světlý (lázeňský)',
-          kolonada: 'Motiv: zelená kolonáda',
+          light: 'Motiv: světlý',
           dark: 'Motiv: tmavý',
         };
         const dalsiStav: Record<string, string> = {
           system: 'light',
-          light: 'kolonada',
-          kolonada: 'dark',
+          light: 'dark',
           dark: 'system',
         };
 
         function precti(): string {
-          if (koren.getAttribute('data-paleta') === 'kolonada') return 'kolonada';
           const a = koren.getAttribute('data-theme');
           return a === 'dark' || a === 'light' ? a : 'system';
         }
@@ -329,16 +341,9 @@ const svgZnaku =
 
         tlacitko?.addEventListener('click', () => {
           const dalsi = dalsiStav[precti()] ?? 'system';
-          koren.removeAttribute('data-paleta');
           if (dalsi === 'system') {
             koren.removeAttribute('data-theme');
             uloz(null);
-          } else if (dalsi === 'kolonada') {
-            /* Zelená sada je světlá. Musí přebít systémový tmavý režim,
-               jinak by se zelený text vykreslil na tmavém pozadí. */
-            koren.setAttribute('data-theme', 'light');
-            koren.setAttribute('data-paleta', 'kolonada');
-            uloz('kolonada');
           } else {
             koren.setAttribute('data-theme', dalsi);
             uloz(dalsi);

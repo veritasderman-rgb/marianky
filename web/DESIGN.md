@@ -6,28 +6,35 @@ Kdo staví web, drží se tohohle. Barvy grafů **nejsou věc vkusu** — byly o
 
 ## 1. Identita
 
-Paleta vychází z lázeňského prostředí: kovová zeleň kolonády a chladný papír. Neutrály mají mírný zelený nádech, aby působily zvoleně, ne převzatě.
+**Od srpna 2026 web sdílí vizuální identitu s lepsiml.cz** (viz `BRAND-TOKENS.md`
+v repozitáři lepsiml): pirátská čerň + tyrkysová, krémový papír, zlato-okrový
+lokální akcent, Bebas Neue na titulky (vždy uppercase), Inter na text,
+JetBrains Mono na metadata, ostré hrany (`--radius: 0`), vždy černá hlavička
+a patička. Oba weby jsou prolinkované a mají vypadat jako jeden projekt.
+Platné hodnoty tokenů žijí v `src/styles/global.css` — tam je jediný zdroj
+pravdy; ukázky níže jsou orientační.
 
 ```css
 :root {
-  --paper:      #F5F7F4;   /* plocha stránky */
+  --paper:      #FAF8F3;   /* plocha stránky (cream) */
   --surface:    #FFFFFF;   /* karty, povrch grafů */
-  --surface-2:  #EDF1EC;
-  --ink:        #141A16;
-  --ink-soft:   #4A544D;
-  --ink-faint:  #78837B;
-  --rule:       #D6DED8;
-  --rule-soft:  #E4EAE4;
-  --accent:     #1F5540;
+  --surface-2:  #F5EFE0;   /* spa-stone */
+  --ink:        #1A1A1A;
+  --ink-soft:   #6B6B6B;
+  --ink-faint:  #767676;
+  --rule:       #E8E8E8;
+  --rule-soft:  #F0EFE9;
+  --accent:     #008078;   /* pirate-dark — tyrkys s kontrastem AA na světlé */
+  --zlata:      #D4A24C;   /* spa-gold — jen linky a plochy, nikdy text */
 }
 ```
 
 Tmavý režim (deklarovat pod `@media (prefers-color-scheme: dark)` s guardem `:root:not([data-theme="light"])` **i** pod `:root[data-theme="dark"]`):
 
 ```css
---paper: #0E1210;  --surface: #151B17;  --surface-2: #1C231E;
---ink: #E4EAE5;  --ink-soft: #A6B2A9;  --ink-faint: #7C8880;
---rule: #2A332D;  --rule-soft: #212A24;  --accent: #6FC79C;
+--paper: #0A0A0A;  --surface: #141414;  --surface-2: #1C1C1C;
+--ink: #F2F2EF;  --ink-soft: #A8A8A8;  --ink-faint: #8A8A8A;
+--rule: #2A2A2A;  --rule-soft: #222222;  --accent: #00B2A8;  --zlata: #B98C17;
 ```
 
 **Pravidlo:** žádná barva nesmí být definovaná jen uvnitř media query nebo `[data-theme]` bloku. Vše přes tokeny, jinak se stránka rozbije ve výchozím „system" režimu.
