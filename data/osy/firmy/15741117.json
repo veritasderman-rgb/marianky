@@ -2,7 +2,7 @@
   "entita": {
     "typ": "firma",
     "ico": "15741117",
-    "nazev": null
+    "nazev": "Michal Kandráč"
   },
   "metodika": {
     "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
@@ -14,21 +14,24 @@
   },
   "rozsah": {
     "od": "1992-01-01",
-    "do": "2023-03-21",
+    "do": "2023-04-25",
     "prvni_rok": 1992,
     "posledni_rok": 2023,
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 10,
-    "dolozenych": 10,
-    "odhadu": 0,
+    "celkem": 12,
+    "dolozenych": 11,
+    "odhadu": 1,
     "dle_typu": {
       "firma": 1,
-      "usneseni": 9
+      "usneseni": 9,
+      "retez": 1,
+      "smlouva": 1
     },
     "dle_jistoty": {
-      "fakt": 10
+      "fakt": 11,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -230,6 +233,46 @@
       "zdroj_soubor": "data/usneseni/rada/2023/17.json",
       "role": {
         "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2023-17/13__22605317",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nemovitosti - Hudební pavilon u Lesního pramene",
+      "popis": "Odhadované spojení smlouvy z 2023-04-25 s bodem 17/13 z 2023-03-21 (Hudební pavilon u Lesního pramene – pronájem nemovitosti). Jistota stredni.",
+      "castka_czk": 363000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 15741117 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 35 dní po usnesení; název bodu a předmět smlouvy sdílí slova hudebni, lesniho, nemovitosti, pavilon",
+      "url": "https://smlouvy.gov.cz/smlouva/24237285",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:22605317",
+      "datum": "2023-04-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2023-04-25",
+      "rok": 2023,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nemovitosti - Hudební pavilon u Lesního pramene",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Michal Kandráč.",
+      "castka_czk": 363000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/24237285",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
       }
     }
   ]

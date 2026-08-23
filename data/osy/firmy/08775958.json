@@ -20,15 +20,18 @@
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 2,
-    "dolozenych": 2,
-    "odhadu": 0,
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
     "dle_typu": {
       "firma": 1,
+      "usneseni": 1,
+      "retez": 1,
       "smlouva": 1
     },
     "dle_jistoty": {
-      "fakt": 2
+      "fakt": 3,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -50,6 +53,46 @@
       "zdroj_soubor": "data/firmy/subjekty.json",
       "role": {
         "vztah": "zminena"
+      }
+    },
+    {
+      "id": "usneseni:rada-2026-125-125/2",
+      "datum": "2026-08-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-11",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Pronájem nebytového prostoru v ul. Hlavní třída, č.p. 133, Mariánské Lázně",
+      "popis": "Rada města, bod 125/2, usnesení 1399/26. Schvaleno.",
+      "castka_czk": 264000,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/2636490847",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/125.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-125/2__36791602",
+      "datum": "2026-08-13",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-13",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - Zlatnictví hodinářství Růžičková s.r.o.",
+      "popis": "Odhadované spojení smlouvy z 2026-08-13 s bodem 125/2 z 2026-08-11 (Pronájem nebytového prostoru v ul. Hlavní třída, č.p. 133, Mariánské Lázně). Jistota stredni",
+      "castka_czk": 1320000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 08775958 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení; název bodu a předmět smlouvy sdílí slova nebytoveho, prostoru",
+      "url": "https://smlouvy.gov.cz/smlouva/39141538",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
       }
     },
     {

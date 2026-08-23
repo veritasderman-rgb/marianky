@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "25347942",
+    "nazev": "ELKOPLAST CZ, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2019-06-04",
+    "do": "2019-06-04",
+    "prvni_rok": 2019,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2019-23/5__8584411",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Nákup domácích kompostérů a jejich poskytnutí občanům města za účelem snížení BRO, formou kompostování.",
+      "popis": "Odhadované spojení smlouvy z 2019-06-04 s bodem 23/5 z 2019-05-14 (Nákup domácích kompostérů). Jistota nizka.",
+      "castka_czk": 1054515.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (ELKOPLAST CZ, s.r.o.) je v textu usnesení; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova domacich, komposteru, nakup",
+      "url": "https://smlouvy.gov.cz/smlouva/9256547",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:8584411",
+      "datum": "2019-06-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-06-04",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Nákup domácích kompostérů a jejich poskytnutí občanům města za účelem snížení BRO, formou kompostování.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ELKOPLAST CZ, s.r.o..",
+      "castka_czk": 1054515.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9256547",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

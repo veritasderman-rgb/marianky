@@ -2,7 +2,7 @@
   "id": "beh",
   "nazev": "Datový tok týdenního běhu",
   "typ": "tok",
-  "popis": "19 sběračů, 16 navazujících modulů, z toho 7 povinných. Nedělní běh jde zleva doprava.",
+  "popis": "22 sběračů, 21 navazujících modulů, z toho 8 povinných. Nedělní běh jde zleva doprava.",
   "vrstvy": [
     {
       "id": "zdroje",
@@ -56,8 +56,14 @@
           "duraz": "nepovinny"
         },
         {
+          "id": "scrapers.hlidac_api",
+          "nazev": "Registr smluv (plná sklizeň přes API)",
+          "popisek": "scrapers.hlidac_api",
+          "duraz": "povinny"
+        },
+        {
           "id": "scrapers.hlidac",
-          "nazev": "Registr smluv, dotace, zakázky",
+          "nazev": "Dotace, zakázky, statistiky",
           "popisek": "scrapers.hlidac",
           "duraz": "povinny"
         },
@@ -134,6 +140,18 @@
           "duraz": "nepovinny"
         },
         {
+          "id": "scrapers.srovnani",
+          "nazev": "Srovnání rozpočtů s podobnými městy",
+          "popisek": "scrapers.srovnani",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "scrapers.zaverky",
+          "nazev": "Závěrky městských s.r.o. ve sbírce listin",
+          "popisek": "scrapers.zaverky",
+          "duraz": "nepovinny"
+        },
+        {
           "id": "scrapers.komise",
           "nazev": "Komise, výbory a zápisy z jednání",
           "popisek": "scrapers.komise",
@@ -165,6 +183,12 @@
           "duraz": "nepovinny"
         },
         {
+          "id": "pipeline.dodatky",
+          "nazev": "Spojení dodatků se smlouvami",
+          "popisek": "pipeline.dodatky",
+          "duraz": "nepovinny"
+        },
+        {
           "id": "pipeline.agregace_penez",
           "nazev": "Agregace peněz po letech",
           "popisek": "pipeline.agregace_penez",
@@ -186,6 +210,30 @@
           "id": "pipeline.retez",
           "nazev": "Řetěz usnesení → smlouva → peníze",
           "popisek": "pipeline.retez",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.slibnik",
+          "nazev": "Slibník — uložené úkoly a termíny",
+          "popisek": "pipeline.slibnik",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.ucet_obdobi",
+          "nazev": "Účet volebního období",
+          "popisek": "pipeline.ucet_obdobi",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.rozpocet",
+          "nazev": "Přehledy rozpočtu z Monitoru",
+          "popisek": "pipeline.rozpocet",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.dotace_prehled",
+          "nazev": "Přehled dotací pro město a holding",
+          "popisek": "pipeline.dotace_prehled",
           "duraz": "nepovinny"
         },
         {
@@ -219,12 +267,6 @@
           "duraz": "povinny"
         },
         {
-          "id": "pipeline.znaky_sekci",
-          "nazev": "Znaky sekcí pro rozcestník",
-          "popisek": "pipeline.znaky_sekci",
-          "duraz": "nepovinny"
-        },
-        {
           "id": "pipeline.komise_prehled",
           "nazev": "Rozbor zápisů z komisí",
           "popisek": "pipeline.komise_prehled",
@@ -246,6 +288,12 @@
           "id": "pipeline.diagramy",
           "nazev": "Schémata projektu a města",
           "popisek": "pipeline.diagramy",
+          "duraz": "nepovinny"
+        },
+        {
+          "id": "pipeline.znaky_sekci",
+          "nazev": "Znaky sekcí pro rozcestník",
+          "popisek": "pipeline.znaky_sekci",
           "duraz": "nepovinny"
         }
       ]

@@ -10,15 +10,15 @@
     "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
   },
   "pocty": {
-    "celkem": 96,
-    "dolozenych": 96,
+    "celkem": 97,
+    "dolozenych": 97,
     "odhadu": 0,
     "dle_typu": {
       "firma": 93,
-      "smlouva": 3
+      "smlouva": 4
     },
     "dle_jistoty": {
-      "fakt": 96
+      "fakt": 97
     }
   },
   "udalosti": [
@@ -920,7 +920,7 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Užívání nemovitých a movitých věcí v k.ú. Mariánské Lázně, Úšovice, Vlkovice , Chotěnov a Stanoviště za účelem lesnictví , provozování myslivosti, stavbu a údržbu účelových zařízení v lázeňských lesích a údržbu veřejné zeleně.",
-      "popis": "Lázeňské lesy, spol. s r.o. — příjem, protistrana Město Mariánské Lázně.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Lázeňské lesy , spol. s r.o..",
       "castka_czk": 363000.0,
       "jistota": "fakt",
       "jistota_duvod": null,
@@ -934,20 +934,26 @@
         "mesto"
       ],
       "zdroj": "penize",
-      "zdroj_soubor": "data/penize/smlouvy/64831086.json",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
       "zdroj_klic": "1348638",
       "url": "https://smlouvy.gov.cz/smlouva/1458238",
       "detail": {
-        "subjekt_ico": "64831086",
-        "subjekt": "Lázeňské lesy, spol. s r.o.",
-        "protistrana_ico": "00254061",
-        "protistrana": "Město Mariánské Lázně",
+        "subjekt_ico": "00254061",
+        "subjekt": "Město Mariánské Lázně",
+        "protistrana_ico": "64831086",
+        "protistrana": "Lázeňské lesy , spol. s r.o.",
         "protistrana_neurcena": false,
-        "smer": "prijem",
+        "smer": "vydaj",
         "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
+          {
+            "subjekt_ico": "00254061",
+            "subjekt": "Město Mariánské Lázně",
+            "smer": "vydaj",
+            "soubor": "data/penize/smlouvy/00254061.json"
+          },
           {
             "subjekt_ico": "64831086",
             "subjekt": "Lázeňské lesy, spol. s r.o.",
@@ -955,7 +961,7 @@
             "soubor": "data/penize/smlouvy/64831086.json"
           }
         ],
-        "vice_subjektu": false
+        "vice_subjektu": true
       }
     },
     {
@@ -1796,6 +1802,53 @@
         "sidlo_v_obci": true,
         "obor": "Podpůrné činnosti pro zemědělství a posklizňové činnosti",
         "zamestnancu_rozsah": null
+      }
+    },
+    {
+      "id": "smlouva:1352350",
+      "datum": "2001-06-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2001-06-18",
+      "rok": 2001,
+      "datum_podezrele": false,
+      "typ": "smlouva",
+      "nadpis": "Úprava nájemného.",
+      "popis": "Město Mariánské Lázně — výdaj.",
+      "castka_czk": 670000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "00254061"
+      ],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "zdroj_klic": "1352350",
+      "url": "https://smlouvy.gov.cz/smlouva/1462298",
+      "detail": {
+        "subjekt_ico": "00254061",
+        "subjekt": "Město Mariánské Lázně",
+        "protistrana_ico": null,
+        "protistrana": "Údaj není veřejný na základě § 5 odst. 6 zákona č. 340/2015 Sb., o registru smluv.",
+        "protistrana_neurcena": true,
+        "smer": "vydaj",
+        "vada": true,
+        "bez_ceny": false,
+        "kategorie": null,
+        "dle_subjektu": [
+          {
+            "subjekt_ico": "00254061",
+            "subjekt": "Město Mariánské Lázně",
+            "smer": "vydaj",
+            "soubor": "data/penize/smlouvy/00254061.json"
+          }
+        ],
+        "vice_subjektu": false
       }
     },
     {

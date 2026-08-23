@@ -129,6 +129,22 @@ def podobnost(a: set[str], b: set[str], vahy: dict[str, float]) -> float:
     return prunik / sjednoceni if sjednoceni else 0.0
 
 
+def platna_castka(castky: list[float]) -> float | None:
+    """Platná částka řetězu: maximum nezáporných + součet záporných.
+
+    Kladné částky míchají „novou celkovou cenu" s „přírůstkem" a rozlišit
+    se nedají — bere se maximum (bezpečný spodní odhad, nikdy nesmaže
+    originál). Záporná částka je ale jednoznačně přírůstek, protože celková
+    cena záporná být nemůže — proto se odečítá.
+    """
+    if not castky:
+        return None
+    nezaporne = [c for c in castky if c >= 0]
+    zaporne = [c for c in castky if c < 0]
+    zaklad = max(nezaporne) if nezaporne else 0.0
+    return zaklad + sum(zaporne)
+
+
 def jistota(skore: float) -> str | None:
     if skore >= PRAH_VYSOKA:
         return "vysoka"
@@ -165,6 +181,21 @@ def nacti_smlouvy() -> list[dict]:
             videne.add(klic)
             ven.append({**s, "subjekt_ico": d.get("ico"), "subjekt": d.get("nazev")})
     return ven
+
+
+def otisk_vstupu(smlouvy: list[dict]) -> dict:
+    """Otisk smluv, ze kterých se párovalo — pro kontrolu čerstvosti.
+
+    Sklizeň přepisuje soubory smluv celé, takže po ní tenhle otisk přestane
+    sedět a kontrola pozná, že spojení dodatků je ZASTARALÉ vůči smlouvám.
+    Mtime nejde použít: git časy souborů nezachovává. Otisk je z ID smluv,
+    ne z obsahu — o tom, jestli se párovalo nad jinou množinou, rozhodují
+    právě ID.
+    """
+    import hashlib
+    ids = sorted(str(s.get("id")) for s in smlouvy)
+    h = hashlib.sha256("\n".join(ids).encode("utf-8")).hexdigest()[:16]
+    return {"smluv": len(ids), "otisk": h}
 
 
 def sparuj(smlouvy: list[dict], log: Log) -> dict:
@@ -266,9 +297,16 @@ def sparuj(smlouvy: list[dict], log: Log) -> dict:
                 #
                 # Maximum na všech ověřených řetězech vychází správně a
                 # hlavně selhává bezpečným směrem: nikdy nesmaže originál.
+                #
+                # ZÁPORNÝ DODATEK JE VÝJIMKA, kde se interpretovat dá:
+                # celková cena nemůže být záporná, takže záporná částka je
+                # jednoznačně PŘÍRŮSTEK (méněpráce) a od maxima se odečte.
+                # V datech od srpna 2026: atletický areál Viktoria −310 830,
+                # kostel Nanebevzetí −3 173.
+                #
                 # PRAVDA LEŽÍ MEZI `castka_platna_czk` A NAIVNÍM SOUČTEM —
                 # z registru se přesně určit nedá a web to musí říct.
-                "castka_platna_czk": max(castky) if castky else None,
+                "castka_platna_czk": platna_castka(castky),
                 "castka_naivni_soucet_czk": sum(castky) if castky else None,
             })
 
@@ -333,6 +371,7 @@ def main() -> int:
     objem_nesparovanych = sum(d.get("castka_czk") or 0 for d in vysledek["nesparovane"])
 
     vystup = {
+        "vstup": otisk_vstupu(smlouvy),
         "metodika": (
             "Dodatek ke smlouvě se v registru zveřejňuje jako samostatný záznam "
             "a uvádí novou CELKOVOU cenu, ne přírůstek — prostý součet proto "

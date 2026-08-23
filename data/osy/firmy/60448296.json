@@ -2,7 +2,7 @@
   "entita": {
     "typ": "firma",
     "ico": "60448296",
-    "nazev": null
+    "nazev": "Ukrajinská iniciativa v České republice, z.s."
   },
   "metodika": {
     "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
@@ -20,14 +20,17 @@
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 3,
-    "dolozenych": 3,
-    "odhadu": 0,
+    "celkem": 5,
+    "dolozenych": 4,
+    "odhadu": 1,
     "dle_typu": {
-      "usneseni": 3
+      "usneseni": 3,
+      "retez": 1,
+      "smlouva": 1
     },
     "dle_jistoty": {
-      "fakt": 3
+      "fakt": 4,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -49,6 +52,46 @@
       "zdroj_soubor": "data/usneseni/rada/2021/118.json",
       "role": {
         "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-118/4__16918239",
+      "datum": "2021-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-01",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Odhadované spojení smlouvy z 2021-11-01 s bodem 118/4 z 2021-08-10 (Fond Kultury 2.kolo). Jistota stredni.",
+      "castka_czk": 68000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 60448296 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 83 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/18214691",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:16918239",
+      "datum": "2021-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-11-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o poskytnutí dotace z Fondu kultury města Mariánské Lázně - 2021",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Ukrajinská iniciativa v České republice, z.s..",
+      "castka_czk": 68000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/18214691",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
       }
     },
     {
