@@ -167,6 +167,21 @@ def nacti_smlouvy() -> list[dict]:
     return ven
 
 
+def otisk_vstupu(smlouvy: list[dict]) -> dict:
+    """Otisk smluv, ze kterých se párovalo — pro kontrolu čerstvosti.
+
+    Sklizeň přepisuje soubory smluv celé, takže po ní tenhle otisk přestane
+    sedět a kontrola pozná, že spojení dodatků je ZASTARALÉ vůči smlouvám.
+    Mtime nejde použít: git časy souborů nezachovává. Otisk je z ID smluv,
+    ne z obsahu — o tom, jestli se párovalo nad jinou množinou, rozhodují
+    právě ID.
+    """
+    import hashlib
+    ids = sorted(str(s.get("id")) for s in smlouvy)
+    h = hashlib.sha256("\n".join(ids).encode("utf-8")).hexdigest()[:16]
+    return {"smluv": len(ids), "otisk": h}
+
+
 def sparuj(smlouvy: list[dict], log: Log) -> dict:
     """Přiřadí každému dodatku původní smlouvu téže protistrany."""
     vahy = idf(smlouvy)
@@ -333,6 +348,7 @@ def main() -> int:
     objem_nesparovanych = sum(d.get("castka_czk") or 0 for d in vysledek["nesparovane"])
 
     vystup = {
+        "vstup": otisk_vstupu(smlouvy),
         "metodika": (
             "Dodatek ke smlouvě se v registru zveřejňuje jako samostatný záznam "
             "a uvádí novou CELKOVOU cenu, ne přírůstek — prostý součet proto "

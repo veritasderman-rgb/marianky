@@ -410,6 +410,23 @@ def kontrola_dodatku(v: Vysledek) -> None:
         v.chyba(f"data/penize/dodatky.json nejde přečíst: {e}")
         return
 
+    # ČERSTVOST JE TVRDÁ PODMÍNKA. Sklizeň přepisuje soubory smluv celé;
+    # kdyby po ní spojení dodatků nezběhlo, publikovaly by se nové smlouvy
+    # se starými řetězy — a přesně kvůli tomu tenhle modul existuje.
+    # Otisk se počítá z ID smluv, ne z časů souborů (git mtime nezachovává).
+    from pipeline.dodatky import nacti_smlouvy, otisk_vstupu
+    vstup = d.get("vstup") or {}
+    ted = otisk_vstupu(nacti_smlouvy())
+    if not vstup:
+        v.varuj("dodatky.json nenese otisk vstupu (starý formát) — spustit "
+                "pipeline/dodatky.py znovu, ať se dá hlídat čerstvost")
+    elif vstup != ted:
+        v.chyba(f"spojení dodatků je zastaralé vůči smlouvám: počítáno nad "
+                f"{vstup.get('smluv')} smlouvami (otisk {vstup.get('otisk')}), "
+                f"teď jich je {ted['smluv']} (otisk {ted['otisk']}) — spustit "
+                "pipeline/dodatky.py")
+        return
+
     souhrn = d.get("souhrn") or {}
     dvojite = souhrn.get("dvojite_zapocteno_czk") or 0
     nesparovanych = souhrn.get("nesparovanych") or 0
