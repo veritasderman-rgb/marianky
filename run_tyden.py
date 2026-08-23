@@ -28,7 +28,12 @@ KROKY: list[tuple[str, str, bool]] = [
     ("scrapers.hlasovani", "Jmenovitá hlasování",            True),
     ("scrapers.muml",      "Web města, deska, akce",         True),
     ("scrapers.snapshoty", "Hlídání změn na webu města",     False),
-    ("scrapers.hlidac",    "Registr smluv, dotace, zakázky", True),
+    # Dvě půlky téhož zdroje: _api sklízí SMLOUVY přes REST (plné pokrytí),
+    # hlidac normalizuje dotace/zakázky/statistiky z ruční .psv sklizně.
+    # Nesmí se prohodit ani sloučit — hlidac dřív smlouvy taky zapisoval
+    # a přepsal jich 6 943 čtyřmi sty (viz komentář v scrapers/hlidac.py).
+    ("scrapers.hlidac_api", "Registr smluv (plná sklizeň přes API)", True),
+    ("scrapers.hlidac",    "Dotace, zakázky, statistiky",    True),
     ("scrapers.zpravodaj", "Nové číslo zpravodaje",          False),
     ("scrapers.media",     "Mediální monitoring",            False),
     ("scrapers.lide",      "Aktualizace osobností",          False),

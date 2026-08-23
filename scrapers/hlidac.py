@@ -519,7 +519,13 @@ def main() -> None:
     log = Log("hlidac")
     try:
         zpracuj_statistiky(log)
-        zpracuj_smlouvy(log)
+        # SMLOUVY SE TU UŽ NEZAPISUJÍ. `penize/smlouvy/{ico}.json` vlastní
+        # scrapers/hlidac_api.py — plná sklizeň přes REST API (6 900+ smluv).
+        # Tahle normalizace z .psv jich má jen 404 (ruční sklizeň největších)
+        # a jednou už čerstvou sklizeň tiše přepsala: 23. 8. 2026 z ní
+        # zůstalo 404 smluv místo 6 943 a všechno navazující (agregace,
+        # řetěz, osa, vydání) se spočítalo nad zlomkem dat. V CI se to
+        # neprojevovalo jen proto, že tam .psv cache obvykle chybí.
         zpracuj_dotace(log)
         zpracuj_zakazky(log)
     except ZdrojSelhal as e:
