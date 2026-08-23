@@ -2,7 +2,7 @@
   "entita": {
     "typ": "firma",
     "ico": "25232517",
-    "nazev": null
+    "nazev": "AMAZON 2001 s.r.o."
   },
   "metodika": {
     "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
@@ -14,20 +14,23 @@
   },
   "rozsah": {
     "od": "2016-04-19",
-    "do": "2021-06-29",
+    "do": "2021-07-01",
     "prvni_rok": 2016,
     "posledni_rok": 2021,
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 2,
-    "dolozenych": 2,
-    "odhadu": 0,
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
     "dle_typu": {
-      "usneseni": 2
+      "usneseni": 2,
+      "retez": 1,
+      "smlouva": 1
     },
     "dle_jistoty": {
-      "fakt": 2
+      "fakt": 3,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -69,6 +72,46 @@
       "zdroj_soubor": "data/usneseni/rada/2021/115.json",
       "role": {
         "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2021-115/9__15914047",
+      "datum": "2021-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - AMAZON s.r.o. - prodloužení",
+      "popis": "Odhadované spojení smlouvy z 2021-07-01 s bodem 115/9 z 2021-06-29 (NP Ruská, č.p. 371 - prodloužení nájemního vztahu, změna předmětu činnosti). Jistota stredni",
+      "castka_czk": 72600.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 25232517 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 2 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17126663",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15914047",
+      "datum": "2021-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o nájmu nebytového prostoru - AMAZON s.r.o. - prodloužení",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana AMAZON 2001 s.r.o..",
+      "castka_czk": 72600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17126663",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
       }
     }
   ]

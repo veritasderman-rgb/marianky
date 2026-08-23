@@ -2,7 +2,7 @@
   "entita": {
     "typ": "firma",
     "ico": "28968506",
-    "nazev": "City Parking Group s.r.o."
+    "nazev": "ClickPark s.r.o."
   },
   "metodika": {
     "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
@@ -20,15 +20,17 @@
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 5,
-    "dolozenych": 5,
-    "odhadu": 0,
+    "celkem": 7,
+    "dolozenych": 6,
+    "odhadu": 1,
     "dle_typu": {
-      "smlouva": 3,
-      "usneseni": 2
+      "smlouva": 4,
+      "usneseni": 2,
+      "retez": 1
     },
     "dle_jistoty": {
-      "fakt": 5
+      "fakt": 6,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -110,6 +112,46 @@
       "zdroj_soubor": "data/usneseni/rada/2019/33.json",
       "role": {
         "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2020-13/23__12077792",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "retez",
+      "nadpis": "Smlouva o prodeji akcií společnosti Parking Centrum, a.s.",
+      "popis": "Odhadované spojení smlouvy z 2020-06-11 s bodem 13/23 z 2020-05-19 (Koupě akcií společnosti PARKING CENTRUM, a. s. od minoritního akcionáře). Jistota stredni.",
+      "castka_czk": 344000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (ClickPark s.r.o.) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 23 dní po usnesení; název bodu a předmět smlouvy sdílí slova akcii, centrum, par",
+      "url": "https://smlouvy.gov.cz/smlouva/12965136",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:12077792",
+      "datum": "2020-06-11",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2020-06-11",
+      "rok": 2020,
+      "typ": "smlouva",
+      "nadpis": "Smlouva o prodeji akcií společnosti Parking Centrum, a.s.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana ClickPark s.r.o..",
+      "castka_czk": 344000.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/12965136",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
       }
     },
     {

@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "49450301",
+    "nazev": "MOL Česká republika, s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2021-06-21",
+    "do": "2021-06-21",
+    "prvni_rok": 2021,
+    "posledni_rok": 2021,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "vysoka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:rada-2021-109/6__15848587",
+      "datum": "2021-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-21",
+      "rok": 2021,
+      "typ": "retez",
+      "nadpis": "Stavební parcela č. 1185 a část poz. parcely č.  141/6 k. ú. Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2021-06-21 s bodem 109/6 z 2021-05-18 (Prodloužení pronájmu parcel v k. ú. ML - čerpací stanice na ul. Chebská - MOL ČR). Jistota v",
+      "castka_czk": 817234.0,
+      "jistota": "vysoka",
+      "jistota_duvod": "IČO 49450301 je uvedeno v textu usnesení; v usnesení je i název protistrany; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 34 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/17057331",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:15848587",
+      "datum": "2021-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2021-06-21",
+      "rok": 2021,
+      "typ": "smlouva",
+      "nadpis": "Stavební parcela č. 1185 a část poz. parcely č.  141/6 k. ú. Mariánské Lázně",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana MOL Česká republika, s.r.o..",
+      "castka_czk": 817234.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/17057331",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -433,13 +433,22 @@ def kontrola_dodatku(v: Vysledek) -> None:
     objem_ns = souhrn.get("objem_nesparovanych_czk") or 0
 
     retezy = d.get("retezy") or []
-    # Řetěz, kde je platná částka vyšší než naivní součet, znamená chybu
-    # ve výpočtu — maximum nemůže překročit součet kladných čísel.
-    spatne = [r for r in retezy
-              if (r.get("castka_platna_czk") or 0) > (r.get("castka_naivni_soucet_czk") or 0)]
+    # Uložené částky se přepočítají z článků řetězu toutéž funkcí. První
+    # verze místo toho tvrdila invariant „platná ≤ naivní součet" — a spadla
+    # na záporných dodatcích (méněpráce), kde součet legitimně klesne pod
+    # maximum. Přepočet nepředpokládá nic o datech, jen že výpočet je týž.
+    from pipeline.dodatky import platna_castka
+    spatne = 0
+    for r in retezy:
+        castky = [x.get("castka_czk") for x in [r.get("puvodni") or {}, *(r.get("dodatky") or [])]
+                  if x.get("castka_czk") is not None]
+        ocek_platna = platna_castka(castky)
+        ocek_soucet = sum(castky) if castky else None
+        if r.get("castka_platna_czk") != ocek_platna or r.get("castka_naivni_soucet_czk") != ocek_soucet:
+            spatne += 1
     if spatne:
-        v.chyba(f"{len(spatne)} řetězů má platnou částku vyšší než součet všech článků — "
-                "chyba ve výpočtu, ne v datech")
+        v.chyba(f"{spatne} řetězů má uložené částky jiné, než vychází z jejich článků — "
+                "chyba ve výpočtu, spustit pipeline/dodatky.py")
         return
 
     v.projde(f"dodatky: {len(retezy)} řetězů, prostý součet by nadhodnotil o "
