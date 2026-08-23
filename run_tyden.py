@@ -62,6 +62,9 @@ KROKY: list[tuple[str, str, bool]] = [
 NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.tagovani",       "Otagování usnesení",           True),
     ("pipeline.clanky",         "Rozbor článků zpravodaje",     False),
+    # Dodatky čtou tytéž soubory smluv jako agregace; stojí před ní,
+    # aby budoucí zapojení do agregace nemuselo měnit pořadí.
+    ("pipeline.dodatky",        "Spojení dodatků se smlouvami", False),
     ("pipeline.agregace_penez", "Agregace peněz po letech",     True),
     ("pipeline.propojeni",      "Propojení lidí, firem a peněz", False),
     ("pipeline.profily",        "Hlasovací profily",            False),
