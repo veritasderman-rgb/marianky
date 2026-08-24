@@ -37,7 +37,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from selectolax.parser import HTMLParser
 
-from lib.core import Log, ZdrojSelhal, cistit, fetch, nacti, slug, uloz
+from lib.core import Log, ZdrojSelhal, cistit, fetch, nacti, nacti_config, slug, uloz
 
 SOUBOR = "lide/osobnosti.json"
 WEB = "https://www.muml.cz"
@@ -280,9 +280,42 @@ def _nazev_stranky(html: str) -> str:
     return cistit(h1.text()) if h1 else ""
 
 
+def _jmenovci() -> list[dict]:
+    """Číselník jmenovců. Když chybí, sběrač běží dál — jen nerozlišuje."""
+    try:
+        d = nacti_config("jmenovci.json") or {}
+    except (OSError, ValueError):
+        return []
+    return d.get("jmenovci") or []
+
+
+def _rozlis_jmenovce(ident: str, jmeno: str, zdroj: str) -> str:
+    """U jmenovců rozhodne o `osoba_id` podle ZDROJE, ne podle jména.
+
+    Jméno je u nich z definice nejednoznačné: „Zdeněk Třešňák" je otec
+    (zastupitel a radní 2014–2018) i syn (ředitel ZŠ Úšovice). Id se počítá
+    z holého jména, takže obojí padne na `tresnak-zdenek` — a funkce ředitele
+    tak skončila v profilu otce, přestože jeho vlastní popis říká, že jsou to
+    dva lidi. Přesně před tím config/jmenovci.json varuje.
+
+    Rozlišuje se podle `zdroje_obsahuji`: podřetězec adresy stránky, ze které
+    záznam pochází. Když nesedí nic, zůstane výchozí id — drží ho ten, na koho
+    míří většina zdrojů.
+    """
+    for j in _jmenovci():
+        if (j.get("jmeno") or "").strip() != jmeno.strip():
+            continue
+        for o in j.get("osoby") or []:
+            for kus in o.get("zdroje_obsahuji") or []:
+                if kus and kus in (zdroj or ""):
+                    return o.get("id") or ident
+    return ident
+
+
 def _zaznam(jmeno_raw: str, *, kategorie: str, role: str,
             funkce: list[dict], strana: str | None, zdroj: str) -> dict:
     ident, jmeno = rozloz_jmeno(jmeno_raw)
+    ident = _rozlis_jmenovce(ident, jmeno, zdroj)
     return {
         "id": ident,
         "jmeno": jmeno,

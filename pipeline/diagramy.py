@@ -49,6 +49,24 @@ def _cely(x) -> int | None:
         return None
 
 
+# Měsíce v 6. pádě — sází se za předložku „od", takže nominativ by dal
+# „od červen 2026".
+_MESICE_OD = [
+    "ledna", "února", "března", "dubna", "května", "června",
+    "července", "srpna", "září", "října", "listopadu", "prosince",
+]
+
+
+def _mesic_rok(s: str | None) -> str:
+    """„2026-06" → „června 2026". Bez měsíce vrátí, co dostal."""
+    import re as _re
+    m = _re.match(r"^(\d{4})-(\d{2})", s or "")
+    if not m:
+        return s or "—"
+    i = int(m.group(2)) - 1
+    return f"{_MESICE_OD[i]} {m.group(1)}" if 0 <= i < 12 else m.group(1)
+
+
 def _mezerou(n: int | None) -> str:
     return "—" if n is None else f"{n:,}".replace(",", " ")
 
@@ -714,6 +732,11 @@ def diagram_model() -> dict:
 def diagram_vedeni() -> dict:
     z = nacti("mesto/zastupitele.json")
     u = nacti("mesto/urad.json")
+    # RADA SE BERE Z `mesto/rada.json`, NE Z `urad.json`. Stránka „vedení
+    # města" uvádí jen uvolněné funkcionáře — čtyři lidi — takže diagram
+    # tvrdil, že rada má čtyři členy, a dva radní na něm chyběli. Stránka
+    # rady jich uvádí šest a přiznává i neobsazené místo.
+    ra = nacti("mesto/rada.json")
     if not z:
         return _chybi("vedeni", "Kdo řídí město",
                       "Seznam zastupitelů zatím není.", "data/mesto/zastupitele.json")
@@ -723,7 +746,8 @@ def diagram_vedeni() -> dict:
     for c in zastupitele:
         poc[(c.get("uskupeni") or "bez uskupení").strip()] += 1
 
-    vedeni = (u or {}).get("vedeni_mesta") or []
+    radni = (ra or {}).get("clenove") or []
+    prazdna = (ra or {}).get("prazdna_mista") or []
     odbory = [o for o in ((u or {}).get("odbory") or []) if o.get("uroven") == 1]
 
     skupiny = [
@@ -742,17 +766,28 @@ def diagram_vedeni() -> dict:
             ],
         },
     ]
-    if vedeni:
+    if radni:
+        mist = len(radni) + len(prazdna)
+        # Prázdné místo je vlastní krabička, ne poznámka pod čarou: rada
+        # v neúplném složení je zjištění, ne mezera v datech.
+        deti = [
+            {"id": v.get("id"), "nazev": v.get("jmeno"),
+             "popisek": f"{v.get('funkce')} · {v.get('uskupeni') or '—'}"}
+            for v in radni
+        ] + [
+            {"id": f"prazdne-{i}", "nazev": m.get("funkce") or "neobsazené místo",
+             "popisek": f"neobsazeno od {_mesic_rok(m.get('uvolneno'))}"
+                        if m.get("uvolneno") else "neobsazeno"}
+            for i, m in enumerate(prazdna)
+        ]
         skupiny.append({
-            "id": "vedeni",
-            "nazev": f"Vedení města — {len(vedeni)}",
-            "popis": "Uvolnění i neuvolnění členové rady, jak je uvádí web města.",
-            "pocet": len(vedeni),
-            "deti": [
-                {"id": v.get("id"), "nazev": v.get("jmeno"),
-                 "popisek": f"{v.get('funkce')} · {v.get('uskupeni') or '—'}"}
-                for v in vedeni
-            ],
+            "id": "rada",
+            "nazev": (f"Rada města — {len(radni)} z {mist} míst"
+                      if prazdna else f"Rada města — {len(radni)} členů"),
+            "popis": "Výkonný orgán, rozhoduje mezi zasedáními zastupitelstva.",
+            # `pocet` = kolik krabiček se kreslí, tedy i ta prázdná.
+            "pocet": len(deti),
+            "deti": deti,
         })
     if odbory:
         skupiny.append({
@@ -771,7 +806,7 @@ def diagram_vedeni() -> dict:
         "nazev": "Kdo řídí město",
         "typ": "strom",
         "popis": (
-            f"Zastupitelstvo ({len(zastupitele)}), vedení města ({len(vedeni)}) "
+            f"Zastupitelstvo ({len(zastupitele)}), rada města ({len(radni)}) "
             f"a {len(odbory)} odborů úřadu."
         ),
         "koren": {
@@ -782,6 +817,10 @@ def diagram_vedeni() -> dict:
         "skupiny": skupiny,
         "stranou": [],
         "metodika": [
+            'Rada se bere ze stránky rady města, ne ze stránky „vedení města" — '
+            'ta uvádí jen uvolněné funkcionáře, takže by na diagramu chyběli dva '
+            'radní. Kolik míst rada má, web neuvádí; číslo „z N míst" je součet '
+            'obsazených a doložených uvolněných, tedy nejmenší možný počet.',
             "Výbory zastupitelstva a komise rady tu NEJSOU. Web města je "
             "nezveřejňuje ve strojově čitelné podobě, takže o jejich složení "
             "projekt nic neví — a nedokreslují se dohadem.",
