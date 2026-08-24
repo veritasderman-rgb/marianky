@@ -740,6 +740,15 @@ def diagram_vedeni() -> dict:
     if not z:
         return _chybi("vedeni", "Kdo řídí město",
                       "Seznam zastupitelů zatím není.", "data/mesto/zastupitele.json")
+    # Rada je od téhle chvíle POVINNÝ vstup, ne bonus. Když chybí, diagram se
+    # nekreslí — jinak by se pod nadpisem „Kdo řídí město" tiše vynechal
+    # výkonný orgán a popis by hlásil „rada města (0)" se stavem „ok“.
+    # Nula radních není zjištění, je to chybějící zdroj.
+    if not (ra or {}).get("clenove"):
+        return _chybi("vedeni", "Kdo řídí město",
+                      "Složení rady města zatím není — bez něj by diagram "
+                      "vynechal výkonný orgán a tvářil se úplně.",
+                      "data/mesto/rada.json")
 
     zastupitele = z.get("zastupitele") or []
     poc: Counter[str] = Counter()
@@ -766,29 +775,28 @@ def diagram_vedeni() -> dict:
             ],
         },
     ]
-    if radni:
-        mist = len(radni) + len(prazdna)
-        # Prázdné místo je vlastní krabička, ne poznámka pod čarou: rada
-        # v neúplném složení je zjištění, ne mezera v datech.
-        deti = [
-            {"id": v.get("id"), "nazev": v.get("jmeno"),
-             "popisek": f"{v.get('funkce')} · {v.get('uskupeni') or '—'}"}
-            for v in radni
-        ] + [
-            {"id": f"prazdne-{i}", "nazev": m.get("funkce") or "neobsazené místo",
-             "popisek": f"neobsazeno od {_mesic_rok(m.get('uvolneno'))}"
-                        if m.get("uvolneno") else "neobsazeno"}
-            for i, m in enumerate(prazdna)
-        ]
-        skupiny.append({
-            "id": "rada",
-            "nazev": (f"Rada města — {len(radni)} z {mist} míst"
-                      if prazdna else f"Rada města — {len(radni)} členů"),
-            "popis": "Výkonný orgán, rozhoduje mezi zasedáními zastupitelstva.",
-            # `pocet` = kolik krabiček se kreslí, tedy i ta prázdná.
-            "pocet": len(deti),
-            "deti": deti,
-        })
+    mist = len(radni) + len(prazdna)
+    # Prázdné místo je vlastní krabička, ne poznámka pod čarou: rada
+    # v neúplném složení je zjištění, ne mezera v datech.
+    deti = [
+        {"id": v.get("id"), "nazev": v.get("jmeno"),
+         "popisek": f"{v.get('funkce')} · {v.get('uskupeni') or '—'}"}
+        for v in radni
+    ] + [
+        {"id": f"prazdne-{i}", "nazev": m.get("funkce") or "neobsazené místo",
+         "popisek": f"neobsazeno od {_mesic_rok(m.get('uvolneno'))}"
+                    if m.get("uvolneno") else "neobsazeno"}
+        for i, m in enumerate(prazdna)
+    ]
+    skupiny.append({
+        "id": "rada",
+        "nazev": (f"Rada města — {len(radni)} z {mist} míst"
+                  if prazdna else f"Rada města — {len(radni)} členů"),
+        "popis": "Výkonný orgán, rozhoduje mezi zasedáními zastupitelstva.",
+        # `pocet` = kolik krabiček se kreslí, tedy i ta prázdná.
+        "pocet": len(deti),
+        "deti": deti,
+    })
     if odbory:
         skupiny.append({
             "id": "urad",
@@ -831,7 +839,8 @@ def diagram_vedeni() -> dict:
             "porovnáním s předchozím během sběrače — u starších to znamená „nevíme“, "
             "ne „platí odjakživa“.",
         ],
-        "zdroj": "data/mesto/zastupitele.json, data/mesto/urad.json",
+        "zdroj": ("data/mesto/zastupitele.json, data/mesto/rada.json, "
+                  "data/mesto/urad.json"),
         "stav": "ok",
     }
 

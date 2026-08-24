@@ -289,7 +289,7 @@ def _jmenovci() -> list[dict]:
     return d.get("jmenovci") or []
 
 
-def _rozlis_jmenovce(ident: str, jmeno: str, zdroj: str) -> str:
+def _rozlis_jmenovce(ident: str, jmeno: str, zdroj: str) -> str | None:
     """U jmenovců rozhodne o `osoba_id` podle ZDROJE, ne podle jména.
 
     Jméno je u nich z definice nejednoznačné: „Zdeněk Třešňák" je otec
@@ -299,23 +299,50 @@ def _rozlis_jmenovce(ident: str, jmeno: str, zdroj: str) -> str:
     dva lidi. Přesně před tím config/jmenovci.json varuje.
 
     Rozlišuje se podle `zdroje_obsahuji`: podřetězec adresy stránky, ze které
-    záznam pochází. Když nesedí nic, zůstane výchozí id — drží ho ten, na koho
-    míří většina zdrojů.
+    záznam pochází.
+
+    Když zdroj nesedí na nic, rozhoduje `vychozi`. Někdo id ze jména držet
+    může — u Třešňáků otec, na kterého míří 773 jmenovitých hlasů — a pak
+    mu nerozlišené záznamy patří. Když ho nedrží NIKDO (Jiří Novák, kde
+    číselník přiznává dva nerozlišené lidi), vrací se `None`: `slouc()`
+    slévá záznamy podle `id`, takže by se oba slili do jednoho profilu
+    a nasčítaly by se jim cizí funkce i zdroje. Přesně před tím zásada
+    číselníku varuje — nespárovaný člověk je menší zlo než smíchaní dva.
+
+    Naopak `podobne_prijmeni` je varování pro moduly párující podle příjmení;
+    samotné celé jméno jednoznačné je, takže se přiřazuje normálně.
     """
     for j in _jmenovci():
         if (j.get("jmeno") or "").strip() != jmeno.strip():
             continue
-        for o in j.get("osoby") or []:
+        osoby = j.get("osoby") or []
+        for o in osoby:
             for kus in o.get("zdroje_obsahuji") or []:
                 if kus and kus in (zdroj or ""):
                     return o.get("id") or ident
+        if j.get("typ") != "stejne_jmeno":
+            return ident
+        vychozi = next((o for o in osoby if o.get("vychozi")), None)
+        return (vychozi.get("id") or ident) if vychozi else None
     return ident
 
 
 def _zaznam(jmeno_raw: str, *, kategorie: str, role: str,
-            funkce: list[dict], strana: str | None, zdroj: str) -> dict:
+            funkce: list[dict], strana: str | None, zdroj: str,
+            log: Log) -> dict | None:
+    """Sestaví záznam osoby. Vrací `None`, když jméno nejde bezpečně přiřadit.
+
+    Nepřiřazený jmenovec se raději zahodí, než aby se slil s někým jiným —
+    ale zahodit se nesmí potichu, jinak by člověk ze zdroje zmizel a nikdo
+    by nevěděl proč. Proto se hlásí do logu k ručnímu dořešení.
+    """
     ident, jmeno = rozloz_jmeno(jmeno_raw)
     ident = _rozlis_jmenovce(ident, jmeno, zdroj)
+    if ident is None:
+        log.info("POZOR: jmenovec bez rozlišení, záznam nepřiřazen — "
+                 "doplň `zdroje_obsahuji` do config/jmenovci.json",
+                 jmeno=jmeno, zdroj=zdroj)
+        return None
     return {
         "id": ident,
         "jmeno": jmeno,
@@ -345,8 +372,10 @@ def sber_zastupitele(log: Log) -> list[dict]:
         # Starosta a místostarostové jsou na stránce uvedeni svou funkcí.
         if o["funkce"] and "člen" not in o["funkce"].lower():
             f.append({"nazev": o["funkce"].lower(), "od": None, "do": None})
-        out.append(_zaznam(o["jmeno_raw"], kategorie="politika", role="zastupitel",
-                           funkce=f, strana=o["strana"], zdroj=url))
+        z = _zaznam(o["jmeno_raw"], kategorie="politika", role="zastupitel",
+                    funkce=f, strana=o["strana"], zdroj=url, log=log)
+        if z:
+            out.append(z)
     log.info("zastupitelé", pocet=len(out))
     return out
 
@@ -361,8 +390,10 @@ def sber_rada(log: Log) -> list[dict]:
         f = [{"nazev": "člen rady města", "od": None, "do": None}]
         if o["funkce"] and "člen rady" not in o["funkce"].lower():
             f.append({"nazev": o["funkce"].lower(), "od": None, "do": None})
-        out.append(_zaznam(o["jmeno_raw"], kategorie="politika", role="radní",
-                           funkce=f, strana=o["strana"], zdroj=url))
+        z = _zaznam(o["jmeno_raw"], kategorie="politika", role="radní",
+                    funkce=f, strana=o["strana"], zdroj=url, log=log)
+        if z:
+            out.append(z)
     log.info("rada města", pocet=len(out))
     return out
 
@@ -396,8 +427,9 @@ def sber_vedeni(log: Log) -> list[dict]:
             strana = polozky[0]
         z = _zaznam(jmeno, kategorie="politika", role="vedení města",
                     funkce=[{"nazev": funkce, "od": None, "do": None}],
-                    strana=strana, zdroj=url)
-        videno.setdefault(z["id"], z)
+                    strana=strana, zdroj=url, log=log)
+        if z:
+            videno.setdefault(z["id"], z)
     if not videno:
         raise ZdrojSelhal(f"Na {url} nebyl nalezen nikdo z vedení města")
     log.info("vedení města", pocet=len(videno))
@@ -425,11 +457,13 @@ def _sber_subjektu(log: Log, kody: list[str], *, kategorie: str, role: str,
             if not any(k in f for k in klice):
                 continue
             mel_nekoho = True
-            out.append(_zaznam(
+            z = _zaznam(
                 o["jmeno_raw"], kategorie=kategorie, role=role,
                 funkce=[{"nazev": f"{o['funkce']} — {nazev}" if nazev else o["funkce"],
                          "od": None, "do": None}],
-                strana=None, zdroj=url))
+                strana=None, zdroj=url, log=log)
+            if z:
+                out.append(z)
         if mel_nekoho:
             nalezeno_subjektu += 1
         else:

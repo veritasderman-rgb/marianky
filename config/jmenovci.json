@@ -1,12 +1,19 @@
 {
   "_o_souboru": "Evidence known jmenovců — lidí, kteří sdílejí jméno a automatika je slučuje do jedné osoby. Moduly, které přiřazují osoba_id podle jména, musí tenhle soubor respektovat: jméno uvedené níže NENÍ jednoznačné a nesmí se automaticky spárovat.",
   "zasada": "Sloučit dva lidi do jednoho záznamu je horší chyba než nechat je nespárované. Když jméno stojí v tomhle seznamu a nemáš rozlišující znak (funkce, firma, období), přiřaď osoba_id = null a jméno nech jako text.",
+  "typy": {
+    "_o_poli": "Pole `typ` říká, PROČ jméno v seznamu je. Bez něj se obojí čte stejně a kód pak buď slučuje, co nemá, nebo zahazuje, co je v pořádku.",
+    "stejne_jmeno": "Tohle celé jméno nosí víc různých lidí. Automatika je NESMÍ spojit: buď záznam rozliší podle `zdroje_obsahuji`, nebo ho nepřiřadí vůbec.",
+    "podobne_prijmeni": "Jméno samo je jednoznačné — patří jednomu člověku. V seznamu je jen jako varování pro moduly, které párují podle PŘÍJMENÍ, protože ve zdrojích vystupuje někdo s jiným křestním jménem a stejným příjmením. Párování podle celého jména je tu bezpečné."
+  },
   "jmenovci": [
     {
       "jmeno": "Zdeněk Třešňák",
+      "typ": "stejne_jmeno",
       "osoby": [
         {
           "id": "tresnak-zdenek",
+          "vychozi": true,
           "rozlisuje": "zastupitel a radní 2014–2018 za Českou pirátskou stranu",
           "patri_mu": [
             "jmenovitá hlasování",
@@ -29,14 +36,17 @@
     },
     {
       "jmeno": "Jiří Novák",
+      "typ": "stejne_jmeno",
       "osoby": [],
-      "poznamka": "Na kandidátkách ČSSD 2002–2014 byli dva stejnojmenní. Nerozlišeno — nespojovat."
+      "poznamka": "Na kandidátkách ČSSD 2002–2014 byli dva stejnojmenní. Nerozlišeno — nespojovat. Dokud tu nebude rozlišující `zdroje_obsahuji`, sběrač nový záznam tohohle jména nepřiřadí a nahlásí ho k ručnímu dořešení."
     },
     {
       "jmeno": "Miroslav Míka",
+      "typ": "podobne_prijmeni",
       "osoby": [],
-      "poznamka": "V usneseních vystupuje i Radek Míka, jiná osoba. Pozor při párování podle příjmení."
+      "poznamka": "V usneseních vystupuje i Radek Míka, jiná osoba. Pozor při párování podle příjmení. Samotné jméno „Miroslav Míka\" jednoznačné JE — párovat podle celého jména se smí."
     }
   ],
-  "jak_rozlisit": "Jméno je u jmenovců nejednoznačné, takže se rozlišuje podle ZDROJE. `zdroje_obsahuji` je seznam podřetězců URL: když sběrač bere záznam ze stránky, jejíž adresa některý z nich obsahuje, přiřadí ho tomuhle člověku. Když nesedí nic, zůstane výchozí id ze jména — proto ho drží ten, na koho míří většina zdrojů."
+  "jak_rozlisit": "Jméno je u jmenovců nejednoznačné, takže se rozlišuje podle ZDROJE. `zdroje_obsahuji` je seznam podřetězců URL: když sběrač bere záznam ze stránky, jejíž adresa některý z nich obsahuje, přiřadí ho tomuhle člověku.",
+  "kdyz_nic_nesedi": "Rozhoduje `vychozi`. Když je jeden z jmenovců označený `\"vychozi\": true`, nerozlišené záznamy patří jemu — drží ho ten, na koho míří většina zdrojů (u Třešňáků otec s 773 jmenovitými hlasy). Když výchozího nemá NIKDO, jak je to u Jiřího Nováka, záznam se NEPŘIŘADÍ vůbec: id se počítá z holého jména, takže by se dva různí lidé slili do jednoho profilu a nasčítaly by se jim cizí funkce. Radši nespárovaný člověk než smíchaní dva."
 }
