@@ -16,9 +16,12 @@
 import Zaklad from '../layouts/Zaklad.astro';
 import StavDat from '../components/StavDat.astro';
 import Dlazdice from '../components/Dlazdice.astro';
+import GrafKarta from '../components/GrafKarta.astro';
 import JakPocitame from '../components/JakPocitame.astro';
+import type { Varianta } from '../components/GrafKarta.astro';
 import type { Polozka } from '../components/Dlazdice.astro';
 import { nactiVysvedceni, zdrojJakoOdkaz, type Projekt, type Slib } from '../lib/vysvedceni';
+import { grafVodorovny, grafSkladany, type BodVodorovny, type SerieSkladana } from '../lib/grafy';
 import { cislo, datumKratke, kcZkraceno, sklonuj } from '../lib/format';
 
 const nacteno = nactiVysvedceni();
@@ -79,6 +82,181 @@ slibyDolozene.sort((x, y) => POradiStavu(x) - POradiStavu(y));
 const roky = a.rozpocet.roky;
 const nejvetsiUpraveny = Math.max(1, ...roky.map((r) => r.upraveno_tis ?? 0));
 const nulove = a.rozpocet.nulove_cerpani;
+
+/* ── Souhrnné grafy ───────────────────────────────────────────────────────
+ *
+ * Čtyři pohledy, které dávají odpověď dřív, než se čtenář dostane k tabulkám.
+ * Pořadí je od nejobecnějšího k nejkonkrétnějšímu a ŽÁDNÝ z nich není jen
+ * ozdoba — každý ukazuje něco, co z tabulky vyčíst jde, ale trvá to.
+ */
+
+/* 1. Rozdělení známek. */
+const grafZnamky = (): BodVodorovny[] =>
+  [1, 2, 3, 4, 5].map((z) => ({
+    nazev: `${z} — ${a.znamky[String(z)] ?? ''}`,
+    hodnota: s.podle_znamky[String(z)] ?? 0,
+  }));
+
+/* 2. Deklarovaný stav vs. jak projekt dopadl.
+ *
+ * NEJZAJÍMAVĚJŠÍ ZJIŠTĚNÍ CELÉHO AUDITU a zároveň to nejférovější: co město
+ * hlásí jako hotové, hotové opravdu je — ani jeden ze sedmnácti dokončených
+ * projektů nemá známku 4 ani 5. Problém není v tom, co radnice dodělala,
+ * ale v tom, co teprve slibuje.
+ */
+interface StavRadek { stav: string; celkem: number; problemove: number }
+const podleStavu: StavRadek[] = ['Dokončený', 'V realizaci', 'Plánovaný']
+  .map((stav) => {
+    const sk = a.projekty.filter((p) => p.deklarovany_stav === stav);
+    return {
+      stav,
+      celkem: sk.length,
+      problemove: sk.filter((p) => (p.znamka ?? 0) >= 4).length,
+    };
+  })
+  .filter((r) => r.celkem > 0);
+
+const grafStavu = (): BodVodorovny[] =>
+  podleStavu.map((r) => ({
+    nazev: `Portál hlásí „${r.stav}"`,
+    hodnota: Math.round((r.problemove / r.celkem) * 100),
+    doplnky: [
+      { l: 'Projektů celkem', v: cislo(r.celkem) },
+      { l: 'Z toho známka 4 nebo 5', v: cislo(r.problemove) },
+    ],
+  }));
+
+/* 3. Slíbené dotace, které v žádném registru nejsou.
+ *
+ * Počítá se jen tam, kde portál dotaci UVÁDÍ a doložená je nula nebo nic.
+ * Formulace je záměrně o registru, ne o městě: rozhodnutí z posledních
+ * měsíců nemusí být zveřejněné, takže „není evidována" ≠ „nedostali ji".
+ */
+const dotaceMimoRegistr: Projekt[] = a.projekty
+  .filter((p) => (p.deklarovana_dotace_czk ?? 0) > 0 && !(p.dolozena_dotace_czk ?? 0))
+  .sort((x, y) => (y.deklarovana_dotace_czk ?? 0) - (x.deklarovana_dotace_czk ?? 0));
+
+const objemMimoRegistr = dotaceMimoRegistr.reduce((n, p) => n + (p.deklarovana_dotace_czk ?? 0), 0);
+
+/* Čísla do textu se POČÍTAJÍ, nepíšou se natvrdo. Zadrátovaná částka by po
+ * změně sešitu tiše zestárla a odstavec by tvrdil něco, co pod ním v tabulce
+ * nestojí — a to je přesně ta tichá lež, které se celý web vyhýbá. */
+const objemZnamky5 = a.projekty
+  .filter((p) => p.znamka === 5)
+  .reduce((n, p) => n + (p.deklarovany_rozpocet_czk ?? 0), 0);
+
+const nevycerpanoObdobi = (a.rozpocet.souhrn_obdobi?.nevycerpano_tis ?? 0) * 1000;
+const plneniObdobi = a.rozpocet.souhrn_obdobi?.plneni_upraveny ?? null;
+
+const grafDotaci = (): BodVodorovny[] =>
+  dotaceMimoRegistr.slice(0, 8).map((p) => ({
+    nazev: p.nazev ?? '',
+    hodnota: p.deklarovana_dotace_czk ?? 0,
+    doplnky: [
+      { l: 'Známka', v: String(p.znamka ?? '—') },
+      { l: 'Deklarovaný stav', v: p.deklarovany_stav ?? '—' },
+    ],
+  }));
+
+/* 4. Kolik z rozpočtovaných investic se opravdu proinvestovalo.
+ *
+ * Skládaný graf je tu významově přesný: upravený rozpočet se rozpadá právě
+ * na proinvestováno + nevyčerpáno. Rok 2026 se NEKRESLÍ — jsou to data jen
+ * do 30. 6., takže by jeho sloupec vypadal jako propad, ačkoli je to jen
+ * půlka roku. Zůstává v tabulce níž, kde je u něj napsáno proč.
+ */
+const uzavreneRoky = roky
+  .map((r) => ({ ...r, cislo: Number.parseInt(r.rok, 10) }))
+  .filter((r) => Number.isFinite(r.cislo) && !/k \d/.test(r.rok));
+
+const serieRozpoctu = (): SerieSkladana[] => [
+  {
+    klic: null,
+    nazev: 'Proinvestováno',
+    barva: 'var(--g1)',
+    hodnoty: uzavreneRoky.map((r) => (r.skutecnost_tis ?? 0) * 1000),
+  },
+  {
+    klic: null,
+    nazev: 'Zůstalo nevyčerpáno',
+    barva: 'var(--g3)',
+    hodnoty: uzavreneRoky.map((r) => (r.nevycerpano_tis ?? 0) * 1000),
+  },
+];
+
+const varianty: Varianta[] = maData
+  ? [
+      {
+        klic: 'znamky',
+        popisek: 'Jak dopadly projekty',
+        graf: (() => {
+          const g = grafVodorovny(grafZnamky(), `Jak dopadlo ${cislo(s.projektu)} projektů`, (v) => cislo(v));
+          g.poznamky.push(
+            'Známka je hodnocení, ne měření — váží, jak moc se deklarace na portálu rozchází se skutečností. Fakta pod ní (existuje smlouva, je dotace v registru) si ověříte v tabulce níž.',
+          );
+          return g;
+        })(),
+      },
+      {
+        klic: 'stav',
+        popisek: 'Hotové vs. slibované',
+        graf: (() => {
+          const g = grafVodorovny(grafStavu(), 'Podíl projektů se známkou 4 nebo 5', (v) => `${cislo(v)} %`);
+          g.poznamky.push(
+            'Co město hlásí jako dokončené, dokončené opravdu je: ani jeden ze sedmnácti hotových projektů nemá známku 4 ani 5. Rozpor se objevuje až u toho, co je teprve slibované.',
+          );
+          g.poznamky.push(
+            'Známka 4 znamená „jen na papíře nebo zavádějící deklarace“, známka 5 „bez jediné smlouvy či zakázky, nebo slíbená dotace v žádném registru neexistuje“.',
+          );
+          return g;
+        })(),
+      },
+      ...(dotaceMimoRegistr.length > 0
+        ? [
+            {
+              klic: 'dotace',
+              popisek: 'Dotace mimo registr',
+              graf: (() => {
+                const g = grafVodorovny(
+                  grafDotaci(),
+                  'Slíbené dotace, které nejsou v žádném veřejném registru',
+                  (v) => kcZkraceno(v, true),
+                );
+                g.poznamky.push(
+                  `Takových projektů je ${cislo(dotaceMimoRegistr.length)} a portál u nich dohromady uvádí ${kcZkraceno(objemMimoRegistr, true)}. Graf ukazuje osm největších.`,
+                );
+                g.poznamky.push(
+                  'Že dotace není v registru, NEZNAMENÁ, že ji město nedostalo — rozhodnutí vydaná v posledních měsících nemusejí být zveřejněná. Znamená to, že si ji zatím nikdo nemůže ověřit, přestože ji portál uvádí jako fakt.',
+                );
+                return g;
+              })(),
+            },
+          ]
+        : []),
+      ...(uzavreneRoky.length > 0
+        ? [
+            {
+              klic: 'rozpocet',
+              popisek: 'Rozpočet vs. realita',
+              graf: (() => {
+                const g = grafSkladany(
+                  uzavreneRoky.map((r) => r.cislo),
+                  serieRozpoctu(),
+                  'Kapitálové výdaje: proinvestováno a nevyčerpáno',
+                );
+                g.poznamky.push(
+                  'Celý sloupec je upravený rozpočet, tedy ten, který platil po všech změnách během roku. Za roky 2023–2025 se proinvestovalo 54 % z něj.',
+                );
+                g.poznamky.push(
+                  'Rok 2026 tu není schválně — data jsou jen do 30. 6. a půlka roku by vypadala jako propad. Najdete ho v tabulce níž.',
+                );
+                return g;
+              })(),
+            },
+          ]
+        : []),
+    ]
+  : [];
 ---
 
 <Zaklad
@@ -110,6 +288,49 @@ const nulove = a.rozpocet.nulove_cerpani;
         </p>
 
         <Dlazdice polozky={dlazdice} />
+
+        <GrafKarta
+          id="vysvedceni-souhrn"
+          nadpis="Čtyři pohledy na volební období"
+          popis="Přepínačem se přepnete mezi hodnocením projektů, rozdílem mezi hotovým a slibovaným, dotacemi, které nejsou v registru, a tím, kolik z rozpočtovaných investic se opravdu proinvestovalo."
+          varianty={varianty}
+        />
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Co z toho plyne</h2>
+          <div class="zjisteni">
+            <p>
+              <strong>Co je hotové, je v pořádku.</strong> Ze
+              {' '}{cislo(podleStavu.find((r) => r.stav === 'Dokončený')?.celkem ?? 0)}{' '}
+              projektů, které portál hlásí jako dokončené, nemá ani jeden nejhorší dvě známky.
+              Když radnice něco dodělá, deklarace tomu odpovídá — nesrovnalosti bývají
+              v částkách nebo v datech, ne v tom, jestli věc existuje.
+            </p>
+            <p>
+              <strong>Problém je v tom, co se teprve slibuje.</strong> U projektů se stavem
+              „Plánovaný" má
+              {' '}{cislo(podleStavu.find((r) => r.stav === 'Plánovaný')?.problemove ?? 0)}{' '}
+              ze
+              {' '}{cislo(podleStavu.find((r) => r.stav === 'Plánovaný')?.celkem ?? 0)}{' '}
+              známku 4 nebo 5 — tedy jen papír, nebo zavádějící údaj. Sedm projektů nemá
+              jedinou podepsanou smlouvu ani vypsanou zakázku, a přitom u nich portál uvádí
+              rozpočty za {kcZkraceno(objemZnamky5, true)}.
+            </p>
+            <p>
+              <strong>U {cislo(dotaceMimoRegistr.length)} projektů se slíbená dotace nedá ověřit.</strong>{' '}
+              Portál u nich dohromady uvádí {kcZkraceno(objemMimoRegistr, true)}, ale v registrech
+              dotací k nim není záznam — u muzejního foyer je dokonce vedená s nulou. Neznamená
+              to, že město dotace nedostalo; znamená to, že si to zatím nikdo nemůže ověřit,
+              ačkoli je portál uvádí jako hotovou věc.
+            </p>
+            <p>
+              <strong>Město rozpočtuje víc, než stihne postavit.</strong> Za roky 2023–2025 se
+              z upraveného rozpočtu kapitálových výdajů proinvestovalo {proc(plneniObdobi)} — zbylých
+              {' '}{kcZkraceno(nevycerpanoObdobi, true)} zůstalo nevyčerpaných. Rozpočtová položka není
+              slib, ale ukazuje, co si město na daný rok předsevzalo.
+            </p>
+          </div>
+        </section>
 
         <section class="karta">
           <h2 class="karta__nadpis">Peníze: co portál slibuje a co je doložené</h2>
