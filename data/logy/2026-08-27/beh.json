@@ -1,0 +1,142 @@
+{
+  "datum": "2026-08-27",
+  "obdobi_od": "2026-08-20",
+  "obdobi_do": "2026-08-27",
+  "trvani_s": 85.0,
+  "kroky": [
+    {
+      "modul": "pipeline.tagovani",
+      "popis": "Otagování usnesení",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.clanky",
+      "popis": "Rozbor článků zpravodaje",
+      "povinny": false,
+      "stav": "chybi_main"
+    },
+    {
+      "modul": "pipeline.dodatky",
+      "popis": "Spojení dodatků se smlouvami",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.agregace_penez",
+      "popis": "Agregace peněz po letech",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.propojeni",
+      "popis": "Propojení lidí, firem a peněz",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.profily",
+      "popis": "Hlasovací profily",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.retez",
+      "popis": "Řetěz usnesení → smlouva → peníze",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.slibnik",
+      "popis": "Slibník — uložené úkoly a termíny",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.vysvedceni",
+      "popis": "Vysvědčení koalici 2022–2026",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "openpyxl není nainstalované — bez něj nejde přečíst podkladový sešit a sekce /vysvedceni by zůstala na starých datech. `pip install openpyxl`"
+    },
+    {
+      "modul": "pipeline.ucet_obdobi",
+      "popis": "Účet volebního období",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.rozpocet",
+      "popis": "Přehledy rozpočtu z Monitoru",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.dotace_prehled",
+      "popis": "Přehled dotací pro město a holding",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.prepis",
+      "popis": "Přepisy jednání",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.casova_osa",
+      "popis": "Jednotná časová osa",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.firmy_prehled",
+      "popis": "Přehled firem ve městě",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.podnikatele_prehled",
+      "popis": "Přehled podnikatelů",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.vydani",
+      "popis": "Sestavení týdenního vydání",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.komise_prehled",
+      "popis": "Rozbor zápisů z komisí",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.informace106_prehled",
+      "popis": "Rozbor žádostí o informace",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.retez_komise",
+      "popis": "Řetěz komise → rada",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.diagramy",
+      "popis": "Schémata projektu a města",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.znaky_sekci",
+      "popis": "Znaky sekcí pro rozcestník",
+      "povinny": false,
+      "stav": "ok"
+    }
+  ],
+  "uspech": true
+}

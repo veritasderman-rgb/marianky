@@ -39,7 +39,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils   # bez update selže na 404
-          pip install requests selectolax yt-dlp
+          pip install requests selectolax yt-dlp openpyxl   # openpyxl čte podkladový sešit vysvědčení
 
       # Cache šetří web města, jehož strop je sdílený pro všechny moduly.
       # Bez ní by se každý týden stahoval celý archiv znovu.

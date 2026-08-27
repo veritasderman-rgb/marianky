@@ -67,7 +67,7 @@ Totéž platí o hodnotách: neznámý údaj se nikdy neukládá jako nula. Pole
 ## Rychlý start
 
 ```bash
-pip install requests selectolax
+pip install requests selectolax openpyxl
 sudo apt-get update && sudo apt-get install -y poppler-utils
 echo 'HLIDAC_TOKEN=...' > .env        # zdarma po registraci na hlidacstatu.cz
 cd web && npm install && cd ..

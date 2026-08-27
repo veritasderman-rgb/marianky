@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import glob
+import hashlib
 import json
 import re
 import sys
@@ -512,6 +513,94 @@ def kontrola_dom(v: Vysledek) -> None:
                  f"(nejvíc {mezerou(nejvic)} v {kde})")
 
 
+def kontrola_vysvedceni(v: Vysledek) -> None:
+    """Vysvědčení nesmí tvrdit víc, než audit unese.
+
+    Tři věci, které by se tiše rozešly:
+
+    1. ÚPLNOST PROTI NEZÁVISLÉMU SOUČTU. Souhrn i součty se počítají z týchž
+       rozebraných řádků, takže porovnat je navzájem nic neodhalí — kdyby
+       projekt při čtení vypadl, sedělo by to dál. Jediné číslo, které
+       nevzniká z řádků, je součtový řádek CELKEM v sešitu, a proti němu se
+       proto porovnává. Chytí to i opačný případ, kdy se do projektů připletly
+       řádky známkovací stupnice (mají v prvním sloupci taky čísla 1–5) —
+       jednou už se to stalo a souhrn hlásil 43 projektů místo 38.
+
+    2. ČERSTVOST PODKLADU. Sešit je ruční podklad a mění se výměnou souboru.
+       Kdyby po jeho změně převod nedoběhl — třeba proto, že v CI chybí
+       openpyxl — web by dál publikoval stará čísla a nic by neupozornilo.
+       Otisk se proto počítá ze sešitu, ne z času souboru (git mtime
+       nezachovává). Stejná pojistka jako u dodatků.
+
+    3. „NEDOHLEDÁNO" MEZI NESPLNĚNÝMI. Sedm z dvanácti „pětek" u slibů
+       z programového prohlášení je nenález, ne doložené nesplnění. Kdyby
+       příznak `dolozeno` vypadl, web by je začal počítat mezi nesplněné —
+       a tvrdil by o radnici něco, co z dat neplyne.
+    """
+    d = nacti("vysvedceni/audit.json")
+    if d is None:
+        v.varuj("vysvědčení koalici není sestavené (pipeline/vysvedceni.py) — "
+                "sekce /vysvedceni bude prázdná")
+        return
+
+    projekty = d.get("projekty") or []
+    sliby = d.get("sliby") or []
+    souhrn = d.get("souhrn") or {}
+    if not projekty:
+        v.chyba("vysvědčení nemá žádné projekty — změnila se struktura sešitu?")
+        return
+
+    # Čerstvost: otisk uložený při převodu musí sedět na dnešní sešit.
+    sesit = Path(__file__).resolve().parent / "web" / "public" / (d.get("sesit") or "").lstrip("/")
+    if not (d.get("sesit") and sesit.exists()):
+        v.chyba(f"vysvědčení: podkladový sešit chybí ({sesit}) — publikovaná "
+                f"čísla by nešlo ověřit proti podkladu")
+        return
+    ted = hashlib.sha256(sesit.read_bytes()).hexdigest()
+    if d.get("otisk_sesitu") != ted:
+        v.chyba("vysvědčení: podkladový sešit se změnil, ale data k němu "
+                "nedoběhla — spusť `python3 pipeline/vysvedceni.py`. "
+                "Web by jinak publikoval stará čísla pod novým podkladem")
+        return
+
+    # Úplnost proti součtu, který spočítal sešit, ne my.
+    celkem = d.get("celkem_ze_sesitu")
+    if not celkem:
+        v.chyba("vysvědčení: v sešitu chybí souhrnný řádek CELKEM — bez něj "
+                "nejde ověřit, že se při čtení neztratil projekt")
+        return
+    rozdily = []
+    for klic, ocekavano in celkem.items():
+        z_radku = sum(p.get(klic) or 0 for p in projekty)
+        if abs(z_radku - (ocekavano or 0)) > 1:
+            rozdily.append(f"{klic}: řádky {z_radku:,.0f} vs. sešit {(ocekavano or 0):,.0f}")
+    if rozdily:
+        v.chyba("vysvědčení: součet řádků nesedí na CELKEM ze sešitu, nejspíš "
+                "se ztratil nebo přibyl projekt — " + "; ".join(rozdily))
+        return
+
+    if souhrn.get("projektu") != len(projekty):
+        v.chyba(f"vysvědčení: souhrn hlásí {souhrn.get('projektu')} projektů, "
+                f"řádků je {len(projekty)}")
+        return
+
+    # Nenález se nesmí vydávat za doložené nesplnění.
+    nedohledane = [s for s in sliby if not s.get("dolozeno")]
+    if sliby and not nedohledane:
+        v.chyba("vysvědčení: žádný slib není označený jako nedohledaný. "
+                "V podkladu jich je sedm — bez příznaku by je web počítal "
+                "mezi nesplněné, což z dat neplyne")
+        return
+
+    bez_zdroju = [p for p in projekty if not (p.get("zdroje") or [])]
+    if bez_zdroju:
+        v.varuj(f"{len(bez_zdroju)} z {len(projekty)} projektů vysvědčení nemá uvedený zdroj — "
+                f"u hodnocení radnice musí jít každé tvrzení ověřit")
+    else:
+        v.projde(f"vysvědčení: {len(projekty)} projektů, každý se zdrojem; "
+                 f"{len(nedohledane)} slibů vedeno jako nedohledané, ne nesplněné")
+
+
 KONTROLY = [
     ("částky v usneseních", kontrola_castek),
     ("falešné nuly", kontrola_falesnych_nul),
@@ -523,6 +612,7 @@ KONTROLY = [
     ("znaky sekcí", kontrola_znaku),
     ("řetěz komise → rada", kontrola_retezu_komisi),
     ("dodatky ke smlouvám", kontrola_dodatku),
+    ("vysvědčení koalici", kontrola_vysvedceni),
     ("rozpočet DOM uzlů", kontrola_dom),
 ]
 
