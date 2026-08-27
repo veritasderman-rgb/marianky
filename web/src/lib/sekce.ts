@@ -63,6 +63,13 @@ export const SKUPINY: SkupinaSekci[] = [
         popis: 'Co si radnice uložila a s jakými termíny',
       },
       {
+        klic: 'vysvedceni',
+        cesta: '/vysvedceni',
+        nazev: 'Jak koalice plní sliby',
+        kratce: 'Vysvědčení',
+        popis: 'Projekty města porovnané s registry smluv a dotací',
+      },
+      {
         klic: 'ucet-obdobi',
         cesta: '/ucet-obdobi',
         nazev: 'Účet volebního období',

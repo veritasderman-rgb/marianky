@@ -512,6 +512,68 @@ def kontrola_dom(v: Vysledek) -> None:
                  f"(nejvíc {mezerou(nejvic)} v {kde})")
 
 
+def kontrola_vysvedceni(v: Vysledek) -> None:
+    """Vysvědčení nesmí tvrdit víc, než audit unese.
+
+    Dvě věci, které by se tiše rozešly:
+
+    1. SOUČTY VS. ŘÁDKY. Souhrn se počítá z řádků, ale sešit má vlastní
+       součtový řádek CELKEM. Kdyby se rozešly, web by ukazoval číslo, které
+       v podkladu není. Zároveň to chytí případ, kdy by se do projektů
+       připletly řádky známkovací stupnice — ty mají v prvním sloupci taky
+       číslo a jednou už se to stalo (43 projektů místo 38).
+
+    2. „NEDOHLEDÁNO" MEZI NESPLNĚNÝMI. Sedm z dvanácti „pětek" u slibů
+       z programového prohlášení je nenález, ne doložené nesplnění. Kdyby
+       příznak `dolozeno` vypadl, web by je začal počítat mezi nesplněné —
+       a tvrdil by o radnici něco, co z dat neplyne.
+    """
+    d = nacti("vysvedceni/audit.json")
+    if d is None:
+        v.varuj("vysvědčení koalici není sestavené (pipeline/vysvedceni.py) — "
+                "sekce /vysvedceni bude prázdná")
+        return
+
+    projekty = d.get("projekty") or []
+    sliby = d.get("sliby") or []
+    souhrn = d.get("souhrn") or {}
+    if not projekty:
+        v.chyba("vysvědčení nemá žádné projekty — změnila se struktura sešitu?")
+        return
+
+    # Součty přepočítané z řádků musí sedět na to, co je v souhrnu.
+    rozdily = []
+    for klic in ("deklarovany_rozpocet_czk", "deklarovana_dotace_czk",
+                 "dolozene_naklady_czk", "dolozena_dotace_czk"):
+        z_radku = sum(p.get(klic) or 0 for p in projekty)
+        if abs(z_radku - (souhrn.get(klic) or 0)) > 1:
+            rozdily.append(f"{klic}: řádky {z_radku:,.0f} vs. souhrn {souhrn.get(klic):,.0f}")
+    if rozdily:
+        v.chyba("vysvědčení: souhrn nesedí na řádky — " + "; ".join(rozdily))
+        return
+
+    if souhrn.get("projektu") != len(projekty):
+        v.chyba(f"vysvědčení: souhrn hlásí {souhrn.get('projektu')} projektů, "
+                f"řádků je {len(projekty)}")
+        return
+
+    # Nenález se nesmí vydávat za doložené nesplnění.
+    nedohledane = [s for s in sliby if not s.get("dolozeno")]
+    if sliby and not nedohledane:
+        v.chyba("vysvědčení: žádný slib není označený jako nedohledaný. "
+                "V podkladu jich je sedm — bez příznaku by je web počítal "
+                "mezi nesplněné, což z dat neplyne")
+        return
+
+    bez_zdroju = [p for p in projekty if not (p.get("zdroje") or [])]
+    if bez_zdroju:
+        v.varuj(f"{len(bez_zdroju)} z {len(projekty)} projektů vysvědčení nemá uvedený zdroj — "
+                f"u hodnocení radnice musí jít každé tvrzení ověřit")
+    else:
+        v.projde(f"vysvědčení: {len(projekty)} projektů, každý se zdrojem; "
+                 f"{len(nedohledane)} slibů vedeno jako nedohledané, ne nesplněné")
+
+
 KONTROLY = [
     ("částky v usneseních", kontrola_castek),
     ("falešné nuly", kontrola_falesnych_nul),
@@ -523,6 +585,7 @@ KONTROLY = [
     ("znaky sekcí", kontrola_znaku),
     ("řetěz komise → rada", kontrola_retezu_komisi),
     ("dodatky ke smlouvám", kontrola_dodatku),
+    ("vysvědčení koalici", kontrola_vysvedceni),
     ("rozpočet DOM uzlů", kontrola_dom),
 ]
 

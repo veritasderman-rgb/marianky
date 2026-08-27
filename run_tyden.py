@@ -75,6 +75,9 @@ NAVAZNE: list[tuple[str, str, bool]] = [
     ("pipeline.profily",        "Hlasovací profily",            False),
     ("pipeline.retez",          "Řetěz usnesení → smlouva → peníze", False),
     ("pipeline.slibnik",        "Slibník — uložené úkoly a termíny", False),
+    # Nesklízí — převádí ruční audit ze sešitu v `web/public/podklady/`.
+    # Běží v každém běhu, aby se web nerozešel se sešitem, když se sešit změní.
+    ("pipeline.vysvedceni",     "Vysvědčení koalici 2022–2026",  False),
     ("pipeline.ucet_obdobi",    "Účet volebního období",         False),
     # Přehledy rozpočtu čtou výkazy z Monitoru (scrapers.monitor) a srovnání
     # měst (scrapers.srovnani); krytí smlouvami navíc agregaci peněz — proto

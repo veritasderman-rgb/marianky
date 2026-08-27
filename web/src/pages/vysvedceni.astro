@@ -1,0 +1,451 @@
+---
+/**
+ * Vysvědčení: jak koalice plní, co slíbila.
+ *
+ * DVĚ VRSTVY, KTERÉ SE NESMÍ SLÍT. Fakta (existuje smlouva, dotace je
+ * v registru vedena s nulou, rozpočtová položka byla čerpána na 0 Kč) jsou
+ * ověřitelná — u každého je zdroj. Známka je HODNOCENÍ člověka, který audit
+ * dělal. Stránka to říká na začátku, u tabulky i v metodice, protože rozdíl
+ * mezi „tohle si můžete ověřit" a „takhle to hodnotíme" je celý smysl webu.
+ *
+ * A JEDNA VĚC, KTEROU STRÁNKA NETVRDÍ. U slibů z programového prohlášení má
+ * sedm z dvanácti „pětek" stav „nedohledáno" — nepodařilo se najít veřejný
+ * doklad o plnění. To NENÍ důkaz, že se nic nestalo, a stránka to nesmí
+ * počítat mezi nesplněné. Stejná zásada, na které stojí /slibnik.
+ */
+import Zaklad from '../layouts/Zaklad.astro';
+import StavDat from '../components/StavDat.astro';
+import Dlazdice from '../components/Dlazdice.astro';
+import JakPocitame from '../components/JakPocitame.astro';
+import type { Polozka } from '../components/Dlazdice.astro';
+import { nactiVysvedceni, zdrojJakoOdkaz, type Projekt, type Slib } from '../lib/vysvedceni';
+import { cislo, datumKratke, kcZkraceno, sklonuj } from '../lib/format';
+
+const nacteno = nactiVysvedceni();
+const a = nacteno.data;
+const maData = a.projekty.length > 0;
+const s = a.souhrn;
+
+const tis = (t: number | null): string => (t === null ? '—' : `${cislo(Math.round(t))} tis. Kč`);
+const proc = (x: number | null): string => (x === null ? '—' : `${cislo(Math.round(x * 100))} %`);
+
+/* ── Dlaždice ─────────────────────────────────────────────────────────── */
+
+const splneno = (s.podle_znamky['1'] ?? 0) + (s.podle_znamky['2'] ?? 0);
+const problemove = (s.podle_znamky['4'] ?? 0) + (s.podle_znamky['5'] ?? 0);
+
+const dlazdice: Polozka[] = maData
+  ? [
+      {
+        popisek: 'Prověřených projektů',
+        hodnota: cislo(s.projektu),
+        doplnek: 'vše, co město uvádí na projektovém portálu',
+      },
+      {
+        popisek: 'Splněno',
+        hodnota: cislo(splneno),
+        doplnek: `${cislo(s.podle_znamky['1'] ?? 0)} bez výhrad · ${cislo(s.podle_znamky['2'] ?? 0)} s výhradami k údajům`,
+      },
+      {
+        popisek: 'Jen na papíře nebo nesplněno',
+        hodnota: cislo(problemove),
+        doplnek: 'bez smlouvy, bez zakázky, nebo se zavádějící deklarací',
+        stav: problemove > 0 ? { uroven: 'pozor', text: 'týká se i slíbených dotací' } : undefined,
+      },
+      {
+        popisek: 'Doložené náklady',
+        hodnota: kcZkraceno(s.dolozene_naklady_czk, true),
+        doplnek: `z ${kcZkraceno(s.deklarovany_rozpocet_czk, true)} deklarovaných — zbytek se nepodařilo dohledat`,
+      },
+    ]
+  : [];
+
+/* ── Projekty ─────────────────────────────────────────────────────────── */
+
+const projekty: Projekt[] = [...a.projekty].sort(
+  (x, y) => (y.znamka ?? 0) - (x.znamka ?? 0) || (y.deklarovany_rozpocet_czk ?? 0) - (x.deklarovany_rozpocet_czk ?? 0),
+);
+
+/* ── Sliby: doložené zvlášť od nedohledaných ──────────────────────────── */
+
+const slibyDolozene: Slib[] = a.sliby.filter((x) => x.dolozeno);
+const slibyNedohledane: Slib[] = a.sliby.filter((x) => !x.dolozeno);
+
+const POradiStavu = (x: Slib): number => (x.znamka ?? 9);
+slibyDolozene.sort((x, y) => POradiStavu(x) - POradiStavu(y));
+
+/* ── Rozpočet ─────────────────────────────────────────────────────────── */
+
+const roky = a.rozpocet.roky;
+const nejvetsiUpraveny = Math.max(1, ...roky.map((r) => r.upraveno_tis ?? 0));
+const nulove = a.rozpocet.nulove_cerpani;
+---
+
+<Zaklad
+  titulek="Vysvědčení"
+  aktivni="vysvedceni"
+  nadpis="Jak koalice plní, co slíbila"
+  uvod="Město má projektový portál, na kterém u každé investice uvádí stav, termín, rozpočet a dotaci. Tahle stránka bere všech 38 projektů a porovnává je s tím, co je vidět v registru smlouvy, ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. U každého projektu je odkaz, kde si to zkontrolujete sami."
+>
+  <StavDat
+    stav={nacteno.stav}
+    zdroj={nacteno.zdroj}
+    co="Vysvědčení koalici 2022–2026"
+    prazdno={nacteno.stav === 'ok' && !maData}
+    modul="pipeline/vysvedceni.py"
+  />
+
+  {
+    maData && (
+      <>
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Co je tady měření a co hodnocení.</strong>
+          {' '}
+          Ověřitelná jsou fakta: že smlouva existuje nebo neexistuje, že dotace je v registru
+          vedena s nulou, že rozpočtová položka byla čerpána na nulu. U každého z nich je zdroj
+          a můžete si ho otevřít. <strong>Známka je naopak hodnocení</strong> — vážení toho, jak
+          moc se deklarace rozchází se skutečností. Můžete s ní nesouhlasit a čísla pod ní vám
+          zůstanou. Audit sestavil člověk, ne sběrač; podkladový sešit se všemi řádky a zdroji
+          je <a href={a.sesit} download>ke stažení</a>.
+        </p>
+
+        <Dlazdice polozky={dlazdice} />
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Peníze: co portál slibuje a co je doložené</h2>
+          <p class="karta__podnadpis">
+            Prázdná buňka u nákladů znamená <strong>nedohledáno, ne nulu</strong> — u drobných
+            plnění pod limitem zveřejňování smlouva v registru vůbec být nemusí.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Ukazatel</th>
+                  <th scope="col" class="cislo">Částka</th>
+                  <th scope="col">Co to znamená</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Deklarované rozpočty všech {cislo(s.projektu)} projektů</td>
+                  <td class="cislo">{kcZkraceno(s.deklarovany_rozpocet_czk, true)}</td>
+                  <td>
+                    Číslo je nadsazené dvakrát: rekonstrukce Obecního domu (388,2 mil. Kč) je zatím
+                    jen záměr s termínem 2029 a tvoří přes polovinu součtu, a komunitní energetika
+                    je vedená vícekrát — každý podprojekt nese plný rozpočet celé etapy.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deklarované dotace</td>
+                  <td class="cislo">{kcZkraceno(s.deklarovana_dotace_czk, true)}</td>
+                  <td>Zahrnuje i dotace, které v žádném veřejném registru nejsou evidované.</td>
+                </tr>
+                <tr>
+                  <td>Doložené náklady</td>
+                  <td class="cislo">{kcZkraceno(s.dolozene_naklady_czk, true)}</td>
+                  <td>Jen tam, kde se podařilo dohledat konkrétní smlouvu.</td>
+                </tr>
+                <tr>
+                  <td>Doložené dotace</td>
+                  <td class="cislo">{kcZkraceno(s.dolozena_dotace_czk, true)}</td>
+                  <td>Skutečně přiznané nebo vyplacené prostředky podle registrů dotací.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Všech {cislo(s.projektu)} projektů</h2>
+          <p class="karta__podnadpis">
+            Od nejhůř hodnocených. „Deklarováno" je to, co uvádí projektový portál města;
+            „ověřeno" je stav zjištěný z nezávislých zdrojů k {datumKratke(a.hodnoceno_k)}.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" class="cislo">Známka</th>
+                  <th scope="col">Projekt</th>
+                  <th scope="col">Deklarováno na portálu</th>
+                  <th scope="col">Co je doložené</th>
+                  <th scope="col">Kde si to zkontrolujete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projekty.map((p) => (
+                  <tr>
+                    <td class="cislo">
+                      <strong>{p.znamka ?? '—'}</strong>
+                      <br />
+                      <span class="stav-dat__zdroj">{p.znamka ? a.znamky[String(p.znamka)] : ''}</span>
+                    </td>
+                    <td>
+                      <strong>{p.nazev}</strong>
+                      <br />
+                      <span class="stav-dat__zdroj">{p.tema} · {p.typ}</span>
+                      {p.rozpor && (
+                        <>
+                          <br />
+                          <span class="stav-dat__zdroj">{p.rozpor}</span>
+                        </>
+                      )}
+                    </td>
+                    <td>
+                      {p.deklarovany_stav}
+                      {p.deklarovany_termin && <> · termín {p.deklarovany_termin}</>}
+                      <br />
+                      <span class="stav-dat__zdroj">
+                        rozpočet {p.deklarovany_rozpocet_czk === null ? '—' : kcZkraceno(p.deklarovany_rozpocet_czk, true)}
+                        {p.deklarovana_dotace_czk !== null && <> · dotace {kcZkraceno(p.deklarovana_dotace_czk, true)}</>}
+                      </span>
+                    </td>
+                    <td>
+                      {p.skutecny_stav}
+                      <br />
+                      <span class="stav-dat__zdroj">
+                        náklady {p.dolozene_naklady_czk === null ? 'nedohledáno' : kcZkraceno(p.dolozene_naklady_czk, true)}
+                        {' · '}
+                        dotace {p.dolozena_dotace_czk === null ? 'nedohledáno' : kcZkraceno(p.dolozena_dotace_czk, true)}
+                        {p.jistota && <> · jistota: {p.jistota}</>}
+                      </span>
+                    </td>
+                    <td>
+                      {p.zdroje.length === 0
+                        ? '—'
+                        : p.zdroje.map((z, i) => {
+                            const odkaz = zdrojJakoOdkaz(z);
+                            return (
+                              <>
+                                {i > 0 && <br />}
+                                {odkaz ? <a href={odkaz} rel="noopener">{z}</a> : z}
+                              </>
+                            );
+                          })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">
+            Programové prohlášení: {cislo(slibyDolozene.length)} {sklonuj(slibyDolozene.length, 'slib', 'sliby', 'slibů')} s doloženým plněním
+          </h2>
+          <p class="karta__podnadpis">
+            Doslovné citace ze závazku, který si rada dala na volební období 2022–2026. Tady jsou
+            jen ty sliby, u kterých se podařilo najít veřejný doklad — ať už o splnění, nebo
+            o nesplnění (typicky rozpočtová položka čerpaná na nulu).
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Oblast</th>
+                  <th scope="col">Slib</th>
+                  <th scope="col">Stav</th>
+                  <th scope="col">Doklad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {slibyDolozene.map((x) => (
+                  <tr>
+                    <td>{x.oblast}</td>
+                    <td>{x.slib}</td>
+                    <td><strong>{x.stav}</strong></td>
+                    <td>{x.doklad}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">
+            A {cislo(slibyNedohledane.length)} {sklonuj(slibyNedohledane.length, 'slib', 'sliby', 'slibů')}, o kterých nevíme nic
+          </h2>
+          <p class="karta__podnadpis">
+            <strong>Tohle nejsou nesplněné sliby.</strong> Je to seznam závazků, ke kterým se
+            nepodařilo dohledat žádný veřejný doklad — ani o plnění, ani o neplnění. Nenález není
+            důkaz: mohlo se stát něco, co se nikam veřejně nezapsalo. Že se to u závazku z programového
+            prohlášení nedá po čtyřech letech zjistit, je ale zjištění samo o sobě.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Oblast</th>
+                  <th scope="col">Slib</th>
+                  <th scope="col">Co se hledalo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {slibyNedohledane.map((x) => (
+                  <tr>
+                    <td>{x.oblast}</td>
+                    <td>{x.slib}</td>
+                    <td>{x.doklad}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Kolik z investic se opravdu proinvestovalo</h2>
+          <p class="karta__podnadpis">
+            Kapitálové výdaje ze závěrečných účtů města. Upravený rozpočet je ten, který platil po
+            všech změnách během roku — skutečnost se porovnává s ním.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Rok</th>
+                  <th scope="col" class="cislo">Upravený rozpočet</th>
+                  <th scope="col" class="cislo">Skutečnost</th>
+                  <th scope="col" class="cislo">Plnění</th>
+                  <th scope="col">Podíl</th>
+                </tr>
+              </thead>
+              <tbody>
+                {roky.map((r) => (
+                  <tr>
+                    <td>{r.rok}</td>
+                    <td class="cislo">{tis(r.upraveno_tis)}</td>
+                    <td class="cislo">{tis(r.skutecnost_tis)}</td>
+                    <td class="cislo">{proc(r.plneni_upraveny)}</td>
+                    <td>
+                      <span
+                        class="pruh"
+                        style={`--podil:${Math.round(((r.skutecnost_tis ?? 0) / nejvetsiUpraveny) * 100)}%`}
+                        aria-hidden="true"
+                      />
+                    </td>
+                  </tr>
+                ))}
+                {a.rozpocet.souhrn_obdobi && (
+                  <tr>
+                    <td><strong>{a.rozpocet.souhrn_obdobi.rok}</strong></td>
+                    <td class="cislo">{tis(a.rozpocet.souhrn_obdobi.upraveno_tis)}</td>
+                    <td class="cislo">{tis(a.rozpocet.souhrn_obdobi.skutecnost_tis)}</td>
+                    <td class="cislo"><strong>{proc(a.rozpocet.souhrn_obdobi.plneni_upraveny)}</strong></td>
+                    <td />
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <p class="karta__podnadpis">
+            Rok 2026 je jen do 30. 6., proto je jeho plnění nízké z podstaty věci — není to nález.
+          </p>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Investiční akce, na které nakonec nedošlo</h2>
+          <p class="karta__podnadpis">
+            {cislo(nulove.length)} {sklonuj(nulove.length, 'akce', 'akce', 'akcí')} z let 2023–2025,
+            které měly v rozpočtu peníze, ale čerpání skončilo na nule nebo těsně nad ní. Rozpočtová
+            položka není slib — ale ukazuje, co město na daný rok zamýšlelo.
+          </p>
+          <details class="tabulkovy-pohled">
+            <summary>Zobrazit {cislo(nulove.length)} {sklonuj(nulove.length, 'akci', 'akce', 'akcí')}</summary>
+            <div class="tabulka-obal">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Rok</th>
+                    <th scope="col">Investiční akce</th>
+                    <th scope="col" class="cislo">Rozpočet</th>
+                    <th scope="col" class="cislo">Čerpáno</th>
+                    <th scope="col" class="cislo">Podíl</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nulove.map((n) => (
+                    <tr>
+                      <td>{n.rok}</td>
+                      <td>{n.akce}</td>
+                      <td class="cislo">{tis(n.upraveno_tis)}</td>
+                      <td class="cislo">{tis(n.skutecnost_tis)}</td>
+                      <td class="cislo">{proc(n.cerpani)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+
+        <section class="karta">
+          <h2 class="karta__nadpis">Co na projektovém portálu vůbec není</h2>
+          <p class="karta__podnadpis">
+            Témata, která o volebním období rozhodují, ale mezi {cislo(s.projektu)} projekty se
+            neobjevují — včetně řádově největšího energetického závazku celého období.
+          </p>
+          <div class="tabulka-obal">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Téma</th>
+                  <th scope="col">Co bylo slíbeno</th>
+                  <th scope="col">Co se stalo</th>
+                  <th scope="col">Hodnocení</th>
+                </tr>
+              </thead>
+              <tbody>
+                {a.mimo_portal.map((m) => (
+                  <tr>
+                    <td><strong>{m.tema}</strong></td>
+                    <td>{m.slibeno}</td>
+                    <td>{m.stalo_se}</td>
+                    <td>{m.hodnoceni}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <JakPocitame>
+          <p>
+            Předmětem je {a.predmet}, stav ověřen k {datumKratke(a.hodnoceno_k)}. U každého projektu
+            byla nejdřív doslovně vytěžena stránka portálu a pak se skutečný stav ověřoval proti
+            nezávislým zdrojům. Celý sešit s řádky, zdroji a mírou jistoty
+            je <a href={a.sesit} download>ke stažení</a>, takže si můžete přepočítat i to, s čím
+            nesouhlasíte.
+          </p>
+          <ul>
+            {a.metodika.map((m) => (
+              <li><strong>{m.nadpis}:</strong> {m.text}</li>
+            ))}
+          </ul>
+          <p>
+            <strong>Kde je tvrzení slabší.</strong> Nedoložená dotace neznamená, že město dotaci
+            nedostalo — rozhodnutí vydaná v posledních měsících nemusejí být zveřejněná. Proto se
+            tu píše „v žádném veřejném registru není evidována", ne „město ji nedostalo". Stejně tak
+            „nedohledáno" u slibu není důkaz nesplnění; takové sliby proto stojí v samostatné
+            tabulce a nepočítají se mezi nesplněné.
+          </p>
+        </JakPocitame>
+      </>
+    )
+  }
+</Zaklad>
+
+<style>
+  .pruh {
+    display: block;
+    height: 0.55rem;
+    width: var(--podil, 0%);
+    min-width: 2px;
+    border-radius: 999px;
+    background: var(--barva-akcent, currentColor);
+    opacity: 0.55;
+  }
+</style>
