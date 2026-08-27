@@ -42,7 +42,7 @@ const dlazdice: Polozka[] = maData
       {
         popisek: 'Prověřených projektů',
         hodnota: cislo(s.projektu),
-        doplnek: 'vše, co město uvádí na projektovém portálu',
+        doplnek: 'vše, co koalice uvádí na svém projektovém portálu',
       },
       {
         popisek: 'Splněno',
@@ -270,7 +270,7 @@ const varianty: Varianta[] = maData
   titulek="Vysvědčení"
   aktivni="vysvedceni"
   nadpis="Jak koalice plní, co slíbila"
-  uvod="Město má projektový portál, na kterém u každé investice uvádí stav, termín, rozpočet a dotaci. Tahle stránka bere všech 38 projektů a porovnává je s tím, co je vidět v registru smlouvy, ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. U každého projektu je uvedený zdroj, podle kterého si to zkontrolujete sami — u většiny jako přímý odkaz na záznam."
+  uvod="Koalice provozuje projektový portál muml.pincity.cz/projekty, na kterém u každé investice sama uvádí stav, termín, rozpočet a dotaci. Tahle stránka bere všech 38 projektů a porovnává je s tím, co je vidět v registru smlouvy, ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. U každého projektu je uvedený zdroj, podle kterého si to zkontrolujete sami — u většiny jako přímý odkaz na záznam."
 >
   <StavDat
     stav={nacteno.stav}
@@ -283,6 +283,22 @@ const varianty: Varianta[] = maData
   {
     maData && (
       <>
+        <p class="graf-poznamka graf-poznamka--duraz">
+          <strong>Odkud se hodnotí.</strong>
+          {' '}
+          Východiskem je <strong>projektový portál koalice</strong>
+          {a.portal ? (
+            <> — <a href={a.portal.url} rel="noopener">{a.portal.nazev}</a> —</>
+          ) : ' '}
+          {' '}
+          tedy stránka, na které město samo o sobě uvádí, co staví, za kolik a s jakou dotací.
+          Není to nezávislý zdroj, ale <strong>deklarace koalice o vlastní práci</strong>{`: provozuje ji ${a.portal?.provozuje ?? 'město'}.`}
+          {' '}Právě proto se hodí jako výchozí bod — každý
+          z {cislo(s.projektu)} projektů je pak porovnaný s tím, co je vidět v registru smluv,
+          ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. Obě strany si
+          můžete otevřít vedle sebe.
+        </p>
+
         <p class="graf-poznamka graf-poznamka--duraz">
           <strong>Co je tady měření a co hodnocení.</strong>
           {' '}
@@ -387,7 +403,7 @@ const varianty: Varianta[] = maData
         <section class="karta">
           <h2 class="karta__nadpis">Všech {cislo(s.projektu)} projektů</h2>
           <p class="karta__podnadpis">
-            Od nejhůř hodnocených. „Deklarováno" je to, co uvádí projektový portál města;
+            Od nejhůř hodnocených. „Deklarováno" je to, co o sobě koalice uvádí na projektovém portálu;
             „ověřeno" je stav zjištěný z nezávislých zdrojů k {datumKratke(a.hodnoceno_k)}.
           </p>
           <p class="karta__podnadpis">
@@ -649,8 +665,11 @@ const varianty: Varianta[] = maData
 
         <JakPocitame>
           <p>
-            Předmětem je {a.predmet}, stav ověřen k {datumKratke(a.hodnoceno_k)}. U každého projektu
-            byla nejdřív doslovně vytěžena stránka portálu a pak se skutečný stav ověřoval proti
+            Předmětem je {cislo(s.projektu)} projektů zveřejněných na projektovém portálu koalice
+            {a.portal ? (
+              <> <a href={a.portal.url} rel="noopener">{a.portal.nazev}</a>{', '}</>
+            ) : ', '}stav ověřen k {datumKratke(a.hodnoceno_k)}. U každého projektu byla nejdřív
+            doslovně vytěžena jeho stránka na portálu a teprve pak se skutečný stav ověřoval proti
             nezávislým zdrojům. Celý sešit s řádky, zdroji a mírou jistoty
             je <a href={a.sesit} download>ke stažení</a>, takže si můžete přepočítat i to, s čím
             nesouhlasíte.
