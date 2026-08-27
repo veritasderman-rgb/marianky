@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import argparse
 import glob
+import hashlib
 import json
 import re
 import sys
@@ -515,15 +516,23 @@ def kontrola_dom(v: Vysledek) -> None:
 def kontrola_vysvedceni(v: Vysledek) -> None:
     """Vysvědčení nesmí tvrdit víc, než audit unese.
 
-    Dvě věci, které by se tiše rozešly:
+    Tři věci, které by se tiše rozešly:
 
-    1. SOUČTY VS. ŘÁDKY. Souhrn se počítá z řádků, ale sešit má vlastní
-       součtový řádek CELKEM. Kdyby se rozešly, web by ukazoval číslo, které
-       v podkladu není. Zároveň to chytí případ, kdy by se do projektů
-       připletly řádky známkovací stupnice — ty mají v prvním sloupci taky
-       číslo a jednou už se to stalo (43 projektů místo 38).
+    1. ÚPLNOST PROTI NEZÁVISLÉMU SOUČTU. Souhrn i součty se počítají z týchž
+       rozebraných řádků, takže porovnat je navzájem nic neodhalí — kdyby
+       projekt při čtení vypadl, sedělo by to dál. Jediné číslo, které
+       nevzniká z řádků, je součtový řádek CELKEM v sešitu, a proti němu se
+       proto porovnává. Chytí to i opačný případ, kdy se do projektů připletly
+       řádky známkovací stupnice (mají v prvním sloupci taky čísla 1–5) —
+       jednou už se to stalo a souhrn hlásil 43 projektů místo 38.
 
-    2. „NEDOHLEDÁNO" MEZI NESPLNĚNÝMI. Sedm z dvanácti „pětek" u slibů
+    2. ČERSTVOST PODKLADU. Sešit je ruční podklad a mění se výměnou souboru.
+       Kdyby po jeho změně převod nedoběhl — třeba proto, že v CI chybí
+       openpyxl — web by dál publikoval stará čísla a nic by neupozornilo.
+       Otisk se proto počítá ze sešitu, ne z času souboru (git mtime
+       nezachovává). Stejná pojistka jako u dodatků.
+
+    3. „NEDOHLEDÁNO" MEZI NESPLNĚNÝMI. Sedm z dvanácti „pětek" u slibů
        z programového prohlášení je nenález, ne doložené nesplnění. Kdyby
        příznak `dolozeno` vypadl, web by je začal počítat mezi nesplněné —
        a tvrdil by o radnici něco, co z dat neplyne.
@@ -541,15 +550,33 @@ def kontrola_vysvedceni(v: Vysledek) -> None:
         v.chyba("vysvědčení nemá žádné projekty — změnila se struktura sešitu?")
         return
 
-    # Součty přepočítané z řádků musí sedět na to, co je v souhrnu.
+    # Čerstvost: otisk uložený při převodu musí sedět na dnešní sešit.
+    sesit = Path(__file__).resolve().parent / "web" / "public" / (d.get("sesit") or "").lstrip("/")
+    if not (d.get("sesit") and sesit.exists()):
+        v.chyba(f"vysvědčení: podkladový sešit chybí ({sesit}) — publikovaná "
+                f"čísla by nešlo ověřit proti podkladu")
+        return
+    ted = hashlib.sha256(sesit.read_bytes()).hexdigest()
+    if d.get("otisk_sesitu") != ted:
+        v.chyba("vysvědčení: podkladový sešit se změnil, ale data k němu "
+                "nedoběhla — spusť `python3 pipeline/vysvedceni.py`. "
+                "Web by jinak publikoval stará čísla pod novým podkladem")
+        return
+
+    # Úplnost proti součtu, který spočítal sešit, ne my.
+    celkem = d.get("celkem_ze_sesitu")
+    if not celkem:
+        v.chyba("vysvědčení: v sešitu chybí souhrnný řádek CELKEM — bez něj "
+                "nejde ověřit, že se při čtení neztratil projekt")
+        return
     rozdily = []
-    for klic in ("deklarovany_rozpocet_czk", "deklarovana_dotace_czk",
-                 "dolozene_naklady_czk", "dolozena_dotace_czk"):
+    for klic, ocekavano in celkem.items():
         z_radku = sum(p.get(klic) or 0 for p in projekty)
-        if abs(z_radku - (souhrn.get(klic) or 0)) > 1:
-            rozdily.append(f"{klic}: řádky {z_radku:,.0f} vs. souhrn {souhrn.get(klic):,.0f}")
+        if abs(z_radku - (ocekavano or 0)) > 1:
+            rozdily.append(f"{klic}: řádky {z_radku:,.0f} vs. sešit {(ocekavano or 0):,.0f}")
     if rozdily:
-        v.chyba("vysvědčení: souhrn nesedí na řádky — " + "; ".join(rozdily))
+        v.chyba("vysvědčení: součet řádků nesedí na CELKEM ze sešitu, nejspíš "
+                "se ztratil nebo přibyl projekt — " + "; ".join(rozdily))
         return
 
     if souhrn.get("projektu") != len(projekty):

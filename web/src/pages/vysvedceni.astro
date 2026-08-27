@@ -138,6 +138,13 @@ const dotaceMimoRegistr: Projekt[] = a.projekty
 
 const objemMimoRegistr = dotaceMimoRegistr.reduce((n, p) => n + (p.deklarovana_dotace_czk ?? 0), 0);
 
+/* Kolik projektů má zdroj, ze kterého jde udělat odkaz. Zbytek má v sešitu
+ * jen popis („hlidacstatu.cz – registr smluv a VZ IČO 00254061") nebo
+ * zkrácený identifikátor s výpustkou — dohledatelné to je, ale kliknout na to
+ * nejde. Stránka to musí říct číslem, ne slibem: „u každého je odkaz" by
+ * u sedmnácti z osmatřiceti projektů nebyla pravda. */
+const sOdkazem = a.projekty.filter((p) => p.zdroje.some((z) => zdrojJakoOdkaz(z) !== null)).length;
+
 /* Čísla do textu se POČÍTAJÍ, nepíšou se natvrdo. Zadrátovaná částka by po
  * změně sešitu tiše zestárla a odstavec by tvrdil něco, co pod ním v tabulce
  * nestojí — a to je přesně ta tichá lež, které se celý web vyhýbá. */
@@ -263,7 +270,7 @@ const varianty: Varianta[] = maData
   titulek="Vysvědčení"
   aktivni="vysvedceni"
   nadpis="Jak koalice plní, co slíbila"
-  uvod="Město má projektový portál, na kterém u každé investice uvádí stav, termín, rozpočet a dotaci. Tahle stránka bere všech 38 projektů a porovnává je s tím, co je vidět v registru smlouvy, ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. U každého projektu je odkaz, kde si to zkontrolujete sami."
+  uvod="Město má projektový portál, na kterém u každé investice uvádí stav, termín, rozpočet a dotaci. Tahle stránka bere všech 38 projektů a porovnává je s tím, co je vidět v registru smlouvy, ve věstníku zakázek, v registrech dotací a v závěrečných účtech města. U každého projektu je uvedený zdroj, podle kterého si to zkontrolujete sami — u většiny jako přímý odkaz na záznam."
 >
   <StavDat
     stav={nacteno.stav}
@@ -382,6 +389,13 @@ const varianty: Varianta[] = maData
           <p class="karta__podnadpis">
             Od nejhůř hodnocených. „Deklarováno" je to, co uvádí projektový portál města;
             „ověřeno" je stav zjištěný z nezávislých zdrojů k {datumKratke(a.hodnoceno_k)}.
+          </p>
+          <p class="karta__podnadpis">
+            U {cislo(sOdkazem)} z {cislo(s.projektu)} projektů vede zdroj přímo na záznam a dá
+            se na něj kliknout. U zbylých {cislo(s.projektu - sOdkazem)} je zdroj popsaný
+            textem — spisovou značkou, číslem zakázky nebo zkráceným identifikátorem —
+            protože v podkladu není celá adresa. Dohledat se dá, ale odkaz z něj nevyrábíme:
+            zkrácená adresa vede na chybovou stránku a to je horší než poctivý text.
           </p>
           <div class="tabulka-obal">
             <table>

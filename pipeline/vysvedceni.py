@@ -24,13 +24,14 @@ než audit unese — a přesně to si tenhle projekt zakazuje.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lib.core import Log, uloz  # noqa: E402
+from lib.core import Log, ZdrojSelhal, uloz  # noqa: E402
 
 VYSTUP = "vysvedceni/audit.json"
 
@@ -80,6 +81,25 @@ def _zdroje(s: str | None) -> list[str]:
         return []
     kusy = re.split(r"[;·]\s*", s)
     return [k.strip() for k in kusy if k.strip()]
+
+
+def _celkem_ze_sesitu(ws) -> dict | None:
+    """Souhrnný řádek CELKEM tak, jak ho spočítal sám sešit.
+
+    Je to JEDINÝ údaj, který nevzniká z rozebraných řádků, takže jako jediný
+    umí odhalit, že se řádek při čtení ztratil — kdyby se porovnávaly jen
+    součty z `projekty` proti souhrnu spočítanému z týchž `projekty`, sedělo
+    by to i po vypadnutí projektu a kontrola by prošla nad neúplným auditem.
+    """
+    for r in ws.iter_rows(min_row=4, values_only=True):
+        if (_text(r[1]) or "").startswith("CELKEM"):
+            return {
+                "deklarovany_rozpocet_czk": _cislo(r[6]),
+                "deklarovana_dotace_czk": _cislo(r[7]),
+                "dolozene_naklady_czk": _cislo(r[9]),
+                "dolozena_dotace_czk": _cislo(r[10]),
+            }
+    return None
 
 
 def _projekty(ws) -> list[dict]:
@@ -215,15 +235,22 @@ def _metodika(ws) -> list[dict]:
 
 def main() -> dict:
     log = Log("vysvedceni")
+    # CHYBA MUSÍ BUBLAT NAHORU. `spust_krok()` v run_tyden.py se dívá jen na
+    # to, jestli `main()` vyhodilo výjimku — návratovou hodnotu ignoruje.
+    # Kdyby se sem chyba jen zapsala do logu a modul se vrátil normálně,
+    # týdenní běh by hlásil „OK" a sekce /vysvedceni by tiše zůstala na
+    # starých datech. Přesně to se stalo, když v CI chybělo openpyxl.
     try:
         import openpyxl
-    except ImportError:
-        log.chyba("openpyxl není nainstalované — `pip install openpyxl`")
-        return log.uzavri()
+    except ImportError as e:
+        raise ZdrojSelhal(
+            "openpyxl není nainstalované — bez něj nejde přečíst podkladový "
+            "sešit a sekce /vysvedceni by zůstala na starých datech. "
+            "`pip install openpyxl`"
+        ) from e
 
     if not SESIT.exists():
-        log.chyba(f"podkladový sešit chybí: {SESIT}")
-        return log.uzavri()
+        raise ZdrojSelhal(f"podkladový sešit chybí: {SESIT}")
 
     wb = openpyxl.load_workbook(SESIT, data_only=True)
     projekty = _projekty(wb["Vysvědčení"])
@@ -244,6 +271,12 @@ def main() -> dict:
         "volebni_obdobi": "2022–2026",
         "predmet": "38 projektů zveřejněných na portálu muml.pincity.cz/projekty",
         "sesit": SESIT_VEREJNE,
+        # Otisk podkladu, aby kontrola poznala, že se sešit změnil a data
+        # k němu nedoběhla. Bez toho by po výměně sešitu web dál publikoval
+        # stará čísla a nic by na to neupozornilo.
+        "otisk_sesitu": hashlib.sha256(SESIT.read_bytes()).hexdigest(),
+        # Kontrolní součet spočítaný sešitem, ne námi — viz `_celkem_ze_sesitu`.
+        "celkem_ze_sesitu": _celkem_ze_sesitu(wb["Vysvědčení"]),
         "znamky": ZNAMKY,
         "souhrn": {
             "projektu": len(projekty),

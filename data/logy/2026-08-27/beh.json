@@ -2,7 +2,7 @@
   "datum": "2026-08-27",
   "obdobi_od": "2026-08-20",
   "obdobi_do": "2026-08-27",
-  "trvani_s": 57.2,
+  "trvani_s": 85.0,
   "kroky": [
     {
       "modul": "pipeline.tagovani",
@@ -56,7 +56,8 @@
       "modul": "pipeline.vysvedceni",
       "popis": "Vysvědčení koalici 2022–2026",
       "povinny": false,
-      "stav": "ok"
+      "stav": "selhal",
+      "chyba": "openpyxl není nainstalované — bez něj nejde přečíst podkladový sešit a sekce /vysvedceni by zůstala na starých datech. `pip install openpyxl`"
     },
     {
       "modul": "pipeline.ucet_obdobi",

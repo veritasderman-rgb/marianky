@@ -262,6 +262,38 @@ def znak_slibnik() -> dict:
     )
 
 
+def znak_vysvedceni() -> dict:
+    """Vysvědčení — rozdělení projektů podle známky.
+
+    Osa NEJSOU roky jako u ostatních znaků, ale známky 1 až 5. Sloupce tak
+    čtou zleva doprava od splněného k nesplněnému a tvar dlaždice sám o sobě
+    ukazuje, jak volební období dopadlo.
+    """
+    d = nacti("vysvedceni/audit.json")
+    if not d:
+        return _chybi("vysvedceni", "data/vysvedceni/audit.json",
+                      "Vysvědčení koalici zatím není sestavené.")
+    souhrn = d.get("souhrn") or {}
+    podle = souhrn.get("podle_znamky") or {}
+    hodnoty = [float(podle.get(str(z)) or 0) for z in range(1, 6)]
+    if not any(hodnoty):
+        return _chybi("vysvedceni", "data/vysvedceni/audit.json",
+                      "V přehledu není žádný oznámkovaný projekt.")
+    celkem = _cely(souhrn.get("projektu"))
+    return {
+        "tvar": "sloupce",
+        "osa": [str(z) for z in range(1, 6)],
+        "hodnoty": hodnoty,
+        "pocet": celkem,
+        "hodnota": _mezerou(celkem),
+        "jednotka": "prověřených projektů",
+        "veta": ("Sloupec je jedna známka, zleva splněno až nesplněno. "
+                 "Známka je hodnocení, fakta pod ní mají zdroj."),
+        "stav": "ok",
+        "zdroj": "data/vysvedceni/audit.json",
+    }
+
+
 def znak_ucet_obdobi() -> dict:
     """Účet období — ne zcela jednomyslná hlasování po letech období."""
     d = nacti("obdobi/ucet.json")
@@ -928,6 +960,7 @@ def main() -> None:
         ("usneseni", znak_usneseni),
         ("hlasovani", znak_hlasovani),
         ("slibnik", znak_slibnik),
+        ("vysvedceni", znak_vysvedceni),
         ("ucet-obdobi", znak_ucet_obdobi),
         ("komise", znak_komise),
         ("informace", znak_informace),
