@@ -68,10 +68,18 @@ export interface NuloveCerpani {
   cerpani: number | null;
 }
 
+export interface Portal {
+  nazev: string;
+  url: string;
+  /** Kdo portál provozuje — je to deklarace města o vlastní práci, ne nezávislý zdroj. */
+  provozuje: string;
+}
+
 export interface Audit {
   hodnoceno_k: string;
   volebni_obdobi: string;
   predmet: string;
+  portal: Portal | null;
   sesit: string;
   znamky: Record<string, string>;
   souhrn: {
@@ -100,6 +108,7 @@ const PRAZDNO: Audit = {
   hodnoceno_k: '',
   volebni_obdobi: '',
   predmet: '',
+  portal: null,
   sesit: '',
   znamky: {},
   souhrn: {

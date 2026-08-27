@@ -35,6 +35,16 @@ from lib.core import Log, ZdrojSelhal, uloz  # noqa: E402
 
 VYSTUP = "vysvedceni/audit.json"
 
+# Projektový portál města, proti kterému se celý audit dělá. Provozuje ho
+# město (technicky AQE advisors), takže je to deklarace koalice o vlastní
+# práci — ne nezávislý zdroj. Web na něj odkazuje, aby si čtenář mohl
+# porovnat obě strany sám; drží se v datech, ne natvrdo ve stránce.
+PORTAL = {
+    "nazev": "muml.pincity.cz/projekty",
+    "url": "https://muml.pincity.cz/projekty",
+    "provozuje": "město Mariánské Lázně (technicky AQE advisors, a.s.)",
+}
+
 # Sešit leží rovnou v `web/public/`, odkud ho web servíruje ke stažení.
 # Druhá kopie mimo web by se dřív nebo později rozešla s tou publikovanou
 # a čtenář by si pak ověřoval jiná čísla, než jaká na stránce vidí.
@@ -269,7 +279,8 @@ def main() -> dict:
     vystup = {
         "hodnoceno_k": "2026-08-27",
         "volebni_obdobi": "2022–2026",
-        "predmet": "38 projektů zveřejněných na portálu muml.pincity.cz/projekty",
+        "predmet": f"{len(projekty)} projektů zveřejněných na portálu {PORTAL['nazev']}",
+        "portal": PORTAL,
         "sesit": SESIT_VEREJNE,
         # Otisk podkladu, aby kontrola poznala, že se sešit změnil a data
         # k němu nedoběhla. Bez toho by po výměně sešitu web dál publikoval
