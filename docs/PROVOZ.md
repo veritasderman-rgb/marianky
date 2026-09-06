@@ -145,6 +145,8 @@ Tabulka „Stav sběru dat" na `/` se **neskládá ručně**. Dřív měla šest
 
 U každé sekce se rozlišují **tři různé věci**: jestli data na disku jsou, k jakému dni jsou (`generovano` v souboru; u usnesení a hlasování datum posledního jednání), a jak dopadl krok běhu, který sekci plní. Selhaný krok nad staršími daty je běžný stav — web ukazuje minulý výsledek a tabulka to řekne. Mapa „krok → sekce" je v `stav_sekci.ts` (`KROKY_SEKCE`); **když přibude modul do `run_tyden.py`, přibude i tam**, jinak sekce hlásí „v posledním běhu neběžel žádný krok".
 
+Krok se hodnotí ze tří míst: z `beh.json` (stav kroku a **režim běhu** — `rezim.bez_sberu`, `rezim.jen`), z logu modulu téhož dne (`uspech`, `chyby` — krok, který doběhl, ale hlásí chyby, je „s chybami", ne „v pořádku") a z toho, které očekávané kroky v běhu **vůbec nebyly**: cílený běh `--jen usneseni` nechá tagování neběžet a řádek to řekne („část kroků neběžela"), nezelená se. `run_tyden.py` navíc od 9/2026 překládá nenulový návratový kód `main()` na `selhal` — monitor, srovnání a web města tak hlásí selhání, dřív stály v souhrnu jako `ok`.
+
 Běh, který skončí `chybi_main`, tabulka ukáže jako „přeskočen: modul nemá vstupní bod". Přesně tak se od srpna 2026 tiše přeskakoval rozbor článků zpravodaje (`pipeline/clanky.py` měl jen `hlavni()`); nová čísla se na články nerozebírala. Modul má teď `main()`, inkrementální — rozebere jen to, co sběrač stáhl nově.
 
 Deník změn „Co v přehledu přibylo" bere z `config/novinky.json`. Je to autorská znalost, ne údaj o městě — proto config. Když přibude sekce nebo napojení, přidej položku (datum, nadpis, věta, cesta), nejnovější nahoru.
