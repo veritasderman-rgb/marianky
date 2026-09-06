@@ -246,7 +246,7 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 
 | Cesta | Obsah |
 |---|---|
-| `/` | Poslední týdenní vydání |
+| `/` | Dashboard: hero s živými počty, rozcestník se znaky sekcí, poslední týdenní vydání, deník změn a tabulka stavu sběru pro všechny sekce (data na disku · data k · poslední běh · odkud) |
 | `/vydani/[id]` | Archiv vydání |
 | `/usneseni` | Usnesení, filtr podle orgánu, roku a tagu |
 | `/hlasovani` | Hlasování, **filtr podle tagu** — výslovné přání zadavatele |
@@ -261,7 +261,15 @@ Celkový objem · počet protistran · kolik z nich je aktivních · K-index (se
 | `/tisicovka` | Rozpočet přepočtený na jednoho obyvatele a na pomyslnou tisícovku výdajů. Vždy s větou, že to není osobní daň — rozpočet plní hlavně sdílené daně |
 | `/slibnik` | Úkoly z textů usnesení („ukládá…") s termíny a doloženými návaznostmi. NIKDY netvrdí „nesplněno" — kontrola plnění je jen v neveřejné příloze a stránka to říká nahoře, ne pod čarou |
 | `/ucet-obdobi` | Účet volebního období: nejtěsněji schválená hlasování, účast, shoda s klubem (jen z hlasování, kde se klub sám rozdělil; pod 10 dělených hlasování se procento neuvádí). Past zdroje „zveřejňují se jen schválená hlasování" stojí v úvodu stránky |
+| `/vysvedceni` | Vysvědčení koalici 2022–2026: projekty z portálu koalice proti registrům. Fakta se zdrojem zvlášť od známky; „nedohledáno" není „nesplněno" |
+| `/komise` | Komise a výbory, co navrhly a co s tím rada udělala — doložené odděleně od odhadu |
+| `/informace` | Žádosti o informace podle zákona 106/1999 Sb. |
+| `/lide` · `/lide/[id]` · `/firmy` · `/firmy/[ico]` | Lidé a firmy |
+| `/volby` · `/mapa` · `/statistika` | Volby po okrscích (mapa vždy s absolutními počty), mapa z geodat, časové řady ČSÚ |
+| `/diagramy` | Schémata z dat (§3.9) |
+| `/historie` | Dějiny po obdobích a datované události |
 | `/zpravodaj` · `/zpravodaj/[id]` | Archiv článků |
+| `/zdroje` | Zdroje a poděkování, živá čísla o pokrytí |
 | `/temata/[tema]` | Časové osy témat |
 | `/hledat` | Fulltext přes vše (Pagefind) |
 

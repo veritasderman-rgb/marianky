@@ -2,7 +2,7 @@
   "id": "zdroje",
   "nazev": "Který zdroj plní kterou sekci",
   "typ": "sit",
-  "popis": "12 veřejných zdrojů a 15 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
+  "popis": "14 veřejných zdrojů a 20 sekcí webu. Čára znamená, že sekce z toho zdroje bere data.",
   "vlevo": {
     "nazev": "Zdroje",
     "uzly": [
@@ -10,7 +10,7 @@
         "id": "usneseni-portal",
         "nazev": "Portál usnesení města",
         "popisek": "https://usneseni.muml.cz",
-        "pocet": 3,
+        "pocet": 6,
         "vztah": "urad",
         "jistota": "potvrzeno"
       },
@@ -18,7 +18,7 @@
         "id": "muml",
         "nazev": "Web města a úřední deska",
         "popisek": "https://www.muml.cz",
-        "pocet": 5,
+        "pocet": 6,
         "vztah": "urad",
         "jistota": "potvrzeno"
       },
@@ -34,7 +34,7 @@
         "id": "hlidac",
         "nazev": "Hlídač státu — registr smluv",
         "popisek": "https://api.hlidacstatu.cz",
-        "pocet": 3,
+        "pocet": 5,
         "vztah": "stat",
         "jistota": "potvrzeno"
       },
@@ -50,7 +50,7 @@
         "id": "monitor",
         "nazev": "Monitor státní pokladny",
         "popisek": "https://monitor.statnipokladna.gov.cz",
-        "pocet": 2,
+        "pocet": 5,
         "vztah": "stat",
         "jistota": "potvrzeno"
       },
@@ -66,7 +66,7 @@
         "id": "csu",
         "nazev": "ČSÚ — časové řady o obci",
         "popisek": "https://vdb.czso.cz",
-        "pocet": 1,
+        "pocet": 3,
         "vztah": "stat",
         "jistota": "potvrzeno"
       },
@@ -101,6 +101,22 @@
         "pocet": 1,
         "vztah": "media",
         "jistota": "potvrzeno"
+      },
+      {
+        "id": "pincity",
+        "nazev": "Projektový portál města (PinCity)",
+        "popisek": "https://muml.pincity.cz/projekty",
+        "pocet": 1,
+        "vztah": "urad",
+        "jistota": "potvrzeno"
+      },
+      {
+        "id": "justice",
+        "nazev": "Sbírka listin (justice.cz)",
+        "popisek": "https://or.justice.cz",
+        "pocet": 1,
+        "vztah": "stat",
+        "jistota": "potvrzeno"
       }
     ]
   },
@@ -126,6 +142,24 @@
         "vztah": "sekce"
       },
       {
+        "id": "slibnik",
+        "nazev": "Slibník",
+        "popisek": "863",
+        "vztah": "sekce"
+      },
+      {
+        "id": "ucet-obdobi",
+        "nazev": "Účet volebního období",
+        "popisek": "612",
+        "vztah": "sekce"
+      },
+      {
+        "id": "komise",
+        "nazev": "Komise a výbory",
+        "popisek": "364",
+        "vztah": "sekce"
+      },
+      {
         "id": "vydani",
         "nazev": "Týdenní přehled",
         "popisek": "16",
@@ -144,15 +178,15 @@
         "vztah": "sekce"
       },
       {
-        "id": "komise",
-        "nazev": "komise",
-        "popisek": "364",
+        "id": "informace",
+        "nazev": "Žádosti o informace",
+        "popisek": "96",
         "vztah": "sekce"
       },
       {
-        "id": "informace",
-        "nazev": "informace",
-        "popisek": "96",
+        "id": "vysvedceni",
+        "nazev": "Jak koalice plní sliby",
+        "popisek": "38",
         "vztah": "sekce"
       },
       {
@@ -180,6 +214,12 @@
         "vztah": "sekce"
       },
       {
+        "id": "hospodareni",
+        "nazev": "Hospodaření města",
+        "popisek": "624,5 mil.",
+        "vztah": "sekce"
+      },
+      {
         "id": "firmy",
         "nazev": "Firmy",
         "popisek": "4 177",
@@ -189,6 +229,12 @@
         "id": "statistika",
         "nazev": "Čísla o městě",
         "popisek": "14 052",
+        "vztah": "sekce"
+      },
+      {
+        "id": "tisicovka",
+        "nazev": "Kam šla moje tisícovka",
+        "popisek": "44 tis.",
         "vztah": "sekce"
       },
       {
@@ -219,6 +265,24 @@
       "jistota": "potvrzeno"
     },
     {
+      "od": "usneseni-portal",
+      "do": "slibnik",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "usneseni-portal",
+      "do": "ucet-obdobi",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "usneseni-portal",
+      "do": "komise",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
       "od": "muml",
       "do": "vydani",
       "popisek": null,
@@ -245,6 +309,12 @@
     {
       "od": "muml",
       "do": "informace",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "muml",
+      "do": "vysvedceni",
       "popisek": null,
       "jistota": "potvrzeno"
     },
@@ -285,6 +355,18 @@
       "jistota": "potvrzeno"
     },
     {
+      "od": "hlidac",
+      "do": "hospodareni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "hlidac",
+      "do": "vysvedceni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
       "od": "ares",
       "do": "firmy",
       "popisek": null,
@@ -309,6 +391,24 @@
       "jistota": "potvrzeno"
     },
     {
+      "od": "monitor",
+      "do": "hospodareni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "monitor",
+      "do": "tisicovka",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "monitor",
+      "do": "vysvedceni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
       "od": "volby",
       "do": "volby",
       "popisek": null,
@@ -323,6 +423,18 @@
     {
       "od": "csu",
       "do": "statistika",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "csu",
+      "do": "tisicovka",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "csu",
+      "do": "hospodareni",
       "popisek": null,
       "jistota": "potvrzeno"
     },
@@ -359,6 +471,18 @@
     {
       "od": "zaznamy",
       "do": "hlasovani",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "pincity",
+      "do": "vysvedceni",
+      "popisek": null,
+      "jistota": "potvrzeno"
+    },
+    {
+      "od": "justice",
+      "do": "hospodareni",
       "popisek": null,
       "jistota": "potvrzeno"
     }
