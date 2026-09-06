@@ -108,6 +108,8 @@ const UROVEN_BEHU: Record<StavBehuSekce, Uroven> = {
   ok: 'dobre',
   selhal: 'vazne',
   preskocen: 'pozor',
+  schybami: 'pozor',
+  castecne: 'pozor',
   mimo: 'neznamo',
 };
 
@@ -412,15 +414,19 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
         <div class={`stav-behu ${behSouhrn.selhalo > 0 ? 'stav-behu--selhal' : ''}`}>
           <p class="stav-behu__veta">
             <strong>Poslední zaznamenaný běh: {datum(beh.datum)}</strong>
-            {behSouhrn.sberBezel
-              ? ' — plný běh se sběrem ze zdrojů.'
-              : ' — jen přepočet z uložených dat, sběr ze zdrojů neběžel.'}{' '}
+            {behSouhrn.jen.length > 0
+              ? ` — cílený běh jen na: ${behSouhrn.jen.join(', ')}; ostatní kroky neběžely.`
+              : behSouhrn.sberBezel
+                ? ' — úplný běh se sběrem ze zdrojů.'
+                : ' — jen přepočet z uložených dat, sběr ze zdrojů neběžel.'}
+            {!behSouhrn.rezimZaznamenany && ' (Režim odhadnutý z kroků, záznam ho neuvádí.)'}{' '}
             {cislo(behSouhrn.kroku)} {sklonuj(behSouhrn.kroku, 'krok', 'kroky', 'kroků')}:{' '}
             {cislo(behSouhrn.ok)} v pořádku
+            {behSouhrn.sChybami > 0 && `, ${cislo(behSouhrn.sChybami)} s chybami v logu`}
             {behSouhrn.selhalo > 0 && `, ${cislo(behSouhrn.selhalo)} ${sklonuj(behSouhrn.selhalo, 'selhal', 'selhaly', 'selhalo')}`}
             {behSouhrn.preskoceno > 0 && `, ${cislo(behSouhrn.preskoceno)} se ${sklonuj(behSouhrn.preskoceno, 'přeskočil', 'přeskočily', 'přeskočilo')}`}.
           </p>
-          {(behSouhrn.selhane.length > 0 || behSouhrn.preskocene.length > 0) && (
+          {(behSouhrn.selhane.length > 0 || behSouhrn.preskocene.length > 0 || behSouhrn.sChybamiKroky.length > 0) && (
             <ul class="stav-behu__kroky">
               {behSouhrn.selhane.map((k) => (
                 <li>
@@ -444,6 +450,18 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
                   </span>
                 </li>
               ))}
+              {behSouhrn.sChybamiKroky.map(({ krok, chyb }) => (
+                <li>
+                  <span class="stav-znacka stav-znacka--pozor">
+                    <span class="stav-znacka__tecka" aria-hidden="true" />
+                    <span>s chybami</span>
+                  </span>{' '}
+                  <strong>{krok.popis}</strong>
+                  <span class="stav-behu__chyba">
+                    {' '}— doběhl, ale jeho log hlásí {cislo(chyb)} {sklonuj(chyb, 'chybu', 'chyby', 'chyb')}
+                  </span>
+                </li>
+              ))}
             </ul>
           )}
         </div>
@@ -462,6 +480,8 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
       {stav.souhrn.dataChybi > 0 && `, ${cislo(stav.souhrn.dataChybi)} bez dat`}
       {stav.souhrn.behSelhal > 0 && `, u ${cislo(stav.souhrn.behSelhal)} selhal poslední běh`}
       {stav.souhrn.behPreskocen > 0 && `, u ${cislo(stav.souhrn.behPreskocen)} se krok přeskočil`}
+      {stav.souhrn.behSChybami > 0 && `, u ${cislo(stav.souhrn.behSChybami)} hlásí log kroku chyby`}
+      {stav.souhrn.behCastecne > 0 && `, u ${cislo(stav.souhrn.behCastecne)} část kroků neběžela`}
       {stav.souhrn.bezSberu > 0 && `, u ${cislo(stav.souhrn.bezSberu)} naposledy neběžel sběr ze zdroje`}.
     </p>
 
