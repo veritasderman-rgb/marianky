@@ -6,7 +6,7 @@ import Sledovat from '../components/Sledovat.astro';
 import Rozcestnik from '../components/Rozcestnik.astro';
 import Hero from '../components/Hero.astro';
 import type { PolozkaHero } from '../components/Hero.astro';
-import { nactiJson } from '../lib/data';
+import { nactiConfig, nactiJson } from '../lib/data';
 import {
   nactiCiselnikTagu,
   nactiCisla,
@@ -16,17 +16,17 @@ import {
   nactiProtistrany,
   nactiUsneseni,
   nactiVydani,
-  type Nacteno,
 } from '../lib/data';
 import JakPocitame from '../components/JakPocitame.astro';
 import { zplostiHlasovani, zplostiUsneseni } from '../lib/prehledy';
+import { prehledStavuSekci, souhrnBehu, type StavBehuSekce } from '../lib/stav_sekci';
+import type { Uroven } from '../components/Dlazdice.astro';
 import {
   cislo,
   datum,
   datumKratke,
   nazevOrganu,
   nazevVysledku,
-  nazevZdroje,
   obdobiText,
   orderCs,
   orez,
@@ -38,9 +38,6 @@ const vydani = zVydani.data ?? [];
 const posledni = vydani[0] ?? null;
 const starsi = vydani.slice(1, 9);
 
-/* Rozcestník stavu: co už v přehledu je a co se ještě sbírá. Prázdná sekce
-   bez vysvětlení je horší než žádná sekce, takže se to napíše natvrdo.
-   Stojí až pod obsahem — čtenář přišel kvůli tomu, co se ve městě děje. */
 const zUsneseni = nactiUsneseni();
 const zHlasovani = nactiHlasovani();
 const zPenez = nactiProtistrany();
@@ -48,23 +45,8 @@ const zLidi = nactiLidi();
 const zCisel = nactiCisla();
 const zClanku = nactiClanky();
 
-interface Radek {
-  nazev: string;
-  cesta: string;
-  pocet: number;
-  jednotka: string;
-  zdroj: Nacteno<unknown>;
-  modul: string;
-}
-
-const prehled: Radek[] = [
-  { nazev: 'Usnesení', cesta: '/usneseni', pocet: zplostiUsneseni(zUsneseni.data ?? []).length, jednotka: 'bodů', zdroj: zUsneseni, modul: 'A1' },
-  { nazev: 'Hlasování', cesta: '/hlasovani', pocet: zplostiHlasovani(zHlasovani.data ?? []).length, jednotka: 'hlasování', zdroj: zHlasovani, modul: 'A1' },
-  { nazev: 'Peníze', cesta: '/penize', pocet: (zPenez.data?.protistrany ?? []).length, jednotka: 'protistran', zdroj: zPenez, modul: 'A3' },
-  { nazev: 'Lidé', cesta: '/lide', pocet: (zLidi.data ?? []).length, jednotka: 'profilů', zdroj: zLidi, modul: 'B1' },
-  { nazev: 'Zpravodaj', cesta: '/zpravodaj', pocet: (zCisel.data ?? []).length, jednotka: 'čísel', zdroj: zCisel, modul: 'A2' },
-  { nazev: 'Články ze zpravodaje', cesta: '/zpravodaj', pocet: (zClanku.data ?? []).length, jednotka: 'článků', zdroj: zClanku, modul: 'A2' },
-];
+const usneseni = zplostiUsneseni(zUsneseni.data ?? []);
+const hlasovani = zplostiHlasovani(zHlasovani.data ?? []);
 
 /* Co všechno přehled indexuje — živě z dat. Napsat ta čísla do textu
    ručně by znamenalo, že za měsíc lžou. */
@@ -72,32 +54,87 @@ const zKomisi = nactiJson<{ souhrn?: { zapisu?: number } }>('komise/prehled.json
 const z106 = nactiJson<{ souhrn?: { s_textem?: number } }>('informace106/prehled.json', {});
 
 const heroPolozky: PolozkaHero[] = [
-  { pocet: prehled[0].pocet, popis: 'bodů usnesení rady a zastupitelstva', cesta: '/usneseni' },
-  { pocet: prehled[1].pocet, popis: 'hlasování se jmény', cesta: '/hlasovani' },
-  { pocet: prehled[2].pocet, popis: 'protistran v registru smluv', cesta: '/penize' },
+  { pocet: usneseni.length, popis: 'bodů usnesení rady a zastupitelstva', cesta: '/usneseni' },
+  { pocet: hlasovani.length, popis: 'hlasování se jmény', cesta: '/hlasovani' },
+  { pocet: (zPenez.data?.protistrany ?? []).length, popis: 'protistran v registru smluv', cesta: '/penize' },
   { pocet: zKomisi.data?.souhrn?.zapisu ?? 0, popis: 'zápisů z komisí', cesta: '/komise' },
-  { pocet: prehled[5].pocet, popis: 'článků ze zpravodaje', cesta: '/zpravodaj' },
+  { pocet: (zClanku.data ?? []).length, popis: 'článků ze zpravodaje', cesta: '/zpravodaj' },
   { pocet: z106.data?.souhrn?.s_textem ?? 0, popis: 'odpovědí na žádosti o informace', cesta: '/informace' },
-  { pocet: prehled[3].pocet, popis: 'profilů lidí a firem', cesta: '/lide' },
+  { pocet: (zLidi.data ?? []).length, popis: 'profilů lidí a firem', cesta: '/lide' },
 ]
   .filter((p) => p.pocet > 0)
   /* Šest, ne sedm. Sedmá dlaždice zůstane na řádku sama a vypadá jako
      nedopatření; šestka se rozloží na 6 × 1, 3 × 2 i 2 × 3. */
   .slice(0, 6);
 
-function stavText(r: Radek): string {
-  if (r.zdroj.stav === 'chyba') return 'zdroj se nepodařilo načíst';
-  if (r.zdroj.stav === 'chybi') return 'data zatím nejsou sebraná';
-  if (r.pocet === 0) return 'načteno, ale zatím prázdné';
-  return 'připraveno';
+/* ── Stav sběru dat ────────────────────────────────────────────────────
+   Jeden řádek za každou sekci z rejstříku (`lib/sekce.ts`), ne ručně
+   vypsaný výběr. Dřív tu bylo šest řádků z doby šesti sekcí a o zbylých
+   šestnácti tabulka mlčela. Skládá to `lib/stav_sekci.ts` ze znaků,
+   záznamu posledního běhu a mapy zdrojů.
+
+   U adresářů, které datum nenesou, se sloupec „Data k" naplní z toho,
+   co už stránka stejně načetla: poslední jednání, poslední číslo. */
+const posledniJednani = (d: { datum: string }[]): string | null =>
+  d.reduce<string | null>((max, x) => (x.datum && (!max || x.datum > max) ? x.datum : max), null);
+
+const posledniCislo = (() => {
+  const c = zCisel.data ?? [];
+  const nej = c.reduce<{ rok: number; mesic: number } | null>((m, x) => {
+    if (typeof x.rok !== 'number' || typeof x.mesic !== 'number') return m;
+    return !m || x.rok > m.rok || (x.rok === m.rok && x.mesic > m.mesic) ? { rok: x.rok, mesic: x.mesic } : m;
+  }, null);
+  return nej ? `číslo ${nej.mesic}/${nej.rok}` : null;
+})();
+
+const stav = prehledStavuSekci({
+  vydani: posledni?.datum ? `vydání ${datumKratke(posledni.datum)}` : null,
+  usneseni: (() => {
+    const d = posledniJednani(usneseni);
+    return d ? `jednání ${datumKratke(d)}` : null;
+  })(),
+  hlasovani: (() => {
+    const d = posledniJednani(hlasovani);
+    return d ? `jednání ${datumKratke(d)}` : null;
+  })(),
+  zpravodaj: posledniCislo,
+});
+
+const beh = stav.beh.data;
+const behSouhrn = beh ? souhrnBehu(beh) : null;
+
+/* Stavová barva nikdy nestojí sama — text vedle tečky je vždy (DESIGN.md §3.4). */
+const UROVEN_BEHU: Record<StavBehuSekce, Uroven> = {
+  ok: 'dobre',
+  selhal: 'vazne',
+  preskocen: 'pozor',
+  mimo: 'neznamo',
+};
+
+function urovenDat(s: 'ok' | 'chybi' | 'chyba'): Uroven {
+  return s === 'ok' ? 'dobre' : s === 'chybi' ? 'pozor' : 'vazne';
 }
 
-function stavTrida(r: Radek): string {
-  if (r.zdroj.stav === 'chyba') return 'vazne';
-  if (r.zdroj.stav === 'chybi') return 'pozor';
-  if (r.pocet === 0) return 'neznamo';
-  return 'dobre';
+function textDat(s: 'ok' | 'chybi' | 'chyba'): string {
+  return s === 'ok' ? 'na disku' : s === 'chybi' ? 'soubor chybí' : 'soubor nešel přečíst';
 }
+
+/* ── Co v přehledu přibylo ──────────────────────────────────────────────
+   Ručně vedený deník změn z `config/novinky.json`. Je to autorská
+   znalost o projektu, ne údaj o městě — proto config, ne data. */
+interface Novinka {
+  datum: string;
+  nadpis: string;
+  text: string;
+  cesta?: string;
+}
+const zNovinek = nactiConfig<{ novinky?: Novinka[] }>('novinky.json', {});
+const novinky = [...(zNovinek.data.novinky ?? [])]
+  .filter((n) => n && typeof n.datum === 'string' && typeof n.nadpis === 'string')
+  .sort((a, b) => b.datum.localeCompare(a.datum));
+const NOVINEK_ROVNOU = 4;
+const novinkyRovnou = novinky.slice(0, NOVINEK_ROVNOU);
+const novinkyDalsi = novinky.slice(NOVINEK_ROVNOU);
 
 /* ── Podklad pro osobní sekci „Vaše sledovaná témata" ─────────────────────
    Web je statický a bez přihlášení: výběr témat žije jen v localStorage
@@ -273,6 +310,51 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
     uroven="h2"
   />
 
+  {
+    novinky.length > 0 && (
+      <section class="novinky" id="novinky">
+        <h2>Co v přehledu přibylo</h2>
+        <p class="uvod">
+          Přehled roste po týdnech. Tady je vidět, co přibylo naposledy a kde se to
+          dá najít — ať se nemusí hádat, jestli je sekce nová, nebo jen přehlédnutá.
+        </p>
+        <ol class="novinky__seznam">
+          {novinkyRovnou.map((n) => (
+            <li class="novinky__polozka">
+              <span class="novinky__datum">{datumKratke(n.datum)}</span>
+              <span class="novinky__telo">
+                <strong class="novinky__nadpis">
+                  {n.cesta ? <a href={n.cesta}>{n.nadpis}</a> : n.nadpis}
+                </strong>
+                <span class="novinky__text">{n.text}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+        {novinkyDalsi.length > 0 && (
+          <details class="tabulkovy-pohled">
+            <summary>
+              Starší změny ({cislo(novinkyDalsi.length)})
+            </summary>
+            <ol class="novinky__seznam">
+              {novinkyDalsi.map((n) => (
+                <li class="novinky__polozka">
+                  <span class="novinky__datum">{datumKratke(n.datum)}</span>
+                  <span class="novinky__telo">
+                    <strong class="novinky__nadpis">
+                      {n.cesta ? <a href={n.cesta}>{n.nadpis}</a> : n.nadpis}
+                    </strong>
+                    <span class="novinky__text">{n.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </details>
+        )}
+      </section>
+    )
+  }
+
   <section class="sledovana" id="sledovana">
     <h2>Vaše sledovaná témata</h2>
     <p class="uvod">
@@ -314,41 +396,128 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
     <script is:inline type="application/json" id="denik-temat" set:html={denikJson} />
   </section>
 
-  <section>
+  <section class="stav-sberu" id="stav-sberu">
     <h2>Stav sběru dat</h2>
     <p class="uvod">
       Rozcestník výše říká, co v které sekci je. Tahle tabulka říká, jak se to tam
-      dostalo: každou sekci plní vlastní sběr a ten může selhat. Rozlišuje se
-      „ještě se nesbíralo", „sebralo se, ale nic tam nebylo" a „sběr selhal" — to jsou
-      tři různé věci a nesmějí vypadat stejně.
+      dostalo a jak je to čerstvé: každou sekci plní vlastní krok týdenního běhu a ten
+      může selhat. Rozlišují se tři různé věci, které nesmějí vypadat stejně — jestli
+      data <strong>na disku jsou</strong>, <strong>k jakému dni</strong> jsou, a jak
+      dopadl <strong>poslední běh</strong>, který je má obnovovat. Selhaný krok nad
+      staršími daty je běžný stav: web ukazuje minulý výsledek a tady je to napsané.
     </p>
+
+    {
+      beh && behSouhrn ? (
+        <div class={`stav-behu ${behSouhrn.selhalo > 0 ? 'stav-behu--selhal' : ''}`}>
+          <p class="stav-behu__veta">
+            <strong>Poslední zaznamenaný běh: {datum(beh.datum)}</strong>
+            {behSouhrn.sberBezel
+              ? ' — plný běh se sběrem ze zdrojů.'
+              : ' — jen přepočet z uložených dat, sběr ze zdrojů neběžel.'}{' '}
+            {cislo(behSouhrn.kroku)} {sklonuj(behSouhrn.kroku, 'krok', 'kroky', 'kroků')}:{' '}
+            {cislo(behSouhrn.ok)} v pořádku
+            {behSouhrn.selhalo > 0 && `, ${cislo(behSouhrn.selhalo)} ${sklonuj(behSouhrn.selhalo, 'selhal', 'selhaly', 'selhalo')}`}
+            {behSouhrn.preskoceno > 0 && `, ${cislo(behSouhrn.preskoceno)} se ${sklonuj(behSouhrn.preskoceno, 'přeskočil', 'přeskočily', 'přeskočilo')}`}.
+          </p>
+          {(behSouhrn.selhane.length > 0 || behSouhrn.preskocene.length > 0) && (
+            <ul class="stav-behu__kroky">
+              {behSouhrn.selhane.map((k) => (
+                <li>
+                  <span class="stav-znacka stav-znacka--vazne">
+                    <span class="stav-znacka__tecka" aria-hidden="true" />
+                    <span>selhal</span>
+                  </span>{' '}
+                  <strong>{k.popis}</strong>
+                  {k.chyba && <span class="stav-behu__chyba"> — {k.chyba}</span>}
+                </li>
+              ))}
+              {behSouhrn.preskocene.map((k) => (
+                <li>
+                  <span class="stav-znacka stav-znacka--pozor">
+                    <span class="stav-znacka__tecka" aria-hidden="true" />
+                    <span>přeskočen</span>
+                  </span>{' '}
+                  <strong>{k.popis}</strong>
+                  <span class="stav-behu__chyba">
+                    {' '}— {k.stav === 'chybi_main' ? 'modul nemá vstupní bod, krok se nespustil' : 'modul chybí'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ) : (
+        <StavDat
+          stav={stav.beh.stav === 'ok' ? 'chybi' : stav.beh.stav}
+          zdroj="logy/*/beh.json"
+          co="Záznam posledního běhu"
+          poznamky={['Tabulka níže proto říká jen, jaká data na disku jsou — ne jak dopadl běh, který je plní.']}
+        />
+      )
+    }
+
+    <p class="stav-sberu__souhrn">
+      {cislo(stav.souhrn.sekci)} sekcí, {cislo(stav.souhrn.dataOk)} s daty na disku
+      {stav.souhrn.dataChybi > 0 && `, ${cislo(stav.souhrn.dataChybi)} bez dat`}
+      {stav.souhrn.behSelhal > 0 && `, u ${cislo(stav.souhrn.behSelhal)} selhal poslední běh`}
+      {stav.souhrn.behPreskocen > 0 && `, u ${cislo(stav.souhrn.behPreskocen)} se krok přeskočil`}
+      {stav.souhrn.bezSberu > 0 && `, u ${cislo(stav.souhrn.bezSberu)} naposledy neběžel sběr ze zdroje`}.
+    </p>
+
     <div class="tabulka-obal">
-      <table>
+      <table class="tabulka-stavu">
         <thead>
           <tr>
             <th scope="col">Sekce</th>
-            <th scope="col" class="cislo">Záznamů</th>
-            <th scope="col">Stav</th>
-            <th scope="col">Zdrojová data</th>
+            <th scope="col">Záznamů</th>
+            <th scope="col">Data k</th>
+            <th scope="col">Poslední běh</th>
+            <th scope="col">Odkud</th>
           </tr>
         </thead>
-        <tbody>
-          {prehled.map((r) => (
-            <tr>
-              <td><a href={r.cesta}>{r.nazev}</a></td>
-              <td class="cislo">{r.pocet > 0 ? `${cislo(r.pocet)} ${r.jednotka}` : '—'}</td>
-              <td>
-                <span class={`stav-znacka stav-znacka--${stavTrida(r)}`}>
-                  <span class="stav-znacka__tecka" aria-hidden="true" />
-                  <span>{stavText(r)}</span>
-                </span>
-              </td>
-              <td>{nazevZdroje(r.zdroj.zdroj)}</td>
+        {stav.skupiny.map((sk) => (
+          <tbody>
+            <tr class="tabulka-stavu__skupina">
+              <th scope="colgroup" colspan="5">{sk.nazev}</th>
             </tr>
-          ))}
-        </tbody>
+            {sk.radky.map((r) => (
+              <tr>
+                <td>
+                  <a href={r.sekce.cesta}>{r.sekce.nazev}</a>
+                </td>
+                <td class="tabulka-stavu__pocet">
+                  {r.data.stav === 'ok' ? (
+                    r.pocet
+                  ) : (
+                    <span class={`stav-znacka stav-znacka--${urovenDat(r.data.stav)}`}>
+                      <span class="stav-znacka__tecka" aria-hidden="true" />
+                      <span>{textDat(r.data.stav)}</span>
+                    </span>
+                  )}
+                </td>
+                <td class="tabulka-stavu__datum">{r.dataK}</td>
+                <td>
+                  <span class={`stav-znacka stav-znacka--${UROVEN_BEHU[r.beh.stav]}`}>
+                    <span class="stav-znacka__tecka" aria-hidden="true" />
+                    <span>{r.beh.text}</span>
+                  </span>
+                </td>
+                <td class="tabulka-stavu__zdroje">
+                  {r.zdroje.length > 0 ? r.zdroje.join(', ') : 'skládá se z ostatních sekcí'}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        ))}
       </table>
     </div>
+    <p class="graf-poznamka">
+      „Data k" je datum, které si soubor sám nese z posledního přepočtu; u usnesení
+      a hlasování je to datum posledního jednání v datech, u zpravodaje poslední číslo.
+      Sloupec „Odkud" jmenuje vnější zdroje podle mapy v <a href="/diagramy">schématu
+      zdrojů</a>. Sekce bez vlastního zdroje se skládá z ostatních.
+    </p>
   </section>
 
   <JakPocitame>

@@ -955,5 +955,19 @@ def hlavni(argv: list[str] | None = None) -> int:
     return 0
 
 
+def main() -> None:
+    """Vstupní bod pro týdenní běh.
+
+    `run_tyden.py` volá u každého modulu `main()`. Tenhle modul měl jen
+    `hlavni()`, takže běh krok tiše přeskakoval jako „chybí main“ a nová
+    čísla zpravodaje se na články nerozebírala — od srpna 2026 se to
+    dělalo jen ručně. Bez argumentů je běh inkrementální: už rozebraná
+    čísla přeskočí, rozebere jen to, co sběrač stáhl nově.
+    """
+    kod = hlavni([])
+    if kod:
+        raise SystemExit(kod)
+
+
 if __name__ == "__main__":
     raise SystemExit(hlavni())
