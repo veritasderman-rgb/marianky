@@ -187,11 +187,17 @@ def main() -> int:
         print("  explicitně uvést, že data chybí — nesmí vypadat, že se nic nedělo.")
     print("=" * 64)
 
+    konec = datetime.now(timezone.utc)
     souhrn = {
         "datum": dnes.isoformat(),
         "obdobi_od": obdobi_od.isoformat(),
         "obdobi_do": dnes.isoformat(),
-        "trvani_s": round((datetime.now(timezone.utc) - zacatek).total_seconds(), 1),
+        # Začátek a konec běhu, aby se logy modulů (mají vlastní `zacatek`)
+        # daly spárovat s tímhle během a ne s ručním spuštěním modulu o pár
+        # hodin později, které log téhož jména přepíše.
+        "zacatek": zacatek.isoformat(),
+        "konec": konec.isoformat(),
+        "trvani_s": round((konec - zacatek).total_seconds(), 1),
         # Režim běhu se zapisuje, aby šlo z logu poznat cílený nebo
         # přepočtový běh od úplného. Bez toho by se `--jen usneseni` četlo
         # jako běh, ve kterém všechno ostatní chybí bez důvodu.

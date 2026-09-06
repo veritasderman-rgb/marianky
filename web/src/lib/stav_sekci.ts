@@ -55,6 +55,9 @@ export interface Beh {
   obdobi_do?: string;
   trvani_s?: number;
   uspech?: boolean;
+  /** Začátek a konec běhu (ISO). Zapisuje run_tyden.py od 9/2026. */
+  zacatek?: string;
+  konec?: string;
   /** Zapisuje run_tyden.py od 9/2026; starší záznamy ho nemají a režim se odhaduje. */
   rezim?: RezimBehu;
   kroky: KrokBehu[];
@@ -107,6 +110,8 @@ export function nactiPosledniBeh(): Nacteno<Beh | null> {
         obdobi_do: n.data.obdobi_do,
         trvani_s: n.data.trvani_s,
         uspech: n.data.uspech,
+        zacatek: typeof n.data.zacatek === 'string' ? n.data.zacatek : undefined,
+        konec: typeof n.data.konec === 'string' ? n.data.konec : undefined,
         rezim: n.data.rezim,
         kroky: Array.isArray(n.data.kroky) ? n.data.kroky : [],
       },
@@ -189,34 +194,82 @@ export interface BehSekce {
 }
 
 /**
- * Log modulu z daného dne: `uspech` a počet chyb. Modul se jmenuje podle
- * `lib.core.Log`; web města píše víc logů s prefixem (muml-akce, muml-rada…),
- * proto se berou i soubory `<jméno>-*.json`.
+ * Jména logů, které modul píše, když se neshodují s jeho jménem.
+ * `lib.core.Log` pojmenovává soubor podle toho, co mu modul předá: web
+ * města píše sedm logů `muml-*`, hlídání změn `muml-snapshoty`. Bez téhle
+ * mapy by se snímky připsaly webu města a jejich vlastní krok by log
+ * nenašel vůbec. Modul, který tu není, píše `<jméno modulu>.json`.
  */
-function logyModulu(den: string, modul: string): { uspech: boolean; chyb: number }[] {
-  const jmeno = modul.replace(/^.*\./, '');
+const LOGY_MODULU: Record<string, string[]> = {
+  'scrapers.muml': [
+    'muml-akce',
+    'muml-novinky',
+    'muml-rada',
+    'muml-spolecnosti',
+    'muml-urad',
+    'muml-uredni-deska',
+    'muml-zastupitele',
+  ],
+  'scrapers.snapshoty': ['muml-snapshoty'],
+};
+
+function jmenaLogu(modul: string): string[] {
+  return LOGY_MODULU[modul] ?? [modul.replace(/^.*\./, '')];
+}
+
+/** Tolerance při párování logu s během — hodiny se zaokrouhlují, běh a log se nezapisují v tutéž vteřinu. */
+const TOLERANCE_MS = 5 * 60 * 1000;
+
+/**
+ * Logy modulu, které patří k danému běhu: `uspech` a počet chyb.
+ *
+ * Log má pevné jméno, takže ruční spuštění modulu o pár hodin později
+ * ho přepíše. Proto se log bere jen tehdy, když jeho `zacatek` padne do
+ * okna běhu (`beh.zacatek`–`beh.konec`). Starší záznamy běhu okno nemají —
+ * u nich zbývá shoda podle dne, a je to napsané v PROVOZ.md.
+ */
+function logyModulu(beh: Beh, modul: string): { uspech: boolean; chyb: number }[] {
+  const den = beh.datum;
   let soubory: string[];
   try {
-    soubory = fs
-      .readdirSync(path.join(KOREN_DAT, 'logy', den))
-      .filter((f) => f === `${jmeno}.json` || (f.startsWith(`${jmeno}-`) && f.endsWith('.json')));
+    const jmena = new Set(jmenaLogu(modul).map((j) => `${j}.json`));
+    soubory = fs.readdirSync(path.join(KOREN_DAT, 'logy', den)).filter((f) => jmena.has(f));
   } catch {
     return [];
   }
+  const od = beh.zacatek ? Date.parse(beh.zacatek) - TOLERANCE_MS : NaN;
+  const doo = beh.konec ? Date.parse(beh.konec) + TOLERANCE_MS : NaN;
+  const maOkno = Number.isFinite(od) && Number.isFinite(doo);
+
   const ven: { uspech: boolean; chyb: number }[] = [];
   for (const f of soubory) {
-    const n = nactiJson<{ uspech?: boolean; chyby?: unknown[] }>(`logy/${den}/${f}`, {});
+    const n = nactiJson<{ uspech?: boolean; chyby?: unknown[]; zacatek?: string }>(`logy/${den}/${f}`, {});
     if (n.stav !== 'ok' || typeof n.data.uspech !== 'boolean') continue;
+    if (maOkno) {
+      const z = typeof n.data.zacatek === 'string' ? Date.parse(n.data.zacatek) : NaN;
+      /* Log bez času nebo mimo okno patří jinému spuštění — přeskočí se,
+         ať nepřipíše běhu chybu, která se stala až po něm. */
+      if (!Number.isFinite(z) || z < od || z > doo) continue;
+    }
     ven.push({ uspech: n.data.uspech, chyb: Array.isArray(n.data.chyby) ? n.data.chyby.length : 0 });
   }
   return ven;
 }
 
-/** Lidský název kroku. Bere se z libovolného záznamu běhu; když modul nikdy neběžel, zůstane jeho jméno. */
+/**
+ * Lidský název kroku. Bere se ze schématu týdenního běhu
+ * (`data/diagramy/beh.json`, které pipeline.diagramy skládá ze seznamu
+ * kroků v run_tyden.py) a z libovolného záznamu běhu; když modul nikdy
+ * neběžel a schéma ho nezná, zůstane jeho jméno.
+ */
 let popisyKroku: Map<string, string> | null = null;
 function popisKroku(modul: string): string {
   if (!popisyKroku) {
     popisyKroku = new Map();
+    const schema = nactiJson<{ vrstvy?: { uzly?: { id?: string; nazev?: string }[] }[] }>('diagramy/beh.json', {});
+    for (const v of schema.data.vrstvy ?? []) {
+      for (const u of v.uzly ?? []) if (u.id && u.nazev && u.id.includes('.')) popisyKroku.set(u.id, u.nazev);
+    }
     const adresar = path.join(KOREN_DAT, 'logy');
     let dny: string[] = [];
     try {
@@ -288,7 +341,7 @@ function behSekce(klic: string, beh: Beh | null): BehSekce {
   /* Krok doběhl, ale jeho vlastní log hlásí chyby. Orchestrátor to do
      9/2026 nezapisoval — modul vrátil kód 1 a v souhrnu stál jako „ok". */
   const sChybami = kroky
-    .map((k) => ({ k, logy: logyModulu(beh.datum, k.modul).filter((l) => !l.uspech) }))
+    .map((k) => ({ k, logy: logyModulu(beh, k.modul).filter((l) => !l.uspech) }))
     .filter((x) => x.logy.length > 0);
   if (sChybami.length > 0) {
     const prvni = sChybami[0];
@@ -555,7 +608,7 @@ export function souhrnBehu(beh: Beh): {
   const preskocene = beh.kroky.filter((k) => k.stav === 'chybi_modul' || k.stav === 'chybi_main');
   const sChybamiKroky = beh.kroky
     .filter((k) => k.stav === 'ok')
-    .map((krok) => ({ krok, chyb: logyModulu(beh.datum, krok.modul).filter((l) => !l.uspech).reduce((a, l) => a + l.chyb, 0) }))
+    .map((krok) => ({ krok, chyb: logyModulu(beh, krok.modul).filter((l) => !l.uspech).reduce((a, l) => a + l.chyb, 0) }))
     .filter((x) => x.chyb > 0);
   return {
     kroku: beh.kroky.length,
