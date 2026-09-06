@@ -217,15 +217,12 @@ function jmenaLogu(modul: string): string[] {
   return LOGY_MODULU[modul] ?? [modul.replace(/^.*\./, '')];
 }
 
-/** Tolerance při párování logu s během — hodiny se zaokrouhlují, běh a log se nezapisují v tutéž vteřinu. */
-const TOLERANCE_MS = 5 * 60 * 1000;
-
 /**
  * Logy modulu, které patří k danému běhu: `uspech` a počet chyb.
  *
  * Log má pevné jméno, takže ruční spuštění modulu o pár hodin později
  * ho přepíše. Proto se log bere jen tehdy, když jeho `zacatek` padne do
- * okna běhu (`beh.zacatek`–`beh.konec`). Starší záznamy běhu okno nemají —
+ * okna běhu (`beh.zacatek`–`beh.konec`, bez tolerance). Starší záznamy běhu okno nemají —
  * u nich zbývá shoda podle dne, a je to napsané v PROVOZ.md.
  */
 function logyModulu(beh: Beh, modul: string): { uspech: boolean; chyb: number }[] {
@@ -237,8 +234,12 @@ function logyModulu(beh: Beh, modul: string): { uspech: boolean; chyb: number }[
   } catch {
     return [];
   }
-  const od = beh.zacatek ? Date.parse(beh.zacatek) - TOLERANCE_MS : NaN;
-  const doo = beh.konec ? Date.parse(beh.konec) + TOLERANCE_MS : NaN;
+  /* Okno je přesně [zacatek, konec] běhu, bez tolerance. Oba časy píše týž
+     stroj a týž běh: `zacatek` běhu je před prvním krokem, `konec` až po
+     posledním, takže log kroku z tohohle běhu do okna padne vždy. Tolerance
+     navíc by naopak pustila dovnitř ruční spuštění modulu chvíli po běhu. */
+  const od = beh.zacatek ? Date.parse(beh.zacatek) : NaN;
+  const doo = beh.konec ? Date.parse(beh.konec) : NaN;
   const maOkno = Number.isFinite(od) && Number.isFinite(doo);
 
   const ven: { uspech: boolean; chyb: number }[] = [];
