@@ -1,0 +1,287 @@
+{
+  "datum": "2026-09-07",
+  "obdobi_od": "2026-08-31",
+  "obdobi_do": "2026-09-07",
+  "zacatek": "2026-09-07T10:08:34.333692+00:00",
+  "konec": "2026-09-07T10:29:28.721156+00:00",
+  "trvani_s": 1254.4,
+  "rezim": {
+    "bez_sberu": false,
+    "jen": []
+  },
+  "kroky": [
+    {
+      "modul": "scrapers.usneseni",
+      "popis": "Usnesení rady a zastupitelstva",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.hlasovani",
+      "popis": "Jmenovitá hlasování",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.muml",
+      "popis": "Web města, deska, akce",
+      "povinny": true,
+      "stav": "selhal",
+      "chyba": "návratový kód 1"
+    },
+    {
+      "modul": "scrapers.snapshoty",
+      "popis": "Hlídání změn na webu města",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.hlidac_api",
+      "popis": "Registr smluv (plná sklizeň přes API)",
+      "povinny": true,
+      "stav": "selhal",
+      "chyba": "Chybí HLIDAC_TOKEN. Získej zdarma na hlidacstatu.cz a vlož do .env jako HLIDAC_TOKEN=... (soubor je mimo git)."
+    },
+    {
+      "modul": "scrapers.hlidac",
+      "popis": "Dotace, zakázky, statistiky",
+      "povinny": true,
+      "stav": "selhal",
+      "chyba": "Chybí /home/user/marianky/.cache/hlidac/statistiky.json — sklizeň `get_business_with_government` neproběhla"
+    },
+    {
+      "modul": "scrapers.zpravodaj",
+      "popis": "Nové číslo zpravodaje",
+      "povinny": false,
+      "stav": "chybi_main"
+    },
+    {
+      "modul": "scrapers.media",
+      "popis": "Mediální monitoring",
+      "povinny": false,
+      "stav": "chybi_main"
+    },
+    {
+      "modul": "scrapers.lide",
+      "popis": "Aktualizace osobností",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/samosprava/zastupitelstvo/clenove-1/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+    },
+    {
+      "modul": "scrapers.zaznamy",
+      "popis": "Záznamy zastupitelstva",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "[Errno 2] No such file or directory: 'yt-dlp'"
+    },
+    {
+      "modul": "scrapers.volby",
+      "popis": "Výsledky voleb po okrscích",
+      "povinny": false,
+      "stav": "chybi_main"
+    },
+    {
+      "modul": "scrapers.csu",
+      "popis": "Statistiky ČSÚ o městě",
+      "povinny": false,
+      "stav": "chybi_main"
+    },
+    {
+      "modul": "scrapers.firmy",
+      "popis": "Firmy se sídlem ve městě",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.podnikatele",
+      "popis": "Podnikatelé z rejstříku",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.geodata",
+      "popis": "Geodata a volební okrsky",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.pamatky",
+      "popis": "Kulturní památky",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.uzemni_plan",
+      "popis": "Územní plánování",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/urad/uzemni-planovani/uzemne-planovaci-dokumentace-a-studie/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+    },
+    {
+      "modul": "scrapers.monitor",
+      "popis": "Rozpočet z Monitoru st. pokladny",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.srovnani",
+      "popis": "Srovnání rozpočtů s podobnými městy",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.zaverky",
+      "popis": "Závěrky městských s.r.o. ve sbírce listin",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "scrapers.komise",
+      "popis": "Komise, výbory a zápisy z jednání",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/samosprava/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+    },
+    {
+      "modul": "scrapers.informace106",
+      "popis": "Žádosti podle zákona 106/1999",
+      "povinny": false,
+      "stav": "selhal",
+      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/urad/dokumenty/poskytnute-informace-106-1999-sb/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+    },
+    {
+      "modul": "pipeline.tagovani",
+      "popis": "Otagování usnesení",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.clanky",
+      "popis": "Rozbor článků zpravodaje",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.dodatky",
+      "popis": "Spojení dodatků se smlouvami",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.agregace_penez",
+      "popis": "Agregace peněz po letech",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.propojeni",
+      "popis": "Propojení lidí, firem a peněz",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.profily",
+      "popis": "Hlasovací profily",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.retez",
+      "popis": "Řetěz usnesení → smlouva → peníze",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.slibnik",
+      "popis": "Slibník — uložené úkoly a termíny",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.vysvedceni",
+      "popis": "Vysvědčení koalici 2022–2026",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.ucet_obdobi",
+      "popis": "Účet volebního období",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.rozpocet",
+      "popis": "Přehledy rozpočtu z Monitoru",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.dotace_prehled",
+      "popis": "Přehled dotací pro město a holding",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.prepis",
+      "popis": "Přepisy jednání",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.casova_osa",
+      "popis": "Jednotná časová osa",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.firmy_prehled",
+      "popis": "Přehled firem ve městě",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.podnikatele_prehled",
+      "popis": "Přehled podnikatelů",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.vydani",
+      "popis": "Sestavení týdenního vydání",
+      "povinny": true,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.komise_prehled",
+      "popis": "Rozbor zápisů z komisí",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.informace106_prehled",
+      "popis": "Rozbor žádostí o informace",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.retez_komise",
+      "popis": "Řetěz komise → rada",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.diagramy",
+      "popis": "Schémata projektu a města",
+      "povinny": false,
+      "stav": "ok"
+    },
+    {
+      "modul": "pipeline.znaky_sekci",
+      "popis": "Znaky sekcí pro rozcestník",
+      "povinny": false,
+      "stav": "ok"
+    }
+  ],
+  "uspech": false
+}
