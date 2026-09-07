@@ -49,6 +49,23 @@ const zapnuto = !!GA_ID;
             lista.hidden = false;
           });
 
+          // Volba padlá v jiné záložce. Bez tohohle by tahle jela dál
+          // s původním souhlasem až do přenačtení.
+          window.addEventListener('storage', (e) => {
+            if (e.key !== null && e.key !== KLIC_SOUHLASU) return;
+            let volba = null;
+            try {
+              volba = localStorage.getItem(KLIC_SOUHLASU);
+            } catch (err) {
+              /* privátní režim */
+            }
+            if (volba !== 'granted' && volba !== 'denied') return;
+            if (typeof window.gtag === 'function') {
+              window.gtag('consent', 'update', { analytics_storage: volba });
+            }
+            lista.hidden = true;
+          });
+
           lista.addEventListener('click', (e) => {
             const tlacitko = e.target.closest('[data-souhlas]');
             if (!tlacitko) return;
