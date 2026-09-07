@@ -1,0 +1,107 @@
+---
+/*
+ * Lišta se souhlasem s cookies. Ukáže se jen tomu, kdo se ještě nerozhodl;
+ * volba jde do localStorage a rovnou i do Google Consent Mode v2. Dokud není
+ * nastavené PUBLIC_GA_ID, neměří se nic a lišta se nevykreslí vůbec —
+ * ptát se na souhlas s něčím, co neběží, nedává smysl.
+ */
+import { GA_ID, KLIC_SOUHLASU } from '../lib/souhlas';
+
+const zapnuto = !!GA_ID;
+---
+
+{
+  zapnuto && (
+    <>
+      <div id="souhlas-cookies" class="souhlas-cookies" hidden>
+        <p class="souhlas-cookies__text">
+          Web měří anonymní návštěvnost (Google Analytics, Vercel). Bez souhlasu
+          se žádné analytické cookies neukládají.
+        </p>
+        <div class="souhlas-cookies__volby">
+          <button type="button" class="tlacitko" data-souhlas="denied">
+            Odmítnout
+          </button>
+          <button type="button" class="tlacitko tlacitko--hlavni" data-souhlas="granted">
+            Souhlasím
+          </button>
+        </div>
+      </div>
+
+      <script is:inline define:vars={{ KLIC_SOUHLASU }}>
+        (function () {
+          const lista = document.getElementById('souhlas-cookies');
+          if (!lista) return;
+
+          let ulozeno = null;
+          try {
+            ulozeno = localStorage.getItem(KLIC_SOUHLASU);
+          } catch (e) {
+            /* privátní režim — zeptáme se znovu */
+          }
+          if (ulozeno === 'granted' || ulozeno === 'denied') return;
+
+          lista.hidden = false;
+
+          lista.addEventListener('click', (e) => {
+            const tlacitko = e.target.closest('[data-souhlas]');
+            if (!tlacitko) return;
+            const volba = tlacitko.getAttribute('data-souhlas');
+
+            try {
+              localStorage.setItem(KLIC_SOUHLASU, volba);
+            } catch (err) {
+              /* privátní režim — volba platí jen pro tuto návštěvu */
+            }
+
+            // Ve vývoji GA neběží, pak není co aktualizovat.
+            if (typeof window.gtag === 'function') {
+              window.gtag('consent', 'update', {
+                ad_storage: volba,
+                ad_user_data: volba,
+                ad_personalization: volba,
+                analytics_storage: volba,
+              });
+            }
+
+            lista.hidden = true;
+          });
+        })();
+      </script>
+    </>
+  )
+}
+
+<style>
+  .souhlas-cookies {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.25rem;
+    background: var(--surface);
+    border-top: 1px solid var(--rule);
+    box-shadow: var(--stin);
+  }
+
+  .souhlas-cookies[hidden] {
+    display: none;
+  }
+
+  .souhlas-cookies__text {
+    margin: 0;
+    max-width: 60ch;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .souhlas-cookies__volby {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+</style>
