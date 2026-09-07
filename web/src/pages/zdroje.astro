@@ -17,6 +17,7 @@
  */
 import Zaklad from '../layouts/Zaklad.astro';
 import { nactiAdresar, nactiJson } from '../lib/data';
+import { GA_ID } from '../lib/souhlas';
 import { cislo, sklonuj } from '../lib/format';
 
 /* ── Čísla z dat ──────────────────────────────────────────────────────────
@@ -285,13 +286,45 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
       <li>typ zařízení, operační systém a prohlížeč včetně verze.</li>
     </ul>
 
-    <p>
-      <strong>Žádné cookies</strong> a měření si do prohlížeče nic neukládá — proto
-      tu není lišta se souhlasem. Návštěvník se rozpozná otiskem spočítaným
-      z požadavku a ten se po <strong>24 hodinách zahazuje</strong>, takže nevzniká
-      profil napříč návštěvami ani napříč weby. Požadavky míří na vlastní doménu
-      tohohle webu, ne na cizí měřicí server; zpracovává je Vercel, u kterého web běží.
-    </p>
+    {
+      !GA_ID && (
+        <p>
+          <strong>Žádné cookies</strong> a měření si do prohlížeče nic neukládá — proto
+          tu není lišta se souhlasem. Návštěvník se rozpozná otiskem spočítaným
+          z požadavku a ten se po <strong>24 hodinách zahazuje</strong>, takže nevzniká
+          profil napříč návštěvami ani napříč weby. Požadavky míří na vlastní doménu
+          tohohle webu, ne na cizí měřicí server; zpracovává je Vercel, u kterého web běží.
+        </p>
+      )
+    }
+
+    {
+      GA_ID && (
+        <>
+          <p>
+            <strong>Vercel žádné cookies nepoužívá</strong> a nic si do prohlížeče
+            neukládá. Návštěvník se rozpozná otiskem spočítaným z požadavku a ten se po{' '}
+            <strong>24 hodinách zahazuje</strong>, takže nevzniká profil napříč
+            návštěvami ani napříč weby. Požadavky míří na vlastní doménu tohohle webu.
+          </p>
+
+          <p>
+            Vedle toho běží <strong>Google Analytics</strong> — a to je jiná váha, proto
+            se na něj web ptá lištou se souhlasem. Dokud na ní nekliknete
+            „Souhlasím“, <strong>GA neukládá žádné cookies</strong> a jede v omezeném
+            režimu bez identifikátorů. Teprve po souhlasu si uloží cookies{' '}
+            <code>_ga</code> a <code>_ga_*</code> a data odcházejí na server Googlu,
+            tedy mimo doménu tohohle webu.
+          </p>
+
+          <p>
+            Souhlas se týká <strong>jen měření návštěvnosti</strong>. Reklamní účely
+            a personalizace zůstávají zamítnuté i po kliknutí na „Souhlasím“ — web na
+            ně souhlas nežádá, takže ho ani neuděluje.
+          </p>
+        </>
+      )
+    }
 
     <p>
       Přibližné místo a verze prohlížeče jsou víc, než potřebujeme, a víc, než tu
@@ -301,7 +334,7 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
     </p>
 
     <p>
-      Web si ale <strong>dvě věci v prohlížeči ukládá</strong> — a je v tom rozdíl,
+      Web si ale <strong>{GA_ID ? 'tři věci' : 'dvě věci'} v prohlížeči ukládá</strong> — a je v tom rozdíl,
       který stojí za vysvětlení: <strong>neodcházejí nikam</strong>, zůstávají
       u vás v zařízení a nikdo jiný se k nim nedostane.
     </p>
@@ -315,11 +348,20 @@ const zadosti = kladne(z106.data?.souhrn?.v_rejstriku);
         <code>sledovana-temata</code> — témata, která si označíte na úvodní stránce.
         Web je statický a bez přihlášení, takže výběr nemá kam jinam uložit.
       </li>
+      {
+        GA_ID && (
+          <li>
+            <code>marianky.cookieConsent.v1</code> — vaše odpověď na liště se
+            souhlasem. Bez ní by se lišta ptala při každém načtení.
+          </li>
+        )
+      }
     </ul>
 
     <p>
-      Obojí smažete tím, že si v prohlížeči vyčistíte data téhle stránky. Nic
-      z toho se neodesílá a nic z toho není v měření návštěvnosti.
+      {GA_ID ? 'Všechno to' : 'Obojí'} smažete tím, že si v prohlížeči vyčistíte
+      data téhle stránky. Nic z toho se neodesílá a nic z toho není v měření
+      návštěvnosti.
     </p>
 
     <p>

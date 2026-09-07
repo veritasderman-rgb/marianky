@@ -6,6 +6,7 @@ import Znacka from '../components/Znacka.astro';
 import Analytics from '@vercel/analytics/astro';
 import GoogleAnalytika from '../components/GoogleAnalytika.astro';
 import SouhlasSCookies from '../components/SouhlasSCookies.astro';
+import { GA_ID } from '../lib/souhlas';
 
 export interface Props {
   titulek: string;
@@ -260,9 +261,25 @@ const svgZnaku =
         </p>
         <p>
           Mapy se kreslí z otevřených geodat; zdroj a licenci uvádí každá mapa u sebe.
-          Návštěvnost měříme přes Vercel Web Analytics: zobrazení stránek
-          <strong> bez cookies</strong> a bez profilů jednotlivých čtenářů. Co všechno
-          se u toho ukládá, stojí na stránce <a href="/zdroje">Zdroje a poděkování</a>.
+          {
+            GA_ID ? (
+              <>
+                Návštěvnost měříme přes Vercel Web Analytics (bez cookies) a po vašem
+                souhlasu i přes Google Analytics. Co všechno se u toho ukládá, stojí
+                na stránce <a href="/zdroje">Zdroje a poděkování</a>;
+                {' '}
+                <button type="button" data-nastaveni-cookies class="odkaz-jako-text">
+                  souhlas jde kdykoli změnit
+                </button>.
+              </>
+            ) : (
+              <>
+                Návštěvnost měříme přes Vercel Web Analytics: zobrazení stránek
+                <strong> bez cookies</strong> a bez profilů jednotlivých čtenářů. Co všechno
+                se u toho ukládá, stojí na stránce <a href="/zdroje">Zdroje a poděkování</a>.
+              </>
+            )
+          }
         </p>
       </div>
     </footer>

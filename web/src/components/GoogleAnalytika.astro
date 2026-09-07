@@ -27,10 +27,12 @@ const zapnuto = import.meta.env.PROD && !!GA_ID;
         } catch (e) {
           /* privátní režim — zůstane denied */
         }
+        // Reklamní souhlas zůstává vždycky denied — lišta mluví jen o měření
+        // návštěvnosti, na reklamní účely se neptá, tak je nesmíme udělit.
         gtag('consent', 'default', {
-          ad_storage: souhlas ? 'granted' : 'denied',
-          ad_user_data: souhlas ? 'granted' : 'denied',
-          ad_personalization: souhlas ? 'granted' : 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
           analytics_storage: souhlas ? 'granted' : 'denied',
           wait_for_update: 500,
         });
