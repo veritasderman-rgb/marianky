@@ -538,11 +538,18 @@ def diagram_zdroje() -> dict:
 
     # Názvy sekcí se berou ze znaků, aby se diagram nerozešel s rozcestníkem.
     znaky = (nacti("znaky/sekce.json") or {}).get("znaky") or {}
+    # Tytéž názvy jako web/src/lib/sekce.ts. Sekce, která tu chybí, se
+    # v diagramu ukáže pod svým klíčem — je to vidět, ne zamlčené.
     nazvy = {
         "vydani": "Týdenní přehled", "usneseni": "Usnesení", "hlasovani": "Hlasování",
-        "penize": "Peníze města", "retez": "Od usnesení k penězům", "lide": "Lidé",
-        "firmy": "Firmy", "propojeni": "Propojení", "volby": "Volby", "mapa": "Mapa",
-        "statistika": "Čísla o městě", "zpravodaj": "Zpravodaj", "historie": "Historie",
+        "slibnik": "Slibník", "vysvedceni": "Jak koalice plní sliby",
+        "ucet-obdobi": "Účet volebního období", "komise": "Komise a výbory",
+        "informace": "Žádosti o informace",
+        "penize": "Peníze města", "hospodareni": "Hospodaření města",
+        "tisicovka": "Kam šla moje tisícovka", "retez": "Od usnesení k penězům",
+        "lide": "Lidé", "firmy": "Firmy", "propojeni": "Propojení",
+        "volby": "Volby", "mapa": "Mapa", "statistika": "Čísla o městě",
+        "diagramy": "Schémata", "zpravodaj": "Zpravodaj", "historie": "Historie",
     }
 
     sekce_poradi: list[str] = []

@@ -8,16 +8,25 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 | | |
 |---|---|
-| jednání rady a zastupitelstva | **690** (2012–2026) |
-| bodů usnesení | **12 890**, otagovaných podle 33 témat |
-| hlasování | **12 349**, z toho **121 935 jmenovitých hlasů** |
-| smluv v registru | **6 521** za 25 subjektů městského holdingu |
-| protistran města | **1 566**, roky 1994–2026 |
+| jednání rady a zastupitelstva | **692** (2012–2026) |
+| bodů usnesení | **12 908**, otagovaných podle 33 témat |
+| hlasování | **12 367**, z toho **122 043 jmenovitých hlasů** |
+| uložených úkolů ve slibníku | **863**, z toho 135 s termínem |
+| hlasování od voleb 2022 na účtu období | **612** |
+| zápisů z komisí a výborů | **385**, z nich 212 doporučení radě |
+| žádostí o informace podle stovky šestky | **96** rozebraných ze 127 v rejstříku |
+| smluv v registru | **6 684** za 24 subjektů městského holdingu |
+| protistran města | **1 716**, roky 1994–2026 |
+| rozpočet z Monitoru státní pokladny | roky **2010–2026**, po konsolidaci |
+| prověřených projektů ve vysvědčení koalici | **38** a 28 slibů z programového prohlášení |
+| firem se sídlem ve městě (ARES) | **4 177** |
 | čísel zpravodaje | **122** (02/2016–08/2026), rozebraných na **4 519 článků** |
-| osobností | **199** v osmi kategoriích |
-| mediálních článků | **713** (2004–2026) |
-| spojení usnesení → smlouva → peníze | **2 289** |
-| týdenních vydání | **13** včetně zpětného archivu |
+| osobností | **229** v osmi kategoriích |
+| mediálních článků | **710** (2004–2026) |
+| spojení usnesení → smlouva → peníze | **2 501** |
+| volebních cyklů po okrscích | **41** |
+| schémat vykreslených z dat | **9** |
+| týdenních vydání | **16** včetně zpětného archivu |
 
 ## Co web umí
 
@@ -27,7 +36,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Hospodaření** — rozpočet města z Monitoru státní pokladny od roku 2010: příjmy a výdaje po konsolidaci, saldo, kam peníze jdou a odkud přicházejí, plnění plánu, majetek, dluhy a výkazy příspěvkových organizací. Covidová léta 2020–2021 jsou v grafech vyznačená a popsaná čísly. Čísla ověřená dvěma nezávislými kontrolami — proti souhrnům výkazů a proti usnesením zastupitelstva. K tomu čtyři další pohledy: **poplatek z pobytu** (nejcitlivější covidový ukazatel lázeňského města), **srovnání s pěti podobnými městy na obyvatele** (Monitor + obyvatelé ČSÚ), **dotace** od státu a EU podle Hlídače a **závěrky městských s.r.o. ve sbírce listin** — kdo je ukládá, za které roky a kde chybí.
 
-**Hlasování podle témat** — 12 349 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
+**Hlasování podle témat** — 12 367 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
 
 **Kam šla moje tisícovka** — rozpočet přepočtený na jednoho člověka: kolik z každé pomyslné tisícovky výdajů jde na školy, dopravu nebo úřad. S výslovnou větou, že to není osobní daň.
 
@@ -35,11 +44,25 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Účet volebního období** — nejtěsněji schválená hlasování od voleb 2022, účast každého zastupitele a shoda s vlastním klubem (počítaná jen z hlasování, kde se klub sám rozdělil). S pastí zdroje řečenou hned v úvodu: portál města zveřejňuje jen schválená hlasování.
 
+**Vysvědčení koalici** — všech 38 projektů z projektového portálu koalice porovnaných s registrem smluv, dotacemi a čerpáním rozpočtu, k tomu 28 slibů z programového prohlášení. Dvě vrstvy, které se nesmí slít: fakta mají zdroj, známka je hodnocení. Sedm slibů má stav „nedohledáno", ne „nesplněno".
+
+**Komise a výbory** — co komise navrhly radě a co s tím rada udělala (doložené odděleně od odhadu, s naměřenou úspěšností odhadu), docházka členů a hosté z firem dohledaní v registru smluv.
+
+**Žádosti o informace** — na co se lidé ptali podle zákona 106/1999 Sb. a co úřad odpověděl. Jediný zdroj, kde je vidět poptávka po informacích, ne jen to, co úřad zveřejnit chtěl.
+
 **Kdo je kdo** — profily s hlasovací historií, účastí a aktivitou podle témat. U zastupitelů i seznam **všech firem, kde jsou aktivní** — včetně těch, které s městem vůbec neobchodují. To je smyslem: ukázat celý obrázek, ne jen podezřelé věci.
 
 **Propojení** — kdo ze samosprávy sedí ve kterých firmách a kolik ty firmy od města dostaly. Fakta vedle sebe, úsudek na čtenáři.
 
+**Firmy, mapa, volby, čísla o městě** — firmy se sídlem ve městě z rejstříku ARES, mapa z otevřených geodat (památky, prameny, okrsky), výsledky voleb po okrscích vždy s absolutními počty vedle mapy, a časové řady ČSÚ o obyvatelích, práci a cestovním ruchu.
+
+**Schémata** — devět diagramů (holding města, kdo řídí město, datový tok týdenního běhu, který zdroj plní kterou sekci…) vykreslených při buildu z dat, ne v kreslicím nástroji. Ke každému patří tabulka s týmiž údaji.
+
 **Archiv zpravodaje** — 4 519 článků z jedenácti ročníků, fulltextově prohledávatelných.
+
+**Historie města** — dějiny po obdobích a 100 datovaných událostí; sporné údaje (prameny se rozcházejí) jsou označené jinak než odhady.
+
+**Úvodní stránka jako dashboard** — hero s živými počty, grafický rozcestník se znaky z dat, poslední vydání, deník změn („Co v přehledu přibylo", `config/novinky.json`) a tabulka **Stav sběru dat** pro všech 22 sekcí: kolik záznamů sekce má, k jakému dni jsou, jak dopadl krok posledního týdenního běhu (z `data/logy/*/beh.json`) a odkud data pocházejí.
 
 **Řetěz usnesení → smlouva → peníze** — co rada schválila, jaká smlouva se podepsala a kolik odteklo. U každého spojení je uvedená jistota; nízká je označená jako domněnka.
 

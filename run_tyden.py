@@ -127,7 +127,13 @@ def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
     puvodni_argv = sys.argv
     sys.argv = [modul.replace(".", "/") + ".py"]
     try:
-        m.main()
+        navrat = m.main()
+        # Část modulů (monitor, srovnani, muml…) nehází výjimku, ale vrací
+        # nenulový kód. Do 9/2026 se to tu zahazovalo a selhaný sběr stál
+        # v souhrnu jako „ok" — web pak ukazoval minulá data jako čerstvá.
+        if isinstance(navrat, int) and not isinstance(navrat, bool) and navrat != 0:
+            print(f"  … skončil s návratovým kódem {navrat}", flush=True)
+            return {**vysledek, "stav": "selhal", "chyba": f"návratový kód {navrat}"}
         return {**vysledek, "stav": "ok"}
     except SystemExit as e:
         if e.code:
@@ -181,11 +187,21 @@ def main() -> int:
         print("  explicitně uvést, že data chybí — nesmí vypadat, že se nic nedělo.")
     print("=" * 64)
 
+    konec = datetime.now(timezone.utc)
     souhrn = {
         "datum": dnes.isoformat(),
         "obdobi_od": obdobi_od.isoformat(),
         "obdobi_do": dnes.isoformat(),
-        "trvani_s": round((datetime.now(timezone.utc) - zacatek).total_seconds(), 1),
+        # Začátek a konec běhu, aby se logy modulů (mají vlastní `zacatek`)
+        # daly spárovat s tímhle během a ne s ručním spuštěním modulu o pár
+        # hodin později, které log téhož jména přepíše.
+        "zacatek": zacatek.isoformat(),
+        "konec": konec.isoformat(),
+        "trvani_s": round((konec - zacatek).total_seconds(), 1),
+        # Režim běhu se zapisuje, aby šlo z logu poznat cílený nebo
+        # přepočtový běh od úplného. Bez toho by se `--jen usneseni` četlo
+        # jako běh, ve kterém všechno ostatní chybí bez důvodu.
+        "rezim": {"bez_sberu": bool(args.bez_sberu), "jen": list(args.jen or [])},
         "kroky": vysledky,
         "uspech": not kriticke,
     }

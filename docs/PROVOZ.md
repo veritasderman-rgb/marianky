@@ -139,6 +139,18 @@ Není povinný: bez něj se web sestaví a odkazy fungují, dlaždice rozcestní
 
 Znak je vždy graf ze skutečných dat, nikdy piktogram. Proto se dá i pokazit stejně jako graf, a `kontrola.py` na to má test: **znak nesmí kreslit ve všech bodech stejnou hodnotu.** Přesně to se stalo napoprvé — znak hlasování ukazoval „podíl schválených návrhů", jenže portál zveřejňuje jen schválená hlasování, takže podíl byl u všech 12 349 záznamů 100 %. Obrázek se tvářil, že něco měří, a přitom kreslil konstantu. Teď ukazuje počet hlasování za rok s barevnou špičkou nejednomyslných — a je z něj vidět, že jich ubývá: ze 131 z 471 v roce 2012 na 57 z 968 v roce 2025.
 
+### Stav sběru dat na úvodní stránce
+
+Tabulka „Stav sběru dat" na `/` se **neskládá ručně**. Dřív měla šest řádků z doby šesti sekcí a o zbylých šestnácti mlčela. Teď ji staví `web/src/lib/stav_sekci.ts` ze čtyř věcí, které už existují: rejstříku sekcí (`web/src/lib/sekce.ts`), znaků (`data/znaky/sekce.json` — odtud počet záznamů a cesta ke zdrojovému souboru), záznamu posledního běhu (`data/logy/<den>/beh.json`, nejnovější den, který ho má) a mapy zdrojů (`config/diagramy.json`).
+
+U každé sekce se rozlišují **tři různé věci**: jestli data na disku jsou, k jakému dni jsou (`generovano` v souboru; u usnesení a hlasování datum posledního jednání), a jak dopadl krok běhu, který sekci plní. Selhaný krok nad staršími daty je běžný stav — web ukazuje minulý výsledek a tabulka to řekne. Mapa „krok → sekce" je v `stav_sekci.ts` (`KROKY_SEKCE`); **když přibude modul do `run_tyden.py`, přibude i tam**, jinak sekce hlásí „v posledním běhu neběžel žádný krok".
+
+Krok se hodnotí ze tří míst: z `beh.json` (stav kroku a **režim běhu** — `rezim.bez_sberu`, `rezim.jen`), z logu modulu téhož dne (`uspech`, `chyby` — krok, který doběhl, ale hlásí chyby, je „s chybami", ne „v pořádku") a z toho, které očekávané kroky v běhu **vůbec nebyly**: cílený běh `--jen usneseni` nechá tagování neběžet a řádek to řekne („část kroků neběžela"), nezelená se. Log modulu se k běhu páruje podle času: `beh.json` nese `zacatek` a `konec`, log modulu svůj `zacatek`, a bere se jen log, který padne do okna běhu — ruční spuštění modulu o pár hodin později log téhož jména přepíše a nesmí měnit, jak běh dopadl. Záznamy před 9/2026 okno nemají, tam zbývá shoda podle dne. Jména logů, která se neshodují se jménem modulu (web města píše `muml-*`, snímky `muml-snapshoty`), jsou vyjmenovaná v `stav_sekci.ts` (`LOGY_MODULU`). `run_tyden.py` navíc od 9/2026 překládá nenulový návratový kód `main()` na `selhal` — monitor, srovnání a web města tak hlásí selhání, dřív stály v souhrnu jako `ok`.
+
+Běh, který skončí `chybi_main`, tabulka ukáže jako „přeskočen: modul nemá vstupní bod". Přesně tak se od srpna 2026 tiše přeskakoval rozbor článků zpravodaje (`pipeline/clanky.py` měl jen `hlavni()`); nová čísla se na články nerozebírala. Modul má teď `main()`, inkrementální — rozebere jen to, co sběrač stáhl nově.
+
+Deník změn „Co v přehledu přibylo" bere z `config/novinky.json`. Je to autorská znalost, ne údaj o městě — proto config. Když přibude sekce nebo napojení, přidej položku (datum, nadpis, věta, cesta), nejnovější nahoru.
+
 ### Docházka, členství a hosté z komisí
 
 `pipeline.komise_prehled` kromě rozboru zápisů skládá ještě tři soubory:
