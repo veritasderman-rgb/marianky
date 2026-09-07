@@ -24,7 +24,12 @@ permissions:
 jobs:
   beh:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # Dvě hodiny nestačily ANI JEDNOU: běhy 23. 8., 30. 8. a 6. 9. 2026 se
+    # na tomhle limitu shodly zrušit. S prázdnou cache se stahuje celý archiv
+    # úřední desky tempem šetrným k webu města a to se do dvou hodin nevejde.
+    # S teplou cache trvá celý běh ~22 minut, takže tenhle limit doléhá jen
+    # na první běh po vypršení cache.
+    timeout-minutes: 240
 
     steps:
       - uses: actions/checkout@v4
@@ -43,8 +48,15 @@ jobs:
 
       # Cache šetří web města, jehož strop je sdílený pro všechny moduly.
       # Bez ní by se každý týden stahoval celý archiv znovu.
+      #
+      # ROZDĚLENO NA restore + save SCHVÁLNĚ. Složené `actions/cache@v4`
+      # ukládá až v post-kroku, a ten se u ZRUŠENÉHO běhu neprovede. Tím
+      # vznikla smyčka, která se sama držela: běh spadl na limit → cache se
+      # neuložila → klíč `sberace-{run_id}` nikdy nevznikl → `restore-keys`
+      # neměly co najít → další týden začal zase s prázdnou cache a spadl
+      # taky. Tři týdny po sobě, viz běhy 23. 8., 30. 8. a 6. 9. 2026.
       - name: Obnovit cache sběračů
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: .cache
           key: sberace-${{ github.run_id }}
@@ -59,6 +71,18 @@ jobs:
           else
             python3 run_tyden.py
           fi
+
+      # `always()` běží i při zrušení, tedy i po vyčerpání `timeout-minutes` —
+      # a právě to smyčku rozetne: i běh, který se nedopočítal, po sobě nechá
+      # staženo, na čem příští týden staví. Stojí hned za během, ne až na
+      # konci, aby uložení nezáviselo na kontrole ani na sestavení webu.
+      # Klíč nese `run_id`, je tedy pokaždé jiný a zápis nekoliduje.
+      - name: Uložit cache sběračů
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: sberace-${{ github.run_id }}
 
       # Tohle je pojistka mezi během a publikací. Když neprojde, nová data
       # se nezveřejní a venku zůstane minulé číslo — lepší než vydat nové
