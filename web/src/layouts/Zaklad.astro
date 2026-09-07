@@ -4,6 +4,8 @@ import { SEKCE_HLEDAT, SEKCE_UVOD, SKUPINY, skupinaSekce } from '../lib/sekce';
 import { kresliZnak, nactiZnaky } from '../lib/znaky';
 import Znacka from '../components/Znacka.astro';
 import Analytics from '@vercel/analytics/astro';
+import GoogleAnalytika from '../components/GoogleAnalytika.astro';
+import SouhlasSCookies from '../components/SouhlasSCookies.astro';
 
 export interface Props {
   titulek: string;
@@ -122,6 +124,7 @@ const svgZnaku =
         }
       })();
     </script>
+    <GoogleAnalytika />
     <Analytics />
   </head>
 
@@ -263,6 +266,8 @@ const svgZnaku =
         </p>
       </div>
     </footer>
+
+    <SouhlasSCookies />
 
     <script>
       /* ── Skupiny v navigaci ───────────────────────────────────────────

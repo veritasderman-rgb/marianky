@@ -1,0 +1,45 @@
+---
+/*
+ * GA4 s Google Consent Mode v2.
+ *
+ * Načte se jen v produkčním buildu a jen když je nastavené PUBLIC_GA_ID —
+ * bez proměnné se do stránky nedostane žádný cizí kód. Výchozí stav souhlasu
+ * (denied) se nastaví ještě před gtag.js; dříve uloženou volbu bere
+ * z localStorage, takže vracející se čtenář lištu nevidí znovu.
+ */
+import { GA_ID, KLIC_SOUHLASU } from '../lib/souhlas';
+
+const zapnuto = import.meta.env.PROD && !!GA_ID;
+---
+
+{
+  zapnuto && (
+    <>
+      <script is:inline define:vars={{ KLIC_SOUHLASU }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        window.gtag = window.gtag || gtag;
+        var souhlas = false;
+        try {
+          souhlas = localStorage.getItem(KLIC_SOUHLASU) === 'granted';
+        } catch (e) {
+          /* privátní režim — zůstane denied */
+        }
+        gtag('consent', 'default', {
+          ad_storage: souhlas ? 'granted' : 'denied',
+          ad_user_data: souhlas ? 'granted' : 'denied',
+          ad_personalization: souhlas ? 'granted' : 'denied',
+          analytics_storage: souhlas ? 'granted' : 'denied',
+          wait_for_update: 500,
+        });
+      </script>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+      <script is:inline define:vars={{ GA_ID }}>
+        gtag('js', new Date());
+        gtag('config', GA_ID);
+      </script>
+    </>
+  )
+}
