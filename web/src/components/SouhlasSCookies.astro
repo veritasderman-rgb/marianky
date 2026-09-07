@@ -39,9 +39,15 @@ const zapnuto = !!GA_ID;
           } catch (e) {
             /* privátní režim — zeptáme se znovu */
           }
-          if (ulozeno === 'granted' || ulozeno === 'denied') return;
+          if (ulozeno !== 'granted' && ulozeno !== 'denied') lista.hidden = false;
 
-          lista.hidden = false;
+          // Odkaz „Nastavení cookies" v patičce lištu otevře znovu. Souhlas musí
+          // jít odvolat stejně snadno, jako se dával.
+          document.addEventListener('click', (e) => {
+            if (!e.target.closest('[data-nastaveni-cookies]')) return;
+            e.preventDefault();
+            lista.hidden = false;
+          });
 
           lista.addEventListener('click', (e) => {
             const tlacitko = e.target.closest('[data-souhlas]');
@@ -54,14 +60,10 @@ const zapnuto = !!GA_ID;
               /* privátní režim — volba platí jen pro tuto návštěvu */
             }
 
-            // Ve vývoji GA neběží, pak není co aktualizovat.
+            // Ve vývoji GA neběží, pak není co aktualizovat. Přepíná se jen
+            // analytics_storage; reklamní souhlas zůstává denied.
             if (typeof window.gtag === 'function') {
-              window.gtag('consent', 'update', {
-                ad_storage: volba,
-                ad_user_data: volba,
-                ad_personalization: volba,
-                analytics_storage: volba,
-              });
+              window.gtag('consent', 'update', { analytics_storage: volba });
             }
 
             lista.hidden = true;
