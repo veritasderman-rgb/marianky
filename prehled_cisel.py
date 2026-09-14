@@ -3,8 +3,14 @@
 Proč skript a ne ruční tabulka: úvodní stránka webu si tatáž čísla počítá
 živě a má u toho napsané, proč — „napsat ta čísla do textu ručně by
 znamenalo, že za měsíc lžou". U README to platí stejně a lhalo to: před
-během 14. 9. 2026 tam stálo 692 jednání (bylo 695), 12 908 bodů usnesení
-(12 936), 6 684 smluv (6 996) a 16 týdenních vydání (17).
+během 14. 9. 2026 tam stálo 692 jednání (bylo 693), 12 908 bodů usnesení
+(12 914), 12 367 hlasování (12 373) a 16 týdenních vydání (17).
+
+Pozor na opačnou chybu: **číslo, které se dá vzít z hotové agregace, se
+nikdy nepočítá znovu z podkladů.** První verze tohohle skriptu sečetla
+smlouvy přes soubory v `data/penize/smlouvy/`, vyšlo jí 6 996 místo 6 684
+a chystala se README „opravit" na nadsazené číslo. Kde agregace nebo
+`souhrn` existuje, čte se odtud.
 
 Pouští se po týdenním běhu a jeho výstup se vloží do README místo tabulky:
 
@@ -95,18 +101,23 @@ def spocitej() -> dict:
         u["zadosti_rozebranych"] = d["souhrn"]["rozebranych"]
         u["zadosti_v_rejstriku"] = d["souhrn"]["v_rejstriku"]
 
-    # ---- smlouvy: součet přes subjekty holdingu -------------------------
-    soubory = glob.glob(str(KOREN / "data/penize/smlouvy/*.json"))
-    if soubory:
-        smluv = 0
-        for f in soubory:
-            with open(f, encoding="utf-8") as fh:
-                d = json.load(fh)
-            smluv += len(d.get("smlouvy") or [])
-        u["smluv"] = smluv
-    if (d := nacti("config/subjekty.json")) is not None:
-        # Město samo mezi „subjekty holdingu" nepatří — je to jejich zřizovatel.
-        u["subjektu_holdingu"] = sum(1 for s in d["subjekty"] if s.get("typ") != "mesto")
+    # ---- smlouvy: JEN z hotové agregace, nikdy součtem řádků ------------
+    # Sečíst `smlouvy` přes soubory v `data/penize/smlouvy/` dá 6 996, a to je
+    # o 312 víc, než kolik má město s holdingem smluv. Dvě různé příčiny:
+    #
+    #  - **33 smluv je nemocnice**, která už městu nepatří (`vlastnictvi:
+    #    "mimo_mesto"`). Sleduje se dál kvůli významu pro město, ale do
+    #    součtů holdingu nevstupuje.
+    #  - **279 smluv leží ve dvou souborech naráz.** Smlouva mezi dvěma členy
+    #    holdingu je u obou, takže součet řádků ji počítá dvakrát.
+    #
+    # `agregace_penez` obojí řeší a publikuje jediný správný počet; brát ho
+    # odjinud znamená nadsazené číslo. Tohle je taky důvod, proč se počet
+    # subjektů bere odtud a ne z `config/subjekty.json`: konfigurace vede
+    # nemocnici mezi subjekty, holding v agregaci ji správně nemá.
+    if (d := nacti("data/penize/agregace/souhrn.json")) is not None:
+        u["smluv"] = d["celkem"]["smluv"]
+        u["subjektu_holdingu"] = len(d["holding"])
 
     if (d := nacti("data/penize/agregace/protistrany.json")) is not None:
         protistrany = d["protistrany"]
