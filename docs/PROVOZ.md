@@ -23,11 +23,13 @@ Vydání se generuje do `data/vydani/`, web se staví z `web/`.
 
 ---
 
-## Dvě věci, které musí proběhnout z tvé sítě
+## Co musí proběhnout z tvé sítě
 
-Kontejner, ve kterém projekt vznikal, má u dvou zdrojů zablokovaný přístup. **Není to chyba kódu** a z jiné sítě to má fungovat napoprvé.
+Zbyl jeden zdroj: záznamy jednání na YouTube. Kontejner, ve kterém projekt vznikal, má na ně zablokovaný přístup — **není to chyba kódu**. Pozor ale na to, co z jiné sítě NEspraví: titulky u záznamů města vypnuté jsou, a to platí odkudkoliv (viz níž).
 
-### 1. Přepisy jednání zastupitelstva
+Úřední deska tady dřív stála jako druhá věc. **Není to pravda a sekce je smazaná** — příčina byla zaměněná adresa, ne blokace, a je opravená; běh 14. 9. 2026 stáhl 6 747 dokumentů do 11. 9. 2026 bez chyby. Co o tom zdroji platí dnes, je v [`datove-zdroje.md`](datove-zdroje.md) a v odstavci o tempu níž.
+
+### Přepisy jednání zastupitelstva
 
 YouTube na sdílené adrese kontejneru vracel `HTTP 429`. Výpis playlistu prošel (proto víme, že záznamů je 94), stažení titulků ne.
 
@@ -91,16 +93,18 @@ cp muj-prepis.txt data/zaznamy/titulky/ml3vq41WpEs.txt
 python3 -m pipeline.prepis
 ```
 
-### 2. Aktuální úřední deska
+---
 
-`www.muml.cz` nám **resetuje spojení ještě před TLS**, a to i na `robots.txt`. Portál usnesení na hostu `usneseni.muml.cz` přitom jede normálně, takže jde o blokaci konkrétního hosta, ne o výpadek města.
+## Web města má sdílený strop, ne blokaci
 
-Nejspíš jsme si to způsobili sami: v jedné fázi na web chodilo pět modulů naráz a stáhlo se z něj 1,7 GB. `lib/core.fetch()` proto teď drží minimální odstup mezi požadavky na stejný server (1,5 s na `muml.cz`), aby se to neopakovalo.
+`www.muml.cz` odpovídá normálně — běh 14. 9. 2026 z něj stáhl celou úřední desku (6 747 dokumentů do 11. 9. 2026), archiv novinek (2 857 článků) i zbytek, bez jediné chyby. Když ho někdy najdeš „nedostupný", **nesahej po tom jako po vlastnosti zdroje**: strop je sdílený a nejspíš jsme si ho vyčerpali sami. V jedné fázi na web chodilo pět modulů naráz a stáhlo se z něj 1,7 GB; blokace pak trvala zhruba 90 minut a dopadla i na moduly, které s tím neměly nic společného.
 
-**Důsledek pro data:** úřední deska je natažená jen do **května 2025** a chybí aktuální stav. Týdenní vydání to nezakrývá — sekce dostane stav `zastarale` a napíše, že o tom období nemáme data.
+`lib/core.fetch()` proto drží minimální odstup mezi požadavky na stejný server (1,5 s na `muml.cz`), sdílený přes soubor mezi procesy. **Kdo z muml.cz tahá hromadně, počítá s tím, že ten strop platí pro všechny běžící moduly naráz** — dvě vlákna tempo nezdvojnásobí.
+
+Daň za to je čas: celý `scrapers.muml` trvá **hodinu a půl**, z toho 73 minut stahování detailů novinek a 21 minut detailů desky. Právě tohle vyčerpalo dvouhodinový limit v GitHub Actions u běhů 23. 8., 30. 8. a 6. 9. 2026.
 
 ```bash
-python3 scrapers/muml.py        # až bude web dostupný
+python3 scrapers/muml.py        # jen web města
 python3 -m pipeline.vydani      # přegenerovat vydání
 ```
 
@@ -260,7 +264,7 @@ Do gitu jde **extrahovaný text zpravodaje, ne PDF** — originály mají 1,7 GB
 | `503` z portálu usnesení | chybí `User-Agent` | `core.fetch()` ji posílá; vlastní klient si ji musí přidat |
 | `500` z AJAX výpisu usnesení | chybí `X-Requested-With: XMLHttpRequest` | předat přes `headers=` |
 | rozsypaná čeština | odpověď nemá v `Content-Type` charset | `core.fetch()` to řeší; vlastní klient musí dekódovat sám |
-| `000` / reset spojení z `muml.cz` | blokace hosta | počkat, spustit odjinud; tempo drží `core.fetch()` |
+| `000` / reset spojení z `muml.cz` | vyčerpaný sdílený strop, nejspíš náš vlastní | **počkat** (trvalo ~90 min); spustit odjinud nepomůže, strop je na webu města, ne na nás. Tempo drží `core.fetch()` |
 | `429` z YouTube | omezení sdílené adresy | spustit z vlastní sítě |
 | `302` na přihlášení z Hlídače | chybí nebo je neplatný token | zkontrolovat `.env` |
 | `apt-get` selže na 404 u poppleru | zastaralý index | nejdřív `apt-get update` |

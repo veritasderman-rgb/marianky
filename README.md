@@ -103,9 +103,10 @@ Podrobnosti a řešení potíží v [`docs/PROVOZ.md`](docs/PROVOZ.md).
 
 ## Stav
 
-Fáze 1 až 4 hotové. Dvě věci musí proběhnout z jiné sítě, než ve které projekt vznikal:
+Fáze 1 až 4 hotové. Zbývá jedna věc, a nestačí na ni jiná síť:
 
-- **Přepisy jednání zastupitelstva** — kód je hotový a otestovaný, ale YouTube vracel kontejneru `429`. Ověřeno, že záznamů je 94 a mají v názvu datum, takže se spárují s usneseními.
-- **Aktuální úřední deska** — `www.muml.cz` nám resetuje spojení; data končí v květnu 2025 a vydání to přiznává stavem `zastarale`.
+- **Přepisy jednání zastupitelstva** — **titulky u záznamů města nejsou.** Otestováno osm záznamů napříč roky 2024–2026, u všech `TranscriptDisabledError`, zatímco kontrolní video s titulky prošlo. Není to tedy blokace prostředí a žádný nástroj na stahování přepisů nepomůže — není co stáhnout. Jediná cesta vede přes přepis ze zvuku (Whisper) a rozsah je změřený z playlistu: 93 záznamů, **312 hodin** zvuku, medián 3,5 h. To je práce na dny strojového času. Stahování zvuku navíc musí běžet z vlastní sítě, YouTube vrací kontejneru `429`. Podrobně v [`docs/PROVOZ.md`](docs/PROVOZ.md).
+
+**Úřední deska už zaseklá není.** Dřív tu stálo, že `www.muml.cz` resetuje spojení a data končí v květnu 2025. Příčina byla jiná a je opravená: sbíralo se z `/urad/uredni-deska-archiv/`, což je archiv *složek* dokumentů a ten opravdu končí rokem 2025, místo z živé desky na `/urad/uredni-deska/`. Běh 14. 9. 2026 stáhl **6 747 dokumentů, 2013–2026**, bez jediné chyby. Web města má ale sdílený strop — `lib/core.fetch()` proto drží odstup 1,5 s a celý `scrapers.muml` trvá hodinu a půl.
 
 **Portál je veřejný**, bez hesla a bez přihlášení. `robots.txt` pouští vyhledávače dovnitř a generuje se sitemap — kdo hledá, jak zastupitel hlasoval, má sem dojít. Není to web města ani jeho oficiální kanál.
