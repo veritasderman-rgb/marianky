@@ -867,7 +867,7 @@ def doplnit(cesta: Path, log: Log) -> int:
 # CLI
 # --------------------------------------------------------------------------
 
-def hlavni() -> int:
+def hlavni(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="B3 — mediální monitoring")
     ap.add_argument("--historie", action="store_true",
                     help="dávkové natažení archivu, co nejhlouběji")
@@ -887,7 +887,7 @@ def hlavni() -> int:
                     help="vynechá stránkované hledání, jen sitemapy")
     ap.add_argument("--uklid", action="store_true",
                     help="vyhodí z dat záznamy, které nejsou zprávy")
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     log = Log("media")
 
@@ -936,6 +936,22 @@ def hlavni() -> int:
     log.info(f"celkem nových článků: {novych}")
     vysledek = log.uzavri()
     return 0 if vysledek["uspech"] else 1
+
+
+def main() -> None:
+    """Vstupní bod pro týdenní běh.
+
+    `run_tyden.py` volá u každého modulu `main()`; tenhle měl jen
+    `hlavni()`, takže se krok tiše přeskakoval jako „chybí main“.
+
+    Na rozdíl od ostatních modulů tu NESTAČÍ zavolat `hlavni()` bez
+    argumentů: bez režimu modul schválně spadne na `ap.error(...)`, aby
+    si nikdo omylem nespustil `--historie` přes celý archiv. Týdenní běh
+    chce `--tyden`, tedy články za posledních 8 dní.
+    """
+    kod = hlavni(["--tyden"])
+    if kod:
+        raise SystemExit(kod)
 
 
 if __name__ == "__main__":

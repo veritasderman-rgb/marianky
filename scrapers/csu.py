@@ -803,5 +803,19 @@ def hlavni() -> int:
     return 0 if vysledek["uspech"] else 1
 
 
+def main() -> None:
+    """Vstupní bod pro týdenní běh.
+
+    `run_tyden.py` volá u každého modulu `main()`; tenhle měl jen
+    `hlavni()`, takže se krok tiše přeskakoval jako „chybí main“.
+    Argumenty se nepředávají: `run_tyden.py` přepíše `sys.argv` na jméno
+    modulu, takže `parse_args()` vezme výchozí hodnoty a projdou se
+    všechny sady z `SADY`.
+    """
+    kod = hlavni()
+    if kod:
+        raise SystemExit(kod)
+
+
 if __name__ == "__main__":
     raise SystemExit(hlavni())

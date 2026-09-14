@@ -304,5 +304,22 @@ def nacti_index() -> list[dict] | None:
     return nacti(INDEX)
 
 
+def main() -> None:
+    """Vstupní bod pro týdenní běh.
+
+    `run_tyden.py` volá u každého modulu `main()`. Tenhle modul měl jen
+    `hlavni()`, takže se krok tiše přeskakoval jako „chybí main“ a nová
+    čísla zpravodaje se vůbec nestahovala. Doloženo 14. 9. 2026: snímky
+    webu města zachytily, že v archivu přibylo číslo **09/2026**, ale
+    sběrač, který ho měl stáhnout, v tom běhu neběžel.
+
+    Bez argumentů je běh inkrementální: číslo, které už má stránky
+    spočítané a vytažený text, se přeskočí.
+    """
+    kod = hlavni([])
+    if kod:
+        raise SystemExit(kod)
+
+
 if __name__ == "__main__":
     raise SystemExit(hlavni())
