@@ -8,25 +8,25 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 | | |
 |---|---|
-| jednání rady a zastupitelstva | **692** (2012–2026) |
-| bodů usnesení | **12 908**, otagovaných podle 33 témat |
-| hlasování | **12 367**, z toho **122 043 jmenovitých hlasů** |
-| uložených úkolů ve slibníku | **863**, z toho 135 s termínem |
+| jednání rady a zastupitelstva | **695** (2012–2026) |
+| bodů usnesení | **12 936**, otagovaných podle 33 témat |
+| hlasování | **12 395**, z toho **122 211 jmenovitých hlasů** |
+| uložených úkolů ve slibníku | **865**, z toho 136 s termínem |
 | hlasování od voleb 2022 na účtu období | **612** |
 | zápisů z komisí a výborů | **385**, z nich 212 doporučení radě |
-| žádostí o informace podle stovky šestky | **96** rozebraných ze 127 v rejstříku |
+| žádostí o informace podle stovky šestky | **97** rozebraných ze 128 v rejstříku |
 | smluv v registru | **6 684** za 24 subjektů městského holdingu |
 | protistran města | **1 716**, roky 1994–2026 |
 | rozpočet z Monitoru státní pokladny | roky **2010–2026**, po konsolidaci |
 | prověřených projektů ve vysvědčení koalici | **38** a 28 slibů z programového prohlášení |
-| firem se sídlem ve městě (ARES) | **4 177** |
-| čísel zpravodaje | **122** (02/2016–08/2026), rozebraných na **4 519 článků** |
-| osobností | **229** v osmi kategoriích |
-| mediálních článků | **710** (2004–2026) |
+| firem se sídlem ve městě (ARES) | **4 185** |
+| čísel zpravodaje | **123** (02/2016–09/2026), rozebraných na **4 568 článků** |
+| osobností | **229** v 8 kategoriích |
+| mediálních článků | **713** (2004–2026) |
 | spojení usnesení → smlouva → peníze | **2 501** |
 | volebních cyklů po okrscích | **41** |
 | schémat vykreslených z dat | **9** |
-| týdenních vydání | **16** včetně zpětného archivu |
+| týdenních vydání | **18** včetně zpětného archivu |
 
 ## Co web umí
 
@@ -36,7 +36,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Hospodaření** — rozpočet města z Monitoru státní pokladny od roku 2010: příjmy a výdaje po konsolidaci, saldo, kam peníze jdou a odkud přicházejí, plnění plánu, majetek, dluhy a výkazy příspěvkových organizací. Covidová léta 2020–2021 jsou v grafech vyznačená a popsaná čísly. Čísla ověřená dvěma nezávislými kontrolami — proti souhrnům výkazů a proti usnesením zastupitelstva. K tomu čtyři další pohledy: **poplatek z pobytu** (nejcitlivější covidový ukazatel lázeňského města), **srovnání s pěti podobnými městy na obyvatele** (Monitor + obyvatelé ČSÚ), **dotace** od státu a EU podle Hlídače a **závěrky městských s.r.o. ve sbírce listin** — kdo je ukládá, za které roky a kde chybí.
 
-**Hlasování podle témat** — 12 367 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
+**Hlasování podle témat** — 12 395 hlasování filtrovatelných podle 33 tagů z pevného číselníku.
 
 **Kam šla moje tisícovka** — rozpočet přepočtený na jednoho člověka: kolik z každé pomyslné tisícovky výdajů jde na školy, dopravu nebo úřad. S výslovnou větou, že to není osobní daň.
 
@@ -58,7 +58,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Schémata** — devět diagramů (holding města, kdo řídí město, datový tok týdenního běhu, který zdroj plní kterou sekci…) vykreslených při buildu z dat, ne v kreslicím nástroji. Ke každému patří tabulka s týmiž údaji.
 
-**Archiv zpravodaje** — 4 519 článků z jedenácti ročníků, fulltextově prohledávatelných.
+**Archiv zpravodaje** — 4 568 článků z jedenácti ročníků, fulltextově prohledávatelných.
 
 **Historie města** — dějiny po obdobích a 100 datovaných událostí; sporné údaje (prameny se rozcházejí) jsou označené jinak než odhady.
 

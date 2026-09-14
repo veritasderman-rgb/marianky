@@ -326,14 +326,88 @@ def sekce_zpravodaj(od: str, do: str) -> Sekce:
     return s.dopln(polozky)
 
 
-def sekce_zmeny() -> Sekce:
-    """Tiché změny na webu města. Zmizelý dokument je zpráva."""
+def sekce_zmeny(od: str, do: str) -> Sekce:
+    """Tiché změny na webu města. Zmizelý dokument je zpráva.
+
+    **Tahle sekce byla ve všech 18 vydáních prázdná, a ne proto, že by se na
+    webu města nic nedělo.** Čtlo se `mesto/snapshots/zmeny.json`, kdežto
+    `scrapers/snapshoty.py` zapisuje `_zmeny.json` (s podtržítkem, viz jeho
+    `ZMENY_LOG`). Soubor tedy nikdy nebyl, `nacti` vracelo `None` a sekce
+    vyšla prázdná — a komentář „snapshoty ještě nemusí existovat" to navíc
+    vydával za normální stav. Tím se z chybějícího souboru stalo „nic se
+    nezměnilo", tedy přesně to slití, kterému se celý modul brání.
+
+    Co se ukazuje, je **stránka, ne dokument**. Snímky za tenhle týden vidí
+    40 přírůstků a 38 řádných sejmutí na úřední desce, ale ty už nese sekce
+    Úřední deska; vypsat je znovu by vydání nafouklo o duplikát. Sekce má
+    v názvu „tiše změnilo nebo zmizelo", takže ukazuje souhrn za stránku
+    a k tomu zvlášť to, co nikde jinde vidět není:
+
+      - **dokument, který zmizel předčasně** — sundán dřív, než měl podle
+        vlastního data sejmutí. To je vlastní zpráva téhle sekce (v dávce
+        z 23. 8. 2026 jsou čtyři takové a nikdo je nikdy neviděl).
+      - změna textu stránky, která nemá položkový seznam.
+    """
     s = Sekce("zmeny", "Změny na webu města",
               "Co se na stránkách města tiše změnilo nebo zmizelo")
-    zmeny = nacti("mesto/snapshots/zmeny.json")
-    if zmeny is None:
-        return s.dopln([])  # snapshoty ještě nemusí existovat, není to výpadek zdroje
-    return s.dopln(zmeny if isinstance(zmeny, list) else zmeny.get("zmeny", []))
+    davky = nacti("mesto/snapshots/_zmeny.json")
+    if davky is None:
+        # Snímky ještě nemusí existovat (první běh), ale mlčet se o tom nesmí:
+        # prázdná sekce z chybějícího souboru není totéž jako týden bez změn.
+        return s.chybi("Záznam změn na webu města chybí — o tiché změny za "
+                       "toto období jsme mohli přijít.")
+    if not isinstance(davky, list):
+        davky = davky.get("zmeny", [])
+
+    polozky: list[dict] = []
+    for davka in davky:
+        cas = str(davka.get("cas") or "")
+        if not _v_obdobi(cas, od, do):
+            continue
+        den = cas[:10]
+        for zm in davka.get("zmeny") or []:
+            nazev_str = zm.get("nazev") or zm.get("slug") or "stránka města"
+            url = zm.get("url")
+
+            # Předčasně zmizelý dokument dostane vlastní řádek — je to jediná
+            # věc v tomhle přehledu, kterou žádná jiná sekce neukáže.
+            for doc in zm.get("zmizelo_predcasne") or []:
+                polozky.append({
+                    "nazev": f"Zmizelo předčasně: {doc.get('nazev') or '(bez názvu)'}",
+                    "url": doc.get("url") or url,
+                    "datum": den,
+                    "zdroj": nazev_str,
+                })
+
+            pribylo = len(zm.get("pribylo") or [])
+            zmizelo = len(zm.get("zmizelo") or [])
+            zmenilo = len(zm.get("zmenilo") or [])
+            casti = []
+            if pribylo:
+                casti.append(f"přibylo {pribylo}")
+            if zmizelo:
+                casti.append(f"řádně sejmuto {zmizelo}")
+            if zmenilo:
+                casti.append(f"změnilo se {zmenilo}")
+            if casti:
+                polozky.append({
+                    "nazev": f"{nazev_str}: {', '.join(casti)}",
+                    "url": url,
+                    "datum": den,
+                })
+            elif zm.get("zmena"):
+                # Stránka bez položkového seznamu — změnil se jen text.
+                radku = zm.get("radku_pribylo") or 0
+                zmizelo_radku = zm.get("radku_zmizelo") or 0
+                polozky.append({
+                    "nazev": (f"{nazev_str}: změnil se text stránky "
+                              f"(+{radku} / −{zmizelo_radku} řádků)"),
+                    "url": url,
+                    "datum": den,
+                })
+
+    nejnovejsi = max((str(d.get("cas") or "")[:10] for d in davky), default=None)
+    return s.dopln(polozky, nejnovejsi=nejnovejsi, obdobi_do=do, tolerance_dni=30)
 
 
 # --------------------------------------------------------------------------
@@ -349,7 +423,7 @@ def sestav(do: date, dni: int = 7) -> dict:
         sekce_akce(do_s),
         sekce_media(od, do_s),
         sekce_zpravodaj(od, do_s),
-        sekce_zmeny(),
+        sekce_zmeny(od, do_s),
     ]
 
     aktivni = [s for s in sekce if s.stav == "ok"]
