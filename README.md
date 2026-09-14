@@ -20,9 +20,9 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 | rozpočet z Monitoru státní pokladny | roky **2010–2026**, po konsolidaci |
 | prověřených projektů ve vysvědčení koalici | **38** a 28 slibů z programového prohlášení |
 | firem se sídlem ve městě (ARES) | **4 185** |
-| čísel zpravodaje | **122** (02/2016–08/2026), rozebraných na **4 519 článků** |
+| čísel zpravodaje | **123** (02/2016–09/2026), rozebraných na **4 568 článků** |
 | osobností | **229** v 8 kategoriích |
-| mediálních článků | **710** (2004–2026) |
+| mediálních článků | **713** (2004–2026) |
 | spojení usnesení → smlouva → peníze | **2 501** |
 | volebních cyklů po okrscích | **41** |
 | schémat vykreslených z dat | **9** |
@@ -58,7 +58,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 **Schémata** — devět diagramů (holding města, kdo řídí město, datový tok týdenního běhu, který zdroj plní kterou sekci…) vykreslených při buildu z dat, ne v kreslicím nástroji. Ke každému patří tabulka s týmiž údaji.
 
-**Archiv zpravodaje** — 4 519 článků z jedenácti ročníků, fulltextově prohledávatelných.
+**Archiv zpravodaje** — 4 568 článků z jedenácti ročníků, fulltextově prohledávatelných.
 
 **Historie města** — dějiny po obdobích a 100 datovaných událostí; sporné údaje (prameny se rozcházejí) jsou označené jinak než odhady.
 
