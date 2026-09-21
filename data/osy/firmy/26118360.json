@@ -1,0 +1,77 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "26118360",
+    "nazev": "InterCora, spol. s r. o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2024-01-31",
+    "do": "2024-01-31",
+    "prvni_rok": 2024,
+    "posledni_rok": 2024,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 1,
+    "odhadu": 1,
+    "dle_typu": {
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "nizka": 1,
+      "fakt": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "retez:zastupitelstvo-2023-12/28__25793963",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "retez",
+      "nadpis": "Pozemková parcela č. 141/46 o výměře 594 m2 ostatní plocha k. ú. Mariánské Lázně vč. stavba chodníku",
+      "popis": "Odhadované spojení smlouvy z 2024-01-31 s bodem 12/28 z 2023-12-12 (Odkup poz. parcely č. 141/46 k. ú. Mariánské Lázně - u OC Kaufland). Jistota nizka.",
+      "castka_czk": 121.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (InterCora, spol. s r. o.) je v textu usnesení; částka smlouvy odpovídá částce bodu po připočtení 21 % DPH (shodná); smlouva podepsána 50 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/27616507",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:25793963",
+      "datum": "2024-01-31",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2024-01-31",
+      "rok": 2024,
+      "typ": "smlouva",
+      "nadpis": "Pozemková parcela č. 141/46 o výměře 594 m2 ostatní plocha k. ú. Mariánské Lázně vč. stavba chodníku",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana InterCora, spol. s r. o..",
+      "castka_czk": 121.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/27616507",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

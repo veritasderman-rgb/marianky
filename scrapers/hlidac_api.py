@@ -25,10 +25,17 @@ import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lib.core import ROOT, Log, ZdrojSelhal, sledovane_subjekty, uloz  # noqa: E402
+from lib.core import ROOT, Log, ZdrojSelhal, nacti, sledovane_subjekty, uloz  # noqa: E402
 
 API = "https://api.hlidacstatu.cz/Api/v2"
 NA_STRANKU = 25  # server drží pevně, parametr pocet nemá vliv
+
+# Řazení stránkování. Bez něj API vrací výsledky v pořadí, které se mezi
+# dotazy mění (živý index), takže hluboké stránkování část záznamů vrátí
+# dvakrát a část vůbec — u města 181 stran dalo 4 514 řádků, ale jen
+# 3 622 různých smluv. Pevné řazení drift zmenšuje; úplnost ale stojí
+# na sloučení se dřívější sklizní v `main()`, ne na tomhle parametru.
+RAZENI = 6  # podle data zveřejnění, vzestupně
 
 
 def token() -> str:
@@ -172,7 +179,8 @@ def sklid_subjekt(ico: str, nazev: str, tok: str, log: Log) -> list[dict]:
     strana = 1
 
     while True:
-        data = _get("smlouvy/hledat", {"dotaz": f"ico:{ico}", "strana": strana}, tok)
+        data = _get("smlouvy/hledat",
+                    {"dotaz": f"ico:{ico}", "strana": strana, "razeni": RAZENI}, tok)
         vysledky = data.get("results") or []
         celkem = data.get("total") or 0
         if not vysledky:
@@ -210,14 +218,38 @@ def main() -> None:
             log.chyba(f"{nazev} ({ico}): {e}")
             continue
 
+        # SLOUČIT, NEPŘEPSAT. Sklizeň jednoho průchodu není úplná: API
+        # stránkuje živý index bez stabilního řazení, takže se část záznamů
+        # mezi stranami posune, vrátí dvakrát a jiná nevrátí vůbec. Měřeno
+        # 21. 9. 2026 u města: `total` hlásí 4 514 smluv, jeden průchod
+        # 181 stran vrátil 4 514 řádků, ale jen 3 622 různých `idSmlouvy`.
+        #
+        # Přepsáním by se z dat smazalo, co tenhle průchod minul — 21. 9.
+        # to bylo 836 smluv u města a 1 020 celkem, tedy 15 %. Sloučení
+        # proti tomu drží dřívější sklizeň a svěží záznam u téhož `id`
+        # jen přepíše novější verzí.
+        #
+        # Je to tatáž chyba, kterou nese komentář v `run_tyden.py` o tom,
+        # jak `hlidac` přepsal 6 943 smluv čtyřmi sty. Tady byla mírnější,
+        # a proto nebezpečnější: čísla vyšla věrohodně, jen o 13 % nižší.
+        stare = nacti(f"penize/smlouvy/{ico}.json") or {}
+        podle_id = {z["id"]: z for z in (stare.get("smlouvy") or [])}
+        pred = len(podle_id)
+        for z in smlouvy:
+            podle_id[z["id"]] = z
+        slouceno = sorted(podle_id.values(), key=lambda z: (z.get("datum") or ""), reverse=True)
+        if pred and len(slouceno) > len(smlouvy):
+            log.info(f"{nazev}: sloučeno s dřívější sklizní",
+                     sklizeno=len(smlouvy), drive=pred, celkem=len(slouceno))
+
         uloz(f"penize/smlouvy/{ico}.json", {
             "ico": ico,
             "nazev": nazev,
             "zdroj": "api.hlidacstatu.cz/Api/v2",
-            "smlouvy": smlouvy,
+            "smlouvy": slouceno,
         })
-        celkem_smluv += len(smlouvy)
-        log.pricti(len(smlouvy))
+        celkem_smluv += len(slouceno)
+        log.pricti(len(slouceno))
 
     log.info("sklizeno smluv celkem", pocet=celkem_smluv)
     log.uzavri()

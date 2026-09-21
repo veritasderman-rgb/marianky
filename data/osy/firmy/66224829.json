@@ -1,0 +1,76 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "66224829",
+    "nazev": "Šťastná Hana, JUDr., advokátka"
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "1996-03-01",
+    "do": "2019-07-01",
+    "prvni_rok": 1996,
+    "posledni_rok": 2019,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 2,
+    "dolozenych": 2,
+    "odhadu": 0,
+    "dle_typu": {
+      "firma": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2
+    }
+  },
+  "udalosti": [
+    {
+      "id": "firma:66224829:vznik",
+      "datum": "1996-03-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "1996-03-01",
+      "rok": 1996,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Šťastná Hana, JUDr., advokátka",
+      "popis": "Vznik subjektu Šťastná Hana, JUDr., advokátka (IČO 66224829), Fyzická osoba podnikající dle jiných zákonů než živnostenského a zákona o zemědělství, obor: Právn",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "role": {
+        "vztah": "zminena"
+      }
+    },
+    {
+      "id": "smlouva:9926328",
+      "datum": "2019-07-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-07-01",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "poskytování právní pomoci",
+      "popis": "Domov pro seniory a dům s pečovatelskou službou Mariánské Lázně — výdaj, protistrana Šťastná Hana, JUDr., advokátka.",
+      "castka_czk": 290400.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/10677012",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00575143.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

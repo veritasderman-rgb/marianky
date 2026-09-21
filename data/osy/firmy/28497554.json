@@ -1,0 +1,98 @@
+{
+  "entita": {
+    "typ": "firma",
+    "ico": "28497554",
+    "nazev": "TONER-ONLINE s.r.o."
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "identita": "Firmy se vedou podle IČO. Bez IČO se vazba nezakládá.",
+    "usneseni": "Vazba usnesení → firma vzniká, jen když je IČO uvedené přímo v textu bodu. Shoda podle názvu se tu nepoužívá.",
+    "registr_od": "Registr smluv běží od 1. 7. 2016. Prázdno před tímto datem neznamená, že firma s městem neobchodovala.",
+    "protistrana_neurcena": "U části smluv zdroj místo protistrany uvádí zveřejňující subjekt. Taková smlouva má detail.protistrana_neurcena = true a do vazby na protistranu nevstupuje."
+  },
+  "rozsah": {
+    "od": "2026-08-04",
+    "do": "2026-09-07",
+    "prvni_rok": 2026,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 3,
+    "dolozenych": 2,
+    "odhadu": 1,
+    "dle_typu": {
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
+    },
+    "dle_jistoty": {
+      "fakt": 2,
+      "stredni": 1
+    }
+  },
+  "udalosti": [
+    {
+      "id": "usneseni:rada-2026-123-123/19",
+      "datum": "2026-08-04",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-08-04",
+      "rok": 2026,
+      "typ": "usneseni",
+      "nadpis": "Veřejná zakázka „Tiskové služby pro Město Mariánské Lázně“- výběr dodavatele",
+      "popis": "Rada města, bod 123/19, usnesení 1390/26. Schvaleno.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://usneseni.muml.cz/rada/usneseni/3953132148",
+      "zdroj": "usneseni",
+      "zdroj_soubor": "data/usneseni/rada/2026/123.json",
+      "role": {
+        "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2026-123/19__37057485",
+      "datum": "2026-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-09-07",
+      "rok": 2026,
+      "typ": "retez",
+      "nadpis": "RÁMCOVÁ SMLOUVA O POSKYTOVÁNÍ SERVISNÍ A MATERIÁLOVÉ PODPORY K MULTIFUNKČNÍM TISKOVÝM ZAŘÍZENÍM - schváleno usn.rady č. RM/1390/26",
+      "popis": "Odhadované spojení smlouvy z 2026-09-07 s bodem 123/19 z 2026-08-04 (Veřejná zakázka „Tiskové služby pro Město Mariánské Lázně“- výběr dodavatele). Jistota stre",
+      "castka_czk": 1536841.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 28497554 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 34 dní po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/39417105",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:37057485",
+      "datum": "2026-09-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-09-07",
+      "rok": 2026,
+      "typ": "smlouva",
+      "nadpis": "RÁMCOVÁ SMLOUVA O POSKYTOVÁNÍ SERVISNÍ A MATERIÁLOVÉ PODPORY K MULTIFUNKČNÍM TISKOVÝM ZAŘÍZENÍM - schváleno usn.rady č. RM/1390/26",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana TONER-ONLINE s.r.o..",
+      "castka_czk": 1536841.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/39417105",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
+      }
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "entita": {
     "typ": "firma",
     "ico": "26342758",
-    "nazev": null
+    "nazev": "OLYMPIA Hotel s. r. o."
   },
   "metodika": {
     "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
@@ -14,21 +14,24 @@
   },
   "rozsah": {
     "od": "2002-02-25",
-    "do": "2019-08-06",
+    "do": "2019-08-09",
     "prvni_rok": 2002,
     "posledni_rok": 2019,
     "podezrelych_dat": 0
   },
   "pocty": {
-    "celkem": 2,
-    "dolozenych": 2,
-    "odhadu": 0,
+    "celkem": 4,
+    "dolozenych": 3,
+    "odhadu": 1,
     "dle_typu": {
       "firma": 1,
-      "usneseni": 1
+      "usneseni": 1,
+      "retez": 1,
+      "smlouva": 1
     },
     "dle_jistoty": {
-      "fakt": 2
+      "fakt": 3,
+      "stredni": 1
     }
   },
   "udalosti": [
@@ -70,6 +73,46 @@
       "zdroj_soubor": "data/usneseni/rada/2019/33.json",
       "role": {
         "vztah": "zminena_v_usneseni"
+      }
+    },
+    {
+      "id": "retez:rada-2019-33/13__9138491",
+      "datum": "2019-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-09",
+      "rok": 2019,
+      "typ": "retez",
+      "nadpis": "Část poz. parcely č. 953/1 k. ú. Mariánské Lázně - vrt VH-45",
+      "popis": "Odhadované spojení smlouvy z 2019-08-09 s bodem 33/13 z 2019-08-06 (Smlouva o nájmu pozemku za účelem využívání výtěžku přírodního léčivého zdroje). Jistota str",
+      "castka_czk": 30250.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26342758 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 3 dny po usnesení",
+      "url": "https://smlouvy.gov.cz/smlouva/9842739",
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "role": {
+        "vztah": "odhadovane_spojeni"
+      }
+    },
+    {
+      "id": "smlouva:9138491",
+      "datum": "2019-08-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2019-08-09",
+      "rok": 2019,
+      "typ": "smlouva",
+      "nadpis": "Část poz. parcely č. 953/1 k. ú. Mariánské Lázně - vrt VH-45",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana OLYMPIA Hotel s. r. o..",
+      "castka_czk": 30250.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://smlouvy.gov.cz/smlouva/9842739",
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "role": {
+        "vztah": "protistrana"
       }
     }
   ]
