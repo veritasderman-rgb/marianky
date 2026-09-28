@@ -8,25 +8,25 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 | | |
 |---|---|
-| jednání rady a zastupitelstva | **696** (2012–2026) |
-| bodů usnesení | **12 954**, otagovaných podle 33 témat |
+| jednání rady a zastupitelstva | **697** (2012–2026) |
+| bodů usnesení | **12 970**, otagovaných podle 33 témat |
 | hlasování | **12 413**, z toho **122 319 jmenovitých hlasů** |
-| uložených úkolů ve slibníku | **865**, z toho 136 s termínem |
+| uložených úkolů ve slibníku | **867**, z toho 137 s termínem |
 | hlasování od voleb 2022 na účtu období | **612** |
-| zápisů z komisí a výborů | **385**, z nich 212 doporučení radě |
+| zápisů z komisí a výborů | **387**, z nich 212 doporučení radě |
 | žádostí o informace podle stovky šestky | **97** rozebraných ze 128 v rejstříku |
 | smluv v registru | **6 820** za 24 subjektů městského holdingu |
 | protistran města | **1 740**, roky 1994–2026 |
 | rozpočet z Monitoru státní pokladny | roky **2010–2026**, po konsolidaci |
 | prověřených projektů ve vysvědčení koalici | **38** a 28 slibů z programového prohlášení |
-| firem se sídlem ve městě (ARES) | **4 185** |
+| firem se sídlem ve městě (ARES) | **4 187** |
 | čísel zpravodaje | **123** (02/2016–09/2026), rozebraných na **4 568 článků** |
 | osobností | **229** v 8 kategoriích |
-| mediálních článků | **714** (2004–2026) |
+| mediálních článků | **715** (2004–2026) |
 | spojení usnesení → smlouva → peníze | **2 522** |
 | volebních cyklů po okrscích | **41** |
 | schémat vykreslených z dat | **9** |
-| týdenních vydání | **19** včetně zpětného archivu |
+| týdenních vydání | **20** včetně zpětného archivu |
 
 ## Co web umí
 

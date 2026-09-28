@@ -3,8 +3,8 @@
   "obdobi_od": "2026-09-21",
   "obdobi_do": "2026-09-28",
   "zacatek": "2026-09-28T10:52:12.759471+00:00",
-  "konec": "2026-09-28T13:05:06.058804+00:00",
-  "trvani_s": 7973.3,
+  "konec": "2026-09-28T15:59:51.350340+00:00",
+  "trvani_s": 11798.7,
   "rezim": {
     "bez_sberu": false,
     "jen": []
@@ -26,8 +26,7 @@
       "modul": "scrapers.muml",
       "popis": "Web města, deska, akce",
       "povinny": true,
-      "stav": "selhal",
-      "chyba": "návratový kód 1"
+      "stav": "ok"
     },
     {
       "modul": "scrapers.snapshoty",
@@ -53,8 +52,7 @@
       "modul": "scrapers.zpravodaj",
       "popis": "Nové číslo zpravodaje",
       "povinny": false,
-      "stav": "selhal",
-      "chyba": "SystemExit 1"
+      "stav": "ok"
     },
     {
       "modul": "scrapers.media",
@@ -67,8 +65,7 @@
       "modul": "scrapers.lide",
       "popis": "Aktualizace osobností",
       "povinny": false,
-      "stav": "selhal",
-      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/samosprava/zastupitelstvo/clenove-1/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      "stav": "ok"
     },
     {
       "modul": "scrapers.zaznamy",
@@ -117,8 +114,7 @@
       "modul": "scrapers.uzemni_plan",
       "popis": "Územní plánování",
       "povinny": false,
-      "stav": "selhal",
-      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/urad/uzemni-planovani/uzemne-planovaci-dokumentace-a-studie/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      "stav": "ok"
     },
     {
       "modul": "scrapers.monitor",
@@ -142,15 +138,13 @@
       "modul": "scrapers.komise",
       "popis": "Komise, výbory a zápisy z jednání",
       "povinny": false,
-      "stav": "selhal",
-      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/samosprava/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      "stav": "ok"
     },
     {
       "modul": "scrapers.informace106",
       "popis": "Žádosti podle zákona 106/1999",
       "povinny": false,
-      "stav": "selhal",
-      "chyba": "Nepodařilo se stáhnout https://www.muml.cz/urad/dokumenty/poskytnute-informace-106-1999-sb/ ani na 4 pokusů: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      "stav": "ok"
     },
     {
       "modul": "pipeline.tagovani",
@@ -285,5 +279,62 @@
       "stav": "ok"
     }
   ],
-  "uspech": false
+  "uspech": false,
+  "pruchody": [
+    {
+      "zacatek": "2026-09-28T10:52:12.759471+00:00",
+      "konec": "2026-09-28T13:05:06.058804+00:00",
+      "rezim": {
+        "bez_sberu": false,
+        "jen": []
+      }
+    },
+    {
+      "zacatek": "2026-09-28T14:38:56.126707+00:00",
+      "konec": "2026-09-28T15:41:26.827923+00:00",
+      "rezim": {
+        "bez_sberu": false,
+        "jen": [
+          "scrapers.muml",
+          "scrapers.snapshoty",
+          "scrapers.zpravodaj",
+          "scrapers.lide",
+          "scrapers.uzemni_plan",
+          "scrapers.komise",
+          "scrapers.informace106"
+        ]
+      }
+    },
+    {
+      "zacatek": "2026-09-28T15:41:44.724521+00:00",
+      "konec": "2026-09-28T15:42:59.411036+00:00",
+      "rezim": {
+        "bez_sberu": true,
+        "jen": []
+      }
+    },
+    {
+      "zacatek": "2026-09-28T15:45:16.372694+00:00",
+      "konec": "2026-09-28T15:45:16.372694+00:00",
+      "rezim": {
+        "bez_sberu": true,
+        "jen": [
+          "pipeline.vydani",
+          "pipeline.znaky_sekci"
+        ]
+      },
+      "poznamka": "ruční přepočet vydání po opravě sekce Peníze města"
+    },
+    {
+      "zacatek": "2026-09-28T15:59:51.350340+00:00",
+      "konec": "2026-09-28T15:59:51.350340+00:00",
+      "rezim": {
+        "bez_sberu": true,
+        "jen": [
+          "pipeline.vydani"
+        ]
+      },
+      "poznamka": "přepočet vydání po změně čerstvosti sekce Peníze města (review Codexu)"
+    }
+  ]
 }
