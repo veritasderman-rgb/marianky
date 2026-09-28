@@ -211,12 +211,19 @@ def sekce_penize(od: str, do: str) -> Sekce:
     obsahove: set[tuple] = set()
     slito = 0
     polozky = []
+    nej: str | None = None
     for f in soubory:
         try:
             d = json.loads(Path(f).read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
             continue
         for sml in d.get("smlouvy", []):
+            # Nejmladší smlouva do konce období — datum z budoucnosti je
+            # překlep zveřejňovatele (v registru je smlouva „z 19. 12. 2026"
+            # zveřejněná v září) a zastaralost by schoval.
+            datum = (sml.get("datum") or "")[:10]
+            if datum and datum <= do and (nej is None or datum > nej):
+                nej = datum
             if not _v_obdobi(sml.get("datum"), od, do) or sml["id"] in videne:
                 continue
             otisk = _otisk_smlouvy(sml)
@@ -239,7 +246,11 @@ def sekce_penize(od: str, do: str) -> Sekce:
             })
 
     polozky.sort(key=lambda p: -(p["castka_czk"] or 0))
-    s.dopln(polozky)
+    # Holding zveřejňuje smlouvy skoro denně: od 2024 nebyla mezi dvěma dny
+    # se smlouvou delší mezera než 6 dní. Do 9/2026 tu datum chybělo a
+    # týden, kdy se registr vůbec nesklízel (chyběl token), vyšel jako
+    # „prázdno" — tedy „žádné nové smlouvy", což nikdo neověřil.
+    s.dopln(polozky, nej, do, tolerance_dni=10)
     if slito:
         # Čeština skloňuje podle počtu: 1 smlouva, 2-4 smlouvy, 5+ smluv.
         tvar = "smlouva byla" if slito == 1 else ("smlouvy byly" if slito < 5 else "smluv bylo")
