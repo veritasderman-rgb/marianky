@@ -186,6 +186,25 @@ def sekce_radnice(od: str, do: str) -> Sekce:
     return s.dopln(polozky, nej, do, tolerance_dni=75)
 
 
+def _posledni_sklizen_registru(do: str) -> str | None:
+    """Den posledního úspěšného běhu `scrapers.hlidac_api` nejpozději `do`.
+
+    Bere se z logu sběrače (`data/logy/<den>/hlidac_api.json`), který je
+    v gitu — přepočet vydání bez sběru ho tedy vidí taky.
+    """
+    nej = None
+    for f in glob.glob(str(DATA / "logy" / "*" / "hlidac_api.json")):
+        den = Path(f).parent.name
+        if den > do or (nej and den <= nej):
+            continue
+        try:
+            if json.loads(Path(f).read_text(encoding="utf-8")).get("uspech"):
+                nej = den
+        except (json.JSONDecodeError, OSError):
+            continue
+    return nej
+
+
 def sekce_penize(od: str, do: str) -> Sekce:
     s = Sekce("penize", "Peníze města",
               "Nové smlouvy a dotace za město i jeho organizace")
@@ -218,9 +237,10 @@ def sekce_penize(od: str, do: str) -> Sekce:
         except (json.JSONDecodeError, OSError):
             continue
         for sml in d.get("smlouvy", []):
-            # Nejmladší smlouva do konce období — datum z budoucnosti je
-            # překlep zveřejňovatele (v registru je smlouva „z 19. 12. 2026"
-            # zveřejněná v září) a zastaralost by schoval.
+            # Nejmladší smlouva do konce období, jen pro informaci čtenáři —
+            # o čerstvosti rozhoduje sklizeň, ne tohle datum. Datum
+            # z budoucnosti je překlep zveřejňovatele (v registru je
+            # smlouva „z 19. 12. 2026" zveřejněná v září).
             datum = (sml.get("datum") or "")[:10]
             if datum and datum <= do and (nej is None or datum > nej):
                 nej = datum
@@ -246,11 +266,22 @@ def sekce_penize(od: str, do: str) -> Sekce:
             })
 
     polozky.sort(key=lambda p: -(p["castka_czk"] or 0))
-    # Holding zveřejňuje smlouvy skoro denně: od 2024 nebyla mezi dvěma dny
-    # se smlouvou delší mezera než 6 dní. Do 9/2026 tu datum chybělo a
-    # týden, kdy se registr vůbec nesklízel (chyběl token), vyšel jako
-    # „prázdno" — tedy „žádné nové smlouvy", což nikdo neověřil.
-    s.dopln(polozky, nej, do, tolerance_dni=10)
+    s.dopln(polozky)
+    s.nejnovejsi = nej
+    # Čerstvost se bere ze SKLIZNĚ, ne z data smluv. Do 9/2026 tu nebylo
+    # nic a týden, kdy se registr vůbec nesklízel (chyběl token), vyšel
+    # jako „prázdno" — „žádné nové smlouvy", což nikdo neověřil. Datum
+    # nejmladší smlouvy by to nespravilo: týden bez smluv (svátky) po
+    # úspěšné sklizni je opravdu prázdný, ne zastaralý.
+    sklizen = _posledni_sklizen_registru(do)
+    if not polozky and (sklizen is None or sklizen < do):
+        s.stav = "zastarale"
+        s.poznamka = (
+            (f"Registr smluv byl naposledy sklizen {sklizen}. " if sklizen
+             else "O sklizni registru smluv nemáme záznam. ")
+            + "Že je sekce prázdná, neznamená, že město žádnou smlouvu "
+              "neuzavřelo — o tomto období nemáme data.")
+        return s
     if slito:
         # Čeština skloňuje podle počtu: 1 smlouva, 2-4 smlouvy, 5+ smluv.
         tvar = "smlouva byla" if slito == 1 else ("smlouvy byly" if slito < 5 else "smluv bylo")
