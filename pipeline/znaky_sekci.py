@@ -48,6 +48,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from lib.core import DATA, Log, nacti, uloz  # noqa: E402
+from lib.zastupitelstvo import soucasne_zastupitelstvo  # noqa: E402
 
 # Kolik let zpět se kreslí do sloupcových znaků. Víc se do 120 px nevejde
 # čitelně; méně by zakrylo trend.
@@ -555,13 +556,15 @@ def znak_retez() -> dict:
 
 def znak_lide() -> dict:
     """Lidé — 21 zastupitelů jako tečky seskupené podle uskupení."""
-    z = nacti("mesto/zastupitele.json")
+    # Po volbách web města týdny ukazuje odcházející zastupitelstvo — složení
+    # se pak bere z výsledků voleb (lib/zastupitelstvo.py).
+    z = soucasne_zastupitelstvo()
     profily = nacti("lide/profily.json")
     if not z:
         return _chybi("lide", "data/mesto/zastupitele.json", "Seznam zastupitelů zatím není.")
 
     poc: Counter[str] = Counter()
-    for c in z.get("zastupitele") or []:
+    for c in z["zastupitele"]:
         poc[(c.get("uskupeni") or "bez uskupení").strip()] += 1
 
     skupiny = [
@@ -577,14 +580,16 @@ def znak_lide() -> dict:
         # Do korpusu hledání patří všechny profilované osoby, ne jen 21 členů
         # současného zastupitelstva.
         "pocet": osob,
-        "hodnota": _mezerou(_cely(z.get("celkem")) or sum(poc.values())),
+        "hodnota": _mezerou(sum(poc.values())),
         "jednotka": "zastupitelů",
         "veta": (
             "Jedna tečka je jeden zastupitel, barva je volební uskupení."
+            + (f" Složení po volbách {z['volebni_obdobi'][:4]} podle výsledků ČSÚ — web města"
+               " ještě ukazuje minulé období." if z["podle_voleb"] else "")
             + (f" Hlasovací profil má {_mezerou(hlasujicich)} osob." if hlasujicich else "")
         ),
         "stav": "ok",
-        "zdroj": "data/mesto/zastupitele.json",
+        "zdroj": z["zdroj"],
     }
 
 
