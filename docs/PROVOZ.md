@@ -8,7 +8,7 @@ Co spustit, v jakém pořadí a co dělat, když něco selže.
 
 ```bash
 # jednorázově
-pip install requests selectolax
+pip install requests "selectolax<1"
 sudo apt-get update && sudo apt-get install -y poppler-utils   # bez update selže na 404
 cd web && npm install
 
@@ -268,6 +268,8 @@ Do gitu jde **extrahovaný text zpravodaje, ne PDF** — originály mají 1,7 GB
 | `429` z YouTube | omezení sdílené adresy | spustit z vlastní sítě |
 | `302` na přihlášení z Hlídače | chybí nebo je neplatný token | zkontrolovat `.env` |
 | `apt-get` selže na 404 u poppleru | zastaralý index | nejdřív `apt-get update` |
+| `ImportError: Modest backend is deprecated` hned na prvním modulu | nainstalovaný `selectolax` 1.0+, který zrušil `selectolax.parser` | `pip install "selectolax<1"`; tím padaly běhy 4., 11. a 18. 10. 2026 |
+| web města po volbách ukazuje staré zastupitelstvo | mění ho se zpožděním | nic — `muml.py` to pozná (`web_zaostava_za_volbami`) a přehled bere složení z výsledků ČSÚ (`lib/zastupitelstvo.py`) |
 
 ---
 
