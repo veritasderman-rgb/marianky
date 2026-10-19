@@ -87,6 +87,18 @@ jobs:
           path: .cache
           key: sberace-${{ github.run_id }}
 
+      # Data z běhu se uloží i tehdy, když běh nebo kontrola neprojde. Do
+      # repozitáře se pak nedostanou (to je smysl kontroly), ale dá se z nich
+      # zjistit, co se stáhlo a proč neprošla — jinak by hodiny sběru zmizely
+      # s runnerem, jako 19. 10. 2026.
+      - name: Data běhu jako artefakt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-${{ github.run_id }}
+          path: data/
+          retention-days: 7
+
       # Tohle je pojistka mezi během a publikací. Když neprojde, nová data
       # se nezveřejní a venku zůstane minulé číslo — lepší než vydat nové
       # s tichou lží.
