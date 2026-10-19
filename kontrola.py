@@ -439,13 +439,21 @@ def kontrola_dodatku(v: Vysledek) -> None:
     # na záporných dodatcích (méněpráce), kde součet legitimně klesne pod
     # maximum. Přepočet nepředpokládá nic o datech, jen že výpočet je týž.
     from pipeline.dodatky import platna_castka
+
+    # Na haléře, ne přesnou rovností: Python 3.12 sčítá floaty kompenzovaně
+    # a vyjde mu 2448907.3839999996 tam, kde 3.11 v CI uložil 2448907.384.
+    # Kontrola pak padala podle toho, na které verzi běžela.
+    def _hal(x: float | None) -> float | None:
+        return None if x is None else round(x, 2)
+
     spatne = 0
     for r in retezy:
         castky = [x.get("castka_czk") for x in [r.get("puvodni") or {}, *(r.get("dodatky") or [])]
                   if x.get("castka_czk") is not None]
         ocek_platna = platna_castka(castky)
         ocek_soucet = sum(castky) if castky else None
-        if r.get("castka_platna_czk") != ocek_platna or r.get("castka_naivni_soucet_czk") != ocek_soucet:
+        if (_hal(r.get("castka_platna_czk")) != _hal(ocek_platna)
+                or _hal(r.get("castka_naivni_soucet_czk")) != _hal(ocek_soucet)):
             spatne += 1
     if spatne:
         v.chyba(f"{spatne} řetězů má uložené částky jiné, než vychází z jejich článků — "

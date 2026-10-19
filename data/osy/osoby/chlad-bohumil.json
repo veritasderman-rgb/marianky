@@ -1,0 +1,148 @@
+{
+  "entita": {
+    "typ": "osoba",
+    "id": "chlad-bohumil",
+    "jmeno": "Bohumil Chlad",
+    "role": [
+      "zastupitel"
+    ],
+    "kategorie": "politika",
+    "strana": "ODS + KDU-ČSL",
+    "zijici": true
+  },
+  "metodika": {
+    "viz": "obecná pravidla viz data/casova_osa/souhrn.json → metodika",
+    "polozky": "Osa nese položky, ne plné události. Úplný záznam je pod stejným id v data/casova_osa/roky/{rok}.json.",
+    "hlasovani": "V ose jsou jednotlivě jen hlasování, kde osoba hlasovala proti, zdržela se nebo nehlasovala, kde bod neprošel (proti ≥ pro), nebo kde propojeni/hlasovani_vazby.json vede vazbu na firmu. Ostatní hlasování se nezahazují — jsou sečtená v hlasovani_po_letech a celkový počet je v pocty.hlasovani_celkem.",
+    "neucast_neni_polozka": "Neúčast (nepritomen) se do osy jednotlivě nedává. Je to nepřítomnost, ne projev vůle; jednotlivé řádky by z osy udělaly výčet absencí. Neúčast je jen v souhrnu po letech.",
+    "vysledek": "Portál vede všechna hlasování jako „schváleno“, včetně těch, kde je proti víc hlasů než pro. Pole detail.proslo se proto počítá z hlasů, ne z pole vysledek; původní hodnota zdroje zůstává v detail.vysledek_zdroje.",
+    "neucast": "hlasovani_po_letech uvádí souhrnnou neúčast (nepritomen) a NEROZPADÁ ji na omluvenou a neomluvenou. Příznak „omluven“ ve starších datech neexistuje (zastupitelstvo od 2019, rada od 2023) a rozpad by byl tvrzením o zdroji, ne o člověku.",
+    "predkladatel": "Předkladatel bodu usnesení se z dat vytáhnout nedá — řetězec „Předkládá:“ je jen v bodech typu „Program 108. RM“. Osoba se k usnesení váže přes jmenovité hlasování."
+  },
+  "rozsah": {
+    "od": "2021-07",
+    "do": "2026-10-10",
+    "prvni_rok": 2021,
+    "posledni_rok": 2026,
+    "podezrelych_dat": 0
+  },
+  "pocty": {
+    "celkem": 5,
+    "dolozenych": 5,
+    "odhadu": 0,
+    "dle_typu": {
+      "zpravodaj": 3,
+      "volby": 1,
+      "funkce": 1
+    },
+    "dle_jistoty": {
+      "fakt": 5
+    },
+    "hlasovani_celkem": 0,
+    "hlasovani_v_ose": 0,
+    "hlasovani_v_souhrnu": 0
+  },
+  "hlasovani_po_letech": [],
+  "udalosti": [
+    {
+      "id": "zpravodaj:2021-07-032",
+      "datum": "2021-07",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2021-07-01",
+      "rok": 2021,
+      "typ": "zpravodaj",
+      "nadpis": "Už se nemohly dočkat",
+      "popis": "Kdo? Děti z mateřských škol v Mariánských Lázních a okolí, pro které organizace MAP Mariánskolázeňsko připravila Olympijské hry dovedností. A to přesně pro dese",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=40aef4a8%7C2673#page=20",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2021-07/032.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2023-10-026",
+      "datum": "2023-10",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2023-10-01",
+      "rok": 2023,
+      "typ": "zpravodaj",
+      "nadpis": "OHLÉDNUTÍ SE ZA OSLAVAMI 100 LET ŠKOLY JIH",
+      "popis": "Česká menšinová škola, jak se původně nazývala dnešní škola JIH, byla založena v roce 1919 učitelem Josefem Hořejším. Vlastní budovu získala v roce 1923 a právě",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=f8934874%7C3926#page=16",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2023-10/026.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "zpravodaj:2024-03-018",
+      "datum": "2024-03",
+      "datum_do": null,
+      "presnost": "mesic",
+      "razeni": "2024-03-01",
+      "rok": 2024,
+      "typ": "zpravodaj",
+      "nadpis": "Vzpomínka na Miroslava Horníčka",
+      "popis": "Vzpomínkové odpoledne na Miroslava Horníčka přilákalo v sobotu 17. února do Městského muzea přes 70 návštěvníků, kteří zde téměř zaplnili sál. Po úvodním slově ",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": "https://www.muml.cz/modules/file_storage/download.php?file=fb079468%7C4145#page=14",
+      "zdroj": "zpravodaj",
+      "zdroj_soubor": "data/zpravodaj/clanky/2024-03/018.json",
+      "role": {
+        "vztah": "zminen_v_clanku"
+      }
+    },
+    {
+      "id": "volby:zvolen:kv2026:chlad-bohumil",
+      "datum": "2026-10-09",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2026-10-09",
+      "rok": 2026,
+      "typ": "volby",
+      "nadpis": "Bohumil Chlad zvolen(a) do zastupitelstva města",
+      "popis": "Zvolen(a) za ODS + KDU-ČSL s 351 hlasy (6.35 %), 2. mandát.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "opendata",
+      "zdroj_soubor": "data/opendata/volby/zastupitele.json",
+      "role": {
+        "vztah": "zvolen"
+      }
+    },
+    {
+      "id": "funkce:chlad-bohumil:0",
+      "datum": "2026-10-10",
+      "datum_do": null,
+      "presnost": "obdobi",
+      "razeni": "2026-10-10",
+      "rok": 2026,
+      "typ": "funkce",
+      "nadpis": "Bohumil Chlad — člen zastupitelstva",
+      "popis": "člen zastupitelstva (2026-10-10 – dosud).",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "url": null,
+      "zdroj": "lide",
+      "zdroj_soubor": "data/lide/osobnosti.json",
+      "role": {
+        "vztah": "funkce"
+      }
+    }
+  ]
+}

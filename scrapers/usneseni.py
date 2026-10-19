@@ -25,6 +25,7 @@ import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from datetime import date, timedelta
 from pathlib import Path
 
 import requests
@@ -430,8 +431,8 @@ def hlasovani_id(organ: str, rok: int, cj: int, poradi: int) -> str:
     return f"{organ}-{rok}-{cj}-{poradi}"
 
 
-def _stahni_detail(url: str) -> dict:
-    html = stahni(url)
+def _stahni_detail(url: str, max_age: int = 30 * 86_400) -> dict:
+    html = stahni(url, max_age=max_age)
     time.sleep(PAUZA)
     return parsuj_detail(html)
 
@@ -452,8 +453,13 @@ def _pracovnici() -> ThreadPoolExecutor:
     return _bazen
 
 
-def zpracuj_jednani(organ: str, jed: dict, log: core.Log) -> dict | None:
-    """Sestaví jeden záznam jednání se všemi body usnesení."""
+def zpracuj_jednani(organ: str, jed: dict, log: core.Log, *, cerstve: bool = False) -> dict | None:
+    """Sestaví jeden záznam jednání se všemi body usnesení.
+
+    `cerstve` obejde měsíční cache detailů — u jednání, které se stahuje
+    znovu kvůli chybějícím výsledkům hlasování, by jinak přišla zpátky
+    tatáž stránka bez výsledku.
+    """
     radky = ajax(organ, "decrees", filtr={"meeting_id": jed["id"]}, max_age=6 * 3600)
     if not radky:
         log.chyba(f"{organ} č. j. {jed['cj']} ({jed['datum']}): jednání nemá žádná usnesení")
@@ -463,7 +469,8 @@ def zpracuj_jednani(organ: str, jed: dict, log: core.Log) -> dict | None:
     radky.sort(key=lambda r: r.get("number_index") or 0)
     odkazy = [r["DT_RowAttr"]["data-link"] for r in radky]
 
-    detaily = list(_pracovnici().map(_stahni_detail, odkazy))
+    max_age = 3600 if cerstve else 30 * 86_400
+    detaily = list(_pracovnici().map(lambda u: _stahni_detail(u, max_age), odkazy))
 
     body = []
     for poradi, (radek, detail, url) in enumerate(zip(radky, detaily, odkazy), start=1):
@@ -503,6 +510,26 @@ def cesta_jednani(organ: str, rok: int, cj: int) -> str:
     return f"usneseni/{organ}/{rok}/{cj}.json"
 
 
+# Jak dlouho po jednání se ještě čeká na výsledky hlasování. Portál zveřejní
+# usnesení hned, výsledek hlasování k nim až později — a inkrementální běh by
+# se k už uloženému jednání nikdy nevrátil. Tak zůstala bez hlasování
+# zastupitelstva 20. 7. a 8. 9. 2026 (18 hlasování) i rada 13. 10. 2026.
+# Starší jednání bez výsledku jsou trvalý stav zdroje (2012, 2018…) a znovu
+# se nestahují.
+DOHLEDAT_VYSLEDKY_DNI = 180
+
+
+def _ceka_na_vysledky(cesta: str, datum: str) -> bool:
+    """Uložené jednání z posledních měsíců, u kterého chybí výsledek hlasování."""
+    try:
+        if date.fromisoformat(datum) < date.today() - timedelta(days=DOHLEDAT_VYSLEDKY_DNI):
+            return False
+    except ValueError:
+        return False
+    zaznam = core.nacti(cesta, {}) or {}
+    return any(not b.get("vysledek") for b in zaznam.get("body") or [])
+
+
 def main(od_roku: int | None = None, jen_nove: bool = True) -> dict:
     """Stáhne usnesení obou orgánů.
 
@@ -526,11 +553,13 @@ def main(od_roku: int | None = None, jen_nove: bool = True) -> dict:
         hotovo = bodu = 0
         for j in reversed(seznam):  # od nejnovějšího — když se běh přeruší, máme aktuální
             cesta = cesta_jednani(organ, j["rok"], j["cj"])
-            if jen_nove and (core.DATA / cesta).exists():
+            ulozene = (core.DATA / cesta).exists()
+            dohledat = ulozene and _ceka_na_vysledky(cesta, j["datum"])
+            if jen_nove and ulozene and not dohledat:
                 hotovo += 1
                 continue
             try:
-                zaznam = zpracuj_jednani(organ, j, log)
+                zaznam = zpracuj_jednani(organ, j, log, cerstve=dohledat)
             except core.ZdrojSelhal as e:
                 log.chyba(f"{organ} č. j. {j['cj']} ({j['datum']}): {e}")
                 continue

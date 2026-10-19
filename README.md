@@ -8,25 +8,25 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 
 | | |
 |---|---|
-| jednání rady a zastupitelstva | **697** (2012–2026) |
-| bodů usnesení | **12 970**, otagovaných podle 33 témat |
-| hlasování | **12 413**, z toho **122 319 jmenovitých hlasů** |
-| uložených úkolů ve slibníku | **867**, z toho 137 s termínem |
-| hlasování od voleb 2022 na účtu období | **612** |
-| zápisů z komisí a výborů | **387**, z nich 212 doporučení radě |
-| žádostí o informace podle stovky šestky | **97** rozebraných ze 128 v rejstříku |
-| smluv v registru | **6 820** za 24 subjektů městského holdingu |
-| protistran města | **1 740**, roky 1994–2026 |
+| jednání rady a zastupitelstva | **699** (2012–2026) |
+| bodů usnesení | **13 034**, otagovaných podle 33 témat |
+| hlasování | **12 472**, z toho **122 943 jmenovitých hlasů** |
+| uložených úkolů ve slibníku | **872**, z toho 139 s termínem |
+| hlasování od voleb 2022 na účtu období | **630** |
+| zápisů z komisí a výborů | **390**, z nich 215 doporučení radě |
+| žádostí o informace podle stovky šestky | **98** rozebraných ze 129 v rejstříku |
+| smluv v registru | **6 871** za 24 subjektů městského holdingu |
+| protistran města | **1 744**, roky 1994–2026 |
 | rozpočet z Monitoru státní pokladny | roky **2010–2026**, po konsolidaci |
 | prověřených projektů ve vysvědčení koalici | **38** a 28 slibů z programového prohlášení |
-| firem se sídlem ve městě (ARES) | **4 187** |
-| čísel zpravodaje | **123** (02/2016–09/2026), rozebraných na **4 568 článků** |
-| osobností | **229** v 8 kategoriích |
-| mediálních článků | **715** (2004–2026) |
-| spojení usnesení → smlouva → peníze | **2 522** |
-| volebních cyklů po okrscích | **41** |
+| firem se sídlem ve městě (ARES) | **4 194** |
+| čísel zpravodaje | **124** (02/2016–10/2026), rozebraných na **4 596 článků** |
+| osobností | **236** v 8 kategoriích |
+| mediálních článků | **718** (2004–2026) |
+| spojení usnesení → smlouva → peníze | **2 538** |
+| volebních cyklů po okrscích | **43** |
 | schémat vykreslených z dat | **9** |
-| týdenních vydání | **20** včetně zpětného archivu |
+| týdenních vydání | **23** včetně zpětného archivu |
 
 ## Co web umí
 

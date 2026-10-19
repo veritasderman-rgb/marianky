@@ -10,24 +10,24 @@
     "rozlozeni": "data/casova_osa/roky/{rok}.json je úplná sada událostí, každá právě jednou — kdo čte celý adresář, dostane celou osu bez duplicit. Předpočítané osy entit jsou v data/osy/ (mesto.json, osoby/, firmy/, tagy/) a nesou POLOŽKY, které se přes id dohledají v roky/. Kdyby ležely ve stejném adresáři, přečetl by se každý záznam několikrát."
   },
   "pocty": {
-    "celkem": 3192,
-    "dolozenych": 3054,
-    "odhadu": 138,
+    "celkem": 3202,
+    "dolozenych": 3056,
+    "odhadu": 146,
     "dle_typu": {
       "funkce": 1,
-      "smlouva": 547,
+      "smlouva": 548,
       "volby": 1,
       "zpravodaj": 437,
-      "retez": 138,
-      "firma": 85,
+      "retez": 146,
+      "firma": 86,
       "hlasovani": 962,
       "usneseni": 984,
       "media": 37
     },
     "dle_jistoty": {
-      "fakt": 3054,
-      "nizka": 96,
-      "stredni": 33,
+      "fakt": 3056,
+      "nizka": 101,
+      "stredni": 36,
       "vysoka": 9
     }
   },
@@ -171,7 +171,7 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Nájemní slmlouva",
-      "popis": "Správa městských sportovišť — příjem.",
+      "popis": "Správa městských sportovišť — výdaj.",
       "castka_czk": null,
       "jistota": "fakt",
       "jistota_duvod": null,
@@ -193,7 +193,7 @@
         "protistrana_ico": null,
         "protistrana": "Drahorád Michal, nar. 1969",
         "protistrana_neurcena": true,
-        "smer": "prijem",
+        "smer": "vydaj",
         "vada": true,
         "bez_ceny": true,
         "kategorie": null,
@@ -201,7 +201,7 @@
           {
             "subjekt_ico": "72559772",
             "subjekt": "Správa městských sportovišť",
-            "smer": "prijem",
+            "smer": "vydaj",
             "soubor": "data/penize/smlouvy/72559772.json"
           }
         ],
@@ -9910,6 +9910,54 @@
       }
     },
     {
+      "id": "retez:rada-2017-98/3__1259818",
+      "datum": "2017-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-25",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Pronájem NP Hlavní 225, Mar. Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-01-25 s bodem 98/3 z 2017-01-10 (NP Hlavní 225 - prodloužení nájmu - M + A Obuv s.r.o.). Jistota stredni.",
+      "castka_czk": 1524600.0,
+      "jistota": "stredni",
+      "jistota_duvod": "IČO 26403803 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "26403803"
+      ],
+      "tagy": [
+        "majetek-prodej",
+        "majetek-pronajem",
+        "mestske-firmy"
+      ],
+      "organy": [
+        "rada"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "rada-2017-98/3__1259818",
+      "url": "https://smlouvy.gov.cz/smlouva/1345362",
+      "detail": {
+        "skore": 91,
+        "signaly": [
+          "ico",
+          "nazev",
+          "cas_tesne"
+        ],
+        "odstup_dni": 15,
+        "kandidatu_usneseni": 1,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-01-10",
+        "usneseni_bod": "98/3",
+        "usneseni_url": "https://usneseni.muml.cz/rada/usneseni/1694625",
+        "smlouva_id": "1259818",
+        "protistrana": "M + A Obuv s.r.o."
+      }
+    },
+    {
       "id": "smlouva:1087485",
       "datum": "2017-01-25",
       "datum_do": null,
@@ -9941,6 +9989,54 @@
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": "63077639",
         "protistrana": "Wolters Kluwer ČR,a.s.",
+        "protistrana_neurcena": false,
+        "smer": "prijem",
+        "vada": false,
+        "bez_ceny": false,
+        "kategorie": null,
+        "dle_subjektu": [
+          {
+            "subjekt_ico": "00254061",
+            "subjekt": "Město Mariánské Lázně",
+            "smer": "prijem",
+            "soubor": "data/penize/smlouvy/00254061.json"
+          }
+        ],
+        "vice_subjektu": false
+      }
+    },
+    {
+      "id": "smlouva:1259818",
+      "datum": "2017-01-25",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-01-25",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "smlouva",
+      "nadpis": "Pronájem NP Hlavní 225, Mar. Lázně",
+      "popis": "Město Mariánské Lázně — příjem, protistrana M + A Obuv s.r.o..",
+      "castka_czk": 1524600.0,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "26403803"
+      ],
+      "tagy": [],
+      "organy": [
+        "mesto"
+      ],
+      "zdroj": "penize",
+      "zdroj_soubor": "data/penize/smlouvy/00254061.json",
+      "zdroj_klic": "1259818",
+      "url": "https://smlouvy.gov.cz/smlouva/1345362",
+      "detail": {
+        "subjekt_ico": "00254061",
+        "subjekt": "Město Mariánské Lázně",
+        "protistrana_ico": "26403803",
+        "protistrana": "M + A Obuv s.r.o.",
         "protistrana_neurcena": false,
         "smer": "prijem",
         "vada": false,
@@ -11605,13 +11701,14 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Objednávka stravenek",
-      "popis": "Město Mariánské Lázně — výdaj.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana LE CHEQUE DEJEUNER s.r.o..",
       "castka_czk": 120000.0,
       "jistota": "fakt",
       "jistota_duvod": null,
       "osoby": [],
       "firmy": [
-        "00254061"
+        "00254061",
+        "62913671"
       ],
       "tagy": [],
       "organy": [
@@ -11624,11 +11721,11 @@
       "detail": {
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
-        "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
-        "protistrana_neurcena": true,
+        "protistrana_ico": "62913671",
+        "protistrana": "LE CHEQUE DEJEUNER s.r.o.",
+        "protistrana_neurcena": false,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -62525,6 +62622,53 @@
       }
     },
     {
+      "id": "retez:rada-2017-114/1__2030734",
+      "datum": "2017-05-30",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-05-30",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Pachtovní smlouva - RGCML vč. dodatků",
+      "popis": "Odhadované spojení smlouvy z 2017-05-30 s bodem 114/1 z 2017-05-09 (RGCML - uzavření Dodateku č. 2 k pachtovní smlouvě). Jistota nizka.",
+      "castka_czk": 60500.0,
+      "jistota": "nizka",
+      "jistota_duvod": "název protistrany (Royal Golf Club Mariánské Lázně z.s., Ing. Jiří Pos) je v textu usnesení; smlouva podepsána 21 dní po usnesení; název bodu a předmět smlouvy sdílí slova pachtovni, rgcml",
+      "osoby": [],
+      "firmy": [
+        "00254061"
+      ],
+      "tagy": [
+        "majetek-pronajem",
+        "smlouvy",
+        "sport"
+      ],
+      "organy": [
+        "rada"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "rada-2017-114/1__2030734",
+      "url": "https://smlouvy.gov.cz/smlouva/2188938",
+      "detail": {
+        "skore": 72,
+        "signaly": [
+          "nazev",
+          "cas_tesne",
+          "predmet"
+        ],
+        "odstup_dni": 21,
+        "kandidatu_usneseni": 1,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-05-09",
+        "usneseni_bod": "114/1",
+        "usneseni_url": "https://usneseni.muml.cz/rada/usneseni/1757114",
+        "smlouva_id": "2030734",
+        "protistrana": "Royal Golf Club Mariánské Lázně z.s., Ing. Jiří Pos"
+      }
+    },
+    {
       "id": "smlouva:1988366",
       "datum": "2017-05-30",
       "datum_do": null,
@@ -62602,10 +62746,10 @@
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
+        "protistrana": "Royal Golf Club Mariánské Lázně z.s., Ing. Jiří Pos",
         "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -66965,6 +67109,102 @@
       }
     },
     {
+      "id": "retez:zastupitelstvo-2017-26/14__2005042",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O SPOLUPRÁCI\nPŘI ZAJIŠŤOVÁNÍ LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU CHIRURGIE A LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU VŠEOBECNÉ PRAKTICKÉ LÉKAŘSTVÍ",
+      "popis": "Odhadované spojení smlouvy z 2017-06-07 s bodem 26/14 z 2017-05-23 (Zajištění 24 hodinové, lékařské pohotovostní služby). Jistota nizka.",
+      "castka_czk": 1936000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26376709 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova lekarske, pohotovostni, sluzby; stejně dobře sedí i 1 další usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "26376709"
+      ],
+      "tagy": [
+        "rozpocet",
+        "zdravotnictvi"
+      ],
+      "organy": [
+        "zastupitelstvo"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "zastupitelstvo-2017-26/14__2005042",
+      "url": "https://smlouvy.gov.cz/smlouva/2161450",
+      "detail": {
+        "skore": 102,
+        "signaly": [
+          "ico",
+          "nazev",
+          "cas_tesne",
+          "predmet"
+        ],
+        "odstup_dni": 15,
+        "kandidatu_usneseni": 2,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-05-23",
+        "usneseni_bod": "26/14",
+        "usneseni_url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1766396",
+        "smlouva_id": "2005042",
+        "protistrana": "Nemocnice Mariánské Lázně s.r.o."
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-26/7__2005042",
+      "datum": "2017-06-07",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-07",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "SMLOUVA O SPOLUPRÁCI\nPŘI ZAJIŠŤOVÁNÍ LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU CHIRURGIE A LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU VŠEOBECNÉ PRAKTICKÉ LÉKAŘSTVÍ",
+      "popis": "Odhadované spojení smlouvy z 2017-06-07 s bodem 26/7 z 2017-05-23 (Smlouva o spolupráci mezi Městem Mariánské Lázně a Nemocnicí Mariánské Lázně s.r.o.). Jistota nizka.",
+      "castka_czk": 1936000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 26376709 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 15 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "26376709"
+      ],
+      "tagy": [
+        "mestske-firmy",
+        "smlouvy",
+        "zdravotnictvi"
+      ],
+      "organy": [
+        "zastupitelstvo"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "zastupitelstvo-2017-26/7__2005042",
+      "url": "https://smlouvy.gov.cz/smlouva/2161450",
+      "detail": {
+        "skore": 91,
+        "signaly": [
+          "ico",
+          "nazev",
+          "cas_tesne"
+        ],
+        "odstup_dni": 15,
+        "kandidatu_usneseni": 2,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-05-23",
+        "usneseni_bod": "26/7",
+        "usneseni_url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1765721",
+        "smlouva_id": "2005042",
+        "protistrana": "Nemocnice Mariánské Lázně s.r.o."
+      }
+    },
+    {
       "id": "smlouva:1994638",
       "datum": "2017-06-07",
       "datum_do": null,
@@ -67022,7 +67262,7 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "SMLOUVA O SPOLUPRÁCI\nPŘI ZAJIŠŤOVÁNÍ LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU CHIRURGIE A LÉKAŘSKÉ POHOTOVOSTNÍ SLUŽBY V OBORU VŠEOBECNÉ PRAKTICKÉ LÉKAŘSTVÍ",
-      "popis": "Město Mariánské Lázně — výdaj.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Nemocnice Mariánské Lázně s.r.o..",
       "castka_czk": 1936000.0,
       "jistota": "fakt",
       "jistota_duvod": null,
@@ -67042,11 +67282,11 @@
       "detail": {
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
-        "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
-        "protistrana_neurcena": true,
+        "protistrana_ico": "26376709",
+        "protistrana": "Nemocnice Mariánské Lázně s.r.o.",
+        "protistrana_neurcena": false,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -69715,10 +69955,10 @@
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
+        "protistrana": "Základní umělecká škola Fryderyka Chopina Mariánské Lázně, p.o.",
         "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -74470,6 +74710,149 @@
       }
     },
     {
+      "id": "retez:rada-2017-108/18__2142130",
+      "datum": "2017-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-21",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-21 s bodem 108/18 z 2017-03-28 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47725184 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 85 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "47725184"
+      ],
+      "tagy": [
+        "dotace-poskytnute",
+        "kultura",
+        "skolstvi"
+      ],
+      "organy": [
+        "rada"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "rada-2017-108/18__2142130",
+      "url": "https://smlouvy.gov.cz/smlouva/2308866",
+      "detail": {
+        "skore": 88,
+        "signaly": [
+          "ico",
+          "nazev",
+          "cas_tesne"
+        ],
+        "odstup_dni": 85,
+        "kandidatu_usneseni": 2,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-03-28",
+        "usneseni_bod": "108/18",
+        "usneseni_url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+        "smlouva_id": "2142130",
+        "protistrana": "Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s."
+      }
+    },
+    {
+      "id": "retez:rada-2017-108/18__2142134",
+      "datum": "2017-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-21",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-21 s bodem 108/18 z 2017-03-28 (Fond kultury města Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 99800.0,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (Divadlo lidové tvorby, Mariánské Lázně z.s.) je v textu usnesení; částka bodu a smlouvy si odpovídá (rozdíl 200 Kč); smlouva podepsána 85 dní po usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061"
+      ],
+      "tagy": [
+        "dotace-poskytnute",
+        "kultura",
+        "skolstvi"
+      ],
+      "organy": [
+        "rada"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "rada-2017-108/18__2142134",
+      "url": "https://smlouvy.gov.cz/smlouva/2308870",
+      "detail": {
+        "skore": 84,
+        "signaly": [
+          "nazev",
+          "castka_presna",
+          "cas_tesne"
+        ],
+        "odstup_dni": 85,
+        "kandidatu_usneseni": 1,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-03-28",
+        "usneseni_bod": "108/18",
+        "usneseni_url": "https://usneseni.muml.cz/rada/usneseni/1734219",
+        "smlouva_id": "2142134",
+        "protistrana": "Divadlo lidové tvorby, Mariánské Lázně z.s."
+      }
+    },
+    {
+      "id": "retez:zastupitelstvo-2017-25/14__2142130",
+      "datum": "2017-06-21",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-06-21",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Účelová neinvestiční dotace",
+      "popis": "Odhadované spojení smlouvy z 2017-06-21 s bodem 25/14 z 2017-04-25 (Fond kultury města Mariánské Lázně). Jistota nizka.",
+      "castka_czk": 80000.0,
+      "jistota": "nizka",
+      "jistota_duvod": "IČO 47725184 je uvedeno v textu usnesení; v usnesení je i název protistrany; smlouva podepsána 57 dní po usnesení; stejně dobře sedí i 1 další usnesení",
+      "osoby": [],
+      "firmy": [
+        "00254061",
+        "47725184"
+      ],
+      "tagy": [
+        "dotace-poskytnute",
+        "kultura",
+        "skolstvi"
+      ],
+      "organy": [
+        "zastupitelstvo"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "zastupitelstvo-2017-25/14__2142130",
+      "url": "https://smlouvy.gov.cz/smlouva/2308866",
+      "detail": {
+        "skore": 88,
+        "signaly": [
+          "ico",
+          "nazev",
+          "cas_tesne"
+        ],
+        "odstup_dni": 57,
+        "kandidatu_usneseni": 2,
+        "kandidatu_smluv": 1,
+        "usneseni_datum": "2017-04-25",
+        "usneseni_bod": "25/14",
+        "usneseni_url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1741128",
+        "smlouva_id": "2142130",
+        "protistrana": "Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s."
+      }
+    },
+    {
       "id": "smlouva:2142130",
       "datum": "2017-06-21",
       "datum_do": null,
@@ -74479,13 +74862,14 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Účelová neinvestiční dotace",
-      "popis": "Město Mariánské Lázně — výdaj.",
+      "popis": "Město Mariánské Lázně — výdaj, protistrana Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s..",
       "castka_czk": 80000.0,
       "jistota": "fakt",
       "jistota_duvod": null,
       "osoby": [],
       "firmy": [
-        "00254061"
+        "00254061",
+        "47725184"
       ],
       "tagy": [],
       "organy": [
@@ -74498,11 +74882,11 @@
       "detail": {
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
-        "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
-        "protistrana_neurcena": true,
+        "protistrana_ico": "47725184",
+        "protistrana": "Smíšený pěvecký sbor Fontána Mariánské Lázně, z.s.",
+        "protistrana_neurcena": false,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -74546,7 +74930,7 @@
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
+        "protistrana": "Divadlo lidové tvorby, Mariánské Lázně z.s.",
         "protistrana_neurcena": true,
         "smer": "vydaj",
         "vada": true,
@@ -74593,10 +74977,10 @@
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
+        "protistrana": "Tělocvičná jednota Sokol Mariánské Lázně, pobočný spolek",
         "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -86099,14 +86483,13 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Malířské a natěračské práce",
-      "popis": "Základní škola JIH, Mariánské Lázně, Komenského 459 — výdaj, protistrana Vladimír Kovač.",
+      "popis": "Základní škola JIH, Mariánské Lázně, Komenského 459 — výdaj.",
       "castka_czk": 134130.92,
       "jistota": "fakt",
       "jistota_duvod": null,
       "osoby": [],
       "firmy": [
-        "47723505",
-        "68820801"
+        "47723505"
       ],
       "tagy": [],
       "organy": [
@@ -86119,11 +86502,11 @@
       "detail": {
         "subjekt_ico": "47723505",
         "subjekt": "Základní škola JIH, Mariánské Lázně, Komenského 459",
-        "protistrana_ico": "68820801",
-        "protistrana": "Vladimír Kovač",
-        "protistrana_neurcena": false,
+        "protistrana_ico": null,
+        "protistrana": "Základní škola JIH, Mariánské Lázně, Komenského 459, příspěvková organizace",
+        "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": false,
+        "vada": true,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -86147,13 +86530,12 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Zhotovení podlahy v učebně",
-      "popis": "Základní škola JIH, Mariánské Lázně, Komenského 459 — výdaj, protistrana SLEPIČKA s.r.o..",
+      "popis": "Základní škola JIH, Mariánské Lázně, Komenského 459 — výdaj.",
       "castka_czk": 79837.01,
       "jistota": "fakt",
       "jistota_duvod": null,
       "osoby": [],
       "firmy": [
-        "27998681",
         "47723505"
       ],
       "tagy": [],
@@ -86167,11 +86549,11 @@
       "detail": {
         "subjekt_ico": "47723505",
         "subjekt": "Základní škola JIH, Mariánské Lázně, Komenského 459",
-        "protistrana_ico": "27998681",
-        "protistrana": "SLEPIČKA s.r.o.",
-        "protistrana_neurcena": false,
+        "protistrana_ico": null,
+        "protistrana": "Základní škola JIH, Mariánské Lázně, Komenského 459, příspěvková organizace",
+        "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": false,
+        "vada": true,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -118474,7 +118856,7 @@
       "datum_podezrele": false,
       "typ": "smlouva",
       "nadpis": "Poskytnutí nevýlučného práva užívat ochranné známky v oblasti všech položek výčtu zboží a služeb, pro něž jsou ochranné známky zapsány",
-      "popis": "Město Mariánské Lázně — výdaj, protistrana Mgr. Ivo Štorek, advokát.",
+      "popis": "Město Mariánské Lázně — příjem, protistrana Mgr. Ivo Štorek, advokát.",
       "castka_czk": null,
       "jistota": "fakt",
       "jistota_duvod": null,
@@ -118497,7 +118879,7 @@
         "protistrana_ico": "72015829",
         "protistrana": "Mgr. Ivo Štorek, advokát",
         "protistrana_neurcena": false,
-        "smer": "vydaj",
+        "smer": "prijem",
         "vada": true,
         "bez_ceny": true,
         "kategorie": null,
@@ -118505,7 +118887,7 @@
           {
             "subjekt_ico": "00254061",
             "subjekt": "Město Mariánské Lázně",
-            "smer": "vydaj",
+            "smer": "prijem",
             "soubor": "data/penize/smlouvy/00254061.json"
           }
         ],
@@ -120513,7 +120895,7 @@
       "popis": "Odhadované spojení smlouvy z 2017-10-25 s bodem 130/7 z 2017-10-10 (Zapojení příspěvku KK \"Mariánské Lázně, Labutí jezírko II. etapa\"). Jistota nizka.",
       "castka_czk": 100000.0,
       "jistota": "nizka",
-      "jistota_duvod": "název protistrany (Karlovarský kraj) je v textu usnesení; název se objevuje v 703 bodech usnesení, sám o sobě neurčuje nic; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova jezirko, labuti; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "jistota_duvod": "název protistrany (Karlovarský kraj) je v textu usnesení; název se objevuje v 707 bodech usnesení, sám o sobě neurčuje nic; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova jezirko, labuti; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
       "osoby": [],
       "firmy": [
         "00254061",
@@ -120562,7 +120944,7 @@
       "popis": "Odhadované spojení smlouvy z 2017-10-25 s bodem 130/7 z 2017-10-10 (Zapojení příspěvku KK \"Mariánské Lázně, Labutí jezírko II. etapa\"). Jistota nizka.",
       "castka_czk": 100000.0,
       "jistota": "nizka",
-      "jistota_duvod": "název protistrany (Karlovarský kraj) je v textu usnesení; název se objevuje v 703 bodech usnesení, sám o sobě neurčuje nic; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova jezirko, labuti; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "jistota_duvod": "název protistrany (Karlovarský kraj) je v textu usnesení; název se objevuje v 707 bodech usnesení, sám o sobě neurčuje nic; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 15 dní po usnesení; název bodu a předmět smlouvy sdílí slova jezirko, labuti; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
       "osoby": [],
       "firmy": [
         "00254061",
@@ -123178,6 +123560,53 @@
       }
     },
     {
+      "id": "retez:zastupitelstvo-2017-29/7__3369616",
+      "datum": "2017-11-01",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-11-01",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "retez",
+      "nadpis": "Prodej bytové jednotky č. 233/4, ul. Hlavní třída, k.ú. a obec Mariánské Lázně",
+      "popis": "Odhadované spojení smlouvy z 2017-11-01 s bodem 29/7 z 2017-09-12 (Prodej bytové jednotky č. 233/4, v domě č.p. 233, ul. Hlavní třída, na st.p.č. 306, kat. území a obec Mariánské Lázně). Jistota stredni.",
+      "castka_czk": 1295000.0,
+      "jistota": "stredni",
+      "jistota_duvod": "název protistrany (AMEER 007 s.r.o. - IČO: 04600401, MUDr. Ashraf Abu Taha) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytove, hlavni, jednotky, obec; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
+      "osoby": [],
+      "firmy": [
+        "00254061"
+      ],
+      "tagy": [
+        "bydleni",
+        "majetek-prodej"
+      ],
+      "organy": [
+        "zastupitelstvo"
+      ],
+      "zdroj": "retez",
+      "zdroj_soubor": "data/retez/retezy.json",
+      "zdroj_klic": "zastupitelstvo-2017-29/7__3369616",
+      "url": "https://smlouvy.gov.cz/smlouva/3633756",
+      "detail": {
+        "skore": 112,
+        "signaly": [
+          "nazev",
+          "castka_presna",
+          "cas_tesne",
+          "predmet"
+        ],
+        "odstup_dni": 50,
+        "kandidatu_usneseni": 1,
+        "kandidatu_smluv": 2,
+        "usneseni_datum": "2017-09-12",
+        "usneseni_bod": "29/7",
+        "usneseni_url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1812261",
+        "smlouva_id": "3369616",
+        "protistrana": "AMEER 007 s.r.o. - IČO: 04600401, MUDr. Ashraf Abu Taha"
+      }
+    },
+    {
       "id": "retez:zastupitelstvo-2017-29/7__3670852",
       "datum": "2017-11-01",
       "datum_do": null,
@@ -123190,7 +123619,7 @@
       "popis": "Odhadované spojení smlouvy z 2017-11-01 s bodem 29/7 z 2017-09-12 (Prodej bytové jednotky č. 233/4, v domě č.p. 233, ul. Hlavní třída, na st.p.č. 306, kat. území a obec Mariánské Lázně). Jistota stredni.",
       "castka_czk": 1295000.0,
       "jistota": "stredni",
-      "jistota_duvod": "název protistrany (AMEER 007 s.r.o. - IČO: 04600401, MUDr. Ashraf Abu Taha) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytove, hlavni, jednotky, obec",
+      "jistota_duvod": "název protistrany (AMEER 007 s.r.o. - IČO: 04600401, MUDr. Ashraf Abu Taha) je v textu usnesení; částka bodu a smlouvy si odpovídá (shodná); smlouva podepsána 50 dní po usnesení; název bodu a předmět smlouvy sdílí slova bytove, hlavni, jednotky, obec; k témuž usnesení se hlásí i 1 další smlouva téže protistrany",
       "osoby": [],
       "firmy": [
         "00254061"
@@ -123216,7 +123645,7 @@
         ],
         "odstup_dni": 50,
         "kandidatu_usneseni": 1,
-        "kandidatu_smluv": 1,
+        "kandidatu_smluv": 2,
         "usneseni_datum": "2017-09-12",
         "usneseni_bod": "29/7",
         "usneseni_url": "https://usneseni.muml.cz/zastupitelstvo/usneseni/1812261",
@@ -123254,10 +123683,10 @@
         "subjekt_ico": "00254061",
         "subjekt": "Město Mariánské Lázně",
         "protistrana_ico": null,
-        "protistrana": "Město Mariánské Lázně",
+        "protistrana": "AMEER 007 s.r.o. - IČO: 04600401, MUDr. Ashraf Abu Taha",
         "protistrana_neurcena": true,
         "smer": "vydaj",
-        "vada": true,
+        "vada": false,
         "bez_ceny": false,
         "kategorie": null,
         "dle_subjektu": [
@@ -145853,6 +146282,41 @@
           }
         ],
         "vice_subjektu": false
+      }
+    },
+    {
+      "id": "firma:06705316:vznik",
+      "datum": "2017-12-18",
+      "datum_do": null,
+      "presnost": "den",
+      "razeni": "2017-12-18",
+      "rok": 2017,
+      "datum_podezrele": false,
+      "typ": "firma",
+      "nadpis": "Vznik subjektu — Martin Kodýtek",
+      "popis": "Vznik subjektu Martin Kodýtek (IČO 06705316), Fyzická osoba podnikající dle živnostenského zákona, obor: Pátrací a bezpečnostní činnosti.",
+      "castka_czk": null,
+      "jistota": "fakt",
+      "jistota_duvod": null,
+      "osoby": [],
+      "firmy": [
+        "06705316"
+      ],
+      "tagy": [],
+      "organy": [],
+      "zdroj": "firmy",
+      "zdroj_soubor": "data/firmy/subjekty.json",
+      "zdroj_klic": "06705316",
+      "url": null,
+      "detail": {
+        "kategorie": "vznik",
+        "nazev": "Martin Kodýtek",
+        "stav": "aktivni",
+        "pravni_forma": "Fyzická osoba podnikající dle živnostenského zákona",
+        "adresa": "Ruská 135/17, 35301 Mariánské Lázně",
+        "sidlo_v_obci": true,
+        "obor": "Pátrací a bezpečnostní činnosti",
+        "zamestnancu_rozsah": null
       }
     },
     {
