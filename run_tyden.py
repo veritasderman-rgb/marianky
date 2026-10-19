@@ -33,7 +33,14 @@ KROKY: list[tuple[str, str, bool]] = [
     # Nesmí se prohodit ani sloučit — hlidac dřív smlouvy taky zapisoval
     # a přepsal jich 6 943 čtyřmi sty (viz komentář v scrapers/hlidac.py).
     ("scrapers.hlidac_api", "Registr smluv (plná sklizeň přes API)", True),
-    ("scrapers.hlidac",    "Dotace, zakázky, statistiky",    True),
+    # NEPOVINNÝ: jen převádí RUČNÍ sklizeň (`.cache/hlidac/*.psv`), kterou
+    # dělá model přes MCP, ne tenhle běh. V CI ta sklizeň chybí, takže krok
+    # padá vždycky — a jako povinný shodil každý běh v Actions na kód 1:
+    # workflow pak data neuložil, ani když se všechno ostatní stáhlo
+    # (19. 10. 2026: 64 nových usnesení, 7 193 smluv, nové číslo zpravodaje).
+    # Data z minulé ruční sklizně zůstávají v `data/penize/` a sekce je
+    # podle data označená jako starší.
+    ("scrapers.hlidac",    "Dotace, zakázky, statistiky",    False),
     ("scrapers.zpravodaj", "Nové číslo zpravodaje",          False),
     ("scrapers.media",     "Mediální monitoring",            False),
     ("scrapers.lide",      "Aktualizace osobností",          False),
