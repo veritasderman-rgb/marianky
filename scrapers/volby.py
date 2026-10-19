@@ -323,6 +323,24 @@ def datum_z_rozcestniku(kod: str) -> str | None:
         return None
 
 
+def datum_z_odkazu_vysledku(kod: str) -> str | None:
+    """První den voleb z odkazu na výsledkovou aplikaci, nebo None.
+
+    Komunální volby 2026 nemají v okrskových datech sloupec DATUMVOLEB
+    (v letech 2002–2022 tam byl) a nadpis rozcestníku datum neuvádí.
+    Úvodní stránka volby.gov.cz ale odkazuje na výsledky adresou, která
+    první den voleb nese: `/app/kv2026/cs/20261009/home`. Je to údaj
+    zdroje, ne odhad — když odkaz chybí, zůstane `null`.
+    """
+    try:
+        html = fetch("https://volby.gov.cz/", max_age=7 * 86_400)
+    except ZdrojSelhal:
+        return None
+    assert isinstance(html, str)
+    m = re.search(rf"/app/{re.escape(kod)}/[a-z]{{2}}/(\d{{8}})/", html)
+    return _datum(m.group(1)) if m else None
+
+
 def odkazy_cyklu(kod: str) -> dict[str, str]:
     """Najde v rozcestníku cyklu odkazy na CSV balíky (data / registry / číselníky).
 
@@ -720,10 +738,14 @@ def zpracuj_cyklus(kod: str, log: Log) -> dict:
     # v registrech. Když ho uvádí aspoň nadpis rozcestníku, doplní se odtud
     # a je to u záznamu vidět. Jinak zůstane null.
     z_nadpisu = datum_z_rozcestniku(kod)
+    puvod = "nadpis rozcestníku" if z_nadpisu else None
+    if not z_nadpisu:
+        z_nadpisu = datum_z_odkazu_vysledku(kod)
+        puvod = "odkaz na výsledky na volby.gov.cz" if z_nadpisu else None
     for v in volby:
         if not v.get("datum"):
             v["datum"] = z_nadpisu
-            v["datum_puvod"] = "nadpis rozcestníku" if z_nadpisu else None
+            v["datum_puvod"] = puvod
 
     potize = []
     for v in volby:

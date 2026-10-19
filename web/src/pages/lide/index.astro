@@ -6,7 +6,7 @@ import StavDat from '../../components/StavDat.astro';
 import { nactiHlasovani, nactiJson, nactiLidi, type Osobnost } from '../../lib/data';
 import { nactiZastupitele } from '../../lib/volby';
 import { zplostiHlasovani } from '../../lib/prehledy';
-import { cislo, orderCs, orez, sklonuj } from '../../lib/format';
+import { cislo, datum, orderCs, orez, sklonuj } from '../../lib/format';
 
 const zLidi = nactiLidi();
 const zHlasovani = nactiHlasovani();
@@ -80,7 +80,10 @@ const zijiciNapred = (a: { zijici?: boolean; jmeno?: string }, b: typeof a) =>
    lidi, kteří v zastupitelstvu skutečně seděli. */
 
 interface SoucasniZastupitele {
+  generovano?: string;
   volebni_obdobi?: string;
+  /** Sběrač poznal, že web ukazuje zastupitelstvo z minulých voleb. */
+  web_zaostava_za_volbami?: boolean;
   celkem?: number;
   zastupitele?: { id: string; jmeno: string; uskupeni?: string; funkce?: string }[];
 }
@@ -90,12 +93,49 @@ const zZvolenych = nactiZastupitele();
 const podleId = new Map(lide.map((o) => [o.id, o]));
 
 /* Aktuální obsazení. Období si bere ze zdroje, nedopočítává se z dnešního
-   data — kdyby web města zaostal za volbami, ať je vidět jeho údaj. */
-const soucasni = (zSoucasnych.data?.zastupitele ?? []).map((z) => ({
-  ...z,
-  profil: podleId.get(z.id) ?? null,
-}));
-const obdobiSoucasne = (zSoucasnych.data?.volebni_obdobi ?? '').replace('-', '–');
+   data.
+
+   PO VOLBÁCH WEB MĚSTA ZAOSTÁVÁ. Po komunálních volbách 9.–10. 10. 2026 na
+   něm ještě týdny stálo odcházející zastupitelstvo — mandát přitom vzniká
+   zvolením a ten starý dnem voleb zaniká. Když jsou v datech ČSÚ novější
+   komunální volby, než ke kterým se hlásí web, „současní" jsou zvolení
+   z nich a uskupení je kandidátní listina. Funkci (starosta…) si člověk
+   z webu nese dál: vedení vykonává funkci až do ustavujícího zasedání. */
+const zvoleniKv = zZvolenych.data.filter((z) => z.cyklus.startsWith('kv') && z.rok);
+const rokPoslednichVoleb = zvoleniKv.length > 0 ? Math.max(...zvoleniKv.map((z) => z.rok as number)) : null;
+const rokWebu = Number((zSoucasnych.data?.volebni_obdobi ?? '').slice(0, 4)) || null;
+const webZaostava =
+  zSoucasnych.data?.web_zaostava_za_volbami === true ||
+  (rokPoslednichVoleb !== null && rokWebu !== null && rokPoslednichVoleb > rokWebu);
+const zWebu = zSoucasnych.data?.zastupitele ?? [];
+const funkceZWebu = new Map(zWebu.map((z) => [z.id, z.funkce]));
+const zvoleniPosledni = zvoleniKv
+  .filter((z) => z.rok === rokPoslednichVoleb)
+  // Podle id (příjmení-jméno), ne podle jména: to nese tituly a „Bc. Ondřej
+  // Míka" by se zařadil pod B.
+  .sort((a, b) => orderCs(a.osoba_id ?? a.jmeno, b.osoba_id ?? b.jmeno));
+const soucasni = (
+  webZaostava
+    ? zvoleniPosledni.map((z) => {
+        const f = z.osoba_id ? funkceZWebu.get(z.osoba_id) : undefined;
+        return {
+          id: z.osoba_id ?? '',
+          jmeno: z.jmeno,
+          uskupeni: z.strana ?? undefined,
+          // „Člen zastupitelstva" z webu nic nepřidá; funkce ve vedení ano.
+          funkce: f && !/^člen/i.test(f) ? f : undefined,
+        };
+      })
+    : zWebu
+).map((z) => ({ ...z, profil: podleId.get(z.id) ?? null }));
+const obdobiSoucasne = webZaostava
+  ? `${rokPoslednichVoleb}–${(rokPoslednichVoleb as number) + 4}`
+  : (zSoucasnych.data?.volebni_obdobi ?? '').replace('-', '–');
+const obdobiWebu = (zSoucasnych.data?.volebni_obdobi ?? '').replace('-', '–');
+const datumPoslednichVoleb = zvoleniPosledni.find((z) => z.datum)?.datum ?? null;
+const soucasniId = new Set(soucasni.map((z) => z.id));
+/* Kdo na webu města ještě stojí, ale mandát mu volbami zanikl. */
+const odchazejici = webZaostava ? zWebu.filter((z) => !soucasniId.has(z.id)) : [];
 
 /* ── Rada města ───────────────────────────────────────────────────────────
    Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva — a přesně
@@ -337,11 +377,23 @@ const schemaVedeni = nactiDiagram('vedeni').data;
         <h2>
           Současní zastupitelé{obdobiSoucasne ? ` (${obdobiSoucasne})` : ''}
         </h2>
-        <p class="uvod">
-          Aktuální obsazení podle webu města — {cislo(soucasni.length)}{' '}
-          {sklonuj(soucasni.length, 'člen', 'členové', 'členů')} zastupitelstva.
-          U každého je hlasovací historie z dat.
-        </p>
+        {webZaostava ? (
+          <p class="uvod">
+            Zvolení v komunálních volbách {rokPoslednichVoleb}
+            {datumPoslednichVoleb ? ` (hlasování začalo ${datum(datumPoslednichVoleb)})` : ''} podle
+            výsledků ČSÚ — {cislo(soucasni.length)}{' '}
+            {sklonuj(soucasni.length, 'člen', 'členové', 'členů')} zastupitelstva, uskupení je kandidátní listina.
+            Mandát vzniká zvolením; web města ale ještě uvádí složení z období {obdobiWebu}.
+            {odchazejici.length > 0 &&
+              ` Mandát volbami zanikl: ${odchazejici.map((z) => podleId.get(z.id)?.jmeno ?? z.jmeno).join(', ')}.`}
+          </p>
+        ) : (
+          <p class="uvod">
+            Aktuální obsazení podle webu města — {cislo(soucasni.length)}{' '}
+            {sklonuj(soucasni.length, 'člen', 'členové', 'členů')} zastupitelstva.
+            U každého je hlasovací historie z dat.
+          </p>
+        )}
         <ul class="seznam">
           {soucasni.map((z) => (
             <li class="polozka">
@@ -367,14 +419,31 @@ const schemaVedeni = nactiDiagram('vedeni').data;
     radni.length > 0 && (
       <section>
         <h2>Rada města</h2>
-        <p class="uvod">
-          Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva. Radní jsou
-          vždycky i zastupitelé, takže je najdete i v seznamu výš —{' '}
-          <strong>
-            {cislo(radni.length)} {sklonuj(radni.length, 'člen', 'členové', 'členů')}
-          </strong>
-          {soucasni.length > 0 ? ` z ${cislo(soucasni.length)}` : ''}.
-        </p>
+        {webZaostava ? (
+          <p class="uvod">
+            Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva. Tohle je rada
+            z období {obdobiWebu} —{' '}
+            <strong>
+              {cislo(radni.length)} {sklonuj(radni.length, 'člen', 'členové', 'členů')}
+            </strong>
+            {'. Podle zákona o obcích vykonává působnost i po volbách, dokud ustavující ' +
+              'zasedání nového zastupitelstva nezvolí novou radu.'}
+            {radni.some((r) => !soucasniId.has(r.id)) &&
+              ` Mandát zastupitele už nemá: ${radni
+                .filter((r) => !soucasniId.has(r.id))
+                .map((r) => r.jmeno)
+                .join(', ')}.`}
+          </p>
+        ) : (
+          <p class="uvod">
+            Výkonný orgán, který rozhoduje mezi zasedáními zastupitelstva. Radní jsou
+            vždycky i zastupitelé, takže je najdete i v seznamu výš —{' '}
+            <strong>
+              {cislo(radni.length)} {sklonuj(radni.length, 'člen', 'členové', 'členů')}
+            </strong>
+            {soucasni.length > 0 ? ` z ${cislo(soucasni.length)}` : ''}.
+          </p>
+        )}
 
         <ul class="seznam-temat">
           {radni.map((r) => (

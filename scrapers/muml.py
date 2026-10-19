@@ -799,7 +799,39 @@ def akce(*, dni_dopredu: int = 730, dni_zpet: int = 30, detaily: bool = True) ->
 
 ZASTUPITELE_URL = f"{BASE}/samosprava/zastupitelstvo/clenove-1/"
 TERMINY_URL = f"{BASE}/samosprava/zastupitelstvo/terminy-zasedani/"
+# Záchranná hodnota, když chybí výsledky voleb. Jinak se období pozná
+# z dat (`_volebni_obdobi`): web města ukazuje jen jedno složení a po
+# volbách 9.–10. 10. 2026 na něm ještě týdny zůstalo to staré. Pevně
+# zapsaný popisek by po aktualizaci webu tvrdil „2022–2026" i o novém
+# zastupitelstvu.
 VOLEBNI_OBDOBI = "2022-2026"
+
+
+def _volebni_obdobi(ids: set[str], log: core.Log) -> tuple[str, bool]:
+    """Období, jehož zvolení se se seznamem z webu nejvíc překrývají.
+
+    Vrací (období, web_zaostava). `web_zaostava` je True, když existují
+    novější komunální volby, než ke kterým se seznam z webu hlásí — tedy
+    web ještě ukazuje odcházející zastupitelstvo.
+    """
+    zvoleni = core.nacti("opendata/volby/zastupitele.json", []) or []
+    try:
+        aliasy = core.nacti_config("tataz_osoba.json").get("aliasy", [])
+    except FileNotFoundError:
+        aliasy = []
+    na_hlavni = {j: a["id"] for a in aliasy for j in a.get("jina_id", [])}
+    podle_roku: dict[int, set[str]] = {}
+    for z in zvoleni:
+        if str(z.get("cyklus", "")).startswith("kv") and z.get("rok") and z.get("osoba_id"):
+            podle_roku.setdefault(z["rok"], set()).add(na_hlavni.get(z["osoba_id"], z["osoba_id"]))
+    if not podle_roku or not ids:
+        return VOLEBNI_OBDOBI, False
+    rok = max(podle_roku, key=lambda r: (len(podle_roku[r] & ids), r))
+    zaostava = rok < max(podle_roku)
+    if zaostava:
+        log.info("web města ukazuje zastupitelstvo z minulých voleb",
+                 obdobi=f"{rok}-{rok + 4}", nejnovejsi_volby=max(podle_roku))
+    return f"{rok}-{rok + 4}", zaostava
 
 # Ověřené změny funkcí, které web už neukazuje (drží jen aktuální stav).
 # Zdroj: docs/datove-zdroje.md, ověřeno 17. 8. 2026.
@@ -953,9 +985,11 @@ def zastupitele() -> dict:
     terminy = _terminy_zasedani(log)
     log.info("zastupitelé", osob=len(out), terminu=len(terminy))
 
+    obdobi, zaostava = _volebni_obdobi({z["id"] for z in out}, log)
     vysledek = {
         **_hlavicka([ZASTUPITELE_URL, TERMINY_URL]),
-        "volebni_obdobi": VOLEBNI_OBDOBI,
+        "volebni_obdobi": obdobi,
+        "web_zaostava_za_volbami": zaostava,
         "poznamka": (
             "Web ukazuje jen aktuální funkci. `funkce_historie` se dopočítává "
             "porovnáním s předchozím během sběrače; `od: null` znamená, že "
@@ -1036,9 +1070,11 @@ def rada() -> dict:
 
     log.info("rada", clenu=len(clenove), prazdnych_mist=len(prazdna))
 
+    obdobi, zaostava = _volebni_obdobi({z["id"] for z in zast}, log)
     vysledek = {
         **_hlavicka(RADA_URL),
-        "volebni_obdobi": VOLEBNI_OBDOBI,
+        "volebni_obdobi": obdobi,
+        "web_zaostava_za_volbami": zaostava,
         "poznamka": (
             "Web města ukazuje jen obsazená místa; kolik jich rada má mít, "
             "z něj nevyplývá a nedopočítává se. `prazdna_mista` jsou funkce, "

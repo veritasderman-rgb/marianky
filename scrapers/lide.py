@@ -42,9 +42,16 @@ from lib.core import Log, ZdrojSelhal, cistit, fetch, nacti, nacti_config, slug,
 SOUBOR = "lide/osobnosti.json"
 WEB = "https://www.muml.cz"
 
-# Volební období 2022–2026. Ustavující zasedání zastupitelstva proběhlo v
-# říjnu 2022 po komunálních volbách 23.–24. 9. 2022.
-OBDOBI_OD = "2022-10"
+# Volební období 2026–2030. Mandát vzniká zvolením, tedy koncem hlasování
+# v komunálních volbách 9.–10. 10. 2026 — ne až ustavujícím zasedáním.
+# Den je tu schválně celý: přehled zastupitelů na webu (lide/index.astro)
+# počítá období od prvního dne voleb a údaj „2026-10" by nového člena
+# zařadil i do končícího období 2022–2026 jako náhradníka.
+#
+# Pozor po volbách: web města ještě týdny po volbách ukazuje staré
+# zastupitelstvo. Odcházejícím se mandát uzavřel ručně (`do: "2026-10"`)
+# a sběrač ho znovu neotevře — funkce se slučují podle názvu.
+OBDOBI_OD = "2026-10-10"
 
 # Web města sneseme jen v rozumné dávce — modulů, které ho čtou, je víc.
 # Hodinová cache znamená, že opakované spuštění během ladění nesahá na server

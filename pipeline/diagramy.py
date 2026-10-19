@@ -40,6 +40,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from lib.core import DATA, Log, nacti, nacti_config, uloz  # noqa: E402
+from lib.zastupitelstvo import soucasne_zastupitelstvo  # noqa: E402
 
 
 def _cely(x) -> int | None:
@@ -736,8 +737,15 @@ def diagram_model() -> dict:
 # ═════════════════════════  8. Kdo řídí město  ════════════════════════════
 
 
+def _obdobi(s: str | None) -> str:
+    """„2022-2026" → „2022–2026"."""
+    return (s or "—").replace("-", "–")
+
+
 def diagram_vedeni() -> dict:
-    z = nacti("mesto/zastupitele.json")
+    # Po volbách web města týdny ukazuje odcházející zastupitelstvo — složení
+    # se pak bere z výsledků voleb (lib/zastupitelstvo.py). Rada platí dál.
+    z = soucasne_zastupitelstvo()
     u = nacti("mesto/urad.json")
     # RADA SE BERE Z `mesto/rada.json`, NE Z `urad.json`. Stránka „vedení
     # města" uvádí jen uvolněné funkcionáře — čtyři lidi — takže diagram
@@ -757,7 +765,7 @@ def diagram_vedeni() -> dict:
                       "vynechal výkonný orgán a tvářil se úplně.",
                       "data/mesto/rada.json")
 
-    zastupitele = z.get("zastupitele") or []
+    zastupitele = z["zastupitele"]
     poc: Counter[str] = Counter()
     for c in zastupitele:
         poc[(c.get("uskupeni") or "bez uskupení").strip()] += 1
@@ -799,7 +807,10 @@ def diagram_vedeni() -> dict:
         "id": "rada",
         "nazev": (f"Rada města — {len(radni)} z {mist} míst"
                   if prazdna else f"Rada města — {len(radni)} členů"),
-        "popis": "Výkonný orgán, rozhoduje mezi zasedáními zastupitelstva.",
+        "popis": ("Výkonný orgán, rozhoduje mezi zasedáními zastupitelstva."
+                  + (f" Je to rada z období {_obdobi(ra.get('volebni_obdobi'))}: působí až do "
+                     "zvolení nové rady na ustavujícím zasedání."
+                     if z["podle_voleb"] else "")),
         # `pocet` = kolik krabiček se kreslí, tedy i ta prázdná.
         "pocet": len(deti),
         "deti": deti,
@@ -827,7 +838,7 @@ def diagram_vedeni() -> dict:
         "koren": {
             "id": "mesto",
             "nazev": "Mariánské Lázně",
-            "popisek": f"volební období {z.get('volebni_obdobi') or '—'}",
+            "popisek": f"volební období {_obdobi(z.get('volebni_obdobi'))}",
         },
         "skupiny": skupiny,
         "stranou": [],
@@ -845,8 +856,12 @@ def diagram_vedeni() -> dict:
             "Web města ukazuje jen aktuální funkci. Kdy funkce začala, se dopočítává "
             "porovnáním s předchozím během sběrače — u starších to znamená „nevíme“, "
             "ne „platí odjakživa“.",
-        ],
-        "zdroj": ("data/mesto/zastupitele.json, data/mesto/rada.json, "
+        ] + ([
+            "Zastupitelstvo je složené podle výsledků voleb od ČSÚ, ne podle webu města: "
+            f"ten ještě ukazuje období {_obdobi(z.get('web_obdobi'))}, ačkoli mandát vzniká "
+            "zvolením. Uskupení je kandidátní listina."
+        ] if z["podle_voleb"] else []),
+        "zdroj": (f"{z['zdroj']}, data/mesto/rada.json, "
                   "data/mesto/urad.json"),
         "stav": "ok",
     }
