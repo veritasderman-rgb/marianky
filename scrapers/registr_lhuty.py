@@ -99,9 +99,14 @@ def _castka(text: str | None) -> float | None:
         return None
 
 
-def rozeber(stranka: str, url: str) -> dict:
+def rozeber(stranka: str, url: str, id_smlouvy: str | None = None) -> dict | None:
     """Z HTML stránky záznamu vytáhne pole. Když chybí datum uzavření,
-    stránka není záznam smlouvy — to je chyba, ne prázdný výsledek."""
+    stránka není záznam smlouvy — to je chyba, ne prázdný výsledek.
+
+    Vrací None, když stránka patří jiné smlouvě, než se čekalo: adresa
+    `/smlouva/{číslo}` bere ID verze, zatímco Hlídač jako `id` dává ID
+    smlouvy. Cizí záznam pod stejným číslem by se jinak tiše vydával za
+    hledanou smlouvu (stalo se u tří znepřístupněných verzí)."""
     pole: dict[str, str] = {}
     for nazev, hodnota in RE_POLE.findall(stranka):
         # Útvar je zabalený v <abbr title="…">: bere se text uvnitř, ne title.
@@ -115,6 +120,8 @@ def rozeber(stranka: str, url: str) -> dict:
     prvni = _datum(pole.get("První zveřejnění"))
     if not uzavreno or not prvni:
         raise ZdrojSelhal(f"Stránka {url} neobsahuje datum uzavření/prvního zveřejnění")
+    if id_smlouvy and (pole.get("ID smlouvy") or "") != str(id_smlouvy):
+        return None
 
     dnu = (date.fromisoformat(prvni) - date.fromisoformat(uzavreno)).days
     verze = pole.get("Verze smlouvy") or pole.get("Číslo verze")
@@ -217,15 +224,19 @@ def main() -> None:
             hotovo.update(_nactene(dil))
     vlastni: dict[str, dict] = _nactene(vystup) if not args.znovu else {}
 
+    # Díly se krájí ze stálého seznamu všech smluv a teprve uvnitř dílu se
+    # odečítá, co už je hotové. Kdyby se napřed odečetlo hotové a pak krájelo,
+    # díl spuštěný o chvíli později by viděl jiný seznam a část smluv by
+    # nepřipadla nikomu.
     smlouvy = vsechny_smlouvy()
     videne: set[str] = set()
-    zbyva = []
+    vsechny = []
     for s in smlouvy:
-        if s["id"] in hotovo or s["id"] in videne:
+        if s["id"] in videne:
             continue
         videne.add(s["id"])
-        zbyva.append(s)
-    zbyva = zbyva[k - 1 :: n]
+        vsechny.append(s)
+    zbyva = [s for s in vsechny[k - 1 :: n] if s["id"] not in hotovo]
     if args.limit:
         zbyva = zbyva[: args.limit]
     log.info("smluv celkem", celkem=len(smlouvy), hotovo=len(hotovo), zbyva=len(zbyva), dil=args.cast or "vše")
@@ -252,7 +263,9 @@ def main() -> None:
                 if "znepřístupněna" in stranka:
                     znepristupneno = True
                     continue
-                zaznam = rozeber(stranka, url)
+                zaznam = rozeber(stranka, url, sid)
+                if zaznam is None:
+                    continue  # stránka jiné smlouvy pod stejným číslem
                 break
             if zaznam is None:
                 zaznam = {"nenalezeno": True, "znepristupneno": znepristupneno, "zkouseno": kandidati}

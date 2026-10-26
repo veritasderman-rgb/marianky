@@ -50,11 +50,11 @@ Shrnuto: za pozdě uveřejněnou smlouvu nikdo pokutu nedostane. Město ale roky
 
 ## 3. Co data ukazují
 
-Registr smluv zná u 6 900 smluv městského holdingu datum uzavření i datum prvního uveřejnění (dvě verze záznamu jsou na žádost subjektu znepřístupněné). Po odečtení smluv, na které § 6 a 7 nedopadají (uzavřené před 1. 7. 2017, do 50 000 Kč bez DPH, bez uvedené hodnoty), zbývá **5 146 posuzovaných smluv**:
+Registr smluv zná u 6 897 smluv městského holdingu datum uzavření i datum prvního uveřejnění (pět záznamů je na žádost subjektu znepřístupněných). Po odečtení smluv, na které § 6 a 7 nedopadají (uzavřené před 1. 7. 2017, do 50 000 Kč bez DPH, bez uvedené hodnoty), zbývá **5 144 posuzovaných smluv**:
 
 | lhůta | smluv | podíl | objem podle Hlídače |
 |---|---|---|---|
-| do 30 dnů | 4 699 | 91,3 % | — |
+| do 30 dnů | 4 697 | 91,3 % | — |
 | 31 dnů až 3 měsíce (účinnost až uveřejněním) | 355 | 6,9 % | 220,2 mil. Kč |
 | **po 3 měsících (§ 7 odst. 1: zrušena od počátku)** | **92** | **1,8 %** | **33,4 mil. Kč** |
 | z toho bez známky možné výjimky § 3 | 76 | | 30,9 mil. Kč |
@@ -82,7 +82,7 @@ Devadesát dva smluv tedy podle registru nikdy nenabylo účinnosti. U šestnác
 | ZŠ JIH | 157 | 10,2 % | 2 | 0,17 mil. |
 | Infocentrum | 265 | 8,3 % | 3 | 0,44 mil. |
 | Městská doprava | 76 | 7,9 % | 3 | 0,52 mil. |
-| **Město Mariánské Lázně** | **3 556** | **4,7 %** | **29** | **15,26 mil.** |
+| **Město Mariánské Lázně** | **3 554** | **4,7 %** | **29** | **15,26 mil.** |
 | Městské divadlo | 89 | 2,2 % | 0 | — |
 
 Město samo je na tom relativně nejlépe, ale největší částky jsou právě jeho — a jeho smlouvy s vlastní firmou TDS se počítají oběma. Malé příspěvkové organizace (školky, ZUŠ) uveřejňují pozdě každou třetí až druhou smlouvu.
