@@ -281,6 +281,30 @@ Registr smluv, veřejné zakázky, dotace, sponzoring politických stran, platy 
 
 ---
 
+## 4b. smlouvy.gov.cz — stránka záznamu smlouvy
+
+Hlídač přes API v2 vrací datum uzavření, ale ne datum uveřejnění, a bez něj se
+nedá říct, zda byla smlouva uveřejněna ve lhůtě zákona č. 340/2015 Sb. Stránka
+záznamu v registru (`https://smlouvy.gov.cz/smlouva/{id verze}`) to má:
+„Datum uzavření", „První zveřejnění" (rozhodné u smluv s více verzemi), „Zveřejnění"
+(této verze), „Hodnota bez DPH", „Hodnota vč. DPH", „Útvar / Odbor", „Podepisující
+osoba", „Verze smlouvy". Pole jsou v `<span class="name">…</span><span class="value">…</span>`.
+
+- Hlídač používá jako `id` smlouvy **ID verze**, zatímco jeho `odkaz` vede na
+  stránku verze; sběrač zkouší nejdřív `odkaz`, pak `/smlouva/{id}`.
+- Verze „znepřístupněná na žádost subjektu" vrací 200 a prázdnou stránku s touto
+  větou — ukládá se jako `nenalezeno`, ne jako chyba.
+- U dodatků uveřejněných jako nová verze téhož záznamu je „První zveřejnění"
+  datum původní smlouvy, takže vyjde dřív než uzavření dodatku. Vyhodnocení ho
+  pak počítá jako včas — konzervativně.
+- Hodnota bez DPH u objednávek většinou chybí, bývá jen hodnota s DPH.
+- Tempo: ~0,65 s na stránku, bez omezení při 3 požadavcích za sekundu
+  (7 210 stránek ve třech paralelních dílech za 22 minut).
+
+Sběrač: `scrapers/registr_lhuty.py` → `data/penize/lhuty_zverejneni.json`;
+vyhodnocení: `pipeline/lhuty_prehled.py` → `data/penize/lhuty_prehled.json`;
+výklad: `docs/namety-106.md`.
+
 ## 5. Městský holding — subjekty k monitoringu
 
 Každý subjekt má vlastní IČO a tedy vlastní stopu v registru smluv, dotacích a zakázkách. **Monitoring musí pokrývat všechny, ne jen město.**

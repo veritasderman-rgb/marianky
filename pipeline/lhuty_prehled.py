@@ -229,6 +229,15 @@ def main() -> None:
         (z for z in posouzene if z["posuzuje_se"] and z["lhuta"] == "pozde_do_3m"),
         key=lambda z: -(z["castka_czk"] or 0),
     )
+    # Smlouvy bez uvedené hodnoty uveřejněné po 3 měsících: hranici 50 000 Kč
+    # u nich posoudit nejde, ale chybějící cena není důvod je zamlčet —
+    # Hlídač je počítá mezi zásadní nedostatky a zákon cenu v metadatech
+    # vyžaduje (§ 5 odst. 5). Vedou se zvlášť.
+    po_3m_bez_ceny = sorted(
+        (z for z in posouzene if not z["posuzuje_se"] and z["lhuta"] == "po_3m"
+         and z["hodnota_bez_dph"] is None and z["uzavreno"] >= SANKCE_OD.isoformat()),
+        key=lambda z: -z["dnu"],
+    )
 
     uloz(VYSTUP, {
         "zdroj": "data/penize/smlouvy/*.json (Hlídač státu) + data/penize/lhuty_zverejneni.json (smlouvy.gov.cz)",
@@ -239,6 +248,7 @@ def main() -> None:
             "mozna_vyjimka_fo": "protistrana bez IČO — může jít o fyzickou osobu mimo podnikání (§ 3 odst. 2 písm. a); z dat to nejde rozhodnout",
             "mozne_vyjimky": "odhad z předmětu a protistrany: a) fyzická osoba, i) umělecký výkon / autorské dílo, d) plnění mimo ČR — smlouva se posuzuje dál, jen je označená",
             "plneni_pred_ucinnosti_pravdepodobne": "ODHAD z předmětu: objednávka nebo průběžné plnění (svoz, nájem, služby…) uveřejněné pozdě",
+            "po_3m_bez_ceny": "smlouvy od 1. 7. 2017 bez hodnoty v registru uveřejněné po 3 měsících — hranice 50 000 Kč se u nich posoudit nedá, proto jsou mimo součty, ale vypsané",
             "co_to_neni": "Není to výrok o neplatnosti. Je to porovnání dvou dat z registru s literou zákona.",
         },
         "celkem": souhrn(posouzene),
@@ -247,12 +257,14 @@ def main() -> None:
         "po_letech": po_letech,
         "po_utvarech_mesta": po_utvarech,
         "po_3m": po_3m,
+        "po_3m_bez_ceny": po_3m_bez_ceny,
         "pozde_do_3m": pozde,
     })
 
     c = souhrn(posouzene)
     log.info("posouzeno", **c)
     log.info("nespojeno", bez_lhuty=bez_lhuty, nenalezeno=nenalezeno)
+    log.info("po 3 měsících bez uvedené ceny (vedeno zvlášť)", pocet=len(po_3m_bez_ceny))
     print(f"\nNejvětší smlouvy uveřejněné po 3 měsících (§ 7 odst. 1), top {args.top}:")
     for z in po_3m[: args.top]:
         fo = f" [{'; '.join(z['mozne_vyjimky'])}]" if z["mozne_vyjimky"] else ""
