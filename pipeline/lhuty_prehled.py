@@ -13,10 +13,12 @@ lhůty zákona č. 340/2015 Sb. spadá:
 Lhůty se počítají jen u smluv, na které se § 6 a 7 vztahují:
   * uzavřené 1. 7. 2017 a později (§ 9 — dřív sankce neplatily),
   * s hodnotou nad 50 000 Kč bez DPH (§ 3 odst. 2 písm. h),
-  * a mimo ostatní výjimky § 3 odst. 2, z nichž se z dat pozná jen jedna:
-    protistrana je fyzická osoba bez IČO (písm. a) — ta se označí jako
-    „možná výjimka", ne jako vyloučená, protože u převodu nemovitosti
-    výjimka neplatí a z metadat se to nepozná.
+  * a mimo ostatní výjimky § 3 odst. 2, z nichž se z dat dají jen tušit:
+    protistrana je fyzická osoba bez IČO (písm. a), předmětem je umělecký
+    výkon nebo autorské dílo (písm. i — typicky orchestr), plnění převážně
+    v zahraničí (písm. d — zájezdy škol, zahraniční protistrana). Takové
+    smlouvy se označí jako „možná výjimka", ne jako vyloučené: u převodu
+    nemovitosti výjimka a) neplatí a z metadat se nic z toho nepozná jistě.
 
 Kde hodnota bez DPH v registru chybí, odhaduje se z hodnoty s DPH (÷ 1,21)
 a je to tak označené. Kde chybí obě, smlouva se do posuzování nepouští
@@ -50,6 +52,8 @@ SANKCE_OD = date(2017, 7, 1)       # § 9: § 6 a 7 poprvé na smlouvy uzavřen�
 LIMIT_BEZ_DPH = 50_000.0           # § 3 odst. 2 písm. h) — do 50 000 včetně se neuveřejňuje
 DPH = 1.21
 
+RE_UMELEC = re.compile(r"umělec|autorsk|koncert|vystoupen|dirigent|sólist|honorář", re.I)
+RE_ZAHRANICI = re.compile(r"zájezd|\bLtd\.?|GmbH|e\.\s?V\.|S\.p\.A|S\.r\.l|Sp\. z o\.o|AG\b|Inc\.", re.I)
 RE_OBJEDNAVKA = re.compile(r"^\s*(objedn[aá]vka|obj\.?\s|obj/)", re.I)
 RE_DODATEK = re.compile(r"\bdodat(ek|ku|kem)\b", re.I)
 # Plnění, které typicky běží od uzavření (ne jednorázová dodávka v budoucnu).
@@ -93,6 +97,14 @@ def posud(s: dict, l: dict) -> dict:
         duvody_mimo.append("do 50 000 Kč bez DPH — povinnost uveřejnit neplatí (§ 3 odst. 2 písm. h)")
 
     mozna_vyjimka_fo = not s.get("protistrana_ico") and bool(s.get("protistrana"))
+    predmet_a_strana = f"{s.get('predmet') or ''} {s.get('protistrana') or ''}"
+    mozne_vyjimky: list[str] = []
+    if mozna_vyjimka_fo:
+        mozne_vyjimky.append("a) fyzická osoba mimo podnikání?")
+    if RE_UMELEC.search(s.get("predmet") or ""):
+        mozne_vyjimky.append("i) autorské dílo / umělecký výkon?")
+    if RE_ZAHRANICI.search(predmet_a_strana):
+        mozne_vyjimky.append("d) plnění převážně mimo ČR?")
 
     if dnu <= 30:
         lhuta = "vcas"
@@ -123,6 +135,7 @@ def posud(s: dict, l: dict) -> dict:
         "posuzuje_se": not duvody_mimo,
         "mimo_posouzeni": duvody_mimo,
         "mozna_vyjimka_fo": mozna_vyjimka_fo,
+        "mozne_vyjimky": mozne_vyjimky,
         "typ": typ,
         # Odhad, ne údaj: objednávka nebo průběžné plnění, které začalo
         # dřív, než smlouva vůbec mohla být účinná.
@@ -183,7 +196,8 @@ def main() -> None:
             "vcas": sum(1 for z in posuz if z["lhuta"] == "vcas"),
             "pozde_do_3m": sum(1 for z in posuz if z["lhuta"] == "pozde_do_3m"),
             "po_3m": sum(1 for z in posuz if z["lhuta"] == "po_3m"),
-            "po_3m_mimo_fo": sum(1 for z in posuz if z["lhuta"] == "po_3m" and not z["mozna_vyjimka_fo"]),
+            "po_3m_bez_mozne_vyjimky": sum(1 for z in posuz if z["lhuta"] == "po_3m" and not z["mozne_vyjimky"]),
+            "objem_po_3m_bez_mozne_vyjimky_czk": round(sum(z["castka_czk"] or 0 for z in posuz if z["lhuta"] == "po_3m" and not z["mozne_vyjimky"]), 2),
             "objem_po_3m_czk": round(sum(z["castka_czk"] or 0 for z in posuz if z["lhuta"] == "po_3m"), 2),
             "objem_pozde_do_3m_czk": round(sum(z["castka_czk"] or 0 for z in posuz if z["lhuta"] == "pozde_do_3m"), 2),
         }
@@ -223,6 +237,7 @@ def main() -> None:
             "posuzuje_se": "jen smlouvy uzavřené od 1. 7. 2017 s hodnotou nad 50 000 Kč bez DPH; ostatní jsou v mimo_posouzeni s důvodem",
             "hodnota": "bez DPH z registru; kde chybí, odhad z hodnoty s DPH ÷ 1,21 (označeno v hodnota_zdroj)",
             "mozna_vyjimka_fo": "protistrana bez IČO — může jít o fyzickou osobu mimo podnikání (§ 3 odst. 2 písm. a); z dat to nejde rozhodnout",
+            "mozne_vyjimky": "odhad z předmětu a protistrany: a) fyzická osoba, i) umělecký výkon / autorské dílo, d) plnění mimo ČR — smlouva se posuzuje dál, jen je označená",
             "plneni_pred_ucinnosti_pravdepodobne": "ODHAD z předmětu: objednávka nebo průběžné plnění (svoz, nájem, služby…) uveřejněné pozdě",
             "co_to_neni": "Není to výrok o neplatnosti. Je to porovnání dvou dat z registru s literou zákona.",
         },
@@ -240,7 +255,7 @@ def main() -> None:
     log.info("nespojeno", bez_lhuty=bez_lhuty, nenalezeno=nenalezeno)
     print(f"\nNejvětší smlouvy uveřejněné po 3 měsících (§ 7 odst. 1), top {args.top}:")
     for z in po_3m[: args.top]:
-        fo = " [FO?]" if z["mozna_vyjimka_fo"] else ""
+        fo = f" [{'; '.join(z['mozne_vyjimky'])}]" if z["mozne_vyjimky"] else ""
         print(f"  {z['castka_czk'] or 0:>14,.0f} Kč  {z['uzavreno']} → {z['zverejneno']} ({z['dnu']} d)  "
               f"{(z['protistrana'] or '?')[:35]:35}  {z['predmet'][:60]}{fo}")
     log.uzavri()

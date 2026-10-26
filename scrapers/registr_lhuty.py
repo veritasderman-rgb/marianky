@@ -27,8 +27,9 @@ Výstup: `data/penize/lhuty_zverejneni.json`
                                       "verze": 1, "utvar": "...", "podepsal": "...",
                                       "url": "https://smlouvy.gov.cz/smlouva/21469611" } } }
 
-Smlouva, jejíž stránka vrátí 404 (záznam znepřístupněn), se uloží jako
-`{"nenalezeno": true}` — chybějící záznam a chybějící datum nejsou totéž.
+Smlouva, jejíž stránka vrátí 404 nebo hlásí „verze smlouvy je znepřístupněna"
+(na žádost subjektu), se uloží jako `{"nenalezeno": true, "znepristupneno": …}`
+— chybějící záznam a chybějící datum nejsou totéž.
 
 Zásady:
   * Hodnotí se jen to, co stránka říká. „dnu" je prostý rozdíl dat; co z něj
@@ -240,15 +241,21 @@ def main() -> None:
         kandidati = [u for u in (s.get("url"), ZDROJ.format(id=sid)) if u]
         kandidati = list(dict.fromkeys(kandidati))
         zaznam: dict | None = None
+        znepristupneno = False
         try:
             for url in kandidati:
                 stranka = _stahni(url)
                 if stranka is None:
                     continue
+                # „Na žádost subjektu byla tato verze smlouvy znepřístupněna."
+                # Stránka existuje, ale bez dat — zkusí se další kandidát.
+                if "znepřístupněna" in stranka:
+                    znepristupneno = True
+                    continue
                 zaznam = rozeber(stranka, url)
                 break
             if zaznam is None:
-                zaznam = {"nenalezeno": True, "zkouseno": kandidati}
+                zaznam = {"nenalezeno": True, "znepristupneno": znepristupneno, "zkouseno": kandidati}
             vlastni[sid] = zaznam
             chyb_za_sebou = 0
             log.pricti()
