@@ -76,13 +76,13 @@ Devadesát dva smluv tedy podle registru nikdy nenabylo účinnosti. U šestnác
 | Mateřská škola Hlavní 440 | 41 | 22,0 % | 1 | 0,06 mil. |
 | Městská knihovna | 39 | 17,9 % | 0 | — |
 | Mateřská škola Úšovice | 34 | 17,6 % | 1 | 0,24 mil. |
-| TDS | 214 | 16,8 % | 7 | 11,07 mil. |
-| Domov pro seniory | 206 | 16,0 % | 10 | 3,72 mil. |
+| TDS | 213 | 16,9 % | 7 | 11,07 mil. |
+| Domov pro seniory | 205 | 16,1 % | 10 | 3,72 mil. |
 | ZŠ Úšovice | 117 | 10,3 % | 1 | 1,63 mil. |
 | ZŠ JIH | 157 | 10,2 % | 2 | 0,17 mil. |
 | Infocentrum | 265 | 8,3 % | 3 | 0,44 mil. |
 | Městská doprava | 76 | 7,9 % | 3 | 0,52 mil. |
-| **Město Mariánské Lázně** | **3 554** | **4,7 %** | **29** | **15,26 mil.** |
+| **Město Mariánské Lázně** | **3 556** | **4,7 %** | **29** | **15,26 mil.** |
 | Městské divadlo | 89 | 2,2 % | 0 | — |
 
 Město samo je na tom relativně nejlépe, ale největší částky jsou právě jeho — a jeho smlouvy s vlastní firmou TDS se počítají oběma. Malé příspěvkové organizace (školky, ZUŠ) uveřejňují pozdě každou třetí až druhou smlouvu.
