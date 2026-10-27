@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>DEVELOP CENTRUM: auditní zpráva z veřejných zdrojů</title>
+<style>
+  @page { size: A4; }
+  :root {
+    --mesto: #2a78d6; --mesto-sv: #dce9f8;
+    --firma: #eb6834; --firma-sv: #fde3d8;
+    --zbylo: #1baf7a; --zbylo-sv: #e3f5ee;
+    --varovani: #e34948; --varovani-sv: #fbe3e3;
+    --zluta: #eda100; --zluta-sv: #fff1cf;
+    --text: #0b0b0b; --text2: #52514e; --text3: #8a8984;
+    --linka: #e6e5e1; --plocha: #f6f5f2;
+  }
+  html, body { margin: 0; padding: 0; background: #fff; color: var(--text);
+    font-family: Inter, "DejaVu Sans", Arial, sans-serif; font-size: 10.2pt; line-height: 1.45; }
+  h1 { font-size: 24pt; line-height: 1.15; margin: 0 0 6pt; letter-spacing: -0.01em; }
+  h2 { font-size: 15pt; margin: 22pt 0 8pt; padding-top: 6pt; border-top: 2px solid var(--text); break-after: avoid; }
+  h3 { font-size: 11.5pt; margin: 14pt 0 5pt; break-after: avoid; }
+  p { margin: 0 0 7pt; }
+  .pod { color: var(--text2); font-size: 11pt; margin-bottom: 14pt; }
+  .meta { color: var(--text2); font-size: 9pt; }
+  .vaha { background: var(--varovani-sv); border-left: 3px solid var(--varovani); padding: 6pt 9pt; margin: 8pt 0; font-size: 9.5pt; }
+  .fakt { background: var(--mesto-sv); border-left: 3px solid var(--mesto); padding: 5pt 9pt; margin: 6pt 0; font-size: 9.6pt; }
+  .otazka { background: var(--zluta-sv); border-left: 3px solid var(--zluta); padding: 5pt 9pt; margin: 6pt 0; font-size: 9.6pt; }
+  .odhad { background: var(--plocha); border-left: 3px solid var(--text3); padding: 5pt 9pt; margin: 6pt 0; font-size: 9.6pt; }
+  .stitek { font-weight: 700; font-size: 8pt; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 6pt; }
+  .fakt .stitek { color: var(--mesto); } .otazka .stitek { color: #a86f00; } .odhad .stitek { color: var(--text2); } .vaha .stitek { color: var(--varovani); }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 9pt; break-inside: auto; }
+  th, td { text-align: left; vertical-align: top; padding: 4pt 6pt; border-bottom: 1px solid var(--linka); }
+  th { font-weight: 600; color: var(--text2); border-bottom: 1.5px solid var(--text2); }
+  td.c, th.c { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr { break-inside: avoid; }
+  .zvyr { font-weight: 700; }
+  .cerv { color: var(--varovani); font-weight: 700; }
+  .kachle { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; margin: 12pt 0 16pt; }
+  .kachle div { background: var(--plocha); border-radius: 6px; padding: 8pt 10pt; }
+  .kachle b { display: block; font-size: 17pt; letter-spacing: -0.01em; line-height: 1.1; }
+  .kachle span { color: var(--text2); font-size: 8.4pt; display: block; margin-top: 3pt; line-height: 1.3; }
+  .kachle .f b { color: var(--firma); } .kachle .m b { color: var(--mesto); } .kachle .v b { color: var(--varovani); } .kachle .z b { color: var(--zbylo); }
+  figure { margin: 10pt 0 14pt; break-inside: avoid; }
+  figure img { width: 100%; display: block; }
+  figcaption { font-size: 8.6pt; color: var(--text2); margin-top: 4pt; }
+  figure.uzsi img { width: 86%; margin: 0 auto; }
+  .diagram img { max-height: 118mm; width: auto; max-width: 100%; margin: 0 auto; }
+  .diagram .inline-svg { text-align: center; }
+  .diagram .inline-svg svg { max-width: 100%; max-height: 150mm; height: auto; }
+  .stranka { break-before: page; }
+  ol, ul { margin: 0 0 8pt 0; padding-left: 18pt; }
+  li { margin-bottom: 3pt; }
+  .dva { columns: 2; column-gap: 18pt; }
+  .male { font-size: 8.6pt; color: var(--text2); }
+  .obsah { columns: 2; column-gap: 18pt; font-size: 9.4pt; }
+  .obsah li { margin-bottom: 2pt; }
+  a { color: inherit; text-decoration: none; }
+  .zdroj { font-size: 8.4pt; color: var(--text3); }
+  table.ztraty td:nth-child(1), table.ztraty th:nth-child(1) { width: 24%; }
+  table.ztraty td:nth-child(2), table.ztraty th:nth-child(2) { width: 17%; text-align: right; }
+  table.ztraty td:nth-child(3) { width: 39%; }
+  table.pochybeni td:nth-child(2) { width: 27%; } table.pochybeni td:nth-child(3) { width: 36%; }
+  figure.uzsi { break-inside: auto; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="meta">Naše Mariánky v přehledech · auditní zpráva z veřejných zdrojů · stav dat k 27. 10. 2026</div>
+  <h1>DEVELOP CENTRUM Mariánské Lázně s.r.o.<br>Kam tečou peníze z parkování</h1>
+  <p class="pod">Městská firma (dříve PARKING CENTRUM), její propojení, hospodaření, smlouvy s městem, potenciální ztráty pro městský rozpočet a seznam možných právních pochybení k ověření.</p>
+</header>
+
+<div class="vaha"><span class="stitek">Čtěte s tímto</span> Zpráva vznikla výhradně z veřejných zdrojů: obchodní rejstřík a sbírka listin (přes konektor Sagasu), registr smluv a Hlídač státu, usnesení rady a zastupitelstva, výkazy města v Monitoru státní pokladny. Není to audit podle zákona o auditorech a nikdo z města ani z firmy nebyl dotázán. U každého tvrzení je proto odděleno, co je <b>doložený fakt</b>, co je <b>odhad</b> a co je <b>otázka</b>. Nic z toho není výrok, že se někdo obohatil nebo porušil zákon; „možné pochybení" znamená, že veřejná data odpovídají stavu, který zákon zakazuje nebo podmiňuje, a chybí doklad, že podmínka byla splněna.</div>
+
+<div class="kachle">
+  <div class="m"><b>9,0 mil. Kč</b><span>parkovné vybrané městem v roce 2025 (Monitor, § 2219 pol. 2111)</span></div>
+  <div class="f"><b>10,7 mil. Kč</b><span>provize 90 % vyplacená firmě za 17 měsíců správy (8/2024–12/2025)</span></div>
+  <div class="z"><b>0,6 mil. Kč</b><span>zůstalo městu z parkování v roce 2025; v letech 2021–2024 to bylo 3,0–4,0 mil. ročně</span></div>
+  <div class="v"><b>0 Kč</b><span>podíl na zisku vyplacený městu za roky 2021–2025; zisk 8,5 mil. Kč zůstal ve firmě</span></div>
+  <div class="f"><b>52,6 mil. Kč</b><span>vlastní kapitál firmy k 31. 12. 2025 (základní kapitál 43,0 mil.)</span></div>
+  <div class="f"><b>5,7 mil. Kč</b><span>osobní náklady firmy 2024, proti 2,1 mil. v roce 2023; zisk 2024 klesl na 0,4 mil.</span></div>
+  <div class="v"><b>3 roky</b><span>zpráv o vztazích (2023–2025) schválených radou, ale nezaložených ve sbírce listin</span></div>
+  <div class="v"><b>44,5 mil. Kč</b><span>smluv města s firmou Zahradní a parková, kterou spoluvlastní a řídí jednatel DEVELOP CENTRA</span></div>
+</div>
+
+<h2>Obsah</h2>
+<ol class="obsah">
+  <li>Shrnutí</li>
+  <li>Rozsah, metoda a limity</li>
+  <li>Kdo je s kým propojen (organigram)</li>
+  <li>Jak se přepisovaly peníze: časová osa a tři schémata toků</li>
+  <li>Co parkování přineslo městu: rok po roce, měsíc po měsíci</li>
+  <li>Hospodaření firmy podle účetních závěrek</li>
+  <li>Kam peníze odtékají: rekonciliace a potenciální ztráty města</li>
+  <li>Jednatel firmy a dodavatel města Zahradní a parková</li>
+  <li>Smlouvy firmy v registru: lhůty, zpětné účinnosti, chybějící ceny</li>
+  <li>Seznam možných právních pochybení k ověření</li>
+  <li>Otázky podle zákona č. 106/1999 Sb. a komu je poslat</li>
+  <li>Zdroje</li>
+</ol>
+
+<h2>1. Shrnutí</h2>
+<ol>
+  <li><b>Město přišlo o čistý příjem z parkování.</b> V letech 2021–2024 mu po odečtení služeb a oprav zůstávalo 3,0–4,0 mil. Kč ročně. Od srpna 2024 platí firmě 90 % parkovného jako odměnu za správu (10,7 mil. Kč za 17 měsíců), v roce 2025 mu zůstalo 0,6 mil. Kč a od roku 2026 vybírá parkovné firma sama. Zpět přišla jen „záloha na zisk" 1,5 mil. Kč.</li>
+  <li><b>Peníze z firmy neodcházejí, ale ani se nevracejí.</b> Za roky 2021–2025 firma vydělala po zdanění 8,5 mil. Kč a městu nevyplatila nic; vlastní kapitál vzrostl na 52,6 mil. Kč. Přitom v roce 2024 osobní náklady firmy skočily z 2,1 na 5,7 mil. Kč a zisk klesl na 0,4 mil. Kč. Rada v červnu 2026 uložila připravit snížení základního kapitálu 43 mil. Kč.</li>
+  <li><b>V roce 2026 vznikl kruh: paušál ven, záloha dovnitř.</b> Jedním usnesením rada schválila firmě paušál 250 000 Kč měsíčně a od firmy zálohu na zisk 250 000 Kč měsíčně. Z každého oběhu ujde DPH a daň z příjmů státu (odhadem 0,3–0,7 mil. Kč za pololetí). Paušál byl zpětně ukončen k 30. 6. 2026 a nahrazen bezúplatnou výpůjčkou 34 parkovacích ploch a tří lázeňských pavilonů na šest let.</li>
+  <li><b>Smlouvy se uzavírají se zpětnou účinností</b> (čtyři případy), což zákon o registru smluv vylučuje, a firma sama zveřejňuje smlouvy pozdě (19 ze 49 po lhůtě, z toho 4 po třech měsících, tedy ze zákona zrušené).</li>
+  <li><b>Ve sbírce listin chybí zprávy o vztazích 2023–2025 a zpráva auditora 2025</b>, přestože rada je schválila a uložila jednateli jejich založení. Právě tyto dokumenty popisují vztahy, o které tu jde.</li>
+  <li><b>Jednatel firmy Pavel Poc je zároveň společník a jednatel Zahradní a parková spol. s r.o.</b>, která městu dodala práce za 44,5 mil. Kč (15,5 mil. v roce 2023, kdy předsedal dozorčí radě firmy). Oznámení střetu zájmů podle § 54 ZOK není ve veřejných usneseních.</li>
+  <li><b>Dozorčí radu firmy tvoří dva radní</b> (Chadim, Král), kteří zároveň jako členové rady města schvalují smlouvy s firmou i její závěrky. Starosta byl členem dozorčí rady do 5/2025.</li>
+  <li><b>Kolik stojí správa parkování ve skutečnosti, nikdo veřejně nespočítal.</b> Kalkulace odměny, výkaz činnosti k paušálu, mezitímní závěrka k záloze na zisk, posouzení in-house zadání i zdůvodnění bezúplatné výpůjčky jsou přílohy usnesení, které město nezveřejňuje. To je obsah žádostí v kapitole 11.</li>
+</ol>
+
+<h2>2. Rozsah, metoda a limity</h2>
+<table>
+  <tr><th>zdroj</th><th>co z něj je</th><th>limit</th></tr>
+  <tr><td>Obchodní rejstřík, sbírka listin (or.justice.cz přes Sagasu)</td><td>orgány, kapitál, změny formy, účetní závěrky 2021–2025, zpráva o vztazích 2022, notářský zápis 2025</td><td>závěrky 2023–2025 jsou podané přes finanční úřad bez výroční zprávy; zprávy o vztazích 2023–2025 chybí</td></tr>
+  <tr><td>Registr smluv, Hlídač státu</td><td>51 smluv firmy, texty příkazních smluv, dohody o narovnání, výpůjčky; data uzavření a prvního uveřejnění</td><td>platby a faktury registr nevede; 8 smluv je bez ceny</td></tr>
+  <tr><td>Usnesení rady a zastupitelstva (usneseni.muml.cz)</td><td>283 usnesení o firmě 2012–2026, text rozhodnutí</td><td>přílohy (smlouvy, kalkulace, analýzy) město nezveřejňuje</td></tr>
+  <tr><td>Monitor státní pokladny, FIN 2-12 M</td><td>příjmy a výdaje města po paragrafech a položkách, ročně 2010–2025 a měsíčně 2024–2026</td><td>bez protistrany; leden a červenec se nezveřejňují; město na paragrafu platí i jiné dodavatele</td></tr>
+</table>
+<p class="male">Částky z výkazů města jsou v Kč včetně DPH, částky z registru smluv s DPH, pokud není uvedeno jinak; čísla z účetních závěrek firmy jsou v tis. Kč. „Zůstalo městu" = parkovné (pol. 2111) minus nákup služeb (5169) minus opravy a udržování (5171) na paragrafu 2219; investice (6121) se počítají zvlášť, protože jde o majetek města. Měsíční toky jsou rozdíly kumulované skutečnosti mezi dvěma výkazy.</p>
+
+<h2 class="stranka">3. Kdo je s kým propojen</h2>
+<p>Město firmu vlastní na 100 % a rada města je její valnou hromadou. Tím se v jedněch rukou potkává role objednatele (rada schvaluje smlouvy města s firmou), vlastníka (rada schvaluje závěrky, jmenuje orgány, rozhoduje o zisku) a dozoru (dva radní sedí v dozorčí radě). Jednatel Pavel Poc k tomu přidává vlastní firmu, která je dodavatelem města.</p>
+<figure class="diagram"><img src="grafy/d1_propojeni.svg" alt="Organigram propojení města, firmy, jejích orgánů a dalších firem"><figcaption>Organigram propojení. Zdroje: obchodní rejstřík (Sagasu <code>obchodni_rejstrik</code>, <code>verejny_rejstrik_osoba</code>), usnesení RM 83/39 (1. 4. 2025) a 88/3 (13. 5. 2025), Hlídač státu (smlouvy Zahradní a parková, SUAS Commodities).</figcaption></figure>
+<table>
+  <tr><th>osoba</th><th>ve firmě</th><th>ve městě</th><th>jinde</th></tr>
+  <tr><td>Karel Henych</td><td>jednatel od 2023</td><td>—</td><td>—</td></tr>
+  <tr><td>RNDr. Pavel Poc (1964)</td><td>předseda dozorčí rady 2023 (odvolán 19. 12. 2023), jednatel od 13. 5. 2025</td><td>—</td><td>společník a jednatel Zahradní a parková spol. s r.o.; orgány Sokolovská uhelná, SUAS GROUP, SUAS Management, SUAS Ecology, CHEVAK Cheb, Industrial Park Sokolov, MAS 21</td></tr>
+  <tr><td>JUDr. Miloslav Chadim</td><td>dozorčí rada od 1. 4. 2025</td><td>radní (ANO)</td><td>—</td></tr>
+  <tr><td>Zdeněk Král</td><td>dozorčí rada od 1. 4. 2025</td><td>uvolněný radní (ODS); předkládal změnu právní formy 2023</td><td>—</td></tr>
+  <tr><td>Mgr. Ladislav Špelina</td><td>dozorčí rada od 5/2025</td><td>—</td><td>—</td></tr>
+  <tr><td>Martin Hurajčík</td><td>dozorčí rada do 31. 5. 2025</td><td>starosta; podepisuje smlouvy města s firmou</td><td>—</td></tr>
+</table>
+<div class="otazka"><span class="stitek">Otázka</span> Zda radní v dozorčí radě hlasují v radě o smlouvách s firmou a o její závěrce, nebo se zdržují (§ 83 odst. 2 zákona o obcích ukládá oznámit střet zájmů před projednáním). Z usnesení to není vidět, zápisy z rady neobsahují jmenovité hlasování.</div>
+
+<h2>4. Jak se přepisovaly peníze</h2>
+<figure class="diagram"><img src="grafy/d5_casova_osa.svg" alt="Časová osa 2020–2026"><figcaption>Časová osa. Zdroje: usnesení RM 11/2 (2. 2. 2023), 60/14 (23. 7. 2024), 69/23 (29. 10. 2024), 74/13 (18. 12. 2024), 85/24 (15. 4. 2025), 88/3 (13. 5. 2025), 109/25 (20. 1. 2026), 119/2 (12. 6. 2026), 123/12 a 123/13 (4. 8. 2026), 124/3 (7. 8. 2026); ZM 17/28 (19. 11. 2024); registr smluv.</figcaption></figure>
+
+<h3>Fáze 1 (8/2024–12/2025): parkovné městu, 90 % firmě</h3>
+<figure class="diagram"><img src="grafy/d2_toky_2024.svg" alt="Toky peněz 2024–2025"><figcaption>Příkazní smlouva o správě parkovacího systému z 31. 7. 2024 (registr 29673568): odměna 90 % všech příjmů z parkovacího systému, výslovně i na „další činnosti a rozvoj společnosti". Provize se platila čtvrtletně (kap. 5).</figcaption></figure>
+
+<h3>Fáze 2 (1–6/2026): parkovné firmě, paušál ven a záloha dovnitř</h3>
+<figure class="diagram"><img src="grafy/d3_toky_2026a.svg" alt="Toky peněz 1. pololetí 2026"><figcaption>Dohoda o narovnání a Příkazní smlouva ROZVOJ z 23. 1. 2026 (registr 36736349, RM 109/25), rozhodnutí jediného společníka o záloze na zisk z téhož dne, změny RM 114/33 (30. 3. 2026) a 123/13 (4. 8. 2026).</figcaption></figure>
+
+<h3>Fáze 3 (od 7/2026): výpůjčka zdarma na šest let</h3>
+<figure class="diagram"><img src="grafy/d4_toky_2026b.svg" alt="Toky peněz od 2. pololetí 2026"><figcaption>Smlouva o výpůjčce a správě svěřeného majetku z 10. 8. 2026 (registr 39325283, RM 123/12), účinnost 1. 7. 2026, dodatek č. 1 z 1. 10. 2026 (RM 131/25); rozpočtové opatření RM 130/2 (15. 9. 2026).</figcaption></figure>
+
+<h2>5. Co parkování přineslo městu</h2>
+<figure><img src="grafy/g1_parkovne_rocne.svg" alt="Parkovné města, výdaje a co zůstalo, 2019–2026"><figcaption>Město, § 2219 (ostatní záležitosti pozemních komunikací): parkovné (pol. 2111), nákup služeb a opravy (5169 + 5171) a rozdíl. Rok 2026 do 30. 9. Zdroj: Monitor státní pokladny, <code>data/rozpocet/parkovani_mesicne.json</code>.</figcaption></figure>
+<table>
+  <tr><th>rok</th><th class="c">parkovné</th><th class="c">služby (5169)</th><th class="c">opravy (5171)</th><th class="c">zůstalo městu</th><th class="c">investice (6121)</th><th>poznámka</th></tr>
+  <tr><td>2019</td><td class="c">6,93</td><td class="c">0,43</td><td class="c">1,33</td><td class="c">5,16</td><td class="c">0,12</td><td></td></tr>
+  <tr><td>2020</td><td class="c">5,09</td><td class="c">0,30</td><td class="c">4,44</td><td class="c">0,35</td><td class="c">7,29</td><td>covid, velké opravy</td></tr>
+  <tr><td>2021</td><td class="c">5,66</td><td class="c">0,25</td><td class="c">2,36</td><td class="c">3,06</td><td class="c">0,29</td><td></td></tr>
+  <tr><td>2022</td><td class="c">7,35</td><td class="c">0,44</td><td class="c">3,86</td><td class="c">3,04</td><td class="c">0,67</td><td></td></tr>
+  <tr><td>2023</td><td class="c">8,65</td><td class="c">0,48</td><td class="c">4,17</td><td class="c">3,99</td><td class="c">0,57</td><td></td></tr>
+  <tr><td>2024</td><td class="c">8,36</td><td class="c">1,98</td><td class="c">3,34</td><td class="c">3,04</td><td class="c">5,61</td><td>provize od srpna</td></tr>
+  <tr><td class="zvyr">2025</td><td class="c">9,02</td><td class="c cerv">7,66</td><td class="c">0,72</td><td class="c cerv">0,63</td><td class="c">9,53</td><td>provize celý rok; + 0,38 mil. z prodeje automatů</td></tr>
+  <tr><td class="zvyr">2026 (do 30. 9.)</td><td class="c">0,70</td><td class="c">1,99</td><td class="c">0,14</td><td class="c cerv">−1,43</td><td class="c">20,03</td><td>+ 1,50 záloha na zisk (§ 3639); parkovné inkasuje firma</td></tr>
+</table>
+<div class="fakt"><span class="stitek">Fakt</span> Opravy klesly v roce 2025 na 0,72 mil. Kč, protože údržbu automatů od té doby nese firma; to je část toho, co provize 90 % platí. I po tomto započtení zůstalo městu z parkování v roce 2025 šestkrát méně než v průměru let 2021–2024.</div>
+<figure class="uzsi"><img src="grafy/g4_vodopad_2025.svg" alt="Vodopád: kam se dostalo parkovné 2025"><figcaption>Rok 2025: z 9,02 mil. Kč parkovného šlo 7,66 mil. Kč firmě a 0,72 mil. Kč na opravy a jiné služby; městu zůstalo 0,63 mil. Kč.</figcaption></figure>
+
+<h3>Měsíc po měsíci: kdy město platilo a kdy dostávalo</h3>
+<figure><img src="grafy/g2_mesicni_tok.svg" alt="Měsíční toky 2024–2026"><figcaption>Měsíční přírůstky kumulované skutečnosti. Služby na § 3639 (komunální služby a územní rozvoj) jsou stažené jen pro rok 2026, kde se podle všeho účtuje paušál ROZVOJ. Zdroj: Monitor, měsíční FIN 2-12 M.</figcaption></figure>
+<ul>
+  <li><b>Provize se platila čtvrtletně</b>, vždy v měsíci po konci čtvrtletí: 10/2024 1,43 mil., 2/2025 1,53 mil., 4/2025 1,46 mil., 8/2025 2,26 mil., 10/2025 2,37 mil., 2/2026 1,65 mil. Součet 10,7 mil. Kč odpovídá 90 % z parkovného za srpen 2024 až prosinec 2025 (11,9 mil. × 0,9).</li>
+  <li><b>Předání inkasa firmě</b> je vidět v březnu 2026: parkovné města kleslo o 0,48 mil. Kč, tedy město vrátilo část lednového a únorového výběru. Od dubna 2026 inkasuje město z parkování desítky tisíc měsíčně.</li>
+  <li><b>Paušál ROZVOJ</b> (6 × 302 500 Kč s DPH = 1,815 mil.) na paragrafu parkování není. Na § 3639 je v červnu 2026 skok 1,83 mil. Kč, měsíc po tom, co rada 12. 5. 2026 „schválila vyplacení odměny". Paragraf nese i jiné služby města, přiřazení firmě je pravděpodobné, ne doložené.</li>
+  <li><b>Záloha na zisk</b> přišla ve dvou splátkách po 750 000 Kč, v květnu a září 2026 (pol. 3639/2142, kterou rozpočtové opatření z 15. 9. 2026 pojmenovává „záloha na zisk – DEVELOP CENTRUM").</li>
+</ul>
+<figure class="uzsi"><img src="grafy/g8_investice_2219.svg" alt="Investice města na § 2219"><figcaption>Investiční výdaje města na § 2219 (pol. 6121). Rozpočet 2026 je 57,9 mil. Kč; co z toho jsou parkovací plochy půjčené firmě zdarma, z výkazu nejde poznat.</figcaption></figure>
+<div class="otazka"><span class="stitek">Otázka</span> Které investice na § 2219 v letech 2024–2026 směřují do parkovacích ploch, které město firmě od 1. 7. 2026 půjčuje bezúplatně? Investuje město a výnos má firma?</div>
+
+<h2>6. Hospodaření firmy podle účetních závěrek</h2>
+<figure><img src="grafy/g3_firma_hospodareni.svg" alt="Tržby, osobní náklady, zisk a vlastní kapitál firmy"><figcaption>Účetní závěrky ve sbírce listin (XML části přečtené přes Sagasu <code>listina_text</code>; 2025 z PDF). Výkaz zisku a ztráty 2025 v této podobě neuvádí členění tržeb a osobních nákladů.</figcaption></figure>
+<table>
+  <tr><th>tis. Kč</th><th class="c">2021</th><th class="c">2022</th><th class="c">2023</th><th class="c">2024</th><th class="c">2025</th></tr>
+  <tr><td>tržby</td><td class="c">4 522</td><td class="c">7 145</td><td class="c">9 762</td><td class="c">12 593</td><td class="c">·</td></tr>
+  <tr><td>osobní náklady</td><td class="c">·</td><td class="c">1 578</td><td class="c">2 067</td><td class="c cerv">5 663</td><td class="c">·</td></tr>
+  <tr><td>z toho mzdy</td><td class="c">·</td><td class="c">·</td><td class="c">1 534</td><td class="c">4 152</td><td class="c">·</td></tr>
+  <tr><td>zisk po zdanění</td><td class="c">512</td><td class="c">2 193</td><td class="c">3 101</td><td class="c cerv">412</td><td class="c">2 273</td></tr>
+  <tr><td>vlastní kapitál</td><td class="c">·</td><td class="c">46 845</td><td class="c">·</td><td class="c">50 357</td><td class="c">52 612</td></tr>
+  <tr><td>aktiva celkem / peníze</td><td class="c">·</td><td class="c">·</td><td class="c">·</td><td class="c">·</td><td class="c">63 057 / 8 284</td></tr>
+  <tr><td>průměrný počet zaměstnanců</td><td class="c">·</td><td class="c">1,65</td><td class="c">·</td><td class="c">·</td><td class="c">·</td></tr>
+  <tr><td>podíl na zisku vyplacený městu</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td></tr>
+</table>
+<figure class="uzsi"><img src="grafy/g7_zisk_vs_vyplaty.svg" alt="Kumulovaný zisk firmy vs. výplaty městu"><figcaption>Zisk se každý rok převáděl na nerozdělený zisk (RM 25/39 2023, 53/5 2024, 88/2 2025, 119/2 2026). První peníze městu jsou zálohy na zisk 2026.</figcaption></figure>
+<div class="fakt"><span class="stitek">Fakt</span> Tržby firmy vzrostly 2021–2024 téměř trojnásobně, převážně díky provizi 90 % (od 8/2024). V roce 2024 osobní náklady vzrostly o 3,6 mil. Kč (2,7×), takže zisk klesl na 0,4 mil. Kč, i když tržby stouply o 2,8 mil. Kč. V roce 2022 měla firma 1,65 zaměstnance; mzdy 4,15 mil. Kč v roce 2024 by při pěti zaměstnancích znamenaly asi 69 tis. Kč hrubého měsíčně na osobu, počet zaměstnanců 2024 ale závěrka v této podobě neuvádí.</div>
+<div class="otazka"><span class="stitek">Otázka</span> Počet zaměstnanců a mzdová struktura 2024–2026, odměny jednatelů a členů dozorčí rady (rada 12. 5. a 21. 7. 2026 „schvaluje vyplacení odměny za provedenou činnost" bez částky), účel snížení základního kapitálu 43 mil. Kč (RM 119/2) a komu se uvolněné prostředky vyplatí.</div>
+
+<h2>7. Kam peníze odtékají: rekonciliace a potenciální ztráty města</h2>
+<h3>Co město firmě zaplatilo a co od ní dostalo (8/2024–9/2026)</h3>
+<table>
+  <tr><th>směr</th><th>titul</th><th class="c">mil. Kč</th><th>doloženo</th></tr>
+  <tr><td>město → firma</td><td>provize 90 % za správu parkování, 8/2024–12/2025</td><td class="c">10,7</td><td>Monitor § 2219/5169, čtvrtletní skoky; registr 29673568</td></tr>
+  <tr><td>město → firma</td><td>paušál ROZVOJ 1–6/2026 (1,5 mil. bez DPH)</td><td class="c">1,8</td><td>registr 36736349; v Monitoru pravděpodobně § 3639/5169, červen 2026</td></tr>
+  <tr><td>město → firma</td><td>marketing „Evropské město sportu 2025" (objednávky 2024–2025)</td><td class="c">0,8</td><td>registr: 170,5 + 155,3 + 4 × 120,0 tis.</td></tr>
+  <tr><td>město → firma</td><td>„narovnání sporných nároků" (užívání prostor městskou policií)</td><td class="c">0,6</td><td>ZM 17/28, registr 31129212</td></tr>
+  <tr><td>město → firma</td><td>nájem kanceláří pro městskou policii, od 7/2025 39 680 Kč měsíčně</td><td class="c">~0,6 / rok</td><td>registr 34466361</td></tr>
+  <tr><td>město → firma</td><td>„mimořádné náklady" k příkazní smlouvě bydlení (studie, průzkumy)</td><td class="c">0,2</td><td>RM 99/24, 104/22, 107/4</td></tr>
+  <tr><td>město → firma</td><td>pojištění vypůjčeného majetku od 7/2026; parkovné od 1/2026 inkasuje firma (odhad 9 mil. ročně)</td><td class="c">?</td><td>registr 39325283; Monitor pol. 2111</td></tr>
+  <tr><td>firma → město</td><td>splátky kupní ceny pozemků pod parkovacím domem (9,76 mil. v 10 splátkách)</td><td class="c">~0,8 / rok</td><td>registr 25530603</td></tr>
+  <tr><td>firma → město</td><td>kupní cena 21 automatů (zůstatková hodnota)</td><td class="c">0,46</td><td>RM 85/24, Monitor pol. 3113 (2025)</td></tr>
+  <tr><td>firma → město</td><td>kupní cena pozemku p. p. č. 1/12</td><td class="c">0,6</td><td>registr 32065240</td></tr>
+  <tr><td>firma → město</td><td>záloha na zisk 2026</td><td class="c">1,5</td><td>Monitor § 3639/2142, 5/2026 a 9/2026</td></tr>
+  <tr><td>firma → město</td><td>podíl na zisku 2021–2025</td><td class="c">0</td><td>usnesení valné hromady (zisk vždy na nerozdělený zisk)</td></tr>
+</table>
+
+<h3>Kde peníze z parkování končí</h3>
+<ol>
+  <li><b>V osobních nákladech firmy</b>: 5,7 mil. Kč v roce 2024 proti 2,1 mil. v roce 2023. Provize přišla a náklady na lidi se téměř ztrojnásobily. Komu a za co, závěrka neříká.</li>
+  <li><b>V nerozděleném zisku a majetku firmy</b>: kumulovaný zisk 2021–2025 8,5 mil. Kč, vlastní kapitál 52,6 mil. Kč; firma kupuje automaty (10 ks za 2,07 mil., dalších až 5 mil. schváleno, 3 ks za 0,6 mil.), studie a stojany. Peníze města jsou vázané ve firmě, město je může dostat jen rozhodnutím o podílu na zisku, které sama rada šest let nepřijala.</li>
+  <li><b>Ve státní pokladně</b>: každá koruna, kterou město firmě zaplatí jako odměnu, nese 21 % DPH, kterou si město u této činnosti zpravidla neodečte, a než se vrátí jako podíl na zisku, projde 21 % daní z příjmů právnických osob. Kruh „paušál ↔ záloha" z roku 2026 tak z 1,5 mil. Kč nechá státu odhadem 0,3–0,7 mil. Kč.</li>
+  <li><b>V projektech, které nemají cenu</b>: příkazní smlouvy bydlení a Nové Centrum jsou v registru bez hodnoty (odměna „součástí odměny za parkování", „dle kalkulací"), paušál ROZVOJ nemá veřejný výkaz činnosti. Rada za pololetí 2026 schválila výplatu odměny dvakrát bez částky.</li>
+  <li><b>V majetku půjčeném zdarma</b>: od 1. 7. 2026 firma užívá 34 parkovacích ploch a tři lázeňské pavilony bez nájmu, smí je komerčně využívat, podnajímat a nechat si výnosy; město platí pojištění a investuje do komunikací 20 mil. Kč za devět měsíců.</li>
+</ol>
+
+<h3>Potenciální ztráty města (odhady)</h3>
+<div class="odhad" style="break-after: avoid"><span class="stitek">Odhad</span> Čísla níže jsou odhady z veřejných dat, ne zjištěné škody. Část „ztráty" města je zisk firmy, kterou město vlastní; ztrátou se stává tím, že peníze nejsou v rozpočtu, že se o ně dělí se státem a že o jejich použití nerozhoduje zastupitelstvo.</div>
+<table class="ztraty">
+  <tr><th>položka</th><th class="c">odhad</th><th>základ výpočtu</th><th>jistota</th></tr>
+  <tr><td>ušlý čistý příjem z parkování</td><td class="c">2,5–3,4 mil. Kč ročně</td><td>průměr „zůstalo městu" 2021–2024 je 3,3 mil.; 2025: 0,6 mil.; 2026 včetně zálohy ~0</td><td>vysoká pro 2025 (výkaz), střední pro 2026</td></tr>
+  <tr><td>daňový únik kruhu paušál ↔ záloha</td><td class="c">0,3–0,7 mil. Kč za pololetí</td><td>DPH 21 % z 1,5 mil. = 0,32 mil.; krytí 1,5 mil. zálohy ze zisku po 21 % dani vyžaduje 1,9 mil. před zdaněním</td><td>nízká, závisí na odpočtu DPH a daňovém základu firmy</td></tr>
+  <tr><td>bezúplatná výpůjčka 34 ploch a 3 pavilonů</td><td class="c">nelze vyčíslit; obrat majetku přes 9 mil. ročně</td><td>obvyklé nájemné není známo; firma sama pronajímá stání hotelům za 0,54 mil. ročně na jednu smlouvu</td><td>otázka pro znalecký posudek</td></tr>
+  <tr><td>plnění před účinností smlouvy ROZVOJ</td><td class="c">~0,33 mil. Kč bez DPH</td><td>1. 1.–10. 2. 2026 při 250 000 Kč měsíčně; bez právního důvodu (§ 6 odst. 1 ZRS)</td><td>vysoká co do faktu</td></tr>
+  <tr><td>osobní náklady firmy nad úroveň 2023</td><td class="c">3,6 mil. Kč (2024)</td><td>5 663 − 2 067 tis. Kč</td><td>vysoká (závěrka); zda jde o ztrátu, závisí na tom, co lidé dělají</td></tr>
+  <tr><td>zisk zadržený ve firmě</td><td class="c">8,5 mil. Kč (2021–2025)</td><td>součet zisku po zdanění, 0 vyplaceno</td><td>vysoká</td></tr>
+  <tr><td>pozemky pod parkovacím domem ve splátkách</td><td class="c">0,2–0,4 mil. Kč ročně</td><td>9,76 mil. v 10 splátkách; při 2–4 % úroku, pokud je bezúročně</td><td>otázka (úročení není známo)</td></tr>
+  <tr><td>prodej 21 automatů za zůstatkovou hodnotu</td><td class="c">?</td><td>0,46 mil. Kč; nové automaty firma kupuje za 0,2 mil. Kč za kus</td><td>otázka (tržní cena)</td></tr>
+  <tr><td>investice města do ploch užívaných firmou</td><td class="c">až 20 mil. Kč (2026)</td><td>§ 2219/6121 za 9 měsíců; podíl parkovacích ploch neznámý</td><td>otázka</td></tr>
+</table>
+
+<h2>8. Jednatel firmy a dodavatel města Zahradní a parková</h2>
+<figure><img src="grafy/g5_zahradni_a_parkova.svg" alt="Smlouvy města se Zahradní a parková po letech"><figcaption>Hodnota smluv města se Zahradní a parková spol. s r.o. (IČO 25205978) podle registru smluv, 85 smluv, 44,5 mil. Kč. Zdroj: Hlídač státu, <code>data/penize/smlouvy/</code>.</figcaption></figure>
+<div class="fakt"><span class="stitek">Fakt</span> Pavel Poc je podle veřejného rejstříku společník a jednatel Zahradní a parková spol. s r.o. V roce 2023, kdy předsedal dozorčí radě PARKING CENTRA, uzavřelo město se Zahradní a parková smlouvy za 15,5 mil. Kč, nejvíc za sledované období; v roce 2025, kdy se stal jednatelem, za 7,4 mil. Kč. Smlouva „letničky 2021" za 506 tis. Kč byla uveřejněna až po třech měsících.</div>
+<div class="otazka"><span class="stitek">Otázka</span> Oznámil jednatel střet zájmů valné hromadě (§ 54 ZOK) a rozhodla rada o případném pozastavení výkonu funkce (§ 54 odst. 4)? Administruje DEVELOP CENTRUM pro město zakázky, o které se Zahradní a parková uchází (Třešňovka, U Pily, Hamrníky, veřejná zeleň)? Rok 2023 a rok 2025 jsou výkyvy, ne důkaz souvislosti; souvislost by potvrdil nebo vyvrátil jen seznam zakázek a jejich zadavatelů.</div>
+
+<h2>9. Smlouvy firmy v registru</h2>
+<figure class="uzsi"><img src="grafy/g6_lhuty.svg" alt="Rozdělení smluv firmy podle rychlosti uveřejnění"><figcaption>Smlouvy firmy uzavřené od 1. 7. 2017 podle doby do prvního uveřejnění (zákonná lhůta 30 dnů, zrušení od počátku po 3 měsících). Zdroj: <code>data/penize/lhuty_zverejneni.json</code>.</figcaption></figure>
+<table>
+  <tr><th>uzavřeno</th><th>uveřejněno</th><th class="c">dnů</th><th>smlouva</th><th class="c">Kč s DPH</th><th>následek podle zákona</th></tr>
+  <tr><td>1. 1. 2024</td><td>14. 6. 2024</td><td class="c">165</td><td>užívání parkovacích stání, Dopravní podnik Karlovy Vary (znovu uzavřeno 15. 8. 2024)</td><td class="c">363 000</td><td>zrušena od počátku (§ 7 odst. 1)</td></tr>
+  <tr><td>31. 7. 2025</td><td>15. 12. 2025</td><td class="c">137</td><td>příkazní smlouva, účetní poradenství</td><td class="c">72 600</td><td>zrušena od počátku</td></tr>
+  <tr><td>23. 6. 2026</td><td>23. 10. 2026</td><td class="c">122</td><td>objednávka zastavovací studie Bydlení u Pily</td><td class="c">118 580</td><td>zrušena od počátku</td></tr>
+  <tr><td>1. 7. 2026</td><td>23. 10. 2026</td><td class="c">114</td><td>objednávka studie proveditelnosti</td><td class="c">266 200</td><td>zrušena od počátku</td></tr>
+  <tr><td>14. 11. 2025</td><td>13. 2. 2026</td><td class="c">91</td><td>stavební práce na parkovacím domě</td><td class="c">825 861</td><td>o den uvnitř tříměsíční lhůty; neúčinná 91 dní</td></tr>
+  <tr><td>23. 1. 2026</td><td>10. 2. 2026</td><td class="c">18</td><td>Dohoda o narovnání + příkazní ROZVOJ, účinnost sjednána k 1. 1. 2026</td><td class="c">3 630 000</td><td>účinnost nejdřív 10. 2. (§ 6 odst. 1); plnění za leden bez smlouvy</td></tr>
+  <tr><td>16. 12. 2024</td><td>16. 12. 2024</td><td class="c">0</td><td>příkazní smlouva bydlení, účinnost 29. 10. 2024</td><td class="c">bez ceny</td><td>zpětná účinnost</td></tr>
+  <tr><td>19. 8. 2026</td><td>3. 9. 2026</td><td class="c">15</td><td>dohoda o ukončení ROZVOJ s účinky k 30. 6. 2026</td><td class="c">bez ceny</td><td>zpětná účinnost</td></tr>
+  <tr><td>10. 8. 2026</td><td>31. 8. 2026</td><td class="c">21</td><td>výpůjčka a správa svěřeného majetku, účinnost 1. 7. 2026</td><td class="c">bez ceny</td><td>zpětná účinnost</td></tr>
+</table>
+<p class="male">Bez ceny jsou dále: příkazní Nové Centrum, Dodatek č. 1 ROZVOJ, nájem pozemků pro automaty, EasyPark, jedna smlouva o stání. Dvě objednávky z června a července 2026 firma uveřejnila najednou 23. 10. 2026. Firma přitom sama po hotelu HOTELIS s.r.o. vymáhá 600 000 Kč bez DPH jako bezdůvodné obohacení za parkování bez smlouvy (registr 36459385): stejný princip dopadá na plnění ze smluv se zpětnou účinností.</p>
+
+<h2>10. Seznam možných právních pochybení k ověření</h2>
+<p class="male">Závažnost: <b>A</b> dopad na platnost smlouvy nebo na veřejné prostředky, <b>B</b> porušení povinnosti bez přímého majetkového dopadu, <b>C</b> procesní. „Co by to vyvrátilo" je dokument, který město nebo firma mají mít a který lze žádat podle zákona č. 106/1999 Sb.</p>
+<table class="pochybeni">
+  <tr><th>#</th><th>oblast a ustanovení</th><th>doložený stav</th><th>co by to vyvrátilo</th><th class="c">záv.</th></tr>
+  <tr><td>1</td><td>Registr smluv, § 6 odst. 1 zák. 340/2015 Sb.: účinnost nejdříve uveřejněním</td><td>čtyři smlouvy s městem sjednávají účinnost před uveřejněním (ROZVOJ 1. 1. vs. 10. 2. 2026; bydlení 29. 10. vs. 16. 12. 2024; ukončení ROZVOJ 30. 6. vs. 3. 9. 2026; výpůjčka 1. 7. vs. 31. 8. 2026)</td><td>dohoda o vypořádání plnění před účinností; doklad, že se plnilo až od uveřejnění</td><td class="c">A</td></tr>
+  <tr><td>2</td><td>Registr smluv, § 7 odst. 1: zrušení od počátku po 3 měsících</td><td>4 smlouvy firmy uveřejněny po více než 3 měsících (363 000, 72 600, 118 580, 266 200 Kč)</td><td>doklad, že se neplnilo, nebo nová smlouva a vypořádání bezdůvodného obohacení</td><td class="c">A</td></tr>
+  <tr><td>3</td><td>Registr smluv, § 5 odst. 2: 30 dnů</td><td>19 ze 49 smluv firmy (od 7/2017) uveřejněno po lhůtě</td><td>— (pořádková lhůta bez sankce; ukazuje na vnitřní proces)</td><td class="c">C</td></tr>
+  <tr><td>4</td><td>ZOK § 40 odst. 2: záloha na podíl na zisku jen na základě mezitímní účetní závěrky</td><td>rozhodnutí o záloze 3 mil. Kč z 20. 1. 2026 závěrku nezmiňuje; změny 30. 3. a 4. 8. 2026 rovněž</td><td>mezitímní účetní závěrka k 31. 12. 2025 nebo k lednu 2026 s testem § 40 odst. 1</td><td class="c">A</td></tr>
+  <tr><td>5</td><td>ZOK § 82 a § 84, zákon o účetnictví § 21a, zák. 304/2013 Sb. § 104: založení zprávy o vztazích, výroční zprávy a zprávy auditora</td><td>ve sbírce listin chybí zprávy o vztazích 2023–2025 a zpráva auditora 2025, které rada schválila (RM 53/5, 88/2, 119/2)</td><td>doklad o podání rejstříkovému soudu</td><td class="c">B</td></tr>
+  <tr><td>6</td><td>ZOK § 54–55: oznámení střetu zájmů jednatele</td><td>jednatel P. Poc je společník a jednatel dodavatele města (44,5 mil. Kč); v usneseních rady oznámení není</td><td>zápis z valné hromady (rady) s oznámením a rozhodnutím podle § 54 odst. 4</td><td class="c">B</td></tr>
+  <tr><td>7</td><td>Zákon o obcích § 83 odst. 2: oznámení střetu zájmů člena zastupitelstva před projednáním</td><td>dva radní v dozorčí radě hlasují v radě o smlouvách s firmou a o její závěrce</td><td>zápisy z jednání rady s oznámením a záznamem o hlasování</td><td class="c">C</td></tr>
+  <tr><td>8</td><td>ZZVZ § 2 a § 11: zakázka bez zadávacího řízení jen při splnění podmínek vertikální spolupráce (ovládání, více než 80 % činnosti pro zadavatele)</td><td>příkazní smlouvy (90 % parkovného; 3 mil. Kč ročně) uzavřeny bez soutěže; většinu tržeb firmy od 2026 tvoří parkovné od veřejnosti</td><td>písemné posouzení podmínek § 11 před uzavřením každé smlouvy, výpočet podílu činnosti</td><td class="c">A</td></tr>
+  <tr><td>9</td><td>ZZVZ § 174 a násl.: koncese na služby</td><td>bezúplatná výpůjčka s právem na výnosy z parkování a pavilonů je ekonomicky přenesením provozního rizika a výnosu na firmu</td><td>posouzení, zda nejde o koncesi, nebo splnění § 11 i pro ni</td><td class="c">A</td></tr>
+  <tr><td>10</td><td>Zákon o obcích § 38 odst. 1: účelné a hospodárné nakládání s majetkem</td><td>majetek s výnosem přes 9 mil. Kč ročně půjčen zdarma na 6 let; město platí pojištění; kalkulace odměny 90 % není veřejná</td><td>ekonomická analýza předložená radě (RM 122/29 odkazuje na „analýzu správy pavilonů", příloha není zveřejněna)</td><td class="c">A</td></tr>
+  <tr><td>11</td><td>Veřejná podpora, čl. 107 SFEU, nařízení de minimis / SGEI</td><td>odměna výslovně určená i na „rozvoj společnosti", bezúplatná výpůjčka s komerčním využitím (gastro, ubytování, podnájmy)</td><td>posouzení veřejné podpory, pověření SGEI, nebo evidence de minimis</td><td class="c">B</td></tr>
+  <tr><td>12</td><td>Péče řádného hospodáře, § 159 o. z., § 51–53 ZOK (jednatelé); zákon o obcích § 38 (rada jako valná hromada)</td><td>osobní náklady 2024 2,7× proti 2023 při poklesu zisku; zisk 8,5 mil. Kč šest let nerozdělen; snížení základního kapitálu bez veřejného zdůvodnění</td><td>zprávy jednatelů o hospodaření, zdůvodnění personálního nárůstu, projekt snížení ZK</td><td class="c">B</td></tr>
+  <tr><td>13</td><td>Bezdůvodné obohacení, § 2991 o. z.</td><td>plnění před účinností (ROZVOJ ~0,33 mil. Kč) a po zrušených smlouvách</td><td>dohody o vypořádání</td><td class="c">A</td></tr>
+  <tr><td>14</td><td>Zákon o DPH § 72 a násl.; zákon o daních z příjmů § 19 odst. 1 písm. ze)</td><td>kruh paušál ↔ záloha: DPH z odměny a daň ze zisku; rozhodnutí o záloze „bez srážky daně"</td><td>daňové posouzení; doklad o režimu výplaty podílu obci</td><td class="c">B</td></tr>
+  <tr><td>15</td><td>Vnitřní předpis města 2017-08 Veřejné zakázky</td><td>rada opakovaně uděluje firmě výjimky (automaty, stojany, střecha pavilonu); vztahuje-li se předpis na s.r.o., každá výjimka obchází poptávku</td><td>text předpisu, evidence výjimek, vlastní pravidla firmy</td><td class="c">C</td></tr>
+  <tr><td>16</td><td>ZZVZ, zakázka Třešňovka (190 mil. Kč bez DPH), administrátor firma</td><td>podnět a výzva ÚOHS (ÚOHS-P0777/2026/VZ), vyjádření zadavatele 7. 8. 2026, Hlídač vede zakázku jako zrušenou (21. 10. 2026)</td><td>rozhodnutí ÚOHS, rozhodnutí o zrušení a jeho důvody</td><td class="c">A</td></tr>
+</table>
+
+<h2>11. Otázky podle zákona č. 106/1999 Sb.</h2>
+<p>Město je povinný subjekt podle § 2 odst. 1 InfZ. Firma je povinným subjektem jako veřejná instituce (Ústavní soud I. ÚS 260/06 a navazující judikatura: obchodní společnost se 100 % účastí obce, zřízená k obecním úkolům a ovládaná obcí); datová schránka <b>aaffkjx</b>. Lhůta 15 dnů (§ 14 odst. 5 písm. d), prodloužení o 10 dnů (§ 14 odst. 6), stížnost podle § 16a; o odvolání a stížnosti u firmy rozhoduje Úřad pro ochranu osobních údajů (§ 20 odst. 5). Ptát se na dokumenty, ne na názory; zúžit období, aby nešlo o zneužití práva (§ 11a).</p>
+<div class="dva">
+<h3>Městu</h3>
+<ol>
+  <li>Kalkulace odměny 90 % parkovného (podklad RM/515/24) a přehled plateb firmě 2024–2026 po měsících a titulech.</li>
+  <li>Výkaz činnosti k Příkazní smlouvě ROZVOJ za 1. pololetí 2026 a podklady k usnesením 117/5 a 122/8 „vyplacení odměny".</li>
+  <li>Mezitímní účetní závěrka a podklady k rozhodnutí o záloze na zisk (RM/910/26, 114/33, 123/13).</li>
+  <li>Posouzení podmínek § 11 ZZVZ (vertikální spolupráce) před uzavřením příkazních smluv 2024, 2025 a 2026 a před výpůjčkou 2026.</li>
+  <li>„Analýza a právní podklady týkající se správy lázeňských pavilonů" (RM 122/29) a zdůvodnění bezúplatnosti výpůjčky, posouzení veřejné podpory.</li>
+  <li>Přílohy usnesení RM/515/24, RM/755/24, RM/876/24, RM/910/26, RM/1383/26 (texty smluv a kalkulace).</li>
+  <li>Vypořádání plnění před účinností smluv (leden 2026 ROZVOJ; bydlení 10–12/2024).</li>
+  <li>Oznámení střetu zájmů jednatele P. Poce a radních Chadima a Krále; zápisy z jednání rady k bodům o firmě.</li>
+  <li>Vnitřní předpis 2017-08 a seznam výjimek udělených firmě 2023–2026.</li>
+  <li>Seznam investic na § 2219 2024–2026 s označením, které se týkají ploch vypůjčených firmě.</li>
+  <li>Smlouva o prodeji pozemků pod parkovacím domem: splátkový kalendář a úročení; podklad k „narovnání sporných nároků" 605 000 Kč (ZM/401/24).</li>
+  <li>Stav zakázky Třešňovka: rozhodnutí ÚOHS, rozhodnutí o zrušení, náklady administrace a poradenství (firma, ČSOB Advisory, advokáti).</li>
+</ol>
+<h3>Firmě</h3>
+<ol>
+  <li>Zprávy o vztazích 2023, 2024, 2025 a zpráva auditora 2025.</li>
+  <li>Přehled vybraného parkovného 2024–2026 po měsících, přehled nájmů stání a podnájmů v pavilonech.</li>
+  <li>Počet zaměstnanců po letech 2022–2026, mzdové náklady, smlouvy a odměny jednatelů a členů dozorčí rady.</li>
+  <li>Výkaz činnosti k příkazním smlouvám (parkování, bydlení, Nové Centrum, ROZVOJ).</li>
+  <li>Oznámení střetu zájmů jednatele podle § 54 ZOK a zápisy dozorčí rady 2025–2026.</li>
+  <li>Vnitřní pravidla zadávání zakázek a seznam zakázek 2023–2026 nad 100 000 Kč s dodavateli.</li>
+  <li>Projekt snížení základního kapitálu (RM 119/2) a jeho zdůvodnění.</li>
+  <li>Smlouva s HOTELIS s.r.o.: výpočet bezdůvodného obohacení 600 000 Kč a období, za které se vymáhá.</li>
+</ol>
+</div>
+
+<h2>12. Zdroje</h2>
+<ul class="male">
+  <li>Veřejný rejstřík a sbírka listin or.justice.cz (IČO 61776068, C 43956 KSPL), ARES, registr plátců DPH; čteno přes MCP konektor Sagasu (<code>verejny_rejstrik</code>, <code>obchodni_rejstrik</code>, <code>sbirka_listin</code>, <code>listina_text</code>, <code>pdf_obrazek_strany</code>, <code>verejny_rejstrik_osoba</code>, <code>dph_status</code>).</li>
+  <li>Registr smluv (smlouvy.gov.cz) a Hlídač státu: záznamy 29673568, 31453912, 32406080, 36736349, 39379137, 39325283, 36633805, 25530603, 31129212, 32065240, 33267512, 33467688, 34466361, 36459385, 29086468, 29871560, 36042753, 40060489, 40060429, 36798385, 38227661; sklizeň v <code>data/penize/smlouvy/61776068.json</code>, data uveřejnění <code>data/penize/lhuty_zverejneni.json</code>.</li>
+  <li>Usnesení rady a zastupitelstva Mariánských Lázní (usneseni.muml.cz), sklizeň <code>data/usneseni/</code>; čísla usnesení uvedena u jednotlivých tvrzení.</li>
+  <li>Monitor státní pokladny (MF ČR), výkaz FIN 2-12 M města Mariánské Lázně, roční 2010–2025 a měsíční 6/2024–9/2026; výběr řádků v <code>data/rozpocet/parkovani_mesicne.json</code>.</li>
+  <li>Odpověď města na žádost o informace k zakázce Třešňovka ze 7. 10. 2026 (<code>data/informace106/texty/</code>).</li>
+  <li>Právní předpisy: zák. 340/2015 Sb. (registr smluv), 90/2012 Sb. (ZOK), 128/2000 Sb. (o obcích), 134/2016 Sb. (ZZVZ), 563/1991 Sb. (o účetnictví), 304/2013 Sb. (o veřejných rejstřících), 89/2012 Sb. (o. z.), 106/1999 Sb. (InfZ), 235/2004 Sb. (o DPH), 586/1992 Sb. (o daních z příjmů). Metodický návod MV k registru smluv v. 1.11; NS 23 Cdo 88/2025.</li>
+  <li>Podrobný rozbor s odkazy: <code>docs/develop-centrum.md</code> a <code>docs/namety-106.md</code> v repozitáři Naše Mariánky v přehledech. Grafy: <code>docs/develop-centrum-audit/grafy.py</code>, sazba: <code>docs/develop-centrum-audit/vysazet.js</code>.</li>
+</ul>
+
+</body>
+</html>

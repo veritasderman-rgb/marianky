@@ -4,6 +4,8 @@ Profil jedné firmy z městského holdingu: **DEVELOP CENTRUM Mariánské Lázn�
 
 **Jak to číst.** Stejně jako v [`docs/namety-106.md`](namety-106.md): u každého tématu je odděleno, co je **doložený fakt** (text smlouvy v registru, usnesení rady, listina ve sbírce listin, řádek rozpočtu) a co je **otázka**, tedy to, co z veřejných dat zjistit nejde a je to důvod se zeptat. Nic z toho není výrok, že někdo pochybil. Je to popis mechanismu a otázky, které z něj plynou.
 
+**Tištěná verze.** Totéž v podobě auditní zprávy s organigramem, schématy toků peněz, grafy a seznamem možných právních pochybení: [`develop-centrum-audit.pdf`](develop-centrum-audit.pdf) (zdroj a sazba v `develop-centrum-audit/`).
+
 **Odkud jsou data.** Obchodní rejstřík, sbírka listin, ARES a registr plátců DPH přes konektor **Sagasu** (nástroje `verejny_rejstrik`, `obchodni_rejstrik`, `sbirka_listin`, `listina_text`, `verejny_rejstrik_osoba`, `dph_status`); texty smluv z Hlídače státu a registru smluv; usnesení rady a zastupitelstva ze sklizně v `data/usneseni/`; rozpočet města z Monitoru státní pokladny (`data/rozpocet/fin212m/`); data uveřejnění z `data/penize/lhuty_zverejneni.json`. Stav k 27. 10. 2026.
 
 ---
@@ -103,9 +105,53 @@ Monitor státní pokladny, FIN 2-12 M, paragraf 2219 (ostatní záležitosti poz
 | 2025 | 9,02 | 7,66 | provize celý rok; + 0,38 mil. příjem z prodeje automatů (pol. 3113) |
 | 2026 (k 30. 6.) | 0,68 (schváleno 0,50) | 1,95 (schváleno 3,09) | parkovné už není příjmem města |
 
-Zdroj: `data/rozpocet/fin212m/*-12.json`, `2026-06.json`. Výdaj 5169 v roce 2025 (7,66 mil.) odpovídá 90 % z parkovného; v roce 2026 odpovídá paušálu 250 000 Kč měsíčně (§ 5.3) plus další služby. Schválený rozpočet 2026 počítá s parkovným jen 0,5 mil. Kč: od 1. 1. 2026 vybírá parkovné firma do své pokladny.
+Zdroj: `data/rozpocet/fin212m/*-12.json`, `2026-06.json`. Výdaj 5169 v roce 2025 (7,66 mil.) odpovídá 90 % z parkovného. Schválený rozpočet 2026 počítá s parkovným jen 0,5 mil. Kč: od 1. 1. 2026 vybírá parkovné firma do své pokladny.
 
-**Doložený fakt:** příjem města z parkování klesl z 8–9 mil. Kč ročně na zlomek; k městu se z něj má vracet jen „záloha na zisk" (§ 5.3) a to, co firma odvede ze zisku. **Otázka:** jaká je ekonomika celé operace z pohledu města za rok 2025 a 2026 (parkovné vybrané firmou, náklady správy, odvedená záloha, investice firmy do automatů) a zda ji někdo radě předložil.
+**Co městu z parkování zůstalo.** Parkovné minus to, co město na témž paragrafu zaplatilo za služby (5169) a opravy (5171), v mil. Kč:
+
+| rok | parkovné | služby | opravy a údržba | zůstalo městu | investice (6121) |
+|---|---|---|---|---|---|
+| 2019 | 6,93 | 0,43 | 1,33 | 5,16 | 0,12 |
+| 2021 | 5,66 | 0,25 | 2,36 | 3,06 | 0,29 |
+| 2022 | 7,35 | 0,44 | 3,86 | 3,04 | 0,67 |
+| 2023 | 8,65 | 0,48 | 4,17 | 3,99 | 0,57 |
+| 2024 | 8,36 | 1,98 | 3,34 | 3,04 | 5,61 |
+| 2025 | 9,02 | 7,66 | 0,72 | 0,63 | 9,53 |
+| 2026 (k 30. 9.) | 0,70 | 1,99 | 0,14 | −1,43 (+1,50 záloha na zisk) | 20,03 |
+
+Opravy klesly, protože údržbu automatů od roku 2025 nese firma; to je část toho, co 90 % provize platí. I tak zůstalo městu z parkování v roce 2025 asi 0,6 mil. Kč proti 3–4 mil. Kč v letech 2021–2024, a v roce 2026 je bilance bez zálohy na zisk záporná. Investice na paragrafu 2219 (20 mil. Kč za devět měsíců 2026, rozpočet 57,9 mil.) jsou „ostatní záležitosti pozemních komunikací" obecně; kolik z nich jde do parkovacích ploch, které město firmě půjčilo zdarma, z výkazu nejde poznat.
+
+**Kdy město platilo a kdy dostávalo** (Monitor zveřejňuje FIN 2-12 M po měsících kromě ledna a července; měsíční tok je rozdíl kumulované skutečnosti, protistranu výkaz neuvádí; `data/rozpocet/parkovani_mesicne.json`):
+
+| měsíc výkazu | parkovné (2219/2111) | služby § 2219 (5169) | služby § 3639 (5169) | podíl na zisku (3639/2142) |
+|---|---|---|---|---|
+| 2024-09 | +0,67 | +0,19 | · | |
+| 2024-10 | +0,59 | **+1,43** | · | |
+| 2024-11, 12 | +0,83 | +0,04 | · | |
+| 2025-02 | +1,62 | **+1,53** | · | |
+| 2025-03 | +0,65 | +0,01 | · | |
+| 2025-04 | +0,72 | **+1,46** | · | |
+| 2025-05, 06 | +1,59 | +0,01 | · | |
+| 2025-08 | +1,83 | **+2,26** | · | |
+| 2025-09 | +0,83 | +0,02 | · | |
+| 2025-10 | +0,64 | **+2,37** | · | |
+| 2025-11, 12 | +1,15 | +0,00 | · | |
+| 2026-02 | +1,10 | **+1,65** | +0,09 | |
+| 2026-03 | **−0,48** | +0,07 | +0,47 | |
+| 2026-04 | +0,03 | +0,07 | +0,23 | |
+| 2026-05 | +0,02 | +0,15 | +0,77 | **+0,75** |
+| 2026-06 | +0,01 | +0,01 | **+1,83** | |
+| 2026-08 | +0,02 | +0,03 | +0,66 | |
+| 2026-09 | +0,01 | +0,01 | +0,17 | **+0,75** |
+
+Co z toho jde vyčíst:
+
+- **Provize se platila čtvrtletně**, vždy měsíc po konci čtvrtletí: říjen 2024 (1,43 mil. za srpen a září), únor 2025 (1,53 mil. za 4. čtvrtletí 2024), duben (1,46), srpen (2,26), říjen 2025 (2,37) a únor 2026 (1,65 mil. za 4. čtvrtletí 2025). Součet za 17 měsíců správy: **asi 10,7 mil. Kč**, což odpovídá 90 % parkovného za srpen 2024 až prosinec 2025 (11,9 mil. × 0,9 = 10,7).
+- **Předání parkovného firmě** je vidět v březnu 2026: kumulované parkovné města kleslo o 0,48 mil. Kč, tedy město vrátilo část toho, co automaty vybraly v lednu a únoru, než firma převzala inkaso. Od dubna 2026 inkasuje město z parkování jen desítky tisíc měsíčně.
+- **Paušál 250 000 Kč měsíčně za rok 2026 na paragrafu parkování není.** Na paragrafu 3639 (komunální služby a územní rozvoj) je v červnu 2026 skok 1,83 mil. Kč, což se rovná odměně za šest měsíců včetně DPH (6 × 302 500 Kč), a přišel měsíc po tom, co rada 12. 5. 2026 „schválila vyplacení odměny". Paragraf 3639 ale nese i jiné služby města, takže přiřazení firmě je pravděpodobné, ne doložené.
+- **Záloha na zisk** přišla ve dvou splátkách po 750 000 Kč: v květnu a v září 2026 (na položce 3639/2142, kterou rozpočtové opatření z 15. 9. 2026 výslovně pojmenovává „záloha na zisk – DEVELOP CENTRUM").
+
+**Doložený fakt:** příjem města z parkování klesl z 8–9 mil. Kč ročně na zlomek; k městu se z něj má vracet jen „záloha na zisk" (§ 5.3) a to, co firma odvede ze zisku. **Otázka:** jaká je ekonomika celé operace z pohledu města za rok 2025 a 2026 (parkovné vybrané firmou, náklady správy, odvedená záloha, investice firmy do automatů) a zda ji někdo radě předložil. Registr smluv ani Hlídač státu platby nevedou, faktury obcí Hlídač nemá; měsíční výkazy jsou nejbližší veřejný zdroj, přesné faktury je třeba žádat.
 
 ### 5.3 Dohoda o narovnání (23. 1. 2026): paušál 3 mil. ročně a záloha na zisk ve stejné výši
 
