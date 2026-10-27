@@ -316,7 +316,7 @@ Každý subjekt má vlastní IČO a tedy vlastní stopu v registru smluv, dotac�
 | Infocentrum Mariánské Lázně s.r.o. | 100 % | *dohledat* |
 | TDS spol. s r.o. | 100 % | *dohledat* |
 | Lázeňské lesy spol. s r.o. | 100 % | *dohledat* |
-| DEVELOP CENTRUM Mariánské Lázně s.r.o. | 100 % | *dohledat* |
+| DEVELOP CENTRUM Mariánské Lázně s.r.o. (dříve PARKING CENTRUM) | 100 % | 61776068, profil v [`docs/develop-centrum.md`](develop-centrum.md) |
 | MĚSTSKÁ DOPRAVA Mariánské Lázně s.r.o. | částečný | *dohledat* |
 | Nemocnice Mariánské Lázně s.r.o. | částečný | *dohledat* |
 
@@ -576,6 +576,27 @@ jednotky, Monitor je nezná). `or.justice.cz` je Wicket aplikace:
 Čísla z PDF závěrek se **nečtou** — skeny i strojová PDF v mnoha šablonách,
 deterministický parser neexistuje. Výstupem je matice „firma × rok: závěrka
 založena / chybí" plus odkazy do sbírky.
+
+### Ruční hloubková sonda: konektor Sagasu (MCP)
+
+Pro profil jedné firmy (ne pro pravidelný sběr) se osvědčil MCP konektor
+Sagasu, který obaluje or.justice.cz, ARES a registr plátců DPH:
+
+- `verejny_rejstrik` / `obchodni_rejstrik` — aktuální i historický zápis
+  (orgány, společníci, základní kapitál, změny právní formy);
+- `verejny_rejstrik_osoba` — všechny firmy, kde osoba figuruje: tím se
+  u jednatele městské firmy najde jeho vlastní firma dodávající městu;
+- `sbirka_listin` → `listina_text` — seznam listin a jejich text. Účetní
+  závěrky podané přes finanční úřad přijdou jako balík částí, čísla jsou
+  v XML částech `UZ-*.xml` (řádky VetaUA/VetaUB/VetaUD, tis. Kč);
+  notářské zápisy a některé závěrky jsou skeny bez textu, k těm je
+  `pdf_obrazek_strany` (obrázek stránky);
+- `dph_status` — spolehlivost plátce a zveřejněné účty.
+
+Co jsme se naučili: schválení listiny valnou hromadou (usnesení rady) a její
+založení do sbírky jsou dvě různé věci; u DEVELOP CENTRA chybí zprávy
+o vztazích 2023–2025, které rada prokazatelně schválila. Ukázka použití:
+[`docs/develop-centrum.md`](develop-centrum.md).
 
 ---
 
