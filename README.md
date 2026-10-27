@@ -75,6 +75,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 | [`docs/PLAN.md`](docs/PLAN.md) | Kontrakt datových formátů |
 | [`docs/datove-zdroje.md`](docs/datove-zdroje.md) | Inventář zdrojů — co funguje, co ne a proč |
 | [`web/DESIGN.md`](web/DESIGN.md) | Vzhled a pravidla grafů |
+| [`docs/namety-106.md`](docs/namety-106.md) | Smlouvy uveřejněné v registru pozdě: co z toho plyne podle zákona, 92 konkrétních smluv a vzory žádostí podle stovky šestky |
 | [`docs/PREVZETI.md`](docs/PREVZETI.md) | **Chceš totéž pro jinou obec?** Obecné zadání pro Claude Code — rešerše, sběr, Hlídač státu, web a pasti cestou |
 
 ## Zásada, na které to stojí
