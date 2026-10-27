@@ -76,6 +76,7 @@ Pro občana, který se zajímá o dění ve městě, ale nemá čas si sám proc
 | [`docs/datove-zdroje.md`](docs/datove-zdroje.md) | Inventář zdrojů — co funguje, co ne a proč |
 | [`web/DESIGN.md`](web/DESIGN.md) | Vzhled a pravidla grafů |
 | [`docs/namety-106.md`](docs/namety-106.md) | Smlouvy uveřejněné v registru pozdě: co z toho plyne podle zákona, 92 konkrétních smluv a vzory žádostí podle stovky šestky |
+| [`docs/develop-centrum.md`](docs/develop-centrum.md) | Profil městské firmy DEVELOP CENTRUM (dříve PARKING CENTRUM): lidé, hospodaření, 51 smluv, jak se mezi městem a firmou přepisovaly peníze z parkování, a na co se ptát |
 | [`docs/PREVZETI.md`](docs/PREVZETI.md) | **Chceš totéž pro jinou obec?** Obecné zadání pro Claude Code — rešerše, sběr, Hlídač státu, web a pasti cestou |
 
 ## Zásada, na které to stojí
