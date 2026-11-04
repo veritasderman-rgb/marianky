@@ -20,8 +20,8 @@ Adresa katalogu je ale zaregistrovaná v Národním katalogu otevřených dat:
 O úroveň výš (`/api/opendata/monitor`, bez `/MONITOR`) sedí celý katalog.
 NKOD tedy sloužil jen jako rozcestník; data se pak berou přímo od MF.
 
-Čtyři věci, které nejsou samozřejmé
------------------------------------
+Pět věcí, které nejsou samozřejmé
+---------------------------------
 1. **Adresy souborů se NESMÍ skládat z názvu sady.** Skupina v katalogu se
    jmenuje jinak než složka v úložišti: sada `.../monitor/Zisk-a-ztraty/...`
    leží na `.../extrakty/csv/ZiskZtraty/...`. Odvozená adresa vrátí 404.
@@ -47,6 +47,13 @@ NKOD tedy sloužil jen jako rozcestník; data se pak berou přímo od MF.
    (výkaz, tabulka) a kódy výkazů se zapisují k datům, aby navazující
    zpracování poznalo, se kterou podobou má co do činění.
 
+5. **Katalog uvádí adresu extraktu bez přípony `.zip`.** U měsíčních sad
+   to tak bylo odjakživa, od 19. 10. 2026 vrací 404 i roční závěrky —
+   tatáž adresa s příponou vrací platný soubor. `_adresa_souboru()` se
+   proto napřed zeptá hlavičkou a příponu doplní jen tehdy, když bez ní
+   server odpoví 404 a s ní 200. Bez toho běh čtyřicetkrát stáhl 0 B
+   a skončil „není platný ZIP" — tři týdny po sobě.
+
 Co se odsud NEDÁ získat
 -----------------------
 FIN 2-12 M podávají jen územní samosprávné celky, takže **rozpočet má
@@ -69,6 +76,7 @@ import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 import zipfile
 from dataclasses import dataclass, field
@@ -298,14 +306,46 @@ def _hlavicky(extra: dict | None = None) -> dict:
     return h
 
 
-def _ocekavana_velikost(url: str) -> int:
+def _hlava(url: str) -> tuple[int | None, int]:
+    """HEAD na adresu: (HTTP stav, Content-Length). Síťová chyba je (None, 0)."""
     req = urllib.request.Request(url, headers=_hlavicky(), method="HEAD")
     try:
         _pockej_na_rade(urlparse(url).netloc)
         with urllib.request.urlopen(req, timeout=45) as r:
-            return int(r.headers.get("Content-Length") or 0)
+            return r.status, int(r.headers.get("Content-Length") or 0)
+    except urllib.error.HTTPError as e:
+        return e.code, 0
     except Exception:  # noqa: BLE001 — bez velikosti se prostě neověří úplnost
-        return 0
+        return None, 0
+
+
+def _ocekavana_velikost(url: str) -> int:
+    return _hlava(url)[1]
+
+
+def _adresa_souboru(url: str, log: Log) -> str:
+    """Adresa, na které extrakt skutečně leží.
+
+    Katalog MF dává v `soubor_ke_stažení` adresu bez přípony `.zip`
+    (`…/csv/FinM/2010_12_Data_CSUIS_FINM`). U měsíčních sad to tak bylo
+    odjakživa, od 19. 10. 2026 vrací 404 i roční závěrky — a tatáž adresa
+    s příponou vrací platný soubor. Stahovat z katalogové adresy naslepo
+    znamená čtyřicet pokusů o 0 B a pak „není platný ZIP".
+
+    Přípona se doplní jen tehdy, když bez ní server odpoví 404 a s ní 200.
+    Jinou adresu si funkce nevymýšlí — poznámka 1 v hlavičce platí dál.
+    """
+    if url.lower().endswith(".zip"):
+        return url
+    stav, _ = _hlava(url)
+    if stav != 404:
+        return url
+    se_zipem = url + ".zip"
+    stav_zip, _ = _hlava(se_zipem)
+    if stav_zip == 200:
+        log.info(f"{url}: katalog uvádí adresu bez přípony (404), beru {se_zipem}")
+        return se_zipem
+    return url
 
 
 def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 40) -> Path:
@@ -318,6 +358,7 @@ def _stahni(url: str, jmeno: str, log: Log, pokusu: int = 40) -> Path:
     """
     STAHOVANE.mkdir(parents=True, exist_ok=True)
     cil = STAHOVANE / jmeno
+    url = _adresa_souboru(url, log)
     celkem = _ocekavana_velikost(url)
     if cil.exists() and celkem and cil.stat().st_size >= celkem:
         return cil
