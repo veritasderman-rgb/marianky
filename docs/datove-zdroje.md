@@ -481,14 +481,16 @@ Tím se zaplnila mezera, na kterou upozorňovala `kontrola.py`: u let 2024–202
 
 **Od roku 2026 je FIN 2-12 M jiný výkaz** (kód 051 → 063): příjmy a výdaje v jedné tabulce, souhrnná tabulka zmizela. A `000200` znamená v každé verzi něco jiného — výdaje proti bankovním účtům. Mapovat podle čísla tabulky by uložilo stavy účtů jako výdaje.
 
-**Měsíční sady mají v katalogu adresu bez přípony.** U mezitímních období
-(`2024_06_Data_CSUIS_FINM` a dalších) uvádí katalog MF v `soubor_ke_stažení`
-adresu `…/csv/FinM/2024_06_Data_CSUIS_FINM`, která vrací 404; s příponou
-`.zip` tatáž adresa vrací platný soubor (ověřeno 27. 10. 2026). `_stahni()`
-chybu polyká a čtyřicetkrát opakuje, takže `--vse-obdobi` deset minut mlčí
-a pak selže. Jednorázový výběr řádků parkování po měsících
-(`data/rozpocet/parkovani_mesicne.json`) vznikl s doplněnou příponou; do
-sběrače to ještě není zanesené.
+**Katalog uvádí adresu extraktu bez přípony `.zip`.** V `soubor_ke_stažení`
+stojí `…/csv/FinM/2024_06_Data_CSUIS_FINM`; u měsíčních sad tahle adresa
+vracela 404 odjakživa (ověřeno 27. 10. 2026), od týdenního běhu 19. 10. 2026
+ji vrací i roční závěrky (`2010_12_Data_CSUIS_FINM`, ověřeno 4. 11. 2026).
+Tatáž adresa s příponou `.zip` vrací platný soubor. `_stahni()` chybu
+polykal a čtyřicetkrát opakoval, takže sběr rozpočtu i srovnání s městy
+tři týdny po sobě deset minut mlčely a pak skončily „není platný ZIP".
+Od 4. 11. 2026 se `scrapers/monitor.py` (`_adresa_souboru()`) napřed zeptá
+hlavičkou a příponu doplní jen tehdy, když bez ní server odpoví 404 a s ní
+200 — jinou adresu si neskládá.
 
 **Řádek „C." výkazu zisku a ztráty je jen nadpis s nulou.** Skutečný hospodářský výsledek je až v C.1./C.2. Naivní čtení dá nulový výsledek u všech organizací ve všech letech — a vypadá to jako fakt.
 
