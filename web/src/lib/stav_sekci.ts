@@ -37,9 +37,31 @@ export interface KrokBehu {
   modul: string;
   popis: string;
   povinny: boolean;
-  /** `ok`, `selhal`, `chybi_modul`, `chybi_main` — tak to zapisuje run_tyden.py. */
+  /** `ok`, `selhal`, `preskoceno`, `chybi_modul`, `chybi_main` — tak to zapisuje run_tyden.py. */
   stav: string;
   chyba?: string;
+  /** Jen u `preskoceno`: proč se krok vědomě vynechal (např. chybí ruční sklizeň). */
+  duvod?: string;
+}
+
+/**
+ * Vyhodí z hlášky absolutní cestu runneru. Nové běhy ji ořezává už
+ * run_tyden.py; tohle je pojistka pro starší záznamy v data/logy.
+ */
+export function bezCest(text: string): string {
+  return text.replace(/\/home\/runner\/work\/[^/\s]+\/[^/\s]+\//g, '');
+}
+
+/** Krok se nespustil: buď chybí modul, nebo se vědomě vynechal (`preskoceno`). */
+export function jePreskocen(k: KrokBehu): boolean {
+  return k.stav === 'preskoceno' || k.stav === 'chybi_modul' || k.stav === 'chybi_main';
+}
+
+/** Důvod přeskočení jednou větou bez tečky — pro tabulku stavu i titulní stranu. */
+export function duvodPreskoceni(k: KrokBehu): string {
+  if (k.stav === 'chybi_main') return 'modul nemá vstupní bod';
+  if (k.stav === 'chybi_modul') return 'modul chybí';
+  return (k.duvod ?? 'krok se vědomě vynechal').replace(/\s+/g, ' ').trim();
 }
 
 export interface RezimBehu {
@@ -330,12 +352,12 @@ function behSekce(klic: string, beh: Beh | null): BehSekce {
 
   const selhal = kroky.find((k) => k.stav === 'selhal');
   if (selhal) {
-    const proc = selhal.chyba ? ` — ${selhal.chyba.replace(/\s+/g, ' ').trim()}` : '';
+    const proc = selhal.chyba ? ` — ${bezCest(selhal.chyba).replace(/\s+/g, ' ').trim()}` : '';
     return { stav: 'selhal', text: `selhal krok „${selhal.popis}“${proc}${dovetek}`, kroky, chybejici, bezSberu };
   }
-  const preskocen = kroky.find((k) => k.stav === 'chybi_modul' || k.stav === 'chybi_main');
+  const preskocen = kroky.find((k) => jePreskocen(k));
   if (preskocen) {
-    const proc = preskocen.stav === 'chybi_main' ? 'modul nemá vstupní bod' : 'modul chybí';
+    const proc = duvodPreskoceni(preskocen);
     return { stav: 'preskocen', text: `krok „${preskocen.popis}“ se přeskočil (${proc})${dovetek}`, kroky, chybejici, bezSberu };
   }
 
@@ -606,7 +628,7 @@ export function souhrnBehu(beh: Beh): {
 } {
   const rezim = rezimBehu(beh);
   const selhane = beh.kroky.filter((k) => k.stav === 'selhal');
-  const preskocene = beh.kroky.filter((k) => k.stav === 'chybi_modul' || k.stav === 'chybi_main');
+  const preskocene = beh.kroky.filter((k) => jePreskocen(k));
   const sChybamiKroky = beh.kroky
     .filter((k) => k.stav === 'ok')
     .map((krok) => ({ krok, chyb: logyModulu(beh, krok.modul).filter((l) => !l.uspech).reduce((a, l) => a + l.chyb, 0) }))

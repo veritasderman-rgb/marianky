@@ -10,7 +10,6 @@ import hashlib
 import html as html_modul
 import io
 import json
-import os
 import re
 import subprocess
 import time
@@ -35,6 +34,16 @@ UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 
 class ZdrojSelhal(Exception):
     """Zdroj se nepodařilo načíst. Vždy bublá nahoru — nikdy se nepolyká."""
+
+
+class KrokPreskocen(Exception):
+    """Krok nemá v tomhle prostředí z čeho běžet a vědomě se vynechává.
+
+    Není to porucha zdroje: typicky chybí ruční sklizeň, která na runneru
+    nikdy neexistuje. `run_tyden.py` takový krok zapíše jako „preskoceno“
+    s důvodem, ne jako „selhal“ — jinak by na webu týden co týden svítila
+    chyba, se kterou nikdo nic neudělá, a skutečná selhání by v ní zanikla.
+    """
 
 
 # --------------------------------------------------------------------------
@@ -334,7 +343,7 @@ def potrebuje_ocr(text: str, stran: int, prah: int = 200) -> bool:
 
 def cistit(text: str) -> str:
     """Sjednotí bílé znaky, ale zachová odstavce."""
-    text = (text or "").replace("\xa0", " ").replace("​", "")
+    text = (text or "").replace("\xa0", " ").replace("\u200b", "")
     text = re.sub(r"[ \t]+", " ", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()

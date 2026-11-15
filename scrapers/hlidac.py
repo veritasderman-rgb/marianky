@@ -95,7 +95,7 @@ from lib.core import (  # noqa: E402
     CACHE,
     Log,
     ZdrojSelhal,
-    nacti,
+    KrokPreskocen,
     sledovane_subjekty,
     uloz,
 )
@@ -516,6 +516,15 @@ def zpracuj_statistiky(log: Log) -> dict:
 # --------------------------------------------------------------------------
 
 def main() -> None:
+    # Podklady tohohle kroku jsou RUČNÍ sklizeň do .cache/hlidac. Na runneru
+    # týdenního běhu nikdy neexistují, takže krok tam od 9/2026 každý týden
+    # „selhal“ a na webu stál jako porucha. Bez sklizně se proto vynechá
+    # dřív, než se založí log — data z minulé ruční sklizně zůstávají.
+    if not (SUROVE / "statistiky.json").exists():
+        raise KrokPreskocen(
+            "ruční sklizeň Hlídače státu (.cache/hlidac) v tomhle běhu není; "
+            "zůstávají data z poslední sklizně"
+        )
     log = Log("hlidac")
     try:
         zpracuj_statistiky(log)

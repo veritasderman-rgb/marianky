@@ -47,7 +47,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lib.core import DATA, Log, ZdrojSelhal, nacti, slug, sledovane_subjekty, uloz  # noqa: E402
+from lib.core import Log, ZdrojSelhal, nacti, slug, sledovane_subjekty, uloz  # noqa: E402
 
 # „Aktivní" = od města dostala peníze v posledních 12 měsících.
 OKNO_AKTIVNI_DNI = 365

@@ -31,7 +31,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from lib.core import DATA, Log, cistit, nacti, slug, uloz  # noqa: E402
+from lib.core import DATA, Log, cistit, nacti, uloz  # noqa: E402
 
 # Segmenty kratší než tohle se slučují — jednotlivé řádky titulků jsou
 # pro vyhledávání příliš krátké a bez kontextu.

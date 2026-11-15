@@ -19,7 +19,6 @@ import re
 import sys
 import time
 from pathlib import Path
-from urllib.parse import quote
 
 import requests
 

@@ -29,7 +29,7 @@ import hashlib
 import json
 import re
 import sys
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -629,14 +629,29 @@ def main() -> int:
     p = argparse.ArgumentParser(description="Kontrola dat před publikací")
     p.add_argument("--tvrde", action="store_true",
                    help="varování se počítají jako chyby")
+    p.add_argument("--jen-dom", action="store_true",
+                   help="jen rozpočet DOM uzlů nad sestaveným webem; chybějící web/dist je chyba")
+    p.add_argument("--bez-dom", action="store_true",
+                   help="vynechá rozpočet DOM uzlů (web ještě není sestavený)")
     args = p.parse_args()
+
+    # Rozpočet DOM se dá změřit jen na sestaveném webu, ostatní kontroly mají
+    # naopak rozhodnout, JESTLI se web vůbec sestaví. V týdenním běhu proto
+    # jedou nadvakrát: `--bez-dom` před sestavením, `--jen-dom` po něm. Dokud
+    # běžela jedna kontrola před sestavením, rozpočet se v CI neměřil nikdy —
+    # pokaždé jen ohlásil, že web/dist chybí.
+    kontroly = KONTROLY
+    if args.jen_dom:
+        kontroly = [k for k in KONTROLY if k[1] is kontrola_dom]
+    elif args.bez_dom:
+        kontroly = [k for k in KONTROLY if k[1] is not kontrola_dom]
 
     v = Vysledek()
     print("=" * 66)
     print("  KONTROLA DAT PŘED PUBLIKACÍ")
     print("=" * 66)
 
-    for nazev, fn in KONTROLY:
+    for nazev, fn in kontroly:
         try:
             fn(v)
         except Exception as e:  # noqa: BLE001
@@ -650,7 +665,10 @@ def main() -> int:
         print(f"  ✗  {text}")
 
     print("=" * 66)
-    selhalo = bool(v.chyby) or (args.tvrde and bool(v.varovani))
+    # S `--jen-dom` je nesestavený web chyba, ne varování: kontrola, která
+    # neměla co měřit, nesmí projít jako splněná.
+    nezmereno = args.jen_dom and any("nekontroloval" in t for t in v.varovani)
+    selhalo = bool(v.chyby) or (args.tvrde and bool(v.varovani)) or nezmereno
     if selhalo:
         print("  NEPROŠLO — web nepublikovat, dokud se to nespraví.")
     else:
