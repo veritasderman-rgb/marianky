@@ -48,6 +48,14 @@ STARI_DNI = {
     "media": 45,
 }
 
+# Portál zveřejní usnesení hned, jmenovité hlasování k nim až později (stránka
+# do té doby píše „Výsledky hlasování se zpracovávají“). Rada zasedá po ~2
+# týdnech, takže jedno jednání bez hlasování je běžný stav; tři týdny už ne.
+# Starší než půl roku je trvalá díra zdroje (2012, 2018…) a nehlásí se —
+# stejné okno má scrapers.usneseni.DOHLEDAT_VYSLEDKY_DNI.
+HLASOVANI_ZPOZDENI_DNI = 21
+HLASOVANI_OKNO_DNI = 180
+
 
 class Vysledek:
     def __init__(self) -> None:
@@ -175,6 +183,40 @@ def kontrola_stari(v: Vysledek) -> None:
                     f"/urad/uredni-deska-archiv/ končí rokem 2025")
         else:
             v.projde(f"úřední deska je aktuální (poslední záznam {nej})")
+
+
+def kontrola_hlasovani_za_usnesenimi(v: Vysledek) -> None:
+    """Jednání, které má usnesení, ale ani po třech týdnech hlasování.
+
+    Sběrač hlasování v takovém případě hlásí úspěch se stejným počtem jako
+    minule — nic nespadne, jen na webu u posledních jednání chybí, kdo jak
+    hlasoval. Bez téhle kontroly si toho nikdo nevšimne (rada 13. a 27. 10.
+    2026 byla bez hlasování ještě v polovině listopadu).
+    """
+    dnes = date.today()
+    for organ in ("rada", "zastupitelstvo"):
+        cekaji: list[tuple[int, str, int]] = []   # (dní, datum, č. j.)
+        for cesta in sorted(glob.glob(str(DATA / "usneseni" / organ / "*" / "*.json"))):
+            zaznam = json.loads(Path(cesta).read_text(encoding="utf-8"))
+            try:
+                dni = (dnes - date.fromisoformat(str(zaznam.get("datum"))[:10])).days
+            except ValueError:
+                continue
+            if dni > HLASOVANI_OKNO_DNI or not zaznam.get("body"):
+                continue
+            hlas = DATA / "hlasovani" / organ / Path(cesta).parent.name / Path(cesta).name
+            if not hlas.exists():
+                cekaji.append((dni, str(zaznam["datum"])[:10], zaznam.get("cj")))
+        pozde = sorted(c for c in cekaji if c[0] > HLASOVANI_ZPOZDENI_DNI)
+        if pozde:
+            vypis = ", ".join(f"č. j. {cj} ({datum}, {dni} dní)" for dni, datum, cj in reversed(pozde))
+            v.varuj(f"{organ}: {len(pozde)} jednání má usnesení, ale chybí k nim hlasování: {vypis}. "
+                    f"Ověř na usneseni.muml.cz, jestli portál hlasování už zveřejnil "
+                    f"(stránka usnesení jinak píše „Výsledky hlasování se zpracovávají“)")
+        elif cekaji:
+            v.projde(f"{organ}: {len(cekaji)} čerstvé jednání zatím bez hlasování (do {HLASOVANI_ZPOZDENI_DNI} dní běžné)")
+        else:
+            v.projde(f"{organ}: hlasování je u všech jednání za posledních {HLASOVANI_OKNO_DNI} dní")
 
 
 def kontrola_provazani(v: Vysledek) -> None:
@@ -613,6 +655,7 @@ KONTROLY = [
     ("částky v usneseních", kontrola_castek),
     ("falešné nuly", kontrola_falesnych_nul),
     ("stáří zdrojů", kontrola_stari),
+    ("hlasování za usneseními", kontrola_hlasovani_za_usnesenimi),
     ("provázání dat", kontrola_provazani),
     ("číselník tagů", kontrola_tagu),
     ("týdenní vydání", kontrola_vydani),
