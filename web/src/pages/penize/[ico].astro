@@ -38,6 +38,16 @@ const graf = grafObjemPoLetech(
 );
 const varianty: Varianta[] = [{ klic: 'vse', popisek: 'Po letech', graf }];
 
+/* Protistrana, jejíž jediná smlouva je označená za vadnou, nemá v agregaci
+   žádný rok s platbou: `prvni_rok` i `posledni_rok` jsou null a `roky` je
+   prázdné. Bez téhle pojistky stálo na stránce „Období null–null“. */
+const obdobiLet =
+  protistrana.prvni_rok == null || protistrana.posledni_rok == null
+    ? '—'
+    : protistrana.prvni_rok === protistrana.posledni_rok
+      ? String(protistrana.prvni_rok)
+      : `${protistrana.prvni_rok}–${protistrana.posledni_rok}`;
+
 /* Konkrétní smlouvy s touhle protistranou napříč subjekty města. */
 const smlouvy: (Smlouva & { odKoho: string })[] = [];
 for (const soubor of zSmluv.data ?? []) {
@@ -119,7 +129,7 @@ const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv'];
       },
       {
         popisek: 'Období',
-        hodnota: `${protistrana.prvni_rok}–${protistrana.posledni_rok}`,
+        hodnota: obdobiLet,
         doplnek: `${cislo(roky.length)} ${sklonuj(roky.length, 'rok', 'roky', 'let')} na časové ose`,
       },
       {
@@ -127,17 +137,34 @@ const zdrojeOsy = moduly.length > 0 ? moduly : ['registr smluv'];
         hodnota: protistrana.aktivni ? 'Aktivní' : 'Neaktivní',
         stav: protistrana.aktivni
           ? { uroven: 'dobre', text: 'platba v posledních 12 měsících' }
-          : { uroven: 'neznamo', text: 'poslední rok s platbou ' + protistrana.posledni_rok },
+          : {
+              uroven: 'neznamo',
+              text: protistrana.posledni_rok != null
+                ? 'poslední rok s platbou ' + protistrana.posledni_rok
+                : 'žádná platná platba v datech',
+            },
       },
     ]}
   />
 
-  <GrafKarta
-    id="detail-objem"
-    nadpis="Platby po letech"
-    popis="Rok bez jediné platby je nulový sloupec, ne vynechané místo — jinak by nebylo poznat, kdy spolupráce začala a kdy skončila."
-    varianty={varianty}
-  />
+  {
+    roky.length > 0 ? (
+      <GrafKarta
+        id="detail-objem"
+        nadpis="Platby po letech"
+        popis="Rok bez jediné platby je nulový sloupec, ne vynechané místo — jinak by nebylo poznat, kdy spolupráce začala a kdy skončila."
+        varianty={varianty}
+      />
+    ) : (
+      <section class="karta">
+        <h2 class="karta__nadpis">Platby po letech</h2>
+        <p>
+          V datech není u téhle protistrany žádná platba, kterou by šlo zařadit do roku —
+          typicky proto, že její smlouvy registr označuje za vadné. Samotné smlouvy jsou vypsané níže.
+        </p>
+      </section>
+    )
+  }
 
   {
     naOse.length > 0 && (

@@ -154,7 +154,7 @@ def normalizuj_text(node) -> str:
     Cíl je, aby se hash změnil jen tehdy, když se změnil *obsah*, ne když
     šablona přesunula mezeru nebo přidala odřádkování.
     """
-    text = (node.text() or "").replace("\xa0", " ").replace("​", "")
+    text = (node.text() or "").replace("\xa0", " ").replace("\u200b", "")
     radky = [re.sub(r"\s+", " ", r).strip() for r in text.split("\n")]
     return "\n".join(r for r in radky if r)
 

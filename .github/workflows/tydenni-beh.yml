@@ -40,6 +40,11 @@ jobs:
         with:
           python-version: "3.11"
 
+      # web/package.json žádá Node >= 22; bez připnutí rozhoduje obraz runneru.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Závislosti
         run: |
           sudo apt-get update
@@ -103,13 +108,20 @@ jobs:
       # se nezveřejní a venku zůstane minulé číslo — lepší než vydat nové
       # s tichou lží.
       - name: Kontrola dat
-        run: python3 kontrola.py
+        run: python3 kontrola.py --bez-dom
 
       - name: Sestavit web
         run: |
           cd web
           npm ci
           npm run build
+
+      # Rozpočet DOM uzlů se dá změřit až na sestaveném webu. Dřív běžel
+      # v kroku „Kontrola dat“, tedy před sestavením, a pokaždé jen ohlásil,
+      # že web/dist chybí. Stojí pořád před „Uložit data“, takže přerostlá
+      # stránka publikaci zastaví stejně jako vadná data.
+      - name: Kontrola sestaveného webu
+        run: python3 kontrola.py --jen-dom
 
       - name: Uložit data
         run: |

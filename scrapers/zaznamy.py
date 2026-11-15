@@ -13,7 +13,6 @@ ne vlastnost zdroje, a řeší se spuštěním z vlastní sítě, ne přepsání
 """
 from __future__ import annotations
 
-import json
 import re
 import subprocess
 import sys

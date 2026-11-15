@@ -454,6 +454,50 @@ def sekce_zmeny(od: str, do: str) -> Sekce:
 
 # --------------------------------------------------------------------------
 
+def _otisk_polozky(polozka: dict) -> str:
+    return json.dumps(polozka, ensure_ascii=False, sort_keys=True)
+
+
+def bez_opakovani(sekce: list[Sekce], predchozi: dict | None) -> int:
+    """Vyhodí položky, které už vyšly v předchozím vydání. Vrací jejich počet.
+
+    Období je z obou stran VČETNĚ a sousední vydání sdílejí hraniční den
+    (den běhu). Položka z toho dne tak vycházela dvakrát: ve vydání
+    8. 11. 2026 bylo pět z deseti „změn na webu města“ opsaných z vydání
+    1. 11. Zúžit dolní mez na `od < datum` by opakování taky odstranilo, ale
+    ztratilo by všechno, co zdroj zveřejnil v den běhu až po sběru — minulé
+    vydání to ještě nevidělo a nové by to už nevzalo.
+
+    Proto se hraniční den nechává v období a škrtá se jen to, co minulé
+    vydání prokazatelně obsahuje: stejná sekce, do písmene stejná položka.
+    Když se položka mezitím změnila (přibylo hlasování, opravil se název),
+    vyjde znovu — to je nová informace, ne opakování. Bez předchozího
+    vydání (první číslo, mezera v archivu) se neškrtá nic.
+
+    Akce se nefiltrují: dívají se dopředu a akce, která byla minule
+    „za týden“, je teď „dnes“ — to opakování je záměr.
+    """
+    if not predchozi:
+        return 0
+    drive = {
+        s.get("id"): {_otisk_polozky(p) for p in s.get("polozky") or []}
+        for s in predchozi.get("sekce") or []
+    }
+    skrtnuto = 0
+    for s in sekce:
+        if s.id == "akce" or not s.polozky:
+            continue
+        znamych = drive.get(s.id) or set()
+        nove = [p for p in s.polozky if _otisk_polozky(p) not in znamych]
+        if len(nove) == len(s.polozky):
+            continue
+        skrtnuto += len(s.polozky) - len(nove)
+        s.polozky = nove
+        if not nove and s.stav == "ok":
+            s.stav = "prazdno"
+    return skrtnuto
+
+
 def sestav(do: date, dni: int = 7) -> dict:
     od = (do - timedelta(days=dni)).isoformat()
     do_s = do.isoformat()
@@ -467,6 +511,7 @@ def sestav(do: date, dni: int = 7) -> dict:
         sekce_zpravodaj(od, do_s),
         sekce_zmeny(od, do_s),
     ]
+    bez_opakovani(sekce, nacti(f"vydani/{od}.json"))
 
     aktivni = [s for s in sekce if s.stav == "ok"]
     chybejici = [s for s in sekce if s.stav == "chybi"]

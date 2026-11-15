@@ -19,7 +19,7 @@ import {
 } from '../lib/data';
 import JakPocitame from '../components/JakPocitame.astro';
 import { zplostiHlasovani, zplostiUsneseni } from '../lib/prehledy';
-import { prehledStavuSekci, souhrnBehu, type StavBehuSekce } from '../lib/stav_sekci';
+import { bezCest, duvodPreskoceni, prehledStavuSekci, souhrnBehu, type StavBehuSekce } from '../lib/stav_sekci';
 import type { Uroven } from '../components/Dlazdice.astro';
 import {
   cislo,
@@ -435,7 +435,7 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
                     <span>selhal</span>
                   </span>{' '}
                   <strong>{k.popis}</strong>
-                  {k.chyba && <span class="stav-behu__chyba"> — {k.chyba}</span>}
+                  {k.chyba && <span class="stav-behu__chyba"> — {bezCest(k.chyba)}</span>}
                 </li>
               ))}
               {behSouhrn.preskocene.map((k) => (
@@ -446,7 +446,7 @@ const denikJson = JSON.stringify(denikProKlienta).replace(/</g, '\\u003c');
                   </span>{' '}
                   <strong>{k.popis}</strong>
                   <span class="stav-behu__chyba">
-                    {' '}— {k.stav === 'chybi_main' ? 'modul nemá vstupní bod, krok se nespustil' : 'modul chybí'}
+                    {' '}— {duvodPreskoceni(k)}
                   </span>
                 </li>
               ))}

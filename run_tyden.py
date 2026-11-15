@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from lib.core import uloz  # noqa: E402
+from lib.core import ROOT, KrokPreskocen, uloz  # noqa: E402
 
 # (modul, popis, povinný)
 # Povinný krok, který selže, shodí běh na nenulový návratový kód —
@@ -116,6 +116,16 @@ NAVAZNE: list[tuple[str, str, bool]] = [
 ]
 
 
+def bez_cest(text: str) -> str:
+    """Vyhodí z chybové hlášky absolutní cestu k repozitáři.
+
+    Hláška jde do `beh.json` a odtud na titulní stranu webu. Cesta runneru
+    (`/home/runner/work/…`) tam čtenáři nic neřekne a o prostředí běhu
+    prozrazuje víc, než je potřeba — stačí cesta od kořene projektu.
+    """
+    return text.replace(str(ROOT) + "/", "").replace(str(ROOT), ".")
+
+
 def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
     print(f"\n▸ {popis}  ({modul})", flush=True)
     vysledek = {"modul": modul, "popis": popis, "povinny": povinny}
@@ -142,6 +152,11 @@ def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
             print(f"  … skončil s návratovým kódem {navrat}", flush=True)
             return {**vysledek, "stav": "selhal", "chyba": f"návratový kód {navrat}"}
         return {**vysledek, "stav": "ok"}
+    except KrokPreskocen as e:
+        # Vědomé vynechání, ne porucha: krok nemá v tomhle prostředí z čeho
+        # běžet (viz lib.core.KrokPreskocen). Web to ukáže jako „přeskočen“.
+        print(f"  … přeskočeno: {e}", flush=True)
+        return {**vysledek, "stav": "preskoceno", "duvod": bez_cest(str(e))[:300]}
     except SystemExit as e:
         if e.code:
             print(f"  … skončil s kódem {e.code}", flush=True)
@@ -150,7 +165,7 @@ def spust_krok(modul: str, popis: str, povinny: bool) -> dict:
     except Exception as e:  # noqa: BLE001
         print(f"  CHYBA: {e}", flush=True)
         traceback.print_exc(limit=3)
-        return {**vysledek, "stav": "selhal", "chyba": str(e)[:300]}
+        return {**vysledek, "stav": "selhal", "chyba": bez_cest(str(e))[:300]}
     finally:
         sys.argv = puvodni_argv
 
@@ -182,10 +197,14 @@ def main() -> int:
     ok = [v for v in vysledky if v["stav"] == "ok"]
     selhalo = [v for v in vysledky if v["stav"] == "selhal"]
     chybi = [v for v in vysledky if v["stav"] == "chybi_modul"]
+    preskoceno = [v for v in vysledky if v["stav"] == "preskoceno"]
     kriticke = [v for v in selhalo if v["povinny"]]
 
     print("\n" + "=" * 64)
-    print(f"  hotovo: {len(ok)}   selhalo: {len(selhalo)}   chybí modul: {len(chybi)}")
+    print(f"  hotovo: {len(ok)}   selhalo: {len(selhalo)}   "
+          f"přeskočeno: {len(preskoceno)}   chybí modul: {len(chybi)}")
+    for v in preskoceno:
+        print(f"   – {v['popis']}: {v.get('duvod', '')[:90]}")
     for v in selhalo:
         znacka = "!!" if v["povinny"] else " ·"
         print(f"  {znacka} {v['popis']}: {v.get('chyba', '')[:90]}")

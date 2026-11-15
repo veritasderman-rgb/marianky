@@ -656,7 +656,8 @@ def zmer_hloubku(log: Log, vzorek: int = 6) -> list[dict]:
 # --------------------------------------------------------------------------
 
 def sber(zdroje: list[Zdroj], log: Log, *, od: str | None = None,
-         limit: int | None = None, s_hledanim: bool = True) -> int:
+         limit: int | None = None, s_hledanim: bool = True,
+         prubeh: dict | None = None) -> int:
     """Projde zdroje a doplní nové články.
 
     `od` (RRRR-MM-DD) zapíná inkrementální režim: kandidáti se ořežou už
@@ -681,7 +682,11 @@ def sber(zdroje: list[Zdroj], log: Log, *, od: str | None = None,
             polozky = [(u, m) for u, m in sitemap_urls(z, log) if zajimave(u, z)]
         except ZdrojSelhal as e:
             log.chyba(f"{z.nazev}: {e}")
+            if prubeh is not None:
+                prubeh["zdroju_selhalo"] = prubeh.get("zdroju_selhalo", 0) + 1
             continue
+        if prubeh is not None:
+            prubeh["zdroju_ok"] = prubeh.get("zdroju_ok", 0) + 1
 
         # Týdenní inkrement filtruje PŘED stažením, podle lastmod ze sitemapy.
         # Pro historii je lastmod bezcenný (razítko migrace CMS), ale u
@@ -931,11 +936,19 @@ def hlavni(argv: list[str] | None = None) -> int:
         od = (datetime.now(timezone.utc) - timedelta(days=8)).strftime("%Y-%m-%d")
         log.info(f"inkrementální režim, beru články od {od}")
 
+    prubeh: dict = {}
     novych = sber(vyber, log, od=od, limit=args.limit,
-                  s_hledanim=not args.bez_hledani)
+                  s_hledanim=not args.bez_hledani, prubeh=prubeh)
     log.info(f"celkem nových článků: {novych}")
     vysledek = log.uzavri()
-    return 0 if vysledek["uspech"] else 1
+    # Jeden nedostupný zdroj nesmí shodit celý krok. Od 21. 9. 2026 vracela
+    # sitemapa kraje HTTP 401 a krok kvůli ní stál každý týden jako „selhal“,
+    # přestože ostatní zdroje prošly a články se uložily. Chyby zůstávají
+    # v logu (web je ukáže jako „doběhl s chybami“); kód 1 se vrací až tehdy,
+    # když neprošel ŽÁDNÝ zdroj — to už je porucha sběru, ne jednoho webu.
+    if vysledek["uspech"] or prubeh.get("zdroju_ok", 0) > 0:
+        return 0
+    return 1
 
 
 def main() -> None:
