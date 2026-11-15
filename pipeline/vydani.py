@@ -454,6 +454,10 @@ def sekce_zmeny(od: str, do: str) -> Sekce:
 
 # --------------------------------------------------------------------------
 
+# Sekce, které se neřídí obdobím vydání a opakují se záměrně.
+BEZ_SKRTANI = {"akce", "zpravodaj"}
+
+
 def _otisk_polozky(polozka: dict) -> str:
     return json.dumps(polozka, ensure_ascii=False, sort_keys=True)
 
@@ -475,7 +479,9 @@ def bez_opakovani(sekce: list[Sekce], predchozi: dict | None) -> int:
     vydání (první číslo, mezera v archivu) se neškrtá nic.
 
     Akce se nefiltrují: dívají se dopředu a akce, která byla minule
-    „za týden“, je teď „dnes“ — to opakování je záměr.
+    „za týden“, je teď „dnes“ — to opakování je záměr. Stejně tak zpravodaj:
+    číslo se ukazuje po celý měsíc, ne podle období vydání. Kdyby se škrtalo
+    proti minulému (už proškrtanému) vydání, vycházelo by ob týden.
     """
     if not predchozi:
         return 0
@@ -485,7 +491,7 @@ def bez_opakovani(sekce: list[Sekce], predchozi: dict | None) -> int:
     }
     skrtnuto = 0
     for s in sekce:
-        if s.id == "akce" or not s.polozky:
+        if s.id in BEZ_SKRTANI or not s.polozky:
             continue
         znamych = drive.get(s.id) or set()
         nove = [p for p in s.polozky if _otisk_polozky(p) not in znamych]
