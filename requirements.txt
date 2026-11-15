@@ -1,0 +1,15 @@
+# Závislosti sběračů a pipeline. Instalace: pip install -r requirements.txt
+# Jediný zdroj pravdy — čte ho i .github/workflows/tydenni-beh.yml.
+
+requests
+
+# selectolax < 1: verze 1.0 zrušila `selectolax.parser` (backend Modest),
+# ze kterého čtou všechny sběrače. Bez připnutí padly běhy 4., 11.
+# a 18. 10. 2026 hned na prvním importu a tři týdny nepřibylo nic.
+selectolax<1
+
+# scrapers/zaznamy.py — záznamy jednání
+yt-dlp
+
+# pipeline/vysvedceni.py — čte podkladový sešit vysvědčení
+openpyxl

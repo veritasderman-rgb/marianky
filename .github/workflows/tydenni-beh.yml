@@ -49,10 +49,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils   # bez update selže na 404
-          # selectolax < 1: verze 1.0 zrušila `selectolax.parser` (backend Modest),
-          # ze kterého čtou všechny sběrače. Bez připnutí padly běhy 4., 11.
-          # a 18. 10. 2026 hned na prvním importu a tři týdny nepřibylo nic.
-          pip install requests "selectolax<1" yt-dlp openpyxl   # openpyxl čte podkladový sešit vysvědčení
+          # Verze (hlavně selectolax < 1) drží requirements.txt.
+          pip install -r requirements.txt
 
       # Cache šetří web města, jehož strop je sdílený pro všechny moduly.
       # Bez ní by se každý týden stahoval celý archiv znovu.
